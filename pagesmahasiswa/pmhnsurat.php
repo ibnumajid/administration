@@ -233,7 +233,7 @@
     </nav>
     <!-- End Navbar -->
 
-    <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
       
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -246,14 +246,15 @@
             </button>
           </div>
           <div class="modal-body">
-            
           <?php
     
               include '../_database/config.php';
               if(isset($_POST['input']))
               {
-                $progres = $_POST['nm'];
-                $dosen = $_POST['ds'];
+                $nama = $_POST['nm'];
+                $nrp = $_POST['nrp'];
+                $jenis = $_POST['sr'];
+                $dosen = implode(', ', $_POST['ds']);
                 
                 $nama_file = basename($_FILES['fl']['name']);
                 $ukuran = $_FILES['fl']['size'];
@@ -264,7 +265,7 @@
 
                 if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$progres','$dosen','$url',sysdate())");
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$nama','$nrp','$jenis','$dosen','$url',sysdate())");
 
                   if($query)
                   {
@@ -284,12 +285,31 @@
 
             ?>
 
+            
+
             <form action="" method="post" enctype="multipart/form-data">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
+                <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                <input name="nm" class="form-control" type="text" placeholder="Masukan Nama Mahasiwa" aria-label="default input example">
+                </div>
+              </div>
+            </div>
+
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">NRP</label>
+                <input name="nrp" class="form-control" type="text" placeholder="Masukan NRP" aria-label="default input example">
+                </div>
+              </div>
+            </div>
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
                 <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="nm"  class="form-select" aria-label="Default select example">
+                    <select name="sr"  class="form-select" aria-label="Default select example">
                         <option selected>Pilih Jenis Surat</option>
                         <option value="Surat Magang">Surat Magang</option>
                         <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
@@ -298,20 +318,58 @@
                 </div>
               </div>
             </div>
-
+            
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Pilih Admin</label>
-                    <select name="ds" class="form-select" aria-label="Default select example">
-                        <option selected>Pilih Admin Untuk Meakses File</option>
-                        <option value="Dosen 1">Dosen 1</option>
-                        <option value="Dosen 2">Dosen 2</option>
-                        <option value="Dosen 3">Dosen 3</option>
-                    </select>
+
+                <div class="dropdown">
+              <button class="btn btn-outline-secondary btn-lg w-100 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Pilih Dosen
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <?php
+                        include '../_database/config.php';
+                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosen") or die (mysqli_error($koneksi));
+                          while ($data_dosen =mysqli_fetch_array($query_dosen)){?>
+                           <div class="form-check">
+                            <div class="card-header pb-0 p-2">
+                              <div class="row">
+                                <div class="mb-3">
+                            <input class="form-check-input" Name="ds[]" type="checkbox" value="<?php echo$data_dosen['id_npp']?>" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                            <?php echo $data_dosen['nama_anggota'] ?>
+                            </label>
+                           </div>  
+                           </div>
+                           </div>
+                           </div>
+                        <?php }?>
+              </ul>
+            </div>
+
                 </div>
               </div>
             </div>
+
+            <!-- <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Pilih Dosen</label>
+                        <?php
+                        include '../_database/config.php';
+                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosen") or die (mysqli_error($koneksi));
+                          while ($data_dosen =mysqli_fetch_array($query_dosen)){?>
+                           <div class="form-check">
+                            <input class="form-check-input" Name="tj[]" type="checkbox" value="<?php echo$data_dosen['id_npp']?>" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                            <?php echo $data_dosen['nama_anggota'] ?>
+                            </label>
+                          </div>
+                        <?php }?>
+                </div>
+              </div>
+            </div> -->
 
             <div class="card-header pb-0 p-3">
               <div class="row">
