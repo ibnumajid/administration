@@ -148,7 +148,7 @@ session_start();
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Adnan Dennis </span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?> </span>
               </a>
             </li>
             <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -269,7 +269,7 @@ session_start();
                       <div class="d-flex">
                         <div class="me-4">
                           <p class="text-white text-sm opacity-8 mb-0">Nama Mahasiswa</p>
-                          <h6 class="text-white mb-0">Adnan Dennis</h6>
+                          <h6 class="text-white mb-0"><?php echo $_SESSION['user'] ?></h6>
                         </div>
                         <!-- <div>
                           <p class="text-white text-sm opacity-8 mb-0">Expires</p>

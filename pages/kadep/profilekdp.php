@@ -72,7 +72,7 @@
 
         <!--Nama mahasiswa-->
   <!--      <li class="nav-item">
-          <a class="nav-link  " href="../pages/datamahasiswa.html">
+          <a class="nav-link  " href="../pages/datamahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                 <title>document</title> 
@@ -115,7 +115,7 @@
         
         <!--Validasi Surat-->
         <li class="nav-item">
-          <a class="nav-link  " href="./validasisuratkdp.html">
+          <a class="nav-link  " href="./validasisuratkdp.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                 <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
@@ -185,7 +185,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Adnan Dennis</span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 pe-0 d-flex align-items-center">
@@ -302,10 +302,10 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Adnan Dennis
+              <?php echo $_SESSION['user'] ?>
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                2040201062
+              <?php echo $_SESSION['NIP'] ?>
               </p>
             </div>
           </div>
@@ -446,11 +446,11 @@
             </div>
             <div class="card-body p-3">
               <p class="text-sm">
-                Hi, I’m Adnan Dennis, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
+                Hi, I’m <?php echo $_SESSION['user'] ?>, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
               </p>
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Adnan Dennis</li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; <?php echo $_SESSION['user'] ?></li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; +62 8xxxxx</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; den****@mail.com</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; IND</li>

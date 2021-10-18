@@ -68,7 +68,7 @@ session_start();
 
         <!--Nama mahasiswa-->
         <li class="nav-item">
-          <a class="nav-link  " href="./datamahasiswa.html  ">
+          <a class="nav-link  " href="./datamahasiswa.php  ">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                 <title>document</title> 
@@ -112,7 +112,7 @@ session_start();
 
          <!--Validasi surat-->
          <li class="nav-item">
-          <a class="nav-link  " href="../validasisurat.html">
+          <a class="nav-link  " href="../validasisurat.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                 <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
@@ -137,7 +137,7 @@ session_start();
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="./profile.html">
+          <a class="nav-link  " href="./profile.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -188,7 +188,7 @@ session_start();
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Gavin Pakpahan </span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?> </span>
               </a>
             </li>
             <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -302,8 +302,8 @@ session_start();
                     <div class="d-flex">
                       <div class="d-flex">
                         <div class="me-4">
-                          <p class="text-white text-sm opacity-8 mb-0">Nama Dosen</p>
-                          <h6 class="text-white mb-0">Gavin Pakpahan</h6>
+                          <p class="text-white text-sm opacity-8 mb-0">Nama Tendik</p>
+                          <h6 class="text-white mb-0"><?php echo $_SESSION['user'] ?></h6>
                         </div>
                         <!-- <div>
                           <p class="text-white text-sm opacity-8 mb-0">Expires</p>
