@@ -53,7 +53,7 @@ session_start();
                 <img src="assets/images/dteonew.jpeg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome</span>
+                <span>Welcomdwarwr3wetwetwetwetwe</span>
                 <h2><?=$_SESSION['user'] ?></h2>
               </div>
             </div>

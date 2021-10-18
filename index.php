@@ -29,12 +29,12 @@
 </head>
 <body style="background-color: #666666;">
 	
-	<div class="limiter">
+	<div class="limiter">s
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="login.php" method="post">
 					<span class="login100-form-title ">
-						Selamat Datang ! <br> Silahkan masukan username dan pasword
+						Selamat Dadasfwawftang ! <br> Silahkan masukan username dan pasword
 					</span>
 					
 					
