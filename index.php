@@ -34,7 +34,7 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="login.php" method="post">
 					<span class="login100-form-title ">
-						Selamat Datang<br> Silahkan masukan username dan pasword
+						Selamat Datang !<br> Silahkan masukan username dan pasword
 					</span>
 					
 					
