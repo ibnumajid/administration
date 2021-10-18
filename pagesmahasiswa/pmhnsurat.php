@@ -383,10 +383,12 @@
             </form>
 
           </div>
+          <form action="" method="POST">
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button name="input" type="button" class="btn bg-gradient-primary">Upload</button>
+            <input name="input" type="submit" class="btn bg-gradient-primary" value="upload">
           </div>
+          </form>
         </div>
       </div>
     </div>
