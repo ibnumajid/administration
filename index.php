@@ -29,7 +29,7 @@
 </head>
 <body style="background-color: #666666;">
 	
-	<div class="limiter">s
+	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="login.php" method="post">
