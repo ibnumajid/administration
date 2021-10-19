@@ -296,70 +296,14 @@
       </div>
     </nav>
     <!-- End Navbar -->
+
+
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-lg-8">
           <div class="row">
-            <div class="col-xl-6 mb-xl-0 mb-4">
-              <div class="card bg-transparent shadow-xl">
-                <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
-                  <span class="mask bg-gradient-dark"></span>
-                  <div class="card-body position-relative z-index-1 p-3">
-                    <!-- <i class="fas fa-wifi text-white p-2"></i> -->
-                    <h5 class="text-white mt-4 mb-5 pb-2">10311710000013</h5>
-                    <div class="d-flex">
-                      <div class="d-flex">
-                        <div class="me-4">
-                          <p class="text-white text-sm opacity-8 mb-0">Nama Mahasiswa</p>
-                          <h6 class="text-white mb-0"><?php echo $_SESSION['user'] ?></h6>
-                        </div>
-                        <!-- <div>
-                          <p class="text-white text-sm opacity-8 mb-0">Expires</p>
-                          <h6 class="text-white mb-0">11/22</h6>
-                        </div> -->
-                      </div>
-                      <!-- <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
-                        <img class="w-60 mt-2" src="../assets/img/logos/mastercard.png" alt="logo">
-                      </div> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-6">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="card">
-                    <div class="card-header mx-4 p-3 text-center">
-                      <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                        <i class="fas fa-file-upload opacity-10"></i>
-                      </div>
-                    </div>
-                    <div class="card-body pt-0 p-3 text-center">
-                      <h6 class="text-center mb-0">Surat Diajukan</h6>
-                      <!-- <span class="text-xs">Belong Interactive</span> -->
-                      <hr class="horizontal dark my-3">
-                      <h5 class="mb-0">5</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 mt-md-0 mt-4">
-                  <div class="card">
-                    <div class="card-header mx-4 p-3 text-center">
-                      <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                        <i class="fas fa-check opacity-10"></i>
-                      </div>
-                    </div>
-                    <div class="card-body pt-0 p-3 text-center">
-                      <h6 class="text-center mb-0">Surat Disetuju</h6>
-                      <!-- <span class="text-xs">Freelance Payment</span> -->
-                      <hr class="horizontal dark my-3">
-                      <h5 class="mb-0">3</h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!---->
+
             <div class="col-md-12 mb-lg-0 mb-4">
               <div class="card mt-4">
                 <div class="card-header pb-0 p-3">
@@ -384,6 +328,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-lg-4">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
@@ -396,63 +341,51 @@
                 </div>
               </div>
             </div>
-            <div class="card-body p-3 pb-0">
+
+
+              <!-- surat dari admin -->
+              <div class="card-body p-3 pb-0">
               <ul class="list-group">
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark font-weight-bold text-sm">10 September 2021</h6>
-                    <span class="text-xs">Panduan pelaksanaan magang</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-              
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">10 September 2021</h6>
-                    <span class="text-xs">Panduang pelanksanaan PBL</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">11 September 2021</h6>
-                    <span class="text-xs">Surat pengantar magang</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                 
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">11 September 2021</h6>
-                    <span class="text-xs">Surat rekomendasi</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                 
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">12 September 2021</h6>
-                    <span class="text-xs">Surat persetujaun Kadep</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
                   
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-              </ul>
+                  <?php
+                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $no = 1;
+                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
+                  
+                  while ($data = mysqli_fetch_array($query)) {
+                    if($data['tujuan'] )
+                    {?>
+                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
+                        <span class="text-xs"><?=$data['nama']?></span>
+                      </div>
+                      <div class="d-flex align-items-center text-sm">
+                  
+                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                      </div>
+                    </li>
+                    <?php }?>
+                    <?php if ($data['tujuan'] == 'Dosen, Tendik' or $data['tujuan'] == 'Dosen, Mahasiswa'){?>
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
+                        <span class="text-xs"><?=$data['nama']?></span>
+                      </div>
+                      <div class="d-flex align-items-center text-sm">
+                  
+                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                      </div>
+                    </li>
+                    <?php }?>
+                  <?php } ?>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+
+          
       <div class="row">
         <div class="col-md-7 mt-4">
           <div class="card">
