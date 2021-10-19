@@ -233,7 +233,7 @@
     </nav>
     <!-- End Navbar -->
 
-    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+    
       
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -398,6 +398,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
+            <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
