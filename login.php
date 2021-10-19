@@ -19,7 +19,7 @@ if($cek > 0){
         $row = mysqli_fetch_array($tambah);
         $_SESSION['user'] ="admin";
         $_SESSION['NIP'] ="0000";
-        header("location:cobaadmin.php");
+        header("location:./pagesadmin/billingadmin.php");
     }
     elseif ($data['status'] == '2')
     {
