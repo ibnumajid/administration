@@ -276,7 +276,7 @@
                 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$nama','$nrp','$jenis','$dosen','$url',sysdate())");
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$nama','$nrp','$jenis','$dosen','$url', '$ukuran', '$tipe', sysdate())");
 
                   if($query)
                   {
