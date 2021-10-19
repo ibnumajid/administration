@@ -263,6 +263,16 @@ iframe {
   padding: 173px 55px 55px 55px;
 }
 
+.wrap-login100.login100-more p {
+  width: 100%;
+  /* display: block; */
+  font-family: Poppins-Regular;
+  font-size: 40px;
+  color: #000000;
+  line-height: 1.2;
+  text-align: center;
+}
+
  h1 {
   width: 100%;
   /* display: block; */
