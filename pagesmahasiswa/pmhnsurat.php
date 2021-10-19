@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="/assets/images/icons/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
     Sistem Administrasi DTEO
   </title>
@@ -233,7 +233,7 @@
     </nav>
     <!-- End Navbar -->
 
-    
+    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
       
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -259,22 +259,11 @@
                 $nama_file = basename($_FILES['fl']['name']);
                 $ukuran = $_FILES['fl']['size'];
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-                $max = 1024 * 20000;
-                $ekstensi = "pdf";
-                $ekstensi2 = "docx";
 
                 $url = $nama_file;
 
-                if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
-                {echo "Ukuran File tidak boleh melebihi 20 mb dan harus dalam format docx/pdf";}
 
-                else if ($ukuran > $max)
-                { echo "Ukuran File tidak boleh melebihi 20 mb";}
-               
-                else if ($tipe != $ekstensi && $tipe != $ekstensi2)
-                { echo "Ekstensi file harus docx atau pdf";} 
-                
-                else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
                   $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$nama','$nrp','$jenis','$dosen','$url',sysdate())");
 
@@ -394,12 +383,10 @@
             </form>
 
           </div>
-          <form action="" method="POST">
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <input name="input" type="submit" class="btn bg-gradient-primary" value="upload">
+            <button name="input" type="button" class="btn bg-gradient-primary">Upload</button>
           </div>
-          </form>
         </div>
       </div>
     </div>
@@ -409,7 +396,6 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              <button type="button" class="btn btn bg-gradient-info mb-3 js-btn-next btn-lg w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
