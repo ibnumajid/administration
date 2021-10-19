@@ -213,16 +213,16 @@
                         </h6>
                         <p class="text-xs text-secondary mb-0">
                           <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
+                          3 days
+                          </p>
                       </div>
                     </div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item d-flex align-items-center">
-                <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                        <li class="nav-item d-flex align-items-center">
+                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
