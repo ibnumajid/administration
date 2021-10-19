@@ -293,96 +293,35 @@
 
 
       <div class="container-fluid py-4">
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="row">
-              <!---->
-              <div class="col-xl-6 mb-xl-0 mb-4">
-                <div class="card bg-transparent shadow-xl">
-                  <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
-                    <span class="mask bg-gradient-dark"></span>
-                    <div class="card-body position-relative z-index-1 p-3">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="row">
+            <!---->
 
-                      <!--identitas-->
-                      <!-- <i class="fas fa-wifi text-white p-2"></i> -->
-                      <h5 class="text-white mt-4 mb-5 pb-2">2040201062</h5>
-                      <div class="d-flex">
-                        <div class="d-flex">
-                          <div class="me-4">
-                            <p class="text-white text-sm opacity-8 mb-0">Nama Dosen</p>
-                            <h6 class="text-white mb-0"><?php echo $_SESSION['user'] ?></h6>
-                          </div>
-                          <!-- <div>
-                            <p class="text-white text-sm opacity-8 mb-0">Expires</p>
-                            <h6 class="text-white mb-0">11/22</h6>
-                          </div> -->
-                        </div>
-                        <!-- <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
-                          <img class="w-60 mt-2" src="../assets/img/logos/mastercard.png" alt="logo">
-                        </div> -->
-                      </div>
+            <div class="col-md-12 mb-lg-0 mb-4">
+              <div class="card mt-4">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                      <h6 class="mb-0">Informasi</h6>
                     </div>
+                    
                   </div>
                 </div>
-              </div>
-              <div class="col-xl-6">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="card">
-                      <div class="card-header mx-4 p-3 text-center">
-                        <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                          <i class="fas fa-file-upload opacity-10"></i>
-                        </div>
-                      </div>
-                      <div class="card-body pt-0 p-3 text-center">
-                        <h6 class="text-center mb-0">Surat Diajukan</h6>
-                        <!-- <span class="text-xs">Belong Interactive</span> -->
-                        <hr class="horizontal dark my-3">
-                        <h5 class="mb-0">5</h5>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mt-md-0 mt-4">
-                    <div class="card">
-                      <div class="card-header mx-4 p-3 text-center">
-                        <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                          <i class="fas fa-check opacity-10"></i>
-                        </div>
-                      </div>
-                      <div class="card-body pt-0 p-3 text-center">
-                        <h6 class="text-center mb-0">Surat Disetuju</h6>
-                        <!-- <span class="text-xs">Freelance Payment</span> -->
-                        <hr class="horizontal dark my-3">
-                        <h5 class="mb-0">3</h5>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-12 mb-lg-0 mb-4">
-                <div class="card mt-4">
-                  <div class="card-header pb-0 p-3">
-                    <div class="row">
-                      <div class="col-6 d-flex align-items-center">
-                        <h6 class="mb-0">Informasi</h6>
-                      </div>
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-md-6 mb-md-0 mb-4">
                       
                     </div>
-                  </div>
-                  <div class="card-body p-3">
-                    <div class="row">
-                      <div class="col-md-6 mb-md-0 mb-4">
-                        
-                      </div>
-                      <div class="col-md-6">
-                        
-                      </div>
+                    <div class="col-md-6">
+                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
           <!--surat masuk dari admin-->
           <div class="col-lg-4">
