@@ -259,11 +259,22 @@
                 $nama_file = basename($_FILES['fl']['name']);
                 $ukuran = $_FILES['fl']['size'];
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+                $max = 1024 * 20000;
+                $ekstensi = "pdf";
+                $ekstensi2 = "docx";
 
                 $url = $nama_file;
 
+                if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
+                {echo "Ukuran File tidak boleh melebihi 20 mb dan harus dalam format docx/pdf";}
 
-                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+                else if ($ukuran > $max)
+                { echo "Ukuran File tidak boleh melebihi 20 mb";}
+               
+                else if ($tipe != $ekstensi && $tipe != $ekstensi2)
+                { echo "Ekstensi file harus docx atau pdf";} 
+                
+                else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
                   $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$nama','$nrp','$jenis','$dosen','$url',sysdate())");
 
