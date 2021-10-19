@@ -327,14 +327,14 @@
                 {echo "Ukuran File tidak boleh melebihi 20 mb dan harus dalam format docx/pdf";}
 
                 else if ($ukuran > $max)
-                { echo "Ukuran File tidak boleh melebihi 20 mb";}
+                { echo "Ukuran file tidak boleh melebihi 20 mb";}
                
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
                 { echo "Ekstensi file harus docx atau pdf";} 
 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into adminsurat values('$nama','$nomor','$tujuan','$url',sysdate())");
+                  $query = mysqli_query($koneksi,"insert into adminsurat values('$nama','$nomor','$tujuan','$url', '$ukuran', '$tipe', '$sysdate())");
 
                   if($query)
                   {
