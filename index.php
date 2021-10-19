@@ -79,9 +79,10 @@
 				</form>
 
 				<div class="login100-more" >
-				<img src="assets/images/dteologo.png" class="rounded mx-auto d-block"   >
-				<p class="text-center">SISTEM ADMINISTRASI <br>
-				 DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA</p>
+					<img src="assets/images/dteologo.png" class="rounded mx-auto d-block">
+					<p class="text-center">SISTEM ADMINISTRASI <br>
+					 DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
+					</p>
 				</div>
 			</div>
 		</div>
