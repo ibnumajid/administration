@@ -278,7 +278,7 @@
 
   
       <a class="nav-link  active" href="./uploadfile.php">
-        <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surat</button>
+        <button type="button" class="btn btn-secondary btn-lg w-80 btn bg-gradient-info">Ajukan Surat</button>
       </a>
     
     <div class="container-fluid py-4">
@@ -286,7 +286,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-            <button type="button" href="./uploadfile.php class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+            <!-- <button type="button" href="./uploadfile.php class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button> -->
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
