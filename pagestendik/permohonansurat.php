@@ -284,14 +284,11 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              <!-- <a class="nav-link  active" href="./uploadfile.php"> -->
                 <button type="button"  href="./uploadfile.php class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surat</button>
-              <!-- </a> -->
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
                 </div>
-                
               </div>
             </div>
             
