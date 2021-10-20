@@ -1,18 +1,4 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.3
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -291,15 +277,16 @@
     <!-- End Navbar -->
 
   
-      <a class="nav-link  active" href="./uploadfile.php">
-        <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surat</button>
-      </a>
+      
     
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
+              <a class="nav-link  active" href="./uploadfile.php">
+                <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surat</button>
+              </a>
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
