@@ -382,14 +382,12 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
             <div class="card-header pb-0 p-3">
+              <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
               <div class="row">
-      
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
                 </div>
-                
               </div>
             </div>
             
