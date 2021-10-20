@@ -284,7 +284,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-                <button type="button"  href="./uploadfile.php class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surat</button>
+                <button type="button"  href="./uploadfile.php class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surattt</button>
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
