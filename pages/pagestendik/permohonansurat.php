@@ -278,7 +278,7 @@
 
   
       <a class="nav-link  active" href="./uploadfile.php">
-        <button type="button" class="btn btn-secondary btn-lg w-80 btn bg-gradient-info">Ajukan Surat</button>
+        <button type="button" class="btn btn-secondary btn-lg w-80 btn bg-gradient-info" >Ajukan Surat</button>
       </a>
     
     <div class="container-fluid py-4">
