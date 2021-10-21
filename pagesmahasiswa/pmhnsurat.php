@@ -1,3 +1,11 @@
+<?php
+session_start();
+  if($_SESSION['user']=='')
+  {
+  header("location:home.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,6 +85,28 @@
           </a>
         </li>
         
+                      <!-- REKAP SURAT -->
+       <li class="nav-item"> 
+        <a class="nav-link  " href="./rekapmhs.php">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+              <title>document</title> 
+                <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
+                  <g id="Rounded-Icons" transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero"> 
+                    <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)"> 
+                      <g id="document" transform="translate(154.000000, 300.000000)"> 
+                        <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" id="Path" opacity="0.603585379"></path> 
+                        <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z" id="Shape"></path> 
+                      </g> 
+                    </g> 
+                  </g> 
+                </g> 
+              </svg>
+          </div>
+          <span class="nav-link-text ms-1">Rekap Surat</span>
+        </a>
+      </li>
+        
         
     
         
@@ -131,7 +161,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -232,42 +262,60 @@
       </div>
     </nav>
     <!-- End Navbar -->
-  
+    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Upload File</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+          </div>  
+        
           <div class="modal-body">
+
           <?php
+
     
               include '../_database/config.php';
               if(isset($_POST['input']))
               {
-                $nama = $_POST['nm'];
-                $nrp = $_POST['nrp'];
-                $jenis = $_POST['sr'];
-                $dosen = implode(', ', $_POST['ds']);
+                $nama_mhsw = $_POST['nm'];
+                $id_nrp = $_POST['nrp'];
+                $progres = $_POST['sr'];
+                $dosen_pembimbing = implode(', ', $_POST['ds']);
                 
                 $nama_file = basename($_FILES['fl']['name']);
                 $ukuran = $_FILES['fl']['size'];
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+                $max = 1024 * 20000;
+                $ekstensi = "pdf";
+                $ekstensi2 = "docx";
 
                 $url = $nama_file;
 
-
-                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+             if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
+            {;
+            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';}
+        
+            else if ($ukuran > $max)
+            {
+              echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;}
+               
+            else if ($tipe != $ekstensi && $tipe != $ekstensi2)
+            { 
+              echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf")</script>';
+            }  
+                else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('','$nama','$nrp','$jenis','$dosen','$url', '$ukuran', '$tipe', sysdate())");
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$url', '$ukuran', $tipe, sysdate())");
 
                   if($query)
                   {
-                    echo "Berasil Input";
+                    echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
                   }
                   else
                   {
@@ -282,7 +330,7 @@
               }
 
             ?>
-
+    
             
 
             <form action="" method="post" enctype="multipart/form-data">
@@ -334,7 +382,7 @@
                             <div class="card-header pb-0 p-2">
                               <div class="row">
                                 <div class="mb-3">
-                            <input class="form-check-input" Name="ds[]" type="checkbox" value="<?php echo$data_dosen['id_npp']?>" id="defaultCheck1">
+                            <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo$data_dosen['nama_anggota']?>" id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
                             <?php echo $data_dosen['nama_anggota'] ?>
                             </label>
@@ -349,26 +397,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Pilih Dosen</label>
-                        <?php
-                        include '../_database/config.php';
-                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosen") or die (mysqli_error($koneksi));
-                          while ($data_dosen =mysqli_fetch_array($query_dosen)){?>
-                           <div class="form-check">
-                            <input class="form-check-input" Name="tj[]" type="checkbox" value="<?php echo$data_dosen['id_npp']?>" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                            <?php echo $data_dosen['nama_anggota'] ?>
-                            </label>
-                          </div>
-                        <?php }?>
-                </div>
-              </div>
-            </div> -->
-
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
@@ -378,15 +406,16 @@
                 </div>
               </div>
             </div>
-            </form>
+           
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button name="input" type="button" class="btn bg-gradient-primary">Upload</button>
+            <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
           </div>
+          </form>
         </div>
-      </div>
+      </div>  
     </div>
     
     <div class="container-fluid py-4">
@@ -394,7 +423,6 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-            <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
