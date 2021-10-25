@@ -413,7 +413,7 @@ session_start();
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
-          </div>
+           </div>
           </form>
         </div>
       </div>  

@@ -363,20 +363,6 @@
               </div>
             </div>
 
-            <!-- <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Pilih Admin</label>
-                    <select name="adm" class="form-select" aria-label="Default select example">
-                        <option selected>Pilih Admin Untuk Meakses File</option>
-                        <option value="kadep">Kepala Departemen</option>
-                        <option value="Admin 2">Permohonan Surat Tugas</option>
-                        <option value="Admin 3">Permohonan Surat Cuti</option>
-                    </select>
-                </div>
-              </div>
-            </div> -->
-
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
@@ -386,13 +372,13 @@
                 </div>
               </div>
             </div>
-            </form>
-
+         
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button name="input" type="button" class="btn bg-gradient-primary">Upload</button>
+            <button name="submite" type="input" class="btn bg-gradient-primary">Upload</button>
           </div>
+        </form>
         </div>
       </div>
     </div>
