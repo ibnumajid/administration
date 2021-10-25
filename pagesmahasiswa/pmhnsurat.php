@@ -359,8 +359,8 @@ session_start();
                         <option selected>Pilih Jenis Surat</option>
                         <option value="Surat Magang">Surat Magang</option>
                         <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
-                        <option value="Surat Cuti">Surat PBL/option>
-                        <option value="Surat Cuti">Surat Kegiatan Hima/option>
+                        <option value="Surat Cuti">Surat PBL </option>
+                        <option value="Surat Cuti">Surat Kegiatan Hima</option>
                     </select>
                 </div>
               </div>
