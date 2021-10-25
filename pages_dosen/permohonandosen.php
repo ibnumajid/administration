@@ -351,9 +351,9 @@
                 <label for="formFile" class="form-label">Pilih Admin</label>
                     <select name="adm" class="form-select" aria-label="Default select example">
                         <option selected>Pilih Admin Untuk Meakses File</option>
-                        <option value="Admin 1">Admin 1</option>
-                        <option value="Admin 2">Admin 2</option>
-                        <option value="Admin 3">Admin 3</option>
+                        <option value="Admin 1">Surat Perpindahan Barang Lab</option>
+                        <option value="Admin 2">Permohonan Surat Tugas</option>
+                        <option value="Admin 3">Permohonan Surat Cuti</option>
                     </select>
                 </div>
               </div>
