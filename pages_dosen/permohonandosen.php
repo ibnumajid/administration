@@ -337,27 +337,27 @@
                 <label for="formFile" class="form-label">Jenis Surat</label>
                     <select name="nm"  class="form-select" aria-label="Default select example">
                         <option selected>Pilih Jenis Surat</option>
-                        <option value="Surat Permohonan">Surat Permohonan</option>
-                        <option value="Surat Ijin">Surat Ijin</option>
-                        <option value="Surat Cuti">Surat Cuti</option>
+                        <option value="Surat perpindahan">Surat Perpindahan Barang Lab</option>
+                        <option value="Surat tugas">Permohonan Surat Tugas</option>
+                        <option value="Surat Cuti">Permohonan Surat Cuti</option>
                     </select>
                 </div>
               </div>
             </div>
 
-            <div class="card-header pb-0 p-3">
+            <!-- <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Pilih Admin</label>
                     <select name="adm" class="form-select" aria-label="Default select example">
                         <option selected>Pilih Admin Untuk Meakses File</option>
-                        <option value="Admin 1">Surat Perpindahan Barang Lab</option>
+                        <option value="kadep">Kepala Departemen</option>
                         <option value="Admin 2">Permohonan Surat Tugas</option>
                         <option value="Admin 3">Permohonan Surat Cuti</option>
                     </select>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="card-header pb-0 p-3">
               <div class="row">
