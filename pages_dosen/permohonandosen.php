@@ -294,41 +294,58 @@
           <div class="modal-body">
             
           <?php
+
     
-              include '../_database/config.php';
-              if(isset($_POST['input']))
-              {
-                $progres = $_POST['nm'];
-                $admin = $_POST['adm'];
-                
-                $nama_file = basename($_FILES['fl']['name']);
-                $ukuran = $_FILES['fl']['size'];
-                $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+include '../_database/config.php';
+if(isset($_POST['input']))
+{
+  $nama_mhsw = $_POST['nm'];
+  $id_nrp = $_POST['nrp'];
+  $progres = $_POST['sr'];
+  $dosen_pembimbing = implode(', ', $_POST['ds']);
+  
+  $nama_file = basename($_FILES['fl']['name']);
+  $ukuran = $_FILES['fl']['size'];
+  $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+  $max = 1024 * 20000;
+  $ekstensi = "pdf";
+  $ekstensi2 = "docx";
 
-                $url = $nama_file;
+  $url = $nama_file;
 
+if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
+{;
+echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';}
 
-                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
-                {
-                  $query = mysqli_query($koneksi,"insert into permohonansurat values('','$progres','$admin','$url',sysdate())");
+else if ($ukuran > $max)
+{
+echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;}
+ 
+else if ($tipe != $ekstensi && $tipe != $ekstensi2)
+{ 
+echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf")</script>';
+}  
+  else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+  {
+    $query = mysqli_query($koneksi,"insert into suratosen values('', '$nama_dsn','$id_npp','$perihal','$url', '$ukuran', '$tipe', sysdate())");
 
-                  if($query)
-                  {
-                    echo "Berasil Input";
-                  }
-                  else
-                  {
-                    echo "Gagal Input";
-                  }
-                }
-                else
-                {
-                  echo "Gagal Upload";
-                }
-                
-              }
+    if($query)
+    {
+      echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
+    }
+    else
+    {
+      echo "Gagal Input";
+    }
+  }
+  else
+  {
+    echo "Gagal Upload";
+  }
+  
+}
 
-            ?>
+?>
 
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -378,7 +395,7 @@
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
             <button name="submite" type="input" class="btn bg-gradient-primary">Upload</button>
           </div>
-        </form>
+          </form>
         </div>
       </div>
     </div>
@@ -412,15 +429,14 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen');
                   while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
                     <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['nama_surat'] ?></td>
-                    <td><?php echo $data['admin_surat'] ?></td>
-                    <td><?php echo $data['file_surat'] ?></td>
-                    <td><?php echo $data['waktu_surat'] ?></td>
+                    <td><?php echo $data['perihal'] ?></td>                   
+                    <td><?php echo $data['file'] ?></td>
+                    <td><?php echo $data['tanggal'] ?></td>
                   </tr>
                   <?php } ?>
                 </table>
