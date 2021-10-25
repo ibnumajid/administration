@@ -330,6 +330,24 @@
 
             ?>
 
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Nama</label>
+                <input name="nama" class="form-control" type="text" placeholder="Masukan Nama" aria-label="default input example">
+                </div>
+              </div>
+            </div>
+
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">NIP</label>
+                <input name="nip" class="form-control" type="text" placeholder="Masukan NIP" aria-label="default input example">
+                </div>
+              </div>
+            </div>
+
             <form action="" method="post" enctype="multipart/form-data">
             <div class="card-header pb-0 p-3">
               <div class="row">
