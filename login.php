@@ -6,7 +6,6 @@ $user = $_POST['user'];
 $pass = $_POST['pass'];
 
 $tambah = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user='$user' and pass='$pass'");
-$status = mysqli_query($koneksi, "SELECT * from masuk WHERE status_login='$login");
 $cek = mysqli_num_rows($tambah);
 
 if($cek > 0){
