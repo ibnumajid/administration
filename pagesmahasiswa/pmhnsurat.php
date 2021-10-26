@@ -81,7 +81,7 @@ session_start();
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Permohoan Surat </span>
+            <span class="nav-link-text ms-1">Permohonan Surat </span>
           </a>
         </li>
         
