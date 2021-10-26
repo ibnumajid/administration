@@ -73,6 +73,79 @@
 							Login
 						</button>
 					</div>
+					<div class="text-center">
+  						<a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Daftar Akun</a>
+					</div>
+
+				</form>	
+
+
+
+		<!-- Modal untuk daftar akun -->
+					
+<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+	
+
+      <div class="modal-body mx-3">
+	
+	  <?php
+include './_database/config.php';
+if(isset($_POST['input']))
+{
+  $user = $_POST['nm'];
+  $pass = $_POST['pass'];
+  $status = $_POST['pos'];
+
+  $query = mysqli_query($koneksi,"insert into masuk values('$user','$pass','$status', '')");
+
+    if($query)
+    {
+      echo '<script> alert ("Berhasil menambahkan akun")</script>';
+    }
+    else
+    {
+      echo '<script> alert ("Akun sudah terdaftar")</script>';
+    }
+
+}
+	?>	
+<form action="" method="post" enctype="multipart/form-data">
+        <div class="md-form mb-5">
+		  <label data-error="wrong" data-success="right" for="orangeForm-name">Masukkan NRP atau NPP</label>
+          <input name = "nm" type="text" id="orangeForm-name" class="form-control validate">
+       
+        </div>
+
+		<div class="md-form mb-4">
+		<label data-error="wrong" data-success="right" for="orangeForm-pass">Masukkan Password</label>  
+		<input name = "pass" type="password" id="orangeForm-pass" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-5">
+		<label data-error="wrong" data-success="right" for="orangeForm-email">Silahkan Pilih Status anda</label>
+		<div><input name = "pos" type = "radio" value = "2"> Dosen</div>
+		<div><input name = "pos" type = "radio" value = "3"> Mahasiswa</div>
+		<div><input name = "pos" type = "radio" value = "4"> Tendik</div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#modalRegisterForm">Daftar Akun</button>
+      </div>
+	  </form>
+    </div>
+  </div>
+</div>
 					
 					
 					
