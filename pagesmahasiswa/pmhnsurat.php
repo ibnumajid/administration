@@ -355,8 +355,8 @@ session_start();
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="sr"  class="form-select" aria-label="Default select example">
-                        <option selected>Pilih Jenis Surat</option>
+                    <select name="sr"  class="form-select" aria-label="Default select example" placeholder="Pilih Jenis Surat">
+                        <!-- <option selected>Pilih Jenis Surat</option> -->
                         <option value="Surat Magang">Surat Magang</option>
                         <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
                         <option value="Surat Cuti">Surat Cuti</option>
