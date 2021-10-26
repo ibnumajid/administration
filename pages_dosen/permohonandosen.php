@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if($_SESSION['user']=='')
+  {
+        header("location:home.php");
+    }
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -276,11 +283,7 @@
       </div>
     </nav>
     <!-- End Navbar -->
-
-  
-      
-
-      
+    <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -299,19 +302,19 @@
 include '../_database/config.php';
 if(isset($_POST['input']))
 {
-  $nama_mhsw = $_POST['nm'];
-  $id_nrp = $_POST['nrp'];
-  $progres = $_POST['sr'];
-  $dosen_pembimbing = implode(', ', $_POST['ds']);
+  $nama_dsn = $_POST['nm'];
+  $id_npp = $_POST['nip'];
+  $perihal = $_POST['sr'];
+
   
-  $nama_file = basename($_FILES['fl']['name']);
+  $file = basename($_FILES['fl']['name']);
   $ukuran = $_FILES['fl']['size'];
-  $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+  $tipe = strtolower(pathinfo($file,PATHINFO_EXTENSION));
   $max = 1024 * 20000;
-  $ekstensi = "pdf";
+  $ekstensi = "pdf";  
   $ekstensi2 = "docx";
 
-  $url = $nama_file;
+  $url = $file;
 
 if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
 {;
@@ -327,7 +330,7 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
 }  
   else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
   {
-    $query = mysqli_query($koneksi,"insert into suratosen values('', '$nama_dsn','$id_npp','$perihal','$url', '$ukuran', '$tipe', sysdate())");
+    $query = mysqli_query($koneksi,"insert into suratdosen values('', '$nama_dsn','$id_npp','$perihal','$url', '$ukuran', '$tipe', sysdate())");
 
     if($query)
     {
@@ -335,23 +338,23 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
     }
     else
     {
-      echo "Gagal Input";
+      echo '<script> alert ("Gagal input")</script>';
     }
   }
   else
   {
-    echo "Gagal Upload";
+    echo '<script> alert ("Gagal Upload")</script>';
   }
   
 }
 
 ?>
-
+  <form action="" method="post" enctype="multipart/form-data">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Nama</label>
-                <input name="nama" class="form-control" type="text" placeholder="Masukan Nama" aria-label="default input example">
+                <input name="nm" class="form-control" type="text" placeholder="Masukan Nama Dosen" aria-label="default input example">
                 </div>
               </div>
             </div>
@@ -365,12 +368,12 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
               </div>
             </div>
 
-            <form action="" method="post" enctype="multipart/form-data">
+          
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="nm"  class="form-select" aria-label="Default select example">
+                    <select name="sr"  class="form-select" aria-label="Default select example">
                         <option selected>Pilih Jenis Surat</option>
                         <option value="Surat perpindahan">Surat Perpindahan Barang Lab</option>
                         <option value="Surat tugas">Permohonan Surat Tugas</option>
@@ -393,9 +396,9 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button name="submite" type="input" class="btn bg-gradient-primary">Upload</button>
+            <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
           </div>
-          </form>
+     </form>
         </div>
       </div>
     </div>
@@ -405,7 +408,7 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+              
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
@@ -420,7 +423,7 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
                     <tr>
                       <th>No</th>
                       <th>Perihal</th>
-                      <th>Admin</th>
+   
                       <th>File Surat</th>
                       <th>Waktu Upload</th>
                     </tr>
@@ -434,7 +437,7 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
                   ?>
                   <tr>
                     <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['perihal'] ?></td>                   
+                    <td><?php echo $data['perihal'] ?></td>
                     <td><?php echo $data['file'] ?></td>
                     <td><?php echo $data['tanggal'] ?></td>
                   </tr>
@@ -445,7 +448,7 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
           </div>
         </div>
       </div>
-
+      </div>
       <!--
 <tr>
                       <td>
