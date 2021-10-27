@@ -1,3 +1,15 @@
+<?php
+  session_start();
+  if($_SESSION['user']=='')
+  {
+        header("location:home.php");
+    }
+  ?>
+
+<?php
+  include "../_database/config.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
