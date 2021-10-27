@@ -104,7 +104,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Permohoan Surat </span>
+            <span class="nav-link-text ms-1">Permohonan Surat </span>
           </a>
         </li>
         
@@ -303,7 +303,7 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <button type="button" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
