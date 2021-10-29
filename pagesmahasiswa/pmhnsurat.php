@@ -440,6 +440,7 @@ session_start();
                       <th>Perihal</th>
                       <th>Dosen Pembimbing</th>
                       <th>File Surat</th>
+                      <th>Status Surat</th>
                       <th>Waktu Upload</th>
                     </tr>
                   </thead>
@@ -455,6 +456,22 @@ session_start();
                     <td><?php echo $data['progres'] ?></td>
                     <td><?php echo $data['dosen_pembimbing'] ?></td>
                     <td><?php echo $data['file'] ?></td>
+                    <!-- status surat -->
+                    <?php if ($data['status_surat'] == 0) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                      </td> <?php } 
+                            else if ($data['status_surat'] == 1) {?>
+                        <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                      </td> 
+                            <?php }
+
+                            else if ($data['status_surat'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                      </td> <?php } ?> 
+
                     <td><?php echo $data['tanggal'] ?></td>
                   </tr>
                   <?php } ?>
