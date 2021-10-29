@@ -311,7 +311,7 @@ session_start();
             }  
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$url', '0', '$ukuran', '$tipe', sysdate())");
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$url', '0', '0', '$ukuran', '$tipe', sysdate())");
 
                   if($query)
                   {
