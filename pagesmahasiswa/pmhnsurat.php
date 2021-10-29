@@ -377,20 +377,22 @@ session_start();
               </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
-                  while ($data = mysqli_fetch_array($query)) {
-                    if ($data['nama_mhsw'] == $_SESSION['user']) {
-                  ?>
-                  <tr>
-                    <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['progres'] ?></td>
-                    <td><?php echo $data['dosen_pembimbing'] ?></td>
-                    <td><?php echo $data['file'] ?></td>
-                    <td><?php echo $data['tanggal'] ?></td>
-                  </tr>
-                  <?php }} ?>
+                        include '../_database/config.php';
+                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die (mysqli_error($koneksi));
+                          while ($data_dosen =mysqli_fetch_array($query_dosen)){?>
+                           <div class="form-check">
+                            <div class="card-header pb-0 p-2">
+                              <div class="row">
+                                <div class="mb-3">
+                            <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo$data_dosen['nama_anggota']?>" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                            <?php echo $data_dosen['nama_anggota'] ?>
+                            </label>
+                           </div>  
+                           </div>
+                           </div>
+                           </div>
+                        <?php }?>
               </ul>
             </div>
 
@@ -450,6 +452,7 @@ session_start();
                   $no = 1;
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
                   while ($data = mysqli_fetch_array($query)) {
+                    if ($data['nama_mhsw'] == $_SESSION['user']) {
                   ?>
                   <tr>
                     <td><?php echo $no++ ?></td>
@@ -470,7 +473,7 @@ session_start();
                             else if ($data['status_surat'] == 2) {?>
                             <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
-                      </td> <?php } ?> 
+                      </td> <?php }} ?> 
 
                     <td><?php echo $data['tanggal'] ?></td>
                   </tr>
