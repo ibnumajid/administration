@@ -238,12 +238,12 @@ iframe {
   z-index: 1;
 }
 
-.login100-more img {
+/* .login100-more img {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 400px;;
-}
+} */
 
 .login100-more::before {
   content: "";
