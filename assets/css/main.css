@@ -239,7 +239,11 @@ iframe {
 }
 
 .login100-more img {
-align-items: center;
+  display: table-cell;
+  height: 300px;
+  text-align: center;
+  width: 300px;
+  vertical-align: middle;
 }
 
 .login100-more::before {
