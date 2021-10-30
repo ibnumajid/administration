@@ -285,7 +285,7 @@ iframe {
 
 .login100-form-title {
   width: 100%;
-  /* display: block; */
+  display: block;
   font-family: Poppins-Regular;
   font-size: 50px;
   color: #000000;
