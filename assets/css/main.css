@@ -230,8 +230,7 @@ iframe {
 /*==================================================================
 [ login more ]*/
 .login100-more {
-  /* width: calc(100% - 560px); */
-  width: 80%;
+  width: calc(100% - 560px);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
