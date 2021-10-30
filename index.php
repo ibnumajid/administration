@@ -152,11 +152,13 @@ if(isset($_POST['input']))
 					
 				</form>
 
-				<div class="login100-more" >
+				<div class="login100-more"  >
+					<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
 					<img src="assets/images/dteologo.png" class="rounded mx-auto d-block" >
 					<p class="text-center">SISTEM ADMINISTRASI <br>
 					 DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
 					</p>
+					</div>
 				</div>
 			</div>
 		</div>
