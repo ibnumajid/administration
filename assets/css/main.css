@@ -242,7 +242,7 @@ iframe {
   height: 400px;
   text-align: center;
   width: 400px;
-  vertical-align: middle;
+  vertical-align: auto;
 }
 
 .login100-more::before {
