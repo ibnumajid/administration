@@ -239,10 +239,10 @@ iframe {
 }
 
 .login100-more img {
-  height: 400px;
-  text-align: center;
-  width: 400px;
-  vertical-align: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;;
 }
 
 .login100-more::before {
