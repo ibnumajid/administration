@@ -238,6 +238,10 @@ iframe {
   z-index: 1;
 }
 
+.login100-more img {
+align-items: center;
+}
+
 .login100-more::before {
   content: "";
   display: block;
