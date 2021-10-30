@@ -152,8 +152,8 @@ if(isset($_POST['input']))
 					
 				</form>
 
-				<div class="login100-more" class="text-center" >
-					<img src="assets/images/dteologo.png" class="rounded" >
+				<div class="login100-more" >
+					<img src="assets/images/dteologo.png" >
 					<p class="text-center">SISTEM ADMINISTRASI <br>
 					 DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
 					</p>
