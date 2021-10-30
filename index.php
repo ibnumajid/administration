@@ -153,7 +153,7 @@ if(isset($_POST['input']))
 				</form>
 
 				<div class="login100-more" >
-					<img src="assets/images/dteologo.png" >
+					<img src="assets/images/dteologo.png" class="justify-content-center" >
 					<p class="text-center">SISTEM ADMINISTRASI <br>
 					 DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
 					</p>
