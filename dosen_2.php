@@ -5,7 +5,7 @@
         header("location:home.php");
     }
   ?>
-
+ 
   <!DOCTYPE html>
   <html lang="en">
 
@@ -13,7 +13,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <!-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> -->
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
       Sistem Administrasi DTEO
     </title>
@@ -26,7 +26,18 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+    <link id="pagestyle" href="../infojurusanbaru/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+
+    <style>
+            div.scroll {
+                margin : 4px, 4px;
+                padding : 4px;
+                width : 375px;
+                height : 225px;
+                overflow-x : hidden;
+                overflow-y : auto;      
+                       }
+    </style>
   </head>
 
   <body class="g-sidenav-show  bg-gray-100">
@@ -46,7 +57,7 @@
           
         <!--home-->
           <li class="nav-item">
-            <a class="nav-link  active" href="/dosen_2.php">
+            <a class="nav-link  active" href="../infojurusanbaru/dosen_2.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>credit-card</title>
@@ -130,9 +141,9 @@
             <span class="nav-link-text ms-1">Validasi Surat</span>
           </a>
         </li>
-                       <!-- REKAP SURAT -->
-                       <li class="nav-item"> 
-        <a class="nav-link  " href="./rekapdsn.php">
+                 <!-- REKAP SURAT -->
+       <li class="nav-item"> 
+        <a class="nav-link  " href="./pages_dosen/rekapdsn.php">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
               <title>document</title> 
@@ -151,12 +162,13 @@
           <span class="nav-link-text ms-1">Rekap Surat</span>
         </a>
       </li>
+      
           <!--profil-->
           <li class="nav-item mt-3">
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
           </li>
           <li class="nav-item">
-            <a class="nav-link  " href="./pages_dosen/profiledosen.php">
+            <a class="nav-link  " href="../infojurusanbaru/pages_dosen/profiledosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <title>customer-support</title>
@@ -205,9 +217,9 @@
             </div>
             <ul class="navbar-nav  justify-content-end">
               <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                <a href="./pages_dosen/profiledosen.php" class="nav-link text-body font-weight-bold px-0">
                   <i class="fa fa-user me-sm-1"></i>
-                  <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?> </span>
+                  <span class="d-sm-inline d-none"> <?php echo $_SESSION['user']?> </span>
                 </a>
               </li>
               <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -220,12 +232,12 @@
                 </a>
               </li> -->
               <li class="nav-item px-3 d-flex align-items-center">
-                <!-- <a href="javascript:;" class="nav-link text-body p-0">
+                 <a href="javascript:;" class="nav-link text-body p-0">
                   <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                </a> -->
+                </a> 
               </li>
               <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                <a  href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-bell cursor-pointer"></i>
                 </a>
                 <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
@@ -292,20 +304,20 @@
                             2 days
                           </p>
                         </div>
+                        <a href="./home.php" class="nav-link text-body font-weight-bold px-0">
+                <span class="d-sm-inline d-none">LOGOUT</span>
                       </div>
                     </a>
                   </li>
                 </ul>
               </li>
-              
-            
-            </ul>
-            <li class="nav-item d-flex align-items-center">
-                <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
+              <li class="nav-item d-flex align-items-center">
+            <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
             </li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -313,37 +325,96 @@
 
 
       <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="row">
-            <!---->
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <!---->
+              <div class="col-xl-6 mb-xl-0 mb-4">
+                <div class="card bg-transparent shadow-xl">
+                  <div class="overflow-hidden position-relative border-radius-xl" style="background-image: url('../assets/img/curved-images/curved14.jpg');">
+                    <span class="mask bg-gradient-dark"></span>
+                    <div class="card-body position-relative z-index-1 p-3">
 
-            <div class="col-md-12 mb-lg-0 mb-4">
-              <div class="card mt-4">
-                <div class="card-header pb-0 p-3">
-                  <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0">Informasi</h6>
+                      <!--identitas-->
+                      <!-- <i class="fas fa-wifi text-white p-2"></i> -->
+                      <h5 class="text-white mt-4 mb-5 pb-2">2040201062</h5>
+                      <div class="d-flex">
+                        <div class="d-flex">
+                          <div class="me-4">
+                            <p class="text-white text-sm opacity-8 mb-0">Nama Dosen</p>
+                            <h6 class="text-white mb-0">Adnan Dennis</h6>
+                          </div>
+                          <!-- <div>
+                            <p class="text-white text-sm opacity-8 mb-0">Expires</p>
+                            <h6 class="text-white mb-0">11/22</h6>
+                          </div> -->
+                        </div>
+                        <!-- <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
+                          <img class="w-60 mt-2" src="../assets/img/logos/mastercard.png" alt="logo">
+                        </div> -->
+                      </div>
                     </div>
-                    
                   </div>
                 </div>
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-md-6 mb-md-0 mb-4">
+              </div>
+              <div class="col-xl-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-header mx-4 p-3 text-center">
+                        <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                          <i class="fas fa-file-upload opacity-10"></i>
+                        </div>
+                      </div>
+                      <div class="card-body pt-0 p-3 text-center">
+                        <h6 class="text-center mb-0">Surat Diajukan</h6>
+                        <!-- <span class="text-xs">Belong Interactive</span> -->
+                        <hr class="horizontal dark my-3">
+                        <h5 class="mb-0">5</h5>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mt-md-0 mt-4">
+                    <div class="card">
+                      <div class="card-header mx-4 p-3 text-center">
+                        <div class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                          <i class="fas fa-check opacity-10"></i>
+                        </div>
+                      </div>
+                      <div class="card-body pt-0 p-3 text-center">
+                        <h6 class="text-center mb-0">Surat Disetuju</h6>
+                        <!-- <span class="text-xs">Freelance Payment</span> -->
+                        <hr class="horizontal dark my-3">
+                        <h5 class="mb-0">3</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-lg-0 mb-4">
+                <div class="card mt-4">
+                  <div class="card-header pb-0 p-3">
+                    <div class="row">
+                      <div class="col-6 d-flex align-items-center">
+                        <h6 class="mb-0">Informasi</h6>
+                      </div>
                       
                     </div>
-                    <div class="col-md-6">
-                      
+                  </div>
+                  <div class="card-body p-3">
+                    <div class="row">
+                      <div class="col-md-6 mb-md-0 mb-4">
+                        
+                      </div>
+                      <div class="col-md-6">
+                        
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-          <!--surat masuk dari admin-->
           <div class="col-lg-4">
             <div class="card h-100">
               <div class="card-header pb-0 p-3">
@@ -352,51 +423,38 @@
                     <h6 class="mb-0">Surat Masuk</h6>
                   </div>
                   <div class="col-6 text-end">
-                    <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
+
+                    <a href = pages_dosen/rekapdsn.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                   </div>
                 </div>
               </div>
-
-              <div class="card-body p-3 pb-0">
+                       
+              <div class="scroll">
                 <ul class="list-group">
-                      <?php
-                        include "./_database/config.php";
-                        
-                        $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ');
-                        while ($data = mysqli_fetch_array($query)){
+                       <br>
+                  <?php
+                      include "./_database/config.php";
 
-                          if($data['tujuan'] == 'Dosen' or $data['tujuan'] == 'Dosen, Tendik, Mahasiswa')
-                          {?>
-                          <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex flex-column">
-                              <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
-                              <span class="text-xs"><?=$data['nama']?></span>
-                            </div>
-                            <div class="d-flex align-items-center text-sm">
-                        
-                              <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                            </div>
-                          </li>
-                          <?php }?>
-                          <?php if ($data['tujuan'] == 'Dosen, Tendik' or $data['tujuan'] == 'Dosen, Mahasiswa'){?>
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                            <div class="d-flex flex-column">
-                              <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
-                              <span class="text-xs"><?=$data['nama']?></span>
-                            </div>
-                            <div class="d-flex align-items-center text-sm">
-                        
-                              <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                            </div>
-                          </li>
-                          <?php }?>
-                        <?php } ?>
+                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ');
+                  while ($data = mysqli_fetch_array($query)){
+
+                    if ($data['tujuan'] == 'Dosen' or $data['tujuan'] == 'Dosen, Tendik' or $data['tujuan'] == 'Dosen, Mahasiswa' or $data['tujuan'] == 'Dosen, Tendik, Mahasiswa')
+                    {?>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                    <div class="d-flex flex-column">
+                      <h6 class="mb-1 text-dark font-weight-bold text-sm"> <?php echo $data ['tanggal'] ?> </h6>
+                      <span class="text-xs"><?php echo $data['nama'] ?></span>
+                    </div>
+                    <div class="d-flex align-items-center text-sm">
+                
+                      <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                    </div>
+                  </li>
+                    <?php }} ?>
                 </ul>
               </div>
             </div>
           </div>
-          <!--and surat-->
-
         </div>
         <div class="row">
           <div class="col-md-7 mt-4">

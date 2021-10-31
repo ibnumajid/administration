@@ -305,14 +305,21 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Surat</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Perihal</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Mahasiswa</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Nama Mahasiswa</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">NRP Mahasiswa</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Dosen</th>
+                     
+                     <?php 
+                       include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                       $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+                       $data = mysqli_fetch_array($query);
+
+                       if ($_SESSION['user'] == "Imam Arifin, S.T, MT" ) { ?>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kadep</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <?php } ?>
+                     
                     </tr>
                   </thead>
                   <!-- php tabel -->
@@ -326,25 +333,20 @@
                   
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
 
-                  if ($nama == "Imam Arifin, S.T, MT" && $data['status_surat'] == "2") {
+                  if ($nama == "Imam Arifin, S.T, MT" && $data['status_surat'] == "2" ) {
                         
                     ?> 
                     <!-- tabel -->
                     <tbody>
                       <tr>
                         <!-- file -->
-                        <td>
+                        
                           <div class="d-flex px-2 py-1">
                             <div>
                               <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
-                            </div>
-  
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm"><?php echo $data['file'] ?> </h6>
-                              <!-- <p class="text-xs text-secondary mb-0">john@creative-tim.com</p> -->
-                            </div>
+                            </div>          
                           </div>
-                        </td>
+                       
                         <!-- progres -->
                         <td>
                           <p class="text-xs font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
@@ -375,7 +377,7 @@
   
                               else if ($data['status_surat'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
                         </td> <?php } ?> 
 
                         <!-- status surat kadep -->
@@ -391,7 +393,7 @@
   
                               else if ($data['status_kadep'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
                         </td> <?php } ?> 
                         <!-- button edit -->
                         <td class="align-middle">
@@ -474,18 +476,13 @@
                   <tbody>
                     <tr>
                       <!-- file -->
-                      <td>
+                     
                         <div class="d-flex px-2 py-1">
                           <div>
                             <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
                           </div>
-
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $data['file'] ?> </h6>
-                            <!-- <p class="text-xs text-secondary mb-0">john@creative-tim.com</p> -->
-                          </div>
                         </div>
-                      </td>
+                      
                       <!-- progres -->
                       <td>
                         <p class="text-xs font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
@@ -515,7 +512,7 @@
 
                             else if ($data['status_surat'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
                       </td> <?php } ?> 
 
                       <!-- button edit -->
