@@ -28,6 +28,17 @@ session_start();
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+
+  <style>
+            div.scroll {
+                margin : 4px, 4px;
+                padding : 4px;
+                width : 375px;
+                height : 225px;
+                overflow-x : hidden;
+                overflow-y : auto;      
+                       }
+    </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -244,7 +255,7 @@ session_start();
               </div>
             </div>
 
-            <div class="card-body p-3 pb-0">
+            <div class="scroll">
               <ul class="list-group">
               <?php
               include "./_database/config.php";
