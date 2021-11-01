@@ -1,3 +1,25 @@
+<!--
+=========================================================
+* Soft UI Dashboard - v1.0.3
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<?php
+  session_start();
+  if($_SESSION['user']=='')
+  {
+        header("location:home.php");
+    }
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +34,6 @@
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -28,7 +49,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        
+        <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Sistem Administrasi Doses</span>
       </a>
     </div>
@@ -121,8 +142,8 @@
             <span class="nav-link-text ms-1">Validasi Surat</span>
           </a>
         </li>
-                     <!-- REKAP SURAT -->
-                     <li class="nav-item"> 
+                  <!-- REKAP SURAT -->
+                  <li class="nav-item"> 
         <a class="nav-link  " href="./rekapdsn.php">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -142,6 +163,7 @@
           <span class="nav-link-text ms-1">Rekap Surat</span>
         </a>
       </li>
+             
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -192,7 +214,7 @@
             <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 pe-0 d-flex align-items-center">
@@ -285,7 +307,7 @@
               </ul>
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+            <a href="../logout.php" href="javascript:;" class="nav-link text-white p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -309,10 +331,10 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-              <?php echo $_SESSION['user'] ?>
+              <?php echo $_SESSION['user']?>
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                2040201062
+              <?php echo $_SESSION['NIP']?>
               </p>
             </div>
           </div>
@@ -453,11 +475,11 @@
             </div>
             <div class="card-body p-3">
               <p class="text-sm">
-                Hi, I’m <?php echo $_SESSION['user'] ?>, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
+                Hi, I’m  <?php echo $_SESSION['user']?>, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
               </p>
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Adnan Dennis</li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; <?php echo $_SESSION['user']?></li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; +62 8xxxxx</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; den****@mail.com</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; IND</li>

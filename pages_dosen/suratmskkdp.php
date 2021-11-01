@@ -100,8 +100,10 @@
           </a>
         </li>
         
+                <!-- Permohonan Surat -->
+<?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
         <li class="nav-item">
-          <a class="nav-link  " href="./permohonandosen.php">
+          <a class="nav-link  " href="./pages_dosen/permohonandosen.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -120,6 +122,7 @@
             <span class="nav-link-text ms-1">Permohonan Surat</span>
           </a>
         </li>
+        <?php } ?>
         
         <!--Validasi Surat-->
         <li class="nav-item">
@@ -145,7 +148,7 @@
         <!-- REKAP SURAT -->
         <!--REKAP SURAT MAHASISWA -->
         <li class="nav-item">
-          <a class="nav-link  active" href="rekapdsn.php">
+          <a class="nav-link  active" href="suratmskkdp.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                 <title>document</title> 
@@ -161,7 +164,7 @@
                   </g> 
                 </svg>
             </div>
-            <span class="nav-link-text ms-1">Rekap Surat</span>
+            <span class="nav-link-text ms-1">Surat Masuk</span>
           </a>
         </li>
       
@@ -203,9 +206,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Rekap Surat</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Rekap Surat</h6>
+          <h6 class="font-weight-bolder mb-0">Surat Masuk</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -320,17 +323,17 @@
     </nav>
     <!-- End Navbar -->
 
-    
-    <div class="container-fluid py-4">
+
+<!-- Surat Masuk Dosen -->
+      <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Status Surat</h6>
+                  <h6 class="mb-0">Surat Masuk Admin</h6>
                 </div>
-                
               </div>
             </div>
             
@@ -339,29 +342,27 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>Nama Surat</th>
+                      <th>No</th>                 
                       <th>Jenis Surat</th>
-                      <th>Nama Mahasiswa</th>
-                      <th>NRP Mahasiswa</th>
+                      <th>Nama Pengirim</th>
+                      <th>NRP/NPP</th>
                       <th>Tanggal</th>
                     </tr>
+                   <tr> <h6></h6></tr>
                   </thead>
-
+                
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY tanggal' );
+          
                   while ($data = mysqli_fetch_array($query)) {
-
-                    $tujuan = $data['dosen_pembimbing'];
-
+                    $tujuan = $data['dosen_pembimbing'];                 
                       if (strpos($tujuan, $nama) !== false) {
                   ?>
                   <tr>
-                    <td><?php echo $no++ ?></td>'
-                    <td><?php echo $data['file'] ?></td>
+                    <td><?php echo $no++ ?></td>'                   
                     <td><?php echo $data['progres'] ?></td>
                     <td><?php echo $data['nama_mhsw'] ?></td>
                     <td><?php echo $data['id_nrp'] ?></td>
