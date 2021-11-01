@@ -79,7 +79,7 @@
         </li>
 
         <!--Nama mahasiswa-->
-        <li class="nav-item">
+ <!--       <li class="nav-item">
           <a class="nav-link  " href="../pages_dosen/datamahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -99,7 +99,8 @@
             <span class="nav-link-text ms-1">Daftar Mahasiswa</span>
           </a>
         </li>
-        
+  -->
+     <!-- Permohonan Surat -->   
         <li class="nav-item">
           <a class="nav-link  " href="../pages_dosen/permohonandosen.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -167,7 +168,7 @@
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
-        <li class="nav-item">
+<!--        <li class="nav-item">
           <a class="nav-link  active" href="../pages_dosen/profiledosen.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -189,7 +190,7 @@
           </a>
         </li>
       </ul>
-    </div>
+    </div> -->
     
   </aside>
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
