@@ -33,9 +33,9 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action="login.php" method="post">
-					<span class="login100-form-title p-b-43">
-						SIM DTEO
-					</span>
+				<span class="login100-form-title " class="text-center">
+					Selamat Datang !<br> Silahkan masukan username dan pasword
+				</span>
 					
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -78,7 +78,16 @@
 					</div>
 
 				</form>	
-
+				<div style="width: calc(100% - 560px)" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+					<img src="assets/images/dteologo.png" >
+					<p class="text-center">SISTEM ADMINISTRASI <br>
+					DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
+					</p>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 		<!-- Modal untuk daftar akun -->
@@ -154,7 +163,7 @@ if(isset($_POST['input']))
 	  </form>
     </div>
   </div>
-</div>
+
 
 
 
@@ -162,11 +171,7 @@ if(isset($_POST['input']))
 					
 				
 
-				<div class="login100-more" style="background-image: url('assets/images/dteobaru.jpeg');">
-				</div>
-			</div>
-		</div>
-	</div>
+		
 	
 	
 
