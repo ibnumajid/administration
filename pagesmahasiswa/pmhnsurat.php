@@ -358,17 +358,17 @@ session_start();
                       <th>No</th>
                       <th>Perihal</th>
                       <th>Dosen Pembimbing</th>
-                      <th>File Surat</th>
                       <th>Status Dosen</th>
                       <th>Status Kadep</th>
                       <th>Waktu Upload</th>
+                      <th>Catatan</th>
                     </tr>
                   </thead>
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
                     if ($data['nama_mhsw'] == $_SESSION['user']) {
                   ?>
@@ -376,7 +376,6 @@ session_start();
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $data['progres'] ?></td>
                     <td><?php echo $data['dosen_pembimbing'] ?></td>
-                    <td><?php echo $data['file'] ?></td>
                     <!-- status surat -->
                     <?php if ($data['status_surat'] == 0) {?>
                       <td class="align-middle text-center text-sm">
@@ -410,6 +409,37 @@ session_start();
                       </td> <?php } ?> 
 
                     <td><?php echo $data['tanggal'] ?></td>
+                     <!-- button edit -->
+                     <td class="align-middle">
+                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                          </a>
+                        </td>
+                       <!-- Modal -->
+                       <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                             <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>  
+                            
+                              <div class="modal-body">
+                          
+                          <form action="" method="post">
+                              <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                  <div class="mb-3">
+                           <!-- nama mahasiswa -->
+                           <label for="formFile" class="form-label">Catatan Dosen</label>
+                           <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+                                  
+                           <!-- NRP mahasiswa -->
+                           <label for="formFile" class="form-label">Catatan Kadep</label>
+                           <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
                   </tr>
                   <?php }} ?>
                 </table>
