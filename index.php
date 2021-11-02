@@ -155,19 +155,19 @@ if(isset($_POST['input']))
     </div>
   </div>
 
-				<!-- <div style="width: calc(100% - 560px)" class="min-vh-100" > -->
-						<div style="width: calc(100% - 560px)" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+  <div style="width: calc(100% - 560px)" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
 						<img src="assets/images/dteologo.png" >
 						<p class="text-center">SISTEM ADMINISTRASI <br>
 						 DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
 						</p>
 					</div>
-				<!-- </div> -->
-			
-				</div>
-			</div>
-		</div>
-	</div>
+
+
+
+					
+				
+
+		
 	
 	
 
