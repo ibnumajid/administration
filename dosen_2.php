@@ -29,15 +29,39 @@
       <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
 
       <style>
-              div.scroll {
-                  margin : 4px, 4px;
-                  padding : 4px;
-                  width : 375px;
-                  height : 225px;
-                  overflow-x : hidden;
-                  overflow-y : auto;      
-                        }
-      </style>
+            .scrollbar-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #F5F5F5;
+            border-radius: 10px; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #aaa; }
+
+            .scrollbar-deep-purple {
+            scrollbar-color: #512da8 #F5F5F5;
+            }
+
+            .bordered-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: none;
+            border: 1px solid #ffffff00; }
+
+            .bordered-deep-purple::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: none; }
+
+            .thin::-webkit-scrollbar {
+            width: 6px; }
+
+            .example-1 {
+            position: relative;
+            overflow-y: scroll;
+            height: 200px; }
+  </style>
     </head>
 
     <body class="g-sidenav-show  bg-gray-100">
@@ -457,7 +481,7 @@
                   </div>
                 </div>
                         
-                <div class="scroll">
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
                   <ul class="list-group">
                         <br>
                     <?php
