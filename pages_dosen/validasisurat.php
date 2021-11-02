@@ -68,7 +68,7 @@
         </li>
 
         <!--Nama mahasiswa-->
-<!--        <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link  " href="../pages_dosen/datamahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -87,7 +87,7 @@
             </div>
             <span class="nav-link-text ms-1">Daftar Mahasiswa</span>
           </a>
-        </li> -->
+        </li>
 
         <!-- Permohonan Surat -->
 <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
@@ -135,7 +135,7 @@
           </a>
         </li>
 
-         <!-- REKAP SURAT -->
+        <!-- REKAP SURAT -->
 <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
                  <li class="nav-item"> 
         <a class="nav-link  " href="./rekapdsn.php">
@@ -157,7 +157,7 @@
           <span class="nav-link-text ms-1">Rekap Surat</span>
         </a>
         <?php } ?>
-        
+
       <!--SURAT MASUK KADEP -->
       <?php if($_SESSION['user'] == "Imam Arifin, S.T, MT"){ ?>
       </li> 
@@ -183,10 +183,10 @@
       </li> <?php } ?>
         </li>
 
- <!--        <li class="nav-item mt-3">
+        <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
-       <li class="nav-item">
+<!--        <li class="nav-item">
           <a class="nav-link  " href="../pages_dosen/profiledosen.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -206,8 +206,8 @@
             </div>
             <span class="nav-link-text ms-1">Profile</span>
           </a>
-        </li> -->
-        
+        </li>
+      -->
       </ul>
     </div>
 
@@ -503,9 +503,8 @@
 
                                       <!-- Menginput catatan -->
                                     <div>
-                                    <label for="catatan" class = "form-label"> Catatan </label>
-                                    <br>
-                                    <input name = "catatan" type = "text"  >  
+                                    <label for="catatan2" class = "form-label"> Catatan </label>
+                                    <input name = "catatan2" type = "text"  >  
                                     </div>
 
                                  
@@ -635,6 +634,7 @@
                                     <br>
                                     <input name = "catatan" type = "text"  >  
                                     </div>
+                                  
                       
                                 </div>
                               </div>
@@ -673,9 +673,43 @@
                       else {
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
                       }
-                    }
+                    } ?>
 
-                  ?>  <!-- php update surat --> <?php
+                    <!-- php update catatan dosen -->
+                    <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['update'])){
+                     $catatan = $_POST['catatan'];
+                     $id = $_POST['id'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
+                     if($query){
+                       echo '<a href="../pages_dosen/validasisurat.php"></a>';
+                     }
+                     else {
+                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
+                     }
+                   }?>  
+
+                    <!-- update catatan kadep -->
+                  <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['updatekdp'])){
+                     $catatan2 = $_POST['catatan2'];
+                     $id = $_POST['id'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
+                     if($query){
+                       echo '<a href="../pages_dosen/validasisurat.php"></a>';
+                     }
+                     else {
+                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
+                     }
+                   }?>  
+                   
+                   <!-- php update surat --> <?php
                       
                     include "../_database/config.php";
                     if(isset($_POST['updatekdp'])){
