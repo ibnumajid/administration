@@ -145,7 +145,7 @@
             <span class="nav-link-text ms-1">Validasi Surat</span>
           </a>
         </li>
-        
+
         <!-- REKAP SURAT -->
 <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
                  <li class="nav-item"> 
@@ -380,7 +380,7 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY tanggal' );
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY tanggal' );
           
                   while ($data = mysqli_fetch_array($query)) {
                     $tujuan = $data['dosen_pembimbing'];                 
