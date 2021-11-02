@@ -421,7 +421,7 @@ session_start();
                             <div class="modal-content">
                              <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
