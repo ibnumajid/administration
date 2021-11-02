@@ -27,6 +27,9 @@ session_start();
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+
+
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -34,7 +37,7 @@ session_start();
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        
+        <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Sistem Administrasi Mahasiswa</span>
       </a>
     </div>
@@ -164,9 +167,92 @@ session_start();
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
-            
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
             <li class="nav-item px-3 d-flex align-items-center">
-            
+              <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a>
+            </li>
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New message</span> from Laur
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          13 minutes ago
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">New album</span> by Travis Scott
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          1 day
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <title>credit-card</title>
+                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                              <g transform="translate(1716.000000, 291.000000)">
+                                <g transform="translate(453.000000, 454.000000)">
+                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                        </svg>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          Payment successfully completed
+                        </h6>
+                        <p class="text-xs text-secondary mb-0">
+                          <i class="fa fa-clock me-1"></i>
+                          3 days
+                          </p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </li>
                         <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
@@ -180,7 +266,7 @@ session_start();
     </nav>
     
     <!-- End Navbar -->
-    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal" >Ajukan Surat</button>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -228,7 +314,7 @@ session_start();
             }  
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$url', '0', '0', '$ukuran', '$tipe', sysdate())");
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                   if($query)
                   {
@@ -247,7 +333,7 @@ session_start();
               }
 
             ?>
-    
+
             
 
            <form action="" method="post" enctype="multipart/form-data">
@@ -289,32 +375,66 @@ session_start();
                 <div class="mb-3">
 
                 <div class="dropdown">
-              <button class="btn btn-outline-secondary btn-lg w-100 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+             <button onclick = "myFunction()" class="btn btn-outline-secondary btn-lg w-100" data-bs-toggle = "dropdown">
                 Pilih Dosen
               </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <?php
+              <ul id = "myDropdown" class="dropdown-menu">
+              
+                   <?php
                         include '../_database/config.php';
-                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die (mysqli_error($koneksi));
+                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb ORDER BY id_no DESC") or die (mysqli_error($koneksi));
                           while ($data_dosen =mysqli_fetch_array($query_dosen)){?>
-                           <div class="form-check">
+
+                        
+                     
+                          <div class="form-check">
                             <div class="card-header pb-0 p-2">
                               <div class="row">
-                                <div class="mb-3">
+                                <div class="mb-3">  
+                            
+                            <a href = "#<?php echo $data_dosen['nama_anggota']?>">
                             <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo$data_dosen['nama_anggota']?>" id="defaultCheck1">
                             <label class="form-check-label" for="defaultCheck1">
-                            <?php echo $data_dosen['nama_anggota'] ?>
+                            <?php echo $data_dosen['nama_anggota'] ?>  
                             </label>
+                            </a>
+
                            </div>  
                            </div>
                            </div>
                            </div>
-                        <?php }?>
-              </ul>
+                           
+                     
+                        <?php } ?>
+
+                        <script>         
+
+   function filterFunction() {
+    var 
+      input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+  
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+} 
+                          </script>
+              
+            </ul>
             </div>
 
-                </div>
-              </div>
+            <!-- backend search menu -->
+ 
+          </div>
+          </div>
             </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -358,17 +478,17 @@ session_start();
                       <th>No</th>
                       <th>Perihal</th>
                       <th>Dosen Pembimbing</th>
-                      <th>File Surat</th>
                       <th>Status Dosen</th>
                       <th>Status Kadep</th>
                       <th>Waktu Upload</th>
+                      <th>Catatan</th>
                     </tr>
                   </thead>
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
                     if ($data['nama_mhsw'] == $_SESSION['user']) {
                   ?>
@@ -376,7 +496,6 @@ session_start();
                     <td><?php echo $no++ ?></td>
                     <td><?php echo $data['progres'] ?></td>
                     <td><?php echo $data['dosen_pembimbing'] ?></td>
-                    <td><?php echo $data['file'] ?></td>
                     <!-- status surat -->
                     <?php if ($data['status_surat'] == 0) {?>
                       <td class="align-middle text-center text-sm">
@@ -410,6 +529,37 @@ session_start();
                       </td> <?php } ?> 
 
                     <td><?php echo $data['tanggal'] ?></td>
+                     <!-- button edit -->
+                     <td class="align-middle">
+                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                          </a>
+                        </td>
+                       <!-- Modal -->
+                       <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                             <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>  
+                            
+                              <div class="modal-body">
+                          
+                          <form action="" method="post">
+                              <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                  <div class="mb-3">
+                           <!-- nama mahasiswa -->
+                           <label for="formFile" class="form-label">Catatan Dosen</label>
+                           <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+                                  
+                           <!-- NRP mahasiswa -->
+                           <label for="formFile" class="form-label">Catatan Kadep</label>
+                           <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
                   </tr>
                   <?php }} ?>
                 </table>
