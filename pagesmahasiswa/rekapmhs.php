@@ -196,43 +196,44 @@ if ($_SESSION['user'] == '') {
             </div>
 
             <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>ID Surat</th>
-                      <th>Tanggal</th>
-                      <th>Download Surat</th>
-                    </tr>
-                  </thead>
-
-                  <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin order by id_no DESC' );
-
-                  while ($data = mysqli_fetch_array($query)) {
-
-                    $tujuan = $data['nama_mhs'];
-
-                    if (strpos($tujuan, $_SESSION['user']) !== false) {
-
-                  ?>
+                <div class="table-responsive p-0">  
+                  <table class="table align-items-center mb-0">
+                    <thead>
                       <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $data['id_no'] ?></td>
-                        <td><?php echo $data['tanggal'] ?></td>
-                        <td> 
-                        <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em>UNDUH</em></button></p></td>
-
+                        <th>No</th>
+                        <th>ID Surat</th>
+                        <th>Perihal</th>
+                        <th>Tanggal</th>
+                        <th>Download Surat</th>
                       </tr>
+                    </thead>
+
+                    <?php
+                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                    $no = 1;
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin order by id_no DESC' );
+                    while ($data = mysqli_fetch_array($query)) {
+
+                      $tujuan = $data['nama_mhs'];
+
+                      if (strpos($tujuan, $_SESSION['user']) !== false) {
+
+                    ?>
+                        <tr>
+                          <td><?php echo $no++ ?></td>
+                          <td><?php echo $data['id_no'] ?></td>
+                          <td><?php echo $data['perihal'] ?></td>
+                          <td><?php echo $data['tanggal'] ?></td>
+                          <td> 
+                          <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                          <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p></td>
+
+                        </tr>
 
 
-                  <?php  }
-                  } ?>
-                </table>
+                    <?php  }
+                    } ?>
+                  </table>
               </div>
             </div>
           </div>

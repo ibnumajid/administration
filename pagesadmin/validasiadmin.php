@@ -359,11 +359,12 @@
                       $id = $_POST['id'];
                       $nama_mhs = $_POST['nm'];
                       $statusadmin = $_POST['stadmin'];
+                      $perihal = $_POST['perihal'];
                       
                       $url2 = $nama_file2;
                       
                     if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$nama_mhs', sysdate()) ");
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal' '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
 
                       if($query2){
@@ -386,9 +387,10 @@
                                     <!-- NRP mahasiswa -->
                                     <label for="formFile" class="form-label">NRP Mahasiswa</label>
                                     <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
-                                    <!-- progres -->
-                                    <label for="formFile" class="form-label">Nama File</label>
-                                    <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                    <!-- Perihal -->
+                                    <label for="formFile" class="form-label">perihal</label>
+                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
                                     <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
