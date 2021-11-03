@@ -432,20 +432,109 @@ session_start();
                             
                               <div class="modal-body">
                           
-                          <form action="" method="post">
-                              <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                  <div class="mb-3">
-                           <!-- nama mahasiswa -->
-                           <label for="formFile" class="form-label">Catatan Dosen</label>
-                           <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
-                                  
-                           <!-- NRP mahasiswa -->
-                           <label for="formFile" class="form-label">Catatan Kadep</label>
-                           <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
-                  </tr>
-                  <?php }} ?>
+                              <form action="" method="post" enctype="multipart/form-data">
+                                  <div class="card-header pb-0 p-3">
+                                    <div class="row">
+                                      <div class="mb-3">
+
+                                        <!-- nama mahasiswa -->
+                                        <label for="formFile" class="form-label">Catatan Dosen</label>
+                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+
+                                        <!-- NRP mahasiswa -->
+                                        <label for="formFile" class="form-label">Catatan Kadep</label>
+                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
+
+                                        <!-- Input ID untuk memberikan identitas surat -->
+                                        <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
+
+                                        <!-- Ubah File saat ditolak filenya -->
+                                        <?php if ($data['status_surat'] == "1") { ?>
+                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
+                                          <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                          <input type="hidden" name="stats" value="0">
+                                        <?php } else if ($data['status_kadep'] == "1") { ?>
+                                          <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
+                                          <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                          <input type="hidden" name="stats2" value="0">
+                                        <?php } ?>
+
+
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                                          <!-- Saat dosen menolak -->
+                                          <?php if ($data['status_surat']  == "1") { ?>
+                                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                          <?php } else if ($data['status_kadep']  == "1") { ?>
+                                            <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                          <?php } ?>
+                                          </div>
+                                        </form>
+                            <?php }
+                        }  ?>
+
+                              </div>
+                      </tr>
+
+
                 </table>
+
+                <!-- php update surat -->
+                <?php
+                include "../_database/config.php";
+                if (isset($_POST['update'])) {
+
+                  $nama_file2 = basename($_FILES['ufl']['name']);
+                  $id3 = $_POST['id2'];
+                  $nol = $_POST['stats2'];
+
+                  $url2 = $nama_file2;
+
+                  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
+
+                    $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
+                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+
+                    if ($query2 && $query3) {
+                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                ?> 
+                <script> history.pushState({}, "", "")</script> <?php
+                              } else {
+                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                              }
+                            }
+                          }
+
+                                ?>
+
+                <!-- php update surat saat kadep menolak -->
+                <?php
+                include "../_database/config.php";
+                if (isset($_POST['update2'])) {
+
+                  $nama_file3 = basename($_FILES['uflk']['name']);
+                  $id4 = $_POST['id2'];
+                  $nol = $_POST['stats2'];
+
+                  $url3 = $nama_file3;
+
+                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
+
+                    $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
+                    $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
+
+                    if ($query4 && $query5) {
+                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                ?> <script> history.pushState({}, "", "") </script> <?php
+                              } else {
+                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                              }
+                            }
+                          }
+
+                                ?>
+
               </div>
             </div>
           </div>
