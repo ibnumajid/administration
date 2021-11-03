@@ -27,6 +27,41 @@ session_start();
   <link href="....//assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+
+  <style>
+            .scrollbar-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #F5F5F5;
+            border-radius: 10px; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #aaa; }
+
+            .scrollbar-deep-purple {
+            scrollbar-color: #512da8 #F5F5F5;
+            }
+
+            .bordered-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: none;
+            border: 1px solid #ffffff00; }
+
+            .bordered-deep-purple::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: none; }
+
+            .thin::-webkit-scrollbar {
+            width: 6px; }
+
+            .example-1 {
+            position: relative;
+            overflow-y: scroll;
+            height: 200px; }
+  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -394,7 +429,7 @@ session_start();
                 </div>
               </div>
             </div>
-            <div class="card-body p-3 pb-0">
+            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                   <div class="d-flex flex-column">
