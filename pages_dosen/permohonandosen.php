@@ -274,129 +274,119 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
+            </div>
           <div class="modal-body">
-            
-          <?php
 
-    
-include '../_database/config.php';
-if(isset($_POST['input']))
-{
-  $nama_dsn = $_POST['nm'];
-  $id_npp = $_POST['nip'];
-  $perihal = $_POST['sr'];
+            <?php
 
-  
-  $file = basename($_FILES['fl']['name']);
-  $ukuran = $_FILES['fl']['size'];
-  $tipe = strtolower(pathinfo($file,PATHINFO_EXTENSION));
-  $max = 1024 * 20000;
-  $ekstensi = "pdf";  
-  $ekstensi2 = "docx";
 
-  $url = $file;
+            include '../_database/config.php';
+            if (isset($_POST['input'])) {
+              $nama_dsn = $_POST['nm'];
+              $id_npp = $_POST['nip'];
+              $perihal = $_POST['sr'];
 
-if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
-{;
-echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';}
 
-else if ($ukuran > $max)
-{
-echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;}
- 
-else if ($tipe != $ekstensi && $tipe != $ekstensi2)
-{ 
-echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf")</script>';
-}  
-  else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
-  {
-    $query = mysqli_query($koneksi,"insert into suratdosen values('', '$nama_dsn','$id_npp','$perihal','$url', '$ukuran', '$tipe', sysdate())");
+              $file = basename($_FILES['fl']['name']);
+              $ukuran = $_FILES['fl']['size'];
+              $tipe = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+              $max = 1024 * 20000;
+              $ekstensi = "pdf";
+              $ekstensi2 = "docx";
 
-    if($query)
-    {
-      echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
-    }
-    else
-    {
-      echo '<script> alert ("Gagal input")</script>';
-    }
-  }
-  else
-  {
-    echo '<script> alert ("Gagal Upload")</script>';
-  }
-  
-}
+              $url = $file;
 
-?>
-  <form action="" method="post" enctype="multipart/form-data">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Nama</label>
-                <input name="nm" class="form-control" type="text" placeholder="Masukan Nama Dosen" aria-label="default input example">
+              if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2) {;
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';
+              } else if ($ukuran > $max) {
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>';
+              } else if ($tipe != $ekstensi && $tipe != $ekstensi2) {
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf")</script>';
+              } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
+                $query = mysqli_query($koneksi, "insert into suratdosen values('', '$nama_dsn','$id_npp','$perihal','$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
+
+                if ($query) {
+                  echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
+                  ?> <script>history.pushState({}, "", "")</script> <?php
+                  exit;
+                } else {
+                  echo '<script> alert ("Gagal input")</script>';
+                }
+              } else {
+                echo '<script> alert ("Gagal Upload")</script>';
+              }
+            }
+
+            ?>
+            <form action="" method="post" enctype="multipart/form-data">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Nama</label>
+                <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
+                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">NIP</label>
-                <input name="nip" class="form-control" type="text" placeholder="Masukan NIP" aria-label="default input example">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">NIP</label>
+                    <input name="nip" class="form-control" type="hidden" placeholder="Masukan NIP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
+                    <label name="nip" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
+                  </div>
                 </div>
               </div>
-            </div>
 
-          
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="sr"  class="form-select" aria-label="Default select example">
-                        <option selected>Pilih Jenis Surat</option>
-                        <option value="Surat perpindahan">Surat Perpindahan Barang Lab</option>
-                        <option value="Surat tugas">Permohonan Surat Tugas</option>
-                        <option value="Surat SK">Permohonan SK</option>
+
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Jenis Surat</label>
+                    <select name="sr" class="form-select" aria-label="Default select example">
+                      <option selected>Pilih Jenis Surat</option>
+                      <option value="Surat perpindahan">Surat Perpindahan Barang Lab</option>
+                      <option value="Surat tugas">Permohonan Surat Tugas</option>
+                      <option value="Surat SK">Permohonan SK</option>
                     </select>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Masukan File</label>
-                  <input type="file" name="fl" class="form-control" aria-label="file example" required>
-                 <div class="invalid-feedback">Example invalid form file feedback</div>
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Masukan File</label>
+                    <input type="file" name="fl" class="form-control" aria-label="file example" required>
+                    <div class="invalid-feedback">Example invalid form file feedback</div>
+                  </div>
                 </div>
               </div>
-            </div>
-         
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
+            <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload</button>
           </div>
-     </form>
+          </form>
         </div>
       </div>
     </div>
-    
+
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              
+
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
                 </div>
               </div>
             </div>
-            
+
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
@@ -404,25 +394,71 @@ echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus do
                     <tr>
                       <th>No</th>
                       <th>Perihal</th>
-   
-                      <th>File Surat</th>
-                      <th>Waktu Upload</th>
+                      <th>Tanggal Upload</th>
+                      <th>Status Kadep</th>
+                      <th>Catatan</th>
                     </tr>
                   </thead>
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
+                    if ($data['nama_dsn'] == $_SESSION['user']) {
                   ?>
-                  <tr>
-                    <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['perihal'] ?></td>
-                    <td><?php echo $data['file'] ?></td>
-                    <td><?php echo $data['tanggal'] ?></td>
-                  </tr>
-                  <?php } ?>
+                      <tr>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $data['perihal'] ?></td>
+                        <td><?php echo $data['tanggal'] ?></td>
+
+                        <!-- status kadep -->
+                        <?php if ($data['status_kadep'] == 0) { ?>
+                          <td class="align-middle">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                          </td> <?php } else if ($data['status_kadep'] == 1) { ?>
+                          <td class="align-middle">
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                          </td>
+                        <?php } else if ($data['status_kadep'] == 2) { ?>
+                          <td>
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                          </td> <?php } ?>
+
+
+
+                        <!-- button edit -->
+                        <td class="align-middle">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                          </a>
+                        </td>
+                        <!-- Modal -->
+                        <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+
+                              <div class="modal-body">
+
+                                <form action="" method="post">
+                                  <div class="card-header pb-0 p-3">
+                                    <div class="row">
+                                      <div class="mb-3">
+                                        <!-- nama mahasiswa -->
+                                        <label for="formFile" class="form-label">Catatan Kadep</label>
+                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+
+                                        
+                      </tr>
+                  <?php }
+                  } ?>
                 </table>
               </div>
             </div>

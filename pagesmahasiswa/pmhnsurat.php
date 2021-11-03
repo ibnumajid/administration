@@ -235,6 +235,7 @@ session_start();
                   if($query)
                   {
                     echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
+                    ?> <script>history.pushState({}, "", "")</script> <?php
                   }
                   else
                   {

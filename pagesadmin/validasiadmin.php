@@ -369,6 +369,7 @@
 
                       if($query2){
                         echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
+                        ?> <script>history.pushState({}, "", "")</script> <?php
                       }
                       else {
                         echo '<a href="./validasiadmin.php"><script> alert ("Anda sudah melakukan update")</script></a>';
