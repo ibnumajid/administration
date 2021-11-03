@@ -352,7 +352,6 @@
                     include "../_database/config.php";
 
                     if(isset($_POST['update'])){
-
                       $nama_file2 = basename($_FILES['ufl']['name']); 
                       $ukuran2 = $_FILES['ufl']['size'];
                       $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
@@ -364,12 +363,11 @@
                       $url2 = $nama_file2;
                       
                     if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal' '$nama_mhs', sysdate()) ");
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
 
                       if($query2){
                         echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
-                        ?> <script>history.pushState({}, "", "")</script> <?php
                       }
                       else {
                         echo '<a href="./validasiadmin.php"><script> alert ("Anda sudah melakukan update")</script></a>';
@@ -389,7 +387,7 @@
                                     <label for="formFile" class="form-label">NRP Mahasiswa</label>
                                     <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
                                     <!-- Perihal -->
-                                    <label for="formFile" class="form-label">perihal</label>
+                                    <label for="formFile" class="form-label">Perihal</label>
                                     <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
                                     <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
                                     <!-- file surat -->
@@ -397,6 +395,8 @@
                                     <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
                                     <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                     </a>
+                                    
+                                    
 
                                     <!-- Menginput id surat -->
                                     <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  

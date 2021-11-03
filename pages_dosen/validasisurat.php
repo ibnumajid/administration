@@ -405,7 +405,7 @@
                                     <label for="formFile" class="form-label">NRP Mahasiswa</label>
                                     <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
                                     <!-- progres -->
-                                    <label for="formFile" class="form-label">Nama File</label>
+                                    <label for="formFile" class="form-label">Perihal</label>
                                     <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
@@ -534,7 +534,7 @@
                                   <label for="formFile" class="form-label">NRP Mahasiswa</label>
                                   <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
                                   <!-- progres -->
-                                  <label for="formFile" class="form-label">Nama File</label>
+                                  <label for="formFile" class="form-label">Perihal</label>
                                   <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
                                   <!-- file surat -->
                                   <label for="formFile" class="form-label">Lihat File</label>
