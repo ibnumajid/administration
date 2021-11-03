@@ -406,13 +406,40 @@
                             
                               <div class="modal-body">
                           
-                          <form action="" method="post">
+                         <!-- backend upload update surat -->
+                            
+                         <?php 
+                    include "../_database/config.php";
+
+                    if(isset($_POST['update'])){
+
+                      $nama_file2 = basename($_FILES['ufl']['name']); 
+                      $ukuran2 = $_FILES['ufl']['size'];
+                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
+                      $id = $_POST['id'];
+                      $nama_mhs = $_POST['nm'];
+                      
+                      $url2 = $nama_file2;
+                      
+                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$nama_mhs', sysdate()) ");
+                      if($query2){
+                        echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
+                      }
+                      else {
+                        echo '<a href="./validasiadmin.php"><script> alert ("Anda sudah melakukan update")</script></a>';
+                      }
+                  }}
+
+                  ?>
+                          <form action="" method="post" enctype="multipart/form-data">
                               <div class="card-header pb-0 p-3">
                                 <div class="row">
                                   <div class="mb-3">
                                     <!-- nama mahasiswa -->
                                     <label for="formFile" class="form-label">Nama Mahasiswa</label>
                                     <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
+                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
                                     <!-- NRP mahasiswa -->
                                     <label for="formFile" class="form-label">NRP Mahasiswa</label>
                                     <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
@@ -421,67 +448,43 @@
                                     <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
-                                    <a href="/pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
                                     <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                     </a>
+
                                     <!-- Menginput id surat -->
-                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                
+                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
+                                    
+                                    <!-- upload surat baru -->
+                                    <div class="card-header pb-0 p-3">
+                                   <div class="row">
+                                  <div class="mb-3">
+                                 <label for="formFile" class="form-label">Kirim File Baru</label>
+                               <input type="file" name="ufl" class="form-control" aria-label="file example" required>
+                              <div class="invalid-feedback">Example invalid form file feedback</div>
+                             </div>
+                           </div>
+                         </div>
 
-
-                                 
-                        
-                                  </div>
-                                </div>
-                              </div>
+                     </div>
+                    </div>
+                    </div>
                               <!-- button upload close -->
-                              </div>
+                          </div>
                             <div class="modal-footer">
                               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                             
+                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
                             </div>
-                          </form>
-                            </div>
+                           </form>
                           </div>
-                        </div>  
+                        </div>
+                       </div>  
                         <!-- and popup ajuan surat mahasiswa -->
                         <?php  }} ?>
 
+
+                        
                     </tr>
-                     <!-- php update surat -->
-                     <?php 
-                    include "../_database/config.php";
-                    if(isset($_POST['update'])){
-                      $status = $_POST['ss'];
-                      $id = $_POST['id'];
-                      
-                      
-                      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
-                      if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                      }
-                      else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                      }
-                    }
-
-                  ?>  <!-- php update surat --> <?php
-                      
-                    include "../_database/config.php";
-                    if(isset($_POST['updatekdp'])){
-                      $status = $_POST['sk'];
-                      $id = $_POST['id'];
-                      
-                      
-                      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
-                      if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                      }
-                      else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                      }
-                    }
-
-                    ?>
                   </tbody>
                 </table>
               </div>
