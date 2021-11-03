@@ -201,32 +201,32 @@ if ($_SESSION['user'] == '') {
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Surat</th>
-                      <th>Nomor Surat</th>
-                      <th>Dokumen</th>
+                      <th>ID Surat</th>
                       <th>Tanggal</th>
+                      <th>Download Surat</th>
                     </tr>
                   </thead>
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin order by id_no DESC' );
 
                   while ($data = mysqli_fetch_array($query)) {
 
-                    $tujuan = $data['tujuan'];
+                    $tujuan = $data['nama_mhs'];
 
-                    if (strpos($tujuan, 'Mahasiswa') !== false) {
+                    if (strpos($tujuan, $_SESSION['user']) !== false) {
 
                   ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php echo $data['nama'] ?></td>
-                        <td><?php echo $data['nomor'] ?></td>
-                        <td><?php echo $data['dokumen'] ?></td>
+                        <td><?php echo $data['id_no'] ?></td>
                         <td><?php echo $data['tanggal'] ?></td>
-                        <td><?php echo $tujuan ?></td>
+                        <td> 
+                        <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em>UNDUH</em></button></p></td>
+
                       </tr>
 
 
@@ -243,7 +243,6 @@ if ($_SESSION['user'] == '') {
 
     </div>
   </main>
-
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
