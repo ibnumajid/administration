@@ -311,8 +311,9 @@
                         <span class="text-xs"><?=$data['nama']?></span>
                       </div>
                       <div class="d-flex align-items-center text-sm">
-                  
-                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                        <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                          <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
+                        </a>
                       </div>
                     </li>
                     <?php }?>
@@ -323,8 +324,9 @@
                         <span class="text-xs"><?=$data['nama']?></span>
                       </div>
                       <div class="d-flex align-items-center text-sm">
-                  
-                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                        <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                          <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
+                        </a>
                       </div>
                     </li>
                     <?php }?>
