@@ -431,56 +431,38 @@ session_start();
             </div>
             <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark font-weight-bold text-sm">10 September 2021</h6>
-                    <span class="text-xs">Panduan pelaksanaan magang</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-              
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">10 September 2021</h6>
-                    <span class="text-xs">Panduang pelanksanaan PBL</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                    
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">11 September 2021</h6>
-                    <span class="text-xs">Surat pengantar magang</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                 
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">11 September 2021</h6>
-                    <span class="text-xs">Surat rekomendasi</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                 
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="text-dark mb-1 font-weight-bold text-sm">12 September 2021</h6>
-                    <span class="text-xs">Surat persetujaun Kadep</span>
-                  </div>
-                  <div class="d-flex align-items-center text-sm">
-                  
-                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                  </div>
-                </li>
+              <?php
+              include "./_database/config.php";
+                        
+              $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ');
+               while ($data = mysqli_fetch_array($query)){
+
+                if($data['tujuan'] == 'Tendik' or $data['tujuan'] == 'Dosen, Tendik, Mahasiswa')
+                {?>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                    <div class="d-flex flex-column">
+                     <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
+                      <span class="text-xs"><?=$data['nama']?></span>
+                    </div>
+                    <div class="d-flex align-items-center text-sm">
+                        
+                     <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                    </div>
+                  </li>
+                <?php }?>
+                <?php if ($data['tujuan'] == 'Dosen, Tendik' or $data['tujuan'] == 'Tendik, Mahasiswa'){?>
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                    <div class="d-flex flex-column">
+                      <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
+                      <span class="text-xs"><?=$data['nama']?></span>
+                    </div>
+                    <div class="d-flex align-items-center text-sm">
+                        
+                      <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                    </div>
+                  </li>
+                <?php }?>
+                <?php } ?>
               </ul>
             </div>
           </div>
