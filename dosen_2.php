@@ -192,7 +192,7 @@
             </a>
           </li>
           <?php } ?>
-          
+
                     <!-- REKAP SURAT -->
   <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
                   <li class="nav-item"> 
@@ -373,26 +373,26 @@
                   </div>
                 </div>
                         
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+                 <div class="scroll">
                   <ul class="list-group">
                         <br>
                     <?php
                         include "./_database/config.php";
 
-                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ');
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ');
                     while ($data = mysqli_fetch_array($query)){
-
-                      if ($data['tujuan'] == 'Dosen' or $data['tujuan'] == 'Dosen, Tendik' or $data['tujuan'] == 'Dosen, Mahasiswa' or $data['tujuan'] == 'Dosen, Tendik, Mahasiswa')
-                      {?>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                      $tujuan = $data['nama_dsn'];
+                      if (strpos($tujuan, $_SESSION['user']) !== false) {?>
+                     
+                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                       <div class="d-flex flex-column">
-                        <h6 class="mb-1 text-dark font-weight-bold text-sm"> <?php echo $data ['tanggal'] ?> </h6>
-                        <span class="text-xs"><?php echo $data['nama'] ?></span>
+                        <h6 class="mb-1 text-dark font-weight-bold text-sm"> <?php echo $data ['file'] ?> </h6>
+                        <span class="text-xs"><?php echo $data['perihal'] ?></span>
+                        <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                       </div>
                       <div class="d-flex align-items-center text-sm">
-                      <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                        <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                        </a>
+                  
+                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
                       </div>
                     </li>
                       <?php }} ?>

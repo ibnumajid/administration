@@ -274,7 +274,7 @@ session_start();
                   <h6 class="mb-0">Surat Masuk</h6>
                 </div>
                 <div class="col-6 text-end">
-                  <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
+                <a href = pagesmahasiswa/rekapmhs.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                 </div>
               </div>
             </div>
@@ -284,15 +284,16 @@ session_start();
               <?php
               include "./_database/config.php";
                         
-              $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ');
+              $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC ');
                while ($data = mysqli_fetch_array($query)){
+                $tujuan = $data['nama_mhs'];
 
-                if($data['tujuan'] == 'Mahasiswa' or $data['tujuan'] == 'Dosen, Tendik, Mahasiswa')
-                {?>
+                if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") {?>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
-                     <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
-                      <span class="text-xs"><?=$data['nama']?></span>
+                     <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['file']?></h6>
+                      <span class="text-xs"><?=$data['perihal']?></span>
+                      <span class="text-xs"><?=$data['tanggal']?></span>
                     </div>
                     <div class="d-flex align-items-center text-sm">
                     <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
