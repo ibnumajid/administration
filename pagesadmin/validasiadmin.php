@@ -282,8 +282,8 @@
     </nav>
     <!-- End Navbar -->
 
-   <!-- Tabel Validasi -->
-   <div class="container-fluid py-4">
+  <!-- Tabel Validasi -->
+  <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -306,7 +306,7 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Dosen</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kadep</th>
-                 
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Konfirmasi Admin</th>
                      
                     </tr>
                   </thead>
@@ -319,7 +319,7 @@
                   while ($data = mysqli_fetch_array($query)) {
                   $tujuan = $data['dosen_pembimbing'];
                   
-   ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
+   ?>   <!-- Persetujuan oleh admin saja --> <?php 
 
                   if ($data['status_kadep'] == "2" && $data['status_surat'] == "2" ) {
                         
@@ -383,6 +383,17 @@
                               <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
                         </td> <?php } ?> 
+                        
+                        <!-- status aktivitas admin -->
+                        <?php if ($data['status_admin'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                        </td> 
+  
+                         <?php } else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
+                        </td> <?php } ?> 
 
                         <!-- button edit -->
                         <td class="align-middle">
@@ -396,6 +407,7 @@
                       <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
+
                              <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
                                 <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
@@ -405,10 +417,10 @@
                               </div>  
                             
                               <div class="modal-body">
-                          
-                         <!-- backend upload update surat -->
+
+                    <!-- backend upload update surat -->
                             
-                         <?php 
+                            <?php 
                     include "../_database/config.php";
 
                     if(isset($_POST['update'])){
@@ -418,11 +430,14 @@
                       $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
                       $id = $_POST['id'];
                       $nama_mhs = $_POST['nm'];
+                      $statusadmin = $_POST['stadmin'];
                       
                       $url2 = $nama_file2;
                       
                     if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
                       $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$nama_mhs', sysdate()) ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
+
                       if($query2){
                         echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
                       }
@@ -454,6 +469,9 @@
 
                                     <!-- Menginput id surat -->
                                     <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
+
+                                    <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
+                                    <input name = "stadmin" value = 2 type = "hidden">
                                     
                                     <!-- upload surat baru -->
                                     <div class="card-header pb-0 p-3">
