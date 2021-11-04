@@ -243,9 +243,9 @@
         </li> <?php } ?>
         
             <!--profil-->
-            <li class="nav-item mt-3">
+       <!--     <li class="nav-item mt-3">
               <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-            </li>
+            </li> -->
   <!--          <li class="nav-item">
               <a class="nav-link  " href="../infojurusanbaru/pages_dosen/profiledosen.php">
                 <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
