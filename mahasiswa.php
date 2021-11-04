@@ -373,6 +373,13 @@ session_start();
         </div>
         <div class="col-md-5 mt-4">
           <div class="card h-100 mb-4">
+          <?php
+              include './_database/config.php'; //panggil setiap ingin koneksi ke data
+              $no = 1;
+              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+              while ($data = mysqli_fetch_array($query)) {
+              if ($data['nama_mhsw'] == $_SESSION['user']) {
+            ?>
             <div class="card-header pb-0 px-3">
               <div class="row">
                 <div class="col-md-6">
@@ -380,92 +387,61 @@ session_start();
                 </div>
                 <div class="col-md-6 d-flex justify-content-end align-items-center">
                   <i class="far fa-calendar-alt me-2"></i>
-                  <small>23 September 2021 </small>
+                  <small><?php  echo date('d F o')?></small>
                 </div>
               </div>
             </div>
             <div class="card-body pt-4 p-3">
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6>
+              <!--h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6-->
               <ul class="list-group">
                 <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                   <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-down"></i></button>
+                    <!--button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-down"></i></button-->
                     <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Informasi Pelaksanaan Proyek Akhir</h6>
-                      <span class="text-xs">23 September 2021, 12:30 PM</span>
+                      <h6 class="mb-1 text-dark text-sm"><?php echo $data['progres'] ?></h6>
+                      <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                     </div>
                   </div>
-                  <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                    Surat Masuk
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Permohonan Surat Rekomendasi Departemen</h6>
-                      <span class="text-xs">23 September 2021, 11:30 AM</span>
+                  <!-- status surat dosen-->
+                  <?php if ($data['status_surat'] == 0) {?>
+                    <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
+                      <span value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Diajukan
-                  </div>
-                </li>
-              </ul>
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">Yesterday</h6>
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 1</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
+                  <?php } 
+                  else if ($data['status_surat'] == 1) {?>
+                    <div class="d-flex align-items-center text-denger text-gradient text-sm font-weight-bold">
+                      <span value="<?php echo $data['status_surat'] ?>">Ditolak</span>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Disetujui
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 2</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
+                  <?php }
+                  else if ($data['status_surat'] == 2) {?>
+                    <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                      <span value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Disetujui
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 3</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
+                  <?php } ?>
+                  
+                  <!-- status surat kadep -->
+                  <?php if ($data['status_kadep'] == 0) {?>
+                    <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
+                      <span value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Disetujui
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-exclamation"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 4</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
+                  <?php } 
+                  else if ($data['status_kadep'] == 1) {?>
+                    <div class="d-flex align-items-center text-denger text-gradient text-sm font-weight-bold">
+                      <span value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                    </div> 
+                  <?php }
+                  else if ($data['status_kadep'] == 2) {?>
+                    <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"> 
+                      <span value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                     </div>
-                  </div>
-                  <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-                    Pending
-                  </div>
+                  <?php } ?> 
                 </li>
               </ul>
             </div>
+            <?php }}?>
           </div>
         </div>
+
       </div>
       
     </div>

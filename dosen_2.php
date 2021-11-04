@@ -373,7 +373,7 @@
                   </div>
                 </div>
                         
-                 <div class="scroll">
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
                   <ul class="list-group">
                         <br>
                     <?php
