@@ -75,7 +75,7 @@
 				</form>	
 				<div style="width: calc(100% - 560px)" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
 					<img src="assets/images/dteologo.png" >
-					<p class="text-center">SISTEM ADMINISTRASI <br>
+					<p class="text-center">SISTEM ADMINISTRASI PERSURATAN <br>
 					DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
 					</p>
 				</div>
