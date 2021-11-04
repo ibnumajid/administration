@@ -434,13 +434,13 @@
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
-                                      Tidak Di Setujui
+                                      Tidak Disetujui
                                     </label>
                                   </div>
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="2" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
-                                      Di Setujui
+                                      Disetujui
                                     </label>
                                   </div>
                                         <!-- Menginput catatan -->
