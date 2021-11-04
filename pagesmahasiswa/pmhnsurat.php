@@ -285,7 +285,8 @@ session_start();
                         <option value="Surat Cuti">Surat Cuti</option>
                         <option value="Surat Cuti">Surat Mengundurkan Diri</option>
                         <option value="Surat Cuti">Surat Pengajuan Beasiswa</option>
-                        <option value="Surat Cuti">Surat Pengajuan Keinganan UKT</option>
+                        <option value="Surat Cuti">Surat Keringanan UKT</option>
+                        <option value="Surat Cuti">Surat Pengajuan Kegiatan HIMA</option>
                     </select>
                 </div>
               </div>
