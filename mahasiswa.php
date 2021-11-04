@@ -373,13 +373,7 @@ session_start();
         </div>
         <div class="col-md-5 mt-4">
           <div class="card h-100 mb-4">
-          <?php
-              include './_database/config.php'; //panggil setiap ingin koneksi ke data
-              $no = 1;
-              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
-              while ($data = mysqli_fetch_array($query)) {
-              if ($data['nama_mhsw'] == $_SESSION['user']) {
-            ?>
+          
             <div class="card-header pb-0 px-3">
               <div class="row">
                 <div class="col-md-6">
@@ -391,6 +385,13 @@ session_start();
                 </div>
               </div>
             </div>
+            <?php
+              include './_database/config.php'; //panggil setiap ingin koneksi ke data
+              $no = 1;
+              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+              while ($data = mysqli_fetch_array($query)) {
+              if ($data['nama_mhsw'] == $_SESSION['user']) {
+            ?>
             <div class="card-body pt-4 p-3">
               <!--h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6-->
               <ul class="list-group">
