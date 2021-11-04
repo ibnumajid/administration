@@ -420,6 +420,7 @@
                       <th>Perihal</th>
                       <th>Tanggal Upload</th>
                       <th>Status Kadep</th>
+                      <th>Proses Admin</th>
                       <th>Catatan</th>
                     </tr>
                   </thead>
@@ -448,8 +449,17 @@
                           <td>
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } ?>
-
-
+                          
+                          <!-- status aktivitas admin -->
+                      <?php if ($data['status_admin'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                        </td> 
+  
+                         <?php } else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
+                        </td> <?php } ?> 
 
                         <!-- button edit -->
                         <td class="align-middle">
