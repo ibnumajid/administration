@@ -388,7 +388,7 @@ session_start();
                     <!-- status surat osen  -->
                     <?php if ($data['status_surat'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang DiProses</span>
                       </td> <?php } 
                             else if ($data['status_surat'] == 1) {?>
                         <td class="align-middle text-center text-sm">
@@ -404,7 +404,7 @@ session_start();
                     <!-- status surat kadep -->
                     <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang DiProses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
