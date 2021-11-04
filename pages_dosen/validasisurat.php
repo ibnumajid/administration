@@ -368,7 +368,7 @@
                         <!-- status surat dosen -->
                           <?php if ($data['status_surat'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Menunggu Untuk Diproses</span>
                         </td> <?php } 
                               else if ($data['status_surat'] == 1) {?>
                           <td class="align-middle text-center text-sm">
@@ -384,7 +384,7 @@
                         <!-- status surat kadep -->
                         <?php if ($data['status_kadep'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Menunggu Untuk Diproses</span>
                         </td> <?php } 
                               else if ($data['status_kadep'] == 1) {?>
                           <td class="align-middle text-center text-sm">
@@ -512,7 +512,7 @@
                       <!-- status surat -->
                         <?php if ($data['status_surat'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Menunggu Untuk Diproses</span>
                       </td> <?php } 
                             else if ($data['status_surat'] == 1) {?>
                         <td class="align-middle text-center text-sm">
@@ -672,6 +672,7 @@
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
                       if($query){
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                        ?> <script> history.pushState({}, "", "") </script> <?php
                       }
                       else {
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';

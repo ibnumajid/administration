@@ -339,12 +339,12 @@
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk diProses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Memproses</span>
                         </td> <?php } ?> 
 
                         <!-- button edit -->
@@ -390,7 +390,7 @@
                       $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
 
-                      if($query2){
+                      if($query2 && $query3){
                         echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
                         ?> <script> history.pushState({}, "", "")</script> <?php
                       }

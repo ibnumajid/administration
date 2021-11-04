@@ -362,17 +362,17 @@
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Menunggu untuk diproses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Menolak</span>
                       </td> 
                             <?php }
 
                             else if ($data['status_kadep'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Menerima</span>
                       </td> <?php } ?> 
 
                       <!-- Dosen bisa melihat surat sudah diproses admin atau belum -->
@@ -380,7 +380,7 @@
                       
                         <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk diProses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
@@ -434,13 +434,13 @@
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
-                                      Tidak Di Setujui
+                                      Tidak Disetujui
                                     </label>
                                   </div>
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="2" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
-                                      Di Setujui
+                                      Disetujui
                                     </label>
                                   </div>
                                         <!-- Menginput catatan -->
@@ -485,10 +485,11 @@
                       $query = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
                       $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$cat' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil Merespon")</script></a>';
+                        ?> <script> history.pushState({}, "", "") </script> <?php
                       } 
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal diajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Gagal Merespon")</script></a>';
                       }
                     } ?>
 
