@@ -450,11 +450,11 @@ session_start();
 
                                         <!-- Ubah File saat ditolak filenya -->
                                         <?php if ($data['status_surat'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
+                                          <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
                                           <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
                                           <input type="hidden" name="stats" value="0">
                                         <?php } else if ($data['status_kadep'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
+                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
                                           <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
                                           <input type="hidden" name="stats2" value="0">
                                         <?php } ?>
