@@ -53,16 +53,11 @@
 					</div>
 
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
+						
 
 						<div>
 							<a href="#" class="txt1">
-								Forgot Password?
+								Lupa Password ?
 							</a>
 						</div>
 					</div>
@@ -80,7 +75,7 @@
 				</form>	
 				<div style="width: calc(100% - 560px)" class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
 					<img src="assets/images/dteologo.png" >
-					<p class="text-center">SISTEM ADMINISTRASI <br>
+					<p class="text-center">SISTEM ADMINISTRASI PERSURATAN <br>
 					DEPARTEMEN TEKNIK ELEKTRO OTOMASI <br> INSTITUT TEKNOLOGI SEPULUH NOPEMBER SURABAYA
 					</p>
 				</div>
