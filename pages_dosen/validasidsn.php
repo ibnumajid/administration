@@ -313,16 +313,9 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Nama Mahasiswa</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">NRP Mahasiswa</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Dosen</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Proses Admin</th>
                      
-                     <?php 
-                       include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                       $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                       $data = mysqli_fetch_array($query);
-
-                       if ($_SESSION['user'] == "Imam Arifin, S.T, MT" ) { ?>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kadep</th>
-                      <?php } ?>
                      
                     </tr>
                   </thead>
@@ -330,157 +323,11 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  $tujuan = $data['dosen_pembimbing'];
                   
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
-
-                  if ($nama == "Imam Arifin, S.T, MT" && $data['status_surat'] == "2" ) {
-                        
-                    ?> 
-                    <!-- tabel -->
-                    <tbody>
-                      <tr>
-                        <!-- file -->
-                        
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
-                            </div>          
-                          </div>
-                       
-                        <!-- progres -->
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
-                        </td>
-                        <!-- nama -->
-                        <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['nama_mhsw'] ?></h6>
-                        </td>
-                        <!-- nrp -->
-                        <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['id_nrp'] ?></h6>
-                        </td>
-                        <!-- tanggal -->
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
-                        </td>
-
-                        <!-- status surat dosen -->
-                          <?php if ($data['status_surat'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
-                        </td> <?php } 
-                              else if ($data['status_surat'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_surat'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
-                        </td> <?php } ?> 
-
-                        <!-- status surat kadep -->
-                        <?php if ($data['status_kadep'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
-                        </td> <?php } 
-                              else if ($data['status_kadep'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_kadep'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
-                        </td> <?php } ?> 
-                        <!-- button edit -->
-                        <td class="align-middle">
-                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Edit</button>
-                          </a>
-                        </td>
-                        <!-- and tabel -->
-                        
-                        <!-- Modal -->
-                      <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                             <!-- popup ajuan surat mahasiswa -->
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>  
-                            
-                              <div class="modal-body">
-                          
-                          <form action="" method="post">
-                              <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                  <div class="mb-3">
-                                    <!-- nama mahasiswa -->
-                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                    <!-- NRP mahasiswa -->
-                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
-                                    <!-- progres -->
-                                    <label for="formFile" class="form-label">Perihal</label>
-                                    <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
-                                    <!-- file surat -->
-                                    <label for="formFile" class="form-label">Lihat File</label>
-                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
-                                    <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
-                                    </a>
-                                    <!-- Menginput id surat -->
-                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                
-                                    
-                                                   
-                                    <!-- persetujuan surat -->
-                                    <div class="form-check">
-                                      <input class="form-check-input" Name="sk" type="radio" value="1" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        Tidak Di Setujui
-                                      </label>
-                                    </div>
-                                    <div class="form-check">
-                                      <input class="form-check-input" Name="sk" type="radio" value="2" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        Di Setujui
-                                      </label>
-
-                                      <!-- Menginput catatan -->
-                                    <div>
-                                    <label for="catatan2" class = "form-label"> Catatan </label>
-                                    <input name = "catatan2" type = "text"  >  
-                                    </div>
-
-                                 
-                        
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- button upload close -->
-                              </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submite" name="updatekdp" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                            </div>
-                          </form>
-                            </div>
-                          </div>
-                        </div>  
-                        <!-- and popup ajuan surat mahasiswa -->
-                        <?php  }
-
-                     else if (strpos($tujuan, $nama) !== false && $nama !== "Imam Arifin, S.T, MT") {
                         
 
                     
@@ -498,35 +345,48 @@
                       
                       <!-- progres -->
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
                       </td>
                       <!-- nama -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['nama_mhsw'] ?></h6>
+                      <h6 class="mb-0 text-sm"><?php echo $data['nama_dsn'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['id_nrp'] ?></h6>
+                      <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
                       </td>
                       <!-- status surat -->
-                        <?php if ($data['status_surat'] == 0) {?>
+                        <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
                       </td> <?php } 
-                            else if ($data['status_surat'] == 1) {?>
+                            else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                       </td> 
                             <?php }
 
-                            else if ($data['status_surat'] == 2) {?>
+                            else if ($data['status_kadep'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
                       </td> <?php } ?> 
+
+                      <!-- Dosen bisa melihat surat sudah diproses admin atau belum -->
+                           
+                      
+                        <?php if ($data['status_admin'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                        </td> 
+  
+                         <?php } else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
+                        </td> <?php } ?> 
 
                       <!-- button edit -->
                       <td class="align-middle">
@@ -554,18 +414,18 @@
                             <div class="card-header pb-0 p-3">
                               <div class="row">
                                 <div class="mb-3">
-                                  <!-- nama mahasiswa -->
-                                  <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                  <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                  <!-- NRP mahasiswa -->
+                                  <!-- nama dosen -->
+                                  <label for="formFile" class="form-label">Nama Dosen</label>
+                                  <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
+                                  <!-- NPP Dosen -->
                                   <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
                                   <!-- progres -->
-                                  <label for="formFile" class="form-label">Perihal</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                  <label for="formFile" class="form-label">Nama File</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
                                   <!-- file surat -->
                                   <label for="formFile" class="form-label">Lihat File</label>
-                                  <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                  <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
                                   <!-- Menginput id surat -->
@@ -589,7 +449,7 @@
                                     <br>
                                     <input name = "catatan" type = "text"  >  
                                     </div>
-                                  
+
                       
                                 </div>
                               </div>
@@ -607,79 +467,33 @@
                       <!-- and popup ajuan surat mahasiswa -->
                       <?php  }
                     
-                    }?>
+                    ?>
                       <!-- and php tabel -->
                     <!-- and modal-->
                      
                    
                     </tr>
-                     <!-- php update surat -->
+                     <!-- php update surat dan catatan -->
                      <?php 
                     include "../_database/config.php";
                     if(isset($_POST['update'])){
                       $status = $_POST['ss'];
                       $id = $_POST['id'];
+                      $cat = $_POST['catatan'];
                       
                       
-                      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
+                      $query = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
+                      $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$cat' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                      }
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+                      } 
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal diajukan")</script></a>';
                       }
                     } ?>
 
-                    <!-- php update catatan dosen -->
-                    <?php 
-                   include "../_database/config.php";
-                   if(isset($_POST['update'])){
-                     $catatan = $_POST['catatan'];
-                     $id = $_POST['id'];
-                     
-                     
-                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
-                     if($query){
-                       echo '<a href="../pages_dosen/validasisurat.php"></a>';
-                     }
-                     else {
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
-                     }
-                   }?>  
 
-                    <!-- update catatan kadep -->
-                  <?php 
-                   include "../_database/config.php";
-                   if(isset($_POST['updatekdp'])){
-                     $catatan2 = $_POST['catatan2'];
-                     $id = $_POST['id'];
-                     
-                     
-                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
-                     if($query){
-                       echo '<a href="../pages_dosen/validasisurat.php"></a>';
-                     }
-                     else {
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
-                     }
-                   }?>  
-                   
-                   <!-- php update surat --> <?php
-                      
-                    include "../_database/config.php";
-                    if(isset($_POST['updatekdp'])){
-                      $status = $_POST['sk'];
-                      $id = $_POST['id'];
-                      
-                      
-                      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
-                      if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                      }
-                      else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                      }
-                    }
+                  
 
                     ?>
                   </tbody>
