@@ -240,9 +240,9 @@ session_start();
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a> -->
             </li>
-            
+            </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="/infojurusanbaru/logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>

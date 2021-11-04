@@ -4,7 +4,7 @@ session_start();
  {
       header("location:home.php");
   }
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -235,9 +235,8 @@ session_start();
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a-->
             </li>
-            
             <li class="nav-item d-flex align-items-center">
-                <a href="/infojurusanbaru/logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -249,9 +248,8 @@ session_start();
     <!-- End Navbar -->
 
     <div class="text-center">
-    <button type="button"  href="./uploadfile.php" class="btn btn-secondary btn-lg w-130 btn bg-gradient-info">Ajukan Surattt</button>
+    <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
     </div>
-      
     
     <div class="container-fluid py-4">
       <div class="row">
