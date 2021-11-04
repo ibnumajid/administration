@@ -170,11 +170,12 @@ if ($_SESSION['user'] == '') {
             
             <li class="nav-item px-3 d-flex align-items-center"></li>
             <li class="nav-item d-flex align-items-center">
-              <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0">
+              <a href="../logout.php" class="nav-link text-body p-0">
                 <i class="fas fa-sign-out-alt"></i>
                 <span class="d-sm-inline d-none">Logout </span>
               </a>
             </li>
+            </li> 
           </ul>
         </div>
       </div>
