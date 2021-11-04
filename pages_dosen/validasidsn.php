@@ -486,6 +486,7 @@
                       $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$cat' WHERE id_no = '$id' ");
                       if($query){
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+                        ?> <script> history.pushState({}, "", "") </script> <?php
                       } 
                       else {
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal diajukan")</script></a>';

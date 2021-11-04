@@ -672,6 +672,7 @@
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
                       if($query){
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                        ?> <script> history.pushState({}, "", "") </script> <?php
                       }
                       else {
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
