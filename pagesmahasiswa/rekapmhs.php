@@ -211,7 +211,7 @@ if ($_SESSION['user'] == '') {
                     <?php
                     include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                     $no = 1;
-                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin order by id_no DESC' );
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC' );
                     while ($data = mysqli_fetch_array($query)) {
 
                       $tujuan = $data['nama_mhs'];
