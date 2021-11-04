@@ -1,12 +1,19 @@
+<?php
+session_start();
+ if($_SESSION['user']=='')
+ {
+      header("location:home.php");
+  }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
+<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
   <title>
     Sistem Administrasi DTEO
   </title>
@@ -20,6 +27,41 @@
   <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+
+  <style>
+            .scrollbar-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #F5F5F5;
+            border-radius: 10px; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #aaa; }
+
+            .scrollbar-deep-purple {
+            scrollbar-color: #512da8 #F5F5F5;
+            }
+
+            .bordered-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: none;
+            border: 1px solid #ffffff00; }
+
+            .bordered-deep-purple::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: none; }
+
+            .thin::-webkit-scrollbar {
+            width: 6px; }
+
+            .example-1 {
+            position: relative;
+            overflow-y: scroll;
+            height: 200px; }
+  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -27,14 +69,16 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <img src="../../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
       </a>
     </div>
+
+    <!-- navbar  -->
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
 
+      <!-- home  -->
         <li class="nav-item">
           <a class="nav-link  " href="./tendik.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -57,7 +101,7 @@
         </li>
 
         <!--Nama mahasiswa-->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link  " href="./datamahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -76,7 +120,7 @@
             </div>
             <span class="nav-link-text ms-1">Daftar Mahasiswa</span>
           </a>
-        </li>
+        </li> -->
 
         <!--Permohonan Surat-->
         <li class="nav-item">
@@ -96,12 +140,12 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Permohoan Surat </span>
+            <span class="nav-link-text ms-1">Permohonan Surat </span>
           </a>
         </li>
         
         <!--Validasi Surat-->
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link  " href="./validasisurat.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -120,9 +164,9 @@
             </div>
             <span class="nav-link-text ms-1">Validasi Surat</span>
           </a>
-        </li>
+        </li> -->
     
-        </li>
+        <!-- </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -146,7 +190,7 @@
             </div>
             <span class="nav-link-text ms-1">Profile</span>
           </a>
-        </li>
+        </li> -->
         
       </ul>
     </div>
@@ -193,7 +237,7 @@
             </li>
             
             <li class="nav-item d-flex align-items-center">
-                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="/infojurusanbaru/logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -205,7 +249,7 @@
     <!-- End Navbar -->
 
     <div class="text-center">
-    <button type="button"  href="./uploadfile.php" class="btn btn-secondary btn-lg w-100 btn bg-gradient-info">Ajukan Surattt</button>
+    <button type="button"  href="./uploadfile.php" class="btn btn-secondary btn-lg w-130 btn bg-gradient-info">Ajukan Surattt</button>
     </div>
       
     
