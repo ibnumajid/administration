@@ -331,7 +331,7 @@
 
         <div class="container-fluid py-4">
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-7">
               <div class="row">
                 <!---->
                 
@@ -359,7 +359,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-5">
               <div class="card h-100">
                 <div class="card-header pb-0 p-3">
                   <div class="row">
