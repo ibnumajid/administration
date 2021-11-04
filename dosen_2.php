@@ -372,7 +372,7 @@
                     </div>
                   </div>
                 </div>
-                        
+                    <hr>    
                 <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
                   <ul class="list-group">
                         <br>
