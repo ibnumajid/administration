@@ -366,13 +366,13 @@
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Menolak</span>
                       </td> 
                             <?php }
 
                             else if ($data['status_kadep'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Menerima</span>
                       </td> <?php } ?> 
 
                       <!-- Dosen bisa melihat surat sudah diproses admin atau belum -->
