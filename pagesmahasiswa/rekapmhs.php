@@ -219,7 +219,7 @@ if ($_SESSION['user'] == '') {
 
                     ?>
                         <tr>
-                          <td><?php echo $no++ ?></td>
+                          <td class="text-center"><?php echo $no++ ?></td>
                           <td><?php echo $data['id_no'] ?></td>
                           <td><?php echo $data['perihal'] ?></td>
                           <td><?php echo $data['tanggal'] ?></td>

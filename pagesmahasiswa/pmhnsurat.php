@@ -382,7 +382,7 @@ session_start();
                     if ($data['nama_mhsw'] == $_SESSION['user']) {
                   ?>
                   <tr>
-                    <td><?php echo $no++ ?></td>
+                    <td class="text-center"><?php echo $no++ ?></td>
                     <td><?php echo $data['progres'] ?></td>
                     <td><?php echo $data['dosen_pembimbing'] ?></td>
                     <!-- status surat osen  -->

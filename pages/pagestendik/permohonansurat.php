@@ -283,7 +283,7 @@ session_start();
                   while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
-                    <td><?php echo $no++ ?></td>
+                    <td class="text-center"><?php echo $no++ ?></td>
                     <td><?php echo $data['nama_surat'] ?></td>
                     <td><?php echo $data['admin_surat'] ?></td>
                     <td><?php echo $data['file_surat'] ?></td>

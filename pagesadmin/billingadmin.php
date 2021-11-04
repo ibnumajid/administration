@@ -303,7 +303,7 @@
 
         <div class="col-lg-5">
           <div class="card h-100">
-            <div class="card-header pb-0 p-3">
+            <div class="card-header pb-0 px-4">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Surat Masuk</h6>
@@ -328,7 +328,7 @@
                   while ($data = mysqli_fetch_array($query)) {
                     if($data['tujuan'] )
                     {?>
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                    <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                       <div class="d-flex flex-column">
                         <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
                         <span class="text-xs"><?=$data['nama']?></span>
@@ -341,7 +341,7 @@
                     </li>
                     <?php }?>
                     <?php if ($data['tujuan'] == 'Dosen, Tendik' or $data['tujuan'] == 'Dosen, Mahasiswa'){?>
-                      <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                      <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                       <div class="d-flex flex-column">
                         <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
                         <span class="text-xs"><?=$data['nama']?></span>

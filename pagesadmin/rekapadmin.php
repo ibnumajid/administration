@@ -268,7 +268,7 @@
                   while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
-                    <td><?php echo $no++ ?></td>
+                    <td class="text-center"><?php echo $no++ ?></td>
                     <td><?php echo $data['nama'] ?></td>
                     <td><?php echo $data['nomor'] ?></td>
                     <td><?php echo $data['tujuan'] ?></td>

@@ -268,7 +268,7 @@ session_start();
 
         <div class="col-lg-5">
           <div class="card h-100">
-            <div class="card-header pb-0 p-3">
+            <div class="card-header pb-0 px-4">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Surat Masuk</h6>
@@ -289,7 +289,7 @@ session_start();
                 $tujuan = $data['nama_mhs'];
 
                 if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") {?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
                      <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['file']?></h6>
                       <span class="text-xs"><?=$data['perihal']?></span>
@@ -303,7 +303,7 @@ session_start();
                   </li>
                 <?php }?>
                 <?php if ($data['tujuan'] == 'Dosen, Mahasiswa' or $data['tujuan'] == 'Tendik, Mahasiswa'){?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 border-radius-lg">
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
                       <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
                       <span class="text-xs"><?=$data['nama']?></span>
@@ -374,7 +374,7 @@ session_start();
         <div class="col-md-5 mt-4">
           <div class="card h-100 mb-4">
           
-            <div class="card-header pb-3 px-3">
+            <div class="card-header pb-4 px-4">
               <div class="row">
                 <div class="col-md-6">
                   <h6 class="mb-0">Status Surat</h6>
@@ -394,7 +394,7 @@ session_start();
 
                 if ($data['nama_mhsw'] == $_SESSION['user']) {
                 ?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-3 mb-2 ">
+                  <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
                    <div class="d-flex flex-column">
                     <h6 class="mb-1 text-dark text-sm"><?php echo $data['progres'] ?></h6>
                       <span class="text-xs"><?php echo $data['tanggal'] ?></span>
