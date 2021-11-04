@@ -390,7 +390,7 @@
                       $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
 
-                      if($query2){
+                      if($query2 && $query3){
                         echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
                         ?> <script> history.pushState({}, "", "")</script> <?php
                       }
