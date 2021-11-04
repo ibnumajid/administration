@@ -175,7 +175,7 @@ if ($_SESSION['user'] == '') {
                 <span class="d-sm-inline d-none">Logout </span>
               </a>
             </li>
-            </li> 
+            
           </ul>
         </div>
       </div>
