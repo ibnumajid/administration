@@ -278,7 +278,7 @@ session_start();
                 </div>
               </div>
             </div>
-                <hr>
+
             <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
               <?php
@@ -385,61 +385,80 @@ session_start();
                 </div>
               </div>
             </div>
-            <?php
-              include './_database/config.php'; //panggil setiap ingin koneksi ke data
-              $no = 1;
-              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
-              while ($data = mysqli_fetch_array($query)) {
-              if ($data['nama_mhsw'] == $_SESSION['user']) {
-            ?>
-            <div class="card-body pt-4 p-3">
-              <!--h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6-->
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <!--button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-down"></i></button-->
+            
+            <table class="table align-items-center mb-0">
+                  <!-- nama tabel kolom -->
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <!-- and nama tabel kolom -->
+
+                  <!-- data kolom -->
+                  <?php
+                  include './_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $no = 1;
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa');
+                  while ($data = mysqli_fetch_array($query)) {
+                    if ($data['nama_mhsw'] == $_SESSION['user']) {
+                  ?>
+                  <tr>
+                    <td>
                     <div class="d-flex flex-column">
                       <h6 class="mb-1 text-dark text-sm"><?php echo $data['progres'] ?></h6>
-                      <span class="text-xs"><?php echo $data['tanggal'] ?></span>
-                    </div>
-                  </div>
-                  <!-- status surat dosen-->
-                  <?php if ($data['status_surat'] == 0) {?>
-                    <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-                      <span value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
-                    </div>
-                  <?php } 
-                  else if ($data['status_surat'] == 1) {?>
-                    <div class="d-flex align-items-center text-denger text-gradient text-sm font-weight-bold">
-                      <span value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                    </div>
-                  <?php }
-                  else if ($data['status_surat'] == 2) {?>
-                    <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                      <span value="<?php echo $data['status_surat'] ?>">Disetujui</span>
-                    </div>
-                  <?php } ?>
-                  
-                  <!-- status surat kadep -->
-                  <?php if ($data['status_kadep'] == 0) {?>
-                    <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-                      <span value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
-                    </div>
-                  <?php } 
-                  else if ($data['status_kadep'] == 1) {?>
-                    <div class="d-flex align-items-center text-denger text-gradient text-sm font-weight-bold">
-                      <span value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                    </div> 
-                  <?php }
-                  else if ($data['status_kadep'] == 2) {?>
-                    <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold"> 
-                      <span value="<?php echo $data['status_surat'] ?>">Disetujui</span>
-                    </div>
-                  <?php } ?> 
-                </li>
-              </ul>
-            </div>
-            <?php }}?>
+                       <span class="text-xs"><?php echo $data['tanggal'] ?></span>
+                      </div>
+                    </td>
+                    <!-- status surat dosen-->
+                    <?php if ($data['status_surat'] == 0) {?>
+                      <td class="align-middle text-center text-sm">
+                        <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
+                          <span value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                        </div>
+                      </td> 
+                    <?php } 
+                    else if ($data['status_surat'] == 1) {?>
+                      <td class="align-middle text-center text-sm">
+                        <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
+                          <span value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                        </div>
+                      </td> 
+                    <?php }
+                    else if ($data['status_surat'] == 2) {?>
+                      <td class="align-middle text-center text-sm">
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          <span value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                        </div>
+                      </td> 
+                    <?php } ?> 
+                     
+                    <!-- status surat kadep -->
+                    <?php if ($data['status_kadep'] == 0) {?>
+                      <td class="align-middle text-center text-sm">
+                        <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
+                          <span value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                        </div>
+                      </td> 
+                    <?php } 
+                    else if ($data['status_kadep'] == 1) {?>
+                      <td class="align-middle text-center text-sm">
+                        <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
+                          <span value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                        </div>
+                      </td> 
+                    <?php }
+                    else if ($data['status_kadep'] == 2) {?>
+                      <td class="align-middle text-center text-sm">
+                        <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
+                          <span value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                        </div>
+                      </td>
+                    <?php } }}?> 
+                </table>
+            
           </div>
         </div>
 
