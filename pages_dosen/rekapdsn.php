@@ -15,7 +15,7 @@
 -->
 <?php
   session_start();
-  if($_SESSION['user']=='' )
+  if($_SESSION['user'] == '' )
     {
         header("location:home.php");
   }
@@ -265,11 +265,10 @@
             </a>
           </li> -->
         
-        
-  
       </ul>
     </div>
   </aside>
+  
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -290,14 +289,14 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <a href="" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
             </li>
             
             <li class="nav-item d-flex align-items-center">
-            <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+            <a href="../logout.php" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
