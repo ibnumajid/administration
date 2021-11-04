@@ -126,7 +126,7 @@
                 </g> 
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Validasi Surat</span>
+            <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
           </a>
         </li>
 
