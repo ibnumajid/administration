@@ -358,7 +358,7 @@ session_start();
               <?php
                   include "./_database/config.php"; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
                   while ($data = mysqli_fetch_array($query)) {
               ?>
 

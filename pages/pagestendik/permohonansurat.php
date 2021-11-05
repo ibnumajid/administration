@@ -69,7 +69,7 @@ session_start();
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
+        <span class="ms-1 font-weight-bold">Sistem Administrasi Admin</span>
       </a>
     </div>
 
@@ -248,8 +248,10 @@ session_start();
     <!-- End Navbar -->
 
     <div class="text-center">
-    <button type="button"  href="./uploadfile.php" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info">Ajukan Surattt</button>    </div>
-    
+    <a class="nav-link  active" href="./uploadfile.php">
+        <button type="button" class="btn btn-secondary btn-lg w-80 btn bg-gradient-info" >Ajukan Surat</button>
+      </a>
+
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -269,24 +271,21 @@ session_start();
                     <tr>
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
-                      <th class="text-left ps-1">Admin</th>
+                      <th class="text-left ps-1">Tujuan</th>
                       <th class="text-left ps-1">File Surat</th>
                       <th class="text-center">Waktu Upload</th>
                     </tr>
                   </thead>
 
                   <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
-                  while ($data = mysqli_fetch_array($query)) {
+                   include '../../_database/config.php'; //panggil setiap ingin koneksi ke data                  $no = 1;
+                   $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');                  while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
-                    <td class="text-center"><?php echo $no++ ?></td>
-                    <td class="text-left ps-1"><?php echo $data['nama_surat'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['admin_surat'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['file_surat'] ?></td>
-                    <td class="text-center"><?php echo $data['waktu_surat'] ?></td>
+                    <td><?php echo $data['nama_surat'] ?></td>
+                    <td><?php echo $data['admin_surat'] ?></td>
+                    <td><?php echo $data['file_surat'] ?></td>
+                    <td><?php echo $data['waktu_surat'] ?></td>
                   </tr>
                   <?php } ?>
                 </table>
