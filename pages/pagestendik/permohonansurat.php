@@ -236,7 +236,7 @@ session_start();
               </a-->
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -278,7 +278,7 @@ session_start();
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
                   while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
