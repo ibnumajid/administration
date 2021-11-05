@@ -364,13 +364,13 @@ session_start();
                   <thead>
                     <tr>
                       <th class="text-center">No</th>
-                      <th>Perihal</th>
-                      <th>Dosen Pembimbing</th>
+                      <th class="text-left ps-1">Perihal</th>
+                      <th class="text-left ps-1">Dosen Pembimbing</th>
                       <th>Status Dosen</th>
                       <th>Status Kadep</th>
-                      <th>Proses Admin</th>
-                      <th>Waktu Upload</th>
-                      <th>Catatan</th>
+                      <th class="text-left ps-1">Proses Admin</th>
+                      <th class="text-center">Waktu Upload</th>
+                      <th class="text-left ps-1">Catatan</th>
                     </tr>
                   </thead>
 
@@ -383,8 +383,8 @@ session_start();
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
-                    <td><?php echo $data['progres'] ?></td>
-                    <td><?php echo $data['dosen_pembimbing'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['progres'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['dosen_pembimbing'] ?></td>
                     <!-- status surat osen  -->
                     <?php if ($data['status_surat'] == 0) {?>
                       <td class="align-middle text-center text-sm">
@@ -428,7 +428,7 @@ session_start();
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
                         </td> <?php } ?> 
                         
-                    <td><?php echo $data['tanggal'] ?></td>
+                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
                      <!-- button edit -->
                      <td class="align-middle">
                           <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

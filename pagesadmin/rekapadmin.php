@@ -252,11 +252,11 @@
                   <thead>
                     <tr>
                       <th class="text-center">No</th>
-                      <th>Nama Surat</th>
-                      <th>Nomor Surat</th>
-                      <th>Tujuan</th>
-                      <th>Dokumen</th>
-                      <th>Tanggal</th>
+                      <th class="text-left ps-1">Nama Surat</th>
+                      <th class="text-left ps-1">Nomor Surat</th>
+                      <th class="text-left ps-1">Tujuan</th>
+                      <th class="text-left ps-1">Dokumen</th>
+                      <th class="text-center">Tanggal</th>
                     </tr>
                   </thead>
 
@@ -269,11 +269,11 @@
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
-                    <td ><?php echo $data['nama'] ?></td>
-                    <td><?php echo $data['nomor'] ?></td>
-                    <td><?php echo $data['tujuan'] ?></td>
-                    <td><?php echo $data['dokumen'] ?></td>
-                    <td><?php echo $data['tanggal'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['nama'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['nomor'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['tujuan'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['dokumen'] ?></td>
+                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
                   </tr>
                   <?php } ?>
                 </table>

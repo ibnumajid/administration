@@ -269,10 +269,10 @@ session_start();
                   <thead>
                     <tr>
                       <th class="text-center">No</th>
-                      <th>Perihal</th>
-                      <th>Admin</th>
-                      <th>File Surat</th>
-                      <th>Waktu Upload</th>
+                      <th class="text-left ps-1">Perihal</th>
+                      <th class="text-left ps-1">Admin</th>
+                      <th class="text-left ps-1">File Surat</th>
+                      <th class="text-center">Waktu Upload</th>
                     </tr>
                   </thead>
 
@@ -284,10 +284,10 @@ session_start();
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
-                    <td><?php echo $data['nama_surat'] ?></td>
-                    <td><?php echo $data['admin_surat'] ?></td>
-                    <td><?php echo $data['file_surat'] ?></td>
-                    <td><?php echo $data['waktu_surat'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['nama_surat'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['admin_surat'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['file_surat'] ?></td>
+                    <td class="text-center"><?php echo $data['waktu_surat'] ?></td>
                   </tr>
                   <?php } ?>
                 </table>
