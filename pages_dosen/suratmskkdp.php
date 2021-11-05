@@ -368,7 +368,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>                 
+                      <th class="text-center">No</th>                 
                       <th>Jenis Surat</th>
                       <th>Nama Pengirim</th>
                       <th>NRP/NPP</th>
@@ -388,7 +388,7 @@
                       if (strpos($tujuan, $nama) !== false) {
                   ?>
                   <tr>
-                    <td><?php echo $no++ ?></td>'                   
+                    <td class="text-center"><?php echo $no++ ?></td>'                   
                     <td><?php echo $data['progres'] ?></td>
                     <td><?php echo $data['nama_mhsw'] ?></td>
                     <td><?php echo $data['id_nrp'] ?></td>

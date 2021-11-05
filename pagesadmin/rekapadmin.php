@@ -251,7 +251,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th class="text-center">No</th>
                       <th>Nama Surat</th>
                       <th>Nomor Surat</th>
                       <th>Tujuan</th>
@@ -269,7 +269,7 @@
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
-                    <td><?php echo $data['nama'] ?></td>
+                    <td ><?php echo $data['nama'] ?></td>
                     <td><?php echo $data['nomor'] ?></td>
                     <td><?php echo $data['tujuan'] ?></td>
                     <td><?php echo $data['dokumen'] ?></td>

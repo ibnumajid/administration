@@ -363,7 +363,7 @@ session_start();
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th class="text-center">No</th>
                       <th>Perihal</th>
                       <th>Dosen Pembimbing</th>
                       <th>Status Dosen</th>

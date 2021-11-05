@@ -416,7 +416,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th class="text-center">No</th>
                       <th>Perihal</th>
                       <th>Tanggal Upload</th>
                       <th>Status Kadep</th>
@@ -433,7 +433,7 @@
                     if ($data['nama_dsn'] == $_SESSION['user']) {
                   ?>
                       <tr>
-                        <td><?php echo $no++ ?></td>
+                        <td class="text-center"><?php echo $no++ ?></td>
                         <td><?php echo $data['perihal'] ?></td>
                         <td><?php echo $data['tanggal'] ?></td>
 

@@ -264,7 +264,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th class="text-center">No</th>
                       <th>ID Surat</th>
                       <th>Tanggal</th>
                       <th>Perihal</th>
