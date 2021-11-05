@@ -427,10 +427,12 @@
                         <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
                       </div>
                       <div class="ms-auto text-end">
-                        <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>"><i class="far fa-trash-alt me-2"></i>Hapus</a>
-
+                       <div>
+                      <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
+                      </div>
+                      <div>   
                         <button type = "button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Respon</button>
-
+                      </div>
                       </div>
                       
                     </li>
