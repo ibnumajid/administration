@@ -13,12 +13,13 @@ session_start();
 <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <!-- <link rel="icon" type="image/png" href="../assets/images/favicon.png"> -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <title>
     Sistem Administrasi DTEO
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -27,41 +28,6 @@ session_start();
   <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-
-  <style>
-            .scrollbar-deep-purple::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-            background-color: #F5F5F5;
-            border-radius: 10px; }
-
-            .scrollbar-deep-purple::-webkit-scrollbar {
-            width: 12px;
-            background-color: #F5F5F5; }
-
-            .scrollbar-deep-purple::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
-            background-color: #aaa; }
-
-            .scrollbar-deep-purple {
-            scrollbar-color: #512da8 #F5F5F5;
-            }
-
-            .bordered-deep-purple::-webkit-scrollbar-track {
-            -webkit-box-shadow: none;
-            border: 1px solid #ffffff00; }
-
-            .bordered-deep-purple::-webkit-scrollbar-thumb {
-            -webkit-box-shadow: none; }
-
-            .thin::-webkit-scrollbar {
-            width: 6px; }
-
-            .example-1 {
-            position: relative;
-            overflow-y: scroll;
-            height: 200px; }
-  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -69,7 +35,7 @@ session_start();
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Admin</span>
+        <span class="ms-1 font-weight-bold">Sistem Administrasi Tendik</span>
       </a>
     </div>
 
@@ -202,7 +168,7 @@ session_start();
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Tendik</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Permohonan Surat</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Permohonan Surat</h6>
@@ -236,7 +202,7 @@ session_start();
               </a-->
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="/logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -247,10 +213,128 @@ session_start();
     </nav>
     <!-- End Navbar -->
 
-    <div class="text-center">
-    <a class="nav-link  active" href="./uploadfile.php">
-        <button type="button" class="btn btn-secondary btn-lg w-80 btn bg-gradient-info" >Ajukan Surat</button>
-      </a>
+    <!-- pop up kirim surat  -->
+          <div class="text-center">
+            <button type="button" class="btn btn-secondary btn-lg-center w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+          </div>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Kirim Surat</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+          </div>
+            <div class="modal-body">
+
+          <?php
+    
+            include '../../_database/config.php';
+            if(isset($_POST['input']))
+            {
+              $progres = $_POST['nm'];
+              $admin = $_POST['adm'];
+              
+              $nama_file = basename($_FILES['fl']['name']);
+              $ukuran = $_FILES['fl']['size'];
+              $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+
+              $url = $nama_file;
+
+
+              if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+              {
+                $query = mysqli_query($koneksi,"insert into permohonansurat values('','$progres','$admin','$url',sysdate())");
+
+                if($query)
+                {
+                  echo "Berhasil Input";
+                }
+                else
+                {
+                  echo "Gagal Input";
+                }
+              }
+              else
+              {
+                echo "Gagal Upload";
+              }
+              
+            }
+
+          ?>
+
+            <form action="" method="post" enctype="multipart/form-data">
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">Nama</label>
+                <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
+                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-header pb-0 p-3">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="formFile" class="form-label">NIP</label>
+                    <input name="nip" class="form-control" type="hidden" placeholder="Masukan NIP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
+                    <label name="nip" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Jenis Surat</label>
+                    <select name="nm"  class="form-select" aria-label="Default select example">
+                        <option selected>Pilih Jenis Surat</option>
+                        <option value="Surat Permohonan">Surat Permohonan</option>
+                        <option value="Surat Ijin">Surat Ijin</option>
+                        <option value="Surat Cuti">Surat Cuti</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Pilih Tujuan</label>
+                    <select name="adm" class="form-select" aria-label="Default select example">
+                        <option selected>Pilih Tujuan Penerima</option>
+                        <option value="Admin 1">Dosen</option>
+                        <option value="Admin 2">Tendik</option>
+                        <option value="Admin 3">Kepala Departemen</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Pilih File</label>
+                  <input type="file" name="fl" class="form-control" aria-label="file example" required>
+                 <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload</button>
+            </div>
+           </form>
+        </div>
+      </div>
+    </div>
+    <!-- pop up kirim surat selesai  -->
+
 
     <div class="container-fluid py-4">
       <div class="row">
@@ -282,10 +366,11 @@ session_start();
                    $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');                  while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
-                    <td><?php echo $data['nama_surat'] ?></td>
-                    <td><?php echo $data['admin_surat'] ?></td>
-                    <td><?php echo $data['file_surat'] ?></td>
-                    <td><?php echo $data['waktu_surat'] ?></td>
+                    <td class="text-center"> <?php echo $no++ ?></td>
+                    <td class="text-left ps-1"><?php echo $data['nama_surat'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['admin_surat'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['file_surat'] ?></td>
+                    <td class="text-center"><?php echo $data['waktu_surat'] ?></td>
                   </tr>
                   <?php } ?>
                 </table>
