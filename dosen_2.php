@@ -685,6 +685,7 @@
                   while ($data = mysqli_fetch_array($query)){
 
                     if ($data['nama_dsn'] == $_SESSION['user']) {
+                      $no++
                     ?>
                       <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
                       <div class="d-flex flex-column">

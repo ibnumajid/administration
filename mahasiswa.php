@@ -285,6 +285,8 @@ session_start();
               include "./_database/config.php";
                         
               $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC ');
+              $no = 0;
+              $no2 = $no++;
                while ($data = mysqli_fetch_array($query)){
                 $tujuan = $data['nama_mhs'];
 
