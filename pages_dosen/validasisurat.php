@@ -327,14 +327,15 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                  
+                  $no = 0;
+                  $no = $no++;
                   while ($data = mysqli_fetch_array($query)) {
                   $tujuan = $data['dosen_pembimbing'];
                   
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
 
                   if ($nama == "Imam Arifin, S.T, MT" && $data['status_surat'] == "2" ) {
-                        
+                        $no++
                     ?> 
                     <!-- tabel -->
                     <tbody>
@@ -609,6 +610,17 @@
                      
                    
                     </tr>
+                    <?php 
+                      if ($no == 1) { ?>
+
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+
+
+
+<?php } ?>
                      <!-- php update surat -->
                      <?php 
                     include "../_database/config.php";

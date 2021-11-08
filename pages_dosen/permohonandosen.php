@@ -427,10 +427,12 @@
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
+                  $no = 0;
+                  $no2 = $no++;
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
                     if ($data['nama_dsn'] == $_SESSION['user']) {
+                        $no++
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
@@ -515,6 +517,14 @@
                                         </div>
                                         
                       </tr>
+                      <?php 
+                      if ($no == 1) { ?>
+
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+                    <?php } ?>
 
                 </table>
                   <!-- php update surat saat kadep menolak -->

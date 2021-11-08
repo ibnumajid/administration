@@ -326,12 +326,8 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  
-   ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
-                        
-
-                    
-                  ?> 
+                  $no++
+   ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
                   <tbody>
                     <tr>
@@ -466,8 +462,19 @@
                       </div>  
                       <!-- and popup ajuan surat mahasiswa -->
                       <?php  }
+ 
+                      if ($no == 1) { ?>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+
+
+
+                      <?php } ?>
                     
-                    ?>
+
                       <!-- and php tabel -->
                     <!-- and modal-->
                      
