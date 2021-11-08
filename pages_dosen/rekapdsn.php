@@ -231,6 +231,8 @@
               </a>
             </li>
             
+            <li class="nav-item px-3 d-flex align-items-center">
+                </li>
 
             <li class="nav-item d-flex align-items-center">
             <a href="../logout.php" class="nav-link text-body p-0" >
