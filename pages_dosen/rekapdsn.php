@@ -274,7 +274,8 @@
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
+                  $no = 0;
+                  $no2 = $no++;
                   $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn order by id_no DESC' );
                   while ($data = mysqli_fetch_array($query)) {
 
@@ -295,16 +296,17 @@
                       </tr>
 
 
-                  <?php  }
-                   else { ?> 
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td class = "text-center">  <?php echo "BELUM ADA SURAT MASUK"; break; ?></td>
-                      
-                    </tr> 
+             
                 <?php }
                   } ?>
+
+                  
+                        <?php if ($no == 1) { ?>
+
+                        <td></td>
+                        <td></td>
+                        <td class = "text-center"> <h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+                        <?php } ?>
                 </table>
               </div>
             </div>
