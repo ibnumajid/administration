@@ -19,6 +19,7 @@
       </title>
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+      <link rel="icon" type="image/png" href="./assets/images/favicon.png">
       <!-- Nucleo Icons -->
       <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
       <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
