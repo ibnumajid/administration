@@ -281,12 +281,12 @@ session_start();
                         <option selected>Pilih Jenis Surat</option>
                         <option value="Surat Magang">Surat Magang</option>
                         <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
-                        <option value="Surat Cuti">Surat PBL (Project Based Learning)</option>
+                        <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
                         <option value="Surat Cuti">Surat Cuti</option>
-                        <option value="Surat Cuti">Surat Mengundurkan Diri</option>
-                        <option value="Surat Cuti">Surat Pengajuan Beasiswa</option>
-                        <option value="Surat Cuti">Surat Keringanan UKT</option>
-                        <option value="Surat Cuti">Surat Pengajuan Kegiatan HIMA</option>
+                        <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
+                        <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
+                        <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
+                        <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
                     </select>
                 </div>
               </div>
