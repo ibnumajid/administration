@@ -381,9 +381,11 @@
                         include "./_database/config.php";
 
                     $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ');
+                    $no = 0;
+                    $no2 = $no++;
                     while ($data = mysqli_fetch_array($query)){
                       $tujuan = $data['nama_dsn'];
-                      if (strpos($tujuan, $_SESSION['user']) !== false) {?>
+                      if (strpos($tujuan, $_SESSION['user']) !== false) { $no++ ?>
                      
                     <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                       <div class="d-flex flex-column">
@@ -397,6 +399,11 @@
                       </div>
                     </li>
                       <?php }} ?>
+                      <?php if ($no == 1) { ?>
+
+                      <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+                      <?php } ?>
+
                   </ul>
                 </div>
               </div>
@@ -419,7 +426,7 @@
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   if ($data['nama_dsn'] == $_SESSION['user']) {
-
+                    $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">
@@ -565,6 +572,12 @@
                 
                <?php } ?>
 
+               <?php if ($no == 1) { ?>
+              <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+
+              <?php } ?>
+
+
               </ul>
              </div>
             </div>
@@ -648,7 +661,7 @@
 
                                 ?>
 <!-- Bagian Status Surat -->
-            <div class="col-md-5 mt-4">
+<div class="col-md-5 mt-4">
               <div class="card h-100 mb-4">
               
                 <div class="card-header pb-4 px-4">
