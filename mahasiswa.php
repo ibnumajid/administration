@@ -288,7 +288,7 @@ session_start();
                while ($data = mysqli_fetch_array($query)){
                 $tujuan = $data['nama_mhs'];
 
-                if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") {?>
+                if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") { $no++ ?>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                     <div class="d-flex flex-column">
                      <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['file']?></h6>
@@ -316,6 +316,10 @@ session_start();
                   </li>
                 <?php }?>
                 <?php } ?>
+                <?php if ($no == 1) { ?>
+                <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+
+                <?php } ?>
               </ul>
             </div>
 
@@ -338,7 +342,7 @@ session_start();
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   if ($data['nama_mhsw'] == $_SESSION['user']) {
-
+                      $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">
@@ -494,6 +498,11 @@ session_start();
                 
                <?php } ?>
 
+               <?php if ($no == 1) { ?>
+                <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+
+                <?php } ?>
+
               </ul>
              </div>
             </div>
@@ -599,7 +608,8 @@ session_start();
               $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC ');
                while ($data = mysqli_fetch_array($query)){
 
-                if ($data['nama_mhsw'] == $_SESSION['user']) {
+                if ($data['nama_mhsw'] == $_SESSION['user']) { 
+                  $no ++
                 ?>
                   <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
                    <div class="d-flex flex-column">
@@ -622,6 +632,11 @@ session_start();
                         <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                       </div>
                     <?php } }}?>
+                    <?php if ($no == 1) { ?>
+
+                  <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+
+                  <?php } ?>
                   </li>
               </ul>
           </div>

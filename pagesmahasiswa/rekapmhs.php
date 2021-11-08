@@ -210,14 +210,15 @@ if ($_SESSION['user'] == '') {
 
                     <?php
                     include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                    $no = 1;
+                    $no = 0;
+                    $no2 = $no++;
                     $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC' );
                     while ($data = mysqli_fetch_array($query)) {
 
                       $tujuan = $data['nama_mhs'];
 
                       if (strpos($tujuan, $_SESSION['user']) !== false) {
-
+                          $no++
                     ?>
                         <tr>
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -232,7 +233,6 @@ if ($_SESSION['user'] == '') {
                         <?php }
                     }  ?>
 
-                    
                           <?php if ($no == 1) { ?>
 
                           <td></td>
