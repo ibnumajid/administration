@@ -240,9 +240,23 @@ session_start();
               $nama_file = basename($_FILES['fl']['name']);
               $ukuran = $_FILES['fl']['size'];
               $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+              $max = 1024 * 20000;
+              $ekstensi = "pdf";
 
               $url = $nama_file;
 
+              if ($ukuran > $max && $tipe != $ekstensi)
+              {;
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';}
+            
+                else if ($ukuran > $max)
+                {
+                  echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;}
+                   
+                else if ($tipe != $ekstensi && $tipe != $ekstensi2)
+                { 
+                  echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file haru pdf")</script>';
+                }
 
               if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
               {
@@ -250,7 +264,8 @@ session_start();
 
                 if($query)
                 {
-                  echo "Berhasil Input";
+                  echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
+                  ?> <script>history.pushState({}, "", "")</script> <?php
                 }
                 else
                 {
@@ -307,9 +322,9 @@ session_start();
                 <label for="formFile" class="form-label">Pilih Tujuan</label>
                     <select name="adm" class="form-select" aria-label="Default select example">
                         <option selected>Pilih Tujuan Penerima</option>
-                        <option value="Admin 1">Dosen</option>
-                        <option value="Admin 2">Tendik</option>
-                        <option value="Admin 3">Kepala Departemen</option>
+                        <option value="Dosen">Dosen</option>
+                        <option value="Tendik">Tendik</option>
+                        <option value="Kepala Departemen">Kepala Departemen</option>
                     </select>
                 </div>
               </div>
@@ -363,7 +378,8 @@ session_start();
 
                   <?php
                    include '../../_database/config.php'; //panggil setiap ingin koneksi ke data                  $no = 1;
-                   $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');                  while ($data = mysqli_fetch_array($query)) {
+                   $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');                  
+                   while ($data = mysqli_fetch_array($query)) {
                   ?>
                   <tr>
                     <td class="text-center"> <?php echo $no++ ?></td>
