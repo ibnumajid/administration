@@ -680,6 +680,8 @@
                   include "./_database/config.php";
                             
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC ');
+                  $no = 0;
+                  $no2 = $no++;
                   while ($data = mysqli_fetch_array($query)){
 
                     if ($data['nama_dsn'] == $_SESSION['user']) {
@@ -706,6 +708,10 @@
                           </div>
                         <?php } }}?>
                       </li>
+                      <?php if ($no == 1) { ?>
+              <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+
+              <?php } ?>
                   </ul>
               </div>
             </div>
