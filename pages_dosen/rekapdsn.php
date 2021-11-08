@@ -296,6 +296,14 @@
 
 
                   <?php  }
+                   else { ?> 
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class = "text-center">  <?php echo "BELUM ADA SURAT MASUK"; break; ?></td>
+                      
+                    </tr> 
+                <?php }
                   } ?>
                 </table>
               </div>

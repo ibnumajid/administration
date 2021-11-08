@@ -229,10 +229,16 @@ if ($_SESSION['user'] == '') {
                           <p class="modal-title" class="text-left ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p></td>
 
                         </tr>
-
-
-                    <?php  }
-                    } ?>
+                        <?php }
+                        else { ?> 
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class = "text-center">  <?php echo "BELUM ADA SURAT MASUK"; break; ?></td>
+                      
+                    </tr> 
+                <?php }
+                    }  ?>
                   </table>
               </div>
             </div>

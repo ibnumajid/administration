@@ -212,13 +212,12 @@ session_start();
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
                 $max = 1024 * 20000;
                 $ekstensi = "pdf";
-                $ekstensi2 = "docx";
 
                 $url = $nama_file;
 
-             if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
+             if ($ukuran > $max && $tipe != $ekstensi)
             {;
-            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';}
+            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';}
         
             else if ($ukuran > $max)
             {
@@ -226,7 +225,7 @@ session_start();
                
             else if ($tipe != $ekstensi && $tipe != $ekstensi2)
             { 
-              echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf")</script>';
+              echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file haru pdf")</script>';
             }  
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {

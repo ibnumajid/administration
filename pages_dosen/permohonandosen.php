@@ -316,16 +316,16 @@
               $tipe = strtolower(pathinfo($file, PATHINFO_EXTENSION));
               $max = 1024 * 20000;
               $ekstensi = "pdf";
-              $ekstensi2 = "docx";
+
 
               $url = $file;
 
-              if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2) {;
-                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';
+              if ($ukuran > $max && $tipe != $ekstensi) {;
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';
               } else if ($ukuran > $max) {
                 echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>';
               } else if ($tipe != $ekstensi && $tipe != $ekstensi2) {
-                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus docx atau pdf")</script>';
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf")</script>';
               } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
                 $query = mysqli_query($koneksi, "insert into suratdosen values('', '$nama_dsn','$id_npp','$perihal','$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
