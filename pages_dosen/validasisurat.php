@@ -566,6 +566,7 @@
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
+                                  <label for="formFile" class="form-label">Apakah Anda Ingin Menyetujui Surat Tersebut?</label>
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
