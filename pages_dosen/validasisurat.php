@@ -456,9 +456,6 @@
                                     <label for="catatan2" class = "form-label"> Catatan </label>
                                     <input name = "catatan2" type = "text"  >  
                                     </div>
-
-                                 
-                        
                                   </div>
                                 </div>
                               </div>
