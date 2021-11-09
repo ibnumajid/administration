@@ -19,6 +19,8 @@ if($cek > 0){
         $row = mysqli_fetch_array($tambah);
         $_SESSION['user'] ="admin";
         $_SESSION['NIP'] ="0000";
+        $_SESSION['pass'] =$data['pass'];
+        $_SESSION['status'] = $data['status'];
         header("location:./pagesadmin/billingadmin.php");
     }
     elseif ($data['status'] == '2')
@@ -27,7 +29,9 @@ if($cek > 0){
         $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp='$user' ");
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user'] =$data2['nama_anggota'];
-            $_SESSION['NIP'] =$data2['id_npp'];}    
+            $_SESSION['NIP'] =$data2['id_npp'];
+            $_SESSION['pass'] =$data['pass'];
+            $_SESSION['status'] = $data['status'];}    
         header("location:dosen_2.php");
     }
     elseif ($data['status'] == '3')
@@ -36,7 +40,9 @@ if($cek > 0){
         $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_mhs WHERE nrp_mhs='$user' ");
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user'] =$data2['nama_mhs'];
-            $_SESSION['NIP'] =$data2['nrp_mhs'];} 
+            $_SESSION['NIP'] =$data2['nrp_mhs'];
+            $_SESSION['pass'] =$data['pass'];
+            $_SESSION['status'] = $data['status'];} 
         header("location:mahasiswa.php");
     }
     elseif ($data['status'] == '4')
@@ -46,6 +52,8 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{ 
             $_SESSION['user'] =$data2['tendik_nama'];
             $_SESSION['NIP'] =$data2['tendik_nim'];
+            $_SESSION['pass'] =$data['pass'];
+            $_SESSION['status'] = $data['status'];
         }
         header("location:./pages/pagestendik/tendik.php");
     }
