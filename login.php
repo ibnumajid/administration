@@ -87,14 +87,16 @@ if($cek > 0){
     }
     else
     {
-        header("location:home.php");
+        $_SESSION['alert'] = true;
+        header("location:index.php");
     }
 
     }
     
 }
  else{
-     header("location:home.php");
+    $_SESSION['alert'] = true;
+     header("location:index.php");
  }
 
 

@@ -1,3 +1,6 @@
+<?php
+ session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,6 +191,19 @@ if(isset($_POST['input']))
 	<script src="assets/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="assets/js/main.js"></script>
+<!--===============================================================================================-->
+	<!-- JS sweetaler notif login berhasil-->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['alert']) : ?>
+        <script>
+            Swal.fire({
+            icon: 'error',
+            title: 'Gagal Login',
+            text: 'Username atau Password anda salah!!!',
+            })
+        </script>
+    <?php unset($_SESSION['alert']); ?>
+    <?php endif; ?>
 
 </body>
 </html>
