@@ -319,7 +319,7 @@ session_start();
                 <?php }?>
                 <?php } ?>
                 <?php if ($no == 1) { ?>
-                <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+                <h6 class = "text-center"><br><br><br>BELUM ADA SURAT MASUK</h6>
 
                 <?php } ?>
               </ul>
@@ -501,7 +501,7 @@ session_start();
                <?php } ?>
 
                <?php if ($no == 1) { ?>
-                <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+                <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
 
                 <?php } ?>
 
@@ -636,7 +636,7 @@ session_start();
                     <?php } }}?>
                     <?php if ($no == 1) { ?>
 
-                  <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+                  <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
 
                   <?php } ?>
                   </li>

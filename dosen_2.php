@@ -401,7 +401,7 @@
                       <?php }} ?>
                       <?php if ($no == 1) { ?>
 
-                      <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+                      <h6 class = "text-center"><br><br><br>BELUM ADA SURAT MASUK</h6>
                       <?php } ?>
 
                   </ul>
@@ -573,7 +573,7 @@
                <?php } ?>
 
                <?php if ($no == 1) { ?>
-              <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA YANG DIAJUKAN</h6>
 
               <?php } ?>
 
@@ -710,7 +710,7 @@
                         <?php } }}?>
                       </li>
                       <?php if ($no == 1) { ?>
-              <h6 class = "text-center">BELUM ADA SURAT YANG DIAJUKAN</h6>
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
 
               <?php } ?>
                   </ul>
