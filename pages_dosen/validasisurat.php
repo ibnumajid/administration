@@ -475,7 +475,7 @@
                         <?php  }
 
                      else if (strpos($tujuan, $nama) !== false && $nama !== "Imam Arifin, S.T, MT") {
-                        
+                          $no++
 
                     
                   ?> 
