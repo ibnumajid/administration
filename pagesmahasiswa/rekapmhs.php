@@ -161,9 +161,9 @@ if ($_SESSION['user'] == '') {
           </div>
           <ul class="navbar-nav justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="profilmhsw.php" class="nav-link text-white font-weight-bold px-0">
+            <a href="" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
+                <span class="d-sm-inline d-none"> <?php echo $_SESSION['user'] ?> </span>
               </a>
             </li>
           
