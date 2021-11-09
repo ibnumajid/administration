@@ -367,9 +367,9 @@
                     <label for="formFile" class="form-label">Jenis Surat</label>
                     <select name="sr" class="form-select" aria-label="Default select example">
                       <option selected>Pilih Jenis Surat</option>
-                      <option value="Surat perpindahan">Surat Perpindahan Barang Lab</option>
-                      <option value="Surat tugas">Permohonan Surat Tugas</option>
-                      <option value="Surat SK">Permohonan SK</option>
+                      <option value="Surat Perpindahan Barang Lab">Surat Perpindahan Barang Lab</option>
+                      <option value="Permohonan Surat Tugas">Permohonan Surat Tugas</option>
+                      <option value="Permohonan SK">Permohonan SK</option>
                     </select>
                   </div>
                 </div>
