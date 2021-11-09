@@ -173,7 +173,7 @@ if ($_SESSION['user'] == '') {
         <div class="col-12 col-xl-11">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0">Ganti Password <?php echo $_SESSION['pass'] ?></h6>
+              <h6 class="mb-0">Ganti Password</h6>
             </div>
             <div class="card-body p-3">
               <form action = "" method = "post" enctype = "multipart/form-data">
