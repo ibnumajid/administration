@@ -710,7 +710,7 @@
                         <?php } }}?>
                       </li>
                       <?php if ($no == 1) { ?>
-              <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+              <h6 class = "text-center">BELUM ADA SURAT YANG DIAJUKAN</h6>
 
               <?php } ?>
                   </ul>
