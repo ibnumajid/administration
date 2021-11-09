@@ -293,10 +293,8 @@ session_start();
                 <div class="card-body p-3">
                   <div class="row">
                     <div class="col-md-6 mb-md-0 mb-4">
-                      
                     </div>
                     <div class="col-md-6">
-                      
                     </div>
                   </div>
                 </div>
@@ -304,6 +302,7 @@ session_start();
             </div>
           </div>
         </div>
+
         <div class="col-lg-4">
           <div class="card h-100">
             <div class="card-header pb-0 px-3">
@@ -360,19 +359,16 @@ session_start();
                 <?php } ?>
                 <?php if ($no == 1) { ?>
                 <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
-
                 <?php } ?>
               </ul>
             </div>
-
           </div>
         </div>
-
       </div>
 
       <!-- detail permohonan surat  -->
       <div class="row">
-        <div class="col-md-12 mt-5">
+        <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
               <h6 class="mb-0">Detail Permohonan Surat</h6>
@@ -394,6 +390,8 @@ session_start();
                   $no = 1;
                   $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');
                   while ($data = mysqli_fetch_array($query)) {
+                    if ($data['nama_mhsw'] == $_SESSION['user']) {
+                      $no++
               ?>
 
                 <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -410,120 +408,174 @@ session_start();
                   </div>
                   <?php } ?>
 
-                  <!-- modal delete  -->
-                  <!-- <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content"> -->
+                  <?php } ?>
 
+                  <!-- Modal Hapus -->
+                  <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                   <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
 
+                       <!-- popup ajuan surat mahasiswa -->
+                       <div class="modal-header">
+                         <h5 class="modal-title" id="hapus<?php echo $data['id_no'] ?>">Hapus File</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
 
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+                       <div class="modal-body">
+                         <form action="" method="post" enctype="multipart/form-data">
+                           <div class="card-header pb-0 p-3">
+                             <div class="row">
+                               <div class="mb-3">
 
-        <!-- <div class="col-md-5 mt-4">
+                                 <!-- Nama File -->
+                                 <label for="formFile" class="form-label">Nama File</label>
+                                 <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file_surat'] ?></label>
+
+                                 <!-- NRP mahasiswa -->
+                                 <label for="formFile" class="form-label">Perihal</label>
+                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['nama_surat'] ?></label>
+                                 
+                                 <!-- Lihat File -->
+                                 <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
+                                 <a href="./pagesmahasiswa/<?php echo $data['file_surat'] ?>" target="_blank">
+                                    <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file_surat'] ?></em></button></h6>
+                                    </a>
+                                 
+                                 <!-- Input ID untuk memberikan identitas surat -->
+                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+
+                                 <!-- Memberi peringatan -->
+                                 <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
+                                 <h6 class = " modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6>
+ 
+                                
+                               </div>
+                             </div>
+                           </div>
+                       </div>
+
+                       <div class="modal-footer">
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                         <!-- Saat dosen menolak -->
+                           <button type="submite" name="hapus" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                        
+                       </div>
+
+                       </form>
+
+                     </div>
+                     </div>
+                     </div>
+
+                     <!-- Modal Edit -->
+                  <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                   <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
+
+                     <!-- popup ajuan surat mahasiswa -->
+                     <div class="modal-header">
+                         <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+                       </div>
+                             </div>
+                           </div>
+                       </div>
+
+                       <!-- php hapus file -->
+                <?php
+                include "./_database/config.php";
+                if (isset($_POST['hapus'])) {
+
+                  $nama_file3 = basename($_FILES['flhps']['name']);
+                  $id6 = $_POST['id3'];
+                  $url3 = $nama_file3;
+
+                 
+                 $query6 = mysqli_query($koneksi, "DELETE FROM permohonansurat  WHERE id_no = '$id6' ");
+
+                    if ($query6) {
+                      echo '<a href="./permohonansurat.php"><script> alert ("Berhasil Menghapus")</script></a>';
+                ?> <script> history.pushState({}, "", "") </script> <?php
+                              } else {
+                                echo '<a href="./permohonansurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                              }
+                            }
+                          
+
+                                ?>
+
+        <!-- Bagian Status Surat -->
+        <div class="col-md-5 mt-4">
           <div class="card h-100 mb-4">
-            <div class="card-header pb-0 px-3">
+          
+            <div class="card-header pb-4 px-4">
               <div class="row">
                 <div class="col-md-6">
                   <h6 class="mb-0">Status Surat</h6>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end align-items-center">
                   <i class="far fa-calendar-alt me-2"></i>
-                  <small>23 September 2021 </small>
+                  <small><?php  echo date('d F o')?></small>
                 </div>
               </div>
             </div>
-            <div class="card-body pt-4 p-3">
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder mb-3">Newest</h6>
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-danger mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-down"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Informasi Pelaksanaan Proyek Akhir</h6>
-                      <span class="text-xs">23 September 2021, 12:30 PM</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center text-danger text-gradient text-sm font-weight-bold">
-                    Surat Masuk
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Permohonan Surat Rekomendasi Departemen</h6>
-                      <span class="text-xs">23 September 2021, 11:30 AM</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Diajukan
-                  </div>
-                </li>
+            <ul class="list-group">
+              <?php
+              include "./_database/config.php";
+                        
+              $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat ORDER BY id_no DESC ');
+               while ($data = mysqli_fetch_array($query)){
+
+                if ($data['nama_mhsw'] == $_SESSION['user']) { 
+                  //datanya tendik
+                  $no ++
+                ?>
+                  <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
+                   <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark text-sm"><?php echo $data['nama_surat'] ?></h6>
+                      <span class="text-xs"><?php echo $data['waktu_surat'] ?></span>
+                   </div>
+                   <!-- status surat dosen-->
+
+                   <!-- untuk status surat bagian tendik masih belum ada  -->
+                   
+                   <!-- <?php if ($data['status_surat'] == 0) {?>
+                      <div class="d-flex align-items-center text-sm font-weight-bold">
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
+                      </div>
+                    <?php } 
+                    else if ($data['status_surat'] == 1) {?>
+                      <div class="d-flex align-items-center text-sm font-weight-bold">
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                      </div>
+                    <?php }
+                    else if ($data['status_surat'] == 2) {?>
+                      <div class="d-flex align-items-center text-sm font-weight-bold">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                      </div> -->
+                    <?php } }}?>
+                    <?php if ($no == 1) { ?>
+
+                  <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
+
+                  <?php } ?>
+                  </li>
               </ul>
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder my-3">Yesterday</h6>
-              <ul class="list-group">
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 1</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Disetujui
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 2</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Disetujui
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 3</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold">
-                    Disetujui
-                  </div>
-                </li>
-                <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                  <div class="d-flex align-items-center">
-                    <button class="btn btn-icon-only btn-rounded btn-outline-dark mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-exclamation"></i></button>
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark text-sm">Surat 4</h6>
-                      <span class="text-xs">22 September 2021, 13:45 PM</span>
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center text-dark text-sm font-weight-bold">
-                    Pending
-                  </div>
-                </li>
-              </ul>
-            </div>
           </div>
-        </div-->
+        </div>
       </div>
       
     </div>
   </main>
   
   </div>
+  
   <!--   Core JS Files   -->
   <script src="../../assets/js/core/popper.min.js"></script>
   <script src="../../assets/js/core/bootstrap.min.js"></script>
