@@ -438,6 +438,7 @@
                                     
                                                    
                                     <!-- persetujuan surat -->
+                                    <label for="formFile" class="form-label">Apakah Anda Menyetujui Permohonan Surat Tersebut?</label>
                                     <div class="form-check">
                                       <input class="form-check-input" Name="sk" type="radio" value="1" id="defaultCheck1">
                                       <label class="form-check-label" for="defaultCheck1">
