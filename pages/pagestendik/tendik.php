@@ -276,139 +276,128 @@ session_start();
 
 
     <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-8">
           <div class="row">
-            <!---->
-
-            <div class="col-md-12 mb-lg-0 mb-4">
-              <div class="card mt-4">
-                <div class="card-header pb-0 p-3">
+            <div class="col-lg-7">
+              <div class="row">
+                <!---->
+                
+                <div class="col-md-12 mb-lg-0 mb-4">
+                  <div class="card mt-4">
+                    <div class="card-header pb-0 p-3">
+                      <div class="row">
+                        <div class="col-6 d-flex align-items-center">
+                          <h6 class="mb-0">Informasi</h6>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="card-body p-3">
+                      <div class="row">
+                        <div class="col-md-6 mb-md-0 mb-4">
+                          
+                        </div>
+                        <div class="col-md-6">
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="card h-100">
+                <div class="card-header pb-0 px-4">
                   <div class="row">
                     <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0">Informasi</h6>
+                      <h6 class="mb-0">Surat Masuk</h6>
+                    </div>
+                    <div class="col-6 text-end">
+
+                    <!-- untuk bagian surat masuk bagian tendik masih sama dengan dosen -->
+                      <a href = ./rekapsurat.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                     </div>
                   </div>
                 </div>
-                <div class="card-body p-3">
-                  <div class="row">
-                    <div class="col-md-6 mb-md-0 mb-4">
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                  </div>
+                    <hr>    
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+                  <ul class="list-group">
+                        <br>
+                    <?php
+                        include "./_database/config.php";
+                            // belum memasukkan panggilan database untuk surat masuk tendik
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ');
+                    $no = 0;
+                    $no2 = $no++;
+                    while ($data = mysqli_fetch_array($query)){
+                      // belum ada data tendik
+                      $tujuan = $data['nama_dsn'];
+                      if (strpos($tujuan, $_SESSION['user']) !== false) { $no++ ?>
+                     
+                    <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-dark font-weight-bold text-sm"> <?php echo $data ['file'] ?> </h6>
+                        <span class="text-xs"><?php echo $data['perihal'] ?></span>
+                        <span class="text-xs"><?php echo $data['tanggal'] ?></span>
+                      </div>
+                      <div class="d-flex align-items-center text-sm">
+                  
+                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                      </div>
+                    </li>
+                      <?php }} ?>
+                      <?php if ($no == 1) { ?>
+
+                      <h6 class = "text-center"><br><br><br>BELUM ADA SURAT MASUK</h6>
+                      <?php } ?>
+
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-lg-4">
-          <div class="card h-100">
-            <div class="card-header pb-0 px-3">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Surat Masuk</h6>
-                </div>
-                <div class="col-6 text-end">
-                <a href = ./rekapsurat.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
-                </div>
-              </div>
-            </div>
 
-            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
-              <ul class="list-group">
-
-              <?php
-              include "./_database/config.php";
-                        
-              $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC ');
-              $no = 0;
-              $no2 = $no++;
-               while ($data = mysqli_fetch_array($query)){
-                $tujuan = $data['nama_mhs'];
-                // nama tendik masih belum ada
-
-                if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") { $no++ ?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                    <div class="d-flex flex-column">
-                     <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['dokumen']?></h6>
-                      <span class="text-xs"><?=$data['nama']?></span>
-                      <span class="text-xs"><?=$data['tanggal']?></span>
-                    </div>
-                    <div class="d-flex align-items-center text-sm">
-                    <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                      <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                    </a>
-                    </div>
-                  </li>
-                <?php }?>
-                <?php if ($data['tujuan'] == 'Dosen, Mahasiswa' or $data['tujuan'] == 'Tendik, Mahasiswa'){?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
-                      <span class="text-xs"><?=$data['nama']?></span>
-                    </div>
-                    <div class="d-flex align-items-center text-sm">
-                    <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                      <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                    </a>
-                    </div>
-                  </li>
-                <?php }?>
-                <?php } ?>
-                <?php if ($no == 1) { ?>
-                <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
-                <?php } ?>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- detail permohonan surat  -->
+                       <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
         <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
               <h6 class="mb-0">Detail Permohonan Surat</h6>
             </div>
-            <div class="col-md-11 text-end">                  
-              <i class="far fa-calendar-alt me-2"></i>
-                  <small>
-                    <?php
-                      echo date('d  F  Y'); 
-                    ?>
-                  </small>
-                </div>
-            
             <div class="card-body pt-4 p-3">
+            <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
+                <?php include './_database/config.php';
+                $no = 1;
+                $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat ORDER BY id_no DESC');
+                while ($data = mysqli_fetch_array($query)) {
+                  // data nama tendik
+                  if ($data['nama_tendik'] == $_SESSION['user']) {
+                    $no++
+                ?>
+                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-3 text-sm"> <?php echo $data['file_surat'] ?> </h6>
+                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['nama_surat'] ?></span></span>
+                        <span class="mb-2 text-xs">Tujuan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['admin_surat'] ?></span></span>
+                        <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['waktu_surat'] ?></span></span>
+                      </div>
+                      <div class="ms-auto text-end">
+                       <div>
+                      <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
+                      </div>
+                      <!-- <div>   
+                        <button type = "button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Respon</button>
+                      </div> -->
+                      </div>
+                      
+                    </li>
 
-              <?php
-                  include "./_database/config.php"; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');
-                  while ($data = mysqli_fetch_array($query)) {
-                    if ($data['nama_mhsw'] == $_SESSION['user']) {
-                      $no++
-              ?>
+                   
 
-                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                  <div class="d-flex flex-column">
-                    <h6 class="mb-3 text-sm"><?php echo $data['file_surat'] ?> </h6>
-                    <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['nama_surat'] ?></span></span>
-                    <span class="mb-2 text-xs">Tujuan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['admin_surat'] ?></span></span>
-                    <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['waktu_surat'] ?></span></span>
-                  </div>
-                  <div class="ms-auto text-end">
-                  </div>
-                    <button type = "button" class = "btn btn-danger btn-sm text-end" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
-                  </div>
-                  </div>
-                  <?php } ?>
 
-                  <?php } ?>
+                <?php } ?>
 
                   <!-- Modal Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -423,12 +412,13 @@ session_start();
                          </button>
                        </div>
 
+                     
                        <div class="modal-body">
                          <form action="" method="post" enctype="multipart/form-data">
                            <div class="card-header pb-0 p-3">
                              <div class="row">
                                <div class="mb-3">
-
+                               
                                  <!-- Nama File -->
                                  <label for="formFile" class="form-label">Nama File</label>
                                  <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file_surat'] ?></label>
@@ -456,6 +446,7 @@ session_start();
                            </div>
                        </div>
 
+
                        <div class="modal-footer">
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
@@ -470,24 +461,133 @@ session_start();
                      </div>
                      </div>
 
-                     <!-- Modal Edit -->
+                  <!-- Modal Edit -->
                   <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                      <div class="modal-content">
 
-                     <!-- popup ajuan surat mahasiswa -->
-                     <div class="modal-header">
+                       <!-- popup ajuan surat mahasiswa -->
+                       <div class="modal-header">
                          <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                            <span aria-hidden="true">&times;</span>
                          </button>
                        </div>
-                       </div>
+
+                     
+                       <div class="modal-body">
+                         <form action="" method="post" enctype="multipart/form-data">
+                           <div class="card-header pb-0 p-3">
+                             <div class="row">
+                               <div class="mb-3">
+                               
+                                 <!-- nama mahasiswa -->
+                                 <label for="formFile" class="form-label">Catatan Kadep</label>
+                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+
+                               
+                                 <!-- Input ID untuk memberikan identitas surat -->
+                                 <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
+
+                                 <!-- Ubah File saat ditolak filenya -->
+                                <?php if ($data['status_kadep'] == "1") { ?>
+                                   <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
+                                   <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                   <input type="hidden" name="stats2" value="0">
+                                 <?php }
+                                      else { ?>
+                                       <h5 class = "text-info allign-middle modal-title text-center"> Surat Belum Memerlukan Perubahan </h5> 
+                                        <?php } ?> 
+                               </div>
                              </div>
                            </div>
                        </div>
 
-                       <!-- php hapus file -->
+
+                       <div class="modal-footer">
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                         <!-- Saat dosen menolak -->
+                         <?php if ($data['status_kadep']  == "1") { ?>
+                           <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                         <?php } ?>
+                       </div>
+
+                       </form>
+
+                     </div>
+                     </div>
+                     </div>
+                
+               <?php } ?>
+
+               <?php if ($no == 1) { ?>
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA YANG DIAJUKAN</h6>
+
+              <?php } ?>
+
+
+              </ul>
+             </div>
+            </div>
+          </div>
+        </div>
+
+                        <!-- php update surat saat dosen menolak -->
+                        <?php
+                include "./_database/config.php";
+                if (isset($_POST['update'])) {
+
+                  $nama_file2 = basename($_FILES['ufl']['name']);
+                  $id3 = $_POST['id2'];
+                  $nol = $_POST['stats2'];
+
+                  $url2 = $nama_file2;
+
+                  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
+
+                    $query2 = mysqli_query($koneksi, "UPDATE permohonansurat SET `file`='$url2' WHERE id_no = '$id3' ");
+                    $query3 = mysqli_query($koneksi, "UPDATE permohonansurat SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+
+                    if ($query2 && $query3) {
+                      echo '<a href="./permohonansurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                      ?>  <script> history.pushState({}, "", "")</script> <?php
+                              } else {
+                                echo '<a href="./permohonansurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                              }
+                            }
+                          }
+
+                                ?>
+
+                <!-- php update surat saat kadep menolak -->
+                <?php
+                include "./_database/config.php";
+                if (isset($_POST['update2'])) {
+
+                  $nama_file3 = basename($_FILES['uflk']['name']);
+                  $id4 = $_POST['id2'];
+                  $nol = $_POST['stats2'];
+
+                  $url3 = $nama_file3;
+
+                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
+
+                    $query4 = mysqli_query($koneksi, "UPDATE permohonansurat SET `file`='$url3' WHERE id_no = '$id4' ");
+                    $query5 = mysqli_query($koneksi, "UPDATE permohonansurat SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
+
+                    if ($query4 && $query5) {
+                      echo '<a href="./permohonansurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                ?> <script> history.pushState({}, "", "") </script> <?php
+                              } else {
+                                echo '<a href="./permohonansurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                              }
+                            }
+                          }
+
+                                ?>
+
+                <!-- php hapus file -->
                 <?php
                 include "./_database/config.php";
                 if (isset($_POST['hapus'])) {
@@ -509,103 +609,98 @@ session_start();
                           
 
                                 ?>
+<!-- Bagian Status Surat -->
+<div class="col-md-5 mt-4">
+              <div class="card h-100 mb-4">
+              
+                <div class="card-header pb-4 px-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h6 class="mb-0">Status Surat</h6>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end align-items-center">
+                      <i class="far fa-calendar-alt me-2"></i>
+                      <small><?php  echo date('d F o')?></small>
+                    </div>
+                  </div>
+                </div>
+                <ul class="list-group">
+                  <?php
+                  include "./_database/config.php";
+                            
+                  $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat ORDER BY id_no DESC ');
+                  $no = 0;
+                  $no2 = $no++;
+                  while ($data = mysqli_fetch_array($query)){
+                    //nama tendik masih belum ada
+                    if ($data['nama_dsn'] == $_SESSION['user']) {
+                      $no++
+                    ?>
+                      <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-dark text-sm"><?php echo $data['nama_surat'] ?></h6>
+                          <span class="text-xs"><?php echo $data['waktu_surat'] ?></span>
+                      </div>
+                      <!-- status surat dosen-->
+                      <?php if ($data['status_admin'] == 0) {?>
+                          <div class="d-flex align-items-center text-sm font-weight-bold">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Di Proses</span>
+                          </div>
+                        <?php } 
+                        else if ($data['status_admin'] == 1) {?>
+                          <div class="d-flex align-items-center text-sm font-weight-bold">
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
+                          </div>
+                        <?php }
+                        else if ($data['status_admin'] == 2) {?>
+                          <div class="d-flex align-items-center text-sm font-weight-bold">
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Disetujui</span>
+                          </div>
+                        <?php } }}?>
+                      </li>
+                      <?php if ($no == 1) { ?>
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
 
-        <!-- Bagian Status Surat -->
-        <div class="col-md-5 mt-4">
-          <div class="card h-100 mb-4">
-          
-            <div class="card-header pb-4 px-4">
-              <div class="row">
-                <div class="col-md-6">
-                  <h6 class="mb-0">Status Surat</h6>
-                </div>
-                <div class="col-md-6 d-flex justify-content-end align-items-center">
-                  <i class="far fa-calendar-alt me-2"></i>
-                  <small><?php  echo date('d F o')?></small>
-                </div>
+              <?php } ?>
+                  </ul>
               </div>
             </div>
-            <ul class="list-group">
-              <?php
-              include "./_database/config.php";
-                        
-              $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat ORDER BY id_no DESC ');
-               while ($data = mysqli_fetch_array($query)){
-
-                if ($data['nama_mhsw'] == $_SESSION['user']) { 
-                  //datanya tendik
-                  $no ++
-                ?>
-                  <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
-                   <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark text-sm"><?php echo $data['nama_surat'] ?></h6>
-                      <span class="text-xs"><?php echo $data['waktu_surat'] ?></span>
-                   </div>
-                   <!-- status surat dosen-->
-
-                   <!-- untuk status surat bagian tendik masih belum ada  -->
-
-                   <!-- <?php if ($data['status_surat'] == 0) {?>
-                      <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
-                      </div>
-                    <?php } 
-                    else if ($data['status_surat'] == 1) {?>
-                      <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                      </div>
-                    <?php }
-                    else if ($data['status_surat'] == 2) {?>
-                      <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
-                      </div> -->
-                    <?php } }}?>
-                    <?php if ($no == 1) { ?>
-
-                  <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
-
-                  <?php } ?>
-                  </li>
-              </ul>
           </div>
+          
         </div>
-      </div>
+      </main>
       
-    </div>
-  </main>
-  
-  </div>
-  
-  <!--   Core JS Files   -->
-  <script src="../../assets/js/core/popper.min.js"></script>
-  <script src="../../assets/js/core/bootstrap.min.js"></script>
-  <script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../../assets/js/plugins/smooth-scrollbar.min.js"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <!-- JS sweetaler notif login berhasil-->
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['alert']) : ?>
-        <script>
-            Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Berhasil Login',
-            })
-        </script>
-    <?php unset($_SESSION['alert']); ?>
-    <?php endif; ?>
-</body>
+      </div>
+      <!--   Core JS Files   -->
+      <script src="/assets/js/core/popper.min.js"></script>
+      <script src="/assets/js/core/bootstrap.min.js"></script>
+      <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
+      <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+      <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+          var options = {
+            damping: '0.5'
+          }
+          Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+      </script>
+      <!-- Github buttons -->
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+      <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+      <script src="/assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+      <!-- JS sweetaler notif login berhasil-->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <?php if(@$_SESSION['alert']) : ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: 'Berhasil Login',
+                })
+            </script>
+        <?php unset($_SESSION['alert']); ?>
+        <?php endif; ?>
+    </body>
 
-</html>
+    </html>
