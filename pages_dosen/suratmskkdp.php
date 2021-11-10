@@ -172,27 +172,27 @@
         
       <!--SURAT MASUK KADEP -->
       <?php if($_SESSION['user'] == "Imam Arifin, S.T, MT"){ ?>
-      </li> 
-       <li class="nav-item"> 
-        <a class="nav-link  " href="./suratmskkdp.php">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+
+        <li class="nav-item">
+          <a class="nav-link  active" href="suratmskkdp.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
-              <title>document</title> 
-                <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
-                  <g id="Rounded-Icons" transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero"> 
-                    <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)"> 
-                      <g id="document" transform="translate(154.000000, 300.000000)"> 
-                        <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" id="Path" opacity="0.603585379"></path> 
-                        <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z" id="Shape"></path> 
+                <title>document</title> 
+                  <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
+                    <g id="Rounded-Icons" transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero"> 
+                      <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)"> 
+                        <g id="document" transform="translate(154.000000, 300.000000)"> 
+                          <path class="color-background" d="M 40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" id="Path" opacity="0.603585379"></path> 
+                          <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z" id="Shape"></path> 
+                        </g> 
                       </g> 
                     </g> 
                   </g> 
-                </g> 
-              </svg>
-          </div>
-          <span class="nav-link-text ms-1">Surat Masuk</span>
-        </a>
-      </li> <?php } ?>
+                </svg>
+            </div>
+            <span class="nav-link-text ms-1">Surat Masuk</span>
+          </a>
+        </li> <?php } ?>
       
          <!--profil-->
 <li class="nav-item mt-3">
@@ -337,8 +337,8 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item d-flex align-items-center">
-            <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+           <li class="nav-item d-flex align-items-center">
+          <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -358,7 +358,7 @@
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Surat Masuk Admin</h6>
+                  <h6 class="mb-0">Surat Masuk Kepala Departemen</h6>
                 </div>
               </div>
             </div>
@@ -367,12 +367,12 @@
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
-                    <tr>
-                      <th class="text-center">No</th>                 
+                    <tr>           
                       <th>Jenis Surat</th>
                       <th>Nama Pengirim</th>
-                      <th>NRP/NPP</th>
-                      <th>Tanggal</th>
+                      <th class="align-middle text-center">NRP/NPP</th>
+                      <th class="align-middle text-center">Tanggal</th>
+                      <th class="align-middle text-center">Status Kadep<th>  
                     </tr>
                    <tr> <h6></h6></tr>
                   </thead>
@@ -381,21 +381,153 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1;
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY tanggal' );
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY tanggal' );
           
                   while ($data = mysqli_fetch_array($query)) {
                     $tujuan = $data['dosen_pembimbing'];                 
                       if (strpos($tujuan, $nama) !== false) {
                   ?>
-                  <tr>
-                    <td class="text-center"><?php echo $no++ ?></td>'                   
-                    <td><?php echo $data['progres'] ?></td>
-                    <td><?php echo $data['nama_mhsw'] ?></td>
-                    <td><?php echo $data['id_nrp'] ?></td>
-                    <td><?php echo $data['tanggal'] ?></td>
-                  </tr>
+                 <!-- tabel -->
+                 <tbody>
+                      <tr>
+                        <!-- file -->
+                        
+                          <div class="d-flex px-2 py-1">
+                            <div>
+                              <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
+                            </div>          
+                          </div>
+                       
+                        <!-- progres -->
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
+                        </td>
+                        <!-- nama -->
+                        <td>
+                        <h6 class="mb-0 text-sm"><?php echo $data['nama_mhsw'] ?></h6>
+                        </td>
+                        <!-- nrp -->
+                        <td>
+                        <h6 class="mb-0 text-sm align-middle text-center"><?php echo $data['id_nrp'] ?></h6>
+                        </td>
+                        <!-- tanggal -->
+                        <td class="align-middle text-center">
+                          <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                        </td>
+
+                        <!-- status surat kadep -->
+                        <?php if ($data['status_kadep'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Menunggu Untuk Diproses</span>
+                        </td> <?php } 
+                              else if ($data['status_kadep'] == 1) {?>
+                          <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                        </td> 
+                              <?php }
+  
+                              else if ($data['status_kadep'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
+                        </td> <?php } ?> 
+                        <!-- button edit -->
+                        <td class="align-middle">
+                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Edit</button>
+                          </a>
+                        </td>
+                        <!-- and tabel -->
+                        
+                        <!-- Modal -->
+                      <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                             <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>  
+                            
+                              <div class="modal-body">
+                          
+                          <form action="" method="post" enctype ="multipart/form-data">
+                              <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                  <div class="mb-3">
+                                    <!-- nama mahasiswa -->
+                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
+                                    <!-- NRP mahasiswa -->
+                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
+                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                                    <!-- progres -->
+                                    <label for="formFile" class="form-label">Perihal</label>
+                                    <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                    <!-- file surat -->
+                                    <label for="formFile" class="form-label">Lihat File</label>
+                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                    <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                                    </a>
+                                    <!-- Menginput id surat -->
+                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                
+                                    
+                                                   
+                                    <!-- persetujuan surat -->
+                                    <div class="form-check">
+                                      <input class="form-check-input" Name="sk" type="radio" value="1" id="defaultCheck1">
+                                      <label class="form-check-label" for="defaultCheck1">
+                                        Tidak Disetujui
+                                      </label>
+                                    </div>
+                                    <div class="form-check">
+                                      <input class="form-check-input" Name="sk" type="radio" value="2" id="defaultCheck1">
+                                      <label class="form-check-label" for="defaultCheck1">
+                                        Disetujui
+                                      </label>
+
+                                      <!-- Menginput catatan -->
+                                    <div>
+                                    <label for="catatan2" class = "form-label"> Catatan </label>
+                                    <input name = "catatan2" type = "text"  >  
+                                    </div>
+
+                                 
+                        
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- button upload close -->
+                              </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submite" name="updatekdp" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                            </div>
+                          </form>
+                            </div>
+                          </div>
+                        </div>  
                   <?php }} ?>
                 </table>
+                   <!-- update catatan kadep -->
+                   <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['updatekdp'])){
+                     $catatan2 = $_POST['catatan2'];
+                     $id = $_POST['id'];
+                     $status = $_POST['sk'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
+                     $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
+                     if($query && $query2){
+                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil Memproses")</script></a>';
+                     }
+                     else {
+                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil Memproses1")</script></a>';
+                     }
+                   }?>  
               </div>
             </div>
           </div>
