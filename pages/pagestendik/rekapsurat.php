@@ -110,8 +110,8 @@ session_start();
           </a>
         </li>
 
-        <!-- </li>
-        <li class="nav-item mt-3">
+      <!--profil-->
+      <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -132,9 +132,9 @@ session_start();
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Profile</span>
+            <span class="nav-link-text ms-1">Ganti Password</span>
           </a>
-        </li> -->
+        </li>
         
       </ul>
     </div>
