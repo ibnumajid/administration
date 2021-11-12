@@ -309,9 +309,9 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 0;
                   $no2 = $no++;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin UNION SELECT * FROM kirimadmindsn UNION SELECT * FROM kirimadmintndk ORDER BY tanggal' );
+                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin UNION SELECT * FROM kirimadmindsn UNION SELECT * FROM kirimadmintndk ORDER BY tanggal DESC' );
                   while ($data = mysqli_fetch_array($query)) {
-                      $no++
+
                   ?>
                   
                   <tr>
