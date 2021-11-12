@@ -51,10 +51,10 @@ if($cek > 0){
     elseif ($data['status'] == '4')
     {
         session_start();
-        $tambah2 = mysqli_query($koneksi, "SELECT * FROM tendik WHERE tendik_nim='$user' ");
+        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_tendik WHERE nip_tdk = '$user' ");
         $data2 = mysqli_fetch_assoc($tambah2);{ 
-            $_SESSION['user'] =$data2['tendik_nama'];
-            $_SESSION['NIP'] =$data2['tendik_nim'];
+            $_SESSION['user'] =$data2['nama_tdk'];
+            $_SESSION['NIP'] =$data2['nip_tdk'];
             $_SESSION['pass'] =$data['pass'];
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;
