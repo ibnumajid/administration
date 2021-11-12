@@ -198,8 +198,8 @@ if(isset($_POST['input']))
         <script>
             Swal.fire({
             icon: 'error',
-            title: 'Gagal Login',
-            text: 'Username atau Password anda salah!!!',
+            title: 'Gagal',
+            text: 'Username / Password Salah',
             })
         </script>
     <?php unset($_SESSION['alert']); ?>

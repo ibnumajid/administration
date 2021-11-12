@@ -87,7 +87,7 @@ if($cek > 0){
     }
     else
     {
-        $_SESSION['alert'] = true;
+        
         header("location:index.php");
     }
 
