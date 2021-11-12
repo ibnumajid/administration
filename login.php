@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include('_database/config.php');
  
 $user = $_POST['user'];
