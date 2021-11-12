@@ -297,30 +297,34 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-center">No</th>
-                      <th class="text-left ps-1">Nama Surat</th>
-                      <th class="text-left ps-1">Nomor Surat</th>
-                      <th class="text-left ps-1">Tujuan</th>
-                      <th class="text-left ps-1">Dokumen</th>
-                      <th class="text-center">Tanggal</th>
+                      <th>No</th>
+                      <th>Nama Pengirim</th>
+                      <th>Perihal</th>
+                      <th>Dokumen</th>
+                      <th>Tanggal</th>
                     </tr>
                   </thead>
 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
-
+                  $no = 0;
+                  $no2 = $no++;
+                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin UNION SELECT * FROM kirimadmindsn UNION SELECT * FROM kirimadmintndk ORDER BY tanggal' );
                   while ($data = mysqli_fetch_array($query)) {
+                      $no++
                   ?>
+                  
                   <tr>
-                    <td class="text-center"><?php echo $no++ ?></td>
-                    <td class="text-left ps-1"><?php echo $data['nama'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['nomor'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['tujuan'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['dokumen'] ?></td>
-                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                    <td><?php echo $no++ ?></td>
+                    <td><?php echo $data['nama'] ?></td>
+                    <td><?php echo $data['perihal'] ?></td>
+                    <td><?php echo $data['file'] ?></td>
+                    <td><?php echo $data['tanggal'] ?></td>
                   </tr>
+                  <?php } ?>
+                  <?php if ($no == 1) { ?>
+
+                  <h6 class = "text-center"><br><br><br>BELUM ADA SURAT MASUK</h6>
                   <?php } ?>
                 </table>
               </div>
