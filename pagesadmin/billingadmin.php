@@ -412,12 +412,12 @@
         <div class="row">
 
           <div class="col-md-7 mt-4">
-            <div style = "width:800px" class="card">
+            <div class="card">
               <div class="card-header pb-0 px-3">
                 <h6 class="mb-0">Detail Permohonan Surat Dosen</h6>
               </div>
               
-              <div style = "width:800px" class="card-body pt-4 p-3">
+              <div class="card-body pt-4 p-3">
               <div class="table-responsive p-0">
               <div style = "height:400px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
 
@@ -609,7 +609,7 @@
                     
           <div class="col-md-5 mt-4">
             <div class="card h-100 mb-4">
-              <div style = "height:69px" class="card-header pb-0 px-3">
+              <div class="card-header pb-0 px-3">
                 <div class="row">
                   <div class="col-md-6">
                     <h6 class="mb-0">Detail Permohonan Surat Mahasiswa</h6>
@@ -623,7 +623,7 @@
 
               <div class="card-body pt-4 p-3">
               <div class="table-responsive p-0">
-              <div style = "height:380px; width:530px;" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+              <div style = "height:380px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
 
                   <table class="table align-items-center mb-0" >
                     <thead>
