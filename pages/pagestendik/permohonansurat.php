@@ -256,8 +256,10 @@ session_start();
             include '../../_database/config.php';
             if(isset($_POST['input']))
             {
-              $progres = $_POST['nm'];
-              $admin = $_POST['adm'];
+              $namatendik = $_POST['nm'];
+              $niptendik = $_POST['nip'];
+              $perihal = $_POST['perihal'];
+
               
               $nama_file = basename($_FILES['fl']['name']);
               $ukuran = $_FILES['fl']['size'];
@@ -282,7 +284,7 @@ session_start();
 
               if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
               {
-                $query = mysqli_query($koneksi,"insert into permohonansurat values('','$progres','$admin','$url',sysdate())");
+                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                 if($query)
                 {
@@ -328,29 +330,16 @@ session_start();
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="nm"  class="form-select" aria-label="Default select example">
+                    <select name="perihal"  class="form-select" aria-label="Default select example">
                         <option selected>Pilih Jenis Surat</option>
-                        <option value="Surat Permohonan">Surat Permohonan</option>
-                        <option value="Surat Ijin">Surat Ijin</option>
-                        <option value="Surat Cuti">Surat Cuti</option>
+                        <option value="Surat Tugas">Surat Tugas</option>
+                        <option value="Surat Keterangan">Surat Keterangan</option>
+                        <option value="Surat Perpindahan Barang Lab">Surat Perpindahan Barang Lab</option>
                     </select>
                 </div>
               </div>
             </div>
 
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Pilih Tujuan</label>
-                    <select name="adm" class="form-select" aria-label="Default select example">
-                        <option selected>Pilih Tujuan Penerima</option>
-                        <option value="Dosen">Dosen</option>
-                        <option value="Tendik">Tendik</option>
-                        <option value="Kepala Departemen">Kepala Departemen</option>
-                    </select>
-                </div>
-              </div>
-            </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
@@ -391,26 +380,113 @@ session_start();
                   <thead>
                     <tr>
                       <th class="text-center">No</th>
-                      <th class="text-left ps-1">Perihal</th>
-                      <th class="text-left ps-1">Tujuan</th>
-                      <th class="text-left ps-1">File Surat</th>
-                      <th class="text-center">Waktu Upload</th>
+                      <th>Perihal</th>
+                      <th>Tanggal Upload</th>
+                      <th>Status Kadep</th>
+                      <th>Proses Admin</th>
+                      <th>Catatan</th>
                     </tr>
                   </thead>
 
                   <?php
                    include '../../_database/config.php'; //panggil setiap ingin koneksi ke data                  $no = 1;
-                   $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat');                  
+                   $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no');                  
                    while ($data = mysqli_fetch_array($query)) {
+                  if ($data['nama_tdk'] == $_SESSION['user']) {
+                        $no++
                   ?>
-                  <tr>
-                    <td class="text-center"> <?php echo $no++ ?></td>
-                    <td class="text-left ps-1"><?php echo $data['nama_surat'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['admin_surat'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['file_surat'] ?></td>
-                    <td class="text-center"><?php echo $data['waktu_surat'] ?></td>
-                  </tr>
-                  <?php } ?>
+                      <tr>
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td><?php echo $data['perihal'] ?></td>
+                        <td><?php echo $data['tanggal'] ?></td>
+
+                        <!-- status kadep -->
+                        <?php if ($data['status_kadep'] == 0) { ?>
+                          <td class="align-middle">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                          </td> <?php } else if ($data['status_kadep'] == 1) { ?>
+                          <td class="align-middle">
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                          </td>
+                        <?php } else if ($data['status_kadep'] == 2) { ?>
+                          <td>
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                          </td> <?php } ?>
+                          
+                          <!-- status aktivitas admin -->
+                      <?php if ($data['status_admin'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                        </td> 
+  
+                         <?php } else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
+                        </td> <?php } ?> 
+
+                        <!-- button edit -->
+                        <td class="align-middle">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                          </a>
+                        </td>
+                        <!-- Modal -->
+                        <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+
+                              <div class="modal-body">
+
+                              <form action="" method="post" enctype="multipart/form-data">
+                                  <div class="card-header pb-0 p-3">
+                                    <div class="row">
+                                      <div class="mb-3">
+                                        <!-- nama mahasiswa -->
+                                        <label for="formFile" class="form-label">Catatan Kadep</label>
+                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+ 
+                                        <!-- Input ID untuk memberikan identitas surat -->
+                                        <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
+
+                                        <!-- Ubah File saat ditolak filenya -->
+                                         <?php if ($data['status_kadep'] == "1") { ?>
+                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
+                                          <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                          <input type="hidden" name="stats2" value= "0">
+                                        <?php } ?>
+
+
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                                          <!-- Saat dosen menolak -->
+                                          <?php if ($data['status_kadep']  == "1") { ?>
+                                            <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                          <?php } ?>
+                                          </div>
+                                        </form>
+                                        <?php }
+                                        }  ?>
+
+                                        </div>
+                                        
+                      </tr>
+                      <?php 
+                      if ($no == 1) { ?>
+
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                    <?php } ?>
+
                 </table>
               </div>
             </div>
