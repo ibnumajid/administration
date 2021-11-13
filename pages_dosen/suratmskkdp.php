@@ -545,10 +545,10 @@
                          <td></td>
                          <td></td>
                          <td></td>
-                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
                     <?php } ?>
                 </table>
-                
+
                    <!-- update catatan kadep -->
                    <?php 
                    include "../_database/config.php";
