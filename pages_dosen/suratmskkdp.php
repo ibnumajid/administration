@@ -17,9 +17,10 @@
   session_start();
   if($_SESSION['user']== '' )
     {
-        header("location:home.php");
+        header("location:index.php");
   }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -544,7 +545,7 @@
 
                          <td></td>
                          <td></td>
-                         <td></td>
+                        
                     <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
                     <?php } ?>
                 </table>
