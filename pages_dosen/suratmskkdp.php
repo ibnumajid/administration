@@ -1,10 +1,11 @@
 <?php
   session_start();
+  
   if($_SESSION['user']== '' )
     {
-        header("location:index.php");
+        header("location:home.php");
   }
-?>  
+?>
 
 <!DOCTYPE html>
 <html lang="en">
