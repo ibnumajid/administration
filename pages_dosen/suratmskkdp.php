@@ -150,7 +150,7 @@
               <!-- Validasi Surat Dosen -->
               <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
           <li class="nav-item">
-            <a class="nav-link  " href="./validasitendik.php">
+            <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                   <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
@@ -199,7 +199,8 @@
       <!--SURAT MASUK KADEP -->
       <?php if($_SESSION['user'] == "Imam Arifin, S.T, MT"){ ?>
 
-        <li class="nav-item">
+               <!--REKAP SURAT MAHASISWA -->
+               <li class="nav-item">
           <a class="nav-link  active" href="suratmskkdp.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
@@ -216,7 +217,7 @@
                   </g> 
                 </svg>
             </div>
-            <span class="nav-link-text ms-1">Surat Masuk</span>
+            <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
           </a>
         </li> <?php } ?>
       
@@ -405,13 +406,15 @@
                 
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
+                  $no = 0;
+                  $no2 = $no++;
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY tanggal' );
           
                   while ($data = mysqli_fetch_array($query)) {
                     $tujuan = $data['dosen_pembimbing'];                 
                       if (strpos($tujuan, $nama) !== false) {
+                        $no++
                   ?>
                  <!-- tabel -->
                  <tbody>
@@ -535,6 +538,11 @@
                           </div>
                         </div>  
                   <?php }} ?>
+
+                      <?php if ($no == 1) { ?>
+
+                      <h6 class = "text-center">BELUM ADA SURAT MASUK</h6>
+                      <?php } ?>
                 </table>
                    <!-- update catatan kadep -->
                    <?php 

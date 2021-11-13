@@ -115,7 +115,7 @@
               <!-- Validasi Surat Dosen -->
               <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
           <li class="nav-item">
-            <a class="nav-link  " href="./validasitendik.php">
+            <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg class="text-dark" width="16px" height="16px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
                   <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> 
