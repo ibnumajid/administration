@@ -189,7 +189,7 @@ if ($_SESSION['user'] == '') {
                       $tujuan = $data['nama'];
 
                       if (strpos($tujuan, $_SESSION['user']) !== false) {
-                     
+                        $no++
                     ?>
                         <tr>
                           <td class="text-center"><?php echo $no++ ?></td>
