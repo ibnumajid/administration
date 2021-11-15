@@ -283,7 +283,8 @@
                     </div>
                     <div class="card-body p-3">
                       <div class="row">
-                      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner" style="height:400px">
       <div class="carousel-item">
         <div class="page-header min-vh-75 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1537511446984-935f663eb1f4?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80');">
@@ -372,7 +373,7 @@
                   </div>
                 </div>
                     <hr>    
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px"> 
                   <ul class="list-group">
                         <br>
                     <?php

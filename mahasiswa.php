@@ -314,7 +314,7 @@ session_start();
               </div>
             </div>
 
-            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
               <ul class="list-group">
               <?php
               include "./_database/config.php";
