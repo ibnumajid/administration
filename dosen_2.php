@@ -319,7 +319,7 @@
                     $no = 0;
                     $no2 = $no++;
                     while ($data = mysqli_fetch_array($query)){
-                      $tujuan = $data['nama_dsn'];
+                      $tujuan = $data['nama'];
                       if (strpos($tujuan, $_SESSION['user']) !== false) { $no++ ?>
                      
                     <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">

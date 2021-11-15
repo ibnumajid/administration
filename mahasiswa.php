@@ -259,7 +259,7 @@ session_start();
               $no = 0;
               $no2 = $no++;
                while ($data = mysqli_fetch_array($query)){
-                $tujuan = $data['nama_mhs'];
+                $tujuan = $data['nama'];
 
                 if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") { $no++ ?>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
