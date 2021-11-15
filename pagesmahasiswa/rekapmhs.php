@@ -186,7 +186,7 @@ if ($_SESSION['user'] == '') {
                     $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC' );
                     while ($data = mysqli_fetch_array($query)) {
 
-                      $tujuan = $data['nama_mhs'];
+                      $tujuan = $data['nama'];
 
                       if (strpos($tujuan, $_SESSION['user']) !== false) {
                           $no++

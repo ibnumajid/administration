@@ -253,7 +253,7 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn order by id_no DESC' );
                   while ($data = mysqli_fetch_array($query)) {
 
-                    $tujuan = $data['nama_dsn'];
+                    $tujuan = $data['nama'];
 
                     if (strpos($tujuan, $_SESSION['user']) !== false) {
 
