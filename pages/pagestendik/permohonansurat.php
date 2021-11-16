@@ -353,12 +353,12 @@ session_start();
                           <!-- status aktivitas admin -->
                       <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
                         </td> <?php } ?> 
 
                         <!-- button edit -->
