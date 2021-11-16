@@ -267,7 +267,7 @@ session_start();
               $max = 1024 * 20000;
               $ekstensi = "pdf";
 
-              $url = $nama_file;
+              $url = $niptendik.'_'.$nama_file;
 
               if ($ukuran > $max && $tipe != $ekstensi)
               {;
@@ -497,7 +497,7 @@ session_start();
                   $id4 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url3 = $nama_file3;
+                  $url3 = $id4.'_'.$nama_file3;
 
                   if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
 

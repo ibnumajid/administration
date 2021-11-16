@@ -418,7 +418,7 @@
                       $statusadmin = $_POST['stadmin'];
                       $perihal = $_POST['perihal2'];
                       
-                      $url2 = $nama_file2;
+                      $url2 = $id.'_'.$nama_file2;
                       
                     if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
                       $query2 = mysqli_query($koneksi, "insert into kirimadmintndk values ('$id', '$url2', '$nama_dsn', '$perihal', sysdate()) ");
