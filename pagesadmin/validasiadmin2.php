@@ -216,10 +216,10 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM dosen ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  $tujuan = $data['nama_tdk'];
+                  $tujuan = $data['nama_dsn'];
                   
    ?>   <!-- Persetujuan oleh admin saja --> <?php 
 
