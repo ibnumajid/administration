@@ -25,6 +25,17 @@ if($cek > 0){
         $_SESSION['alert'] = true;
         header("location:./pagesadmin/billingadmin.php");
     }
+    elseif($data['status'] == '6')
+    {
+    
+        session_start();
+        $row = mysqli_fetch_array($tambah);
+        $_SESSION['user'] ="superadmin";
+        $_SESSION['NIP'] ="0000";
+        $_SESSION['pass'] =$data['pass'];
+        $_SESSION['status'] =$data['status'];
+        header("location:pagesadmin/billingadmin.php");
+    }
     elseif ($data['status'] == '2')
     {
         session_start();
