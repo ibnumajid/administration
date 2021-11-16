@@ -243,11 +243,11 @@
                         </td>
                         <!-- nama -->
                         <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['nama_tdk'] ?></h6>
+                        <h6 class="mb-0 text-sm"><?php echo $data['nama_dsn'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['id_nip'] ?></h6>
+                        <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
