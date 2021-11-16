@@ -35,7 +35,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
         <!-- <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo"> -->
-        <span class="ms-4 font-weight-bold">Sistem Administrasi</span>
+        <span class="ms-4 font-weight-bold">Sistem Administrasi Admin</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -139,7 +139,7 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Admin</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk dari Mahasiswa</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Surat Masuk dari Mahasiswa</h6>
@@ -268,7 +268,7 @@
   
                               else if ($data['status_surat'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                         </td> <?php } ?> 
 
                         <!-- status surat kadep -->
@@ -284,18 +284,18 @@
   
                               else if ($data['status_kadep'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                         </td> <?php } ?> 
                         
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk diProses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk Diproses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Memproses</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
                         <!-- button edit -->
