@@ -57,7 +57,7 @@
         </li>
 
         <!-- Permohonan Surat -->
-        <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
+        <?php if($_SESSION['status'] !== '5'){ ?>
         <li class="nav-item">
           <a class="nav-link  " href="./permohonandosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -83,7 +83,7 @@
         </li>
 
          <!-- Validasi Surat Dosen -->
-         <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
+         <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -97,7 +97,7 @@
           <?php } ?>
 
         <!-- Validasi Surat Tendik -->
-        <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
+        <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -113,7 +113,7 @@
 
 
         <!-- REKAP SURAT -->
-<?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
+<?php if($$_SESSION['status'] !== '5'){ ?>
                  <li class="nav-item"> 
         <a class="nav-link  " href="./rekapdsn.php">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -126,7 +126,7 @@
         <?php } ?>
 
       <!--SURAT MASUK KADEP -->
-      <?php if($_SESSION['user'] == "Imam Arifin, S.T, MT"){ ?>
+      <?php if($_SESSION['status'] == '5'){ ?>
       </li> 
        <li class="nav-item"> 
         <a class="nav-link  " href="./suratmskkdp.php">
@@ -250,7 +250,7 @@
                        $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                        $data = mysqli_fetch_array($query);
 
-                       if ($_SESSION['user'] == "Imam Arifin, S.T, MT" ) { ?>
+                       if ($_SESSION['status'] == '5' ) { ?>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kadep</th>
                       <?php } ?>
                      
@@ -268,7 +268,7 @@
                   
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
 
-                  if ($nama == "Imam Arifin, S.T, MT" && $data['status_surat'] == "2" ) {
+                  if ($_SESSION['status'] == '5' && $data['status_surat'] == "2" ) {
                         $no++
                     ?> 
                     <!-- tabel -->
@@ -409,7 +409,7 @@
                         <!-- and popup ajuan surat mahasiswa -->
                         <?php  }
 
-                     else if (strpos($tujuan, $nama) !== false && $nama !== "Imam Arifin, S.T, MT") {
+                     else if (strpos($tujuan, $nama) !== false && $_SESSION['status'] !== '5') {
                           $no++
 
                     

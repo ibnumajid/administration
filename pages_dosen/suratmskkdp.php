@@ -68,7 +68,7 @@
         </li>
 
         <!-- Validasi Surat Dosen -->
-        <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
+        <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -82,7 +82,7 @@
           <?php } ?>
 
           <!-- Validasi Surat Dosen -->
-          <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
+          <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -98,7 +98,7 @@
 
 
         <!-- REKAP SURAT -->
-        <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
+        <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapdsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -112,7 +112,7 @@
         <?php } ?>
         
       <!--SURAT MASUK KADEP -->
-      <?php if($_SESSION['user'] == "Imam Arifin, S.T, MT"){ ?>
+      <?php if($_SESSION['status'] == '5'){ ?>
 
         <!--REKAP SURAT MAHASISWA -->
         <li class="nav-item">
