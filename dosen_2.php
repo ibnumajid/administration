@@ -94,7 +94,7 @@
 
           
           <!-- Permohonan Surat -->
-  <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
+  <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item">
             <a class="nav-link  " href="./pages_dosen/permohonandosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -134,7 +134,7 @@
           <?php } ?>
 
                    <!-- Validasi Surat Dosen -->
-                   <?php if ($_SESSION['user'] == "Imam Arifin, S.T, MT") {?>
+                   <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./pages_dosen/validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -149,7 +149,7 @@
           <?php } ?>
 
           <!-- REKAP SURAT -->
-          <?php if($_SESSION['user'] !== "Imam Arifin, S.T, MT"){ ?>
+          <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./pages_dosen/rekapdsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -165,7 +165,7 @@
           
           
         <!--SURAT MASUK KADEP -->
-        <?php if($_SESSION['user'] == "Imam Arifin, S.T, MT"){ ?>
+        <?php if($_SESSION['status'] == '5'){ ?>
         </li> 
         <li class="nav-item"> 
           <a class="nav-link  " href="./pages_dosen/suratmskkdp.php">
