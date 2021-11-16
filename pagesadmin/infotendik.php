@@ -340,7 +340,7 @@
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['nip_tdk'] ?>">Persetujuan Surat</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['nip_tdk'] ?>">Lihat Info Akun</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -404,7 +404,7 @@
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="ganti<?php echo $data['nip_tdk'] ?>">Persetujuan Surat</h5>
+                                <h5 class="modal-title" id="ganti<?php echo $data['nip_tdk'] ?>">Ganti Password</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>

@@ -125,7 +125,7 @@
             <span class="nav-link-text ms-1">Akun Dosen</span>
           </a>
         </li>
-        
+
         <!-- Akun Tendik  -->
       <li class="nav-item">
           <a class="nav-link  " href="../pagesadmin/infotendik.php">
@@ -338,7 +338,7 @@
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['nrp_mhs'] ?>">Persetujuan Surat</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['nrp_mhs'] ?>">Lihat Info Akun</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -402,7 +402,7 @@
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="ganti<?php echo $data['nrp_mhs'] ?>">Persetujuan Surat</h5>
+                                <h5 class="modal-title" id="ganti<?php echo $data['nrp_mhs'] ?>">Ganti Password</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
