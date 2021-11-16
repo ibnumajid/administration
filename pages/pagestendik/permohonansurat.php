@@ -340,7 +340,7 @@ session_start();
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
                           <td class="align-middle">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                           </td> <?php } else if ($data['status_kadep'] == 1) { ?>
                           <td class="align-middle">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
@@ -353,12 +353,12 @@ session_start();
                           <!-- status aktivitas admin -->
                       <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Proses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Proses Selesai</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
                         <!-- button edit -->

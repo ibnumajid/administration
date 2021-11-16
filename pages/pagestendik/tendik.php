@@ -596,7 +596,7 @@ session_start();
                       <!-- status surat dosen-->
                       <?php if ($data['status_admin'] == 0) {?>
                           <div class="d-flex align-items-center text-sm font-weight-bold">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Di Proses</span>
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
                           </div>
                         <?php } 
                         else if ($data['status_admin'] == 1) {?>
