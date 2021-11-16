@@ -141,6 +141,14 @@ if ($_SESSION['user'] == '') {
         </div>
       </div>
     </div>
+
+    <?php 
+include "./_database/config.php";
+$npp = $_SESSION['NIP'];
+    $query = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user = '$npp' ");
+    $data = mysqli_fetch_array($query);  
+?>
+
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12 col-xl-11">
@@ -191,7 +199,7 @@ if ($_SESSION['user'] == '') {
                 include "./_database/config.php";
                 if (isset($_POST['btnChangePassword'])) {
 
-                  $passwordasli = $_SESSION['pass'];
+                  $passwordasli = $data['pass'];
                   $passwordlama = $_POST['pwl'];
                   $passwordbaru = $_POST['pwb'];
                   $konfirmasipassword = $_POST['kpwb'];

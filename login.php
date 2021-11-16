@@ -20,7 +20,7 @@ if($cek > 0){
         $row = mysqli_fetch_array($tambah);
         $_SESSION['user'] ="admin";
         $_SESSION['NIP'] ="0000";
-        $_SESSION['pass'] =$data['pass'];
+       
         $_SESSION['status'] = $data['status'];
         $_SESSION['alert'] = true;
         header("location:./pagesadmin/billingadmin.php");
@@ -32,7 +32,7 @@ if($cek > 0){
         $row = mysqli_fetch_array($tambah);
         $_SESSION['user'] ="superadmin";
         $_SESSION['NIP'] ="0000";
-        $_SESSION['pass'] =$data['pass'];
+        
         $_SESSION['status'] =$data['status'];
         header("location:pagesadmin/billingadmin.php");
     }
@@ -43,7 +43,7 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user'] =$data2['nama_anggota'];
             $_SESSION['NIP'] =$data2['id_npp'];
-            $_SESSION['pass'] =$data['pass'];
+          
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;}    
         header("location:dosen_2.php");
@@ -55,7 +55,7 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user'] =$data2['nama_mhs'];
             $_SESSION['NIP'] =$data2['nrp_mhs'];
-            $_SESSION['pass'] =$data['pass'];
+    
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;} 
         header("location:mahasiswa.php");
@@ -67,7 +67,7 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{ 
             $_SESSION['user'] =$data2['nama_tdk'];
             $_SESSION['NIP'] =$data2['nip_tdk'];
-            $_SESSION['pass'] =$data['pass'];
+          
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;
         }
@@ -80,7 +80,7 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user']   = $data2['nama_anggota'];
             $_SESSION['NIP']    = $data2['id_npp'];
-            $_SESSION['pass']   = $data['pass'];
+          
             $_SESSION['status'] = $data['status'];
         header("location:dosen_2.php");
         }
