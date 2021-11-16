@@ -65,13 +65,16 @@ if($cek > 0){
     elseif ($data['status'] == '5')
     {
         session_start();
-        $tambah2 = mysqli_query($koneksi, "SELECT * FROM kadep WHERE kdp_nip='$user' ");
+        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE nama_anggota = 'Imam Arifin, S.T, MT' ");
         $data2 = mysqli_fetch_assoc($tambah2);{
-            $_SESSION['user'] =$data2['kdp_nama'];
-            $_SESSION['NIP'] =$data2['kdp_nip'];
-            $_SESSION['alert'] = true;}    
-        header("location:./pages/kadep/kadep.php");
-    }
+            $_SESSION['user']   = $data2['nama_anggota'];
+            $_SESSION['NIP']    = $data2['id_npp'];
+            $_SESSION['pass']   = $data['pass'];
+            $_SESSION['status'] = $data['status'];
+        header("location:dosen_2.php");
+        }
+    
+}
     elseif ($data['status'] == '6')
     {
         session_start();
