@@ -363,12 +363,12 @@ session_start();
                     <?php
                         include "./_database/config.php";
                             // belum memasukkan panggilan database untuk surat masuk tendik
-                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ');
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ');
                     $no = 0;
                     $no2 = $no++;
                     while ($data = mysqli_fetch_array($query)){
                       // belum ada data tendik
-                      $tujuan = $data['nama_dsn'];
+                      $tujuan = $data['nama'];
                       if (strpos($tujuan, $_SESSION['user']) !== false) { $no++ ?>
                      
                     <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
@@ -406,27 +406,27 @@ session_start();
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
                 <?php include './_database/config.php';
-                $no = 1;
-                $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat ORDER BY id_no DESC');
+                $no = 0;
+                $no2 = $no++;
+                $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   // data nama tendik
-                  if ($data['nama_tendik'] == $_SESSION['user']) {
+                  if ($data['nama_tdk'] == $_SESSION['user']) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">
-                        <h6 class="mb-3 text-sm"> <?php echo $data['file_surat'] ?> </h6>
-                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['nama_surat'] ?></span></span>
-                        <span class="mb-2 text-xs">Tujuan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['admin_surat'] ?></span></span>
-                        <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['waktu_surat'] ?></span></span>
+                        <h6 class="mb-3 text-sm"> <?php echo $data['file'] ?> </h6>
+                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['perihal'] ?></span></span>
+                        <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
                       </div>
                       <div class="ms-auto text-end">
                        <div>
                       <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
                       </div>
-                      <!-- <div>   
+                       <div>   
                         <button type = "button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Respon</button>
-                      </div> -->
+                      </div>
                       </div>
                       
                     </li>
@@ -460,13 +460,13 @@ session_start();
                                  <label for="formFile" class="form-label">Nama File</label>
                                  <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file_surat'] ?></label>
 
-                                 <!-- NRP mahasiswa -->
+                                 <!-- Perihal -->
                                  <label for="formFile" class="form-label">Perihal</label>
-                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['nama_surat'] ?></label>
+                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
                                  
                                  <!-- Lihat File -->
                                  <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
-                                 <a href="./pagesmahasiswa/<?php echo $data['file_surat'] ?>" target="_blank">
+                                 <a href="./<?php echo $data['file_surat'] ?>" target="_blank">
                                     <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file_surat'] ?></em></button></h6>
                                     </a>
                                  
@@ -579,18 +579,18 @@ session_start();
                   $id3 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url2 = $nama_file2;
+                  $url2 = $id3.'_'.$nama_file2;
 
                   if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
 
-                    $query2 = mysqli_query($koneksi, "UPDATE permohonansurat SET `file`='$url2' WHERE id_no = '$id3' ");
-                    $query3 = mysqli_query($koneksi, "UPDATE permohonansurat SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+                    $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `file`='$url2' WHERE id_no = '$id3' ");
+                    $query3 = mysqli_query($koneksi, "UPDATE surattendik SET `status_surat`='$nol' WHERE id_no = '$id3' ");
 
                     if ($query2 && $query3) {
-                      echo '<a href="./permohonansurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                      echo '<script> alert ("Berhasil di ajukan")</script></a>';
                       ?>  <script> history.pushState({}, "", "")</script> <?php
                               } else {
-                                echo '<a href="./permohonansurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                echo '<script> alert ("gagal di ajukan")</script></a>';
                               }
                             }
                           }
@@ -606,12 +606,12 @@ session_start();
                   $id4 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url3 = $nama_file3;
+                  $url3 = $id4.'_'.$nama_file3;
 
                   if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
 
-                    $query4 = mysqli_query($koneksi, "UPDATE permohonansurat SET `file`='$url3' WHERE id_no = '$id4' ");
-                    $query5 = mysqli_query($koneksi, "UPDATE permohonansurat SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
+                    $query4 = mysqli_query($koneksi, "UPDATE surattendik SET `file`='$url3' WHERE id_no = '$id4' ");
+                    $query5 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
 
                     if ($query4 && $query5) {
                       echo '<a href="./permohonansurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
@@ -631,10 +631,10 @@ session_start();
 
                   $nama_file3 = basename($_FILES['flhps']['name']);
                   $id6 = $_POST['id3'];
-                  $url3 = $nama_file3;
+                
 
                  
-                 $query6 = mysqli_query($koneksi, "DELETE FROM permohonansurat  WHERE id_no = '$id6' ");
+                 $query6 = mysqli_query($koneksi, "DELETE FROM surattendik  WHERE id_no = '$id6' ");
 
                     if ($query6) {
                       echo '<a href="./permohonansurat.php"><script> alert ("Berhasil Menghapus")</script></a>';

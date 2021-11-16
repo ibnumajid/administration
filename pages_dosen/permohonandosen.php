@@ -252,7 +252,7 @@
               $ekstensi = "pdf";
 
 
-              $url = $file;
+              $url = $id_npp.'_'.$file;
 
               if ($ukuran > $max && $tipe != $ekstensi) {;
                 echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';
@@ -470,7 +470,7 @@
                   $id4 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url3 = $nama_file3;
+                  $url3 = $id4.'_'.$nama_file3;
 
                   if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
 

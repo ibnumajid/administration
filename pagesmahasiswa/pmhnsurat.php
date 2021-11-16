@@ -182,7 +182,7 @@ session_start();
                 $max = 1024 * 20000;
                 $ekstensi = "pdf";
 
-                $url = $nama_file;
+                $url = $id_nrp.'_'.$nama_file;
 
              if ($ukuran > $max && $tipe != $ekstensi)
             {;
@@ -483,7 +483,7 @@ session_start();
                   $id3 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url2 = $nama_file2;
+                  $url2 = $id3.'_'.$nama_file2;
 
                   if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
 
@@ -511,7 +511,7 @@ session_start();
                   $id4 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url3 = $nama_file3;
+                  $url3 = $id4.'_'.$nama_file3;
 
                   if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
 

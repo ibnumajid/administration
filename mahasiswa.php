@@ -527,7 +527,7 @@ session_start();
                   $id3 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url2 = $nama_file2;
+                  $url2 = $id3.'_'.$nama_file2;
 
                   if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
 
@@ -554,7 +554,7 @@ session_start();
                   $id4 = $_POST['id2'];
                   $nol = $_POST['stats2'];
 
-                  $url3 = $nama_file3;
+                  $url3 = $id4.'_'.$nama_file3;
 
                   if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
 
@@ -579,7 +579,7 @@ session_start();
 
                   $nama_file3 = basename($_FILES['flhps']['name']);
                   $id6 = $_POST['id3'];
-                  $url3 = $nama_file3;
+                  
 
                  
                  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
@@ -626,19 +626,19 @@ session_start();
                       <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                    </div>
                    <!-- status surat dosen-->
-                   <?php if ($data['status_surat'] == 0) {?>
+                   <?php if ($data['status_admin'] == 0) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
                         <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
                       </div>
                     <?php } 
-                    else if ($data['status_surat'] == 1) {?>
+                    else if ($data['status_admin'] == 1) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
                         <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
                       </div>
                     <?php }
-                    else if ($data['status_surat'] == 2) {?>
+                    else if ($data['status_admin'] == 2) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Surat Sudah Divalidasi</span>
                       </div>
                     <?php } }}?>
                     <?php if ($no == 1) { ?>
