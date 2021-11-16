@@ -53,7 +53,7 @@ if ($_SESSION['user'] == '') {
         </li>
 <?php } ?>
 
-<?php if ($_SESSION['status'] == 2) { ?>
+<?php if ($_SESSION['status'] == 2 || $_SESSION['status'] == 5) { ?>
         <li class="nav-item">
           <a class="nav-link  " href="./dosen_2.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
