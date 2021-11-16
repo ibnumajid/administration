@@ -282,7 +282,7 @@
                       </div>
                     </div>
 
-                    <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+                    <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
                       <div class="card-body p-3">
                         <div class="row">
                           <?php 
