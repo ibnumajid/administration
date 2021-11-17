@@ -177,7 +177,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="profileadmin.php" class="nav-link text-body font-weight-bold px-0">
+              <a href="./profilen.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>

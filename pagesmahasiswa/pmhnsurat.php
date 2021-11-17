@@ -79,7 +79,7 @@ session_start();
       <ul class="navbar-nav">
         <!--Home-->
         <li class="nav-item">
-          <a class="nav-link  " href="../mahasiswa.php">
+          <a class="nav-link  " href="./mahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                 <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
@@ -146,14 +146,11 @@ session_start();
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
+            
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="profilmhsw.php" class="nav-link text-body font-weight-bold px-0">
+              <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
@@ -298,10 +295,9 @@ session_start();
             
             <div class="card-header pb-0 p-3">
                 <div class="row">
-                <div class="mb-3">
                 <label for="formFile" class="form-label">Pilih Dosen yang Dituju</label>
                 <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style ="height:150px" >
-                 
+                <div class="mb-3">
 
                   
                         <?php

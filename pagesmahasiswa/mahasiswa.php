@@ -2,7 +2,7 @@
 session_start();
   if($_SESSION['user']=='')
   {
-  header("location:home.php");
+  header("location:../index.php");
   }
 ?>
 
@@ -20,7 +20,7 @@ session_start();
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -28,7 +28,7 @@ session_start();
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css" rel="stylesheet" />
 
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
@@ -83,7 +83,7 @@ session_start();
         
       <!--home-->
         <li class="nav-item">
-          <a class="nav-link  active" href="/mahasiswa.php">
+          <a class="nav-link  active" href="./mahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                 <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
@@ -96,7 +96,7 @@ session_start();
         
         <!--persetujuan surat-->
         <li class="nav-item">
-          <a class="nav-link  " href="/pagesmahasiswa/pmhnsurat.php">
+          <a class="nav-link  " href="./pmhnsurat.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
                 <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
@@ -109,7 +109,7 @@ session_start();
 
       <!-- REKAP SURAT -->
       <li class="nav-item"> 
-        <a class="nav-link  " href="/pagesmahasiswa/rekapmhs.php">
+        <a class="nav-link  " href="./rekapmhs.php">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
               <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
@@ -124,7 +124,7 @@ session_start();
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="./profile.php">
+          <a class="nav-link  " href="../profile.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"/>
@@ -155,11 +155,14 @@ session_start();
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Type here...">
+            </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="profile.php" class="nav-link text-body font-weight-bold px-0">
+              <a href="" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?> </span>
               </a>
@@ -180,7 +183,7 @@ session_start();
             </li>
             
                         <li class="nav-item d-flex align-items-center">
-                <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
@@ -218,7 +221,7 @@ session_start();
                     $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
 
                     while ($data = mysqli_fetch_array($query)) {
-                      if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
+                      if( strpos($tujuan, "Mahasiswa") !== false )
                       { $no++
                         ?>
                       <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
@@ -227,7 +230,7 @@ session_start();
                           <span class="text-xs"><?=$data['keterangan']?></span>
                         </div>
                         <div class="d-flex align-items-center text-sm">
-                          <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                          <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
                             <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                           </a>
                         </div>
@@ -240,7 +243,7 @@ session_start();
                           <span class="text-xs"><?=$data['keterangan']?></span>
                         </div>
                         <div class="d-flex align-items-center text-sm">
-                          <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                          <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
                             <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                           </a>
                         </div>
@@ -273,7 +276,7 @@ session_start();
                   <h6 class="mb-0">Surat Masuk</h6>
                 </div>
                 <div class="col-6 text-end">
-                <a href = pagesmahasiswa/rekapmhs.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
+                <a href = ./rekapmhs.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                 </div>
               </div>
             </div>
@@ -281,7 +284,7 @@ session_start();
             <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
               <ul class="list-group">
               <?php
-              include "./_database/config.php";
+              include "../_database/config.php";
                         
               $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC ');
               $no = 0;
@@ -295,19 +298,6 @@ session_start();
                      <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['file']?></h6>
                       <span class="text-xs"><?=$data['perihal']?></span>
                       <span class="text-xs"><?=$data['tanggal']?></span>
-                    </div>
-                    <div class="d-flex align-items-center text-sm">
-                    <a href="./pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                      <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                    </a>
-                    </div>
-                  </li>
-                <?php }?>
-                <?php if ($data['tujuan'] == 'Dosen, Mahasiswa' or $data['tujuan'] == 'Tendik, Mahasiswa'){?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                    <div class="d-flex flex-column">
-                      <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['tanggal']?></h6>
-                      <span class="text-xs"><?=$data['nama']?></span>
                     </div>
                     <div class="d-flex align-items-center text-sm">
                     <a href="./pagesadmin/<?php echo $data['file'] ?>" target="_blank">
@@ -338,7 +328,7 @@ session_start();
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
-                <?php include './_database/config.php';
+                <?php include '../_database/config.php';
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
@@ -398,7 +388,7 @@ session_start();
                                  
                                  <!-- Lihat File -->
                                  <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
-                                 <a href="./pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                 <a href="./<?php echo $data['file'] ?>" target="_blank">
                                     <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></h6>
                                     </a>
                                  
@@ -512,7 +502,7 @@ session_start();
 
                         <!-- php update surat saat dosen menolak -->
                         <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['update'])) {
 
                   $nama_file2 = basename($_FILES['ufl']['name']);
@@ -527,10 +517,10 @@ session_start();
                     $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
 
                     if ($query2 && $query3) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                      echo '<script> alert ("Berhasil di ajukan")</script></a>';
                       ?>  <script> history.pushState({}, "", "")</script> <?php
                               } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                echo '<script> alert ("gagal di ajukan")</script></a>';
                               }
                             }
                           }
@@ -539,7 +529,7 @@ session_start();
 
                 <!-- php update surat saat kadep menolak -->
                 <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['update2'])) {
 
                   $nama_file3 = basename($_FILES['uflk']['name']);
@@ -566,7 +556,7 @@ session_start();
 
                 <!-- php hapus file -->
                 <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
 
                   $nama_file3 = basename($_FILES['flhps']['name']);
@@ -577,10 +567,10 @@ session_start();
                  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
 
                     if ($query6) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil Menghapus")</script></a>';
+                      echo '<script> alert ("Berhasil Menghapus")</script></a>';
                 ?> <script> history.pushState({}, "", "") </script> <?php
                               } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                echo '<script> alert ("gagal di ajukan")</script></a>';
                               }
                             }
                           
@@ -604,7 +594,7 @@ session_start();
             </div>
             <ul class="list-group">
               <?php
-              include "./_database/config.php";
+              include "../_database/config.php";
                         
               $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC ');
                while ($data = mysqli_fetch_array($query)){
@@ -630,7 +620,7 @@ session_start();
                     <?php }
                     else if ($data['status_admin'] == 2) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Selesai Diproses oleh Admin</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Surat Sudah Diproses oleh Admin</span>
                       </div>
                     <?php } }}?>
                     <?php if ($no == 1) { ?>

@@ -2,7 +2,7 @@
     session_start();
     if($_SESSION['user']=='')
     {
-          header("location:home.php");
+          header("location:../index.php");
       }
     ?>
   
@@ -12,22 +12,22 @@
     <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png">
-      <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+      <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+      <link rel="icon" type="image/png" href="../assets/img/favicon.png">
       <title>
         Sistem Administrasi DTEO
       </title>
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-      <link rel="icon" type="image/png" href="./assets/images/favicon.png">
+      <link rel="icon" type="image/png" href="../assets/images/favicon.png">
       <!-- Nucleo Icons -->
-      <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-      <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+      <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+      <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
       <!-- Font Awesome Icons -->
       <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-      <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
+      <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
       <!-- CSS Files -->
-      <link id="pagestyle" href="/assets/css/soft-ui-dashboard.css" rel="stylesheet" />
+      <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css" rel="stylesheet" />
 
       <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
@@ -82,7 +82,7 @@
             
           <!--home-->
             <li class="nav-item">
-              <a class="nav-link  active" href="../dosen_2.php">
+              <a class="nav-link  active" href="../dosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                 <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
@@ -96,7 +96,7 @@
           <!-- Permohonan Surat -->
   <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item">
-            <a class="nav-link  " href="./pages_dosen/permohonandosen.php">
+            <a class="nav-link  " href="./permohonandosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
                   <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
@@ -109,7 +109,7 @@
           
           <!--Validasi Surat-->
           <li class="nav-item">
-            <a class="nav-link  " href="./pages_dosen/validasisurat.php">
+            <a class="nav-link  " href="./validasisurat.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
@@ -122,7 +122,7 @@
           <!-- Validasi Surat Dosen -->
           <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
-            <a class="nav-link  " href="./pages_dosen/validasidsn.php">
+            <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
@@ -136,7 +136,7 @@
                    <!-- Validasi Surat Tendik -->
                    <?php if ($_SESSION['status'] == '5') {?>
           <li class="nav-item">
-            <a class="nav-link  " href="./pages_dosen/validasitndk.php">
+            <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
@@ -151,7 +151,7 @@
           <!-- REKAP SURAT -->
           <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
-            <a class="nav-link  " href="./pages_dosen/rekapdsn.php">
+            <a class="nav-link  " href="./rekapdsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
                   <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
@@ -168,7 +168,7 @@
         <?php if($_SESSION['status'] == '5'){ ?>
         </li> 
         <li class="nav-item"> 
-          <a class="nav-link  " href="./pages_dosen/suratmskkdp.php">
+          <a class="nav-link  " href="./suratmskkdp.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
@@ -183,7 +183,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="./profile.php">
+          <a class="nav-link  " href="../profile.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"/>
@@ -221,7 +221,7 @@
               </div>
               <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                  <a href="./profile.php" class="nav-link text-body font-weight-bold px-0">
+                  <a href="" class="nav-link text-body font-weight-bold px-0">
                     <i class="fa fa-user me-sm-1"></i>
                     <span class="d-sm-inline d-none"> <?php echo $_SESSION['user']?> </span>
                   </a>
@@ -242,7 +242,7 @@
                 </li>
                 
                 <li class="nav-item d-flex align-items-center">
-              <a href="./logout.php" href="javascript:;" class="nav-link text-body p-0" >
+              <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="d-sm-inline d-none">Logout </span>
                   </a>
@@ -275,7 +275,7 @@
                       <div class="card-body p-3">
                         <div class="row">
                           <?php 
-                          include "_database/config.php";
+                          include "../_database/config.php";
                           $no = 1;
                           $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
 
@@ -295,14 +295,14 @@
                               </div>
                             </li>
                             <?php }?>
-                            <?php if ($data['tujuan'] == "Dosen, Tendik" or $data['tujuan'] == "Dosen, Mahasiswa"){?>
+                            <?php if (strpos($tujuan, "Dosen") !== false){?>
                               <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                               <div class="d-flex flex-column">
                                 <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
                                 <span class="text-xs"><?=$data['keterangan']?></span>
                               </div>
                               <div class="d-flex align-items-center text-sm">
-                                <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                                <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                                 </a>
                               </div>
@@ -335,7 +335,7 @@
                     </div>
                     <div class="col-6 text-end">
 
-                      <a href = pages_dosen/rekapdsn.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
+                      <a href = ./rekapdsn.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                     </div>
                   </div>
                 </div>
@@ -344,7 +344,7 @@
                   <ul class="list-group">
                         <br>
                     <?php
-                        include "./_database/config.php";
+                        include "../_database/config.php";
 
                     $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ');
                     $no = 0;
@@ -387,7 +387,7 @@
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
-                <?php include './_database/config.php';
+                <?php include '../_database/config.php';
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
@@ -446,7 +446,7 @@
                                  
                                  <!-- Lihat File -->
                                  <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
-                                 <a href="./pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                 <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
                                     <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></h6>
                                     </a>
                                  
@@ -552,7 +552,7 @@
 
                         <!-- php update surat saat dosen menolak -->
                         <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['update'])) {
 
                   $nama_file2 = basename($_FILES['ufl']['name']);
@@ -579,7 +579,7 @@
 
                 <!-- php update surat saat kadep menolak -->
                 <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['update2'])) {
 
                   $nama_file3 = basename($_FILES['uflk']['name']);
@@ -606,7 +606,7 @@
 
                 <!-- php hapus file -->
                 <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
 
                   $nama_file3 = basename($_FILES['flhps']['name']);
@@ -642,7 +642,7 @@
                 </div>
                 <ul class="list-group">
                   <?php
-                  include "./_database/config.php";
+                  include "../_database/config.php";
                             
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC ');
                   $no = 0;
@@ -688,10 +688,10 @@
       
       </div>
       <!--   Core JS Files   -->
-      <script src="/assets/js/core/popper.min.js"></script>
-      <script src="/assets/js/core/bootstrap.min.js"></script>
-      <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-      <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+      <script src="../assets/js/core/popper.min.js"></script>
+      <script src="../assets/js/core/bootstrap.min.js"></script>
+      <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+      <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
       <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -704,7 +704,7 @@
       <!-- Github buttons -->
       <script async defer src="https://buttons.github.io/buttons.js"></script>
       <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-      <script src="/assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+      <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
       <!-- JS sweetaler notif login berhasil-->
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <?php if(@$_SESSION['alert']) : ?>

@@ -46,7 +46,7 @@ if($cek > 0){
           
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;}    
-        header("location:dosen_2.php");
+        header("location:./pages_dosen/dosen.php");
     }
     elseif ($data['status'] == '3')
     {
@@ -58,7 +58,7 @@ if($cek > 0){
     
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;} 
-        header("location:mahasiswa.php");
+        header("location:./pagesmahasiswa/mahasiswa.php");
     }
     elseif ($data['status'] == '4')
     {
@@ -82,7 +82,7 @@ if($cek > 0){
             $_SESSION['NIP']    = $data2['id_npp'];
           
             $_SESSION['status'] = $data['status'];
-        header("location:dosen_2.php");
+        header("location:./pages_dosen/dosen.php");
         }
     
 }
