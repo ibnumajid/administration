@@ -339,7 +339,7 @@ session_start();
                     <tr>
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
-                      <th class="text-left ps-1">Dosen Pembimbing</th>
+                      <th class="text-left ps-1">Dosen Koordinator</th>
                       <th>Status Dosen</th>
                       <th>Status Kadep</th>
                       <th class="text-left ps-1">Proses Admin</th>
