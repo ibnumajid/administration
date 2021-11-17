@@ -553,10 +553,10 @@
                       
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di disetujui")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil disetujui")</script></a>';
                       }
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal diajukan")</script></a>';
                       }
                     } ?>
 
