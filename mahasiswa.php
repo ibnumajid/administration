@@ -212,7 +212,7 @@ session_start();
                 <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
                 <div class="card-body p-3">
                   <div class="row">
-                    <?php 
+                  <?php 
                     include "_database/config.php";
                     $no = 1;
                     $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
