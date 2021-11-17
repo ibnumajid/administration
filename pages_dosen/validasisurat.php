@@ -317,7 +317,7 @@
   
                               else if ($data['status_kadep'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                         </td> <?php } ?> 
                         <!-- button edit -->
                         <td class="align-middle">
@@ -443,7 +443,7 @@
 
                             else if ($data['status_surat'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                       </td> <?php } ?> 
 
                       <!-- button edit -->
@@ -553,10 +553,10 @@
                       
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil disetujui")</script></a>';
                       }
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal diajukan")</script></a>';
                       }
                     } ?>
 
