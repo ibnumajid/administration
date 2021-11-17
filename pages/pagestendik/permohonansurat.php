@@ -203,6 +203,7 @@ session_start();
               $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
               $max = 1024 * 20000;
               $ekstensi = "pdf";
+              $keterangan = $_POST['keterangan'];
 
               $url = $niptendik.'_'.$nama_file;
 
@@ -221,7 +222,7 @@ session_start();
 
               if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
               {
-                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
+                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                 if($query)
                 {
@@ -276,6 +277,16 @@ session_start();
                 </div>
               </div>
             </div>
+
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Keterangan</label>
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" >
+              </div>
+              </div>
+            </div>
+
 
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -385,7 +396,17 @@ session_start();
                                   <div class="card-header pb-0 p-3">
                                     <div class="row">
                                       <div class="mb-3">
-                                        <!-- nama mahasiswa -->
+                                        
+                                        <!-- Cek File -->
+                                        <label for="formFile" class="form-label">File Anda (Klik Untuk Melihat)</label>
+                                        <a href="./<?php echo $data['file'] ?>" target="_blank">
+                                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+
+                                        <!-- Keterangan File -->
+                                        <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                        <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                  
+                                        <!-- Catatan Kadep -->
                                         <label for="formFile" class="form-label">Catatan Kadep</label>
                                         <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
  

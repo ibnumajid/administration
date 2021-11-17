@@ -354,6 +354,9 @@
                                     <!-- progres -->
                                     <label for="formFile" class="form-label">Perihal</label>
                                     <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                     <!-- progres -->
+                                     <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                    <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
                                     <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
@@ -362,19 +365,19 @@
                                     <!-- Menginput id surat -->
                                     <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                
                                     
-                                                   
+                                    <label for="formFile" class="form-label">Persetujuan (Pilih)</label>               
                                     <!-- persetujuan surat -->
                                     <label for="formFile" class="form-label">Apakah Anda Menyetujui Permohonan Surat Tersebut?</label>
                                     <div class="form-check">
                                       <input class="form-check-input" Name="sk" type="radio" value="1" id="defaultCheck1">
                                       <label class="form-check-label" for="defaultCheck1">
-                                        Tidak Di Setujui
+                                        Tidak Disetujui
                                       </label>
                                     </div>
                                     <div class="form-check">
                                       <input class="form-check-input" Name="sk" type="radio" value="2" id="defaultCheck1">
                                       <label class="form-check-label" for="defaultCheck1">
-                                        Di Setujui
+                                        Disetujui
                                       </label>
 
                                       <!-- Menginput catatan -->

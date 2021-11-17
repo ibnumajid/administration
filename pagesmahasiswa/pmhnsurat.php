@@ -170,6 +170,7 @@ session_start();
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
                 $max = 1024 * 20000;
                 $ekstensi = "pdf";
+                $keterangan = $_POST['keterangan'];
 
                 $url = $id_nrp.'_'.$nama_file;
 
@@ -187,7 +188,7 @@ session_start();
             }  
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                 {
-                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$url', '0', '0', '0', '', '', '$ukuran', '$tipe', sysdate())");
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$keterangan', '$url', '0', '0', '0', '', '', '$ukuran', '$tipe', sysdate())");
 
                   if($query)
                   {
@@ -252,35 +253,51 @@ session_start();
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
+                <label for="formFile" class="form-label">Keterangan</label>
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" >
+              </div>
+              </div>
+            </div>
 
-                <div class="dropdown">
-              <button class="btn btn-outline-secondary btn-lg w-100 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                Pilih Dosen
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <?php
+            
+            <div class="card-header pb-0 p-3">
+                <div class="row">
+                <label for="formFile" class="form-label">Pilih Dosen yang Dituju</label>
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style ="height:150px" >
+                  <div class="mb-3">
+
+                  
+                        <?php
                         include '../_database/config.php';
-                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die (mysqli_error($koneksi));
-                          while ($data_dosen =mysqli_fetch_array($query_dosen)){?>
-                           <div class="form-check">
+                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb ORDER BY id_no DESC") or die(mysqli_error($koneksi));
+                        while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+
+
+
+                          <div class="form-check">
                             <div class="card-header pb-0 p-2">
                               <div class="row">
                                 <div class="mb-3">
-                            <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo$data_dosen['nama_anggota']?>" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                            <?php echo $data_dosen['nama_anggota'] ?>
-                            </label>
-                           </div>  
-                           </div>
-                           </div>
-                           </div>
-                        <?php }?>
-              </ul>
-            </div>
 
-                </div>
-              </div>
-            </div>
+                                  <a href="#<?php echo $data_dosen['nama_anggota'] ?>">
+                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      <?php echo $data_dosen['nama_anggota'] ?>
+                                    </label>
+                                  </a>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <?php } ?>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
@@ -411,6 +428,16 @@ session_start();
                                     <div class="row">
                                       <div class="mb-3">
 
+
+                                        <!-- Cek File -->
+                                        <label for="formFile" class="form-label">File Anda (Klik Untuk Melihat)</label>
+                                        <a href="./<?php echo $data['file'] ?>" target="_blank">
+                                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+
+                                        <!-- Keterangan File -->
+                                        <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                        <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        
                                         <!-- nama mahasiswa -->
                                         <label for="formFile" class="form-label">Catatan Dosen</label>
                                         <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>

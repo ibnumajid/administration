@@ -340,13 +340,17 @@
                                   <!-- progres -->
                                   <label for="formFile" class="form-label">Nama File</label>
                                   <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
+                                  <!-- Keterangan Tambahan -->
+                                  <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                   <!-- file surat -->
                                   <label for="formFile" class="form-label">Lihat File</label>
                                   <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
                                   <!-- Menginput id surat -->
-                                  <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
+                                  <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >      
+                                  <label for="formFile" class="form-label">Persetujuan (Pilih)</label>                         
                                   <!-- persetujuan surat -->
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
