@@ -317,7 +317,7 @@
   
                               else if ($data['status_kadep'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Diterima</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
                         </td> <?php } ?> 
                         <!-- button edit -->
                         <td class="align-middle">
