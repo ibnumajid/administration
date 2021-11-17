@@ -217,11 +217,13 @@ session_start();
                   <div class="row">
                     <?php 
                     include "_database/config.php";
+                    $no = 1;
                     $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
 
                     while ($data = mysqli_fetch_array($query)) {
                       if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
-                      {?>
+                      { $no++
+                        ?>
                       <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                         <div class="d-flex flex-column">
                           <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
