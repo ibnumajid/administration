@@ -27,6 +27,42 @@ session_start();
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+
+  <style>
+            .scrollbar-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #F5F5F5;
+            border-radius: 10px; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar {
+            width: 12px;
+            background-color: #F5F5F5; }
+
+            .scrollbar-deep-purple::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: #aaa; }
+
+            .scrollbar-deep-purple {
+            scrollbar-color: #512da8 #F5F5F5;
+            }
+
+            .bordered-deep-purple::-webkit-scrollbar-track {
+            -webkit-box-shadow: none;
+            border: 1px solid #ffffff00; }
+
+            .bordered-deep-purple::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: none; }
+
+            .thin::-webkit-scrollbar {
+            width: 6px; }
+
+            .example-1 {
+            position: relative;
+            overflow-y: scroll;
+            height: 200px; }
+  </style>
+
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -262,14 +298,15 @@ session_start();
             
             <div class="card-header pb-0 p-3">
                 <div class="row">
+                <div class="mb-3">
                 <label for="formFile" class="form-label">Pilih Dosen yang Dituju</label>
                 <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style ="height:150px" >
-                  <div class="mb-3">
+                 
 
                   
                         <?php
                         include '../_database/config.php';
-                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb ORDER BY id_no DESC") or die(mysqli_error($koneksi));
+                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
 
 
