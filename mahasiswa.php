@@ -202,11 +202,11 @@ session_start();
             <!---->
 
             <div class="col-md-12 mb-lg-0 mb-4">
-              <div class="card mt-1">
+              <div class="card mt-0">
                 <div class="card-header pb-0 p-3">
                   <div class="row">
                     <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0">Informasi</h6>
+                      <h6 class="mb-0 pt-1 px-1">Informasi</h6>
                     </div>
                     
                   </div>
@@ -217,19 +217,19 @@ session_start();
                   <div class="row">
                     <?php 
                     include "_database/config.php";
-                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY tanggal DESC' );
+                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
 
                     while ($data = mysqli_fetch_array($query)) {
                       if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
                       {?>
                       <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                         <div class="d-flex flex-column">
-                          <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['nama']?></h6>
-                          <span class="text-xs"><?=$data['tanggal']?></span>
+                          <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
+                          <span class="text-xs"><?=$data['keterangan']?></span>
                         </div>
                         <div class="d-flex align-items-center text-sm">
                           <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                            <p class="modal-title" name="fl" id="edit<?php echo $data['nomor'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
+                            <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                           </a>
                         </div>
                       </li>
@@ -237,12 +237,12 @@ session_start();
                       <?php if ($data['tujuan'] == "Dosen, Mahasiswa" or $data['tujuan'] == "Tendik, Mahasiswa"){?>
                         <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                         <div class="d-flex flex-column">
-                          <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['nama']?></h6>
-                          <span class="text-xs"><?=$data['tanggal']?></span>
+                          <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
+                          <span class="text-xs"><?=$data['keterangan']?></span>
                         </div>
                         <div class="d-flex align-items-center text-sm">
                           <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                            <p class="modal-title" name="fl" id="edit<?php echo $data['nomor'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
+                            <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                           </a>
                         </div>
                       </li>

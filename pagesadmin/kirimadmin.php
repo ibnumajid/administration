@@ -200,8 +200,8 @@
               include '../_database/config.php';
               if(isset($_POST['input']))
               {
-                $nama = $_POST['nm'];
-                $nomor = $_POST['id'];
+                $perihal = $_POST['pr'];
+                $keterangan = $_POST['kt'];
                 $tujuan = implode(', ', $_POST['tj']);
 
                 $nama_file = basename($_FILES['fl']['name']);
@@ -224,7 +224,7 @@
 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
                 {
-                  $query = mysqli_query($koneksi,"insert into adminsurat values('$nama','$nomor','$tujuan','$url', '$ukuran', '$tipe', sysdate())");
+                  $query = mysqli_query($koneksi,"insert into adminsurat values('','$perihal','$keterangan','$tujuan','$url', '$ukuran', '$tipe', sysdate())");
 
                   if($query)
                   {
@@ -249,8 +249,8 @@
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Nama Surat</label>
-                <input name="nm" class="form-control" type="text" placeholder="Masukan nama surat" aria-label="default input example">
+                <label for="formFile" class="form-label">Perihal</label>
+                <input name="pr" class="form-control" type="text" placeholder="Masukan perihal surat" aria-label="default input example">
                 </div>
               </div>
             </div>
@@ -258,8 +258,8 @@
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Nomor Surat</label>
-                <input name="id" class="form-control" type="text" placeholder="Masukan nomor surat" aria-label="default input example">
+                <label for="formFile" class="form-label">Keterangan</label>
+                <textarea class="form-control" name="kt" placeholder="Masukan keterangan surat" id="exampleFormControlTextarea1" rows="3"></textarea>
                 </div>
               </div>
             </div>
