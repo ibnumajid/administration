@@ -214,13 +214,13 @@
                 $url = $nama_file;
 
                 if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
-                {$_SESSION['ukuranpdf'] = true;}
+                { echo $_SESSION['ukuranpdf'] = true;}
 
                 else if ($ukuran > $max)
-                { $_SESSION['ukuran'] = true;}
+                { echo $_SESSION['ukuran'] = true;}
 
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
-                { $_SESSION['pdf'] = true;}
+                { echo $_SESSION['pdf'] = true;}
 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
                 {
@@ -228,17 +228,17 @@
 
                   if($query)
                   {
-                    $_SESSION['sukses'] = true;
+                    echo $_SESSION['sukses'] = true;
 
                   }
                   else
                   {
-                    $_SESSION['input'] = true;
+                    echo $_SESSION['input'] = true;
                   }
                 }
                 else
                 {
-                  $_SESSION['upload'] = true;
+                  echo $_SESSION['upload'] = true;
                 }
 
               }
