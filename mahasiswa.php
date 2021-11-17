@@ -630,7 +630,7 @@ session_start();
                     <?php }
                     else if ($data['status_admin'] == 2) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Surat Sudah Diproses oleh Admin</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Selesai Diproses oleh Admin</span>
                       </div>
                     <?php } }}?>
                     <?php if ($no == 1) { ?>
