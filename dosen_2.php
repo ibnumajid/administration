@@ -262,7 +262,7 @@
                 
                 <div class="col-md-12 mb-lg-0 mb-4">
                   <div class="card mt-0">
-                    <div class="card-header pb-0 p-3">
+                    <div class="card-header pb-0 p-4">
                       <div class="row">
                         <div class="col-6 d-flex align-items-center">
                           <h6 class="mb-0 pt-1 px-1">Informasi</h6>
@@ -306,6 +306,10 @@
                               </div>
                             </li>
                             <?php }?>
+                          <?php } ?>
+                          <?php if ($no == 1) { ?>
+                          <h6 class = "text-center"><br><br><br>Tidak Ada Informasi Terbaru</h6>
+
                           <?php } ?>
                           <div class="col-md-6 mb-md-0 mb-4">
                           
