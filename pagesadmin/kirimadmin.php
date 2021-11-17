@@ -225,7 +225,7 @@
 
                   if($query)
                   {
-                    $_SESSION['alert'] = true;
+                    $_SESSION['sukses'] = true;
 
                   }
                   else
@@ -373,7 +373,7 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['alert']) : ?>
+    <?php if(@$_SESSION['sukses']) : ?>
         <script>
             Swal.fire({
             position: 'center',
@@ -383,7 +383,7 @@
             timer: 2000
           })
         </script>
-    <?php unset($_SESSION['alert']); ?>
+    <?php unset($_SESSION['sukses']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
