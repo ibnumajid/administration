@@ -269,7 +269,7 @@ session_start();
                   
                         <?php
                         include '../_database/config.php';
-                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb ORDER BY id_no DESC") or die(mysqli_error($koneksi));
+                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
 
 
