@@ -58,7 +58,7 @@ if($cek > 0){
     
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;} 
-        header("location:mahasiswa.php");
+        header("location:./pagesmahasiswa/mahasiswa.php");
     }
     elseif ($data['status'] == '4')
     {
