@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start();?>
 
 <!-- KIRIM SURAT -->
 <!DOCTYPE html>
@@ -214,10 +214,10 @@
                 $url = $nama_file;
 
                 if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
-                { $_SESSION['ukuranpdf'] = true;}
+                {echo "Ukuran File tidak boleh melebihi 20 mb dan harus dalam format docx/pdf";}
 
                 else if ($ukuran > $max)
-                { $_SESSION['ukuran'] = true;}
+                { echo "Ukuran file tidak boleh melebihi 20 mb";}
 
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
                 { $_SESSION['pdf'] = true;}
@@ -228,7 +228,7 @@
 
                   if($query)
                   {
-                    $_SESSION['sukses'] = true;
+                    $_SESSION['alert'] = true;
 
                   }
                   else
@@ -238,7 +238,7 @@
                 }
                 else
                 {
-                  $_SESSION['upload'] = true;
+                  echo "Gagal Upload";
                 }
 
               }
@@ -375,21 +375,21 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <!-- sweetaler notifikasi -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
+    <?php if(@$_SESSION['alert']) : ?>
         <script>
             Swal.fire({
             position: 'center',
             icon: 'success',
             title: 'Berhasil Upload',
-            showConfirmButton: false,,
-            timer: 1500
+            showConfirmButton: false,
+            timer: 2000
           })
         </script>
-    <?php unset($_SESSION['sukses']); ?>
+    <?php unset($_SESSION['alert']); ?>
     <?php endif; ?>
 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['pdf']) : ?>
         <script>
             Swal.fire({
@@ -403,45 +403,7 @@
     <?php unset($_SESSION['pdf']); ?>
     <?php endif; ?>
 
-    <?php if(@$_SESSION['ukuran']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Ukuran file tidak boleh melebihi 20 mb',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['ukuran']); ?>
-    <?php endif; ?>
-
-    <?php if(@$_SESSION['ukuranpdf']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Ukuran File tidak boleh melebihi 20 mb dan harus dalam format docx/pdf',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['ukuranpdf']); ?>
-    <?php endif; ?>
-
-    <?php if(@$_SESSION['upload']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Gagal Upload',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['upload']); ?>
-    <?php endif; ?>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>
             Swal.fire({
