@@ -628,12 +628,12 @@ session_start();
                     <?php } 
                     else if ($data['status_admin'] == 1) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Permohonan Ditolakk</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Permohonan Ditolak</span>
                       </div>
                     <?php }
                     else if ($data['status_admin'] == 2) {?>
                       <div class="d-flex align-items-center text-sm font-weight-bold">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Surat Sudah Diproses oleh Admid</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Surat Sudah Diproses oleh Admin</span>
                       </div>
                     <?php } }}?>
                     <?php if ($no == 1) { ?>
