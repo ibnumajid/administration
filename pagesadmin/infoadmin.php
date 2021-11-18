@@ -80,9 +80,10 @@
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Menu</h6>
         </li>
-
-        <li class="nav-item">
-          <a class="nav-link  active" href="../pagesadmin/infomahasiswa.php">
+        
+         <!-- Akun Mahasiswa -->
+      <li class="nav-item">
+          <a class="nav-link  " href="../pagesadmin/infomahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -102,8 +103,8 @@
             <span class="nav-link-text ms-1">Akun Mahasiswa</span>
           </a>
         </li>
-    
-        <!-- Akun Dosen -->
+
+        <!-- Akun Mahasiswa -->
       <li class="nav-item">
           <a class="nav-link  " href="../pagesadmin/infodosen.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -122,12 +123,12 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Akun Dosen</span>
+            <span class="nav-link-text ms-1">Akun Mahasiswa</span>
           </a>
         </li>
 
-        <!-- Akun Tendik  -->
-      <li class="nav-item">
+     <!-- Akun Tendik  -->
+        <li class="nav-item">
           <a class="nav-link  " href="../pagesadmin/infotendik.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -149,9 +150,9 @@
           </a>
         </li>
 
-          <!-- Akun Admin  -->
-      <li class="nav-item">
-          <a class="nav-link  " href="../pagesadmin/infoadmin.php">
+        <!-- akun dosen -->
+        <li class="nav-item">
+          <a class="nav-link  active" href="../pagesadmin/infoadmin.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -171,6 +172,9 @@
             <span class="nav-link-text ms-1">Akun Admin</span>
           </a>
         </li>
+    
+        
+
 
         
       </ul>
@@ -184,9 +188,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Admin</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Akun Mahasiswa</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Akun Admin</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Akun Mahasiswa</h6>
+          <h6 class="font-weight-bolder mb-0">Akun Admin</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -197,7 +201,7 @@
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
+              <a href="profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
@@ -309,7 +313,7 @@
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Modifikasi Akun Mahasiswa</h6>
+                  <h6 class="mb-0">Modifikasi Akun Admin</h6>
                 </div>
                 
               </div>
@@ -321,9 +325,8 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama</th>
-                      <th>NRP</th>
-                      <th>Informasi ID & PASS</th>
+                      <th>User</th>
+                      <th>Password</th>
                       <th>Ganti Password</th>
                     </tr>
                   </thead>
@@ -331,100 +334,35 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $no = 1 ;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM data_mhs ORDER BY nrp_mhs');
+                  $query2 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE `status` = 1 ");
 
                
-                  while ($data = mysqli_fetch_array($query)) {
+                  while ($data2 = mysqli_fetch_array($query2)) {
     
-                  $nrp = $data['nrp_mhs']; 
-                  $query2 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user = '$nrp' ");
-                  $data2 = mysqli_fetch_array($query2); 
                   ?>
 
                   
                   <tr>
                     <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['nama_mhs'] ?></td>
+                    <td><?php echo $data2['user'] ?></td>
                    
 
 
-                    <td><?php echo $data['nrp_mhs'] ?></td>
-                    <td class="align-middle">
-                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['nrp_mhs'] ?>">Lihat</button>
-                     </a>
-                    </td>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="edit<?php echo $data['nrp_mhs'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                              <!-- popup ajuan surat mahasiswa -->
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['nrp_mhs'] ?>">Lihat Info Akun</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-
-                              <div class="modal-body">
-
-
-
-                                <form action="" method="post" enctype="multipart/form-data">
-                                  <div class="card-header pb-0 p-3">
-                                    <div class="row">
-                                      <div class="mb-3">
-
-                                        <!-- user -->
-                                        <label for="formFile" class="form-label">USER</label>
-                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['nrp_mhs'] ?></label>
-
-                                        <!-- NRP mahasiswa -->
-                                        <label for="formFile" class="form-label">PASSWORD</label>
-                                        <?php 
-                                        if ($data2['pass'] == NULL) { ?>
-                                        <label name="catatan2  " class="form-control" aria-label="default input example">Belum Ada Password</label>
-
-                                          <?php }
-                                        else { ?> 
-                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data2['pass'] ?></label>
-                                            <?php } ?>
-                                        
-                                        
-
-                                        <!-- Input ID untuk memberikan identitas surat -->
-                                        <input type="hidden" name="id2" value="<?php echo $data['nrp_mhs'] ?>">
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        
-
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                                          <!-- Saat dosen menolak -->
-                                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['nrp_mhs'] ?>">Ganti</button>
-                                         
-                                          </div>
-                                        </form>
-                                        </div>
-                                        </div>
-                                        </div>
+                    <td><?php echo $data2['pass'] ?></td>
                     
                                 <!-- Modal Ganti Password -->
                     <td>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data['nrp_mhs'] ?>">Ganti</button>
+                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data2['user'] ?>">Ganti</button>
                      </a>
                     </td>
                      <!-- Modal -->
-                     <div class="modal fade" id="ganti<?php echo $data['nrp_mhs'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal fade" id="ganti<?php echo$data2['user'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="ganti<?php echo $data['nrp_mhs'] ?>">Ganti Password</h5>
+                                <h5 class="modal-title" id="ganti<?php echo $data2['user'] ?>">Ganti Password</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -439,8 +377,6 @@
                                     <div class="row">
                                       <div class="mb-3">  
                                         
-
-                                      <input type="hidden" name = "nrp_mhs" value = "<?php echo $data['nrp_mhs'] ?>">
                                         <!-- user -->
                                         <label for="formFile" class="form-label">PASSWORD ADMIN</label>
                                         <input name ="pass" type="password" class="form-control" placeholder="Masukan Password Admin">
@@ -464,8 +400,8 @@
                                         
                                         
 
-                                        <!-- Input ID untuk memberikan identitas surat -->
-                                        <input type="hidden" name="id2" value="<?php echo $data['nrp_mhs'] ?>">
+                                        <!-- Input hidden USER untuk memberikan identitas akun -->
+                                        <input type="hidden" name="id2" value="<?php echo $data2['user'] ?>">
                                         </div>
                                         </div>
                                         </div>
@@ -475,8 +411,8 @@
                                         <div class="modal-footer">
                                           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
-                                          <!-- Saat dosen menolak -->
-                                            <button type="submite" name="ganti" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['nrp_mhs'] ?>">Ganti</button>
+                                          
+                                            <button type="submite" name="ganti" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data2['user'] ?>">Ganti</button>
                                          
                                           </div>
                                         </form>
@@ -494,7 +430,7 @@
 
   <!-- php update surat saat dosen menolak -->
   <?php
-                include "./_database/config.php";
+                include "../_database/config.php";
                 if (isset($_POST['ganti'])) {
 
                   $passwordadmin = $_SESSION['pass'];
@@ -502,12 +438,12 @@
                   $passwordbaru = $_POST['pwb'];
                 
 
-                  $nrp = $_POST['nrp_mhs'];
+                  $user = $_POST['id2'];
                  
                   if ($passwordlama == $passwordadmin) {
 
                       $query = mysqli_query($koneksi, 'SELECT * FROM masuk');
-                      $query2 = mysqli_query($koneksi, "UPDATE masuk SET `pass` = '$passwordbaru' WHERE user = '$nrp' ");
+                      $query2 = mysqli_query($koneksi, "UPDATE masuk SET `pass` = '$passwordbaru' WHERE user = '$user' ");
                       if ($query2) {
                                 echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil Merubah Password")</script></a>';
                                 ?>  <script> history.pushState({}, "", "")</script> <?php
