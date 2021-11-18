@@ -271,7 +271,7 @@ session_start();
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="sr"  class="form-select" aria-label="Default select example">
+                    <select name="sr"  class="form-select" aria-label="Default select example" required>
                         <option selected>Pilih Jenis Surat</option>
                         <option value="Surat Magang">Surat Magang</option>
                         <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
@@ -290,7 +290,7 @@ session_start();
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
-                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" >
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
               </div>
               </div>
             </div>
@@ -316,7 +316,7 @@ session_start();
                                 <div class="mb-3">
 
                                   <a href="#<?php echo $data_dosen['nama_anggota'] ?>">
-                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1">
+                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1" required>
                                     <label class="form-check-label" for="defaultCheck1">
                                       <?php echo $data_dosen['nama_anggota'] ?>
                                     </label>
@@ -348,7 +348,7 @@ session_start();
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="submite" name="input" class="btn bg-gradient-info" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Kirim Permohonan</button>
+            <button type="submite" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
           </div>
           </form>
         </div>

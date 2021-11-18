@@ -291,7 +291,7 @@
                 <div class="row">
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="sr" class="form-select" aria-label="Default select example">
+                    <select name="sr" class="form-select" aria-label="Default select example" required>
                       <option selected>Pilih Jenis Surat</option>
                       <option value="Surat Perpindahan Barang Lab">Surat Perpindahan Barang Lab</option>
                       <option value="Permohonan Surat Tugas">Permohonan Surat Tugas</option>
@@ -305,7 +305,7 @@
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
-                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" >
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
               </div>
               </div>
             </div>
@@ -324,7 +324,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="submite" name="input" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Kirim Permohonan Surat</button>
+            <button type="submite" name="input" class="btn bg-gradient-info" >Kirim Permohonan Surat</button>
           </div>
           </form>
         </div>
