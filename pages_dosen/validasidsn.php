@@ -230,12 +230,12 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Perihal</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Nama Dosen</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">NIP/NPP Dosen</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Proses Admin</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-2">Perihal</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-2">Nama Dosen</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-2">NIP/NPP Dosen</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Tanggal Pengajuan</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Proses Admin</th>
                      
                      
                     </tr>
@@ -262,7 +262,7 @@
                       
                       <!-- progres -->
                       <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
+                        <h6 class="mb-0 text-sm"><?php echo $data['perihal'] ?></h6>
                       </td>
                       <!-- nama -->
                       <td>
@@ -274,7 +274,7 @@
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                        <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                       </td>
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
