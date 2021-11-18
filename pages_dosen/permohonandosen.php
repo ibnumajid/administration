@@ -365,7 +365,7 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
                     if ($data['nama_dsn'] == $_SESSION['user']) {
-                        $no++
+                      
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
