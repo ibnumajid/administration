@@ -230,9 +230,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="ps-3">Perihal</th>
-                      <th class="ps-3">Nama Dosen</th>
-                      <th class="ps-2">NPP</th>
+                      <th class="ps-4">Perihal</th>
+                      <th class="ps-4">Nama Dosen</th>
+                      <th class="ps-4">NPP</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status Dosen</th>
                       <th class="text-center">Proses Admin</th>
@@ -262,15 +262,15 @@
                       
                       <!-- progres -->
                       <td>
-                        <h6 class="mb-0 text-sm ps-2"><?php echo $data['perihal'] ?></h6>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                       </td>
                       <!-- nama -->
                       <td>
-                      <h6 class="mb-0 text-sm ps-2"><?php echo $data['nama_dsn'] ?></h6>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_dsn'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['id_npp'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">

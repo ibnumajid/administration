@@ -226,8 +226,8 @@
                   <thead>
                     <tr>
                       <th class="ps-4">Perihal</th>
-                      <th class="ps-4">Nama Mahasiswa</th>
-                      <th class="ps-3">NRP Mahasiswa</th>
+                      <th class="ps-5">Nama Mahasiswa</th>
+                      <th class="ps-4">NRP Mahasiswa</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status Dosen</th>
                      
@@ -278,7 +278,7 @@
                         </td>
                         <!-- nrp -->
                         <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['id_nrp'] ?></h6>
+                        <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
