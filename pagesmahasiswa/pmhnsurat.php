@@ -316,7 +316,7 @@ session_start();
                                 <div class="mb-3">
 
                                   <a href="#<?php echo $data_dosen['nama_anggota'] ?>">
-                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1" required>
+                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1" >
                                     <label class="form-check-label" for="defaultCheck1">
                                       <?php echo $data_dosen['nama_anggota'] ?>
                                     </label>
