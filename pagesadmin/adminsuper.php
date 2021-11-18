@@ -316,62 +316,122 @@
       </div>
     </nav>
       <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <!---->
 
-      <div class="col-md-12 mb-lg-0 mb-4">
+            <div class="col-md-12 mb-lg-0 mb-4">
               <div class="card mt-1">
-                <div class="card-header pb-0 p-3">
+                <div class="card-header pb-0 p-4">
                   <div class="row">
                     <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0">Informasi</h6>
+                      <h5 class="mb-0">Informasi</h5>
                     </div>
                   </div>
                 </div>
-                <div class="card-body p-3" >
+
+                <table>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
                 <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 0;
-                  $no2 = 0;
-                  $no3 = 0;
-                  $no4 = 0;
-                  $query = mysqli_query($koneksi, "SELECT * FROM data_mhs ");
-                  $query2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb");
-                  $query3 = mysqli_query($koneksi, "SELECT * FROM data_tendik");
-                  $query4 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE `status` = 1 ");
-               
-                  while ($data = mysqli_fetch_array($query)) { 
-                    $no++;
+                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                $no = 0;
+                $no2 = 0;
+                $no3 = 0;
+                $no4 = 0;
+                $query = mysqli_query($koneksi, "SELECT * FROM data_mhs ");
+                $query2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb");
+                $query3 = mysqli_query($koneksi, "SELECT * FROM data_tendik");
+                $query4 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE `status` = 1 ");
                     
+                while ($data = mysqli_fetch_array($query)) { 
+                  $no++;
                   }
-                  while ($data2 = mysqli_fetch_array($query2)) { 
-                   $no2++; 
+                while ($data2 = mysqli_fetch_array($query2)) { 
+                  $no2++; 
                   }
-                  while ($data3 = mysqli_fetch_array($query3)) { 
-                    $no3++;  
-                   }
-                   while ($data4 = mysqli_fetch_array($query4)) { 
-                    $no4++;  
-                   }
-    
-                  ?>
-               
-                  <div class="row" >
-
-                  <h6>Jumlah Mahasiswa : <?php echo $no++ ?> </h6>
-                  <h6>Jumlah Dosen : <?php echo $no2++ ?> </h6>
-                  <h6>Jumlah Tendik :  <?php echo $no3++ ?> </h6>
-                  <h6>Jumlah Admin  : <?php echo $no4++ ?></h6>
-
-                    <div class="col-md-6">
-                    
-
+                while ($data3 = mysqli_fetch_array($query3)) { 
+                  $no3++;  
+                  }
+                while ($data4 = mysqli_fetch_array($query4)) { 
+                  $no4++;  
+                  }?>
+                <tr>
+                  <td>
+                <div class="card-body p-3" >
+                  <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="bg-info card-header text-dark h5">MAHASISWA</div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Jumlah Mahasiswa</h5>
+                        <p class="text-center h3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          </svg><?php echo $no++ ?>
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
+                  </td>
+                  <td>
+                <div class="card-body p-3" >
+                  <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="bg-info card-header text-dark h5">DOSEN</div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Jumlah Dosen</h5>
+                        <p class="text-center h3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          </svg><?php echo $no2++ ?>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  </td>
+                  <td>
+                <div class="card-body p-3" >
+                  <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="bg-info card-header text-dark h5">TENDIK</div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Jumlah Tendik</h5>
+                        <p class="text-center h3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          </svg><?php echo $no3++ ?>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  </td>
+                  <td>
+                <div class="card-body p-3" >
+                  <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <div class="bg-info card-header text-dark h5">ADMIN</div>
+                      <div class="card-body">
+                        <h5 class="card-title text-center">Jumlah Admin</h5>
+                        <p class="text-center h3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          </svg><?php echo $no4++ ?>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                </table>
               </div>
-            </div>            
+            </div>
+          </div>
         </div>
-        </div>
-    </main>
+      </div>
+    </div>
+  </main>
 
     </div>
     <!--   Core JS Files   -->
