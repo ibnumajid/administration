@@ -237,16 +237,16 @@
               $file = basename($_FILES['fl']['name']);
               $ukuran = $_FILES['fl']['size'];
               $tipe = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-              $max = 1024 * 20000;
+              $max = 1024 * 5000;
               $ekstensi = "pdf";
               $keterangan = $_POST['keterangan'];
 
               $url = $id_npp.'_'.$file;
 
               if ($ukuran > $max && $tipe != $ekstensi) {;
-                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 20 mb")</script>';
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';
               } else if ($ukuran > $max) {
-                echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>';
+                echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
               } else if ($tipe != $ekstensi && $tipe != $ekstensi2) {
                 echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf")</script>';
               } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
