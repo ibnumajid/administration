@@ -409,7 +409,7 @@
                                       <label class="form-check-label" for="defaultCheck1">
                                         Disetujui
                                       </label>
-
+                                     </div>
                                       <!-- Menginput catatan -->
                                     <div>
                                     <label for="catatan2" class = "form-label"> Catatan </label>
@@ -418,7 +418,7 @@
 
                                  
                         
-                                  </div>
+                                    
                                 </div>
                               </div>
                               <!-- button upload close -->

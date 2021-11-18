@@ -368,8 +368,10 @@
                                         <div>
                                     <label for="catatan" class = "form-label"> Catatan </label>
                                     <br>
-                                    <input name = "catatan" type = "text"  >  
-                                    </div>
+                                    
+                                  <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text"  ></div>  
+                                    </div> 
+                                  
 
                       
                                 </div>

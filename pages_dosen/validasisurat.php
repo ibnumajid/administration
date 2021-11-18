@@ -379,13 +379,15 @@
                                       <label class="form-check-label" for="defaultCheck1">
                                         Disetujui
                                       </label>
-
+                                      </div>
                                       <!-- Menginput catatan -->
                                     <div>
                                     <label for="catatan2" class = "form-label"> Catatan </label>
+                                    <br>
+                                    
                                   <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text"  ></div>  
-                                    </div>
-                                  </div>
+                                        </div>
+                                  
                                 </div>
                               </div>
                               <!-- button upload close -->
