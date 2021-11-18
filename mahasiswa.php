@@ -92,8 +92,7 @@ session_start();
             <span class="nav-link-text ms-1">Home</span>
           </a>
         </li>
-
-        
+  
         <!--persetujuan surat-->
         <li class="nav-item">
           <a class="nav-link  " href="/pagesmahasiswa/pmhnsurat.php">
@@ -105,7 +104,6 @@ session_start();
             <span class="nav-link-text ms-1">Permohonan Surat</span>
           </a>
         </li>
-
 
       <!-- REKAP SURAT -->
       <li class="nav-item"> 
@@ -134,7 +132,6 @@ session_start();
           </a>
   </li>
         
-  
       </ul>
     </div>
     <!--barusan dicopy nefbar-->
