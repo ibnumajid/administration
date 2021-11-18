@@ -90,7 +90,7 @@
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Menu</h6>
           </li>
 
-<?php if ($_SESSION['status'] !== 6) { ?>
+<?php if ($_SESSION['status'] == 1) { ?>
           <!-- KIRIM SURAT -->
           <li class="nav-item">
             <a class="nav-link  " href="../pagesadmin/kirimadmin.php">
@@ -718,16 +718,8 @@
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
     <!-- JS sweetaler notif login berhasil-->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <?php if(@$_SESSION['alert']) : ?>
-          <script>
-              Swal.fire({
-              icon: 'success',
-              title: 'Berhasil',
-              text: 'Berhasil Login',
-              })
-          </script>
-      <?php unset($_SESSION['alert']); ?>
-      <?php endif; ?>
+      
+   
   </body>
 
   </html>
