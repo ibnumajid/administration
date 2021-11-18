@@ -305,7 +305,7 @@
                 <div class="card-header pb-0 p-4">
                   <div class="row">
                     <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0 pt-1 px-1">Detail Permohoan</h6>
+                      <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
                     </div>
                     
                   </div>
