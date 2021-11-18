@@ -88,7 +88,7 @@
             <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Menu</h6>
           </li>
 
-<?php if ($_SESSION['status'] == 10) { ?>
+<?php if ($_SESSION['status'] == 1) { ?>
           <!-- KIRIM SURAT -->
           <li class="nav-item">
             <a class="nav-link  " href="../pagesadmin/kirimadmin.php">
