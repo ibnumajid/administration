@@ -300,7 +300,7 @@ session_start();
                       <span class="text-xs"><?=$data['tanggal']?></span>
                     </div>
                     <div class="d-flex align-items-center text-sm">
-                    <a href="./pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                    <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
                       <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                     </a>
                     </div>
