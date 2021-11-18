@@ -249,7 +249,7 @@ session_start();
     <!-- End Navbar -->
 
     <div class="text-center">
-    <button type="button"  href="./uploadfile.php" class="btn btn-secondary btn-lg w-130 btn bg-gradient-info">Ajukan Surattt</button>
+    <button type="button"  href="./uploadfile.php" class="btn btn-secondary btn-lg w-130 btn bg-gradient-info">Ajukan Surat</button>
     </div>
       
     

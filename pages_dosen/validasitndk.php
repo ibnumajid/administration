@@ -269,7 +269,7 @@
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['id_nip'] ?></h6>
+                      <h6 class="mb-0 text-sm"><?php echo $data['nip_tdk'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">

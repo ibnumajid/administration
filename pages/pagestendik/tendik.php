@@ -226,7 +226,7 @@ session_start();
                                 <span class="text-xs"><?=$data['keterangan']?></span>
                               </div>
                               <div class="d-flex align-items-center text-sm">
-                                <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                                <a href="../../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
                                 </a>
                               </div>
@@ -332,7 +332,7 @@ session_start();
                 $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   // data nama tendik
-                  if ($data['nama_tdk'] == $_SESSION['user']) {
+                  if ($data['nama_tdk'] == $_SESSION['user'] && ($data['status_surat'] == 1 || $data['status_kadep'] == 1)) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
