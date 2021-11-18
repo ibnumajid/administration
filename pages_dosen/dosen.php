@@ -382,7 +382,7 @@
         <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Detail Permohonan Surat</h6>
+              <h6 class="mb-0">Surat Ditolak</h6>
             </div>
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
@@ -391,7 +391,7 @@
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_dsn'] == $_SESSION['user'] && ($data['status_surat'] == 1 || $data['status_kadep'] == 1)) {
+                  if ($data['nama_mhsw'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -539,7 +539,7 @@
                <?php } ?>
 
                <?php if ($no == 1) { ?>
-              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA YANG DIAJUKAN</h6>
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DITOLAK</h6>
 
               <?php } ?>
 

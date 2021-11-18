@@ -321,7 +321,7 @@ session_start();
         <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Detail Permohonan Surat</h6>
+              <h6 class="mb-0">SURAT DITOLAK</h6>
             </div>
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
@@ -332,7 +332,7 @@ session_start();
                 $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   // data nama tendik
-                  if ($data['nama_tdk'] == $_SESSION['user'] && ($data['status_surat'] == 1 || $data['status_kadep'] == 1)) {
+                  if ($data['nama_mhsw'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -480,7 +480,7 @@ session_start();
                <?php } ?>
 
                <?php if ($no == 1) { ?>
-              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA YANG DIAJUKAN</h6>
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DITOLAK</h6>
 
               <?php } ?>
 

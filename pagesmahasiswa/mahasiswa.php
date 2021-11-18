@@ -323,7 +323,7 @@ session_start();
         <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Detail Permohonan Surat</h6>
+              <h6 class="mb-0">Surat Ditolak</h6>
             </div>
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
@@ -490,7 +490,7 @@ session_start();
                <?php } ?>
 
                <?php if ($no == 1) { ?>
-                <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
+                <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DITOLAK</h6>
 
                 <?php } ?>
 
