@@ -267,7 +267,7 @@
                         <div class="col-6 d-flex align-items-center">
                           <h6 class="mb-0 pt-1 px-1">Informasi</h6>
                         </div>
-                        
+                        <hr>
                       </div>
                     </div>
 

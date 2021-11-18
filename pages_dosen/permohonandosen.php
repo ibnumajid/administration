@@ -365,12 +365,12 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
                     if ($data['nama_dsn'] == $_SESSION['user']) {
-                        $no++
+                      
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td><?php echo $data['perihal'] ?></td>
-                        <td><?php echo $data['tanggal'] ?></td>
+                        <td class = "text-center"><?php echo $data['tanggal'] ?></td>
 
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
