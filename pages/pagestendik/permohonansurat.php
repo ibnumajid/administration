@@ -130,7 +130,7 @@ session_start();
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Tendik</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Permohonan Surat</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Permohonan Surat</h6>
+          <h5 class="font-weight-bolder mb-0">Permohonan Surat</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -345,19 +345,19 @@ session_start();
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
-                        <td><?php echo $data['perihal'] ?></td>
-                        <td><?php echo $data['tanggal'] ?></td>
+                        <td class="ps-2"><?php echo $data['perihal'] ?></td>
+                        <td class="ps-2"><?php echo $data['tanggal'] ?></td>
 
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
-                          <td class="align-middle">
+                          <td class="text-center">
                             <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                           </td> <?php } else if ($data['status_kadep'] == 1) { ?>
-                          <td class="align-middle">
+                          <td class="text-center">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td>
                         <?php } else if ($data['status_kadep'] == 2) { ?>
-                          <td>
+                          <td class="text-center">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } ?>
                           
