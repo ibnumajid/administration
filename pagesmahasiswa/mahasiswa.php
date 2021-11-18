@@ -332,7 +332,7 @@ session_start();
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_mhsw'] == $_SESSION['user']) {
+                  if ($data['nama_mhsw'] == $_SESSION['user'] && ($data['status_surat'] || $data['status_kadep'])) {
                       $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
