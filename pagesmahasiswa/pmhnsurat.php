@@ -214,7 +214,7 @@ session_start();
             else if ($ukuran > $max)
             {
               ?><script><?php $_SESSION["ukuran"] = true;?></script> 
-              <script>history.pushState({}, "", "")</script><?php}
+              <script>history.pushState({}, "", "")</script><?php }
                
             else if ($tipe != $ekstensi && $tipe != $ekstensi2)
             { 
