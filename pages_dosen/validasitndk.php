@@ -127,7 +127,7 @@
         <?php } ?>
 
       <!--SURAT MASUK KADEP -->
-      <?php if($_SESSION['status'] == '5'){ ?>
+ <!-- <?php if($_SESSION['status'] == '5'){ ?>
       </li> 
        <li class="nav-item"> 
         <a class="nav-link  " href="./suratmskkdp.php">

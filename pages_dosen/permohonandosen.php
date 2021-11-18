@@ -124,7 +124,7 @@
 
 
          <!--SURAT MASUK KADEP -->
-    <?php if($_SESSION['status'] == '5'){ ?>
+  <!--  <?php if($_SESSION['status'] == '5'){ ?>
       </li> 
        <li class="nav-item"> 
         <a class="nav-link  " href="./suratmskkdp.php">
@@ -136,7 +136,7 @@
               </div>
           <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
         </a>
-      </li> <?php } ?>
+      </li> <?php } ?> 
 
     
 <!--profil-->
