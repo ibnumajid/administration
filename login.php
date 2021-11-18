@@ -27,11 +27,12 @@ if($cek > 0){
     }
     elseif($data['status'] == '6')
     {
-    
         session_start();
+        $tambah = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user='$user' and pass='$pass'");
+        $data = mysqli_fetch_assoc($tambah);
         $row = mysqli_fetch_array($tambah);
-        $_SESSION['user'] ="superadmin";
-        $_SESSION['NIP'] ="0000";
+        $_SESSION['user'] = $data['user'];
+        $_SESSION['NIP'] = "0000";
         $_SESSION['status'] = $data['status'];
         $_SESSION['alert'] = true;
         header("location:pagesadmin/billingadmin.php");
@@ -42,8 +43,7 @@ if($cek > 0){
         $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp ='$user' ");
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user'] =$data2['nama_anggota'];
-            $_SESSION['NIP'] =$data2['id_npp'];
-          
+            $_SESSION['NIP'] = $data2['id_npp'];
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;}    
         header("location:./pages_dosen/dosen.php");
