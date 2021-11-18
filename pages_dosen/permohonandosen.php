@@ -424,7 +424,7 @@
                                         <!-- Cek File -->
                                         <label for="formFile" class="form-label">File Anda (Klik Untuk Melihat)</label>
                                         <a href="./<?php echo $data['file'] ?>" target="_blank">
-                                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p></a>
 
                                         <!-- Keterangan File -->
                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
