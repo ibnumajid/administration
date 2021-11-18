@@ -297,404 +297,194 @@
     </nav>
       <!-- End Navbar -->
 
-        <!-- Bagian Detail Permohonan Surat Dosen -->
-        <div class="row">
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <!---->
 
-          <div class="col-md-7 mt-4">
-            <div class="card">
-              <div class="card-header pb-0 px-3">
-                <h6 class="mb-0">Detail Permohonan Surat Dosen</h6>
-              </div>
-              
-              <div class="card-body pt-4 p-3">
-              <div class="table-responsive p-0">
-              <div style = "height:400px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
-
-                  <table class="table align-items-center mb-0" >
-                    <thead>
-                      <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Perihal</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Nama Dosen</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Proses</th>
-                      </tr>
-                    </thead>
-            
-              
-                    <!-- php tabel -->
-                    <?php
-                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                    $nama = $_SESSION['user'];
-                    $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
+            <div class="col-md-12 mb-lg-0 mb-4">
+              <div class="card mt-0">
+                <div class="card-header pb-0 p-4">
+                  <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                      <h6 class="mb-0 pt-1 px-1">Detail Permohoan</h6>
+                    </div>
                     
-                    while ($data = mysqli_fetch_array($query)) {
-                    
-                        if ($data['status_admin'] == 0) {
-    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
-                          
-
-                      
-                    ?> 
-                    <!-- tabel -->
-                    <tbody>
-                      <tr>
-                        <!-- file -->
-                      
-                        
-                        <!-- progres -->
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
-                        </td>
-                        <!-- nama -->
-                        <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['nama_dsn'] ?></h6>
-                        </td>
-                        <!-- tanggal -->
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
-                        </td>
-                        <!-- status surat -->
-                          <?php if ($data['status_admin'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_admin'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-
-                              else if ($data['status_admin'] == 2) {?>
+                  </div>
+                </div>
+                
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:450px">
+                  <div class="card-body p-3">
+                    <div class="row">
+                      <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                          <table class="table table-striped align-items-center mb-6">
+                            <thead>
+                              <tr>
+                                <th class="text-center">No</th>
+                                <th class="text-left ps-2">Nama</th>
+                                <th class="text-left ps-2">Status</th>
+                                <th class="text-left ps-2">Perihal</th>
+                                <th>Proses</th>
+                                <th class="text-center">Waktu Upload</th>
+                                <th class="text-left ps-2"></th>
+                              </tr>
+                            </thead>
+                            <?php $no = 1; ?>
+                            <!-- tabel mahasiswa -->
+                            <?php
+                              include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                              $nama = $_SESSION['user'];
+                              
+                              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                              
+                              while ($data = mysqli_fetch_array($query)) {
+                              
+                                  if ($data['status_admin'] == 0) {?>
+                            
+                            <tr>
+                              <!-- no -->
+                              <td class="text-center"><?php echo $no++ ?></td>
+                              <!-- nama -->
+                              <td> <h6 class="text-left ps-1"><?php echo $data['nama_mhsw'] ?></h6></td>
+                              <!-- status -->
+                              <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
+                              <!-- perihal -->
+                              <td> <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6></td>
+                              <!-- status surat -->
+                              <?php if ($data['status_admin'] == 0) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
-                        </td> <?php } ?> 
-
-                        <!-- button edit -->
-                        <td class="align-middle">
-                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Proses</button>
-                          </a>
-                        </td>
-                        <!-- and tabel -->
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-
-                              <!-- popup ajuan surat mahasiswa -->
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>  
+                                <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Belum Diproses</span>
+                              </td> <?php } 
+                                  else if ($data['status_admin'] == 1) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
+                              </td> <?php }
+                                  else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
+                              </td> <?php } ?>
+                              <!-- tanggal -->
+                              <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                              <!-- button -->
+                              <td class="align-middle">
+                                <a  href="validasiadmin.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                  <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                                </a>
+                              </td>
+                              <?php } } ?>
+                            </tr>
+                            <!-- and tabel mahasiswa -->
+                            <!-- tabel suratdosen -->
+                            <?php
+                              include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                              $nama = $_SESSION['user'];
                               
-                                <div class="modal-body">
-
-                      <!-- backend upload update surat -->
+                              $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                               
-                  <?php 
-                      include "../_database/config.php";
+                              while ($data = mysqli_fetch_array($query)) {
+                              
+                                  if ($data['status_admin'] == 0) {?>
+                            
+                            <tr>
+                              <!-- no -->
+                              <td class="text-center"><?php echo $no++ ?></td>
+                              <!-- nama -->
+                              <td> <h6 class="text-left ps-1"><?php echo $data['nama_dsn'] ?></h6></td>
+                              <!-- status -->
+                              <td> <h6 class="text-left ps-1">Dosen</h6></td>
+                              <!-- perihal -->
+                              <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
+                              <!-- status surat -->
+                              <?php if ($data['status_admin'] == 0) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Belum Diproses</span>
+                              </td> <?php } 
+                                  else if ($data['status_admin'] == 1) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
+                              </td> <?php }
+                                  else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
+                              </td> <?php } ?>
+                              <!-- tanggal -->
+                              <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                              <!-- button -->
+                              <td class="align-middle">
+                                <a  href="validasiadmin2.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                  <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                                </a>
+                              </td>
+                              <?php } } ?>
+                            </tr>
+                            <!-- and tabel dosen -->
+                            <!-- tabel suratdosen -->
+                            <?php
+                              include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                              $nama = $_SESSION['user'];
+                              
+                              $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
+                              
+                              while ($data = mysqli_fetch_array($query)) {
+                              
+                                  if ($data['status_admin'] == 0) {?>
+                            
+                            <tr>
+                              <!-- no -->
+                              <td class="text-center"><?php echo $no++ ?></td>
+                              <!-- nama -->
+                              <td> <h6 class="text-left ps-1"><?php echo $data['nama_tdk'] ?></h6></td>
+                              <!-- status -->
+                              <td> <h6 class="text-left ps-1">Tendik</h6></td>
+                              <!-- perihal -->
+                              <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
+                              <!-- status surat -->
+                              <?php if ($data['status_admin'] == 0) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Belum Diproses</span>
+                              </td> <?php } 
+                                  else if ($data['status_admin'] == 1) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
+                              </td> <?php }
+                                  else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
+                              </td> <?php } ?>
+                              <!-- tanggal -->
+                              <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                              <!-- button -->
+                              <td class="align-middle">
+                                <a  href="validasiadmin3.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                  <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                                </a>
+                              </td>
+                              <?php } } ?>
+                            </tr>
+                            <!-- and tabel dosen -->
+                                <?php 
+                                if ($no == 1) { ?>
 
-                      if(isset($_POST['update'])){
-
-                        $nama_file2 = basename($_FILES['ufl']['name']); 
-                        $ukuran2 = $_FILES['ufl']['size'];
-                        $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
-                        $id = $_POST['id'];
-                        $nama_dsn = $_POST['nm'];
-                        $statusadmin = $_POST['stadmin'];
-                        $perihal = $_POST['perihal2'];
-                        
-                        $url2 = $id.'_'.$nama_file2;
-                        
-                      if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                        $query2 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url2', '$nama_dsn', '$perihal', sysdate()) ");
-                        $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
-                  
-                        if($query2){
-                          echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
-                        }
-                        else {
-                          echo '<a href="./validasiadmin.php"><script> alert ("Anda sudah melakukan update")</script></a>';
-                        }
-                      }
-                    }
-                  
-                  ?>
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                    <div class="mb-3">
-                                      <!-- nama mahasiswa -->
-                                      <label for="formFile" class="form-label">Nama Dosen</label>
-                                      <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
-                                      <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_dsn'] ?>" >
-                                      <!-- NRP mahasiswa -->
-                                      <label for="formFile" class="form-label">NPP Dosen</label>
-                                      <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
-                                      <!-- progres -->
-                                      <label for="formFile" class="form-label">Perihal</label>
-                                      <label name="perihal2" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
-                                      <input type="hidden" name = "perihal2" value = " <?php echo $data['perihal'] ?> " aria-label = "default input label" >
-
-                                      <!-- file surat -->
-                                      <label for="formFile" class="form-label">Lihat File</label>
-                                      <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
-                                      <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
-                                      </a>
-                                      
-                                      <!-- Menginput id surat -->
-                                      <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
-
-                                      <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
-                                      <input name = "stadmin" value = 2 type = "hidden">
-                                      
-                                      <!-- upload surat baru -->
-                                      <div class="card-header pb-0 p-3">
-                                    <div class="row">
-                                    <div class="mb-3">
-                                  <label for="formFile" class="form-label">Kirim File Baru</label>
-                                <input type="file" name="ufl" class="form-control" aria-label="file example" required>
-                                <div class="invalid-feedback">Example invalid form file feedback</div>
-                              </div>
-                            </div>
-                          </div>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                              <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                              <?php } ?>
+                          </table>
                         </div>
                       </div>
-                      </div>
-                                <!-- button upload close -->
-                            </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
-                              </div>
-                            </form>
-                            </div>
-                          </div>
-                        </div>  
-                        <!-- and popup ajuan surat mahasiswa -->
-                        
-                        <!-- and php tabel -->
-                      <!-- and modal-->
-                      
-                    
-                      </tr>
-
-
-                    
-
-                      
-                    </tbody>
-                    <?php  } ?>
-
-                  <?php } ?>
-                  </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
-        
-                    
-          <div class="col-md-5 mt-4">
-            <div class="card h-100 mb-4">
-              <div class="card-header pb-0 px-3">
-                <div class="row">
-                  <div class="col-md-6">
-                    <h6 class="mb-0">Detail Permohonan Surat Mahasiswa</h6>
-                  </div>
-                  <div class="col-6 text-end">
-                  <a href = "validasisurat.php"> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
-                  </div>
-                </div>
-                <hr>
-              </div>
-
-              <div class="card-body pt-4 p-3">
-              <div class="table-responsive p-0">
-              <div style = "height:380px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
-
-                  <table class="table align-items-center mb-0" >
-                    <thead>
-                      <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Perihal</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Proses</th>
-                      </tr>
-                    </thead>
-            
-              
-                    <!-- php tabel -->
-                    <?php
-                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                    $nama = $_SESSION['user'];
-                    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                    
-                    while ($data = mysqli_fetch_array($query)) {
-                      if ($data['status_admin'] == 0) {
-    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
-                          
-
-                      
-                    ?> 
-                    <!-- tabel -->
-                    <tbody>
-                      <tr>
-                        <!-- file -->
-                      
-                        
-                        <!-- progres -->
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
-                        </td>
-                        <!-- nama -->
-                        <!-- status surat -->
-                          <?php if ($data['status_admin'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_admin'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-
-                              else if ($data['status_admin'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
-                        </td> <?php } ?> 
-
-                        <!-- button edit -->
-                        <td class="align-middle">
-                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Proses</button>
-                          </a>
-                        </td>
-                        <!-- and tabel -->
-                        
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog modal-dialog-centered" role="document">
-                              <div class="modal-content">
-
-                              <!-- popup ajuan surat mahasiswa -->
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>  
-                              
-                                <div class="modal-body">
-
-                      <!-- backend upload update surat -->
-                              
-                              <?php 
-                      include "../_database/config.php";
-
-                      if(isset($_POST['update2'])){
-                        $nama_file2 = basename($_FILES['ufl']['name']); 
-                        $ukuran2 = $_FILES['ufl']['size'];
-                        $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
-                        $id = $_POST['id'];
-                        $nama_mhs = $_POST['nm'];
-                        $statusadmin = $_POST['stadmin'];
-                        $perihal = $_POST['perihal'];
-                        
-                        $url2 = $id.'_'.$nama_file2;
-                        
-                      if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                        $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
-                        $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
-
-                        if($query2){
-                          echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
-                        }
-                        else {
-                          echo '<a href="./validasiadmin.php"><script> alert ("Anda sudah melakukan update")</script></a>';
-                        }
-                    }}
-
-                    ?>
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                    <div class="mb-3">
-                                      <!-- nama mahasiswa -->
-                                      <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                      <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                      <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
-                                      <!-- NRP mahasiswa -->
-                                      <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                      <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
-                                      <!-- Perihal -->
-                                      <label for="formFile" class="form-label">Perihal</label>
-                                      <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
-                                      <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
-                                      <!-- file surat -->
-                                      <label for="formFile" class="form-label">Lihat File</label>
-                                      <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
-                                      <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
-                                      </a>
-                                      
-                                      
-
-                                      <!-- Menginput id surat -->
-                                      <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
-
-                                      <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
-                                      <input name = "stadmin" value = 2 type = "hidden">
-                                      
-                                      <!-- upload surat baru -->
-                                      <div class="card-header pb-0 p-3">
-                                    <div class="row">
-                                    <div class="mb-3">
-                                  <label for="formFile" class="form-label">Kirim File Baru</label>
-                                <input type="file" name="ufl" class="form-control" aria-label="file example" required>
-                                <div class="invalid-feedback">Example invalid form file feedback</div>
-                              </div>
-                            </div>
-                          </div>
-
-                      </div>
-                      </div>
-                      </div>
-                                <!-- button upload close -->
-                            </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
-                              </div>
-                            </form>
-                            </div>
-                          </div>
-                        </div>  
-                        <!-- and popup ajuan surat mahasiswa -->
-                      
-                        <!-- and php tabel -->
-                      <!-- and modal-->
-                      
-                    
-                      </tr>
-
-
-
-                    
-
-                      
-                    </tbody>
-                    <?php } } ?>
-                  </table>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-          
         </div>
-        </div>
-    </main>
+      </div>
+    </div>
+  </main>
 
     </div>
     <!--   Core JS Files   -->
