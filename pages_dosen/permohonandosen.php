@@ -370,7 +370,7 @@
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td><?php echo $data['perihal'] ?></td>
-                        <td><?php echo $data['tanggal'] ?></td>
+                        <td class = "text-center"><?php echo $data['tanggal'] ?></td>
 
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
