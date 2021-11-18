@@ -32,7 +32,6 @@ if($cek > 0){
         $row = mysqli_fetch_array($tambah);
         $_SESSION['user'] ="superadmin";
         $_SESSION['NIP'] ="0000";
-        
         $_SESSION['status'] =$data['status'];
         header("location:pagesadmin/billingadmin.php");
     }
