@@ -273,7 +273,7 @@
                        
                         <!-- progres -->
                         <td>
-                          <p class="text-sm font-weight-bold mb-0"><?php echo $data['progres'] ?></p>
+                          <h6 class="mb-0 text-sm"><?php echo $data['progres'] ?></h6>
                         </td>
                         <!-- nama -->
                         <td>
@@ -285,7 +285,7 @@
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-sm font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                         </td>
 
                         <!-- status surat dosen -->
