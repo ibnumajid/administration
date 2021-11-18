@@ -167,7 +167,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Mahasiswa</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Validasi Surat Mahasiswa</h6>
+          <h5 class="font-weight-bolder mb-0">Validasi Surat Mahasiswa</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -214,9 +214,9 @@
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
               <div class="row">
-                <div class="col-6 d-flex align-items-center">
+                <!-- <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Validasi Surat Mahasiswa</h6>
-                </div>
+                </div> -->
               </div>
             </div>
             
@@ -225,11 +225,11 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-2">Perihal</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-2">Nama Mahasiswa</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-2">NRP Mahasiswa</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Tanggal Pengajuan</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Status Dosen</th>
+                      <th class="ps-3">Perihal</th>
+                      <th class="ps-3">Nama Mahasiswa</th>
+                      <th class="ps-2">NRP Mahasiswa</th>
+                      <th class="text-center">Tanggal Pengajuan</th>
+                      <th class="text-center">Status Dosen</th>
                      
                      <?php 
                        include '../_database/config.php'; //panggil setiap ingin koneksi ke data
@@ -237,7 +237,7 @@
                        $data = mysqli_fetch_array($query);
 
                        if ($_SESSION['status'] == '5' ) { ?>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kadep</th>
+                      <th class="text-center">Status Kadep</th>
                       <?php } ?>
                      
                     </tr>
@@ -270,11 +270,11 @@
                        
                         <!-- progres -->
                         <td>
-                          <h6 class="mb-0 text-sm"><?php echo $data['progres'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-2"><?php echo $data['progres'] ?></h6>
                         </td>
                         <!-- nama -->
                         <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['nama_mhsw'] ?></h6>
+                        <h6 class="mb-0 text-sm ps-2"><?php echo $data['nama_mhsw'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
