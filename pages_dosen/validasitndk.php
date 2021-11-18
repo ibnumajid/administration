@@ -269,7 +269,7 @@
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['nip_tdk'] ?></h6>
+                      <h6 class="mb-0 text-sm"><?php echo $data['id_nip'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
@@ -335,7 +335,7 @@
                                   <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
                                   <!-- NPP Dosen -->
                                   <label for="formFile" class="form-label">NIP Tendik</label>
-                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['nip_tdk'] ?></label>
+                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nip'] ?></label>
                                   <!-- progres -->
                                   <label for="formFile" class="form-label">Nama File</label>
                                   <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
