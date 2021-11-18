@@ -213,7 +213,8 @@ session_start();
         
             else if ($ukuran > $max)
             {
-              echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>' ;}
+              ?><script><?php $_SESSION["ukuran"] = true;?></script> 
+              <script>history.pushState({}, "", "")</script><?php}
                
             else if ($tipe != $ekstensi && $tipe != $ekstensi2)
             { 
@@ -627,12 +628,26 @@ session_start();
             Swal.fire({
             position: 'center',
             icon: 'warning',
-            title: 'Gagal mengajukan permohonan surat ! Ekstensi file haru pdf',
+            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf',
             showConfirmButton: false,
             timer: 2000
           })
         </script>
     <?php unset($_SESSION['pdf']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['ukuran']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['ukuran']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
