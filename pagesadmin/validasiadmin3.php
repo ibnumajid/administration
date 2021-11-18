@@ -207,12 +207,12 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Perihal</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Nama Tendik</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">NIP Tendik</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status Kadep</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Konfirmasi Admin</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-3">Perihal</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-1">Nama Tendik</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-1">NIP Tendik</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Tanggal Pengajuan</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Status Kadep</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Konfirmasi Admin</th>
                     </tr>
                   </thead>
                   <!-- php tabel -->
@@ -242,7 +242,7 @@
                        
                         <!-- progres -->
                         <td>
-                          <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
+                          <h6 class="mb-0 text-sm"><?php echo $data['perihal'] ?></h6>
                         </td>
                         <!-- nama -->
                         <td>
@@ -254,7 +254,7 @@
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                         </td>
 
                         <!-- status surat kadep -->
