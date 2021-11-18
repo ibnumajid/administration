@@ -329,6 +329,7 @@
                     
                     while ($data = mysqli_fetch_array($query)) {
                     
+                        if ($data['status_admin'] == 0) {
     ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
                           
 
@@ -474,9 +475,7 @@
                           </div>
                         </div>  
                         <!-- and popup ajuan surat mahasiswa -->
-                        <?php  }
-                      
-                      ?>
+                        
                         <!-- and php tabel -->
                       <!-- and modal-->
                       
@@ -488,6 +487,9 @@
 
                       
                     </tbody>
+                    <?php  } ?>
+
+                  <?php } ?>
                   </table>
                 </div>
               </div>
@@ -530,7 +532,7 @@
                     $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                     
                     while ($data = mysqli_fetch_array($query)) {
-                    
+                      if ($data['status_admin'] == 0) {
     ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja --> <?php 
                           
 
@@ -669,9 +671,7 @@
                           </div>
                         </div>  
                         <!-- and popup ajuan surat mahasiswa -->
-                        <?php  }
                       
-                      ?>
                         <!-- and php tabel -->
                       <!-- and modal-->
                       
@@ -684,6 +684,7 @@
 
                       
                     </tbody>
+                    <?php } } ?>
                   </table>
                 </div>
               </div>
