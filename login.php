@@ -17,10 +17,9 @@ if($cek > 0){
    if($data['status'] == '1')
     {
         session_start();
-        $row = mysqli_fetch_array($tambah);
+        $data = mysqli_fetch_array($tambah);
         $_SESSION['user'] ="admin";
         $_SESSION['NIP'] ="0000";
-       
         $_SESSION['status'] = $data['status'];
         $_SESSION['alert'] = true;
         header("location:./pagesadmin/billingadmin.php");
@@ -28,14 +27,12 @@ if($cek > 0){
     elseif($data['status'] == '6')
     {
         session_start();
-        $tambah = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user='$user' and pass='$pass'");
-        $data = mysqli_fetch_assoc($tambah);
-        $row = mysqli_fetch_array($tambah);
+        $data = mysqli_fetch_array($tambah);
         $_SESSION['user'] = $data['user'];
         $_SESSION['NIP'] = "0000";
         $_SESSION['status'] = $data['status'];
         $_SESSION['alert'] = true;
-        header("location:pagesadmin/billingadmin.php");
+        header("location:pagesadmin/adminsuper.php");
     }
     elseif ($data['status'] == '2')
     {
