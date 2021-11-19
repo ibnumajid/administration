@@ -83,13 +83,6 @@ if($cek > 0){
         }
     
 }
-    elseif ($data['status'] == '6')
-    {
-        session_start();
-        $row = mysqli_fetch_array($tambah);
-        $_SESSION['user'] = $row['user'];
-        header("location:AdminKeuangan.php");
-    }
     elseif ($data['status'] == '7')
     {
         session_start();
