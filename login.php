@@ -79,7 +79,7 @@ if($cek > 0){
             $_SESSION['NIP']    = $data2['id_npp'];
           
             $_SESSION['status'] = $data['status'];
-        header("location:./pages_dosen/dosen.php");
+        header("location:./pages_dosen/kadep.php");
         }
     
 }

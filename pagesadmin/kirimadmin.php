@@ -204,17 +204,17 @@
                 $nama_file = basename($_FILES['fl']['name']);
                 $ukuran = $_FILES['fl']['size'];
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-                $max = 1024 * 20000;
+                $max = 1024 * <i class="fas fa-500px    "></i>000;
                 $ekstensi = "pdf";
                 $ekstensi2 = "docx";
 
                 $url = $nama_file;
 
                 if ($ukuran > $max && $tipe != $ekstensi && $tipe != $ekstensi2)
-                {echo "Ukuran File tidak boleh melebihi 20 mb dan harus dalam format docx/pdf";}
+                {echo "Ukuran File tidak boleh melebihi 5 mb dan harus dalam format docx/pdf";}
 
                 else if ($ukuran > $max)
-                { echo "Ukuran file tidak boleh melebihi 20 mb";}
+                { echo "Ukuran file tidak boleh melebihi 5 mb";}
 
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
                 { $_SESSION['pdf'] = true;}
@@ -290,6 +290,12 @@
                     <input class="form-check-input" Name="tj[]" type="checkbox" value="Mahasiswa" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       Mahasiswa
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" Name="tj[]" type="checkbox" value="Kadep" id="defaultCheck1">
+                    <label class="form-check-label" for="defaultCheck1">
+                      Kadep
                     </label>
                   </div>
                 </div>
