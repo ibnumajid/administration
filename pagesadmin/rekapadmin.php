@@ -145,7 +145,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Admin</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Rekap Surat</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Rekap Surat</h6>
+          <h5 class="font-weight-bolder mb-0">Rekap Surat</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -225,11 +225,19 @@
                   ?>
                   
                   <tr>
-                    <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['nama'] ?></td>
-                    <td><?php echo $data['perihal'] ?></td>
-                    <td><?php echo $data['file'] ?></td>
-                    <td><?php echo $data['tanggal'] ?></td>
+                    <td class="text-center"><?php echo $no++ ?></td>
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama'] ?></h6>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['file'] ?></h6>
+                    </td>
+                    <td class="align-middle text-center">
+                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                        </td>
                   </tr>
                   <?php } ?>
                   <?php if ($no == 1) { ?>
