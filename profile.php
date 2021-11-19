@@ -51,9 +51,9 @@ if ($_SESSION['user'] == '') {
             <span class="nav-link-text ms-1">Home</span>
           </a>
         </li>
-<?php } ?>
+<?php } 
 
-<?php if ($_SESSION['status'] == 2 || $_SESSION['status'] == 5) { ?>
+ else if ($_SESSION['status'] == 2 || $_SESSION['status'] == 5) { ?>
         <li class="nav-item">
           <a class="nav-link  " href="./pages_dosen/dosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -64,9 +64,9 @@ if ($_SESSION['user'] == '') {
             <span class="nav-link-text ms-1">Home</span>
           </a>
         </li>
-<?php } ?>
+<?php } 
 
-<?php if ($_SESSION['status'] == 3) { ?>
+else if ($_SESSION['status'] == 3) { ?>
         <li class="nav-item">
           <a class="nav-link  " href="./pagesmahasiswa/mahasiswa.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -77,9 +77,9 @@ if ($_SESSION['user'] == '') {
             <span class="nav-link-text ms-1">Home</span>
           </a>
         </li>
-<?php } ?>
+<?php } 
 
-<?php if ($_SESSION['status'] == 4) { ?>
+else if ($_SESSION['status'] == 4) { ?>
         <li class="nav-item">
           <a class="nav-link  " href="./pages/pagestendik/tendik.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -204,7 +204,7 @@ $npp = $_SESSION['NIP'];
                   $passwordbaru = $_POST['pwb'];
                   $konfirmasipassword = $_POST['kpwb'];
 
-                  $user = $_SESSION['NIP'];
+                  $user = $data['user'];
                  
                   if ($passwordlama == $passwordasli) {
 
@@ -214,7 +214,7 @@ $npp = $_SESSION['NIP'];
                       $query2 = mysqli_query($koneksi, "UPDATE masuk SET `pass` = '$konfirmasipassword' WHERE user = '$user' ");
                       session_reset();
                       if ($query2) {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil Merubah Password, Silahkan Logout Untuk Mencoba Password Baru Anda")</script></a>';
+                                echo '<script> alert ("Berhasil Merubah Password, Silahkan Logout Untuk Mencoba Password Baru Anda")</script>';
                                 ?>  <script> history.pushState({}, "", "")</script> <?php
                                 session_destroy();
                                         } 
