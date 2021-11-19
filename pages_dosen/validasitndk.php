@@ -172,14 +172,11 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div>
+            >
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <a href="../profile.php" href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
@@ -229,9 +226,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="ps-4">Perihal</th>
-                      <th class="ps-4">Nama Tendik</th>
-                      <th class="ps-5">NIP Tendik</th>
+                      <th>Nama Tendik</th>
+                      <th class="text-center">NIP Tendik</th>
+                      <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status </th>
                       <th class="text-center">Proses Admin</th>
@@ -251,25 +248,17 @@
                   <!-- tabel -->
                   <tbody>
                     <tr>
-                      <!-- file -->
-                     
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
-                          </div>
-                        </div>
-                      
-                      <!-- progres -->
-                      <td>
-                        <h6 class="mb-0 text-sm ps-4"><?php echo $data['perihal'] ?></h6>
-                      </td>
                       <!-- nama -->
                       <td>
                       <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['id_nip'] ?></h6>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
+                      </td>
+                      <!-- progres -->
+                      <td>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">

@@ -228,10 +228,10 @@
                   <thead>
                     <tr>
                       <th class="text-center">No</th>
+                      <th class="text-left ps-1">Perihal</th>
                       <th class="text-center">ID Surat</th>
                       <th class="text-center">Tanggal</th>
-                      <th class="text-left ps-1">Perihal</th>
-                      <th class="text-left ps-1">Download Surat</th>
+                      <th class="text-center">Download Surat</th>
                     </tr>
                   </thead>
 
@@ -249,12 +249,13 @@
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
+                        <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                         <td class="text-center"><?php echo $data['id_no'] ?></td>
                         <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                        <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                         <td> 
-                        <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                        <p class="modal-title" class="text-left ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p></td>
+                          <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                          <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                        </td>
                         
                       </tr>
 

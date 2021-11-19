@@ -113,10 +113,10 @@ session_start();
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
+            <!--div class="input-group">
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
               <input type="text" class="form-control" placeholder="Type here...">
-            </div>
+            </div-->
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -168,11 +168,11 @@ session_start();
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th class="text-center">No</th>
-                        <th class="text-center">ID Surat</th>
-                        <th class="text-left ps-1">Perihal</th>
-                        <th class="text-left ps-1">Tanggal</th>
-                        <th class="text-left ps-1">Download Surat</th>
+                      <th class="text-center">No</th>
+                      <th class="text-left ps-1">Perihal</th>
+                      <th class="text-center">ID Surat</th>
+                      <th class="text-center">Tanggal</th>
+                      <th class="text-center">Download Surat</th>
                       </tr>
                     </thead>
 
@@ -190,12 +190,12 @@ session_start();
                     ?>
                         <tr>
                           <td class="text-center"><?php echo $no++ ?></td>
-                          <td class="text-center"><?php echo $data['nomor'] ?></td>
                           <td class="text-left ps-1"><?php echo $data['nama'] ?></td>
-                          <td class="text-left ps-1"><?php echo $data['tanggal'] ?></td>
+                          <td class="text-center"><?php echo $data['nomor'] ?></td>
+                          <td class="text-center"><?php echo $data['tanggal'] ?></td>
                           <td> 
                           <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                          <p class="modal-title" class="text-left ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['dokumen'] ?></em></button></p></td>
+                          <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['dokumen'] ?></em></button></p></td>
 
                         </tr>
                         <?php }

@@ -240,7 +240,7 @@
                   <thead>
                     <tr>
                       <th>Nama Mahasiswa</th>
-                      <th>NRP Mahasiswa</th>
+                      <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status Dosen</th>
