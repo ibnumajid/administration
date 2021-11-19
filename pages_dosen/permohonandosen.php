@@ -375,14 +375,14 @@
 
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
-                          <td class="align-middle">
+                          <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Diproses</span>
                           </td> <?php } else if ($data['status_kadep'] == 1) { ?>
-                          <td class="align-middle">
+                          <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td>
                         <?php } else if ($data['status_kadep'] == 2) { ?>
-                          <td>
+                          <td class="align-middle text-center text-sm">>
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } ?>
                           
