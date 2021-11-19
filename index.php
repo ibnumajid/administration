@@ -156,7 +156,7 @@ if(isset($_POST['input']))
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#modalRegisterForm">Daftar Akun</button>
+        <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#modalRegisterForm">Daftar</button>
       </div>
 	  </form>
     </div>
