@@ -123,7 +123,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Akun Mahasiswa</span>
+            <span class="nav-link-text ms-1">Akun Dosen</span>
           </a>
         </li>
 

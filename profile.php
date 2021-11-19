@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['user'] == '') {
-  header("location:index.php");
+  header("cation:index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -193,7 +193,7 @@ $npp = $_SESSION['NIP'];
           </div>
         </div>
       </div>
-   <?php   session_start(); ?>
+
        <!-- php update surat saat dosen menolak -->
        <?php
                 include "./_database/config.php";
