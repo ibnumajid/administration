@@ -200,6 +200,8 @@ if(isset($_POST['input']))
             icon: 'error',
             title: 'Gagal',
             text: 'Username / Password Salah',
+			showConfirmButton: false,
+            timer: 2000
             })
         </script>
     <?php unset($_SESSION['alert']); ?>
