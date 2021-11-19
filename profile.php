@@ -206,6 +206,7 @@ $npp = $_SESSION['NIP'];
 
                   $user = $data['user'];
                  
+
                   if ($passwordlama == $passwordasli) {
 
                     if($konfirmasipassword == $passwordbaru) {
@@ -227,7 +228,7 @@ $npp = $_SESSION['NIP'];
                           } 
                   else { 
                       echo '<a href="./pmhnsurat.php"><script> alert ("Password Lama Salah")</script></a>';
-                      ?>  <script> history.pushState({}, "", "")</script> <?php }
+                      ?> <?php }
                         }
 
                                 ?>
