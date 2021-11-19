@@ -226,9 +226,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                    <th class="ps-4">Perihal</th>
-                      <th class="ps-4">Nama Tendik</th>
-                      <th class="ps-5">NIP Tendik</th>
+                      <th>Nama Tendik</th>
+                      <th class="text-center">NIP Tendik</th>
+                      <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status </th>
                       <th class="text-center">Proses Admin</th>
@@ -248,18 +248,17 @@
                   <!-- tabel -->
                   <tbody>
                     <tr>
-                      
-                      <!-- progres -->
-                      <td>
-                        <h6 class="mb-0 text-sm ps-4"><?php echo $data['perihal'] ?></h6>
-                      </td>
                       <!-- nama -->
                       <td>
                       <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['id_nip'] ?></h6>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
+                      </td>
+                      <!-- progres -->
+                      <td>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
