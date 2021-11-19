@@ -144,7 +144,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Admin</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk dari Dosen</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Surat Masuk dari Dosen</h6>
+          <h5 class="font-weight-bolder mb-0">Surat Masuk dari Dosen</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -190,24 +190,24 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Surat Masuk dari Dosen</h6>
                 </div>
               </div>
-            </div>
+            </div> -->
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-3">Perihal</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-1">Nama Dosen</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-16 ps-1">NIP Dosen</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Tanggal Pengajuan</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Status Kadep</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-16">Konfirmasi Admin</th>
+                    <th class="ps-5">Perihal</th>
+                      <th class="ps-5">Nama Dosen</th>
+                      <th class="ps-4">NIP Dosen</th>
+                      <th class="text-center">Tanggal Pengajuan</th>
+                      <th class="text-center">Status Kadep</th>
+                      <th class="text-center">Konfirmasi Admin</th> 
                     </tr>
                   </thead>
                   <!-- php tabel -->
@@ -237,15 +237,15 @@
                        
                         <!-- progres -->
                         <td>
-                          <h6 class="mb-0 text-sm"><?php echo $data['perihal'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                         </td>
                         <!-- nama -->
                         <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['nama_dsn'] ?></h6>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_dsn'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
+                        <h6 class="mb-0 text-sm text-center"><?php echo $data['id_npp'] ?></h6>
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
