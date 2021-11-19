@@ -333,8 +333,8 @@ session_start();
                       <th class="text-center">No</th>
                       <th>Perihal</th>
                       <th>Tanggal Upload</th>
-                      <th>Status Kadep</th>
-                      <th>Proses Admin</th>
+                      <th class="text-center">Status Kadep</th>
+                      <th class="text-center">Proses Admin</th>
                       <th>Catatan</th>
                     </tr>
                   </thead>
@@ -348,8 +348,12 @@ session_start();
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
-                        <td class="ps-2"><?php echo $data['perihal'] ?></td>
-                        <td class="ps-2"><?php echo $data['tanggal'] ?></td>
+                        <td>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                        </td>
+                        <td class="align-middle ps-5">
+                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                        </td>
 
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
