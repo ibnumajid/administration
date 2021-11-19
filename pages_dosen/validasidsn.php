@@ -408,26 +408,44 @@
                      
                    
                     </tr>
-                     <!-- php update surat dan catatan -->
-                     <?php 
+                      <!-- update catatan kadep -->
+                  <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['update'])){
+                     $catatan = $_POST['catatan'];
+                     $id = $_POST['id'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan' WHERE id_no = '$id' ");
+                     if($query){
+                       echo '<a href="../pages_dosen/validasidsn.php"></a>';
+                     }
+                     else {
+                      ?><script><?php $_SESSION["catatan"] = true;?></script> 
+                      <script>history.pushState({}, "", "")</script><?php
+                     }
+                   }?>  
+                   
+                   <!-- php update surat --> <?php
+                      
                     include "../_database/config.php";
                     if(isset($_POST['update'])){
-                      $status = $_POST['ss'];
+                      $status = $_POST['sk'];
                       $id = $_POST['id'];
-                      $cat = $_POST['catatan'];
                       
                       
                       $query = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
-                      $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$cat' WHERE id_no = '$id' ");
                       if($query){
                         ?><script><?php $_SESSION["sukses"] = true;?></script> 
                         <script>history.pushState({}, "", "")</script><?php
-                      } 
+                      }
                       else {
                         ?><script><?php $_SESSION["input"] = true;?></script> 
                         <script>history.pushState({}, "", "")</script><?php
                       }
-                    } ?>
+                    }
+
+                    ?>
                   </tbody>
                 </table>
               </div>
