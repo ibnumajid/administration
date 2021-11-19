@@ -254,7 +254,7 @@
                         <td class="text-center"><?php echo $data['tanggal'] ?></td>
                         <td> 
                           <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                          <p class="modal-title" class="text-left ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                          <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                         </td>
                         
                       </tr>
