@@ -217,8 +217,8 @@ session_start();
                    
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
                 { 
-                  ?><script><?php $_SESSION["pdf"] = true;?></script> 
-                  <script>history.pushState({}, "", "")</script><?php
+                  ?><script><?php $_SESSION["file"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
                 }
 
               if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
@@ -519,7 +519,7 @@ session_start();
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['pdf']) : ?>
+    <?php if(@$_SESSION['file']) : ?>
         <script>
             Swal.fire({
             position: 'center',
@@ -529,7 +529,7 @@ session_start();
             timer: 2000
           })
         </script>
-    <?php unset($_SESSION['pdf']); ?>
+    <?php unset($_SESSION['file']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
