@@ -351,7 +351,7 @@
                       <th>Perihal</th>
                       <th>Tanggal Upload</th>
                       <th class="text-center">Status Kadep</th>
-                      <th>Proses Admin</th>
+                      <th class="text-center">Proses Admin</th>
                       <th>Catatan</th>
                     </tr>
                   </thead>
