@@ -655,6 +655,8 @@ session_start();
                 icon: 'success',
                 title: 'Berhasil',
                 text: 'Berhasil Login',
+                showConfirmButton: false,
+                timer: 2000
                 })
             </script>
         <?php unset($_SESSION['alert']); ?>
