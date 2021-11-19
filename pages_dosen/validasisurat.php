@@ -239,9 +239,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="ps-5 ">Perihal</th>
-                      <th class="ps-5">Nama Mahasiswa</th>
-                      <th class="ps-4">NRP Mahasiswa</th>
+                      <th>Nama Mahasiswa</th>
+                      <th>NRP Mahasiswa</th>
+                      <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status Dosen</th>
                      
@@ -282,17 +282,17 @@
                             </div>          
                           </div-->
                        
-                        <!-- progres -->
-                        <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
-                        </td>
                         <!-- nama -->
                         <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
                         <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
+                        </td>
+                        <!-- progres -->
+                        <td>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
@@ -432,15 +432,15 @@
                       
                       <!-- progres -->
                       <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?>
                       </td>
                       <!-- nama -->
                       <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
+                      </h6><h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
