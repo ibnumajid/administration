@@ -369,7 +369,8 @@
                                     <label for="catatan" class = "form-label"> Catatan </label>
                                     <br>
                                     
-                                  <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text"  ></div>  
+                                  <div class = "form-group"></label>
+                                  <input name = "catatan2" class = "form-control" type = "text"  required></div>  
                                     </div> 
                                   
 
@@ -381,7 +382,7 @@
                             </div>
                           <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">OK</button>
+                            <button type="submite" name="update" class="btn bg-gradient-primary"  data-bs-target="#edit<?php echo $data['id_no'] ?>">OK</button>
                           </div>
                         </form>
                           </div>
@@ -417,13 +418,14 @@
                       
                       
                       $query = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
-                      $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$cat' WHERE id_no = '$id' ");
+                      $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$cat' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil Merespon")</script></a>';
-                        ?> <script> history.pushState({}, "", "") </script> <?php
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       } 
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Gagal Merespon")</script></a>';
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                     } ?>
                   </tbody>
@@ -457,6 +459,48 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Melakukan Perubahan',
+            text: 'Perubahan Akan Disimpan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Diajukan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['catatan']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Gagal memberikan catatan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['catatan']); ?>
+    <?php endif; ?>
 </body>
 
 </html>
