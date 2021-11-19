@@ -253,7 +253,6 @@
                 if ($query) {
                   ?><script><?php $_SESSION["sukses"] = true;?></script> 
                     <script>history.pushState({}, "", "")</script><?php
-                  exit;
                 } else {
                   ?><script><?php $_SESSION["input"] = true;?></script> 
                     <script>history.pushState({}, "", "")</script><?php
