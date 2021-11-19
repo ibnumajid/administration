@@ -511,7 +511,7 @@
                                         <div>
                                     <label for="catatan" class = "form-label"> Catatan </label>
                                     <br>
-                                    <input name = "catatan" type = "text"  >  
+                                    <input name = "catatan" type = "text" required >  
                                     </div>
                                   
                       
@@ -522,7 +522,7 @@
                             </div>
                           <div class="modal-footer">
                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">OK</button>
+                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-target="#edit<?php echo $data['id_no'] ?>">OK</button>
                           </div>
                         </form>
                           </div>
