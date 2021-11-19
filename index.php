@@ -58,11 +58,11 @@
 					<div class="flex-sb-m w-full p-t-3 p-b-32">
 						
 
-						<div>
+						<!-- <div>
 							<a href="#" class="txt1">
 								Lupa Password ?
 							</a>
-						</div>
+						</div> -->
 					</div>
 			
 
