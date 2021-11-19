@@ -285,7 +285,7 @@ session_start();
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
                 <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" ?><script><?php $_SESSION["pdf"] = true;?></script> 
-              <script>history.pushState({}, "", "")</script><?php>
+              <script>history.pushState({}, "", "")</script>
               </div>
               </div>
             </div>
