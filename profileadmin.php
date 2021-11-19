@@ -204,7 +204,7 @@ $npp = $_SESSION['NIP'];
                   $passwordbaru = $_POST['pwb'];
                   $konfirmasipassword = $_POST['kpwb'];
 
-                  $user = $data['user'];
+                  $user = $_POST['user'];
                  
 
                   if ($passwordlama == $passwordasli) {
@@ -220,14 +220,14 @@ $npp = $_SESSION['NIP'];
                                 session_destroy();
                                         } 
                       else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal merubah password")</script></a>';
+                                echo '<script> alert ("gagal merubah password")</script></a>';
                               }
                             }
-                    else { echo '<a href="./pmhnsurat.php"><script> alert ("Konfirmasi Password Salah")</script></a>';
+                    else { echo '<script> alert ("Konfirmasi Password Salah")</script></a>';
                       ?>  <script> history.pushState({}, "", "")</script> <?php }
                           } 
                   else { 
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Password Lama Salah")</script></a>';
+                      echo '<script> alert ("Password Lama Salah")</script>';
                       ?> <?php }
                         }
 
