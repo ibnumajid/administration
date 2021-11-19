@@ -349,7 +349,7 @@
                       <th class="text-center">No</th>
                       <th>Perihal</th>
                       <th>Tanggal Upload</th>
-                      <th>Status Kadep</th>
+                      <th class="text-center">Status Kadep</th>
                       <th>Proses Admin</th>
                       <th>Catatan</th>
                     </tr>
@@ -382,7 +382,7 @@
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td>
                         <?php } else if ($data['status_kadep'] == 2) { ?>
-                          <td class="align-middle text-center text-sm">>
+                          <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } ?>
                           
