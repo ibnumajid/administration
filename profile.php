@@ -206,7 +206,7 @@ $npp = $_SESSION['NIP'];
 
                   $user = $_SESSION['NIP'];
                  
-
+                if ($passwordlama == '' || $passwordbaru == '' || $konfirmasipassword == '') {
                   if ($passwordlama == $passwordasli) {
 
                     if($konfirmasipassword == $passwordbaru) {
@@ -229,7 +229,15 @@ $npp = $_SESSION['NIP'];
                   else { 
                       echo '<script> alert ("Password Lama Salah")</script></a>';
                       ?> <?php }
-                        }
+                        } 
+                      else {
+                        echo '<script> alert ("Mohon Untuk Mengisi Data dengan Lengkap")</script></a>';
+                      }
+                      
+                      
+                      } 
+
+                      
 
                                 ?>
       
