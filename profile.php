@@ -193,7 +193,7 @@ $npp = $_SESSION['NIP'];
           </div>
         </div>
       </div>
-      session_start();
+   <?php   session_start(); ?>
        <!-- php update surat saat dosen menolak -->
        <?php
                 include "./_database/config.php";
@@ -216,7 +216,7 @@ $npp = $_SESSION['NIP'];
                       session_reset();
                       if ($query2) {
                                 echo '<script> alert ("Berhasil Merubah Password, Silahkan Logout Untuk Mencoba Password Baru Anda")</script>';
-                                ?>  <script> history.pushState({}, "", "")</script> <?php
+                                ?> <?php
                                 session_destroy();
                                         } 
                       else {
