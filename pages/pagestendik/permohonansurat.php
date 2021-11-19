@@ -284,7 +284,8 @@ session_start();
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
-                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" >
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" ?><script><?php $_SESSION["pdf"] = true;?></script> 
+              <script>history.pushState({}, "", "")</script><?php>
               </div>
               </div>
             </div>
@@ -303,7 +304,7 @@ session_start();
           </div>
             <div class="modal-footer">
               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submite" name="input" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload</button>
+              <button type="submite" name="input" class="btn bg-gradient-primary" >Upload</button>
             </div>
            </form>
         </div>
