@@ -204,7 +204,7 @@
                 $nama_file = basename($_FILES['fl']['name']);
                 $ukuran = $_FILES['fl']['size'];
                 $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-                $max = 1024 * <i class="fas fa-500px    "></i>000;
+                $max = 1024 * 5000;
                 $ekstensi = "pdf";
                 $ekstensi2 = "docx";
 

@@ -274,26 +274,14 @@
                           <?php 
                           include "../_database/config.php";
                           $no = 1;
-                          $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
+                          $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY tanggal DESC' );
 
                           while ($data = mysqli_fetch_array($query)) {
-                            if( ($data['tujuan'] == "Dosen") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
+                            $tujuan = $data['tujuan'];
+                            if( strpos($tujuan, "Kadep") !== false )
                             { $no++ 
                             ?>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                              <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
-                                <span class="text-xs"><?=$data['keterangan']?></span>
-                              </div>
-                              <div class="d-flex align-items-center text-sm">
-                                <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                                  <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                                </a>
-                              </div>
-                            </li>
-                            <?php }?>
-                            <?php if (strpos($tujuan, "Dosen") !== false){?>
-                              <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
                               <div class="d-flex flex-column">
                                 <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
                                 <span class="text-xs"><?=$data['keterangan']?></span>
