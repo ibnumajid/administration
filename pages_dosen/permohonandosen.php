@@ -349,7 +349,7 @@
                       <th class="text-center">No</th>
                       <th>Perihal</th>
                       <th>Tanggal Upload</th>
-                      <th>Status Kadep</th>
+                      <th class="text-center">Status Kadep</th>
                       <th>Proses Admin</th>
                       <th>Catatan</th>
                     </tr>
@@ -366,19 +366,23 @@
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
-                        <td><?php echo $data['perihal'] ?></td>
-                        <td class = "text-center"><?php echo $data['tanggal'] ?></td>
+                        <td>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                        </td>
+                        <td class="align-middle ps-5">
+                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                        </td>
 
                         <!-- status kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
-                          <td class="align-middle">
+                          <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Diproses</span>
                           </td> <?php } else if ($data['status_kadep'] == 1) { ?>
-                          <td class="align-middle">
+                          <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td>
                         <?php } else if ($data['status_kadep'] == 2) { ?>
-                          <td>
+                          <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } ?>
                           

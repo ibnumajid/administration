@@ -225,7 +225,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="ps-4">Perihal</th>
+                      <th class="ps-5 ">Perihal</th>
                       <th class="ps-5">Nama Mahasiswa</th>
                       <th class="ps-4">NRP Mahasiswa</th>
                       <th class="text-center">Tanggal Pengajuan</th>
@@ -418,15 +418,15 @@
                       
                       <!-- progres -->
                       <td>
-                        <h6 class="mb-0 text-sm"><?php echo $data['progres'] ?></h6>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
                       </td>
                       <!-- nama -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['nama_mhsw'] ?></h6>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['id_nrp'] ?></h6>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
