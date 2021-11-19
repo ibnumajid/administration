@@ -227,7 +227,7 @@ $npp = $_SESSION['NIP'];
                       ?>  <script> history.pushState({}, "", "")</script> <?php }
                           } 
                   else { 
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Password Lama Salah")</script></a>';
+                      echo '<script> alert ("Password Lama Salah")</script></a>';
                       ?> <?php }
                         }
 
