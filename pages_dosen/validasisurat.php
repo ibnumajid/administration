@@ -225,7 +225,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="ps-7">Perihal</th>
+                      <th class="ps-5 ">Perihal</th>
                       <th class="ps-5">Nama Mahasiswa</th>
                       <th class="ps-4">NRP Mahasiswa</th>
                       <th class="text-center">Tanggal Pengajuan</th>
