@@ -206,7 +206,7 @@ $npp = $_SESSION['NIP'];
 
                   $user = $_SESSION['NIP'];
                  
-                if ($passwordlama == '' || $passwordbaru == '' || $konfirmasipassword == '') {
+                if ($passwordlama !== '' || $passwordbaru !== '' || $konfirmasipassword !== '') {
                   if ($passwordlama == $passwordasli) {
 
                     if($konfirmasipassword == $passwordbaru) {
