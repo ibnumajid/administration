@@ -204,7 +204,7 @@ $npp = $_SESSION['NIP'];
                   $passwordbaru = $_POST['pwb'];
                   $konfirmasipassword = $_POST['kpwb'];
 
-                  $user = $data['user'];
+                  $user = $_SESSION['NIP'];
                  
 
                   if ($passwordlama == $passwordasli) {

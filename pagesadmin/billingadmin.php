@@ -1,4 +1,10 @@
-<?php session_start(); ?>
+<?php
+  session_start();
+  if($_SESSION['user']=='' )
+    {
+        header("location:index.php");
+  }
+?>
 
   <!DOCTYPE html>
   <html lang="en">
