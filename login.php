@@ -77,8 +77,8 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user']   = $data2['nama_anggota'];
             $_SESSION['NIP']    = $data2['id_npp'];
-          
             $_SESSION['status'] = $data['status'];
+            $_SESSION['alert'] = true;
         header("location:./pages_dosen/kadep.php");
         }
     
