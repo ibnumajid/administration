@@ -245,16 +245,18 @@
               } else if ($ukuran > $max) {
                 echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
               } else if ($tipe != $ekstensi && $tipe != $ekstensi2) {
-                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf")</script>';
+                ?><script><?php $_SESSION["pdf"] = true;?></script> 
+              <script>history.pushState({}, "", "")</script><?php
               } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
                 $query = mysqli_query($koneksi, "insert into suratdosen values('', '$nama_dsn','$id_npp','$perihal', '$keterangan', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                 if ($query) {
-                  echo '<script> alert ("Berhasil mengajukan permohonan surat")</script>';
-                  ?> <script>history.pushState({}, "", "")</script> <?php
+                  ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
                   exit;
                 } else {
-                  echo '<script> alert ("Gagal input")</script>';
+                  ?><script><?php $_SESSION["input"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
                 }
               } else {
                 echo '<script> alert ("Gagal Upload")</script>';
@@ -527,6 +529,47 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Mengajukan Surat',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['pdf']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['pdf']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Input',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
 </body>
 
 </html>

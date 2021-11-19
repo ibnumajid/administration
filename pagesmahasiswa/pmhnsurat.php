@@ -213,9 +213,8 @@ session_start();
         
             else if ($ukuran > $max)
             {
-              ?><script><?php $_SESSION["ukuran"] = true;?></script> 
-              <script>history.pushState({}, "", "")</script><?php }
-               
+              echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
+            } 
             else if ($tipe != $ekstensi && $tipe != $ekstensi2)
             { 
               ?><script><?php $_SESSION["pdf"] = true;?></script> 
