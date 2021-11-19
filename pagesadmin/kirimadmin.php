@@ -217,7 +217,8 @@
                 { echo "Ukuran file tidak boleh melebihi 5 mb";}
 
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
-                { $_SESSION['pdf'] = true;}
+                { ?><script><?php $_SESSION["pdf"] = true;?></script> 
+                  <script>history.pushState({}, "", "")</script><?php}
 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
                 {
@@ -225,12 +226,14 @@
 
                   if($query)
                   {
-                    $_SESSION['sukses'] = true;
+                    ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
 
                   }
                   else
                   {
-                    $_SESSION['input'] = true;
+                    ?><script><?php $_SESSION["input"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
                   }
                 }
                 else

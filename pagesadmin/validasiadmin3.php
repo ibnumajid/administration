@@ -326,11 +326,12 @@
                       $query3 = mysqli_query($koneksi, "UPDATE surattendik SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
                 
                       if($query2){
-                        echo '<a href="./validasiadmin.php"><script> alert ("Berhasil dikirimkan")</script></a>';
-                        ?> <script> history.pushState({}, "", "") </script> <?php
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                       else {
-                        echo '<a href="./validasiadmin.php"><script> alert ("Anda sudah melakukan update")</script></a>';
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                     }
                   }
@@ -423,6 +424,34 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Melakukan Perubahan',
+            text: 'Perubahan Akan Disimpan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Dikirim',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
 </body>
 
 </html>
