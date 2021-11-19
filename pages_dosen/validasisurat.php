@@ -544,10 +544,8 @@
                          <td></td>
                          <td></td>
                     <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+                    <?php } ?>
 
-
-
-<?php } ?>
                      <!-- php update surat -->
                      <?php 
                     include "../_database/config.php";
@@ -558,10 +556,12 @@
                       
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil disetujui")</script></a>';
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal diajukan")</script></a>';
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                     } ?>
 
@@ -578,7 +578,8 @@
                        echo '<a href="../pages_dosen/validasisurat.php"></a>';
                      }
                      else {
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
+                      ?><script><?php $_SESSION["catatan"] = true;?></script> 
+                      <script>history.pushState({}, "", "")</script><?php
                      }
                    }?>  
 
@@ -595,7 +596,8 @@
                        echo '<a href="../pages_dosen/validasisurat.php"></a>';
                      }
                      else {
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
+                      ?><script><?php $_SESSION["catatan"] = true;?></script> 
+                      <script>history.pushState({}, "", "")</script><?php
                      }
                    }?>  
                    
@@ -609,11 +611,12 @@
                       
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
                       if($query){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                        ?> <script> history.pushState({}, "", "") </script> <?php
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                       else {
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
                       }
                     }
 
@@ -649,6 +652,47 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Disetujui',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Diajukan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['catatan']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Gagal memberikan catatan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['catatan']); ?>
+    <?php endif; ?>
 </body>
 
 </html>
