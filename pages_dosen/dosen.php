@@ -277,7 +277,8 @@
                           $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
 
                           while ($data = mysqli_fetch_array($query)) {
-                            if( ($data['tujuan'] == "Dosen") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
+                            $tujuan = $data['tujuan'];
+                            if( strpos($tujuan, "Dosen") !== false )
                             { $no++ 
                             ?>
                             <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
