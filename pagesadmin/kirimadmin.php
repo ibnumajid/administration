@@ -1,4 +1,10 @@
-<?php session_start();?>
+<?php
+session_start();
+
+if ($_SESSION['user'] == '') {
+  header("location:index.php");
+}
+?>
 
 <!-- KIRIM SURAT -->
 <!DOCTYPE html>
@@ -218,7 +224,7 @@
 
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
                 { ?><script><?php $_SESSION["pdf"] = true;?></script> 
-                  <script>history.pushState({}, "", "")</script><?php}
+                  <script>history.pushState({}, "", "")</script><?php }
 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
                 {

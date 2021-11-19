@@ -193,7 +193,7 @@ $npp = $_SESSION['NIP'];
           </div>
         </div>
       </div>
-
+      session_start();
        <!-- php update surat saat dosen menolak -->
        <?php
                 include "./_database/config.php";
