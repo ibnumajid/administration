@@ -194,8 +194,11 @@ session_start();
                           <td class="text-center"><?php echo $data['nomor'] ?></td>
                           <td class="text-center"><?php echo $data['tanggal'] ?></td>
                           <td> 
-                          <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                          <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['dokumen'] ?></em></button></p></td>
+                            <div class="text-center">
+                              <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                              <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['dokumen'] ?></em></button></p>
+                            </div>
+                          </td>
 
                         </tr>
                         <?php }
