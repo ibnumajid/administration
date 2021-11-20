@@ -289,7 +289,7 @@ session_start();
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
-                <p>Berikan keterangan tentang surat yang akan diajukan <br> Contoh : Surat Magang, Keterangan : PT. Pertamina</p>
+                <h1>Berikan keterangan tentang surat yang akan diajukan <br> Contoh : Surat Magang, Keterangan : PT. Pertamina</h1>
                 <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
               </div>
               </div>
