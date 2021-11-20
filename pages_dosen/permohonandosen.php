@@ -303,6 +303,7 @@
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
+                <p>Berikan keterangan tentang surat yang akan diajukan</p>
                 <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
               </div>
               </div>
@@ -312,7 +313,7 @@
               <div class="card-header pb-0 p-3">
                 <div class="row">
                   <div class="mb-3">
-                    <label for="formFile" class="form-label">Masukkan File (Ekstensi Berupa PDF)</label>
+                    <label for="formFile" class="form-label">Masukkan File (Ekstensi File .PDF)</label>
                     <input type="file" name="fl" class="form-control" aria-label="file example" required>
                     <div class="invalid-feedback">Example invalid form file feedback</div>
                   </div>
