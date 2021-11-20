@@ -377,6 +377,7 @@
                                    <div class="row">
                                   <div class="mb-3">
                                  <label for="formFile" class="form-label">Kirim File Baru</label>
+                                  <p>Masukkan file surat yang sudah disetujui</p>
                                <input type="file" name="ufl" class="form-control" aria-label="file example" required>
                               <div class="invalid-feedback">Example invalid form file feedback</div>
                              </div>
