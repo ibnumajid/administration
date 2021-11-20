@@ -231,11 +231,11 @@
                         
                         <!-- nama -->
                         <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
-                        <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
+                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
                         </td>
                         <!-- progres -->
                         <td>

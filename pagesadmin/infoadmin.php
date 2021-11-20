@@ -215,10 +215,10 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th class="text-center">No</th>
                       <th>User</th>
                       <th>Password</th>
-                      <th>Ganti Password</th>
+                      <th class="text-center">Ganti Password</th>
                     </tr>
                   </thead>
             
@@ -234,14 +234,17 @@
 
                   
                   <tr>
-                    <td><?php echo $no++ ?></td>
-                    <td><?php echo $data2['user'] ?></td>
-                   
-
-
-                    <td><?php echo $data2['pass'] ?></td>
-                    
-                                <!-- Modal Ganti Password -->
+                    <!-- no -->
+                    <td class="text-center"><?php echo $no++ ?></td>
+                    <!-- user -->
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data2['user'] ?></h6>
+                    </td>
+                    <!-- pass -->
+                    <td>
+                     <h6 class="mb-0 text-sm ps-3"><?php echo $data2['pass'] ?></h6>
+                    </td>
+                    <!-- Modal Ganti Password -->
                     <td>
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                      <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data2['user'] ?>">Ganti</button>

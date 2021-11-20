@@ -407,7 +407,7 @@ if ($_SESSION['user'] == '') {
             Swal.fire({
             position: 'center',
             icon: 'warning',
-            title: 'Ekstensi file harus docx atau pdf',
+            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf',
             showConfirmButton: false,
             timer: 2000
           })
