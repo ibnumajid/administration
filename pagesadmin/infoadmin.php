@@ -245,7 +245,7 @@
                      <h6 class="mb-0 text-sm ps-3"><?php echo $data2['pass'] ?></h6>
                     </td>
                     <!-- Modal Ganti Password -->
-                    <td>
+                    <td class="align-center">
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                      <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data2['user'] ?>">Ganti</button>
                      </a>
