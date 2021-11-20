@@ -246,9 +246,11 @@
                     </td>
                     <!-- Modal Ganti Password -->
                     <td>
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data2['user'] ?>">Ganti</button>
-                     </a>
+                      <div class="text-center">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data2['user'] ?>">Ganti</button>
+                        </a>
+                      </div>
                     </td>
                      <!-- Modal -->
                      <div class="modal fade" id="ganti<?php echo$data2['user'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
