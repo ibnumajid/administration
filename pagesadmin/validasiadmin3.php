@@ -204,9 +204,9 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="ps-5">Perihal</th>
-                      <th class="ps-5">Nama Tendik</th>
-                      <th class="ps-4">NIP Tendik</th>
+                      <th>Nama Tendik</th>
+                      <th class="text-center">NIP Tendik</th>
+                      <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status Kadep</th>
                       <th class="text-center">Konfirmasi Admin</th> 
@@ -229,25 +229,18 @@
                     <!-- tabel -->
                     <tbody>
                       <tr>
-                        <!-- file -->
                         
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
-                            </div>          
-                          </div>
-                       
-                        <!-- progres -->
-                        <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
-                        </td>
                         <!-- nama -->
                         <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
-                        <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
+                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
+                        </td>
+                        <!-- progres -->
+                        <td>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">

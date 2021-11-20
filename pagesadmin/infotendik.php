@@ -212,11 +212,11 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
+                      <th class="text-center">No</th>
                       <th>Nama</th>
-                      <th>NRP</th>
-                      <th>Informasi ID & PASS</th>
-                      <th>Ganti Password</th>
+                      <th class="text-center">NIP</th>
+                      <th class="text-center">Informasi ID & PASS</th>
+                      <th class="text-center">Ganti Password</th>
                     </tr>
                   </thead>
             
@@ -235,12 +235,17 @@
 
                   
                   <tr>
-                    <td><?php echo $no++ ?></td>
-                    <td><?php echo $data['nama_tdk'] ?></td>
-                   
-
-
-                    <td><?php echo $data['nip_tdk'] ?></td>
+                    <!-- no -->
+                    <td class="text-center"><?php echo $no++ ?></td>
+                    <!-- nama -->
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
+                    </td>
+                    <!-- nip -->
+                    <td>
+                     <h6 class="mb-0 text-sm text-center"><?php echo $data['nip_tdk'] ?></h6>
+                    </td>
+                    <!-- button -->
                     <td class="align-middle">
                      <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                      <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['nip_tdk'] ?>">Lihat</button>
