@@ -2639,7 +2639,7 @@ progress {
 
 .form-label {
   margin-bottom: 0.5rem;
-  font-size: 0.75rem;
+  font-size: 14px;
   font-weight: 700;
   color: #344767;
 }
