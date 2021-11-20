@@ -337,7 +337,8 @@ session_start();
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Masukkan File Pendukung (Ekstensi File Berupa PDF)</label>
+                <label for="formFile" class="form-label">Masukkan File Pendukung (Ekstensi File .PDF)</label>
+                <p>File pendukung berupa surat atau proposal (disesuaikan dengan panduan) </p>
                   <input type="file" name="fl" class="form-control" aria-label="file example" required>
                  <div class="invalid-feedback">Example invalid form file feedback</div>
                 </div>
