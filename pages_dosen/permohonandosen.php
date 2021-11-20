@@ -303,8 +303,8 @@
               <div class="row">
                 <div class="mb-3">
                 <label for="formFile" class="form-label">Keterangan</label>
-                <p>Berikan keterangan tentang surat yang akan diajukan</p>
-                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
+                <!-- <p>Berikan keterangan tentang surat yang akan diajukan</p> -->
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan keterangan surat yang diajukan" aria-label="default input example" required>
               </div>
               </div>
             </div>
