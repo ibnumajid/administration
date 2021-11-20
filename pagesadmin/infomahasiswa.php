@@ -246,10 +246,12 @@
                       <h6 class="mb-0 text-sm text-center"><?php echo $data['nrp_mhs'] ?></h6>
                     </td>
                     <!-- button -->
-                    <td class="align-center">
-                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                      <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['nrp_mhs'] ?>">Lihat</button>
-                     </a>
+                    <td>
+                      <div class="text-center">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['nrp_mhs'] ?>">Lihat</button>
+                        </a>
+                      </div>
                     </td>
                     <!-- Modal -->
                     <div class="modal fade" id="edit<?php echo $data['nrp_mhs'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -310,10 +312,12 @@
                                         </div>
                     
                                 <!-- Modal Ganti Password -->
-                    <td class="align-center">
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data['nrp_mhs'] ?>">Ganti</button>
-                     </a>
+                    <td>
+                      <div class="text-center">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#ganti<?php echo $data['nrp_mhs'] ?>">Ganti</button>
+                        </a>
+                      </div>
                     </td>
                      <!-- Modal -->
                      <div class="modal fade" id="ganti<?php echo $data['nrp_mhs'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
