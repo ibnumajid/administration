@@ -231,7 +231,7 @@
                       <th class="text-center">NPP</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Status Dosen</th>
+                      <th class="text-center">Persetujuan Dosen</th>
                       <th class="text-center">Proses Admin</th>
                      
                      

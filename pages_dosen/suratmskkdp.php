@@ -293,7 +293,7 @@
                       <th>Nama Pengirim</th>
                       <th class="align-middle text-center">NRP/NPP</th>
                       <th class="align-middle text-center">Tanggal</th>
-                      <th class="align-middle text-center">Status Kadep<th>  
+                      <th class="align-middle text-center">Persetujuan Kadep<th>  
                     </tr>
                    <tr> <h6></h6></tr>
                   </thead>

@@ -206,7 +206,7 @@
                       <th class="text-center">NIP Dosen</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Status Kadep</th>
+                      <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Konfirmasi Admin</th> 
                     </tr>
                   </thead>

@@ -243,7 +243,7 @@
                       <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Status Dosen</th>
+                      <th class="text-center">Persetujuan Dosen</th>
                      
                      <?php 
                        include '../_database/config.php'; //panggil setiap ingin koneksi ke data
@@ -251,7 +251,7 @@
                        $data = mysqli_fetch_array($query);
 
                        if ($_SESSION['status'] == '5' ) { ?>
-                      <th class="text-center">Status Kadep</th>
+                      <th class="text-center">Persetujuan Kadep</th>
                       <?php } ?>
                      
                     </tr>

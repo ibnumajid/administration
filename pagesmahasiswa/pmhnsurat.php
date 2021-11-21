@@ -377,8 +377,8 @@ session_start();
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-1">Dosen Koordinator</th>
-                      <th>Status Dosen</th>
-                      <th>Status Kadep</th>
+                      <th>Persetujuan Dosen</th>
+                      <th>Persetujuan Kadep</th>
                       <th class="text-left ps-1">Proses Admin</th>
                       <th class="text-center">Waktu Upload</th>
                       <th class="text-left ps-1">Catatan</th>
