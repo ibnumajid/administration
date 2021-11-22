@@ -415,7 +415,7 @@
                 <?php $id = $data['id_no'] ?>
                 <tr>
                   <!-- no -->
-                  <td class="text-center"><?php echo $no++ ?></td>
+                  <td class="text-center"><?php $no++ ?></td>
                   <!-- nama -->
                   <form action="./validasimhs.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
@@ -451,11 +451,12 @@
                   <!-- button -->
 
               <?php } 
+               if ($no == 1) { ?>  
+                <h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6>
+              <?php } 
             } ?>
           </table>
-          <?php if ($no == 1) { ?>  
-            <h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6>
-          <?php } ?>
+          
         </div>
       </div>
     </div>
