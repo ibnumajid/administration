@@ -279,7 +279,6 @@
                        
                         <!-- nama -->
                         <td class="text-center"><?php echo $no++ ?></td>
-                        <td>
                         <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
