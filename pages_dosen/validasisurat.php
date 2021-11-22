@@ -266,7 +266,7 @@
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                   $no = 0;
-                  $no = $no++;
+                  $no2 = $no++;
                   while ($data = mysqli_fetch_array($query)) {
                   $tujuan = $data['dosen_pembimbing'];
                  
