@@ -374,6 +374,96 @@
             </div>
           </div>
 
+                <!-- Bagian Validasi Mahasiswa -->
+      <div class="row">
+
+
+<div class="card-body p-3">
+  <div class="row">
+    <div class="card-body px-0 pt-0 pb-2">
+
+      <div class="table-responsive p-0">
+        <div class="col-6 d-flex align-items-center">
+          <h6 class="mb-0 pt-1 px-1">Surat Mahasiswa yang Belum Divalidasi</h6>
+        </div>
+        <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style="height:450px">
+          <table class="table table-striped align-items-center mb-6">
+            <thead>
+              <tr>
+                <th class="text-center">No</th>
+                <th class="text-left ps-2">Nama</th>
+                <th class="text-left ps-2">Status</th>
+                <th class="text-left ps-2">Perihal</th>
+                <th>Proses</th>
+                <th class="text-center">Waktu Upload</th>
+                <th class="text-left ps-2"></th>  
+              </tr>
+            </thead>
+            
+            <!-- tabel mahasiswa -->
+            <?php
+            include './_database/config.php'; //panggil setiap ingin koneksi ke data
+            $nama = $_SESSION['user'];
+
+            $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+
+            while ($data = mysqli_fetch_array($query)) {
+              $tujuan = $data['dosen_pembimbing'];
+              $no = 0;
+              $no2 = $no++;
+              if (strpos($tujuan, $nama) !== false ) {
+               if ($data['status_surat'] == 0) { ?>
+                <?php $id = $data['id_no'] ?>
+                <tr>
+                  <!-- no -->
+                  <td class="text-center"><?php echo $no++ ?></td>
+                  <!-- nama -->
+                  <form action="./pages_dosen/validasimhs.php" method="post">
+                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                    <td style = "height:20px">
+                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                    </td>
+                  </form>
+                  <!-- status -->
+                  <td>
+                    <h6 class="text-left ps-1">Mahasiswa</h6>
+                  </td>
+                  <!-- perihal -->
+                  <td>
+                    <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6>
+                  </td>
+                  <!-- Menginput id surat -->
+
+
+
+                  <!-- status surat -->
+                  <?php if ($data['status_surat'] == 0) { ?>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Belum Diproses</span>
+                    </td> <?php } else if ($data['status_surat'] == 1) { ?>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                    </td> <?php } else if ($data['status_surat'] == 2) { ?>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Sudah Diproses</span>
+                    </td> <?php } ?>
+                  <!-- tanggal -->
+                  <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                  <!-- button -->
+
+              <?php } }
+            } ?>
+          </table>
+          <?php if ($no == 1) { ?>  
+            <h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6>
+          <?php } ?>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
 
                        <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
