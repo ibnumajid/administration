@@ -31,6 +31,15 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+        .donotShow_row {
+            display: none;
+        }
+    </style>
+    
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -40,7 +49,7 @@
       <a class="navbar-brand m-0" href="">
         <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
       </a>
-    </div>
+    </div> 
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
@@ -223,17 +232,17 @@
 
 <!-- Tabel Validasi -->
 <div class="container-fluid py-4">
-<div class="row">
+      <div class="row">
         <div class="col-12">
         <div class="card mb-4">
         <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./validasisurat.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./validasisurat.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./validasisurat0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasisurat1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+        <a href="./validasisurat1.php" id='failedList'><button class = "btn btn-info">Ditolak</button></a>
         <a href="./validasisurat2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
-        </div>
-          <div class="card mb-4">
+        </div> 
+        <div class="card mb-4">
             
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -259,6 +268,8 @@
                       <?php if ($_SESSION['status'] == 5) { ?>
                         <th class ="text-center">Persetujuan Kadep</th>
                      <?php } ?>
+
+                     
                     </tr>
                   </thead>
                   <!-- php tabel -->
@@ -274,8 +285,7 @@
    ?>
                     <tbody>
                   <?php 
-
-                    if ($_SESSION['status'] == 5) { ?>
+                    if ($_SESSION['status'] == 5 && $data['status_kadep'] == 1){ ?>
                         <tr>
                           
                       
@@ -301,7 +311,7 @@
                             <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                           </td>
   
-                           <?php } 
+                           <?php  
                           
                           if ($_SESSION['status'] == 5) {
                           ?> 
@@ -315,13 +325,12 @@
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td> 
                                 <?php }
-    
                                 else if ($data['status_kadep'] == 2) {?>
                                 <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
-                          </td> <?php } } 
+                          </td> <?php } } }
                           
-                        else if ($_SESSION['status'] == 2 && strpos($nama, $tujuan) !== false) {
+                        else if ($_SESSION['status'] == 2 && strpos($nama, $tujuan) !== false && $data['status_surat'] == 1) {
                           ?> 
   
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -378,7 +387,8 @@
             </div>
           </div>
         </div>
-      </div>      
+      </div>
+      
 
     </div>
 
