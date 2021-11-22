@@ -220,6 +220,7 @@
         <a href="./validasidsn0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
         <a href="./validasidsn1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
         <a href="./validasidsn2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <!-- <div class="col-6 d-flex align-items-center">
