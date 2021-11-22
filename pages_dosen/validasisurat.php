@@ -239,6 +239,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Mahasiswa</th>
                       <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
@@ -268,20 +269,17 @@
                   $no = $no++;
                   while ($data = mysqli_fetch_array($query)) {
                   $tujuan = $data['dosen_pembimbing'];
-                  $no++
+                 
    ?>
                     <tbody>
                   <?php if ($_SESSION['status'] == 5) { ?>
                       <tr>
-                        <!-- file eror>
                         
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              < <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> >
-                            </div>          
-                          </div-->
+                    
                        
                         <!-- nama -->
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td>
                         <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
@@ -337,6 +335,9 @@
                         
                       else if ($_SESSION['status'] == 2 && strpos($nama, $tujuan) !== false) {
                         ?> 
+
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td>
                         <!-- nama -->
                         <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
@@ -374,7 +375,16 @@
                         </td> <?php } ?>
 
                    </tr>
-                   <?php } }  ?>
+                   <?php } }
+                     
+                     if ($no == 1) { ?>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                   <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG MEMERLUKAN VALIDASI</h6></td>
+                   <?php } ?>
+                   
                   </tbody>
                 </table>
               </div>

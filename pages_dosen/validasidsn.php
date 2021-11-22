@@ -227,6 +227,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Dosen</th>
                       <th class="text-center">NPP</th>
                       <th>Perihal</th>
@@ -242,9 +243,11 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
+                  $no = 0;
+                  $no2 = $no++;
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  $no++
+                  
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
                   <tbody>
@@ -256,7 +259,9 @@
                             <<img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> >
                           </div>
                         </div-->
-                      
+                        <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $no++ ?></h6>
+                      </td>
                       <!-- nama -->
                       <td>
                       <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_dsn'] ?></h6>
@@ -393,7 +398,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG MEMERLUKAN VALIDASI</h6></td>
 
 
 

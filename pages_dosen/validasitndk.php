@@ -226,6 +226,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Tendik</th>
                       <th class="text-center">NIP Tendik</th>
                       <th>Perihal</th>
@@ -249,6 +250,7 @@
                   <tbody>
                     <tr>
                       <!-- nama -->
+                      <td class="text-center"><?php echo $no++ ?></td>
                       <td>
                       <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
                       </td>
