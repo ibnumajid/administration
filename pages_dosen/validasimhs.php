@@ -372,7 +372,7 @@
                           <?php if ($_SESSION['status'] == 2) { ?> 
                             <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
                           <?php } 
-                          else if ($_SESSION['status'] == 6 ) { ?>  
+                          else if ($_SESSION['status'] == 5 ) { ?>  
                             <button type="submite" name="updatekdp" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
                           <?php } ?>
                         </form>
