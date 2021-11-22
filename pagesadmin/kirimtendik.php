@@ -68,42 +68,42 @@
             <span class="nav-link-text ms-1">Kirim Surat</span>
           </a>
        </li>
-
-       <!-- Validasi Surat Mahasiswa -->
-        <li class="nav-item">
-          <a class="nav-link  active" href="../pagesadmin/validasiadmin.php">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
-          </a>
-        </li>
     
         <!-- VALIDASI SURAT Dosen -->
         <li class="nav-item">
-          <a class="nav-link  " href="../pagesadmin/validasiadmin2.php">
+          <a class="nav-link  " href="../pagesadmin/validasiadmin.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
               </div>
-            <span class="nav-link-text ms-1">Surat Masuk dari Dosen</span>
+            <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
           </a>
         </li>
 
           <!-- VALIDASI SURAT  -->
           <li class="nav-item">
-            <a class="nav-link  " href="../pagesadmin/validasiadmin3.php">
+            <a class="nav-link  " href="../pagesadmin/validasiadmin2.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Surat Masuk dari Tendik</span>
+              <span class="nav-link-text ms-1">Surat Masuk dari Dosen</span>
             </a>
           </li>
+
+          <!-- Validasi Surat Mahasiswa -->
+        <li class="nav-item">
+          <a class="nav-link  active" href="../pagesadmin/validasiadmin3.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Surat Masuk dari Tendik</span>
+          </a>
+        </li>
 
         <li class="nav-item"> <!-- INI Rekap SURAT  -->
           <a class="nav-link  " href="../pagesadmin/rekapadmin.php">
@@ -141,9 +141,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Admin</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk dari Mahasiswa</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk dari Tendik</li>
           </ol>
-          <h5 class="font-weight-bolder mb-0">Surat Masuk dari Mahasiswa</h5>
+          <h5 class="font-weight-bolder mb-0">Surat Masuk dari Tendik</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -188,12 +188,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <h6>Filter Validasi Surat</h6>
-        <div class="form-group d-flex justify-content-around">
-        <a href="./validasiadmin.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./validasiadmin0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasiadminii.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
-        </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <!-- <div class="col-6 d-flex align-items-center">
@@ -204,137 +198,39 @@
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th>Nama Mahasiswa</th>
-                      <th class="text-center">NRP Mahasiswa</th>
-                      <th>Perihal</th>
-                      <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Konfirmasi Admin</th> 
-
-                    </tr>
-                  </thead>
-                  <!-- php tabel -->
-                  <?php
+              <?php
+                  
+                  $id = $_POST['id'];
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                  $query = mysqli_query($koneksi, "SELECT * FROM surattendik WHERE id_no = '$id' ");
+                  $data = mysqli_fetch_array($query)
+
                   
-                  while ($data = mysqli_fetch_array($query)) {
-                  $tujuan = $data['dosen_pembimbing'];
-                  
-   ?>   <!-- Persetujuan oleh admin saja --> <?php 
-
-                  if ($data['status_kadep'] == "2" && $data['status_surat'] == "2" && $data['status_admin'] == 2) {
-                        
-                    ?> 
-                    <!-- tabel -->
-                    <tbody>
-                      <tr>
-                        
-                        <!-- nama -->
-                        <form action="./kirimmahasiswa.php" method="post">
-                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                              <td style = "height:20px">
-                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
-                              </td>
-                            </form>
-                        <!-- nrp -->
-                        <td>
-                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
-                        </td>
-                        <!-- progres -->
-                        <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
-                        </td>
-                        <!-- tanggal -->
-                        <td class="align-middle text-center">
-                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                        </td>
-                        
-                        <!-- status aktivitas admin -->
-                        <?php if ($data['status_admin'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk Diproses</span>
-                        </td> 
-  
-                         <?php } else if ($data['status_admin'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
-                        </td> <?php } ?> 
-
-                        <!-- and tabel -->
-                        
-                        <!-- Modal -->
-                      <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-
-                             <!-- popup ajuan surat mahasiswa -->
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>  
-                            
-                              <div class="modal-body">
-
-                    <!-- backend upload update surat -->
-                            
-                            <?php 
-                    include "../_database/config.php";
-
-                    if(isset($_POST['update'])){
-                      $nama_file2 = basename($_FILES['ufl']['name']); 
-                      $ukuran2 = $_FILES['ufl']['size'];
-                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
-                      $id = $_POST['id'];
-                      $nama_mhs = $_POST['nm'];
-                      $statusadmin = $_POST['stadmin'];
-                      $perihal = $_POST['perihal'];
-                      
-                      $url2 = $id.'_'.$nama_file2;
-                      
-                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
-
-                      if($query2 && $query3){
-                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                      else {
-                        ?><script><?php $_SESSION["input"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                  }}
-
-                  ?>
+   ?> 
                           <form action="" method="post" enctype="multipart/form-data">
                               <div class="card-header pb-0 p-3">
                                 <div class="row">
                                   <div class="mb-3">
                                     <!-- nama mahasiswa -->
-                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
+                                    <label for="formFile" class="form-label">Nama Tendik</label>
+                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
+                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_tdk'] ?>" >
                                     <!-- NRP mahasiswa -->
-                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                                    <label for="formFile" class="form-label">NIP Tendik</label>
+                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nip'] ?></label>
                                     <!-- Perihal -->
                                     <label for="formFile" class="form-label">Perihal</label>
-                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
-                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
+                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['perihal'] ?>" >
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
-                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                    <a href="../pages/pagestendik/<?php echo $data['file'] ?>" target="_blank">
                                     <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                     </a>
-                                    
-                                    
-
+                                    <!-- Keterangan Tambahan -->
+                                    <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                    <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                     <!-- Menginput id surat -->
                                     <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
 
@@ -358,22 +254,47 @@
                     </div>
                               <!-- button upload close -->
                           </div>
-                            <div class="modal-footer">
+                           
                               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
-                            </div>
+                              <button type="submite" class="btn bg-gradient-primary" name="update" >Upload</button>
+                            
                            </form>
                           </div>
                         </div>
                        </div>  
                         <!-- and popup ajuan surat mahasiswa -->
-                        <?php  }} ?>
+                     
 
 
-                        
-                    </tr>
-                  </tbody>
-                </table>
+                        <?php 
+                    include "../_database/config.php";
+
+                    if(isset($_POST['update'])){
+                      $nama_file2 = basename($_FILES['ufl']['name']); 
+                      $ukuran2 = $_FILES['ufl']['size'];
+                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
+                      $id = $_POST['id'];
+                      $nama_mhs = $_POST['nm'];
+                      $statusadmin = $_POST['stadmin'];
+                      $perihal = $_POST['perihal'];
+                      
+                      $url2 = $id.'_'.$nama_file2;
+                      
+                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmintndk values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
+                      $query3 = mysqli_query($koneksi, "UPDATE surattendik SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
+
+                      if($query2 && $query3){
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                      }
+                      else {
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                      }
+                  }}
+
+                  ?>
               </div>
             </div>
           </div>

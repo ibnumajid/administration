@@ -350,7 +350,12 @@
                               <!-- no -->
                               <td class="text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                              <td> <h6 class="text-left ps-1"><?php echo $data['nama_mhsw'] ?></h6></td>
+                              <form action="./kirimmahasiswa.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
+                              </td>
+                            </form>
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
                               <!-- perihal -->
@@ -394,7 +399,12 @@
                               <!-- no -->
                               <td class="text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                              <td> <h6 class="text-left ps-1"><?php echo $data['nama_dsn'] ?></h6></td>
+                              <form action="./kirimdosen.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                              </td>
+                            </form>
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Dosen</h6></td>
                               <!-- perihal -->
@@ -438,7 +448,12 @@
                               <!-- no -->
                               <td class="text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                              <td> <h6 class="text-left ps-1"><?php echo $data['nama_tdk'] ?></h6></td>
+                              <form action="./kirimtendik.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                              </td>
+                            </form>
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Tendik</h6></td>
                               <!-- perihal -->

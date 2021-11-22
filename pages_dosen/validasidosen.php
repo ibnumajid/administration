@@ -330,13 +330,13 @@
                                   <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
                                   <!-- NRP mahasiswa -->
                                   <label for="formFile" class="form-label">NIP Dosen</label>
-                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
                                   <!-- progres -->
                                   <label for="formFile" class="form-label">Perihal</label>
                                   <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
                                   <!-- file surat -->
                                   <label for="formFile" class="form-label">Lihat File</label>
-                                  <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                  <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
                                    <!-- Keterangan Tambahan -->

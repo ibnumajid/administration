@@ -234,9 +234,12 @@
                       <tr>
                         
                         <!-- nama -->
-                        <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
-                        </td>
+                        <form action="./kirimmahasiswa.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
+                              </td>
+                            </form>
                         <!-- nrp -->
                         <td>
                           <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
@@ -261,12 +264,7 @@
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
-                        <!-- button edit -->
-                        <td class="align-middle">
-                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Proses</button>
-                          </a>
-                        </td>
+                      
                         <!-- and tabel -->
                         
                         <!-- Modal -->

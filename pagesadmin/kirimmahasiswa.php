@@ -188,12 +188,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <h6>Filter Validasi Surat</h6>
-        <div class="form-group d-flex justify-content-around">
-        <a href="./validasiadmin.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./validasiadmin0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasiadminii.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
-        </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <!-- <div class="col-6 d-flex align-items-center">
@@ -204,86 +198,75 @@
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th>Nama Mahasiswa</th>
-                      <th class="text-center">NRP Mahasiswa</th>
-                      <th>Perihal</th>
-                      <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Konfirmasi Admin</th> 
-
-                    </tr>
-                  </thead>
-                  <!-- php tabel -->
-                  <?php
+              <?php
+                  
+                  $id = $_POST['id'];
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                  $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
+                  $data = mysqli_fetch_array($query)
+
                   
-                  while ($data = mysqli_fetch_array($query)) {
-                  $tujuan = $data['dosen_pembimbing'];
-                  
-   ?>   <!-- Persetujuan oleh admin saja --> <?php 
+   ?> 
+                          <form action="" method="post" enctype="multipart/form-data">
+                              <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                  <div class="mb-3">
+                                    <!-- nama mahasiswa -->
+                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
+                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
+                                    <!-- NRP mahasiswa -->
+                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
+                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                                    <!-- Perihal -->
+                                    <label for="formFile" class="form-label">Perihal</label>
+                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
+                                    <!-- file surat -->
+                                    <label for="formFile" class="form-label">Lihat File</label>
+                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                    <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                                    </a>
+                                    <!-- Keterangan Tambahan -->
+                                    <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                    <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                    <!-- Menginput id surat -->
+                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
 
-                  if ($data['status_kadep'] == "2" && $data['status_surat'] == "2" && $data['status_admin'] == 2) {
-                        
-                    ?> 
-                    <!-- tabel -->
-                    <tbody>
-                      <tr>
-                        
-                        <!-- nama -->
-                        <form action="./kirimmahasiswa.php" method="post">
-                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                              <td style = "height:20px">
-                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
-                              </td>
-                            </form>
-                        <!-- nrp -->
-                        <td>
-                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
-                        </td>
-                        <!-- progres -->
-                        <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
-                        </td>
-                        <!-- tanggal -->
-                        <td class="align-middle text-center">
-                          <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                        </td>
-                        
-                        <!-- status aktivitas admin -->
-                        <?php if ($data['status_admin'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk Diproses</span>
-                        </td> 
-  
-                         <?php } else if ($data['status_admin'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
-                        </td> <?php } ?> 
+                                    <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
+                                    <input name = "stadmin" value = 2 type = "hidden">
+                                    
+                                    <!-- upload surat baru -->
+                                    <div class="card-header pb-0 p-3">
+                                   <div class="row">
+                                  <div class="mb-3">
+                                 <label for="formFile" class="form-label">Kirim File Baru</label>
+                                  <p>Masukkan file surat yang sudah disetujui</p>
+                               <input type="file" name="ufl" class="form-control" aria-label="file example" required>
+                              <div class="invalid-feedback">Example invalid form file feedback</div>
+                             </div>
+                           </div>
+                         </div>
 
-                        <!-- and tabel -->
-                        
-                        <!-- Modal -->
-                      <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-
-                             <!-- popup ajuan surat mahasiswa -->
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>  
+                     </div>
+                    </div>
+                    </div>
+                              <!-- button upload close -->
+                          </div>
+                           
+                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submite" class="btn bg-gradient-primary" name="update" >Upload</button>
                             
-                              <div class="modal-body">
+                           </form>
+                          </div>
+                        </div>
+                       </div>  
+                        <!-- and popup ajuan surat mahasiswa -->
+                     
 
-                    <!-- backend upload update surat -->
-                            
-                            <?php 
+
+                        <?php 
                     include "../_database/config.php";
 
                     if(isset($_POST['update'])){
@@ -312,68 +295,6 @@
                   }}
 
                   ?>
-                          <form action="" method="post" enctype="multipart/form-data">
-                              <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                  <div class="mb-3">
-                                    <!-- nama mahasiswa -->
-                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
-                                    <!-- NRP mahasiswa -->
-                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
-                                    <!-- Perihal -->
-                                    <label for="formFile" class="form-label">Perihal</label>
-                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
-                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
-                                    <!-- file surat -->
-                                    <label for="formFile" class="form-label">Lihat File</label>
-                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
-                                    <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
-                                    </a>
-                                    
-                                    
-
-                                    <!-- Menginput id surat -->
-                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
-
-                                    <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
-                                    <input name = "stadmin" value = 2 type = "hidden">
-                                    
-                                    <!-- upload surat baru -->
-                                    <div class="card-header pb-0 p-3">
-                                   <div class="row">
-                                  <div class="mb-3">
-                                 <label for="formFile" class="form-label">Kirim File Baru</label>
-                                  <p>Masukkan file surat yang sudah disetujui</p>
-                               <input type="file" name="ufl" class="form-control" aria-label="file example" required>
-                              <div class="invalid-feedback">Example invalid form file feedback</div>
-                             </div>
-                           </div>
-                         </div>
-
-                     </div>
-                    </div>
-                    </div>
-                              <!-- button upload close -->
-                          </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
-                            </div>
-                           </form>
-                          </div>
-                        </div>
-                       </div>  
-                        <!-- and popup ajuan surat mahasiswa -->
-                        <?php  }} ?>
-
-
-                        
-                    </tr>
-                  </tbody>
-                </table>
               </div>
             </div>
           </div>

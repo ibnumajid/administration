@@ -337,7 +337,7 @@
                                   <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
                                   <!-- file surat -->
                                   <label for="formFile" class="form-label">Lihat File</label>
-                                  <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
+                                  <a href="../pages/pagestendik/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
                                    <!-- Keterangan Tambahan -->

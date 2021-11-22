@@ -234,9 +234,12 @@
                       <tr>
                         
                         <!-- nama -->
-                        <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_mhsw'] ?></h6>
-                        </td>
+                        <form action="./kirimmahasiswa.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
+                              </td>
+                            </form>
                         <!-- nrp -->
                         <td>
                           <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
@@ -261,115 +264,7 @@
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
-                        <!-- button edit -->
-                        <td class="align-middle">
-                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Proses</button>
-                          </a>
-                        </td>
-                        <!-- and tabel -->
-                        
-                        <!-- Modal -->
-                      <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-
-                             <!-- popup ajuan surat mahasiswa -->
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>  
-                            
-                              <div class="modal-body">
-
-                    <!-- backend upload update surat -->
-                            
-                            <?php 
-                    include "../_database/config.php";
-
-                    if(isset($_POST['update'])){
-                      $nama_file2 = basename($_FILES['ufl']['name']); 
-                      $ukuran2 = $_FILES['ufl']['size'];
-                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
-                      $id = $_POST['id'];
-                      $nama_mhs = $_POST['nm'];
-                      $statusadmin = $_POST['stadmin'];
-                      $perihal = $_POST['perihal'];
-                      
-                      $url2 = $id.'_'.$nama_file2;
-                      
-                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
-
-                      if($query2 && $query3){
-                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                      else {
-                        ?><script><?php $_SESSION["input"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                  }}
-
-                  ?>
-                          <form action="" method="post" enctype="multipart/form-data">
-                              <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                  <div class="mb-3">
-                                    <!-- nama mahasiswa -->
-                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
-                                    <!-- NRP mahasiswa -->
-                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
-                                    <!-- Perihal -->
-                                    <label for="formFile" class="form-label">Perihal</label>
-                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
-                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
-                                    <!-- file surat -->
-                                    <label for="formFile" class="form-label">Lihat File</label>
-                                    <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
-                                    <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
-                                    </a>
-                                    
-                                    
-
-                                    <!-- Menginput id surat -->
-                                    <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
-
-                                    <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
-                                    <input name = "stadmin" value = 2 type = "hidden">
-                                    
-                                    <!-- upload surat baru -->
-                                    <div class="card-header pb-0 p-3">
-                                   <div class="row">
-                                  <div class="mb-3">
-                                 <label for="formFile" class="form-label">Kirim File Baru</label>
-                                  <p>Masukkan file surat yang sudah disetujui</p>
-                               <input type="file" name="ufl" class="form-control" aria-label="file example" required>
-                              <div class="invalid-feedback">Example invalid form file feedback</div>
-                             </div>
-                           </div>
-                         </div>
-
-                     </div>
-                    </div>
-                    </div>
-                              <!-- button upload close -->
-                          </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle = "modal" data-bs-target = "#exampleModal">Upload</button>
-                            </div>
-                           </form>
-                          </div>
-                        </div>
-                       </div>  
-                        <!-- and popup ajuan surat mahasiswa -->
+                     
                         <?php  }} ?>
 
 
