@@ -382,7 +382,7 @@
                                 <th class="text-left ps-2">Nama</th>
                                 <th class="text-left ps-2">Status</th>
                                 <th class="text-left ps-2">Perihal</th>
-                                <th>Proses</th>
+                                <th>Persetujuan Kadep</th>
                                 <th class="text-center">Waktu Upload</th>
                                 <th class="text-left ps-2"></th>
                               </tr>
@@ -428,12 +428,7 @@
                               </td> <?php } ?>
                               <!-- tanggal -->
                               <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                              <!-- button -->
-                              <td class="align-middle">
-                                <a  href="validasisurat.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                  <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
-                                </a>
-                              </td>
+                            
                               <?php } } ?>
                             </tr>
                             <!-- and tabel mahasiswa -->
