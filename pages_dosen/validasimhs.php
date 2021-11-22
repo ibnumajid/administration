@@ -402,7 +402,7 @@
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
                       $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
                       if($query && $query2){
-                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
                       }
                       else {
                         echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
@@ -423,7 +423,7 @@
                      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
                      if($query && $query2){
-                       echo '<a href="../pages_dosen/validasisurat.php"></a>';
+                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
                      }
                      else {
                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
