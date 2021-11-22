@@ -48,7 +48,6 @@
 						<span class="label-input100">User Name</span>
 					</div>
 					
-					
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<input class="input100" type="password" name="pass">
 						<span class="focus-input100"></span>
