@@ -451,10 +451,11 @@
                   <!-- button -->
 
               <?php } 
-               if ($no == 1) { ?>  
+               
+            } 
+            if ($no == 1) { ?>  
                 <h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6>
-              <?php } 
-            } ?>
+              <?php } ?>
           </table>
           
         </div>
