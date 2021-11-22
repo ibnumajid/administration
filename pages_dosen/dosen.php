@@ -411,8 +411,7 @@
               $tujuan = $data['dosen_pembimbing'];
               $no = 0;
               $no2 = $no++;
-              if (strpos($tujuan, $nama) !== false ) {
-               if ($data['status_surat'] == 0) { ?>
+              if (strpos($tujuan, $nama) !== false && $data['status_surat'] == 0 ) { ?>
                 <?php $id = $data['id_no'] ?>
                 <tr>
                   <!-- no -->
@@ -451,7 +450,7 @@
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
                   <!-- button -->
 
-              <?php } }
+              <?php } 
             } ?>
           </table>
           <?php if ($no == 1) { ?>  
