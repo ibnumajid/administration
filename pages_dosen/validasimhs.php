@@ -362,7 +362,7 @@
                                         <label for="catatan" class = "form-label"> Catatan </label>
                                     <br>
         
-                                  <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text" required ></div>
+                                  <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text"></div>
                                     </div>
                                   
                       
