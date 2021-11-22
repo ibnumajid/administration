@@ -339,26 +339,30 @@
                                   <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
+                                   <!-- Keterangan Tambahan -->
+                                   <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
-                                      Tidak Di Setujui
+                                      Tidak Disetujui
                                     </label>
                                   </div>
                                   <div class="form-check">
                                     <input class="form-check-input" Name="ss" type="radio" value="2" id="defaultCheck1">
                                     <label class="form-check-label" for="defaultCheck1">
-                                      Di Setujui
+                                      Disetujui
                                     </label>
                                   </div>
                                         <!-- Menginput catatan -->
                                         <div>
-                                    <label for="catatan" class = "form-label"> Catatan </label>
+                                        <label for="catatan" class = "form-label"> Catatan </label>
                                     <br>
-                                    <input name = "catatan" type = "text"  >  
+        
+                                  <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text" required ></div>
                                     </div>
                                   
                       
@@ -393,7 +397,7 @@
                     if(isset($_POST['update'])){
                       $status = $_POST['ss'];
                       $id = $_POST['id'];
-                      
+                      $catatan = $_POST['catatan2'];
                       
                       $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
                       $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
@@ -411,11 +415,12 @@
                   <?php 
                    include "../_database/config.php";
                    if(isset($_POST['updatekdp'])){
-                     $catatan2 = $_POST['catatan'];
+                     $catatan2 = $_POST['catatan2'];
                      $id = $_POST['id'];
+                     $status = $_POST['ss'];
                      
                      
-                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
+                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan2' WHERE id_no = '$id' ");
                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
                      if($query && $query2){
                        echo '<a href="../pages_dosen/validasisurat.php"></a>';
