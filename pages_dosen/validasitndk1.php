@@ -242,19 +242,23 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
-                  
+                  $no = 0;
+                  $no2 = $no++;
                   while ($data = mysqli_fetch_array($query)) {
                       if ($data['status_kadep'] == 1) {
-                  $no++
+                  
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
                   <tbody>
                     <tr>
                       <!-- nama -->
                       <td class="text-center"><?php echo $no++ ?></td>
-                      <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
-                      </td>
+                      <form action="./validasitendik.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                              </td>
+                            </form>
                       <!-- nrp -->
                       <td>
                       <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
