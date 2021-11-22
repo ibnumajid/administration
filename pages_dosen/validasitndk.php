@@ -231,7 +231,7 @@
                       <th class="text-center">NIP Tendik</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Status </th>
+                      <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Proses Admin</th>
                      
                      
