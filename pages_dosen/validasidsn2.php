@@ -46,7 +46,6 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
 
-      <!-- home  -->
         <li class="nav-item">
           <a class="nav-link  " href="./kadep.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -54,9 +53,10 @@
                     <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
                   </svg>
               </div>
-              <span class="nav-link-text ms-1">Home</span>
+            <span class="nav-link-text ms-1">Home</span>
           </a>
         </li>
+
 
         <!-- Permohonan Surat -->
 <?php if($_SESSION['status'] !== '5'){ ?>
@@ -83,34 +83,35 @@
             <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
           </a>
         </li>
-         
-        <!--Validasi Surat-->
-        <li class="nav-item">
-          <a class="nav-link  " href="../pages_dosen/validasidsn.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-            <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
-          </a>
-        </li>
 
-        <!--Validasi Surat-->
+        <!--Validasi Surat Dosen-->
         <?php if ($_SESSION['status'] == '5') {?>
         <li class="nav-item">
-          <a class="nav-link  active" href="../pages_dosen/validasitndk.php">
+          <a class="nav-link  active" href="../pages_dosen/validasidsn.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
+            <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
           </a>
         </li>
         <?php } ?>
 
-       
+            <!-- Validasi Surat Tendik -->
+            <?php if ($_SESSION['status'] == '5') {?>
+          <li class="nav-item">
+            <a class="nav-link  " href="./validasitndk.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                </svg>
+              </div>
+              <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
+            </a>
+          </li>
+
+          <?php } ?>
           
 
         <!-- REKAP SURAT -->
@@ -127,7 +128,7 @@
         <?php } ?>
 
       <!--SURAT MASUK KADEP -->
- <!-- <?php if($_SESSION['status'] == '5'){ ?>
+   <!--   <?php if($_SESSION['status'] == '5'){ ?>
       </li> 
        <li class="nav-item"> 
         <a class="nav-link  " href="./suratmskkdp.php">
@@ -142,7 +143,7 @@
         </li>
 
        <!--profil-->
-        <li class="nav-item mt-3">
+<li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -166,13 +167,13 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Tendik</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Dosen</li>
           </ol>
-          <h5 class="font-weight-bolder mb-0">Validasi Surat Tendik</h5>
+          <h5 class="font-weight-bolder mb-0">Validasi Surat Dosen</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            >
+            
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -215,11 +216,18 @@
           <div class="card mb-4">
           <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./validasitndk.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./validasitndk0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasitndk1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./validasitndk2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
-        </div>
+        <a href="./validasisurat.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
+        <a href="./validasisurat0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./validasisurat1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+        <a href="./validasisurat2.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
+        </div> 
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <!-- <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Validasi Surat Dosen</h6>
+                </div> -->
+              </div>
+            </div>
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -227,11 +235,11 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Tendik</th>
-                      <th class="text-center">NIP Tendik</th>
+                      <th>Nama Dosen</th>
+                      <th class="text-center">NPP</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Status </th>
+                      <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Proses Admin</th>
                      
                      
@@ -241,22 +249,27 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
+                  $no = 0;
+                  $no2 = $no++;
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  $no++
+                      if ($data['status_kadep'] == 2) {
+                  
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
                   <tbody>
                     <tr>
+                        <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $no++ ?></h6>
+                      </td>
                       <!-- nama -->
-                      <td class="text-center"><?php echo $no++ ?></td>
                       <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_dsn'] ?></h6>
                       </td>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_npp'] ?></h6>
                       </td>
                       <!-- progres -->
                       <td>
@@ -295,15 +308,15 @@
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
-                     
-                      <?php  }
+                      <!-- and popup ajuan surat mahasiswa -->
+                      <?php  } }
  
                       if ($no == 1) { ?>
 
                         <td></td>
                         <td></td>
                         <td></td>
-                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG MEMERLUKAN VALIDASI</h6></td>
 
 
 
@@ -315,7 +328,7 @@
                      
                    
                     </tr>
-                     <!-- update catatan kadep -->
+                      <!-- update catatan kadep -->
                   <?php 
                    include "../_database/config.php";
                    if(isset($_POST['update'])){
@@ -323,7 +336,7 @@
                      $id = $_POST['id'];
                      
                      
-                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan`='$catatan' WHERE id_no = '$id' ");
+                     $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan' WHERE id_no = '$id' ");
                      if($query){
                        echo '<a href="../pages_dosen/validasidsn.php"></a>';
                      }
@@ -341,7 +354,7 @@
                       $id = $_POST['id'];
                       
                       
-                      $query = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep`='$status' WHERE id_no = '$id' ");
+                      $query = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
                       if($query){
                         ?><script><?php $_SESSION["sukses"] = true;?></script> 
                         <script>history.pushState({}, "", "")</script><?php

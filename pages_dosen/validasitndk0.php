@@ -215,8 +215,8 @@
           <div class="card mb-4">
           <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./validasitndk.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./validasitndk0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./validasitndk.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
+        <a href="./validasitndk0.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
         <a href="./validasitndk1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
         <a href="./validasitndk2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
         </div>
@@ -244,6 +244,7 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
+                      if ($data['status_kadep'] == 0) {
                   $no++
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
@@ -295,8 +296,91 @@
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
-                     
-                      <?php  }
+                      <!-- button edit -->
+                      <td class="align-middle">
+                        <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Proses</button>
+                        </a>
+                      </td>
+                      <!-- and tabel -->
+                      
+                      <!-- Modal -->
+                    <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                           <!-- popup ajuan surat mahasiswa -->
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Persetujuan Surat</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>  
+                          
+                            <div class="modal-body">
+                        
+                        <form action="" method="post">
+                            <div class="card-header pb-0 p-3">
+                              <div class="row">
+                                <div class="mb-3">
+                                  <!-- nama dosen -->
+                                  <label for="formFile" class="form-label">Nama Tendik</label>
+                                  <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
+                                  <!-- NPP Dosen -->
+                                  <label for="formFile" class="form-label">NIP Tendik</label>
+                                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nip'] ?></label>
+                                  <!-- progres -->
+                                  <label for="formFile" class="form-label">Nama File</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
+                                  <!-- Keterangan Tambahan -->
+                                  <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                  <!-- file surat -->
+                                  <label for="formFile" class="form-label">Lihat File</label>
+                                  <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
+                                  <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                                  </a>
+                                  <!-- Menginput id surat -->
+                                  <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >
+                                  
+                                  <label for="formFile" class="form-label">Persetujuan (Pilih)</label>
+                                  <!-- persetujuan surat -->
+                                  <div class="form-check">
+                                    <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      Tidak Disetujui
+                                    </label>
+                                  </div>
+                                  <div class="form-check">
+                                    <input class="form-check-input" Name="ss" type="radio" value="2" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      Disetujui
+                                    </label>
+                                  </div>
+                                        <!-- Menginput catatan -->
+                                        <div>
+                                    <label for="catatan" class = "form-label"> Catatan </label>
+                                    <br>
+        
+                                  <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text" required ></div>  
+                                     
+                                    </div>
+
+                      
+                                </div>
+                              </div>
+                            </div>
+                            <!-- button upload close -->
+                            </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submite" name="update" class="btn bg-gradient-primary"  data-bs-target="#edit<?php echo $data['id_no'] ?>">OK</button>
+                          </div>
+                        </form>
+                          </div>
+                        </div>
+                      </div>  
+                      <!-- and popup ajuan surat mahasiswa -->
+                      <?php  } }
  
                       if ($no == 1) { ?>
 

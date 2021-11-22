@@ -215,9 +215,9 @@
           <div class="card mb-4">
           <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./validasitndk.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./validasitndk.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./validasitndk0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasitndk1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+        <a href="./validasitndk1.php" id='failedList'><button class = "btn btn-info">Ditolak</button></a>
         <a href="./validasitndk2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
         </div>
             
@@ -244,6 +244,7 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
+                      if ($data['status_kadep'] == 1) {
                   $no++
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
@@ -296,7 +297,7 @@
                         </td> <?php } ?> 
 
                      
-                      <?php  }
+                      <?php  } }
  
                       if ($no == 1) { ?>
 
