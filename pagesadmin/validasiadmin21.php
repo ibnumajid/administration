@@ -191,9 +191,9 @@
           <div class="card mb-4">
           <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./validasiadmin2.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./validasiadmin2.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./validasiadmin20.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasiadmin21.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        <a href="./validasiadmin21.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
         </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -226,7 +226,7 @@
                   
    ?>   <!-- Persetujuan oleh admin saja --> <?php 
 
-                  if ($data['status_kadep'] == "2") {
+                  if ($data['status_kadep'] == "2" && $data['status_admin'] == 2) {
                         
                     ?> 
                     <!-- tabel -->

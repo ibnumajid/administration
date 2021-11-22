@@ -43,6 +43,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
 
+      <!-- home  -->
       <li class="nav-item">
           <a class="nav-link  " href="../pagesadmin/billingadmin.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -58,7 +59,8 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Menu</h6>
         </li>
         
-      <li class="nav-item"> <!-- INI KIRIM SURAT  -->
+        <!-- kirim surat  -->
+      <li class="nav-item"> 
         <a class="nav-link  " href="../pagesadmin/kirimadmin.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
@@ -66,10 +68,10 @@
                   </svg>
             </div>
             <span class="nav-link-text ms-1">Kirim Surat</span>
-        </a>
+          </a>
        </li>
 
-        <!-- VALIDASI SURAT Mahasiswa -->
+        <!-- Surat Masuk dari Mahasiswa -->
         <li class="nav-item">
           <a class="nav-link  " href="../pagesadmin/validasiadmin.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -81,34 +83,34 @@
           </a>
         </li>
 
-        <!-- Validasi Surat Dosen -->
-        <li class="nav-item">
-          <a class="nav-link  active" href="../pagesadmin/validasiadmin2.php">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Surat Masuk dari Dosen</span>
-          </a>
-        </li>
-
-          <!-- VALIDASI SURAT  -->
-          <li class="nav-item">
-            <a class="nav-link  " href="../pagesadmin/validasiadmin3.php">
+         <!-- Surat Masuk dari Dosen -->
+         <li class="nav-item">
+          <a class="nav-link  " href="../pagesadmin/validasiadmin2.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Surat Masuk dari Tendik</span>
-            </a>
-          </li>
+            <span class="nav-link-text ms-1">Surat Masuk dari Dosen</span>
+          </a>
+        </li>
 
-          <!-- rekap surat  -->
+        <!-- Surat Masuk dari Tendik -->
+        <li class="nav-item">
+          <a class="nav-link  active" href="../pagesadmin/validasiadmin3.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Surat Masuk dari Tendik</span>
+          </a>
+        </li>
+
+        <!-- rekap surat  -->
         <li class="nav-item"> 
           <a class="nav-link  " href="../pagesadmin/rekapadmin.php">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
                   <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
                 </svg>
@@ -130,7 +132,7 @@
             </div>
             <span class="nav-link-text ms-1">Ganti Password</span>
           </a>
-  </li>
+        </li>
       </ul>
     </div>
 
@@ -142,9 +144,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Admin</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk dari Dosen</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Surat Masuk dari Tendik</li>
           </ol>
-          <h5 class="font-weight-bolder mb-0">Surat Masuk dari Dosen</h5>
+          <h5 class="font-weight-bolder mb-0">Surat Masuk dari Tendik</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -191,25 +193,18 @@
           <div class="card mb-4">
           <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./validasiadmin2.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./validasiadmin20.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasiadmin21.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        <a href="./validasiadmin3.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
+        <a href="./validasiadmin30.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./validasiadmin31.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
         </div>
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <!--div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Surat Masuk dari Dosen</h6>
-                </div-->
-              </div>
-            </div>
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>Nama Dosen</th>
-                      <th class="text-center">NIP Dosen</th>
+                      <th>Nama Tendik</th>
+                      <th class="text-center">NIP Tendik</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Konfirmasi Admin</th> 
@@ -219,14 +214,14 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  $tujuan = $data['nama_dsn'];
+                  $tujuan = $data['nama_tdk'];
                   
    ?>   <!-- Persetujuan oleh admin saja --> <?php 
 
-                  if ($data['status_kadep'] == "2") {
+                  if ($data['status_kadep'] == "2" && $data['status_admin'] == 2) {
                         
                     ?> 
                     <!-- tabel -->
@@ -235,11 +230,11 @@
                         
                         <!-- nama -->
                         <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_dsn'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_tdk'] ?></h6>
                         </td>
                         <!-- nrp -->
                         <td>
-                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_npp'] ?></h6>
+                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
                         </td>
                         <!-- progres -->
                         <td>
@@ -248,7 +243,7 @@
                         <!-- tanggal -->
                         <td class="align-middle text-center">
                           <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                        </td>
+                        </td>  
                         
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
@@ -302,8 +297,8 @@
                       $url2 = $id.'_'.$nama_file2;
                       
                     if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url2', '$nama_dsn', '$perihal', sysdate()) ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmintndk values ('$id', '$url2', '$nama_dsn', '$perihal', sysdate()) ");
+                      $query3 = mysqli_query($koneksi, "UPDATE surattendik SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
                 
                       if($query2){
                         ?><script><?php $_SESSION["sukses"] = true;?></script> 
@@ -322,12 +317,12 @@
                                 <div class="row">
                                   <div class="mb-3">
                                     <!-- nama mahasiswa -->
-                                    <label for="formFile" class="form-label">Nama Dosen</label>
-                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
+                                    <label for="formFile" class="form-label">Nama Tendik</label>
+                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
                                     <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_dsn'] ?>" >
                                     <!-- NRP mahasiswa -->
-                                    <label for="formFile" class="form-label">NPP Dosen</label>
-                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
+                                    <label for="formFile" class="form-label">NIP Tendik</label>
+                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nip'] ?></label>
                                     <!-- progres -->
                                     <label for="formFile" class="form-label">Perihal</label>
                                     <label name="perihal2" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>

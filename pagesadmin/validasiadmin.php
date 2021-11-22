@@ -188,6 +188,12 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
+          <h6>Filter Validasi Surat</h6>
+        <div class="form-group d-flex justify-content-around">
+        <a href="./validasiadmin.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./validasiadmin0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./validasiadminii.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <!-- <div class="col-6 d-flex align-items-center">
@@ -205,8 +211,6 @@
                       <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Persetujuan Dosen</th>
-                      <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Konfirmasi Admin</th> 
 
                     </tr>
@@ -245,38 +249,6 @@
                         <td class="align-middle text-center">
                           <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                         </td>
-
-                        <!-- status surat dosen -->
-                          <?php if ($data['status_surat'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Di Proses</span>
-                        </td> <?php } 
-                              else if ($data['status_surat'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_surat'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
-                        </td> <?php } ?> 
-
-                        <!-- status surat kadep -->
-                        <?php if ($data['status_kadep'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
-                        </td> <?php } 
-                              else if ($data['status_kadep'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_kadep'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
-                        </td> <?php } ?> 
                         
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>

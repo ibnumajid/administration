@@ -191,13 +191,12 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <!-- <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Surat Masuk dari Tendik</h6>
-                </div>
-              </div>
-            </div> -->
+          <h6>Filter Validasi Surat</h6>
+        <div class="form-group d-flex justify-content-around">
+        <a href="./validasiadmin3.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./validasiadmin30.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./validasiadmin31.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        </div>
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -208,7 +207,6 @@
                       <th class="text-center">NIP Tendik</th>
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Konfirmasi Admin</th> 
                     </tr>
                   </thead>
@@ -245,23 +243,7 @@
                         <!-- tanggal -->
                         <td class="align-middle text-center">
                           <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                        </td>
-
-                        <!-- status surat kadep -->
-                        <?php if ($data['status_kadep'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
-                        </td> <?php } 
-                              else if ($data['status_kadep'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_kadep'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
-                        </td> <?php } ?> 
+                        </td>  
                         
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
