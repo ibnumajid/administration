@@ -265,15 +265,15 @@
            <div class="table-responsive p-0">      
            <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./dosensm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./dosen.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
+        <a href="./dosensm.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./dosen.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
         <a href="./dosen1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
         <a href="./dosen2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
         </div>             
             <div class="col-6 d-flex align-items-center">
          <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
        </div>
-       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:300px">
+       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:450px">
              <table class="table table-striped align-items-center mb-6">
                <thead>
                  <tr>
@@ -296,7 +296,7 @@
                  
                  while ($data = mysqli_fetch_array($query)) {
                  
-                     if ($data['status_kadep'] == 0 && $data['status_surat'] == 2) {?>
+                     if ($data['status_surat'] == 2) {?>
                
                <tr>
                  <!-- no -->
