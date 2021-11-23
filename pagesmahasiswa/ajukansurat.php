@@ -207,7 +207,7 @@ $(document).ready(function(){
                         include '../_database/config.php';
                         if(isset($_POST['input']))
                         {
-                        $nama_mhs = $_POST['nm'];
+                        $nama_mhsw = $_POST['nm'];
                         $id_nrp = $_POST['nrp'];
                         $perihal = $_POST['sr'];
                         $keterangan = $_POST['keterangan'];
@@ -217,17 +217,18 @@ $(document).ready(function(){
                         $dosen_tkk = $_POST['tkk'];
                         $tgl_h1 = $_POST['hima1'];
                         $tgl_h2 = $_POST['hima2'];
-                        
                         $nama_file = basename($_FILES['fl']['name']);
                         $ukuran = $_FILES['fl']['size'];
-                        $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-                        $max = 1024 * 20000;
+                        $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+                        
+                        $max = 1024 * 5000;
                         $ekstensi = "pdf";
-                        $ekstensi2 = "docx";
+                        
 
                         $url = $id_nrp.'_'.$nama_file;
+                        
 
-                        if ($ukuran > $max && $tipe != $ekstensi)
+                        if ($ukuran > $max && $tipe !== $ekstensi)
                         {
                         ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
                         <script>history.pushState({}, "", "")</script><?php 
@@ -238,28 +239,29 @@ $(document).ready(function(){
                         echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
                         }
                         
-                        else if ($tipe != $ekstensi && $tipe != $ekstensi2)
+                        else if ($tipe != $ekstensi && $tipe != NULL)
                         { 
-                        ?><script><?php $_SESSION["pdf"] = true;?></script> 
+                        ?><script><?php $_SESSION['pdf'] = true ?></script> 
                         <script>history.pushState({}, "", "")</script><?php
                         }  
                         else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                         {
-                            $query = mysqli_query($koneksi,"insert into ajukansurat values('', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '$dosen2', '$dosen_tkk', '$tgl_h1', '$tgl_h2', '$url', '$tipe', '$ukuran', sysdate())");
+                            $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '$dosen2', '$dosen_tkk', '$tgl_h1', '$tgl_h2', '$url', '$tipe', '$ukuran', sysdate())");
 
                             if($query)
                             {
-                            ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                            ?><script><?php $_SESSION['sukses'] = true;?></script> 
                             <script>history.pushState({}, "", "")</script><?php
                             }
                             else
                             {
-                            ?><script><?php $_SESSION["input"] = true;?></script> 
+                            ?><script><?php $_SESSION['input'] = true;?></script> 
                             <script>history.pushState({}, "", "")</script><?php
                             }
                         }
                         else
                         {
+                            
                             echo "Gagal Upload";
                         }
                         
@@ -267,6 +269,7 @@ $(document).ready(function(){
 
                         ?>
 
+                        <!-- nama & nrp -->
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="card-header pb-0 p-3">    
                                 <div class="row">
@@ -283,6 +286,7 @@ $(document).ready(function(){
                                 </div>
                             </div>
                             
+                            <!-- jenis surat -->
                             <div class="card-header pb-0 p-3">
                                 <div class="row">
                                     <div class="mb-3">
@@ -302,17 +306,48 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
-                            <!-- FORM MAGANG  -->
-                            <div class="magang" style="display: none;">
+                            <!-- keterangan -->
+                            <div class="keterangan" style="display: none;">
                               <div class="card-header pb-0 p-3">
                                   <div class="row">
                                       <div class="mb-3">
-                                          <label for="formFile" class="form-label">Nama Perusahaan</label>
-                                          <input name="keterangan" class="form-control" type="text" placeholder="Masukan Nama Perusahaan" aria-label="default input example" >
+                                          <label  id="label-keterangan"for="formFile" class="form-label">Nama Perusahaan</label>
+                                          <input name="keterangan" class="form-control" type="text" aria-label="default input example" >
                                       </div>
                                   </div>
                               </div>
+                            </div>
 
+                            <!-- judul TA -->
+                            <div class="judulTA" style="display: none;">
+                              <div class="card-header pb-0 p-3">
+                                  <div class="row">
+                                      <div class="mb-3">
+                                          <label  id="label-keterangan"for="formFile" class="form-label">Rencana Judul</label>
+                                          <input name="ta" class="form-control" type="text" aria-label="default input example" >
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <!-- tanggal HIMA -->
+                            <div class="tanggalHIMA" style="display: none;">
+                              <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                  <div class="form-group col-md-6">
+                                    <label for="example-date-input" class="form-control-label">Tanggal Mulai Acara</label>
+                                    <input name="hima1" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="example-date-input" class="form-control-label">Tanggal Selesai Acara</label>
+                                    <input name="hima2" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- dosen -->
+                            <div class="dosen" style="display: none;">
                               <div class="card-header pb-0 p-3">    
                                 <div class="row">
                                     <div class="form-group col-md-6">
@@ -341,8 +376,30 @@ $(document).ready(function(){
                                     </div>
                                 </div>
                               </div>
+                            </div>
 
-                              
+                            <!-- dosen tkk -->
+                            <div class="dosenTKK" style="display: none;">
+                              <div class="card-header pb-0 p-3">    
+                                <div class="row">
+                                  <div class="mb-3">
+                                    <label for="formFile" class="form-label">Dosen TKK</label>
+                                    <select name="tkk"  class="form-select" aria-label="Default select example" >
+                                      <option selected>Pilih Dosen TKK</option>
+                                      <?php
+                                      include '../_database/config.php';
+                                      $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
+                                      while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                      <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
+                                       <?php } ?>
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- file -->
+                            <div class="file" style="display: none;">  
                               <div class="card-header pb-0 p-3">
                                   <div class="row">
                                       <div class="mb-3">
@@ -353,272 +410,6 @@ $(document).ready(function(){
                                   </div>
                               </div>
                             </div>
-
-
-                            <!-- FORM TUGAS AKHIR  -->
-                            <div class="akhir" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Nama Perusahaan</label>
-                                          <input name="keterangan" class="form-control" type="text" placeholder="Masukan Nama Perusahaan" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-                              
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Judul Tugas Akhir</label>
-                                          <input name="ta" class="form-control" type="text" placeholder="Masukan Judul Tugas Akhir" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen Pembimbing</label>
-                                          <select name="ds1"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Pembimbing</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen Penanggung Jawab</label>
-                                          <select name="ds2"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Penanggung Jawab</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                </div>
-                              </div>
-
-                              
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" id="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-
-                            <!-- FORM PBL (PROJECT BASED LEARNING) -->
-                            <div class="pbl" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Nama Projek PBL</label>
-                                          <input name="keterangan" class="form-control" type="text" placeholder="Masukan Nama Projek PBL" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen Pembimbing</label>
-                                          <select name="ds1"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Pembimbing</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen Penanggung Jawab</label>
-                                          <select name="ds2"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Penanggung Jawab</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-                            <!-- SURAT CUTI  -->
-                            <div class="cuti" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Lama Waktu Cuti</label>
-                                          <input name="keterangan" class="form-control" type="text" placeholder="Masukkan Lama Waktu Cuti *Satu Semester" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-
-                            <!-- Mengundurkan DIRI -->
-                            <div class="mundur" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-
-                            <!-- PENGAJUAN BEASISWA  -->
-                            <div class="beasiswa" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Nama Beasiswa</label>
-                                          <input name="keterangan" class="form-control" type="text" placeholder="Masukan Nama Beasiswa" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen TKK (Tim Konsultasi Kemahasiswaan)</label>
-                                          <select name="tkk"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen TKK (Tim Konsultasi Kemahasiswaan)</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-
-
-                            <!-- PENGAJUAN UKT  -->
-                            <div class="ukt" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen TKK (Tim Konsultasi Kemahasiswaan)</label>
-                                          <select name="tkk"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen TKK (Tim Konsultasi Kemahasiswaan)</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- Kegiatan HIMA  -->
-                            <div class="hima" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Nama Kegiatan</label>
-                                          <input name="keterangan" class="form-control" type="text" placeholder="Masukan Nama Kegiatan" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="example-date-input" class="form-control-label">Tanggal Mulai Acara</label>
-                                      <input name="hima1" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="example-date-input" class="form-control-label">Tanggal Selesai Acara</label>
-                                      <input name="hima2" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
-                                    </div>
-                                  </div>
-                              </div>
-
-
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen TKK (Tim Konsultasi Kemahasiswaan)</label>
-                                          <select name="tkk"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen TKK (Tim Konsultasi Kemahasiswaan)</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-
-
 
                             <br><br>
                             <div class="modal-footer">
@@ -699,86 +490,82 @@ $(document).ready(function(){
     <script>
         $('#jenis_surat').on('change',function () {
             if($('#jenis_surat').val() == 'Surat Magang') {
-                $('.magang').show();
-                $('.akhir').hide();
-                $('.pbl').hide();
-                $('.cuti').hide();
-                $('.mundur').hide();
-                $('.beasiswa').hide();
-                $('.ukt').hide();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat Tugas Akhir') {
-                $('.magang').hide();
-                $('.akhir').show();
-                $('.pbl').hide();
-                $('.cuti').hide();
-                $('.mundur').hide();
-                $('.beasiswa').hide();
-                $('.ukt').hide();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
-                $('.magang').hide();
-                $('.akhir').hide();
-                $('.pbl').show();
-                $('.cuti').hide();
-                $('.mundur').hide();
-                $('.beasiswa').hide();
-                $('.ukt').hide();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat Cuti') {
-                $('.magang').hide();
-                $('.akhir').hide();
-                $('.pbl').hide();
-                $('.cuti').show();
-                $('.mundur').hide();
-                $('.beasiswa').hide();
-                $('.ukt').hide();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
-                $('.magang').hide();
-                $('.akhir').hide();
-                $('.pbl').hide();
-                $('.cuti').hide();
-                $('.mundur').show();
-                $('.beasiswa').hide();
-                $('.ukt').hide();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
-                $('.magang').hide();
-                $('.akhir').hide();
-                $('.pbl').hide();
-                $('.cuti').hide();
-                $('.mundur').hide();
-                $('.beasiswa').show();
-                $('.ukt').hide();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
-                $('.magang').hide();
-                $('.akhir').hide();
-                $('.pbl').hide();
-                $('.cuti').hide();
-                $('.mundur').hide();
-                $('.beasiswa').hide();
-                $('.ukt').show();
-                $('.hima').hide();
-              } else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
-                $('.magang').hide();
-                $('.akhir').hide();
-                $('.pbl').hide();
-                $('.cuti').hide();
-                $('.mundur').hide();
-                $('.beasiswa').hide();
-                $('.ukt').hide();
-                $('.hima').show();
-              } else {
-                  $('.magang').hide();
-                  $('.akhir').hide();
-                  $('.pbl').hide();
-                  $('.cuti').hide();
-                  $('.mundur').hide();
-                  $('.beasiswa').hide();
-                  $('.ukt').hide();
-                  $('.hima').hide();
+                $('.keterangan').show();
+                $('#label-keterangan').text("Nama Tempat Magang");
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').show();
+                $('.file').show();
+                $('.dosenTKK').hide();
+              }
+            else if($('#jenis_surat').val() == 'Surat Tugas Akhir') {
+                $('.keterangan').show();
+                $('#label-keterangan').text("Industri Melakukan Tempat TA");
+                $('.judulTA').show();
+                $('.tanggalHIMA').hide();
+                $('.dosen').show();
+                $('.file').show();
+                $('.dosenTKK').hide();
+              }
+            else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
+                $('.keterangan').show();
+                $('#label-keterangan').text("Nama Tempat PBL");
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').show();
+                $('.file').show();
+                $('.dosenTKK').hide();
+              } 
+            else if($('#jenis_surat').val() == 'Surat Cuti') {
+                $('.keterangan').show();
+                $('#label-keterangan').text("Lama Waktu Cuti (*Satu semester)");
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').hide();
+                $('.file').show();
+                $('.dosenTKK').hide();
+              }
+            else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
+                $('.keterangan').hide();
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').hide();
+                $('.file').show();
+                $('.dosenTKK').hide();
+              }
+            else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
+                $('.keterangan').show();
+                $('#label-keterangan').text("Nama Beasiswa");
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').hide();
+                $('.file').show();
+                $('.dosenTKK').show();
+              }
+            else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
+                $('.keterangan').hide();
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').hide();
+                $('.file').show();
+                $('.dosenTKK').show();
+              }
+            else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
+                $('.keterangan').show();
+                $('#label-keterangan').text("Nama Kegiatan");
+                $('.judulTA').hide();
+                $('.tanggalHIMA').show();
+                $('.dosen').hide();
+                $('.file').show();
+                $('.dosenTKK').show();
+              }
+            else {
+                $('.keterangan').hide();
+                $('.judulTA').hide();
+                $('.tanggalHIMA').hide();
+                $('.dosen').hide();
+                $('.file').hide();
+                $('.dosenTKK').hide();
               }
         });
     </script>
