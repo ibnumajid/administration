@@ -251,18 +251,17 @@
         <!-- End Navbar -->
 
 
-        <div class="container-fluid py-4">
-          <div class="row">
-            <div class="col-lg-7">
+
+            
                                          <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
      
 
      <div class="card-body p-3">
        <div class="row">
-         <div class="card-body px-0 pt-0 pb-2">
+         <div class="card-body px-3 pt-0 pb-2">
          
-           <div class="table-responsive p-0">      
+           <div class="table-responsive p-0" style = "width:1000px">      
            <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
         <a href="./dosensm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
@@ -273,7 +272,7 @@
             <div class="col-6 d-flex align-items-center">
          <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
        </div>
-       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:300px">
+       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
              <table class="table table-striped align-items-center mb-6">
                <thead>
                  <tr>
@@ -371,12 +370,7 @@
                  </td> <?php } ?>
                  <!-- tanggal -->
                  <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                 <!-- button -->
-                 <td class="align-middle">
-                   <a  href="validasidsn.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
-                   </a>
-                 </td>
+                 
                  <?php } } ?>
                </tr>
                <!-- and tabel dosen -->
@@ -444,7 +438,9 @@
      </div>
    </div>
    </div>
-              <div class="row">
+
+   <div class="col-lg-7">          
+   <div class="row">
                 <!---->
                 
                 <div class="col-md-12 mb-lg-0 mb-4">
@@ -501,6 +497,9 @@
                 </div>
               </div>
             </div>
+
+            <div class="container-fluid py-4">
+          <div class="row">
             <div class="col-lg-5">
               <div class="card h-100">
                 <div class="card-header pb-0 px-4">
@@ -550,6 +549,7 @@
               </div>
             </div>
           </div>
+         </div>
 
 
 
