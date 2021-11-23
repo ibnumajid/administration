@@ -441,10 +441,8 @@
    </div>
    </div>
 
-   <div class="col-lg-7">          
    <div class="row">
-                <!---->
-                
+                <div class="col-lg-7">  
                 <div class="col-md-12 mb-lg-0 mb-4">
                   <div class="card mt-0">
                     <div class="card-header pb-0 p-4">
@@ -498,10 +496,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+           
 
-            <div class="container-fluid py-4">
-          <div class="row">
+            
             <div class="col-lg-5">
               <div class="card h-100">
                 <div class="card-header pb-0 px-4">
@@ -550,9 +547,8 @@
                 </div>
               </div>
             </div>
-          </div>
+         
          </div>
-
 
 
       </main>
