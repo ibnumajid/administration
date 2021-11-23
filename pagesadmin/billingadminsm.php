@@ -351,7 +351,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                 ?>
                             
                             <tr>
                               <!-- no -->
@@ -388,7 +388,7 @@
                                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                 </a>
                               </td>
-                              <?php } } ?>
+                              <?php  } ?>
                             </tr>
                             <!-- and tabel mahasiswa -->
                             <!-- tabel suratdosen -->
@@ -400,7 +400,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                ?>
                             
                             <tr>
                               <!-- no -->
@@ -437,7 +437,7 @@
                                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                 </a>
                               </td>
-                              <?php } } ?>
+                              <?php }  ?>
                             </tr>
                             <!-- and tabel dosen -->
                             <!-- tabel suratdosen -->
@@ -449,7 +449,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                               ?>
                             
                             <tr>
                               <!-- no -->
@@ -486,7 +486,7 @@
                                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                 </a>
                               </td>
-                              <?php } } ?>
+                              <?php } ?>
                             </tr>
                             <!-- and tabel dosen -->
                                 <?php 

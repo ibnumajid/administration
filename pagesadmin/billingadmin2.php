@@ -311,8 +311,7 @@
               <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
         <a href="./billingadminsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./billingadmin.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
-        <a href="./billingadmin1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+        <a href="./billingadmin.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
         <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
         </div>
                 <div class="card-header pb-0 p-4">
@@ -351,7 +350,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                  if ($data['status_admin'] == 2) {?>
                             
                             <tr>
                               <!-- no -->
@@ -400,7 +399,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                  if ($data['status_admin'] == 2) {?>
                             
                             <tr>
                               <!-- no -->
@@ -449,7 +448,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                  if ($data['status_admin'] == 2) {?>
                             
                             <tr>
                               <!-- no -->
