@@ -252,10 +252,10 @@
 
 
         <div class="container-fluid py-4">
-          <div class="row">
-            <div class="col-lg-7">
+          
+            
                               <!-- Bagian Validasi Mahasiswa -->
-                              <div class="row">
+  
 <div class="card-body p-3">
   <div class="row">
     <div class="card-body px-0 pt-0 pb-2">
@@ -288,7 +288,7 @@
             
             <!-- tabel mahasiswa -->
             <?php
-            include './_database/config.php'; //panggil setiap ingin koneksi ke data
+            include '../_database/config.php'; //panggil setiap ingin koneksi ke data
             $nama = $_SESSION['user'];
 
             $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
@@ -335,23 +335,24 @@
                     </td> <?php } ?>
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                  <!-- button -->
 
-              <?php } }
-            } ?>
+              <?php } } } ?>
+          <?php if ($no == 0) { ?>  
+            
+            <td><h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6></td>
+            </tr>
+            <?php } ?>
           </table>
-          <?php if ($no == 1) { ?>  
-            <h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6>
-          <?php } ?>
         </div>
       </div>
     </div>
   </div>
 </div>
-</div>
-              <div class="row">
-                <!---->
-                
+
+
+<div class="row">  
+            <div class="col-lg-7">
+                  
                 <div class="col-md-12 mb-lg-0 mb-4">
                   <div class="card mt-0">
                     <div class="card-header pb-0 p-4">
@@ -369,7 +370,7 @@
                           <?php 
                           include "../_database/config.php";
                           $no = 1;
-                          $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
+                          $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
 
                           while ($data = mysqli_fetch_array($query)) {
                             $tujuan = $data['tujuan'];
@@ -418,7 +419,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+          
             <div class="col-lg-5">
               <div class="card h-100">
                 <div class="card-header pb-0 px-4">
@@ -468,7 +469,8 @@
               </div>
             </div>
           </div>
-
+      
+                     
 
 
 
