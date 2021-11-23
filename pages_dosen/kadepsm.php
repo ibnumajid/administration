@@ -264,10 +264,10 @@
            <div class="table-responsive p-0" style = "width:1000px">      
            <h6>Filter Validasi Surat</h6>
         <div class="form-group d-flex justify-content-around">
-        <a href="./dosensm.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./dosen.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./dosen1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./dosen2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        <a href="./kadepsm.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./kadep.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./kadep1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+        <a href="./kadep2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
         </div>             
             <div class="col-6 d-flex align-items-center">
          <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
