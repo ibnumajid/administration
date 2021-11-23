@@ -289,14 +289,14 @@
             <!-- tabel mahasiswa -->
             <?php
             include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+            $no = 0;
+            $no2 = $no++;
             $nama = $_SESSION['user'];
-
             $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
 
             while ($data = mysqli_fetch_array($query)) {
               $tujuan = $data['dosen_pembimbing'];
-              $no = 0;
-              $no2 = $no++;
+             
               if (strpos($tujuan, $nama) !== false ) { ?>
                
                 <?php $id = $data['id_no'] ?>

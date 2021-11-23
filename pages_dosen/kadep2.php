@@ -285,10 +285,12 @@
                    <th class="text-left ps-2"></th>
                  </tr>
                </thead>
-               <?php $no = 1; ?>
+               
                <!-- tabel mahasiswa -->
                <?php
                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                 $no = 0;
+                 $no2 = $no++;
                  $nama = $_SESSION['user'];
                  
                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
