@@ -300,7 +300,7 @@ session_start();
 
                       else if ($data['proses_tugas'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['proses_tugas'] ?>">Sedang Dikerjakan</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['proses_tugas'] ?>">Sudah Selesai</span>
                       </td> <?php } ?> 
                         
                     <td class="text-center"> <a href="./mandat/<?php echo $data['file'] ?>" target="_blank">
