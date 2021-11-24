@@ -191,388 +191,80 @@ session_start();
     </nav>
     <!-- End Navbar -->
 
-
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-7">
-          <div class="row">
-            <!---->
-
-            <div class="col-md-12 mb-lg-0 mb-4">
-              <div class="card mt-0">
-                <div class="card-header pb-0 p-4">
-                  <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0 pt-1 px-1">Informasi</h6>
-                    </div>
-                    
-                  </div>
-                </div>
-                
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
-                <div class="card-body p-3">
-                  <div class="row">
-                  <?php 
-                    include "../_database/config.php";
-                    $no = 1;
-                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
-
-                    while ($data = mysqli_fetch_array($query)) {
-                      if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
-                      { $no++
-                        ?>
-                      <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                          <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
-                          <span class="text-xs"><?=$data['keterangan']?></span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                          <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                            <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                          </a>
-                        </div>
-                      </li>
-                      <?php }?>
-                      <?php if ($data['tujuan'] == "Dosen, Mahasiswa" or $data['tujuan'] == "Tendik, Mahasiswa"){?>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                          <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
-                          <span class="text-xs"><?=$data['keterangan']?></span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                          <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                            <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                          </a>
-                        </div>
-                      </li>
-                      <?php }?>
-                    <?php } ?>
-                    <?php if ($no == 1) { ?>
-                    <h6 class = "text-center"><br><br><br>Tidak Ada Informasi Terbaru</h6>
-
-                     <?php } ?>
-                    <div class="col-md-6 mb-md-0 mb-4">
-                    
-                    </div>
-                    <div class="col-md-6">
-
+    <!-- CAROUSEL -->
+              <!-- slide ketiga -->
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item">
+                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1129&q=80');">
+                  <span class="mask bg-gradient-dark"></span>
+                  <div class="container">
+                    <div class="row">
+                    <div class="pb-5 px-7">
+                        <!-- <h4 class="text-white pb-10 px-0">Infirmasi</h4> -->
+                        <!-- <h1 class="text-white fadeIn2 fadeInBottom">kiww</h1> -->
+                          <!-- <div class="btn bg-gradient-info">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+                          </div> -->
+                      </div>
                     </div>
                   </div>
-                </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-lg-5">
-          <div class="card h-100">
-            <div class="card-header pb-0 px-4">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Surat Masuk</h6>
+              <!-- Slide kedua -->
+              <div class="carousel-item">
+                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+                  <span class="mask bg-gradient-dark"></span>
+                  <div class="container">
+                    <div class="row">
+                    <div class="pb-5 px-7">
+                      <!-- <h4 class="text-white pb-8 px-0">Informasi</h4> -->
+                        <!-- <h1 class="text-white fadeIn2 fadeInBottom">kiww</h1> -->
+                          <!-- <div class="btn bg-gradient-info">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+                          </div> -->
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-6 text-end">
-                <a href = ./rekapmhs.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
+              </div>
+
+              <!-- SLIDE SATU -->
+              <div class="carousel-item active">
+                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1546448396-6aef80193ceb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
+                  <span class="mask bg-gradient-dark"></span>
+                  <div class="container">
+                    <div class="row">
+                      <div class="pb-7 p-3">
+                        <h4 class="text-white pb-5 px-7">Informasi</h4>
+                        <h1 class="text-white pb-0 px-7">Selamat Datang</h1>
+                        <a href="./2040201062_Kelompok 1_Tugas KWN.pdf" target="_blank" class="pb-5 px-7">
+                        <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
-              <ul class="list-group">
-              <?php
-              include "../_database/config.php";
-                        
-              $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmin ORDER BY id_no DESC ');
-              $no = 0;
-              $no2 = $no++;
-               while ($data = mysqli_fetch_array($query)){
-                $tujuan = $data['nama'];
-
-                if (strpos($tujuan, $_SESSION['user']) !== false && $tujuan !== "Imam Arifin, S.T, MT") { $no++ ?>
-                  <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                    <div class="d-flex flex-column">
-                     <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['file']?></h6>
-                      <span class="text-xs"><?=$data['perihal']?></span>
-                      <span class="text-xs"><?=$data['tanggal']?></span>
-                    </div>
-                    <div class="d-flex align-items-center text-sm">
-                    <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                      <p class="modal-title" name="fl" id="edit<?php echo $data['no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                    </a>
-                    </div>
-                  </li>
-                <?php }?>
-                <?php } ?>
-                <?php if ($no == 1) { ?>
-                <h6 class = "text-center"><br><br><br>BELUM ADA SURAT MASUK</h6>
-
-                <?php } ?>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-      <!-- Bagian Detail Permohonan Surat -->
-      <div class="row">
-        <div class="col-md-7 mt-4">
-          <div class="card">
-            <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Surat Ditolak</h6>
-            </div>
-            <div class="card-body pt-4 p-3">
-            <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
-              <ul class="list-group">
-                <?php include '../_database/config.php';
-                $no = 1;
-                $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_mhsw'] == $_SESSION['user'] && ($data['status_surat'] == 1 || $data['status_kadep'] == 1)) {
-                      $no++
-                ?>
-                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                      <div class="d-flex flex-column">
-                        <h6 class="mb-3 text-sm"> <?php echo $data['file'] ?> </h6>
-                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['progres'] ?></span></span>
-                        <span class="mb-2 text-xs">Dosen yang Dituju : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['dosen_pembimbing'] ?></span></span>
-                        <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
-                      </div>
-                      <div class="ms-auto text-end">
-                       <div>
-                      <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
-                      </div>
-                      <div>   
-                        <button type = "button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Respon</button>
-                      </div>
-                      </div>
-                      
-                    </li>
-
-                   
-
-
-                <?php } ?>
-
-                  <!-- Modal Hapus -->
-                  <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                   <div class="modal-dialog modal-dialog-centered" role="document">
-                     <div class="modal-content">
-
-                       <!-- popup ajuan surat mahasiswa -->
-                       <div class="modal-header">
-                         <h5 class="modal-title" id="hapus<?php echo $data['id_no'] ?>">Hapus File</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                         </button>
-                       </div>
-
-                     
-                       <div class="modal-body">
-                         <form action="" method="post" enctype="multipart/form-data">
-                           <div class="card-header pb-0 p-3">
-                             <div class="row">
-                               <div class="mb-3">
-                               
-                                 <!-- Nama File -->
-                                 <label for="formFile" class="form-label">Nama File</label>
-                                 <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
-
-                                 <!-- NRP mahasiswa -->
-                                 <label for="formFile" class="form-label">Perihal</label>
-                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
-                                 
-                                 <!-- Lihat File -->
-                                 <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
-                                 <a href="./<?php echo $data['file'] ?>" target="_blank">
-                                    <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></h6>
-                                    </a>
-                                 
-                                 <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
-
-                                 <!-- Memberi peringatan -->
-                                 <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
-                                 <h6 class = " modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6>
- 
-                                
-                               </div>
-                             </div>
-                           </div>
-                       </div>
-
-
-                       <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                         <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
-                        
-                       </div>
-
-                       </form>
-
-                     </div>
-                     </div>
-                     </div>
-
-                  <!-- Modal Edit -->
-                  <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                   <div class="modal-dialog modal-dialog-centered" role="document">
-                     <div class="modal-content">
-
-                       <!-- popup ajuan surat mahasiswa -->
-                       <div class="modal-header">
-                         <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                           <span aria-hidden="true">&times;</span>
-                         </button>
-                       </div>
-
-                     
-                       <div class="modal-body">
-                         <form action="" method="post" enctype="multipart/form-data">
-                           <div class="card-header pb-0 p-3">
-                             <div class="row">
-                               <div class="mb-3">
-                               
-                                 <!-- nama mahasiswa -->
-                                 <label for="formFile" class="form-label">Catatan Dosen</label>
-                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
-
-                                 <!-- NRP mahasiswa -->
-                                 <label for="formFile" class="form-label">Catatan Kadep</label>
-                                 <label name="catatan2" class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
-
-                                 <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
-
-                                 <!-- Ubah File saat ditolak filenya -->
-                                 <?php if ($data['status_surat'] == "1") { ?>
-                                   <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
-                                   <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                   <input type="hidden" name="stats" value="0">
-                                 <?php } else if ($data['status_kadep'] == "1") { ?>
-                                   <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                   <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                   <input type="hidden" name="stats2" value="0">
-                                 <?php }
-                                        else { ?>
-                                          <h5 class = "text-info allign-middle modal-title text-center"> Surat Belum Memerlukan Perubahan </h5> 
-                                        <?php } ?> 
-                               </div>
-                             </div>
-                           </div>
-                       </div>
-
-
-                       <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                         <!-- Saat dosen menolak -->
-                         <?php if ($data['status_surat']  == "1") { ?>
-                           <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                         <?php } else if ($data['status_kadep']  == "1") { ?>
-                           <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                         <?php } ?>
-                       </div>
-
-                       </form>
-
-                     </div>
-                     </div>
-                     </div>
-                
-               <?php } ?>
-
-               <?php if ($no == 1) { ?>
-                <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DITOLAK</h6>
-
-                <?php } ?>
-
-              </ul>
-             </div>
+            <!-- BUTTON Next -->
+            <div class="row row-xs">
+              <div class="col-12 col-sm-12 col-lg-12 d-flex justify-content-end">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon position-absolute bottom-25" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon position-absolute bottom-25" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-                        <!-- php update surat saat dosen menolak -->
-                        <?php
-                include "../_database/config.php";
-                if (isset($_POST['update'])) {
-
-                  $nama_file2 = basename($_FILES['ufl']['name']);
-                  $id3 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url2 = $id3.'_'.$nama_file2;
-
-                  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
-                    $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
-
-                    if ($query2 && $query3) {
-                      echo '<script> alert ("Berhasil di ajukan")</script></a>';
-                      ?>  <script> history.pushState({}, "", "")</script> <?php
-                              } else {
-                                echo '<script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
-
-                <!-- php update surat saat kadep menolak -->
-                <?php
-                include "../_database/config.php";
-                if (isset($_POST['update2'])) {
-
-                  $nama_file3 = basename($_FILES['uflk']['name']);
-                  $id4 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url3 = $id4.'_'.$nama_file3;
-
-                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
-
-                    $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
-                    $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
-
-                    if ($query4 && $query5) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
-
-                <!-- php hapus file -->
-                <?php
-                include "../_database/config.php";
-                if (isset($_POST['hapus'])) {
-
-                  $nama_file3 = basename($_FILES['flhps']['name']);
-                  $id6 = $_POST['id3'];
-                  
-
-                 
-                 $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
-
-                    if ($query6) {
-                      echo '<script> alert ("Berhasil Menghapus")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          
-
-                                ?>
+          <!-- bagian carousel selesai -->
 
         <!-- Bagian Status Surat -->
         <div class="col-md-5 mt-4">
