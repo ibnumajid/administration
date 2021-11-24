@@ -252,12 +252,21 @@
                     <tr>
                       <!-- nama -->
                       <td class="text-center"><?php echo $no++ ?></td>
-                      <form action="./validasitendik.php" method="post">
-                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                              <td style = "height:20px">
-                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
-                              </td>
-                            </form>
+                      <?php if ($data['status_kadep'] != 2){ ?>
+                  <!-- nama -->
+                  <form action="./pages_dosen/validasimhs.php" method="post">
+                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                    <td style = "height:20px">
+                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
+                    </td>
+                  </form> <?php } 
+                  else { ?> <form action="" method="post">
+                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                    <td style = "height:20px">
+                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
+                    </td>
+                  </form>
+                <?php } ?>
                       <!-- nrp -->
                       <td>
                       <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>

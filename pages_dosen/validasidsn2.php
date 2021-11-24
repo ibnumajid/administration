@@ -264,7 +264,7 @@
                       <h6 class="mb-0 text-sm ps-3"><?php echo $no++ ?></h6>
                       </td>
                       <!-- nama -->
-                      <form action="./validasidosen.php" method="post">
+                      <form action="" method="post">
                               <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                               <td style = "height:20px">
                                 <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>

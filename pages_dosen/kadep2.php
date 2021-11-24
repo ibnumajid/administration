@@ -297,13 +297,13 @@
                  
                  while ($data = mysqli_fetch_array($query)) {
                  
-                     if ($data['status_kadep'] == 1 && $data['status_surat'] == 2) {?>
+                     if ($data['status_kadep'] == 2 && $data['status_surat'] == 2) {?>
                
                <tr>
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <form action="./validasimhs.php" method="post">
+                 <form action="" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                  <td style = "height:20px">
                  <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
@@ -347,7 +347,7 @@
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <form action="./validasidosen.php" method="post">
+                 <form action="" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                  <td style = "height:20px">
                    <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
@@ -391,7 +391,7 @@
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <form action="./validasitendik.php" method="post">
+                 <form action="" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                  <td style = "height:20px">
                    <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
