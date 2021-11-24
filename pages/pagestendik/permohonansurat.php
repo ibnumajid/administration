@@ -171,7 +171,9 @@ session_start();
 
     <!-- pop up kirim surat  -->
           <div class="text-center">
-            <button type="button" class="btn btn-secondary btn-lg-center w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+            <a class="nav-link  " href="./ajukantendik.php"> 
+              <button type="button" class="btn btn-secondary btn-lg-center w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Surat</button>
+            </a>
           </div>
 
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
