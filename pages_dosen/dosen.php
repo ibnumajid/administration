@@ -261,7 +261,7 @@
     <div class="card-body px-0 pt-0 pb-2">
 
       <div class="table-responsive p-0">
-      <h6>Filter Validasi Surat</h6>
+      
         <div class="form-group d-flex justify-content-around">
         <a href="./dosensm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./dosen.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
@@ -350,7 +350,7 @@
   </div>
 </div>
 
-
+<!--
 <div class="row">  
             <div class="col-lg-7">
                   
@@ -470,7 +470,7 @@
               </div>
             </div>
           </div>
-      
+                      -->
                      
 
 

@@ -213,7 +213,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <h6>Filter Validasi Surat</h6>
+         
         <div class="form-group d-flex justify-content-around">
         <a href="./validasitndk.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./validasitndk0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>

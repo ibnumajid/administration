@@ -261,7 +261,7 @@
     <div class="card-body px-0 pt-0 pb-2">
 
       <div class="table-responsive p-0">
-      <h6>Filter Validasi Surat</h6>
+    
         <div class="form-group d-flex justify-content-around">
         <a href="./dosensm.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
         <a href="./dosen.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
