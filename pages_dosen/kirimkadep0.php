@@ -243,8 +243,8 @@ session_start();
         <div class="col-12">
           <div class="card mb-4">
         <div class="form-group d-flex justify-content-around">
-        <a href="./kirimkadep.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./kirimkadep0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
+        <a href="./kirimkadep.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
+        <a href="./kirimkadep0.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
         <a href="./kirimkadep1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
         <a href="./kirimkadep3.php" id='failedList'><button class = "btn btn-outline-info">Sedang Dikerjakan</button></a>
         <a href="./kirimkadep2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
@@ -279,7 +279,7 @@ session_start();
                   $no2 = $no++;
                   $query = mysqli_query($koneksi, 'SELECT * FROM ajukankadep ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
-                 
+                    if ($data['proses_tugas'] == 0){
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
@@ -315,7 +315,7 @@ session_start();
                                   </a></td>
                     </tr>
                      <?php 
-                        }   ?>
+                        } }  ?>
 
                               </div>
                       
