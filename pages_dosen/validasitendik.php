@@ -347,16 +347,11 @@
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
                                   <div class="form-check">
-                                    <input class="form-check-input" Name="ss" type="radio" value="1" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      Tidak Disetujui
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" Name="ss" type="radio" value="2" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      Disetujui
-                                    </label>
+                                  <input type="radio" class="btn-check" name="ss" id="success-outlined" value = "2" autocomplete="off">
+                                  <label class="btn btn-outline-success" for="success-outlined">Setuju</label>
+                                 
+                                  <input type="radio" class="btn-check" name="ss" id="danger-outlined" value = "1" autocomplete="off">
+                                  <label class="btn btn-outline-danger" for="danger-outlined">Tolak</label>        
                                   </div>
                                         <!-- Menginput catatan -->
                                         <div>
