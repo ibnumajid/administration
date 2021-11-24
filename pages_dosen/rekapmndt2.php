@@ -269,11 +269,11 @@
         <div class="col-12">
           <div class="card mb-4">
           <div class="form-group d-flex justify-content-around">
-        <a href="./rekapmndt.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
+        <a href="./rekapmndt.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./rekapmndt0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
         <a href="./rekapmndt1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
         <a href="./rekapmndt3.php" id='failedList'><button class = "btn btn-outline-info">Sedang Dikerjakan</button></a>
-        <a href="./rekapmndt2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+        <a href="./rekapmndt2.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
         </div>  
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -305,7 +305,7 @@
                   $no2 = $no++;
                   $query = mysqli_query($koneksi, 'SELECT * FROM ajukankadep order by id_no DESC' );
                   while ($data = mysqli_fetch_array($query)) {
-                    if ($data['dosen_koor'] == $_SESSION['user']){
+                    if ($data['dosen_koor'] == $_SESSION['user'] && $data['proses_tugas'] == 2){
                   ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
