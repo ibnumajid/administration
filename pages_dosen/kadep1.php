@@ -274,7 +274,7 @@
        <div class="row">
          <div class="card-body px-3 pt-0 pb-2">
          
-           <div class="table-responsive p-0" style = "width:1000px">      
+         <div class="table-responsive p-0" style = "width:1050px;">      
     
         <div class="form-group d-flex justify-content-around">
         <a href="./kadepsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
@@ -285,7 +285,7 @@
             <div class="col-6 d-flex align-items-center">
          <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
        </div>
-       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
              <table class="table table-striped align-items-center mb-6">
                <thead>
                  <tr>
