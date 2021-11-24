@@ -262,7 +262,7 @@ session_start();
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-1">Tempat dan Waktu</th>
                       <th class="text-left ps-4"> Proses Tugas</th>
-                      <th class="text-center">Waktu Upload</th>
+                      <th class="text-center">Lihat Laporan</th>
                     </tr>
                   </thead>
 
@@ -303,7 +303,9 @@ session_start();
                         <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['proses_tugas'] ?>">Sedang Dikerjakan</span>
                       </td> <?php } ?> 
                         
-                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                    <td class="text-center"> <a href="./mandat/<?php echo $data['file'] ?>" target="_blank">
+                                  <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                                  </a></td>
                     </tr>
                      <?php 
                         }  ?>
