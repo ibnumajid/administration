@@ -403,7 +403,7 @@ $(document).ready(function(){
                               <div class="card-header pb-0 p-3">
                                   <div class="row">
                                       <div class="mb-3">
-                                          <label for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
+                                          <label id="label-file" for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
                                           <input type="file" id="file" name="fl" class="form-control" aria-label="file example" >
                                           <div class="invalid-feedback">Example invalid form file feedback</div>
                                       </div>
@@ -496,6 +496,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Magang (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Tugas Akhir') {
@@ -505,6 +506,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Tugas Akhir (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
@@ -514,6 +516,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat PBL (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               } 
             else if($('#jenis_surat').val() == 'Surat Cuti') {
@@ -523,6 +526,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Cuti (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
@@ -531,6 +535,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Mengundurkan Diri (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
@@ -540,6 +545,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Pengajuan Beasiswa (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
@@ -548,6 +554,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Keringanan UKT (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
@@ -557,6 +564,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').show();
                 $('.dosen').hide();
                 $('.file').show();
+                $('#label-file').text("Upload Dokumen Surat Kegiatan HIMA (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').show();
               }
             else {
