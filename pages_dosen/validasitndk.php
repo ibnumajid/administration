@@ -172,7 +172,6 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            >
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -267,9 +266,9 @@
                     <tr>
                       <!-- nama -->
                       <td class="text-center"><?php echo $no++ ?></td>
-                      <?php if ($data['status_kadep'] != 2){ ?>
+                      <?php if ($data['status_kadep'] == 0){ ?>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
+                  <form action="./pages_dosen/validasitendik.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
@@ -331,9 +330,9 @@
                     <tr>
                       <!-- nama -->
                       <td class="text-center"><?php echo $no++ ?></td>
-                      <?php if ($data['status_kadep'] != 2){ ?>
+                      <?php if ($data['status_kadep'] == 0){ ?>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
+                  <form action="./pages_dosen/validasitendik.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
@@ -398,7 +397,7 @@
 
 
 
-                      <?php } ?>
+                      <?php }  ?>
                     
 
                       <!-- and php tabel -->

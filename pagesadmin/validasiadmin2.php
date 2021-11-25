@@ -189,7 +189,6 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <h6>Filter Validasi Surat</h6>
           <div class="form-group d-flex justify-content-around mt-4">
           <form method = "post">
                 <input type="hidden" name = "filterid" value = "012">
@@ -243,13 +242,22 @@
                     <tbody>
                       <tr>
                         
+                     
                         <!-- nama -->
-                        <form action="./kirimdosen.php" method="post">
-                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                        <?php if ($data['status_admin'] == 0 ) { ?>
+                                  <form action="./kirimdosen.php" method="post">
+                                      <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                                      <td style = "height:20px">
+                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                                      </td>
+                                    </form>
+                            <?php } 
+                            else { ?>
+                                
                               <td style = "height:20px">
                                 <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
                               </td>
-                            </form>
+                            <?php } ?>
                         <!-- nrp -->
                         <td>
                           <h6 class="mb-0 text-sm text-center"><?php echo $data['id_npp'] ?></h6>
@@ -285,12 +293,20 @@
                           <tr>
                             
                             <!-- nama -->
-                            <form action="./kirimdosen.php" method="post">
-                                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                                  <td style = "height:20px">
-                                    <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
-                                  </td>
-                                </form>
+                        <?php if ($data['status_admin'] == 0 ) { ?>
+                                  <form action="./kirimdosen.php" method="post">
+                                      <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                                      <td style = "height:20px">
+                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                                      </td>
+                                    </form>
+                            <?php } 
+                            else { ?>
+                                
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                              </td>
+                            <?php } ?>
                             <!-- nrp -->
                             <td>
                               <h6 class="mb-0 text-sm text-center"><?php echo $data['id_npp'] ?></h6>
