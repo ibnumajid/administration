@@ -247,7 +247,7 @@ include "../_database/config.php";
       </div>
     </nav>
     <!-- End Navbar -->
-    
+
     <!-- Tabel Validasi -->
     <div class="container-fluid py-4">
       <div class="row">
@@ -325,9 +325,23 @@ include "../_database/config.php";
                           <label for="formFile" class="form-label">Nama Kegiatan</label>
                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                           <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label"></label>
-                          <label name="sr" class="form-control" aria-label="default input example">Mulai <?php echo $data['tgl_hima1'] ?> sampai <?php echo $data['tgl_hima2'] ?> </label>
-                        <?php } ?>
+                          <div class="row">
+                                <div class="form-group col-md-2 text-center">
+                                  <label for="formFile" class="form-label">Tanggal Mulai</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_hima1'] ?> </label>
+                                </div>
+                                <div class="form-group col-md-2 text-center">
+                                  <label for="formFile" class="form-label">Tanggal Selesai</label>
+                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_hima2'] ?> </label>
+                                </div>
+                          </div>
+                          <div>
+                          
+                          
+                         
+                         
+                        </div>
+                          <?php } ?>
 
                         <!-- file surat -->
                         <label for="formFile" class="form-label">Lihat File</label>
