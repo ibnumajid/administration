@@ -173,7 +173,7 @@ session_start();
     <!-- End Navbar -->
     <div class="text-center">
       <a class="nav-link  " href="./ajukansurat.php"> 
-        <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajukan Permohonan Surat</button>
+        <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" >Ajukan Permohonan Surat</button>
       </a>
     </div>
     <!-- Modal -->
