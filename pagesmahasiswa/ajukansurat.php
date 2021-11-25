@@ -353,7 +353,7 @@ $(document).ready(function(){
                                     <div class="form-group col-md-6">
                                       <label for="formFile" class="form-label">Dosen Pembimbing</label>
                                           <select name="ds1"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Pembimbing</option>
+                                              <option value="Tidak Memerlukan Dosen Pembimbing" selected>Pilih Dosen Pembimbing</option>
                                               <?php
                                               include '../_database/config.php';
                                               $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
@@ -365,7 +365,7 @@ $(document).ready(function(){
                                     <div class="form-group col-md-6">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
                                           <select name="ds2"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Koordinator</option>
+                                              <option value="Tidak Memerlukan Dosen Koordinator" selected>Pilih Dosen Koordinator</option>
                                               <?php
                                               include '../_database/config.php';
                                               $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));

@@ -402,7 +402,14 @@ session_start();
                     <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                     <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
                     <td class="text-left ps-1"><?php echo $data['dosen1'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['dosen2'] ?></td>
+                    <?php if ($data['dosen2'] == "Tidak Memerlukan Dosen Koordinator" && ($data['perihal'] == "Surat Keringanan UKT" || $data['perihal'] == "Surat Pengajuan Beasiswa" || $data['perihal'] == "Surat Pengajuan Kegiatan HIMA")) { ?> 
+                      <td class="text-left ps-1"><?php echo "Ciptian Weried Priananda, S.ST., MT" ?></td>
+                    <?php } 
+                    else { ?>
+                      <td class="text-left ps-1"><?php echo $data['dosen2'] ?></td> <?php } ?>
+
+                    
+                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
                     <!-- status surat dosen1  -->
                     <?php if ($data['status_dosen1'] == 0) {?>
                           <td class="align-middle text-center text-sm">
@@ -462,7 +469,6 @@ session_start();
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
                         
-                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
                      <!-- button edit -->
                      <td class="align-middle">
                           <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
