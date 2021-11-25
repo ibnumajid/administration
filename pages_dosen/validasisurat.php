@@ -311,9 +311,9 @@
                          
                           <!-- nama -->
                           <td class="text-center"><?php echo $no++ ?></td>
-                          <?php if ($data['status_kadep'] != 2){ ?>
+                          <?php if ($data['status_kadep'] == 0){ ?>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
+                  <form action="validasimhs.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
