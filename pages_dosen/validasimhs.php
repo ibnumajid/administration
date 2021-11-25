@@ -374,7 +374,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               </div>
 
-              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+              <a href = "./validasisurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
               <?php if ($_SESSION['status'] == 2) { ?>
                 <button type="submite" name="update" class="btn bg-gradient-primary">Validasi</button>
               <?php } else if ($_SESSION['status'] == 5) { ?>

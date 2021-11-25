@@ -313,7 +313,7 @@
               </div>
             </div>
 
-            <div class="card-body px-0 pt-0 pb-2" style = "width:1000px">
+            <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center">
                   <thead>

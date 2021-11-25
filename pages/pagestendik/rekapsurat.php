@@ -140,7 +140,7 @@ session_start();
               </a-->
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="/logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <a href="../..//logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
                 </a>
