@@ -482,7 +482,7 @@
    </div>
    </div>
 
-   <div class="row">
+ <!--  <div class="row">
                 <div class="col-lg-7">  
                 <div class="col-md-12 mb-lg-0 mb-4">
                   <div class="card mt-0">
@@ -589,7 +589,7 @@
               </div>
             </div>
          
-         </div>
+         </div> -->
 
 
 
