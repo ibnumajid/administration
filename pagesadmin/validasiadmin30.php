@@ -192,7 +192,7 @@
         <div class="col-12">
           <div class="card mb-4">
           <h6>Filter Validasi Surat</h6>
-        <div class="form-group d-flex justify-content-around">
+          <div class="form-group d-flex justify-content-around mt-4">
         <a href="./validasiadmin3.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./validasiadmin30.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
         <a href="./validasiadmin31.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>

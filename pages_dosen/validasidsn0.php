@@ -215,7 +215,7 @@
         <div class="col-12">
           <div class="card mb-4">
 
-        <div class="form-group d-flex justify-content-around">
+          <div class="form-group d-flex justify-content-around mt-4">
         <a href="./validasidsn.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./validasidsn0.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
         <a href="./validasidsn1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>

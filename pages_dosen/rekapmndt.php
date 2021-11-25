@@ -282,7 +282,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div class="form-group d-flex justify-content-around">
+          <div class="form-group d-flex justify-content-around mt-4">
         <a href="./rekapmndt.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
         <a href="./rekapmndt0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
         <a href="./rekapmndt1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
