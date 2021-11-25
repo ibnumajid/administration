@@ -384,8 +384,8 @@ $(document).ready(function(){
                                 <div class="row">
                                   <div class="mb-3">
                                     <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Ciptian Weried Priananda, S.ST., MT">
-                                    <label name="nm" class="form-control" aria-label="default input example">Ciptian Weried Priananda, S.ST., MT</label>
+                                    <input name="tkk" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Ciptian Weried Priananda, S.ST., MT">
+                                    <label name="tkk" class="form-control" aria-label="default input example">Ciptian Weried Priananda, S.ST., MT</label>
                                   </div>
                                 </div>
                               </div>
