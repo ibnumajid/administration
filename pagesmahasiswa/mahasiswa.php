@@ -220,34 +220,25 @@ session_start();
                     <div class="row">
                     <div class="pb-10 px-7">
                       <h4 class="text-white pb-0 px-0">Informasi</h4>
-                          <table class=" align-items-center mb-0">
-                              <thead>
-                                <tr>
-                                  <th class="text-right ps-1"></th>
-                                  <th class="text-left ps-1 text-white"></th>
-                                </tr>
-                              </thead>
-                              <?php 
-                              include "../_database/config.php";
-                              $no = 1;
-                              $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
+                      <figure>
+                      <?php 
+                    include "../_database/config.php";
+                    $no = 1;
+                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
 
-                              while ($data = mysqli_fetch_array($query)) {
-                                if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
-                                { $no++?>
-                              <tr>
-                                <td>
-                                <div class="d-flex flex-column">
-                                      <h6 class="text-left ps-4 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
-                                      <span class="text-xs text-left ps-4"><?=$data['keterangan']?></span>
-                                    </div>
-                                </td>
-                                <td>
-                                </td>
-                              </tr>
-                              <?php }}?>
-                          </table>                         
-                      </div>
+                    while ($data = mysqli_fetch_array($query)) {
+                      if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
+                      { $no++
+                        ?>
+                        <blockquote class="blockquote ps-0">
+                          <p class="ps-3 text-white"><?=$data['perihal']?></p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer ps-3 text-white">
+                          <?=$data['keterangan']?>
+                        </figcaption>
+                        <?php }} ?>
+                      </figure>
+                    </div>
                     </div>
                   </div>
                 </div>
