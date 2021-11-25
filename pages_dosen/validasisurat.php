@@ -194,7 +194,7 @@
             </div>
             <span class="nav-link-text ms-1">Ganti Password</span>
           </a>
-  </li>
+        </li>
       </ul>
     </div>
 
@@ -366,7 +366,7 @@
                           <!-- nama -->
                           <?php if ($data['status_dosen1'] != 2 || $data['status_dosen2'] != 2){ ?>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
+                  <form action="./validasimhs.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>

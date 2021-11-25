@@ -385,7 +385,7 @@ session_start();
                       <th class="text-center">Persetujuan Pembimbing</th>
                       <th class="text-center">Persetujuan Koordinator</th>
                       <th class="text-center">Persetujuan Kadep</th>
-                      <th class="text-center">Proses Admin</th>\
+                      <th class="text-center">Proses Admin</th>
                       <th class="text-center">Catatan</th>
                     </tr>
                   </thead>
