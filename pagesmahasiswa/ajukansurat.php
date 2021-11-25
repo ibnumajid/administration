@@ -384,15 +384,8 @@ $(document).ready(function(){
                                 <div class="row">
                                   <div class="mb-3">
                                     <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <select name="tkk"  class="form-select" aria-label="Default select example" >
-                                      <option selected>Pilih Dosen TKK</option>
-                                      <?php
-                                      include '../_database/config.php';
-                                      $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                      while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                      <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                       <?php } ?>
-                                    </select>
+                                    <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Ciptian Weried Priananda, S.ST., MT">
+                                    <label name="nm" class="form-control" aria-label="default input example">Ciptian Weried Priananda, S.ST., MT</label>
                                   </div>
                                 </div>
                               </div>

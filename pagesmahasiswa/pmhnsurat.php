@@ -411,6 +411,7 @@ session_start();
                     
                     <td class="text-center"><?php echo $data['tanggal'] ?></td>
                     <!-- status surat dosen1  -->
+                    
                     <?php if ($data['status_dosen1'] == 0) {?>
                           <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Sedang Diproses</span>
