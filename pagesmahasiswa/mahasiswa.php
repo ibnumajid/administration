@@ -218,12 +218,35 @@ session_start();
                   <span class="mask bg-gradient-dark"></span>
                   <div class="container">
                     <div class="row">
-                    <div class="pb-5 px-7">
-                      <!-- <h4 class="text-white pb-8 px-0">Informasi</h4> -->
-                        <!-- <h1 class="text-white fadeIn2 fadeInBottom">kiww</h1> -->
-                          <!-- <div class="btn bg-gradient-info">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
-                          </div> -->
+                    <div class="pb-10 px-7">
+                      <h4 class="text-white pb-0 px-0">Informasi</h4>
+                          <table class=" align-items-center mb-0">
+                              <thead>
+                                <tr>
+                                  <th class="text-right ps-1"></th>
+                                  <th class="text-left ps-1 text-white"></th>
+                                </tr>
+                              </thead>
+                              <?php 
+                              include "../_database/config.php";
+                              $no = 1;
+                              $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
+
+                              while ($data = mysqli_fetch_array($query)) {
+                                if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
+                                { $no++?>
+                              <tr>
+                                <td>
+                                <div class="d-flex flex-column">
+                                      <h6 class="text-left ps-4 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
+                                      <span class="text-xs text-left ps-4"><?=$data['keterangan']?></span>
+                                    </div>
+                                </td>
+                                <td>
+                                </td>
+                              </tr>
+                              <?php }}?>
+                          </table>                         
                       </div>
                     </div>
                   </div>
