@@ -382,9 +382,9 @@ session_start();
                       <th class="text-left ps-1">Dosen Pembimbing</th>
                       <th class="text-left ps-1">Dosen Koordinator</th>
                       <th class="text-center">Waktu Upload</th>
-                      <th class="text-center">Status Dosen Pembimbing</th>
-                      <th class="text-center">Status Dosen Koordinator</th>
-                      <th class="text-center">Status Kadep</th>
+                      <th class="text-center">Persetujuan Pembimbing</th>
+                      <th class="text-center">Persetujuan Koordinator</th>
+                      <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Proses Admin</th>\
                       <th class="text-center">Catatan</th>
                     </tr>
