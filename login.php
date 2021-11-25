@@ -18,7 +18,7 @@ if($cek > 0){
     {
         session_start();
         $data = mysqli_fetch_array($tambah);
-        $_SESSION['user'] ="admin";
+        $_SESSION['user'] ="Tata Usaha";
         $_SESSION['NIP'] ="0000";
         $_SESSION['status'] = $data['status'];
         $_SESSION['alert'] = true;
@@ -28,7 +28,7 @@ if($cek > 0){
     {
         session_start();
         $data = mysqli_fetch_array($tambah);
-        $_SESSION['user'] = $data['user'];
+        $_SESSION['user'] = "Admin";
         $_SESSION['NIP'] = "0000";
         $_SESSION['status'] = $data['status'];
         $_SESSION['alert'] = true;
