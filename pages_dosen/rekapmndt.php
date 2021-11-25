@@ -283,11 +283,26 @@
         <div class="col-12">
           <div class="card mb-4">
           <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./rekapmndt.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./rekapmndt0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./rekapmndt1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./rekapmndt3.php" id='failedList'><button class = "btn btn-outline-info">Sedang Dikerjakan</button></a>
-        <a href="./rekapmndt2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+          <form method = "post">
+                <input type="hidden" name = "filterid" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "1">
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "3">
+               <button type = "submit" name = "filter3" class = "btn btn-outline-info">Sedang Dikerjakan</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
         </div>  
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -320,6 +335,9 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM ajukankadep order by id_no DESC' );
                   while ($data = mysqli_fetch_array($query)) {
                     if ($data['dosen_koor'] == $_SESSION['user']){
+                      if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2']) || isset($_POST['filter3'])) {
+                        $idf = $_POST['filterid'];
+                          if ($data['proses_tugas'] == $idf) {
                   ?>
                       <tr>
                         <td><?php echo $no++ ?></td>
@@ -355,7 +373,13 @@
                  <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lihat</button></h6>
                  </td>
                  </form>
-                 <?php } ?>
+
+                 <?php } 
+                    else { ?>
+                      <td> <?php echo "Sudah Direspon" ?> </td>
+                    <?php }
+                    ?>
+                    
 
                  <form action="./laporanmandat.php" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
@@ -365,7 +389,61 @@
                  </form>
                       </tr>
 
-                      <?php } } if ($no == 0) { ?>  
+                      <?php } }
+                      
+                    else { ?> 
+                     <tr>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $data['id_no'] ?></td>
+                        <td><?php echo $data['perihal'] ?></td>
+                        <td><?php echo $data['keterangan'] ?></td>
+                       <!-- status proses tugas  -->
+                    <?php if ($data['proses_tugas'] == 0) {?>
+                      <td class="align-middle text-left text-sm">
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['proses_tugas'] ?>">Menunggu Persetujuan</span>
+                      </td> <?php } 
+                            else if ($data['proses_tugas'] == 1) {?>
+                        <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['proses_tugas'] ?>">Ditolak</span>
+                      </td> 
+                            <?php }
+
+                            else if ($data['proses_tugas'] == 3) {?>
+                            <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-info" value="<?php echo $data['proses_tugas'] ?>">Sedang Dikerjakan</span>
+                      </td> <?php }  
+
+                      else if ($data['proses_tugas'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['proses_tugas'] ?>">Selesai Dikerjakan</span>
+                      </td> <?php } ?> 
+                      
+                        
+                <?php if ($data['proses_tugas'] != 2) { ?>
+                        <form action="./lihatmandat.php" method="post">
+                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                 <td class = "text-center" style = "height:20px">
+                 <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lihat</button></h6>
+                 </td>
+                 </form>
+                 <?php }
+                 else { ?>
+                  <td> <?php echo "Sudah Direspon" ?> </td>
+                <?php }
+                ?> 
+
+                 <form action="./laporanmandat.php" method="post">
+                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                 <td class = "text-center" style = "height:20px">
+                 <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lapor</button></h6>
+                 </td>
+                 </form>
+                      </tr>
+                      
+                      <?php } } }
+                      
+                      
+                      if ($no == 0) { ?>  
             
             <td><h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6></td>
             </tr>

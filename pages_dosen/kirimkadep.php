@@ -243,11 +243,26 @@ session_start();
         <div class="col-12">
           <div class="card mb-4">
           <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./kirimkadep.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./kirimkadep0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./kirimkadep1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./kirimkadep3.php" id='failedList'><button class = "btn btn-outline-info">Sedang Dikerjakan</button></a>
-        <a href="./kirimkadep2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+          <form method = "post">
+                <input type="hidden" name = "filterid" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "1">
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "3">
+               <button type = "submit" name = "filter3" class = "btn btn-outline-info">Sedang Dikerjakan</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
         </div>     
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -279,8 +294,13 @@ session_start();
                   $no2 = $no++;
                   $query = mysqli_query($koneksi, 'SELECT * FROM ajukankadep ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
+                         
+                    if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2']) || isset($_POST['filter3'])) {
+                      $idf = $_POST['filterid'];
+                        if ($data['proses_tugas'] == $idf) {
+                ?>
                  
-                  ?>
+                
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
                     <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
@@ -315,7 +335,47 @@ session_start();
                                   </a></td>
                     </tr>
                      <?php 
-                        }   ?>
+                        } } 
+                        
+                        else { ?>
+
+                          <tr>
+                          <td class="text-center"><?php echo $no++ ?></td>
+                          <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                          <td class="text-left ps-1"><?php echo $data['dosen_koor'] ?></td>
+                          <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                          <td class="text-left ps-1"><?php echo $data['keterangan2'] ?></td>
+                          
+                          
+                          <!-- status proses tugas  -->
+                          <?php if ($data['proses_tugas'] == 0) {?>
+                            <td class="align-middle text-left text-sm">
+                              <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['proses_tugas'] ?>">Menunggu Persetujuan</span>
+                            </td> <?php } 
+                                  else if ($data['proses_tugas'] == 1) {?>
+                              <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['proses_tugas'] ?>">Ditolak</span>
+                            </td> 
+                                  <?php }
+      
+                                  else if ($data['proses_tugas'] == 3) {?>
+                                  <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-info" value="<?php echo $data['proses_tugas'] ?>">Sedang Dikerjakan</span>
+                            </td> <?php }  
+      
+                            else if ($data['proses_tugas'] == 2) {?>
+                                  <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['proses_tugas'] ?>">Sudah Selesai</span>
+                            </td> <?php } ?> 
+                              
+                          <td class="text-center"> <a href="./mandat/<?php echo $data['file'] ?>" target="_blank">
+                                        <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
+                                        </a></td>
+                          </tr>
+
+                        <?php }
+
+                        }  ?>
 
                               </div>
                       
@@ -325,7 +385,7 @@ session_start();
                         <td></td>
                         <td></td>
                         <td></td>
-                    <td class = "mx-auto"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                    <td class = "mx-auto"><h6 class = "font-weight-bold">BELUM ADA SURAT</h6></td>
                     <?php } ?>
 
 
