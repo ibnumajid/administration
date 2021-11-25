@@ -364,7 +364,7 @@
   
                           <td class="text-center"><?php echo $no++ ?></td>
                           <!-- nama -->
-                          <?php if ($data['status_surat'] != 2){ ?>
+                          <?php if ($data['status_dosen1'] != 2 || $data['status_dosen2'] != 2){ ?>
                   <!-- nama -->
                   <form action="./pages_dosen/validasimhs.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
