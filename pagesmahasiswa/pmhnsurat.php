@@ -379,8 +379,6 @@ session_start();
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-1">Nama Perusahaan</th>
-                      <th class="text-left ps-1">Dosen Pembimbing</th>
-                      <th class="text-left ps-1">Dosen Koordinator</th>
                       <th class="text-center">Waktu Upload</th>
                       <th class="text-center">Persetujuan Pembimbing</th>
                       <th class="text-center">Persetujuan Koordinator</th>
@@ -401,14 +399,6 @@ session_start();
                     <td class="text-center"><?php echo $no++ ?></td>
                     <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                     <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['dosen1'] ?></td>
-                    <?php if ($data['dosen2'] == "Tidak Memerlukan Dosen Koordinator" && ($data['perihal'] == "Surat Keringanan UKT" || $data['perihal'] == "Surat Pengajuan Beasiswa" || $data['perihal'] == "Surat Pengajuan Kegiatan HIMA")) { ?> 
-                      <td class="text-left ps-1"><?php echo "Ciptian Weried Priananda, S.ST., MT" ?></td>
-                    <?php } 
-                    else { ?>
-                      <td class="text-left ps-1"><?php echo $data['dosen2'] ?></td> <?php } ?>
-
-                    
                     <td class="text-center"><?php echo $data['tanggal'] ?></td>
                     <!-- status surat dosen1  -->
                     
