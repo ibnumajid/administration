@@ -378,12 +378,15 @@ session_start();
                     <tr>
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
+                      <th class="text-left ps-1">Nama Perusahaan</th>
+                      <th class="text-left ps-1">Dosen Pembimbing</th>
                       <th class="text-left ps-1">Dosen Koordinator</th>
-                      <th>Persetujuan Dosen</th>
-                      <th>Persetujuan Kadep</th>
-                      <th class="text-left ps-1">Proses Admin</th>
                       <th class="text-center">Waktu Upload</th>
-                      <th class="text-left ps-1">Catatan</th>
+                      <th class="text-center">Status Dosen Pembimbing</th>
+                      <th class="text-center">Status Dosen Koordinator</th>
+                      <th class="text-center">Status Kadep</th>
+                      <th class="text-center">Proses Admin</th>\
+                      <th class="text-center">Catatan</th>
                     </tr>
                   </thead>
 
@@ -396,38 +399,56 @@ session_start();
                   ?>
                   <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
-                    <td class="text-left ps-1"><?php echo $data['progres'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['dosen_pembimbing'] ?></td>
-                    <!-- status surat osen  -->
-                    <?php if ($data['status_surat'] == 0) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang Diproses</span>
-                      </td> <?php } 
-                            else if ($data['status_surat'] == 1) {?>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
-                      </td> 
-                            <?php }
-
-                            else if ($data['status_surat'] == 2) {?>
+                    <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['dosen1'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['dosen2'] ?></td>
+                    <!-- status surat dosen1  -->
+                    <?php if ($data['status_dosen1'] == 0) {?>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Sedang Diproses</span>
+                          </td> <?php } 
+                                else if ($data['status_dosen1'] == 1) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
-                      </td> <?php } ?> 
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Ditolak</span>
+                          </td> 
+                                <?php }
+
+                                else if ($data['status_dosen1'] == 2) {?>
+                                <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
+                          </td> <?php } ?> 
+
+                        <!-- status surat dosen2  -->
+                        <?php if ($data['status_dosen2'] == 0) {?>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Sedang Diproses</span>
+                          </td> <?php } 
+                                else if ($data['status_dosen2'] == 1) {?>
+                            <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
+                          </td> 
+                          <?php }
+
+                            else if ($data['status_dosen2'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
+                          </td> <?php } ?>
                      
                     <!-- status surat kadep -->
                     <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Sedang DiProses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                       </td> 
                             <?php }
 
                             else if ($data['status_kadep'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Disetujui</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                       </td> <?php } ?> 
                     
                       <!-- status aktivitas admin -->
