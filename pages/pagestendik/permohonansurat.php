@@ -339,11 +339,13 @@ session_start();
                   </thead>
 
                   <?php
-                   include '../../_database/config.php'; //panggil setiap ingin koneksi ke data                  $no = 1;
+                   include '../../_database/config.php'; //panggil setiap ingin koneksi ke data                  
+                   $no = 0;
+                   $no2=$no++;
                    $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no');                  
                    while ($data = mysqli_fetch_array($query)) {
                   if ($data['nama_tdk'] == $_SESSION['user']) {
-                        $no++
+                      
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
@@ -454,7 +456,7 @@ session_start();
                 </table>
                  <!-- php update surat saat kadep menolak -->
                  <?php
-                include "../_database/config.php";
+                include "../../_database/config.php";
                 if (isset($_POST['update2'])) {
 
                   $nama_file3 = basename($_FILES['uflk']['name']);
