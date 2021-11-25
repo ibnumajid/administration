@@ -236,11 +236,12 @@ session_start();
                   <span class="mask bg-gradient-dark"></span>
                   <div class="container">
                     <div class="row">
-                      <div class="pb-7 p-3">
-                        <h4 class="text-white pb-5 px-7">Informasi</h4>
-                        <h1 class="text-white pb-0 px-7">Selamat Datang</h1>
+                      <div class="p-3 p-3">
+                        <h4 class="text-white p-1 px-7"> </h4>
+                        <h1 class="text-white p-0 px-7">Selamat Datang</h1>
+                        <h4 class="text-white p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
                         <a href="./2040201062_Kelompok 1_Tugas KWN.pdf" target="_blank" class="pb-5 px-7">
-                        <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
+                          <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
                         </a>
                       </div>
                     </div>
