@@ -215,12 +215,22 @@
         <div class="col-12">
           <div class="card mb-4">
   
-          <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./validasidsn.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./validasidsn0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasidsn1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./validasidsn2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
-        </div>
+          <form method = "post">
+                <input type="hidden" name = "filterid" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "1">
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <!-- <div class="col-6 d-flex align-items-center">
@@ -240,7 +250,6 @@
                       <th>Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Persetujuan Kadep</th>
-                      <th class="text-center">Proses Admin</th>
                      
                      
                     </tr>
@@ -249,51 +258,59 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
+                 
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
-                  $no = 0;
-                  $no2 = $no++;
                   
                   while ($data = mysqli_fetch_array($query)) {
-                  
-   ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
+                   
+                  if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                    $idf = $_POST['filterid'];
+                      if ($data['status_kadep'] == $idf) {
+                 
+                  ?> 
                   <!-- tabel -->
                   <tbody>
                     <tr>
-                        <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $no++ ?></h6>
+                      <!-- file -->
+                     
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
+                          </div>
+                        </div>
+                      
+                      <!-- progres -->
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
                       </td>
                       <!-- nama -->
-                      <?php if ($data['status_kadep'] != 2){ ?>
-                  <!-- nama -->
+                       <!-- nama -->
+                       <?php if ($data['status_kadep'] != 2){ ?>
                   <form action="./pages_dosen/validasimhs.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
                     </td>
                   </form> <?php } 
-                  else { ?> <form action="" method="post">
+                  else { ?> 
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
                     </td>
-                  </form>
+                  
                 <?php } ?>
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_npp'] ?></h6>
-                      </td>
-                      <!-- progres -->
-                      <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                      <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
-                        <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                        <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
                       </td>
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Menunggu untuk diproses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
@@ -303,80 +320,60 @@
 
                             else if ($data['status_kadep'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
                       </td> <?php } ?> 
 
-                      <!-- Dosen bisa melihat surat sudah diproses admin atau belum -->
-                           
+                     <?php } }
+                     
+                    else { ?>
+
+                      <!-- tabel -->
+                      <tbody>
+                        <tr>
+                          <!-- file -->
+                         
+                            <div class="d-flex px-2 py-1">
+                              <div>
+                                <!-- <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"> -->
+                              </div>
+                            </div>
+                          
+                          <!-- progres -->
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
+                          </td>
+                          <!-- nama -->
+                          <td>
+                          <h6 class="mb-0 text-sm"><?php echo $data['nama_dsn'] ?></h6>
+                          </td>
+                          <!-- nrp -->
+                          <td>
+                          <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
+                          </td>
+                          <!-- tanggal -->
+                          <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                          </td>
+                          <!-- status surat -->
+                            <?php if ($data['status_kadep'] == 0) {?>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                          </td> <?php } 
+                                else if ($data['status_kadep'] == 1) {?>
+                            <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                          </td> 
+                                <?php }
+    
+                                else if ($data['status_kadep'] == 2) {?>
+                                <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
+                          </td> <?php } 
                       
-                        <?php if ($data['status_admin'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk diProses</span>
-                        </td> 
-  
-                         <?php } else if ($data['status_admin'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
-                        </td> <?php } ?> 
-
-                      <!-- and popup ajuan surat mahasiswa -->
-                      <?php  }
- 
-                      if ($no == 1) { ?>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG MEMERLUKAN VALIDASI</h6></td>
-
-
-
-                      <?php } ?>
+                     }  } ?>  
                     
-
-                      <!-- and php tabel -->
-                    <!-- and modal-->
-                     
-                   
                     </tr>
-                      <!-- update catatan kadep -->
-                  <?php 
-                   include "../_database/config.php";
-                   if(isset($_POST['update'])){
-                     $catatan = $_POST['catatan'];
-                     $id = $_POST['id'];
                      
-                     
-                     $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan' WHERE id_no = '$id' ");
-                     if($query){
-                       echo '<a href="../pages_dosen/validasidsn.php"></a>';
-                     }
-                     else {
-                      ?><script><?php $_SESSION["catatan"] = true;?></script> 
-                      <script>history.pushState({}, "", "")</script><?php
-                     }
-                   }?>  
-                   
-                   <!-- php update surat --> <?php
-                      
-                    include "../_database/config.php";
-                    if(isset($_POST['update'])){
-                      $status = $_POST['sk'];
-                      $id = $_POST['id'];
-                      
-                      
-                      $query = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
-                      if($query){
-                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                      else {
-                        ?><script><?php $_SESSION["input"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                    }
-
-                    ?>
                   </tbody>
                 </table>
               </div>
