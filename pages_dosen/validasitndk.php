@@ -215,10 +215,22 @@
           <div class="card mb-4">
         
           <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./validasitndk.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./validasitndk0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasitndk1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./validasitndk2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+          <form method = "post">
+                <input type="hidden" name = "filterid" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "1">
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
         </div>
             
             <div class="card-body px-0 pt-0 pb-2">
@@ -245,10 +257,77 @@
                   $no = 0;
                   $no2 = $no++;
                   while ($data = mysqli_fetch_array($query)) {
+                    if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                      $idf = $_POST['filterid'];
+                        if ($data['status_kadep'] == $idf) {
                   
    ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
                   <tbody>
+                    <tr>
+                      <!-- nama -->
+                      <td class="text-center"><?php echo $no++ ?></td>
+                      <?php if ($data['status_kadep'] != 2){ ?>
+                  <!-- nama -->
+                  <form action="./pages_dosen/validasimhs.php" method="post">
+                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                    <td style = "height:20px">
+                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
+                    </td>
+                  </form> <?php } 
+                  else { ?> 
+                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                    <td style = "height:20px">
+                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
+                    </td>
+                  
+                <?php } ?>
+                      <!-- nrp -->
+                      <td>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
+                      </td>
+                      <!-- progres -->
+                      <td>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                      </td>
+                      <!-- tanggal -->
+                      <td class="align-middle text-center">
+                        <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                      </td>
+                      <!-- status surat -->
+                        <?php if ($data['status_kadep'] == 0) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Menunggu untuk diproses</span>
+                      </td> <?php } 
+                            else if ($data['status_kadep'] == 1) {?>
+                        <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                      </td> 
+                            <?php }
+
+                            else if ($data['status_kadep'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                      </td> <?php } ?> 
+
+                      <!-- Dosen bisa melihat surat sudah diproses admin atau belum -->
+                           
+                      
+                        <?php if ($data['status_admin'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk diProses</span>
+                        </td> 
+  
+                         <?php } else if ($data['status_admin'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
+                        </td> <?php } ?> 
+
+                      
+                      <?php  } }
+
+                      else { ?>
+                        <tbody>
                     <tr>
                       <!-- nama -->
                       <td class="text-center"><?php echo $no++ ?></td>
@@ -308,8 +387,7 @@
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
 
-                     
-                      <?php  }
+                   <?php    } }
  
                       if ($no == 1) { ?>
 
