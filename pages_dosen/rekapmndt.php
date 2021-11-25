@@ -334,13 +334,14 @@
                       </td> <?php } ?> 
                       
                         
-                        
+                <?php if ($data['proses_tugas'] != 2) { ?>
                         <form action="./lihatmandat.php" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                  <td class = "text-center" style = "height:20px">
                  <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lihat</button></h6>
                  </td>
                  </form>
+                 <?php } ?>
 
                  <form action="./laporanmandat.php" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
