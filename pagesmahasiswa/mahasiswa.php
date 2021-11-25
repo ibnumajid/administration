@@ -218,8 +218,8 @@ session_start();
                   <span class="mask bg-gradient-dark"></span>
                   <div class="container">
                     <div class="row">
-                    <div class="pb-10 px-7">
-                      <h4 class="text-white pb-0 px-0">Informasi</h4>
+                    <div class="pb-3 px-7">
+                      <h4 class="text-white p-1 px-0">Informasi</h4>
                       <figure>
                       <?php 
                     include "../_database/config.php";
