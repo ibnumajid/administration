@@ -188,11 +188,20 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-
+      
           <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./validasiadmin.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
-        <a href="./validasiadmin0.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./validasiadminii.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+          <form method = "post">
+                <input type="hidden" name = "filterid" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
         </div>
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -222,9 +231,11 @@
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
+                    if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                      $idf = $_POST['filterid'];
+                        if ($data['status_admin'] == $idf) {
                   $tujuan = $data['dosen_pembimbing'];
-                  
-   ?>   <!-- Persetujuan oleh admin saja --> <?php 
+
 
                   if ($data['status_kadep'] == "2" && $data['status_surat'] == "2" ) {
                         
@@ -265,7 +276,52 @@
                         </td> <?php } ?> 
 
                      
-                        <?php  }} ?>
+                        <?php  } } }
+                        
+                        else {
+                          
+                          if ($data['status_kadep'] == "2" && $data['status_surat'] == "2" ) {
+                        
+                            ?> 
+                            <!-- tabel -->
+                            <tbody>
+                              <tr>
+                                
+                                <!-- nama -->
+                                <form action="./kirimmahasiswa.php" method="post">
+                                      <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                                      <td style = "height:20px">
+                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
+                                      </td>
+                                    </form>
+                                <!-- nrp -->
+                                <td>
+                                  <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
+                                </td>
+                                <!-- progres -->
+                                <td>
+                                  <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
+                                </td>
+                                <!-- tanggal -->
+                                <td class="align-middle text-center">
+                                  <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                                </td>
+                                
+                                <!-- status aktivitas admin -->
+                                <?php if ($data['status_admin'] == 0) {?>
+                                <td class="align-middle text-center text-sm">
+                                  <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk Diproses</span>
+                                </td> 
+          
+                                 <?php } else if ($data['status_admin'] == 2) {?>
+                                      <td class="align-middle text-center text-sm">
+                                  <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
+                                </td> <?php } ?> 
+        
+                             
+                                <?php  }
+
+                        } } ?>
 
 
                         
