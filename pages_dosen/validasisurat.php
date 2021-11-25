@@ -306,26 +306,23 @@
 
                     if ($_SESSION['status'] == 5) { ?>
                         <tr>
-                          
-                      
-                         
                           <!-- nama -->
                           <td class="text-center"><?php echo $no++ ?></td>
                           <?php if ($data['status_kadep'] == 0){ ?>
-                  <!-- nama -->
-                  <form action="validasimhs.php" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form> <?php } 
-                  else { ?> <form action="" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form>
-                <?php } ?>
+                          <!-- nama -->
+                          <form action="validasimhs.php" method="post">
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <td style = "height:20px">
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                            </td>
+                          </form> <?php } 
+                          else { ?> <form action="" method="post">
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <td style = "height:20px">
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                            </td>
+                          </form>
+                        <?php } ?>
                           <!-- nrp -->
                           <td>
                           <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
@@ -365,20 +362,20 @@
                           <td class="text-center"><?php echo $no++ ?></td>
                           <!-- nama -->
                           <?php if ($data['status_dosen1'] != 2 || $data['status_dosen2'] != 2){ ?>
-                  <!-- nama -->
-                  <form action="./validasimhs.php" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form> <?php } 
-                  else { ?> <form action="" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form>
-                <?php } ?>
+                          <!-- nama -->
+                          <form action="./validasimhs.php" method="post">
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <td style = "height:20px">
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                            </td>
+                          </form> <?php } 
+                          else { ?> <form action="" method="post">
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <td style = "height:20px">
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                            </td>
+                          </form>
+                          <?php } ?>
                           <!-- nrp -->
                           <td>
                           <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
