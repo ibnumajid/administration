@@ -428,71 +428,57 @@ session_start();
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-1">Nama Perusahaan</th>
                       <th class="text-center">Waktu Upload</th>
-                      <th class="text-center">Persetujuan Pembimbing</th>
-                      <th class="text-center">Persetujuan Koordinator</th>
+                      <th class="text-center">Persetujuan TKK</th>
                       <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Proses Admin</th>
                       <th class="text-center">Catatan</th>
                     </tr>
                   </thead>
                   <tbody id="myTable">
-                    <?php
-                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                    $no = 1;
-                    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                    while ($data = mysqli_fetch_array($query)) {
-                      if ($data['nama_mhsw'] == $_SESSION['user']) {
-                        if ($data['perihal'] == "Surat Magang" || $data['perihal'] == "Surat Tugas Akhir" || $data['perihal'] == "Surat PBL (Project Based Learning)") {
-                    ?>
-                    <tr>
-                      <td class="text-center"><?php echo $no++ ?></td>
-                      <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
-                      <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                      <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                      <!-- status surat dosen1  -->
-                      <?php if ($data['status_dosen1'] == 0) {?>
+                  <?php
+                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $no = 1;
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                  while ($data = mysqli_fetch_array($query)) {
+                    if ($data['nama_mhsw'] == $_SESSION['user']) {
+                      if ($data['perihal'] == "Surat Pengajuan Beasiswa" || $data['perihal'] == "Surat Keringanan UKT" || $data['perihal'] == "Surat Pengajuan Kegiatan HIMA") {
+                  ?>
+                  <tr>
+                    <td class="text-center"><?php echo $no++ ?></td>
+                    <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                    <!-- status surat dosentkk  -->
+                    <?php if ($data['status_dosentkk'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Sedang Diproses</span>
-                      </td> <?php } 
-                      else if ($data['status_dosen1'] == 1) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Ditolak</span>
-                      </td> 
-                      <?php }
-                      else if ($data['status_dosen1'] == 2) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
-                      </td>
-                      <?php } ?>
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Sedang Diproses</span>
+                          </td> <?php } 
+                                else if ($data['status_dosentkk'] == 1) {?>
+                            <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
+                          </td> 
+                          <?php }
 
-                      <!-- status surat dosen2  -->
-                      <?php if ($data['status_dosen2'] == 0) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Sedang Diproses</span>
-                      </td> <?php } 
-                      else if ($data['status_dosen2'] == 1) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
-                      </td> 
-                      <?php }
-                       else if ($data['status_dosen2'] == 2) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
-                      </td>
-                      <?php } ?>
+                            else if ($data['status_dosentkk'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
+                          </td>
+                    <?php } ?>
                      
-                      <!-- status surat kadep -->
-                      <?php if ($data['status_kadep'] == 0) {?>
+                    <!-- status surat kadep -->
+                    <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                       </td> <?php } 
-                      else if ($data['status_kadep'] == 1) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                      </td> <?php }
-                      else if ($data['status_kadep'] == 2) {?>
+                            else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                      </td> 
+                            <?php }
+
+                            else if ($data['status_kadep'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                       </td> <?php } ?> 
                     
                       <!-- status aktivitas admin -->
