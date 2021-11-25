@@ -297,7 +297,8 @@
                   $no = 0;
                   $no2 = $no++;
                   while ($data = mysqli_fetch_array($query)) {
-                  $tujuan = $data['dosen_pembimbing'];
+                  $tujuan = $data['dosen1'];
+                  $tujuan2 = $data['dosen2'];
                  
    ?>
                     <tbody>
@@ -358,7 +359,7 @@
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } } 
                           
-                        else if ($_SESSION['status'] == 2 && strpos($nama, $tujuan) !== false) {
+                        else if ($_SESSION['status'] == 2 && strpos($nama, $tujuan) !== false || strpos($tujuan2, $nama) !== false) {
                           ?> 
   
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -384,7 +385,7 @@
                           </td>
                           <!-- progres -->
                           <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                           </td>
                           <!-- tanggal -->
                           <td class="align-middle text-center">
