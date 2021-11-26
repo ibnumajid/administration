@@ -372,9 +372,6 @@ session_start();
             </div>
             <div class="card-header p-3">    
               <div class="row">
-                <div class="form-group col-md-4 pt-4">
-                  <input class="border-radius-md border border-dark form-control" id="myInput" type="text" placeholder="Search..">
-                </div>
                 <div class="form-group float-right col-md-4">
                   <li class="nav-item dropdown pe-3 pt-4 d-flex text-right ps-">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -416,6 +413,9 @@ session_start();
                     </ul>
                   </li>         
                 </div>
+                <!--div class="form-group col-md-4 pt-4">
+                  <input class="border-radius-md border border-dark form-control" id="myInput" type="text" placeholder="Search..">
+                </div-->
               </div>
             </div>
             
