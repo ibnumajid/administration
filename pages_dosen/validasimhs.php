@@ -296,9 +296,9 @@ include "../_database/config.php";
                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                         <?php }
 
-                        else if ($data['perihal'] == "Surat Tugas Akhir") { ?>
+                        else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
                           <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Industri Tempat Melakukan TA</label>
+                          <label for="formFile" class="form-label">Industri Tempat Melakukan Proyek Akhir</label>
                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
 
                           <!-- Keterangan Tambahan -->
