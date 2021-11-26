@@ -37,7 +37,6 @@ include "../_database/config.php";
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <img src="../assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
       </a>
     </div>
@@ -410,9 +409,11 @@ include "../_database/config.php";
           }
           
           if ($query && $query2) {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
           } else {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
+            ?><script><?php $_SESSION['input'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
           }
         } ?>
 
@@ -430,9 +431,11 @@ include "../_database/config.php";
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
           if ($query && $query2) {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
           } else {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
+            ?><script><?php $_SESSION['input'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
           }
         } ?>
 
@@ -464,6 +467,34 @@ include "../_database/config.php";
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Upload',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Di Ajukan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
 </body>
 
 </html>
