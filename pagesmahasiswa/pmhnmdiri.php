@@ -275,7 +275,7 @@ session_start();
                     <select name="sr"  class="form-select" aria-label="Default select example" required>
                         <option selected>Pilih Jenis Surat</option>
                         <option value="Surat Magang">Surat Magang</option>
-                        <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
+                        <option value="Surat Proyek Akhir">Surat Proyek Akhir</option>
                         <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
                         <option value="Surat Cuti">Surat Cuti</option>
                         <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
@@ -395,7 +395,7 @@ session_start();
                           <div class="d-flex py-1">
                             <div class="my-auto">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Tugas Akhir</span>
+                                <span class="font-weight-bold">Surat Proyek Akhir</span>
                               </h6>
                           </div>
                         </a>

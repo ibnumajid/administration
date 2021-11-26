@@ -215,7 +215,7 @@ session_start();
                           <div class="d-flex py-1">
                             <div class="my-auto">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Tugas Akhir</span>
+                                <span class="font-weight-bold">Surat Proyek Akhir</span>
                               </h6>
                           </div>
                         </a>

@@ -215,7 +215,7 @@ session_start();
                           <div class="d-flex py-1">
                             <div class="my-auto">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Tugas Akhir</span>
+                                <span class="font-weight-bold">Surat Proyek Akhir</span>
                               </h6>
                           </div>
                         </a>
@@ -312,7 +312,7 @@ session_start();
                     $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                     while ($data = mysqli_fetch_array($query)) {
                       if ($data['nama_mhsw'] == $_SESSION['user']) {
-                        if ($data['perihal'] == "Surat Tugas Akhir") {
+                        if ($data['perihal'] == "Surat Proyek Akhir") {
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++ ?></td>

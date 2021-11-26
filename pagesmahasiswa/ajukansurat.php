@@ -246,7 +246,7 @@ $(document).ready(function(){
                         }  
                         else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                         {
-                          if ($perihal == "Surat Magang" || $perihal == "Surat Tugas Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
+                          if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
                             $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
                           }
                           else if ($perihal == "Surat Cuti" || $perihal == "Surat Mengundurkan Diri") {
@@ -301,7 +301,7 @@ $(document).ready(function(){
                                         <select id="jenis_surat" name="sr"  class="form-select" aria-label="Default select example" required>
                                             <option selected>Pilih Jenis Surat</option>
                                             <option value="Surat Magang">Surat Magang</option>
-                                            <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
+                                            <option value="Surat Proyek Akhir">Surat Proyek Akhir</option>
                                             <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
                                             <option value="Surat Cuti">Surat Cuti</option>
                                             <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
@@ -499,14 +499,14 @@ $(document).ready(function(){
                 $('#label-file').text("Upload proposal Surat Magang (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
-            else if($('#jenis_surat').val() == 'Surat Tugas Akhir') {
+            else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
                 $('.keterangan').show();
                 $('#label-keterangan').text("Industri Melakukan Tempat TA");
                 $('.judulTA').show();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
-                $('#label-file').text("Upload proposal Surat Tugas Akhir (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload proposal Surat Proyek Akhir (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
