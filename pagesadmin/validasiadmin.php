@@ -229,6 +229,8 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                  $no = 0;
+                  $no2 = $no++;
                   
                   while ($data = mysqli_fetch_array($query)) {
                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
@@ -338,6 +340,11 @@
                                 <?php  }
 
                         } } ?>
+
+<?php if ($no == 1) { ?>
+
+<h6 class = "text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIPROSES</h6>
+<?php } ?>
 
 
                         

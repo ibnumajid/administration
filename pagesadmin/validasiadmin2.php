@@ -332,6 +332,10 @@
                             </td> <?php }  
     
                               } } } ?>
+                                <?php if ($no == 1) { ?>
+
+<h6 class = "text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIPROSES</h6>
+<?php } ?>
 
 
                         
