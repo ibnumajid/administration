@@ -399,9 +399,16 @@ include "../_database/config.php";
           $status = $_POST['ss'];
           $id = $_POST['id'];
           $catatan = $_POST['catatan2'];
-
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat` = '$status' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
+          
+          if ($data['status_dosen1'] == 0){
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '$status' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_pmb`='$catatan' WHERE id_no = '$id' ");
+          }
+          else if ($data['status_dosen2'] == 0){
+            $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2` = '$status' WHERE id_no = '$id' ");  
+            $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_koor`='$catatan' WHERE id_no = '$id' ");
+          }
+          
           if ($query && $query2) {
             echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
           } else {
@@ -419,7 +426,7 @@ include "../_database/config.php";
           $id = $_POST['id'];
           $status = $_POST['ss'];
 
-
+          
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
           if ($query && $query2) {
