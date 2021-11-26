@@ -195,22 +195,22 @@ session_start();
               <!-- slide ketiga -->
               <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <div class="carousel-item">
+              <!-- <div class="carousel-item">
                 <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1129&q=80');">
                   <span class="mask bg-gradient-dark"></span>
                   <div class="container">
                     <div class="row">
                     <div class="pb-5 px-7">
-                        <!-- <h4 class="text-white pb-10 px-0">Infirmasi</h4> -->
-                        <!-- <h1 class="text-white fadeIn2 fadeInBottom">kiww</h1> -->
-                          <!-- <div class="btn bg-gradient-info">
+                        <h4 class="text-white pb-10 px-0">Infirmasi</h4>
+                        <h1 class="text-white fadeIn2 fadeInBottom">kiww</h1>
+                          <div class="btn bg-gradient-info">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
-                          </div> -->
+                          </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Slide kedua -->
               <div class="carousel-item">

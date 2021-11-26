@@ -27,12 +27,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <!-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> -->
   <title>
     Sistem Administrasi DTEO
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -318,10 +319,10 @@
                 <table class="table align-items-center">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>ID Surat</th>
-                      <th>Mandat</th>
-                      <th>Perihal</th>
+                      <th class="text-center">No</th>
+                      <th class="text-left ps-1">ID Surat</th>
+                      <th class="text-left ps-1">Mandat</th>
+                      <th class="text-left ps-1">Perihal</th>
                       <th>Respon</th>  
                       <th>Lihat Surat</th>
                       <th>Laporkan Selesai</th>
@@ -340,10 +341,10 @@
                           if ($data['proses_tugas'] == $idf) {
                   ?>
                       <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $data['id_no'] ?></td>
-                        <td><?php echo $data['perihal'] ?></td>
-                        <td><?php echo $data['keterangan'] ?></td>
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td class="text-left ps-1"><?php echo $data['id_no'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
                        <!-- status proses tugas  -->
                     <?php if ($data['proses_tugas'] == 0) {?>
                       <td class="align-middle text-left text-sm">
