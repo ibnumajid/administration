@@ -496,7 +496,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Magang (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload proposal Surat Magang (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Tugas Akhir') {
@@ -506,7 +506,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Tugas Akhir (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload proposal Surat Tugas Akhir (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
@@ -516,7 +516,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat PBL (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload proposal Surat PBL (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
               } 
             else if($('#jenis_surat').val() == 'Surat Cuti') {
