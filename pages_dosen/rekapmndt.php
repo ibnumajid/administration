@@ -319,10 +319,10 @@
                 <table class="table align-items-center">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>ID Surat</th>
-                      <th>Mandat</th>
-                      <th>Perihal</th>
+                      <th class="text-center">No</th>
+                      <th class="text-left ps-1">ID Surat</th>
+                      <th class="text-left ps-1">Mandat</th>
+                      <th class="text-left ps-1">Perihal</th>
                       <th>Respon</th>  
                       <th>Lihat Surat</th>
                       <th>Laporkan Selesai</th>
@@ -342,9 +342,9 @@
                   ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
-                        <td class="text-center"><?php echo $data['id_no'] ?></td>
-                        <td class="text-center"><?php echo $data['perihal'] ?></td>
-                        <td class="text-center"><?php echo $data['keterangan'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['id_no'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
                        <!-- status proses tugas  -->
                     <?php if ($data['proses_tugas'] == 0) {?>
                       <td class="align-middle text-left text-sm">
