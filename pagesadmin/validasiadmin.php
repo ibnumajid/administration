@@ -237,7 +237,7 @@
                   $tujuan = $data['dosen_pembimbing'];
 
 
-                  if ($data['status_kadep'] == "2" && $data['status_surat'] == "2" ) {
+                  if ($data['status_kadep'] == "2") {
                         
                     ?> 
                     <!-- tabel -->
