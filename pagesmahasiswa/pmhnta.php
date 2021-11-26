@@ -177,7 +177,7 @@ session_start();
       </a>
     </div>
     
-    <!-- status surat-->
+    
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -196,7 +196,7 @@ session_start();
                   <li class="nav-item dropdown pe-3 pt-4 d-flex text-right ps-">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       <button type="button" class="btn btn-outline-dark text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Persetujuan
+                        Pilih Surat
                       </button>
                     </a>
                     <ul class="dropdown-menu  dropdown-menu-end pt-2  px-2 py-3 me-sm-n1 " aria-labelledby="dropdownMenuButton">
@@ -205,27 +205,77 @@ session_start();
                           <div class="d-flex py-1">
                             <div class="my-auto">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Persetujuan Pembimbing & Koordinator</span>
+                                <span class="font-weight-bold">Surat Magang</span>
                               </h6>
                           </div>
                         </a>
                       </li>
                       <li >
-                        <a class="dropdown-item border-radius-md" href="pmhntkk.php">
+                        <a class="dropdown-item border-radius-md" href="pmhnta.php">
                           <div class="d-flex py-1">
                             <div class="my-auto">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Persetujuan TKK</span>
+                                <span class="font-weight-bold">Surat Tugas Akhir</span>
                               </h6>
                           </div>
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnkadep.php">
+                        <a class="dropdown-item border-radius-md" href="pmhnpbl.php">
                         <div class="d-flex py-1">
                             <div class="my-auto">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Persetujuan Kadep</span>
+                                <span class="font-weight-bold">Surat PBL (Project Based Learning)</span>
+                              </h6>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item border-radius-md" href="pmhncuti.php">
+                          <div class="d-flex py-1">
+                            <div class="my-auto">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Surat Cuti</span>
+                              </h6>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item border-radius-md" href="pmhnmdiri.php">
+                          <div class="d-flex py-1">
+                            <div class="my-auto">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Surat Mengundurkan Diri</span>
+                              </h6>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item border-radius-md" href="pmhnbeasiswa.php">
+                          <div class="d-flex py-1">
+                            <div class="my-auto">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Surat Pengajuan Beasiswa</span>
+                              </h6>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item border-radius-md" href="pmhnukt.php">
+                          <div class="d-flex py-1">
+                            <div class="my-auto">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Surat Keringanan UKT</span>
+                              </h6>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item border-radius-md" href="pmhnhima.php">
+                          <div class="d-flex py-1">
+                            <div class="my-auto">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Surat Pengajuan Kegiatan HIMA</span>
                               </h6>
                           </div>
                         </a>
@@ -248,57 +298,71 @@ session_start();
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-1">Nama Perusahaan</th>
                       <th class="text-center">Waktu Upload</th>
-                      <th class="text-center">Persetujuan TKK</th>
+                      <th class="text-center">Persetujuan Pembimbing</th>
+                      <th class="text-center">Persetujuan Koordinator</th>
                       <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Proses Admin</th>
                       <th class="text-center">Catatan</th>
                     </tr>
                   </thead>
                   <tbody id="myTable">
-                  <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                  while ($data = mysqli_fetch_array($query)) {
-                    if ($data['nama_mhsw'] == $_SESSION['user']) {
-                      if ($data['perihal'] == "Surat Pengajuan Beasiswa" || $data['perihal'] == "Surat Keringanan UKT" || $data['perihal'] == "Surat Pengajuan Kegiatan HIMA") {
-                  ?>
-                  <tr>
-                    <td class="text-center"><?php echo $no++ ?></td>
-                    <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                    <!-- status surat dosentkk  -->
-                    <?php if ($data['status_dosentkk'] == 0) {?>
+                    <?php
+                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                    $no = 1;
+                    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                    while ($data = mysqli_fetch_array($query)) {
+                      if ($data['nama_mhsw'] == $_SESSION['user']) {
+                        if ($data['perihal'] == "Surat Tugas Akhir") {
+                    ?>
+                    <tr>
+                      <td class="text-center"><?php echo $no++ ?></td>
+                      <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                      <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                      <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                      <!-- status surat dosen1  -->
+                      <?php if ($data['status_dosen1'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Sedang Diproses</span>
-                          </td> <?php } 
-                                else if ($data['status_dosentkk'] == 1) {?>
-                            <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
-                          </td> 
-                          <?php }
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Sedang Diproses</span>
+                      </td> <?php } 
+                      else if ($data['status_dosen1'] == 1) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Ditolak</span>
+                      </td> 
+                      <?php }
+                      else if ($data['status_dosen1'] == 2) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
+                      </td>
+                      <?php } ?>
 
-                            else if ($data['status_dosentkk'] == 2) {?>
-                            <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
-                          </td>
-                    <?php } ?>
+                      <!-- status surat dosen2  -->
+                      <?php if ($data['status_dosen2'] == 0) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Sedang Diproses</span>
+                      </td> <?php } 
+                      else if ($data['status_dosen2'] == 1) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
+                      </td> 
+                      <?php }
+                       else if ($data['status_dosen2'] == 2) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
+                      </td>
+                      <?php } ?>
                      
-                    <!-- status surat kadep -->
-                    <?php if ($data['status_kadep'] == 0) {?>
+                      <!-- status surat kadep -->
+                      <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                       </td> <?php } 
-                            else if ($data['status_kadep'] == 1) {?>
-                        <td class="align-middle text-center text-sm">
+                      else if ($data['status_kadep'] == 1) {?>
+                      <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                      </td> 
-                            <?php }
-
-                            else if ($data['status_kadep'] == 2) {?>
-                            <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                      </td> <?php }
+                      else if ($data['status_kadep'] == 2) {?>
+                        <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                       </td> <?php } ?> 
                     
                       <!-- status aktivitas admin -->
@@ -347,18 +411,18 @@ session_start();
                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
                                         <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                         
-                                       <!-- catatan dosebing -->
-                                       <label for="formFile" class="form-label">Catatan Dosen Pembimbing</label>
+                                        <!-- nama mahasiswa -->
+                                        <label for="formFile" class="form-label">Catatan Pembimbing</label>
                                         <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_pmb'] ?></label>
 
-                                        <!-- nama dosen koor -->
-                                        <label for="formFile" class="form-label">Catatan Dosen Koordinator</label>
+                                        <!-- nama mahasiswa -->
+                                        <label for="formFile" class="form-label">Catatan Koordinator</label>
                                         <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_koor'] ?></label>
 
-                                        <!-- kadep -->
+                                        <!-- NRP mahasiswa -->
                                         <label for="formFile" class="form-label">Catatan Kadep</label>
-                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kdp'] ?></label>
-                                        
+                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
+
                                         <!-- Input ID untuk memberikan identitas surat -->
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
@@ -422,12 +486,7 @@ session_start();
                   if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
 
                     $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                    if ($data['status_dosen1'] == 1) {
-                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1`='$nol' WHERE id_no = '$id3' ");
-                    }
-                    else if ($data['status_dosen2'] == 1) {
-                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='$nol' WHERE id_no = '$id3' "); 
-                    }
+                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
 
                     if ($query2 && $query3) {
                       echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';

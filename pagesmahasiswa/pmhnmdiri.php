@@ -176,7 +176,187 @@ session_start();
         <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" >Ajukan Permohonan Surat</button>
       </a>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Permohonan Surat</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>  
+        
+          <div class="modal-body">
+
+          <?php
+
     
+              include '../_database/config.php';
+              if(isset($_POST['input']))
+              {
+                $nama_mhsw = $_POST['nm'];
+                $id_nrp = $_POST['nrp'];
+                $progres = $_POST['sr'];
+                $dosen_pembimbing = implode(', ', $_POST['ds']);
+                
+                $nama_file = basename($_FILES['fl']['name']);
+                $ukuran = $_FILES['fl']['size'];
+                $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+                $max = 1024 * 5000;
+                $ekstensi = "pdf";
+                $keterangan = $_POST['keterangan'];
+
+                $url = $id_nrp.'_'.$nama_file;
+
+             if ($ukuran > $max && $tipe != $ekstensi)
+            {;
+            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';}
+        
+            else if ($ukuran > $max)
+            {
+              echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
+            } 
+            else if ($tipe != $ekstensi && $tipe != $ekstensi2)
+            { 
+              ?><script><?php $_SESSION["pdf"] = true;?></script> 
+              <script>history.pushState({}, "", "")</script><?php
+            }  
+                else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+                {
+                  $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$progres','$dosen_pembimbing','$keterangan', '$url', '0', '0', '0', '', '', '$ukuran', '$tipe', sysdate())");
+
+                  if($query)
+                  {
+                    ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
+                  }
+                  else
+                  {
+                    ?><script><?php $_SESSION["input"] = true;?></script> 
+                    <script>history.pushState({}, "", "")</script><?php
+                  }
+                }
+                else
+                {
+                  echo "Gagal Upload";
+                }
+                
+              }
+
+            ?>
+    
+            
+
+           <form action="" method="post" enctype="multipart/form-data">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
+                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
+              </div>
+              </div>
+            </div>
+
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">NRP</label>
+                <input name="nrp" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
+                <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
+              </div>
+              </div>
+            </div>
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Jenis Surat</label>
+                    <select name="sr"  class="form-select" aria-label="Default select example" required>
+                        <option selected>Pilih Jenis Surat</option>
+                        <option value="Surat Magang">Surat Magang</option>
+                        <option value="Surat Tugas Akhir">Surat Tugas Akhir</option>
+                        <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
+                        <option value="Surat Cuti">Surat Cuti</option>
+                        <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
+                        <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
+                        <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
+                        <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Keterangan</label>
+                <p>Berikan keterangan tentang surat yang akan diajukan <br> Contoh : Surat Magang, Keterangan : PT. Pertamina</p>
+                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
+              </div>
+              </div>
+            </div>
+
+            
+            <div class="card-header pb-0 p-3">
+                <div class="row">
+                <label for="formFile" class="form-label">Pilih Dosen yang Dituju</label>
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style ="height:150px" >
+                <div class="mb-3">
+
+                  
+                        <?php
+                        include '../_database/config.php';
+                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
+                        while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+
+
+
+                          <div class="form-check">
+                            <div class="card-header pb-0 p-2">
+                              <div class="row">
+                                <div class="mb-3">
+
+                                  <a href="#<?php echo $data_dosen['nama_anggota'] ?>">
+                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1" >
+                                    <label class="form-check-label" for="defaultCheck1">
+                                      <?php echo $data_dosen['nama_anggota'] ?>
+                                    </label>
+                                  </a>
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <?php } ?>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="mb-3">
+                <label for="formFile" class="form-label">Masukkan File Pendukung (Ekstensi File .PDF)</label>
+                <p>File pendukung berupa surat atau proposal (disesuaikan dengan panduan) </p>
+                  <input type="file" name="fl" class="form-control" aria-label="file example" required>
+                 <div class="invalid-feedback">Example invalid form file feedback</div>
+                </div>
+              </div>
+            </div>
+           
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submite" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
+          </div>
+          </form>
+        </div>
+      </div>  
+    </div>
     
     <div class="container-fluid py-4">
       <div class="row">
@@ -292,77 +472,45 @@ session_start();
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
-                  <thead>
+                <thead>
                     <tr>
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-1">Nama Perusahaan</th>
                       <th class="text-center">Waktu Upload</th>
-                      <th class="text-center">Persetujuan Pembimbing</th>
-                      <th class="text-center">Persetujuan Koordinator</th>
                       <th class="text-center">Persetujuan Kadep</th>
                       <th class="text-center">Proses Admin</th>
                       <th class="text-center">Catatan</th>
                     </tr>
                   </thead>
                   <tbody id="myTable">
-                    <?php
-                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                    $no = 1;
-                    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                    while ($data = mysqli_fetch_array($query)) {
-                      if ($data['nama_mhsw'] == $_SESSION['user']) {
-                        if ($data['perihal'] == "Surat Magang") {
-                    ?>
-                    <tr>
-                      <td class="text-center"><?php echo $no++ ?></td>
-                      <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
-                      <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                      <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                      <!-- status surat dosen1  -->
-                      <?php if ($data['status_dosen1'] == 0) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Sedang Diproses</span>
-                      </td> <?php } 
-                      else if ($data['status_dosen1'] == 1) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Ditolak</span>
-                      </td> 
-                      <?php }
-                      else if ($data['status_dosen1'] == 2) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
-                      </td>
-                      <?php } ?>
-
-                      <!-- status surat dosen2  -->
-                      <?php if ($data['status_dosen2'] == 0) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Sedang Diproses</span>
-                      </td> <?php } 
-                      else if ($data['status_dosen2'] == 1) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
-                      </td> 
-                      <?php }
-                       else if ($data['status_dosen2'] == 2) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
-                      </td>
-                      <?php } ?>
-                     
-                      <!-- status surat kadep -->
-                      <?php if ($data['status_kadep'] == 0) {?>
+                  <?php
+                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $no = 1;
+                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                  while ($data = mysqli_fetch_array($query)) {
+                    if ($data['nama_mhsw'] == $_SESSION['user']) {
+                        if ($data['perihal'] == "Surat Mengundurkan Diri") {
+                  ?>
+                  <tr>
+                    <td class="text-center"><?php echo $no++ ?></td>
+                    <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                    <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                    <!-- status surat kadep -->
+                    <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                       </td> <?php } 
-                      else if ($data['status_kadep'] == 1) {?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                      </td> <?php }
-                      else if ($data['status_kadep'] == 2) {?>
+                            else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                      </td> 
+                            <?php }
+
+                            else if ($data['status_kadep'] == 2) {?>
+                            <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                       </td> <?php } ?> 
                     
                       <!-- status aktivitas admin -->
@@ -410,14 +558,6 @@ session_start();
                                         <!-- Keterangan File -->
                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
                                         <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                                        
-                                        <!-- nama mahasiswa -->
-                                        <label for="formFile" class="form-label">Catatan Pembimbing</label>
-                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_pmb'] ?></label>
-
-                                        <!-- nama mahasiswa -->
-                                        <label for="formFile" class="form-label">Catatan Koordinator</label>
-                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_koor'] ?></label>
 
                                         <!-- NRP mahasiswa -->
                                         <label for="formFile" class="form-label">Catatan Kadep</label>
@@ -462,7 +602,7 @@ session_start();
                           </div>
                         </div>
                       </div>
-                      <?php } } }  ?>
+                      <?php  } } } ?>
                     </tr>
                   </tbody> 
                   <?php if ($no == 1) { ?>
