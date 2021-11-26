@@ -42,6 +42,7 @@ if($cek > 0){
             $_SESSION['user'] =$data2['nama_anggota'];
             $_SESSION['NIP'] = $data2['id_npp'];
             $_SESSION['status'] = $data['status'];
+            $_SESSION['status2'] = $data['status2'];
             $_SESSION['alert'] = true;}    
         header("location:./pages_dosen/dosen.php");
     }

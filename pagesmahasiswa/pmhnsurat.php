@@ -463,7 +463,12 @@ session_start();
                       <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
                       </td>
-                      <?php } ?>
+                      <?php } 
+                      else { ?>
+                                <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
+                        </td>
+                           <?php } ?>
 
                       <!-- status surat dosen2  -->
                       <?php if ($data['status_dosen2'] == 0) {?>
@@ -479,7 +484,34 @@ session_start();
                       <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
                       </td>
-                      <?php } ?>
+                      <?php }  
+                       else { ?>
+                                <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
+                        </td>
+                           <?php } ?>
+
+                            <!-- status surat dosen TKK -->
+                         <? if($_SESSION['status2'] ==  1) { ?>
+                         <?php if ($data['status_dosentkk'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Menunggu Untuk Diproses</span>
+                        </td> <?php } 
+                              else if ($data['status_dosentkk'] == 1) {?>
+                          <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
+                        </td> 
+                              <?php }
+  
+                              else if ($data['status_dosentkk'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
+                        </td> <?php } 
+                        else { ?>
+                                <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
+                        </td>
+                           <?php } ?>
                      
                       <!-- status surat kadep -->
                       <?php if ($data['status_kadep'] == 0) {?>
@@ -493,7 +525,8 @@ session_start();
                       else if ($data['status_kadep'] == 2) {?>
                         <td class="align-middle text-center text-sm">
                       <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
-                      </td> <?php } ?> 
+                      </td> <?php }  ?>
+                      
                     
                       <!-- status aktivitas admin -->
                       <?php if ($data['status_admin'] == 0) {?>
@@ -591,7 +624,7 @@ session_start();
                           </div>
                         </div>
                       </div>
-                      <?php } } }  ?>
+                      <?php } } } } ?>
                     </tr>
                   </tbody> 
                   <?php if ($no == 1) { ?>
