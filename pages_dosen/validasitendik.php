@@ -302,6 +302,8 @@
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
+                                  <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
+                                  <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                                   <div class="form-check">
                                   <input type="radio" class="btn-check" name="ss" id="success-outlined" value = "2" autocomplete="off">
                                   <label class="btn btn-outline-success" for="success-outlined">Setuju</label>
@@ -323,9 +325,10 @@
                             </div>
                             <!-- button upload close -->
                             </div>
+                            <div class = "mx-4">
                             <a href = "./validasitndk.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
                             <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>
-                         
+                            </div>
                         </form>
                           </div>
                         </div>
@@ -349,10 +352,11 @@
                      $status = $_POST['ss'];
                      
                      
-                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
+                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan`='$catatan2' WHERE id_no = '$id' ");
                      $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep`='$status' WHERE id_no = '$id' ");
                      if($query && $query2){
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+                      ?><script><?php $_SESSION['sukses'] = true;?></script> 
+                      <script>history.pushState({}, "", "")</script><?php
                      }
                      else {
                        echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
@@ -368,6 +372,18 @@
 
 
   </main>
+  <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Merespon',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
   
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

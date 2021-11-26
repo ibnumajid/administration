@@ -348,7 +348,12 @@ include "../_database/config.php";
                                             history.pushState({}, "", "")
                                         </script><?php
                                                 } else if ($ukuran > $max) {
-                                                    echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>';
+                                                    ?><script>
+                                                    <?php $_SESSION["pdfuk"] = true; ?>
+                                                </script>
+                                                <script>
+                                                    history.pushState({}, "", "")
+                                                </script><?php
                                                 } else if ($tipe != $ekstensi && $tipe != NULL) {
                                                     ?><script>
                                             <?php $_SESSION['pdf'] = true ?> </script>
@@ -358,7 +363,9 @@ include "../_database/config.php";
                                                     $query2 =  mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas` = '2' WHERE id_no = '$id'");
                 
                                                     if ($query2) {
-                                                        echo '<script> alert("Berhasil Mengajukan Surat")</script>';
+                                                        ?><script>
+                                                <?php $_SESSION['sukses'] = true; ?> </script>
+                                            <script>history.pushState({}, "", "") </script><?php
                                                     } else {
                                                         ?><script>
                                                 <?php $_SESSION['input'] = true; ?> </script>
@@ -429,12 +436,38 @@ include "../_database/config.php";
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Berhasil Upload',
+                title: 'Berhasil Melapor',
                 showConfirmButton: false,
                 timer: 2000
             })
         </script>
         <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <?php if (@$_SESSION['updf']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Ukuran Tidak Boleh Melebihi 5 mb dan Ekstensi Harus PDF',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['updf']); ?>
+    <?php endif; ?>
+
+    <?php if (@$_SESSION['uk']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Ukuran Tidak Boleh Melebihi 5 mb',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['uk']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

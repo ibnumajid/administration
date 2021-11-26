@@ -115,7 +115,7 @@ include "../_database/config.php";
       <!--Validasi Surat-->
       <?php if ($_SESSION['status'] == '5') {?>
     <li class="nav-item">
-      <a class="nav-link  active" href="../pages_dosen/validasidsnt.php">
+      <a class="nav-link  active" href="../pages_dosen/validasidsn.php">
         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
@@ -277,7 +277,7 @@ include "../_database/config.php";
 
                 ?>
 
-                <form action="" method="post">
+                <form action="" method="post" enctype = "multipart/form-data">
                   <div class="card-header pb-0 p-3">
                     <div class="row">
                       <div class="mb-3">
@@ -296,13 +296,13 @@ include "../_database/config.php";
                         <?php if ($data['perihal'] == "Surat Perpindahan Barang Lab") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Barang</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nb'] ?></label>
+                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nama_barang'] ?></label>
                            <!-- Keterangan Tambahan -->
                            <label for="formFile" class="form-label">Jumlah Barang</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['jb'] ?></label>
+                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['jumlah_barang'] ?></label>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Laboratorium</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nl'] ?></label>
+                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nama_lab'] ?></label>
                         <?php }
 
                          else if ($data['perihal'] == "Permohonan Surat Tugas") { ?>
@@ -339,9 +339,10 @@ include "../_database/config.php";
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
 
                         <!-- persetujuan surat -->
+                        <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                         <div class="form-check">
                           <input type="radio" class="btn-check" name="ss" id="success-outlined" value="2" autocomplete="off">
-                          <label class="btn btn-outline-success" for="success-outlined">Setuju</label>
+                          <label class="btn btn-outline-success" for="success-outlined">Setujui</label>
 
                           <input type="radio" class="btn-check" name="ss" id="danger-outlined" value="1" autocomplete="off">
                           <label class="btn btn-outline-danger" for="danger-outlined">Tolak</label>
@@ -360,13 +361,13 @@ include "../_database/config.php";
                   </div>
                   <!-- button upload close -->
               </div>
-
+              <div clss = "mx-4">
               <a href = "./validasidsn.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
-              <?php if ($_SESSION['status'] == 2) { ?>
-                <button type="submite" name="update" class="btn bg-gradient-primary">Validasi</button>
-              <?php } else if ($_SESSION['status'] == 5) { ?>
+              <?php  
+              if ($_SESSION['status'] == 5) { ?>
                 <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>
               <?php } ?>
+              </div>
               </form>
             </div>
           </div>
@@ -379,25 +380,6 @@ include "../_database/config.php";
 
 
         </tr>
-        <!-- php update surat -->
-        <?php
-        include "../_database/config.php";
-        if (isset($_POST['update'])) {
-          $status = $_POST['ss'];
-          $id = $_POST['id'];
-          $catatan = $_POST['catatan2'];
-
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
-          if ($query && $query2) {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
-          } else {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal di ajukan")</script></a>';
-          }
-        } ?>
-
-        <!-- php update catatan dosen -->
-
         <!-- update catatan kadep -->
         <?php
         include "../_database/config.php";
@@ -407,12 +389,14 @@ include "../_database/config.php";
           $status = $_POST['ss'];
 
 
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
+          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan2' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
           if ($query && $query2) {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';
+            ?><script>
+            <?php $_SESSION['sukses'] = true; ?> </script>
+        <script>history.pushState({}, "", "") </script><?php
           } else {
-            echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("gagal memberikan catatan")</script></a>';
+            echo '<script> alert ("gagal memberikan catatan")</script></a>';
           }
         } ?>
 
@@ -425,6 +409,31 @@ include "../_database/config.php";
 
 
   </main>
+  <?php if (@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Berhasil Merespon',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <?php if (@$_SESSION['updf']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'warning',
+                title: 'Ukuran Tidak Boleh Melebihi 5 mb dan Ekstensi Harus PDF',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['updf']); ?>
+    <?php endif; ?>
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

@@ -351,6 +351,7 @@ include "../_database/config.php";
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
 
                         <!-- persetujuan surat -->
+                        <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                         <div class="form-check">
                           <input type="radio" class="btn-check" name="ss" id="success-outlined" value="2" autocomplete="off">
                           <label class="btn btn-outline-success" for="success-outlined">Setuju</label>
@@ -372,7 +373,7 @@ include "../_database/config.php";
                   </div>
                   <!-- button upload close -->
               </div>
-
+              <div class = "mx-4">
               <a href = "./validasisurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
               <?php if ($_SESSION['status'] == 2) { ?>
                 <button type="submite" name="update" class="btn bg-gradient-primary">Validasi</button>
@@ -380,6 +381,7 @@ include "../_database/config.php";
                 <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>
               <?php } ?>
               </form>
+              </div>
             </div>
           </div>
         </div>
@@ -474,7 +476,7 @@ include "../_database/config.php";
             Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Berhasil Upload',
+            title: 'Berhasil Merespon',
             showConfirmButton: false,
             timer: 2000
           })

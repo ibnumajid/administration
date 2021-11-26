@@ -396,9 +396,10 @@
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
+                                  <label for="formFile" class="form-label">Apakah Anda Ingin Menyetujui Mandat Ini ?</label>
                                   <div class="form-check">
                                   <input type="radio" class="btn-check" name="ss" id="success-outlined" value = "3" autocomplete="off">
-                                  <label class="btn btn-outline-success" for="success-outlined">Setuju</label>
+                                  <label class="btn btn-outline-success" for="success-outlined">Setujui</label>
                                  
                                   <input type="radio" class="btn-check" name="ss" id="danger-outlined" value = "1" autocomplete="off">
                                   <label class="btn btn-outline-danger" for="danger-outlined">Tolak</label>        
@@ -417,11 +418,14 @@
                             </div>
                          
                             </div>
-                         
+                            <div class = "mx-4">
+                            <a href = "./rekapmndt.php"><button class="btn bg-gradient-secondary" >Kembali</button></a>
                             <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Respon</button>
+                            </div>
+                           
                         
                         </form>
-                        <a href = "./rekapmndt.php"><button class="btn bg-gradient-secondary" >Kembali</button></a>
+                       
                           </div>
                         </div>
                       </div>  

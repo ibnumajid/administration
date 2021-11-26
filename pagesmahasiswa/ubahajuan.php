@@ -253,9 +253,10 @@ include "../_database/config.php";
                   </div>
                   <!-- button upload close -->
               
-
-              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
+                  <div class = "mx-4">
+              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button></a>
                 <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button>
+                </div>
               </form>
               </div>
             </div>
