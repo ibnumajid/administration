@@ -27,7 +27,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <!-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> -->
   <title>
     Sistem Administrasi DTEO
   </title>
@@ -340,10 +340,10 @@
                           if ($data['proses_tugas'] == $idf) {
                   ?>
                       <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $data['id_no'] ?></td>
-                        <td><?php echo $data['perihal'] ?></td>
-                        <td><?php echo $data['keterangan'] ?></td>
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td class="text-center"><?php echo $data['id_no'] ?></td>
+                        <td class="text-center"><?php echo $data['perihal'] ?></td>
+                        <td class="text-center"><?php echo $data['keterangan'] ?></td>
                        <!-- status proses tugas  -->
                     <?php if ($data['proses_tugas'] == 0) {?>
                       <td class="align-middle text-left text-sm">
