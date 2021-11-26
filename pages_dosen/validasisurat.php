@@ -307,7 +307,7 @@
                     <tbody>
                   <?php 
 
-                    if ($_SESSION['status'] == 5 && ($data['status_dosen2'] == 2 && $data['status_dosentkk'] == 2)) { ?>
+                    if ($_SESSION['status'] == 5 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) { ?>
                         <tr>
                           <!-- nama -->
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -364,8 +364,7 @@
                           ?> 
   
                           <td class="text-center"><?php echo $no++ ?></td>
-                          <!-- nama -->
-
+                         
                           <?php   if ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0){ ?>
                           <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
