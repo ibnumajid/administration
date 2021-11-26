@@ -199,87 +199,89 @@ session_start();
                         Pilih Surat
                       </button>
                     </a>
-                    <ul class="dropdown-menu  dropdown-menu-end pt-2  px-2 py-3 me-sm-n1 " aria-labelledby="dropdownMenuButton">
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnsurat.php">
+                    <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-2  px-0 py-3 me-sm-n1 " aria-labelledby="dropdownMenuButton">
+                      <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">  
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnsurat.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Magang</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li >
+                          <a class="dropdown-item border-radius-md" href="pmhnta.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Proyek Akhir</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnpbl.php">
                           <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Magang</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li >
-                        <a class="dropdown-item border-radius-md" href="pmhnta.php">
-                          <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Proyek Akhir</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnpbl.php">
-                        <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat PBL (Project Based Learning)</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhncuti.php">
-                          <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Cuti</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnmdiri.php">
-                          <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Mengundurkan Diri</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnbeasiswa.php">
-                          <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Pengajuan Beasiswa</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnukt.php">
-                          <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Keringanan UKT</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md" href="pmhnhima.php">
-                          <div class="d-flex py-1">
-                            <div class="my-auto">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Surat Pengajuan Kegiatan HIMA</span>
-                              </h6>
-                          </div>
-                        </a>
-                      </li>
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat PBL (Project Based Learning)</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhncuti.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Cuti</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnmdiri.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Mengundurkan Diri</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnbeasiswa.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Pengajuan Beasiswa</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnukt.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Keringanan UKT</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnhima.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                  <span class="font-weight-bold">Surat Pengajuan Kegiatan HIMA</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                      </div>
                     </ul>
                   </li>         
                 </div>
