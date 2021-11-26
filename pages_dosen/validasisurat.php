@@ -284,9 +284,10 @@
                         <th class="text-center">Dosen Pembimbing</th>
                         <th class="text-center">Dosen Koordinator</th>
                      <?php } ?>
-                     <? if($_SESSION['status2'] ==  1) { ?>
+                     <?php if ($_SESSION['status2'] ==  1) { ?>
                       <th class="text-center">Dosen TKK</th>
-                      <?php } if ($_SESSION['status'] == 5) { ?>
+                      <?php } 
+                      if ($_SESSION['status'] == 5) { ?>
                         <th class ="text-center">Persetujuan Kadep</th>
                      <?php } ?>
                     </tr>
@@ -306,7 +307,7 @@
                     <tbody>
                   <?php 
 
-                    if ($_SESSION['status'] == 5 && $data['status_dosen2'] == 2) { ?>
+                    if ($_SESSION['status'] == 5 && ($data['status_dosen2'] == 2 && $data['status_dosentkk'] == 2)) { ?>
                         <tr>
                           <!-- nama -->
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -443,7 +444,7 @@
 
                       
                          <!-- status surat dosen TKK -->
-                         <? if($_SESSION['status2'] ==  1) { ?>
+                         <?php if($_SESSION['status2'] ==  1) { ?>
                          <?php if ($data['status_dosentkk'] == 0) {?>
                         <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Menunggu Untuk Diproses</span>
