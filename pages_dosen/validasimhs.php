@@ -428,7 +428,7 @@ include "../_database/config.php";
           $status = $_POST['ss'];
 
           
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan2`='$catatan2' WHERE id_no = '$id' ");
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_kadep`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
           if ($query && $query2) {
             ?><script><?php $_SESSION['sukses'] = true;?></script> 

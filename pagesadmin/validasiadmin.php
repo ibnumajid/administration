@@ -265,7 +265,7 @@
                         </td>
                         <!-- progres -->
                         <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                         </td>
                         <!-- tanggal -->
                         <td class="align-middle text-center">
@@ -316,7 +316,7 @@
                                 </td>
                                 <!-- progres -->
                                 <td>
-                                  <h6 class="mb-0 text-sm ps-3"><?php echo $data['progres'] ?></h6>
+                                  <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                                 </td>
                                 <!-- tanggal -->
                                 <td class="align-middle text-center">
