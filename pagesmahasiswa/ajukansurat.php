@@ -313,6 +313,13 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
+                            <!-- UNDUH PANDUANN -->
+                            <div class="unduh" style="display: none;">
+                              <a class="nav-link" >
+                                <li class="text-sm text-dark text-center active">Unduh Panduan</li>
+                              </a>
+                            </div>
+
                             <!-- keterangan -->
                             <div class="keterangan" style="display: none;">
                               <div class="card-header pb-0 p-3">
@@ -490,6 +497,7 @@ $(document).ready(function(){
     <script>
         $('#jenis_surat').on('change',function () {
             if($('#jenis_surat').val() == 'Surat Magang') {
+                $('.unduh').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat Magang");
                 $('.judulTA').hide();
@@ -500,6 +508,7 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
+                $('.unduh').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Industri Melakukan Tempat TA");
                 $('.judulTA').show();
@@ -510,6 +519,7 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
+                $('.unduh').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat PBL");
                 $('.judulTA').hide();
@@ -520,6 +530,7 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               } 
             else if($('#jenis_surat').val() == 'Surat Cuti') {
+                $('.unduh').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Lama Waktu Cuti (*Satu semester)");
                 $('.judulTA').hide();
@@ -530,6 +541,7 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
+                $('.unduh').show();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
@@ -539,6 +551,7 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
+                $('.unduh').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Beasiswa");
                 $('.judulTA').hide();
@@ -549,6 +562,7 @@ $(document).ready(function(){
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
+                $('.unduh').show();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
@@ -558,6 +572,7 @@ $(document).ready(function(){
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
+                $('.unduh').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Kegiatan");
                 $('.judulTA').hide();
@@ -568,6 +583,7 @@ $(document).ready(function(){
                 $('.dosenTKK').show();
               }
             else {
+                $('.unduh').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
