@@ -509,7 +509,7 @@ $(document).ready(function(){
             else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
                 $('.unduh').show();
                 $('.keterangan').show();
-                $('#label-keterangan').text("Industri Melakukan Tempat TA");
+                $('#label-keterangan').text("Industri Melakukan Tempat Proyek Akhir");
                 $('.judulTA').show();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
