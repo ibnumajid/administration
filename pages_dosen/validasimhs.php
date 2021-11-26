@@ -400,7 +400,7 @@ include "../_database/config.php";
           $id = $_POST['id'];
           $catatan = $_POST['catatan2'];
 
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$status' WHERE id_no = '$id' ");
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat` = '$status' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
           if ($query && $query2) {
             echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil diajukan")</script></a>';

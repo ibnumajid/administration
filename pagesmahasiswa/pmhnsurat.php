@@ -2,7 +2,7 @@
 session_start();
   if($_SESSION['user']=='')
   {
-  header("location:home.php");
+  header("location:../index.php");
   }
 ?>
 
@@ -557,7 +557,7 @@ session_start();
                                           <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
                                           <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
                                           <input type="hidden" name="stats" value="0">
-                                        <?php} else if ($data['status_dosen2'] == "1") { ?>
+                                        <?php } else if ($data['status_dosen2'] == "1") { ?>
                                           <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
                                           <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
                                           <input type="hidden" name="stats" value="0">
@@ -574,7 +574,7 @@ session_start();
                                           <!-- Saat dosen menolak -->
                                           <?php if ($data['status_dosen1']  == "1") { ?>
                                             <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                          <?php} if ($data['status_dosen2']  == "1") { ?>
+                                          <?php } if ($data['status_dosen2']  == "1") { ?>
                                             <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
                                           <?php } else if ($data['status_kadep']  == "1") { ?>
                                             <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
