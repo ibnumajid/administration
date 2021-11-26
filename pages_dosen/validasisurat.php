@@ -340,7 +340,7 @@
                             <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                           </td>
   
-                           <?php } 
+                           <?php  
                           
                           if ($_SESSION['status'] == 5) {
                           ?> 
@@ -358,7 +358,7 @@
                                 else if ($data['status_kadep'] == 2) {?>
                                 <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
-                          </td> <?php } } 
+                          </td> <?php } } }
                           
                         else if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && ($tujuan2 == $nama)) || ($data['status_dosen1'] == 0 && $tujuan == $nama))) {
                           ?> 
