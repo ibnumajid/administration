@@ -508,15 +508,18 @@ session_start();
                                         <!-- Keterangan File -->
                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
                                         <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                                        
-                                        <!-- nama mahasiswa -->
-                                        <label for="formFile" class="form-label">Catatan Dosen</label>
-                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+                                       <!-- catatan dosebing -->
+                                       <label for="formFile" class="form-label">Catatan Dosen Pembimbing</label>
+                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_pmb'] ?></label>
 
-                                        <!-- NRP mahasiswa -->
+                                        <!-- nama dosen koor -->
+                                        <label for="formFile" class="form-label">Catatan Dosen Koordinator</label>
+                                        <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_koor'] ?></label>
+
+                                        <!-- kadep -->
                                         <label for="formFile" class="form-label">Catatan Kadep</label>
-                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
-
+                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kdp'] ?></label>
+                                      
                                         <!-- Input ID untuk memberikan identitas surat -->
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
@@ -578,9 +581,13 @@ session_start();
                   $url2 = $id3.'_'.$nama_file2;
 
                   if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
                     $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+                    if ($data['status_dosen1'] == 1) {
+                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1`='$nol' WHERE id_no = '$id3' ");
+                    }
+                    else if ($data['status_dosen2'] == 1) {
+                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='$nol' WHERE id_no = '$id3' "); 
+                    }
 
                     if ($query2 && $query3) {
                       echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
