@@ -185,17 +185,10 @@ session_start();
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
-                </div>
-                
-              </div>
-            </div>
-            <div class="card-header p-3">    
-              <div class="row">
-                <div class="form-group float-right col-md-4">
-                  <li class="nav-item dropdown pe-3 pt-4 d-flex text-right ps-">
+                  <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                      <button type="button" class="btn btn-outline-dark text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pilih Surat
+                      <button type="button" class="btn btn-outline-dark btn-sm px-6 text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Surat Cuti
                       </button>
                     </a>
                     <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-2  px-0 py-3 me-sm-n1 " aria-labelledby="dropdownMenuButton">
@@ -282,212 +275,211 @@ session_start();
                         </li>
                       </div>
                     </ul>
-                  </li>         
+                  </li>  
                 </div>
-                <!--div class="form-group col-md-4 pt-4">
-                  <input class="border-radius-md border border-dark form-control" id="myInput" type="text" placeholder="Search..">
-                </div-->
               </div>
             </div>
             
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                <thead>
+            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:350px">
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                  <thead>
+                      <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-left ps-1">Perihal</th>
+                        <th class="text-left ps-1">Nama Perusahaan</th>
+                        <th class="text-center">Waktu Upload</th>
+                        <th class="text-center">Persetujuan Kadep</th>
+                        <th class="text-center">Proses Admin</th>
+                        <th class="text-center">Catatan</th>
+                      </tr>
+                    </thead>
+                    <tbody id="myTable">
+                    <?php
+                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                    $no = 1;
+                    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                    while ($data = mysqli_fetch_array($query)) {
+                      if ($data['nama_mhsw'] == $_SESSION['user']) {
+                          if ($data['perihal'] == "Surat Cuti") {
+                    ?>
                     <tr>
-                      <th class="text-center">No</th>
-                      <th class="text-left ps-1">Perihal</th>
-                      <th class="text-left ps-1">Nama Perusahaan</th>
-                      <th class="text-center">Waktu Upload</th>
-                      <th class="text-center">Persetujuan Kadep</th>
-                      <th class="text-center">Proses Admin</th>
-                      <th class="text-center">Catatan</th>
-                    </tr>
-                  </thead>
-                  <tbody id="myTable">
-                  <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $no = 1;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                  while ($data = mysqli_fetch_array($query)) {
-                    if ($data['nama_mhsw'] == $_SESSION['user']) {
-                        if ($data['perihal'] == "Surat Cuti") {
-                  ?>
-                  <tr>
-                    <td class="text-center"><?php echo $no++ ?></td>
-                    <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                    <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                    <!-- status surat kadep -->
-                    <?php if ($data['status_kadep'] == 0) { ?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
-                      </td> <?php } 
-                            else if ($data['status_kadep'] == 1) { ?>
+                      <td class="text-center"><?php echo $no++ ?></td>
+                      <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                      <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                      <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                      <!-- status surat kadep -->
+                      <?php if ($data['status_kadep'] == 0) { ?>
                         <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                      </td> 
-                            <?php }
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
+                        </td> <?php } 
+                              else if ($data['status_kadep'] == 1) { ?>
+                          <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                        </td> 
+                              <?php }
 
-                            else if ($data['status_kadep'] == 2) { ?>
-                            <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
-                      </td> <?php } ?> 
+                              else if ($data['status_kadep'] == 2) { ?>
+                              <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
+                        </td> <?php } ?> 
+                      
+                        <!-- status aktivitas admin -->
+                        <?php if ($data['status_admin'] == 0) { ?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
+                        </td> <?php } 
+                        else if ($data['status_admin'] == 2) { ?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
+                        </td> <?php } ?> 
+                          
+                        <!-- button edit -->
+                        <td class="align-middle">
+                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                          </a>
+                        </td>
                     
-                      <!-- status aktivitas admin -->
-                      <?php if ($data['status_admin'] == 0) { ?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
-                      </td> <?php } 
-                      else if ($data['status_admin'] == 2) { ?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
-                      </td> <?php } ?> 
-                        
-                      <!-- button edit -->
-                      <td class="align-middle">
-                        <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
-                        </a>
-                      </td>
-                   
-                      <!-- Modal -->
-                      <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                          <div class="modal-content">
-                            <!-- popup ajuan surat mahasiswa -->
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>  
-                            
-                            <div class="modal-body">
-                              <form action="" method="post" enctype="multipart/form-data">
-                                  <div class="card-header pb-0 p-3">
-                                    <div class="row">
-                                      <div class="mb-3">
-                                        <!-- Cek File -->
-                                        <label for="formFile" class="form-label">File Anda (Klik Untuk Melihat)</label>
-                                          <a href="./<?php echo $data['file'] ?>" target="_blank">
-                                            <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>">
-                                              <button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button>
-                                            </p>
-                                          </a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>  
+                              
+                              <div class="modal-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div class="card-header pb-0 p-3">
+                                      <div class="row">
+                                        <div class="mb-3">
+                                          <!-- Cek File -->
+                                          <label for="formFile" class="form-label">File Anda (Klik Untuk Melihat)</label>
+                                            <a href="./<?php echo $data['file'] ?>" target="_blank">
+                                              <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>">
+                                                <button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button>
+                                              </p>
+                                            </a>
 
-                                        <!-- Keterangan File -->
-                                        <label for="formFile" class="form-label">Keterangan Tambahan</label>
-                                        <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                          <!-- Keterangan File -->
+                                          <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                          <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
 
-                                        <!-- NRP mahasiswa -->
-                                        <label for="formFile" class="form-label">Catatan Kadep</label>
-                                        <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
+                                          <!-- NRP mahasiswa -->
+                                          <label for="formFile" class="form-label">Catatan Kadep</label>
+                                          <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
 
-                                        <!-- Input ID untuk memberikan identitas surat -->
-                                        <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
+                                          <!-- Input ID untuk memberikan identitas surat -->
+                                          <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
-                                        <!-- Ubah File saat ditolak filenya -->
-                                        <?php if ($data['status_dosen1'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
-                                          <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                          <input type="hidden" name="stats" value="0">
-                                        <?php } else if ($data['status_dosen2'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
-                                          <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                          <input type="hidden" name="stats" value="0">
-                                        <?php } else if ($data['status_kadep'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                          <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                          <input type="hidden" name="stats2" value="0">
-                                        <?php } ?>
-
-
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                                          <!-- Saat dosen menolak -->
-                                          <?php if ($data['status_dosen1']  == "1") { ?>
-                                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                          <?php } if ($data['status_dosen2']  == "1") { ?>
-                                            <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                          <?php } else if ($data['status_kadep']  == "1") { ?>
-                                            <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                          <!-- Ubah File saat ditolak filenya -->
+                                          <?php if ($data['status_dosen1'] == "1") { ?>
+                                            <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
+                                            <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                            <input type="hidden" name="stats" value="0">
+                                          <?php } else if ($data['status_dosen2'] == "1") { ?>
+                                            <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
+                                            <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                            <input type="hidden" name="stats" value="0">
+                                          <?php } else if ($data['status_kadep'] == "1") { ?>
+                                            <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
+                                            <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
+                                            <input type="hidden" name="stats2" value="0">
                                           <?php } ?>
+
+
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                                            <!-- Saat dosen menolak -->
+                                            <?php if ($data['status_dosen1']  == "1") { ?>
+                                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                            <?php } if ($data['status_dosen2']  == "1") { ?>
+                                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                            <?php } else if ($data['status_kadep']  == "1") { ?>
+                                              <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
+                                            <?php } ?>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                              </form>
+                                </form>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <?php  } } } ?>
-                    </tr>
-                  </tbody> 
-                  <?php if ($no == 1) { ?>
-                         <td></td>
-                         <td></td>
-                         <td></td>
-                  <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
-                  <?php } ?>
-                </table>
+                        <?php  } } } ?>
+                      </tr>
+                    </tbody> 
+                    <?php if ($no == 1) { ?>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                    <?php } ?>
+                  </table>
 
-                <!-- php update surat -->
-                <?php
-                include "../_database/config.php";
-                if (isset($_POST['update'])) {
-                  $nama_file2 = basename($_FILES['ufl']['name']);
-                  $id3 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
+                  <!-- php update surat -->
+                  <?php
+                  include "../_database/config.php";
+                  if (isset($_POST['update'])) {
+                    $nama_file2 = basename($_FILES['ufl']['name']);
+                    $id3 = $_POST['id2'];
+                    $nol = $_POST['stats2'];
 
-                  $url2 = $id3.'_'.$nama_file2;
+                    $url2 = $id3.'_'.$nama_file2;
 
-                  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
+                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
 
-                    $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
 
-                    if ($query2 && $query3) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                ?> 
-                <script> history.pushState({}, "", "")</script> <?php
-                              } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                      if ($query2 && $query3) {
+                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                  ?> 
+                  <script> history.pushState({}, "", "")</script> <?php
+                                } else {
+                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                }
                               }
                             }
-                          }
 
-                                ?>
+                                  ?>
 
-                <!-- php update surat saat kadep menolak -->
-                <?php
-                include "../_database/config.php";
-                if (isset($_POST['update2'])) {
+                  <!-- php update surat saat kadep menolak -->
+                  <?php
+                  include "../_database/config.php";
+                  if (isset($_POST['update2'])) {
 
-                  $nama_file3 = basename($_FILES['uflk']['name']);
-                  $id4 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
+                    $nama_file3 = basename($_FILES['uflk']['name']);
+                    $id4 = $_POST['id2'];
+                    $nol = $_POST['stats2'];
 
-                  $url3 = $id4.'_'.$nama_file3;
+                    $url3 = $id4.'_'.$nama_file3;
 
-                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
+                    if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
 
-                    $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
-                    $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
+                      $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
+                      $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
 
-                    if ($query4 && $query5) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                      if ($query4 && $query5) {
+                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                  ?> <script> history.pushState({}, "", "") </script> <?php
+                                } else {
+                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                }
                               }
                             }
-                          }
 
-                                ?>
+                                  ?>
 
+                </div>
               </div>
             </div>
           </div>
