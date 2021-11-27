@@ -255,7 +255,7 @@ session_start();
                         <h1 class="text-dark p-0 px-7">Selamat Datang</h1>
                         <h4 class="text-dark p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
                         <a href="./PANDUAN PENGGUNAAN SIM DTEO.pdf" target="_blank" class="pb-5 px-7">
-                          <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
+                        <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
                         </a>
                       </div>
                     </div>
