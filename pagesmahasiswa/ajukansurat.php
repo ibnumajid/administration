@@ -408,7 +408,7 @@ $(document).ready(function(){
                                     </div>
                                   </div>
                                   <div  class="dpbl" style="display: none;" >
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
                                           <select id="name_pbl" name="ds2"  class="form-select" aria-label="Default select example" >
                                               <option value="Tidak Memerlukan Dosen Koordinator" selected>Pilih Dosen Koordinator</option>
