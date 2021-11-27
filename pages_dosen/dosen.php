@@ -341,7 +341,7 @@
                   <!-- no -->
                   <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                  <?php   if ($data['status_dosen1'] == '0' || $data['status_dosen2'] == '0' || $data['status_dosentkk'] == '0'){ ?>
+                  <?php   if ($data['status_dosen1'] == '0' || $data['status_dosen2'] == '0' || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)){ ?>
                           <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
@@ -389,7 +389,7 @@
                    <!-- no -->
                    <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                  <?php   if ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0){ ?>
+                  <?php   if ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0 || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)){ ?>
                           <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
