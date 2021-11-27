@@ -350,7 +350,6 @@ include "../_database/config.php";
                         <div>
                           <label for="catatan" class="form-label"> Catatan </label>
                           <br>
-
                           <div class="form-group"></label><input name="catatan2" class="form-control" type="text"></div>
                         </div>
 
@@ -393,7 +392,7 @@ include "../_database/config.php";
           $tgl2 = $data['tgl_pel2'];
 
 
-          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan_kadep`='$catatan2' WHERE id_no = '$id' ");
+          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `jumlah_barang`='$jml' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_barang`='$namab' WHERE id_no = '$id' ");
