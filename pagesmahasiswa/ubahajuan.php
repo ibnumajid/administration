@@ -199,12 +199,11 @@ include "../_database/config.php";
 
                         else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
                           <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Industri Tempat Melakukan TA</label>
+                          <label for="formFile" class="form-label">Industri Tempat Melakukan Proyek Akhir</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
 
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Rencana Judul</label>
-                          <input type="text" class = "form-control" placeholder = "<?php echo $data['judul_ta'] ?>">
                           <input type="text" class = "form-control" name = "jdl_ta" value = "<?php echo $data['judul_ta'] ?>">
 
                         <?php } 
