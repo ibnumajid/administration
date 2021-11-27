@@ -350,7 +350,7 @@
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
-                 
+                  $no = 0;
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   
                   while ($data = mysqli_fetch_array($query)) {
