@@ -587,7 +587,7 @@
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_mhsw'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
+                  if ($data['nama_anggota'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -689,14 +689,14 @@
 
                      
                        <div class="modal-body">
-                         <form action="" method="post" enctype="multipart/form-data">
+                         
                            <div class="card-header pb-0 p-3">
                              <div class="row">
                                <div class="mb-3">
                                
                                  <!-- nama mahasiswa -->
                                  <label for="formFile" class="form-label">Catatan Kadep</label>
-                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
+                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
 
                                
                                  <!-- Input ID untuk memberikan identitas surat -->
@@ -704,10 +704,7 @@
 
                                  <!-- Ubah File saat ditolak filenya -->
                                 <?php if ($data['status_kadep'] == "1") { ?>
-                                   <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                   <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                   <input type="hidden" name="stats2" value="0">
-                                 <?php }
+                                  <h5 class = "text-warning allign-middle modal-title text-center"> Surat Anda Ditolak, Silahkan Tekan Ubah untuk Merubah Surat </h5> 
                                       else { ?>
                                        <h5 class = "text-info allign-middle modal-title text-center"> Surat Belum Memerlukan Perubahan </h5> 
                                         <?php } ?> 
@@ -720,13 +717,18 @@
                        <div class="modal-footer">
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
-                         <!-- Saat dosen menolak -->
-                         <?php if ($data['status_kadep']  == "1") { ?>
-                           <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                         <?php } ?>
+                        <!-- Saat kadep menolak -->
+                        <?php if ($data['status_kadep'] == 1) { ?>
+                         <form action = "./ubahajuandsn.php" method = "post">
+                         <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                         <button class ="btn btn-primary">Ubah</button>
+                         </form>
+                                         
+                        <?php } ?>
                        </div>
 
-                       </form>
+                      
 
                      </div>
                      </div>
