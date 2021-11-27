@@ -335,7 +335,7 @@
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
                  <!-- perihal -->
-                 <td> <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6></td>
+                 <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
                  <!-- status surat -->
                  <?php if ($data['status_kadep'] == 0) {?>
                  <td class="align-middle text-center text-sm">
@@ -363,8 +363,7 @@
                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                  
                  while ($data = mysqli_fetch_array($query)) {
-                 
-                     if ($data['status_kadep'] == 0) {?>
+                 ?>
                
                <tr>
                  <!-- no -->
@@ -405,7 +404,7 @@
                  <!-- tanggal -->
                  <td class="text-center"><?php echo $data['tanggal'] ?></td>
                  
-                 <?php } } ?>
+                 <?php  } ?>
                </tr>
                <!-- and tabel dosen -->
                <!-- tabel suratdosen -->
@@ -416,8 +415,7 @@
                  $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                  
                  while ($data = mysqli_fetch_array($query)) {
-                 
-                     if ($data['status_kadep'] == 0) {?>
+                 ?>
                
                <tr>
                  <!-- no -->
@@ -463,7 +461,7 @@
                      <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                    </a>
                  </td>
-                 <?php } } ?>
+                 <?php  } ?>
                </tr>
                <!-- and tabel dosen -->
                    <?php 
