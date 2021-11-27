@@ -300,7 +300,7 @@ session_start();
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
                       <div class="d-flex flex-column">
                         <h6 class="mb-3 text-sm"> <?php echo $data['file'] ?> </h6>
-                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['progres'] ?></span></span>
+                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['perihal'] ?></span></span>
                         <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
                       </div>
                       <div class="ms-auto text-end">
