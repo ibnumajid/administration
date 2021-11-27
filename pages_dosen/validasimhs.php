@@ -363,7 +363,6 @@ include "../_database/config.php";
                         <div>
                           <label for="catatan" class="form-label"> Catatan </label>
                           <br>
-
                           <div class="form-group"></label><input name="catatan2" class="form-control" type="text"></div>
                         </div>
 
@@ -437,10 +436,10 @@ include "../_database/config.php";
           $catatan2 = $_POST['catatan2'];
           $id = $_POST['id'];
           $status = $_POST['ss'];
-
           
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_kdp`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
+
           if ($query && $query2) {
             ?><script><?php $_SESSION['sukses'] = true;?></script> 
             <script>history.pushState({}, "", "")</script><?php

@@ -479,7 +479,9 @@ session_start();
                  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
 
                     if ($query6) {
-                      echo '<script> alert ("Berhasil Menghapus")</script></a>';
+                      ?><script>
+                      <?php $_SESSION['sukses'] = true; ?> </script>
+                  <script>history.pushState({}, "", "") </script><?php
                 ?> <script> history.pushState({}, "", "") </script> 
                 <?php } 
                     else {
@@ -539,6 +541,18 @@ session_start();
       
     </div>
   </main>
+   <?php if (@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Berhasil Menghapus',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
   
   </div>
   <!--   Core JS Files   -->
