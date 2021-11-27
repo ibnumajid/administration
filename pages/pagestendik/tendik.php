@@ -2,7 +2,7 @@
 session_start();
  if($_SESSION['user']=='')
  {
-      header("location:home.php");
+      header("location:../../index.php");
   }
 ?>
 
@@ -332,7 +332,7 @@ session_start();
                 $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   // data nama tendik
-                  if ($data['nama_mhsw'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
+                  if ($data['nama_tdk'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -413,7 +413,6 @@ session_start();
                         
                        </div>
 
-                       </form>
 
                      </div>
                      </div>
@@ -448,12 +447,10 @@ session_start();
                                  <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Ubah File saat ditolak filenya -->
+                                <!-- Ubah File saat ditolak filenya -->
                                 <?php if ($data['status_kadep'] == "1") { ?>
-                                   <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                   <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                   <input type="hidden" name="stats2" value="0">
-                                 <?php }
-                                      else { ?>
+                                  <h5 class = "text-warning allign-middle modal-title text-center"> Surat Anda Ditolak, Silahkan Tekan Ubah untuk Merubah Surat </h5> 
+                                    <?php } else { ?>
                                        <h5 class = "text-info allign-middle modal-title text-center"> Surat Belum Memerlukan Perubahan </h5> 
                                         <?php } ?> 
                                </div>
@@ -466,12 +463,17 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                          <!-- Saat dosen menolak -->
-                         <?php if ($data['status_kadep']  == "1") { ?>
-                           <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                         <?php } ?>
+                         <?php if ($data['status_kadep'] == 1) { ?>
+                         <form action = "./ubahajuantdk.php" method = "post">
+                         <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                         <button class ="btn btn-primary">Ubah</button>
+                         </form>
+                                         
+                        <?php } ?>
                        </div>
 
-                       </form>
+                  
 
                      </div>
                      </div>

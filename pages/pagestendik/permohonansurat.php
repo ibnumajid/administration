@@ -444,18 +444,10 @@ session_start();
                                         <!-- Input ID untuk memberikan identitas surat -->
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
-                                        <!-- Ubah File saat ditolak filenya -->
-                                         <?php if ($data['status_kadep'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                          <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                          <input type="hidden" name="stats2" value= "0">
-                                        <?php } ?>
-
-
                                         <div class="modal-footer">
                                           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
-                                          <!-- Saat dosen menolak -->
+                                          <!-- Saat kadep menolak -->
                                           <?php if ($data['status_kadep']  == "1") { ?>
                                             <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
                                           <?php } ?>
@@ -551,9 +543,14 @@ session_start();
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                   
                                                             <!-- Saat dosen menolak -->
-                                                            <?php if ($data['status_kadep']  == "1") { ?>
-                                                              <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                                            <?php } ?>
+                                                            <?php if ($data['status_kadep'] == 1) { ?>
+                         <form action = "./ubahajuantdk.php" method = "post">
+                         <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                         <button class ="btn btn-primary">Ubah</button>
+                         </form>
+                                         
+                        <?php } ?>
                                                             </div>
                                                           </form>
 
