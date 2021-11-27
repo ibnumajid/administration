@@ -389,12 +389,23 @@
                    <!-- no -->
                    <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form>
+                  <?php   if ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0){ ?>
+                          <form action="./validasimhs.php" method="post">
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <td style = "height:20px">
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                            </td>
+                          </form> <?php }
+
+                          else { ?> 
+                          
+                          <form action="" method="post">
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <td style = "height:20px">
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                            </td>
+                          </form>
+                          <?php } ?>
                   <!-- status -->
                   <td>
                     <h6 class="text-left ps-1">Mahasiswa</h6>
@@ -424,6 +435,9 @@
               <?php } }  } ?>
           <?php if ($no == 1) { ?>  
             
+            <td> </td>
+            <td></td>
+            <td></td>
             <td><h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6></td>
             </tr>
             <?php } ?>
