@@ -331,7 +331,7 @@
               $tujuan = $data['dosen1'];
               $tujuan2 = $data['dosen2'];
               
-              if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) || ($tujuan == $nama && $data['status_dosen1'] == 0)  || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) ) ) {
+              if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) || ($tujuan == $nama && ($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 )  || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) ) ) {
                 if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter2'])) {
                   $idf = $_POST['filterid'];
                     if (($_SESSION['status'] == 2 && ($data['status_dosen1'] == $idf || $data['status_dosen2'] == $idf || $data['status_dosentkk'] == $idf))) { ?>
