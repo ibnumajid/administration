@@ -288,7 +288,7 @@ session_start();
                       <tr>
                         <th class="text-center">No</th>
                         <th class="text-left ps-1">Perihal</th>
-                        <th class="text-left ps-1">Nama Perusahaan</th>
+                        <th class="text-left ps-1">Lama Waktu Cuti (*smt)</th>
                         <th class="text-center">Waktu Upload</th>
                         <th class="text-center">Persetujuan Kadep</th>
                         <th class="text-center">Proses Admin</th>
