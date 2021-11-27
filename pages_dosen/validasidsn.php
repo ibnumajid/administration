@@ -314,7 +314,7 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div class="form-group d-flex justify-content-around">
+          <div class="form-group d-flex justify-content-around mt-4">
             <form method = "post">
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
@@ -331,29 +331,19 @@
                 <input type="hidden" name = "filterid" value = "2">
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
             </form>
-
-              
           </div>    
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat</h6>
-                </div>
-              </div>
-            </div>
             
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Perihal</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">Nama Dosen</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-1">NIP Dosen </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-5">Tanggal Pengajuan</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                     
-                     
+                      <th>No</th>
+                      <th>Nama Dosen</th>
+                      <th class="text-center">NIP Dosen</th>
+                      <th>Perihal</th>
+                      <th class="text-center">Tanggal Pengajuan</th>
+                      <th class="text-center">Persetujuan Kadep</th>
                     </tr>
                   </thead>
                   <!-- php tabel -->
@@ -376,11 +366,7 @@
                   <!-- tabel -->
                   <tbody>
                     <tr>
-                     
-                      <!-- progres -->
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
-                      </td>
+                    <td class="text-center"><?php echo $no++ ?></td>
                        <!-- nama -->
                        <?php if ($data['status_kadep'] == 0){ ?>
                   <form action="./validasidosen.php" method="post">
@@ -397,6 +383,10 @@
                       <!-- nrp -->
                       <td>
                       <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
+                      </td>
+                      <!-- progres -->
+                      <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
@@ -425,12 +415,7 @@
                       <!-- tabel -->
                       <tbody>
                         <tr>
-                          <!-- file -->
-                          
-                          <!-- progres -->
-                          <td>
-                            <p class="text-xs font-weight-bold mb-0"><?php echo $data['perihal'] ?></p>
-                          </td>
+                        <td class="text-center"><?php echo $no++ ?></td>
                           <!-- nama -->
                           <?php if ($data['status_kadep'] == 0){ ?>
                   <form action="./validasidosen.php" method="post">
@@ -447,6 +432,10 @@
                           <!-- nrp -->
                           <td>
                           <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
+                          </td>
+                          <!-- progres -->
+                          <td>
+                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                           </td>
                           <!-- tanggal -->
                           <td class="align-middle text-center">

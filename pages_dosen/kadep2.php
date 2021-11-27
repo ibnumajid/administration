@@ -317,16 +317,11 @@
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <form action="" method="post">
-                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                 <td style = "height:20px">
-                 <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                 </td>
-                 </form>
+                 <td><h6 style = "height:35px" class="text-sm-left ps-1 "><?php echo $data['nama_mhsw'] ?></h6></td>
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
                  <!-- perihal -->
-                 <td> <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6></td>
+                 <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
                  <!-- status surat -->
                  <?php if ($data['status_kadep'] == 0) {?>
                  <td class="align-middle text-center text-sm">
@@ -355,18 +350,13 @@
                  
                  while ($data = mysqli_fetch_array($query)) {
                  
-                     if ($data['status_kadep'] == 0) {?>
+                     if ($data['status_kadep'] == 2) {?>
                
                <tr>
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <form action="" method="post">
-                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                 <td style = "height:20px">
-                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
-                 </td>
-               </form>
+                 <td style = "height:20px"><h6 style = "height:20px" class="text-sm-left"><?php echo $data['nama_dsn'] ?></h6></td>
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Dosen</h6></td>
                  <!-- perihal -->
@@ -399,18 +389,13 @@
                  
                  while ($data = mysqli_fetch_array($query)) {
                  
-                     if ($data['status_kadep'] == 0) {?>
+                     if ($data['status_kadep'] == 2) {?>
                
                <tr>
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <form action="" method="post">
-                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                 <td style = "height:20px">
-                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
-                 </td>
-               </form>
+                 <td><h6 style = "height:20px" class="text-sm-left"><?php echo $data['nama_tdk'] ?></h6></td>
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Tendik</h6></td>
                  <!-- perihal -->

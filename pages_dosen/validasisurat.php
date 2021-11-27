@@ -464,17 +464,17 @@
                          <?php if($_SESSION['status2'] ==  1) { ?>
                          <?php if ($data['status_dosentkk'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Menunggu Untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Menunggu Untuk Diproses</span>
                         </td> <?php } 
                               else if ($data['status_dosentkk'] == 1) {?>
                           <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
+                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
                         </td> 
                               <?php }
   
                               else if ($data['status_dosentkk'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
                         </td> <?php } ?>
   
                      </tr>
@@ -623,17 +623,17 @@
                          <?php if($_SESSION['status2'] ==  1) { ?>
                          <?php if ($data['status_dosentkk'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Menunggu Untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Menunggu Untuk Diproses</span>
                         </td> <?php } 
                               else if ($data['status_dosentkk'] == 1) {?>
                           <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
+                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
                         </td> 
                               <?php }
   
                               else if ($data['status_dosentkk'] == 2) {?>
                               <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
                         </td> <?php } ?>
   
                      </tr>
