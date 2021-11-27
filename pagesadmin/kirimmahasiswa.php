@@ -222,7 +222,7 @@
                                     <!-- Perihal -->
                                     <label for="formFile" class="form-label">Perihal</label>
                                     <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
-                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
+                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['perihal'] ?>" >
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
                                     <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
