@@ -371,13 +371,13 @@
             
                   <?php if (($data['status_dosen1'] == 0 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Belum Diproses</span>
+                      <span class="badge badge-sm bg-gradient-secondary">Belum Diproses</span>
                     </td> <?php } else if (($data['status_dosen1'] == 1 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 1 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 1 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                      <span class="badge badge-sm bg-gradient-danger">Ditolak</span>
                     </td> <?php } else if ((($data['status_dosen1'] == 2 || $data['status_dosen2'] == 2) && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Sudah Diproses</span>
+                      <span class="badge badge-sm bg-gradient-success">Sudah Diproses</span>
                     </td> <?php } ?>
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
@@ -419,13 +419,13 @@
             
                    <?php if (($data['status_dosen1'] == 0 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Belum Diproses</span>
+                      <span class="badge badge-sm bg-gradient-secondary" >Belum Diproses</span>
                     </td> <?php } else if (($data['status_dosen1'] == 1 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 1 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 1 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                      <span class="badge badge-sm bg-gradient-danger" >Ditolak</span>
                     </td> <?php } else if ((($data['status_dosen1'] == 2 || $data['status_dosen2'] == 2) && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Sudah Diproses</span>
+                      <span class="badge badge-sm bg-gradient-success">Sudah Diproses</span>
                     </td> <?php } ?>
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
