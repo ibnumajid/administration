@@ -258,7 +258,7 @@ include "../_database/config.php";
                 <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Ubah</button>
                 <?php } 
                 else { ?> 
-               <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button> }
+               <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button> <?php } ?>
               </form>
               </div>
             </div>
