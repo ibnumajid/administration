@@ -696,7 +696,7 @@
                                
                                  <!-- nama mahasiswa -->
                                  <label for="formFile" class="form-label">Catatan Kadep</label>
-                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
 
                                
                                  <!-- Input ID untuk memberikan identitas surat -->
