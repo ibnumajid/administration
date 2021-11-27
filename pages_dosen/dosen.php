@@ -341,7 +341,7 @@
                   <!-- no -->
                   <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                  <?php   if ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0){ ?>
+                  <?php   if ($data['status_dosen1'] == '0' || $data['status_dosen2'] == '0' || $data['status_dosentkk'] == '0'){ ?>
                           <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
@@ -371,7 +371,8 @@
 
 
                   <!-- status surat -->
-                  <?php if ($data['status_surat'] == 0) { ?>
+            
+                  <?php if (($data['status_dosen1'] == 0 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
                       <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Belum Diproses</span>
                     </td> <?php } else if ($data['status_surat'] == 1) { ?>
