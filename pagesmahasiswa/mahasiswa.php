@@ -279,8 +279,6 @@ session_start();
             </div>
           </div>
 
-          <!-- bagian carousel selesai -->
-
         <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
         <div class="col-md-7 mt-4">
@@ -348,7 +346,7 @@ session_start();
 
                                  <!-- NRP mahasiswa -->
                                  <label for="formFile" class="form-label">Perihal</label>
-                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['progres'] ?></label>
+                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
                                  
                                  <!-- Lihat File -->
                                  <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
@@ -405,27 +403,28 @@ session_start();
                                <div class="mb-3">
                                
                                  <!-- nama mahasiswa -->
-                                 <label for="formFile" class="form-label">Catatan Dosen</label>
-                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan'] ?></label>
+                                 <label for="formFile" class="form-label">Catatan Dosen Pembimbing</label>
+                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_pmb'] ?></label>
+
+                                 <!-- nama mahasiswa -->
+                                 <label for="formFile" class="form-label">Catatan Dosen Koordinator</label>
+                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_koor'] ?></label>
+
+                                 <!-- nama mahasiswa -->
+                                 <label for="formFile" class="form-label">Catatan Dosen TKK</label>
+                                 <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_tkk'] ?></label>
 
                                  <!-- NRP mahasiswa -->
                                  <label for="formFile" class="form-label">Catatan Kadep</label>
-                                 <label name="catatan2" class="form-control" aria-label="default input example"><?php echo $data['catatan2'] ?></label>
+                                 <label name="catatan2" class="form-control" aria-label="default input example"><?php echo $data['catatan_kdp'] ?></label>
 
                                  <!-- Input ID untuk memberikan identitas surat -->
                                  <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Ubah File saat ditolak filenya -->
-                                 <?php if ($data['status_surat'] == "1") { ?>
-                                   <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
-                                   <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                   <input type="hidden" name="stats" value="0">
-                                 <?php } else if ($data['status_kadep'] == "1") { ?>
-                                   <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                   <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                   <input type="hidden" name="stats2" value="0">
-                                 <?php }
-                                        else { ?>
+                                 <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
+                                  <h5 class = "text-warning allign-middle modal-title text-center"> Surat Anda Ditolak, Silahkan Tekan Ubah untuk Merubah Surat </h5> 
+                                   <?php } else { ?>
                                           <h5 class = "text-info allign-middle modal-title text-center"> Surat Belum Memerlukan Perubahan </h5> 
                                         <?php } ?> 
                                </div>
@@ -439,7 +438,7 @@ session_start();
 
                          <!-- Saat dosen menolak -->
                          <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
-                           <a href="./ubahajuan"><button type="submite" name="update" class="btn bg-gradient-primary">Upload</button></a>
+                           <a href="./ubahajuan"><button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button></a>
                         <?php } ?>
                        </div>
 
