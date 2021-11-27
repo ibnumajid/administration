@@ -294,7 +294,8 @@ session_start();
                 $no2 = $no++;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_mhsw'] == $_SESSION['user'] && ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1)) {
+                  if ($data['nama_mhsw'] == $_SESSION['user'] && ($data['status_dosen1'] == '1' || $data['status_dosen2'] == '1' || 
+                  $data['status_dosentkk'] == '1' || $data['status_kadep'] == '1')) {
                       $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
