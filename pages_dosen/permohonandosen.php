@@ -150,7 +150,7 @@
               </div>
           <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
         </a>
-      </li> <?php } ?> 
+      </li> <?php } ?> -->
 
     
 <!--profil-->
@@ -338,7 +338,7 @@
 
                               <div class="modal-body">
 
-                              <form action="" method="post" enctype="multipart/form-data">
+                           
                                   <div class="card-header pb-0 p-3">
                                     <div class="row">
                                       <div class="mb-3">
@@ -359,23 +359,19 @@
                                         <!-- Input ID untuk memberikan identitas surat -->
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
-                                        <!-- Ubah File saat ditolak filenya -->
-                                         <?php if ($data['status_kadep'] == "1") { ?>
-                                          <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                          <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                          <input type="hidden" name="stats2" value= "0">
-                                        <?php } ?>
-
-
                                         <div class="modal-footer">
                                           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                                           <!-- Saat dosen menolak -->
-                                          <?php if ($data['status_kadep']  == "1") { ?>
-                                            <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                          <?php } ?>
-                                          </div>
-                                        </form>
+                                          <?php if ($data['status_kadep'] == 1) { ?>
+                         <form action = "./ubahajuandsn.php" method = "post">
+                         <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                         <button class ="btn btn-primary">Ubah</button>
+                         </form>
+                                         
+                        <?php } ?>
+                                        
                                         <?php }
                                         }
                                         else { ?>

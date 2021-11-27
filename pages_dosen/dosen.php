@@ -578,7 +578,7 @@
         <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Surat Ditolak</h6>
+              <h6 class="mb-0">Surat yang Ditolak</h6>
             </div>
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
@@ -705,7 +705,7 @@
                                  <!-- Ubah File saat ditolak filenya -->
                                 <?php if ($data['status_kadep'] == "1") { ?>
                                   <h5 class = "text-warning allign-middle modal-title text-center"> Surat Anda Ditolak, Silahkan Tekan Ubah untuk Merubah Surat </h5> 
-                                      else { ?>
+                                    <?php } else { ?>
                                        <h5 class = "text-info allign-middle modal-title text-center"> Surat Belum Memerlukan Perubahan </h5> 
                                         <?php } ?> 
                                </div>
