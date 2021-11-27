@@ -360,10 +360,11 @@ $(document).ready(function(){
                             </div>
 
                             <!-- dosen -->
-                            <div class="dosen" style="display: none;">
+                            <!--div class="dosen" style="display: none;"-->
                               <div class="card-header pb-0 p-3">    
                                 <div class="row">
-                                    <div class="form-group col-md-6">
+                                  <div  class="dosen" style="display: none;" >
+                                    <div class="form-group col-md-12">
                                       <label for="formFile" class="form-label">Dosen Pembimbing</label>
                                           <select name="ds1"  class="form-select" aria-label="Default select example" >
                                               <option value="Tidak Memerlukan Dosen Pembimbing" selected>Pilih Dosen Pembimbing</option>
@@ -375,21 +376,58 @@ $(document).ready(function(){
                                               <?php } ?>
                                           </select>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                  </div>
+                                  <div  class="dmagang" style="display: none;" >
+                                    <div class="form-group col-md-12" style="align-right:right;">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
-                                          <select name="ds2"  class="form-select" aria-label="Default select example" >
+                                        <?php
+                                         include '../_database/config.php';
+                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 2");
+                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
+                                          $npp = $data_masuk['user'];
+
+                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
+                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                        <input id="name_magang" name="ds2" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
+                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
+                                        <?php } } ?>
+                                    </div>
+                                  </div>
+                                  <div  class="koor" style="display: none;" >
+                                    <div class="form-group col-md-12">
+                                      <label for="formFile" class="form-label">Dosen Koordinator</label>
+                                          <select id="name_py" name="ds2"  class="form-select" aria-label="Default select example" >
                                               <option value="Tidak Memerlukan Dosen Koordinator" selected>Pilih Dosen Koordinator</option>
                                               <?php
                                               include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
+                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb");
                                               while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
+                                              <option  value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
                                               <?php } ?>
                                           </select>
                                     </div>
+                                  </div>
+                                  <div  class="dpbl" style="display: none;" >
+                                    <div class="form-group col-md-6">
+                                      <label for="formFile" class="form-label">Dosen Koordinator</label>
+                                          <select id="name_pbl" name="ds2"  class="form-select" aria-label="Default select example" >
+                                              <option value="Tidak Memerlukan Dosen Koordinator" selected>Pilih Dosen Koordinator</option>
+                                              <?php
+                                              include '../_database/config.php';
+                                              $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status3 = 2");
+                                              while ($data_masuk = mysqli_fetch_array($query_masuk)) {
+                                               $npp = $data_masuk['user'];
+
+                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
+                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                              <option  value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
+                                              <?php } } ?>
+                                          </select>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </div>
+                            <!--/div-->
 
                             <!-- dosen tkk -->
                             <div class="dosenTKK" style="display: none;">
@@ -397,8 +435,9 @@ $(document).ready(function(){
                                 <div class="row">
                                   <div class="mb-3">
                                     <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <input name="tkk" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Ciptian Weried Priananda, S.ST., MT">
-                                    <label name="tkk" class="form-control" aria-label="default input example">Ciptian Weried Priananda, S.ST., MT</label>
+                                    <input id="name_tkk" name="tkk" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Ciptian Weried Priananda, S.ST., MT">
+                                    <input id="name_dtkk" name="tkk" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Tidak Memerlukan Dosen TKK">
+                                    <label class="form-control" aria-label="default input example">Ciptian Weried Priananda, S.ST., MT</label>
                                   </div>
                                 </div>
                               </div>
@@ -502,6 +541,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
+                $('.dmagang').show();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', 'ds2');
+                $('#name_py').prop('name',false);
+                $('#name_pbl').prop('name',false);
+                $('#name_tkk').prop('name',false);
+                $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
                 $('#label-file').text("Upload proposal Surat Magang (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
@@ -513,6 +560,14 @@ $(document).ready(function(){
                 $('.judulTA').show();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
+                $('.dmagang').hide();
+                $('.koor').show();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name',false);
+                $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
                 $('#label-file').text("Upload proposal Surat Proyek Akhir (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
@@ -524,6 +579,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').show();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', false);
+                $('#name_pbl').prop('name', 'ds2');
+                $('#name_tkk').prop('name',false);
+                $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
                 $('#label-file').text("Upload proposal Surat PBL (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
@@ -535,6 +598,13 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
                 $('#label-file').text("Upload Dokumen Surat Cuti (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
@@ -545,6 +615,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name',false);
+                $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
                 $('#label-file').text("Upload Dokumen Surat Mengundurkan Diri (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').hide();
@@ -556,6 +634,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name', 'tkk');
+                $('#name_dtkk').prop('name', false);
                 $('.file').show();
                 $('#label-file').text("Upload Dokumen Surat Pengajuan Beasiswa (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').show();
@@ -566,6 +652,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name', 'tkk');
+                $('#name_dtkk').prop('name', false);
                 $('.file').show();
                 $('#label-file').text("Upload Dokumen Surat Keringanan UKT (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').show();
@@ -577,6 +671,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').show();
                 $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name', 'tkk');
+                $('#name_dtkk').prop('name', false);
                 $('.file').show();
                 $('#label-file').text("Upload Dokumen Surat Kegiatan HIMA (Ekstensi File Berupa PDF)");
                 $('.dosenTKK').show();
@@ -587,6 +689,14 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', false);
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name', false);
+                $('#name_dtkk').prop('name', false);
                 $('.file').hide();
                 $('.dosenTKK').hide();
               }
