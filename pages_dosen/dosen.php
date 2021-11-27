@@ -331,7 +331,7 @@
               $tujuan = $data['dosen1'];
               $tujuan2 = $data['dosen2'];
               
-              if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) || ($tujuan == $nama && ($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 )  || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) ) ) {
+              if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) || ($tujuan == $nama)  || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) ) ) {
                 if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter2'])) {
                   $idf = $_POST['filterid'];
                     if (($_SESSION['status'] == 2 && ($data['status_dosen1'] == $idf || $data['status_dosen2'] == $idf || $data['status_dosentkk'] == $idf))) { ?>
@@ -369,7 +369,7 @@
 
                   <!-- status surat -->
             
-                  <?php if (($data['status_dosen1'] == 0 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
+                  <?php if (($data['status_dosen1'] == 0 && $tujuan == $nama) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && $tujuan2 == $nama ) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
                     <td class="align-middle text-center text-sm">
                       <span class="badge badge-sm bg-gradient-secondary">Belum Diproses</span>
                     </td> <?php } else if (($data['status_dosen1'] == 1 && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 1 && $data['dosen2'] == $_SESSION['user'] ) || ($data['status_dosentkk'] == 1 && $_SESSION['status2'] == 1)) { ?>
@@ -382,7 +382,9 @@
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
                     </tr>
-              <?php } }  else { ?>
+              <?php } } 
+              
+              else { ?>
                 <tr>
                    <!-- no -->
                    <td class="text-center"><?php echo $no++ ?></td>
