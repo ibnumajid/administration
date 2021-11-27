@@ -145,7 +145,7 @@
                   <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Surat Masuk</span>
+              <span class="nav-link-text ms-1">Rekap Surat</span>
             </a>
           </li>  
           <?php } ?>
@@ -234,7 +234,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Rekap Mandat</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Rekap Mandat</h6>
+          <h5 class="font-weight-bolder mb-0">Rekap Mandat</h5>
         </nav>
         <!-- <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
