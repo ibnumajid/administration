@@ -306,7 +306,7 @@ include "../_database/config.php";
           
           if ($data['status_dosen1'] == 1){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1`='0' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '0' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
           }
