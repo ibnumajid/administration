@@ -292,10 +292,11 @@ session_start();
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
                 <?php include '../_database/config.php';
-                $no = 1;
+                $no = 0;
+                $no2 = $no++;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_mhsw'] == $_SESSION['user'] && ($data['status_surat'] == 1 || $data['status_kadep'] == 1)) {
+                  if ($data['nama_mhsw'] == $_SESSION['user'] && ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1)) {
                       $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
@@ -437,11 +438,9 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                          <!-- Saat dosen menolak -->
-                         <?php if ($data['status_surat']  == "1") { ?>
-                           <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                         <?php } else if ($data['status_kadep']  == "1") { ?>
-                           <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                         <?php } ?>
+                         <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
+                           <a href="./ubahajuan"><button type="submite" name="update" class="btn bg-gradient-primary">Upload</button></a>
+                        <?php } ?>
                        </div>
 
                        </form>
@@ -463,59 +462,6 @@ session_start();
           </div>
         </div>
 
-                        <!-- php update surat saat dosen menolak -->
-                        <?php
-                include "../_database/config.php";
-                if (isset($_POST['update'])) {
-
-                  $nama_file2 = basename($_FILES['ufl']['name']);
-                  $id3 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url2 = $id3.'_'.$nama_file2;
-
-                  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
-                    $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
-
-                    if ($query2 && $query3) {
-                      echo '<script> alert ("Berhasil di ajukan")</script></a>';
-                      ?>  <script> history.pushState({}, "", "")</script> <?php
-                              } else {
-                                echo '<script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
-
-                <!-- php update surat saat kadep menolak -->
-                <?php
-                include "../_database/config.php";
-                if (isset($_POST['update2'])) {
-
-                  $nama_file3 = basename($_FILES['uflk']['name']);
-                  $id4 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url3 = $id4.'_'.$nama_file3;
-
-                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
-
-                    $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
-                    $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
-
-                    if ($query4 && $query5) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
 
                 <!-- php hapus file -->
                 <?php
@@ -531,8 +477,9 @@ session_start();
 
                     if ($query6) {
                       echo '<script> alert ("Berhasil Menghapus")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
+                ?> <script> history.pushState({}, "", "") </script> 
+                <?php } 
+                    else {
                                 echo '<script> alert ("gagal di ajukan")</script></a>';
                               }
                             }
