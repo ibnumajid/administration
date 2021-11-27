@@ -350,13 +350,10 @@
                           </form> <?php }
 
                           else { ?> 
-                          
-                          <form action="" method="post">
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
                               <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
                             </td>
-                          </form>
+                          
                           <?php } ?>
                   <!-- status -->
                   <td>
