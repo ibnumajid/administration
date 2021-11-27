@@ -214,8 +214,8 @@ session_start();
 
               <!-- Slide kedua -->
               <div class="carousel-item">
-                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
-                  <span class="mask bg-gradient-dark"></span>
+                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                  <!-- <span class="mask bg-gradient-dark"></span> -->
                   <div class="container">
                     <div class="row">
                     <div class="pb-3 px-7">
@@ -246,15 +246,15 @@ session_start();
 
               <!-- SLIDE SATU -->
               <div class="carousel-item active">
-                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1546448396-6aef80193ceb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80');">
-                  <span class="mask bg-gradient-dark"></span>
+                <div class="page-header min-vh-25 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                  <!-- <span class="mask bg-gradient-dark"></span> -->
                   <div class="container">
                     <div class="row">
                       <div class="p-3 p-3">
                         <h4 class="text-white p-1 px-7"> </h4>
                         <h1 class="text-white p-0 px-7">Selamat Datang</h1>
                         <h4 class="text-white p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
-                        <a href="./2040201062_Kelompok 1_Tugas KWN.pdf" target="_blank" class="pb-5 px-7">
+                        <!-- <a href="./PANDUAN PENGGUNAAN SIM DTEO.pdf" target="_blank" class="pb-5 px-7"> -->
                           <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
                         </a>
                       </div>
