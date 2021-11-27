@@ -197,7 +197,7 @@ include "../_database/config.php";
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php }
 
-                        else if ($data['perihal'] == "Surat Tugas Akhir") { ?>
+                        else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Industri Tempat Melakukan TA</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
