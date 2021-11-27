@@ -253,7 +253,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               
 
-              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
+              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary">Close</button></a>
               <?php if ($data['status_kadep'] == 1){ ?>
                 <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Ubah</button>
                 <?php } 
