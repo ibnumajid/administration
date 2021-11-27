@@ -393,10 +393,10 @@
                       
                     else { ?> 
                      <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $data['id_no'] ?></td>
-                        <td><?php echo $data['perihal'] ?></td>
-                        <td><?php echo $data['keterangan'] ?></td>
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td class="text-left ps-1"><?php echo $data['id_no'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
                        <!-- status proses tugas  -->
                     <?php if ($data['proses_tugas'] == 0) {?>
                       <td class="align-middle text-left text-sm">
