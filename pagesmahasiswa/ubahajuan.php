@@ -213,9 +213,9 @@ include "../_database/config.php";
                           <label for="formFile" class="form-label">Nama Tempat PBL</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php } else if ($data['perihal'] == "Surat Cuti") { ?>
-                          <!-- Keterangan Tambahan -->
+                          <!-- Keterangan Tambahan --> 
                           <label for="formFile" class="form-label">Lama Waktu Cuti (*Dalam Semester)</label>
-                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan">
                         <?php } else if ($data['perihal'] == "Surat Pengajuan Beasiswa") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Beasiswa</label>
