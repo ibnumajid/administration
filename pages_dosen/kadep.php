@@ -311,7 +311,7 @@
                  
                  while ($data = mysqli_fetch_array($query)) {
                  
-                     if ($data['status_kadep'] == 0 && $data['status_surat'] == 2) {?>
+                     if ($data['status_kadep'] == 0 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) {?>
                
                <tr>
                  <!-- no -->
