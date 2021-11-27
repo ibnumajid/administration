@@ -301,7 +301,6 @@ session_start();
                       <div class="d-flex flex-column">
                         <h6 class="mb-3 text-sm"> <?php echo $data['file'] ?> </h6>
                         <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['progres'] ?></span></span>
-                        <span class="mb-2 text-xs">Dosen yang Dituju : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['dosen_pembimbing'] ?></span></span>
                         <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
                       </div>
                       <div class="ms-auto text-end">

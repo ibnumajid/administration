@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['user'] == '') {
-  header("location:../index.php");
+  header("location:index.php");
 }
 ?>
 
@@ -37,7 +37,7 @@ include "../_database/config.php";
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
+        <span class="ms-1 font-weight-bold">Sistem Administrasi Mahasiswa</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -194,46 +194,46 @@ include "../_database/config.php";
                         <?php if ($data['perihal'] == "Surat Magang") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Tempat Magang</label>
-                          <input type="text" class = "form-control" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php }
 
                         else if ($data['perihal'] == "Surat Tugas Akhir") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Industri Tempat Melakukan TA</label>
-                          <input type="text" class = "form-control" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
 
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Rencana Judul</label>
                           <input type="text" class = "form-control" placeholder = "<?php echo $data['judul_ta'] ?>">
-                          <input type="text" class = "form-control" value = "<?php echo $data['judul_ta'] ?>">
+                          <input type="text" class = "form-control" name = "jdl_ta" value = "<?php echo $data['judul_ta'] ?>">
 
                         <?php } 
                         
                         else if ($data['perihal'] == "Surat PBL (Project Based Learning)") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Tempat PBL</label>
-                          <input type="text" class = "form-control" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php } else if ($data['perihal'] == "Surat Cuti") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Lama Waktu Cuti (*Dalam Semester)</label>
-                          <input type="text" class = "form-control" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php } else if ($data['perihal'] == "Surat Pengajuan Beasiswa") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Beasiswa</label>
-                          <input type="text" class = "form-control" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php } else if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Kegiatan</label>
-                          <input type="text" class = "form-control" value = "<?php echo $data['keterangan'] ?>">
+                          <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                           <!-- Keterangan Tambahan -->
                           <div class="row">
                                 <div class="form-group col-md-2 text-center">
                                   <label for="formFile" class="form-label">Tanggal Mulai</label>
-                                  <input type="date" class = "form-control" value = "<?php echo $data['tgl_hima1'] ?>">
+                                  <input type="date" class = "form-control" name = "tgl1" value = "<?php echo $data['tgl_hima1'] ?>">
                                 </div>
                                 <div class="form-group col-md-2 text-center">
                                   <label for="formFile" class="form-label">Tanggal Selesai</label>
-                                  <input type="date" class = "form-control" value = "<?php echo $data['tgl_hima2'] ?>">
+                                  <input type="date" class = "form-control" name = "tgl2" value = "<?php echo $data['tgl_hima2'] ?>">
                                 </div>
                           </div>
                           <div>
@@ -253,10 +253,9 @@ include "../_database/config.php";
                   </div>
                   <!-- button upload close -->
               
-                  <div class = "mx-4">
-              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button></a>
+
+              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
                 <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button>
-                </div>
               </form>
               </div>
             </div>
@@ -280,6 +279,11 @@ include "../_database/config.php";
         $ukuran = $_FILES['fl']['size'];
         $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
         
+        $ket = $_POST['keterangan'];
+        $jdlta = $_POST['jdl_ta'];
+        $tgl1 = $_POST['tgl1'];
+        $gl2 = $_post['tgl2'];
+
         $max = 1024 * 5000;
         $ekstensi = "pdf";
         $url = $id.'_'.$nama_file;
@@ -304,15 +308,22 @@ include "../_database/config.php";
           else if ($data['status_dosen1'] == 1){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1`='0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
           }
           else if ($data['status_dosen2'] == 1){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
           }
           else if ($data['status_dosentkk'] == 1){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk`='0' WHERE id_no = '$id' ");
-            }
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl1' WHERE id_no = '$id' ");
+          $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl2' WHERE id_no = '$id' ");
+          }
           
           if ($query && $query2) {
             ?><script><?php $_SESSION['sukses'] = true;?></script> 
@@ -336,6 +347,7 @@ include "../_database/config.php";
           
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$nama_file2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           if ($query && $query2) {
             ?><script><?php $_SESSION['sukses'] = true;?></script> 
             <script>history.pushState({}, "", "")</script><?php
