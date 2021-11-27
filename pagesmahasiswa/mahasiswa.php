@@ -397,7 +397,7 @@ session_start();
 
                      
                        <div class="modal-body">
-                         <form action="" method="post" enctype="multipart/form-data">
+                         
                            <div class="card-header pb-0 p-3">
                              <div class="row">
                                <div class="mb-3">
@@ -438,12 +438,11 @@ session_start();
 
                          <!-- Saat dosen menolak -->
                          <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
-                           <a href="./ubahajuan"><button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button></a>
+                           <a href="./ubahajuan"><button type="button" >Ubah</button></a>
                         <?php } ?>
                        </div>
 
-                       </form>
-
+                      
                      </div>
                      </div>
                      </div>
