@@ -248,9 +248,29 @@ $(document).ready(function(){
                         {
                           if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
                             $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+                            if($query)
+                            {
+                            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+                            <script>history.pushState({}, "", "")</script><?php
+                            }
+                            else
+                            {
+                            ?><script><?php $_SESSION['input'] = true;?></script> 
+                            <script>history.pushState({}, "", "")</script><?php
+                            }
                           }
                           else if ($perihal == "Surat Cuti" || $perihal == "Surat Mengundurkan Diri") {
                             $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '2', '$dosen2', '2', '$dosen_tkk', '2', '0', '0', '$tgl_h1', '$tgl_h2', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+                            if($query)
+                            {
+                            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+                            <script>history.pushState({}, "", "")</script><?php
+                            }
+                            else
+                            {
+                            ?><script><?php $_SESSION['input'] = true;?></script> 
+                            <script>history.pushState({}, "", "")</script><?php
+                            }
                           }
                           else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
                             $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '9', '$dosen2', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
