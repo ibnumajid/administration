@@ -254,7 +254,11 @@ include "../_database/config.php";
               
 
               <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
-                <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button>
+              <?php if ($data['status_kadep'] == 1){ ?>
+                <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Ubah</button>
+                <?php } 
+                else { ?> 
+               <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button> }
               </form>
               </div>
             </div>
