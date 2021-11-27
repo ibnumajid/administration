@@ -438,7 +438,12 @@ session_start();
 
                          <!-- Saat dosen menolak -->
                          <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
-                           <a href="./ubahajuan.php"><button type="button" class = "btn bg-gradient-primary">Ubah</button></a>
+                         <form action = "./ubahajuan.php" method = "post">
+                         <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                         <button class ="btn btn-primary">Ubah</button>
+                         </form>
+                                         
                         <?php } ?>
                        </div>
 
