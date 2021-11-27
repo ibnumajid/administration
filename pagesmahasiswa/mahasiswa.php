@@ -201,8 +201,8 @@ session_start();
                   <div class="container">
                     <div class="row">
                     <div class="pb-5 px-7">
-                        <h4 class="text-white pb-10 px-0">Infirmasi</h4>
-                        <h1 class="text-white fadeIn2 fadeInBottom">kiww</h1>
+                        <h4 class="text-dark pb-10 px-0">Infirmasi</h4>
+                        <h1 class="text-dark fadeIn2 fadeInBottom">kiww</h1>
                           <div class="btn bg-gradient-info">
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
                           </div>
@@ -219,7 +219,7 @@ session_start();
                   <div class="container">
                     <div class="row">
                     <div class="pb-3 px-7">
-                      <h4 class="text-white p-1 px-0">Informasi</h4>
+                      <h4 class="text-dark p-1 px-0">Informasi</h4>
                       <figure>
                       <?php 
                     include "../_database/config.php";
@@ -231,9 +231,9 @@ session_start();
                       { $no++
                         ?>
                         <blockquote class="blockquote ps-0">
-                          <p class="ps-3 text-white"><?=$data['perihal']?></p>
+                          <p class="ps-3 text-dark"><?=$data['perihal']?></p>
                         </blockquote>
-                        <figcaption class="blockquote-footer ps-3 text-white">
+                        <figcaption class="blockquote-footer ps-3 text-dark">
                           <?=$data['keterangan']?>
                         </figcaption>
                         <?php }} ?>
@@ -251,11 +251,11 @@ session_start();
                   <div class="container">
                     <div class="row">
                       <div class="p-3 p-3">
-                        <h4 class="text-white p-1 px-7"> </h4>
-                        <h1 class="text-white p-0 px-7">Selamat Datang</h1>
-                        <h4 class="text-white p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
-                        <!-- <a href="./PANDUAN PENGGUNAAN SIM DTEO.pdf" target="_blank" class="pb-5 px-7"> -->
-                          <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
+                        <h4 class="text-dark p-1 px-7"> </h4>
+                        <h1 class="text-dark p-0 px-7">Selamat Datang</h1>
+                        <h4 class="text-dark p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
+                        <a href="./PANDUAN PENGGUNAAN SIM DTEO.pdf" target="_blank" class="pb-5 px-7">
+                        <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
                         </a>
                       </div>
                     </div>
