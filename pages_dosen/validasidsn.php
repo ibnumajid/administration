@@ -390,7 +390,7 @@
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                        <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                       </td>
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
@@ -439,7 +439,7 @@
                           </td>
                           <!-- tanggal -->
                           <td class="align-middle text-center">
-                            <span class="text-secondary text-xs font-weight-bold "><?php echo $data['tanggal'] ?></span>
+                            <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                           </td>
                           <!-- status surat -->
                             <?php if ($data['status_kadep'] == 0) {?>
