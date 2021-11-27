@@ -308,13 +308,13 @@ include "../_database/config.php";
         <script>history.pushState({}, "", "")</script><?php
         }  
           
-          if ($data['status_dosen1'] == 1 && $data['dosen1'] == $_SESSION['user']){
+          if ($data['status_dosen1'] == '1'){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '0' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
           }
-          else if ($data['status_dosen2'] == 1 && $data['dosen2'] == $_SESSION['user']){
+          else if ($data['status_dosen2'] == '1' && $data['dosen1'] == '2'){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='0' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
