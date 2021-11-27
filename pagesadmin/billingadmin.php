@@ -365,7 +365,7 @@
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
                               <!-- perihal -->
-                              <td> <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6></td>
+                              <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
                               <!-- status surat -->
                               <?php if ($data['status_admin'] == 0) {?>
                               <td class="align-middle text-center text-sm">
