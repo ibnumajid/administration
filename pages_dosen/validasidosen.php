@@ -388,7 +388,7 @@ include "../_database/config.php";
           $status = $_POST['ss'];
 
 
-          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan2' WHERE id_no = '$id' ");
+          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan_kadep`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
           if ($query && $query2) {
             ?><script>
