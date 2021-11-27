@@ -510,7 +510,7 @@ session_start();
                   
                                                 <div class="modal-body">
                   
-                                                <form action="" method="post" enctype="multipart/form-data">
+                                                
                                                     <div class="card-header pb-0 p-3">
                                                       <div class="row">
                                                         <div class="mb-3">
@@ -531,12 +531,7 @@ session_start();
                                                           <!-- Input ID untuk memberikan identitas surat -->
                                                           <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
                   
-                                                          <!-- Ubah File saat ditolak filenya -->
-                                                           <?php if ($data['status_kadep'] == "1") { ?>
-                                                            <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                                            <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                                            <input type="hidden" name="stats2" value= "0">
-                                                          <?php } ?>
+                                                       
                   
                   
                                                           <div class="modal-footer">
@@ -544,7 +539,7 @@ session_start();
                   
                                                             <!-- Saat dosen menolak -->
                                                             <?php if ($data['status_kadep'] == 1) { ?>
-                         <form action = "./ubahajuantdk.php" method = "post">
+                         <form action = "../ubahajuantdk.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-primary">Ubah</button>
@@ -552,7 +547,7 @@ session_start();
                                          
                         <?php } ?>
                                                             </div>
-                                                          </form>
+                                                          
 
                                    <?php } } } ?>
 

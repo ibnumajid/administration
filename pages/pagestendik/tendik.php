@@ -464,7 +464,7 @@ session_start();
 
                          <!-- Saat dosen menolak -->
                          <?php if ($data['status_kadep'] == 1) { ?>
-                         <form action = "./ubahajuantdk.php" method = "post">
+                         <form action = "../ubahajuantdk.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-primary">Ubah</button>
