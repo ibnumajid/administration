@@ -333,8 +333,7 @@
               if (strpos($tujuan, $nama) !== false ) {
                 if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
                   $idf = $_POST['filterid'];
-                    if (($_SESSION['status'] == 5 && $data['status_kadep'] == $idf) || ($_SESSION['status'] == 2 && ($data['status_dosen1'] == $idf || $data['status_dosen2'] == $idf 
-                    | $data['status_dosentkk'] == $idf))) { ?>
+                    if (($_SESSION['status'] == 2 && ($data['status_dosen1'] == $idf || $data['status_dosen2'] == $idf || $data['status_dosentkk'] == $idf))) { ?>
               
                 <?php $id = $data['id_no'] ?>
                 <tr>
