@@ -23,6 +23,7 @@
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -369,19 +370,33 @@
                             <div class="card-header pb-0 p-3">
                               <div class="row">
                                 <div class="mb-3">
-                                  <!-- nama mahasiswa -->
                                   <label for="formFile" class="form-label">Nama Dosen</label>
                                   <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['dosen_koor'] ?></label>
-                                  <!-- progres -->
-                                  <label for="formFile" class="form-label">Mandat</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
-                                  <!-- progres -->
-                                  <label for="formFile" class="form-label">Perihal</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                                  <!-- progres -->
-                                  <label for="formFile" class="form-label">Waktu dan Tempat</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan2'] ?></label>
-                                  <!-- file surat -->
+                                      
+                                      <div class="row">
+                                          <div class="form-group col-md-6">
+                                            <label for="formFile" class="form-label">Mandat</label>
+                                            <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="formFile" class="form-label">Perihal</label>
+                                            <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                          </div>
+                                      </div>
+                                  
+                                     
+                                      <div class="row">
+                                          <div class="form-group col-md-6">
+                                            <label for="formFile" class="form-label">Tempat</label>
+                                            <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan2'] ?></label>
+                                          </div>
+                                          <div class="form-group col-md-6">
+                                            <label for="formFile" class="form-label">Tanggal</label>
+                                            <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pelaksana'] ?></label>
+                                          </div>
+                                      </div>
+                                  
+                                  
                                   <label for="formFile" class="form-label">Lihat File</label>
                                   <a href="./mandat/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
@@ -392,10 +407,10 @@
                                   <label for="formFile" class="form-label">Apakah Anda Ingin Menyetujui Mandat Ini ?</label>
                                   <div class="form-check">
                                   <input type="radio" class="btn-check" name="ss" id="success-outlined" value = "3" autocomplete="off">
-                                  <label class="btn btn-outline-success" for="success-outlined">Setujui</label>
+                                  <label class="btn btn-sm btn-outline-success" for="success-outlined">Setujui</label>
                                  
                                   <input type="radio" class="btn-check" name="ss" id="danger-outlined" value = "1" autocomplete="off">
-                                  <label class="btn btn-outline-danger" for="danger-outlined">Tolak</label>        
+                                  <label class="btn btn-sm btn-outline-danger" for="danger-outlined">Tolak</label>        
                                   </div>
                                         <!-- Menginput catatan -->
                                         <div>
@@ -447,10 +462,12 @@
                      $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `catatan`='$catatan2' WHERE id_no = '$id' ");
                      $query2 = mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas`='$status' WHERE id_no = '$id' ");
                      if($query && $query2){
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Berhasil merespon")</script></a>';
+                      ?><script> <?php $_SESSION['sukses'] = true; ?> </script>
+                      <script>history.pushState({}, "", "") </script><?php
                      }
                      else {
-                       echo '<a href="../pages_dosen/validasisurat.php"><script> alert ("Gagal merespon")</script></a>';
+                      ?><script> <?php $_SESSION['input'] = true; ?> </script>
+                      <script>history.pushState({}, "", "") </script><?php
                      }
                    }?>  
                    
@@ -482,6 +499,33 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil merespon',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal merespon',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
 </body>
 
 </html>
