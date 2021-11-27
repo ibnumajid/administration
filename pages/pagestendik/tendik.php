@@ -191,13 +191,13 @@ session_start();
     <!-- End Navbar -->
 
 
-    <div class="container-fluid py-4">
+    <!-- <div class="container-fluid py-4">
           <div class="row">
             <div class="col-lg-7">
               <div class="row">
-                <!---->
+               
                 
-                <div class="col-md-12 mb-lg-0 mb-4">
+                 <div class="col-md-12 mb-lg-0 mb-4">
                   <div class="card mt-0">
                     <div class="card-header pb-0 p-4">
                       <div class="row">
@@ -272,7 +272,7 @@ session_start();
                     </div>
                     <div class="col-6 text-end">
 
-                    <!-- untuk bagian surat masuk bagian tendik masih sama dengan dosen -->
+                    <!-- untuk bagian surat masuk bagian tendik masih sama dengan dosen 
                       <a href = ./rekapsurat.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                     </div>
                   </div>
@@ -313,7 +313,7 @@ session_start();
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
 
                        <!-- Bagian Detail Permohonan Surat -->
