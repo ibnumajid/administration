@@ -270,7 +270,8 @@ $(document).ready(function(){
                         $perihal = $_POST['sr'];
                         $keterangan = $_POST['keterangan'];
                         $keterangan2 = $_POST['keterangan2'];
-                        $dosen1 = $_POST['ds1'];
+                        $tanggal=$_POST['tanggal'];
+                        $dosen = $_POST['dosen'];
                         $nama_file = basename($_FILES['fl']['name']);
                         $ukuran = $_FILES['fl']['size'];
                         $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
@@ -282,7 +283,7 @@ $(document).ready(function(){
 
                         $url = $id.'_'.$nama_file;
                         
-                        if ($keterangan == NULL || $keterangan2 == NULL || $nama_file == NULL){ 
+                        if ($keterangan == NULL || $keterangan2 == NULL || $nama_file == NULL || $tanggal == NULL || $dosen == NULL){ 
                             ?><script><?php $_SESSION["isisemua"] = true;?></script> 
                             <script>history.pushState({}, "", "")</script><?php 
                           }
@@ -303,9 +304,9 @@ $(document).ready(function(){
                         ?><script><?php $_SESSION['pdf'] = true ?></script> 
                         <script>history.pushState({}, "", "")</script><?php
                         }  
-                        else if (move_uploaded_file($_FILES['fl']['tmp_name'], $target.$url)) 
+                        else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
                         {
-                            $query = mysqli_query($koneksi,"INSERT into ajukankadep values('', '$url', '', '$dosen1', '$perihal','$keterangan','$keterangan2', '0', '', sysdate())");
+                            $query = mysqli_query($koneksi,"INSERT into ajukankadep values('', '$url', '', '$dosen', '$tanggal', '$perihal','$keterangan','$keterangan2', '0', '', sysdate())");
 
                             if($query)
                             {
@@ -320,9 +321,8 @@ $(document).ready(function(){
                         }
                         else 
                         {
-                         
-                          echo '<script> alert("Terjadi Kesalahan yang Tidak Diketahui")</script>';
-                         
+                          ?><script><?php $_SESSION['gagal'] = true;?></script> 
+                          <script>history.pushState({}, "", "")</script><?php
                         }
                         
                         }
@@ -361,24 +361,16 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
-                            <!-- keterangan -->
+                            <!-- Keterangan -->
                             <div class="keterangan" style="display: none;">
-                              <div class="card-header pb-0 p-3">
+                              <div class="card-header pb-0 p-3">    
                                   <div class="row">
-                                      <div class="mb-3">
-                                          <label  id="label-keterangan" for="formFile" class="form-label">Nama Perusahaan</label>
+                                      <div class="form-group col-md-6">
+                                          <label id="label-keterangan" for="formFile" class="form-label">Perihal Rapat</label>
                                           <input name="keterangan" class="form-control" type="text" aria-label="default input example" >
                                       </div>
-                                  </div>
-                              </div>
-                            </div>
-
-                             <!-- Keterangan Tambahan -->
-                             <div class="ketTA" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label  id="label-keterangan2" for="formFile2" class="form-label">Rencana Judul</label>
+                                      <div class="form-group col-md-6">
+                                          <label id="label-keterangan2" for="formFile" class="form-label">Tempat Rapat</label>
                                           <input name="keterangan2" class="form-control" type="text" aria-label="default input example" >
                                       </div>
                                   </div>
@@ -386,40 +378,24 @@ $(document).ready(function(){
                             </div>
 
                             <!-- dosen -->
-                            <div class="dosen" style="display: none;">
+                            <div class="tanggal" style="display: none;">
                               <div class="card-header pb-0 p-3">    
                                 <div class="row">
-                                    <div class="form-group col-md-6">
-                                      <label for="formFile" class="form-label">Dosen Koordinator </label>
-                                          <select name="ds1"  class="form-select" aria-label="Default select example" >
-                                              <option selected>Pilih Dosen Koordinator </option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
-                                    </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <!-- dosen tkk -->
-                            <div class="dosenTKK" style="display: none;">
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                  <div class="mb-3">
-                                    <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <select name="tkk"  class="form-select" aria-label="Default select example" >
-                                      <option selected>Pilih Dosen TKK</option>
-                                      <?php
-                                      include '../_database/config.php';
-                                      $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                      while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                      <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                       <?php } ?>
-                                    </select>
+                                  <div class="form-group col-md-6">
+                                    <label id="label-tanggal" for="formFile" class="form-label">Tanggal Rapat</label>
+                                    <input name="tanggal" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="formFile" class="form-label">Dosen Koordinator </label>
+                                        <select name="dosen"  class="form-select" aria-label="Default select example" >
+                                            <option selected>Pilih Dosen Koordinator </option>
+                                            <?php
+                                            include '../_database/config.php';
+                                            $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
+                                            while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                            <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                   </div>
                                 </div>
                               </div>
@@ -430,7 +406,7 @@ $(document).ready(function(){
                               <div class="card-header pb-0 p-3">
                                   <div class="row">
                                       <div class="mb-3">
-                                          <label id ="label-file" for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
+                                          <label id ="label-file" for="formFile" class="form-label">Masukkan File untuk Memberikan Mandat Melakukan Rapat</label>
                                           <input type="file" id="file" name="fl" class="form-control" aria-label="file example" >
                                           <div class="invalid-feedback">Example invalid form file feedback</div>
                                       </div>
@@ -555,92 +531,51 @@ $(document).ready(function(){
         </script>
     <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['gagal']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Terjadi Kesalahan yang Tidak Diketahui',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['gagal']); ?>
+    <?php endif; ?>
     
     <script>
         $('#jenis_surat').on('change',function () {
             if($('#jenis_surat').val() == 'Rapat') {
                 $('.keterangan').show();
-                $('#label-keterangan').text("Perihal Rapat");
-                $('.ketTA').show(); 
-                $('#label-keterangan2').text("Tempat dan Tanggal Rapat");
-                $('.tanggalHIMA').hide();
-                $('.dosen').show();
+                $('.tanggal').show();
                 $('.file').show();
                 $('#label-file').text("Masukkan File untuk Memberikan Mandat Melakukan Rapat");
-                $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Workshop') {
                 $('.keterangan').show();
                 $('#label-keterangan').text("Perihal Workshop");
-                $('.ketTA').show();
-                $('#label-keterangan2').text("Tempat dan Tanggal Workshop");
-                $('.tanggalHIMA').hide();
-                $('.dosen').show();
+                $('#label-keterangan2').text("Tempat Workshop");
+                $('.tanggal').show();
+                $('#label-tanggal').text("Tanggal Workshop");
                 $('.file').show();
                 $('#label-file').text("Masukkan File untuk Memberikan Mandat Melakukan Workshop");
-                $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Kunjungan') {
                 $('.keterangan').show();
-                $('#label-keterangan').text("Perihal Workshop");
-                $('.ketTA').show();
-                $('#label-keterangan2').text("Tempat dan Tanggal Kunjungan");
-                $('.tanggalHIMA').hide();
-                $('.dosen').show();
+                $('#label-keterangan').text("Perihal Kunjungan");
+                $('#label-keterangan2').text("Tempat Kunjungan");
+                $('.tanggal').show();
+                $('#label-tanggal').text("Tanggal Kunjungan");
                 $('.file').show();
                 $('#label-file').text("Masukkan File untuk Memberikan Mandat Melakukan Kunjungan");
-                $('.dosenTKK').hide();
               } 
-            else if($('#jenis_surat').val() == 'Surat Cuti') {
-                $('.keterangan').show();
-                $('#label-keterangan').text("Lama Waktu Cuti (*Satu semester)");
-                $('.judulTA').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.file').show();
-                $('.dosenTKK').hide();
-              }
-            else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
-                $('.keterangan').hide();
-                $('.judulTA').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.file').show();
-                $('.dosenTKK').hide();
-              }
-            else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Beasiswa");
-                $('.judulTA').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.file').show();
-                $('.dosenTKK').show();
-              }
-            else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
-                $('.keterangan').hide();
-                $('.judulTA').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.file').show();
-                $('.dosenTKK').show();
-              }
-            else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Kegiatan");
-                $('.judulTA').hide();
-                $('.tanggalHIMA').show();
-                $('.dosen').hide();
-                $('.file').show();
-                $('.dosenTKK').show();
-              }
             else {
                 $('.keterangan').hide();
-                $('.judulTA').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
+                $('.tanggal').hide();
                 $('.file').hide();
-                $('.dosenTKK').hide();
               }
         });
     </script>
