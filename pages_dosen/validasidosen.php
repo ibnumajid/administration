@@ -386,10 +386,21 @@ include "../_database/config.php";
           $catatan2 = $_POST['catatan2'];
           $id = $_POST['id'];
           $status = $_POST['ss'];
+          $jml = $data['jumlah_barang'];
+          $namab = $data['nama_barang'];
+          $namal = $data['nama_lab'];
+          $tgl1 = $data['tgl_pel1'];
+          $tgl2 = $data['tgl_pel2'];
 
 
           $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan_kadep`='$catatan2' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `jumlah_barang`='$jml' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_barang`='$namab' WHERE id_no = '$id' ");
+          $query5 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_lab`='$namal' WHERE id_no = '$id' ");
+          $query6 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel1`='$tgl1' WHERE id_no = '$id' ");
+          $query7 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel2`='$tgl2' WHERE id_no = '$id' ");
+       
           if ($query && $query2) {
             ?><script>
             <?php $_SESSION['sukses'] = true; ?> </script>
