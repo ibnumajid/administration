@@ -2,7 +2,7 @@
   session_start();
   if($_SESSION['user']=='')
   {
-        header("location:index.php");
+        header("location:../index.php");
     }
   ?>
 
@@ -249,7 +249,7 @@
                                   <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
                                  
                                   <?php if ($data['perihal'] == "Surat Tugas") { ?>
-                                    
+
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Keterangan</label>
                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>

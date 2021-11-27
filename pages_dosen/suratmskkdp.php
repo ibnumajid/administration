@@ -3,7 +3,7 @@
   
   if($_SESSION['user']== '' )
     {
-        header("location:home.php");
+        header("location:../index.php");
   }
 ?>
 
