@@ -180,22 +180,22 @@ session_start();
                     include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                     $no = 0;
                     $no2 = $no++;
-                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ORDER BY id_no DESC' );
                     while ($data = mysqli_fetch_array($query)) {
 
                     //   $tujuan = $data['nama_mhs']; nama tendik masih belum ada
 
                       if (strpos($tujuan, $_SESSION['user']) !== false) {
-                          $no++
+                         
                     ?>
                         <tr>
                           <td class="text-center"><?php echo $no++ ?></td>
                           <td class="text-left ps-1"><?php echo $data['nama'] ?></td>
-                          <td class="text-center"><?php echo $data['nomor'] ?></td>
+                          <td class="text-center"><?php echo $data['id_no'] ?></td>
                           <td class="text-center"><?php echo $data['tanggal'] ?></td>
                           <td> 
                             <div class="text-center">
-                              <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                              <a href="../../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
                               <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['dokumen'] ?></em></button></p>
                             </div>
                           </td>
