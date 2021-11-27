@@ -22,6 +22,7 @@ include "../_database/config.php";
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <!-- Nucleo Icons -->
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -349,90 +350,45 @@ include "../_database/config.php";
                                 </div>
                             </div>
                         </div>
+                        <?php
+
+                        $id = $_POST['id'];
+                        include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+
+                        $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
+                        $data = mysqli_fetch_array($query); {?>
 
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
-
-                                <?php
-
-                                $id = $_POST['id'];
-                                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-
-                                $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
-                                $data = mysqli_fetch_array($query);
-
-                                include '../_database/config.php';
-                                if (isset($_POST['updatekdp'])) {
-                                    $id = $_POST['id'];
-                                    $nama_file = basename($_FILES['fl']['name']);
-                                    $ukuran = $_FILES['fl']['size'];
-                                    $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
-                
-                                    $max = 1024 * 5000;
-                                    $ekstensi = "pdf";
-                
-                
-                                    $url = $id . '_' . $nama_file;
-                
-                
-                                    if ($ukuran > $max && $tipe !== $ekstensi) {
-                                ?><script>
-                                            <?php $_SESSION["pdfuk"] = true; ?>
-                                        </script>
-                                        <script>
-                                            history.pushState({}, "", "")
-                                        </script><?php
-                                                } else if ($ukuran > $max) {
-                                                    ?><script>
-                                                    <?php $_SESSION["pdfuk"] = true; ?>
-                                                </script>
-                                                <script>
-                                                    history.pushState({}, "", "")
-                                                </script><?php
-                                                } else if ($tipe != $ekstensi && $tipe != NULL) {
-                                                    ?><script>
-                                            <?php $_SESSION['pdf'] = true ?> </script>
-                                        <script>history.pushState({}, "", "") </script><?php
-                                                } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
-                                                    $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `laporan` = '$url' WHERE id_no = '$id'");
-                                                    $query2 =  mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas` = '2' WHERE id_no = '$id'");
-                
-                                                    if ($query2) {
-                                                        ?><script>
-                                                <?php $_SESSION['sukses'] = true; ?> </script>
-                                            <script>history.pushState({}, "", "") </script><?php
-                                                    } else {
-                                                        ?><script>
-                                                <?php $_SESSION['input'] = true; ?> </script>
-                                            <script>history.pushState({}, "", "") </script><?php
-                                                    }
-                                                } else {
-                
-                                                    echo "Gagal Upload";
-                                                }
-                                            }
-                
-                                                      
-
-                                ?>
-
                                 <form action="" method="post" enctype="multipart/form-data">
                                     <div class="card-header pb-0 p-3">
                                         <div class="row">
                                             <div class="mb-3">
-                                                <!-- nama mahasiswa -->
                                                 <label for="formFile" class="form-label">Nama Dosen</label>
                                                 <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['dosen_koor'] ?></label>
-                                                <!-- progres -->
-                                                <label for="formFile" class="form-label">Mandat</label>
-                                                <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
-                                                <!-- progres -->
-                                                <label for="formFile" class="form-label">Perihal</label>
-                                                <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                                                <!-- progres -->
-                                                <label for="formFile" class="form-label">Waktu dan Tempat</label>
-                                                <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan2'] ?></label>
-                                                <!-- file surat -->
+                                      
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="formFile" class="form-label">Mandat</label>
+                                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="formFile" class="form-label">Perihal</label>
+                                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                                    </div>
+                                                </div>
+                                            
+                                                
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="formFile" class="form-label">Tempat</label>
+                                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan2'] ?></label>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="formFile" class="form-label">Tanggal</label>
+                                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pelaksana'] ?></label>
+                                                    </div>
+                                                </div>
                                                 <label for="formFile" class="form-label">Kirim Laporan</label>
                                                 <input type="file" name = "fl" class="form-control" aria-label="file example">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
@@ -445,15 +401,46 @@ include "../_database/config.php";
                                         </div>
                                     </div>
                                 
+                                <a href = "./rekapmndt.php"><button class="btn bg-gradient-secondary" >Kembali</button></a>
                                  <button type="submit" name="updatekdp" class="btn bg-gradient-primary">Respon</button>   
                                 </form>
-                                <a href = "./rekapmndt.php"><button class="btn bg-gradient-secondary" >Kembali</button></a>
+                                <?php } ?>
                                 
                             </div>
                         </div>
                     </div>
                 </div>
+                <?php
+                include '../_database/config.php';
+                if (isset($_POST['updatekdp'])) {
+                $id = $_POST['id'];
+                $nama_file = basename($_FILES['fl']['name']);
+                $ukuran = $_FILES['fl']['size'];
+                $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+                $ekstensi = "pdf";
+                $url = $id . '_' . $nama_file;
 
+                if ($tipe != $ekstensi)
+                { 
+                ?><script><?php $_SESSION['pdf'] = true ?></script> 
+                <script>history.pushState({}, "", "")</script><?php
+                } 
+                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
+                $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `laporan` = '$url' WHERE id_no = '$id'");
+                $query2 =  mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas` = '2' WHERE id_no = '$id'");
+                if ($query2) {
+                ?><script><?php $_SESSION['sukses'] = true; ?></script>
+                <script>history.pushState({}, "", "") </script><?php
+                } 
+                else {
+                ?><script><?php $_SESSION['input'] = true; ?></script>
+                <script>history.pushState({}, "", "") </script><?php
+                }
+                } 
+                else {
+                    echo "Gagal Upload";
+                    }
+                } ?>
               
 
 
@@ -466,6 +453,27 @@ include "../_database/config.php";
 
 
     </main>
+    
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if (@$_SESSION['sukses']) : ?>
         <script>
             Swal.fire({
@@ -477,32 +485,6 @@ include "../_database/config.php";
             })
         </script>
         <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
-
-    <?php if (@$_SESSION['updf']) : ?>
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: 'Ukuran Tidak Boleh Melebihi 5 mb dan Ekstensi Harus PDF',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        </script>
-        <?php unset($_SESSION['updf']); ?>
-    <?php endif; ?>
-
-    <?php if (@$_SESSION['uk']) : ?>
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'warning',
-                title: 'Ukuran Tidak Boleh Melebihi 5 mb',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        </script>
-        <?php unset($_SESSION['uk']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -532,25 +514,6 @@ include "../_database/config.php";
         </script>
         <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
-
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
-                damping: '0.5'
-            }
-            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 </body>
 
 </html>
