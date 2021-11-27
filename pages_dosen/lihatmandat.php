@@ -427,7 +427,7 @@
                          
                             </div>
                             <div class = "mx-4">
-                            <a href = "./rekapmndt.php"><button class="btn bg-gradient-secondary" >Kembali</button></a>
+                            <a href = "./rekapmndt.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
                             <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Respon</button>
                             </div>
                            

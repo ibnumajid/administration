@@ -425,7 +425,7 @@ $(document).ready(function(){
 
                             <br><br>
                             <div class="modal-footer">
-                                <button type="button" class="btn bg-gradient-secondary" >Batal</button>
+                            <a href = "./permohonandosen.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
                                 <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
                             </div>
                         </form>
