@@ -222,7 +222,7 @@
                                     <!-- Perihal -->
                                     <label for="formFile" class="form-label">Perihal</label>
                                     <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
-                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['perihal'] ?>" >
+                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['progres'] ?>" >
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
                                     <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
@@ -255,11 +255,10 @@
                               <!-- button upload close -->
                           </div>
                            <div class = "mx-4">
-                             <a href="./validasiadmin.php"> <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
+                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
                               <button type="submite" class="btn bg-gradient-primary" name="update" >Upload</button>
-                            
-                           
-                           </div></form>
+                              </div>
+                           </form>
                           </div>
                         </div>
                        </div>  

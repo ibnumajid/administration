@@ -216,6 +216,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Mahasiswa</th>
                       <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
@@ -236,7 +237,7 @@
                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
                       $idf = $_POST['filterid'];
                         if ($data['status_admin'] == $idf) {
-                  $tujuan = $data['dosen_pembimbing'];
+               
 
 
                   if ($data['status_kadep'] == "2") {
@@ -245,7 +246,7 @@
                     <!-- tabel -->
                     <tbody>
                       <tr>
-                        
+                        <td><?php echo $no++ ?></td>
                         <!-- nama -->
                         <?php if ($data['status_admin'] == 0 ) { ?>
                                   <form action="./kirimmahasiswa.php" method="post">
@@ -296,7 +297,7 @@
                             <!-- tabel -->
                             <tbody>
                               <tr>
-                                
+                              <td><?php echo $no++ ?></td>
                                 <!-- nama -->
                                 <?php if ($data['status_admin'] == 0 ) { ?>
                                   <form action="./kirimmahasiswa.php" method="post">
@@ -308,6 +309,7 @@
                             <?php } 
                             else { ?>
                                 
+                              
                               <td style = "height:20px">
                                 <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
                               </td>
@@ -342,8 +344,10 @@
                         } } ?>
 
 <?php if ($no == 1) { ?>
-
-<h6 class = "text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIPROSES</h6>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><h6 class = "text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIPROSES</h6></td>
 <?php } ?>
 
 
