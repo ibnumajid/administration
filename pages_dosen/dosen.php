@@ -332,7 +332,7 @@
               $tujuan2 = $data['dosen2'];
               
               if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) || ($tujuan == $nama)  || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) ) ) {
-                if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter2'])) {
                   $idf = $_POST['filterid'];
                     if (($_SESSION['status'] == 2 && ($data['status_dosen1'] == $idf || $data['status_dosen2'] == $idf || $data['status_dosentkk'] == $idf))) { ?>
               
@@ -383,9 +383,9 @@
                     </td> <?php } ?>
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
-
+                    </tr>
               <?php } }  else { ?>
-
+                <tr>
                    <!-- no -->
                    <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
@@ -431,10 +431,10 @@
                     </td> <?php } ?>
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
-
+                    </tr>
               <?php } }  } ?>
           <?php if ($no == 1) { ?>  
-            
+            <tr>
             <td> </td>
             <td></td>
             <td></td>
