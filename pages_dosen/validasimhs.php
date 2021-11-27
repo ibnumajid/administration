@@ -22,6 +22,7 @@ include "../_database/config.php";
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -373,7 +374,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               </div>
               <div class = "mx-4">
-              <a href = "./validasisurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
+              <a href = "./validasisurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
               <?php if ($_SESSION['status'] == 2) { ?>
                 <button type="submite" name="update" class="btn bg-gradient-primary">Validasi</button>
               <?php } else if ($_SESSION['status'] == 5) { ?>
