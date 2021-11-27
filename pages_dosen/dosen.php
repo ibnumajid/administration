@@ -288,10 +288,22 @@
         <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style="height:300px">
           <table class="table table-striped align-items-center mb-6">
           <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./dosensm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./dosen.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
-        <a href="./dosen1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./dosen2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+          <form method = "post">
+                <input type="hidden" name = "filterid" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "1">
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filterid" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
         </div>
 
             <thead>
@@ -319,7 +331,11 @@
               $tujuan = $data['dosen_pembimbing'];
               
               if (strpos($tujuan, $nama) !== false ) {
-               if ($data['status_surat'] == 0) { ?>
+                if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                  $idf = $_POST['filterid'];
+                    if (($_SESSION['status'] == 5 && $data['status_kadep'] == $idf) || ($_SESSION['status'] == 2 && ($data['status_dosen1'] == $idf || $data['status_dosen2'] == $idf 
+                    | $data['status_dosentkk'] == $idf))) { ?>
+              
                 <?php $id = $data['id_no'] ?>
                 <tr>
                   <!-- no -->
@@ -357,7 +373,44 @@
                   <!-- tanggal -->
                   <td class="text-center"><?php echo $data['tanggal'] ?></td>
 
-              <?php } } } ?>
+              <?php } }  else { ?>
+
+                   <!-- no -->
+                   <td class="text-center"><?php echo $no++ ?></td>
+                  <!-- nama -->
+                  <form action="./pages_dosen/validasimhs.php" method="post">
+                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                    <td style = "height:20px">
+                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                    </td>
+                  </form>
+                  <!-- status -->
+                  <td>
+                    <h6 class="text-left ps-1">Mahasiswa</h6>
+                  </td>
+                  <!-- perihal -->
+                  <td>
+                    <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6>
+                  </td>
+                  <!-- Menginput id surat -->
+
+
+
+                  <!-- status surat -->
+                  <?php if ($data['status_surat'] == 0) { ?>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_surat'] ?>">Belum Diproses</span>
+                    </td> <?php } else if ($data['status_surat'] == 1) { ?>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_surat'] ?>">Ditolak</span>
+                    </td> <?php } else if ($data['status_surat'] == 2) { ?>
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_surat'] ?>">Sudah Diproses</span>
+                    </td> <?php } ?>
+                  <!-- tanggal -->
+                  <td class="text-center"><?php echo $data['tanggal'] ?></td>
+
+              <?php } }  } ?>
           <?php if ($no == 0) { ?>  
             
             <td><h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6></td>
