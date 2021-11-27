@@ -364,7 +364,7 @@
                   </td>
                   <!-- perihal -->
                   <td>
-                    <h6 class="text-left ps-1"><?php echo $data['progres'] ?></h6>
+                    <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6>
                   </td>
                   <!-- Menginput id surat -->
 
