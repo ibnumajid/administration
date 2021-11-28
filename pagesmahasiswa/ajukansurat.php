@@ -608,7 +608,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name',false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload proposal Surat PBL (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload proposal PBL (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               } 
             else if($('#jenis_surat').val() == 'Surat Cuti') {
@@ -626,7 +626,7 @@ $(document).ready(function(){
                 $('#name_pbl').prop('name', false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Cuti (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload Formulir Pengajuan Cuti (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
@@ -644,7 +644,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name',false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Mengundurkan Diri (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload Formulir Pengunduran Diri (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
@@ -663,7 +663,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name', 'tkk');
                 $('#name_dtkk').prop('name', false);
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Pengajuan Beasiswa (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload formulir Pengajuan Beasiswa (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
@@ -681,7 +681,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name', 'tkk');
                 $('#name_dtkk').prop('name', false);
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Keringanan UKT (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload Formulir Keringanan UKT (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
@@ -700,7 +700,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name', 'tkk');
                 $('#name_dtkk').prop('name', false);
                 $('.file').show();
-                $('#label-file').text("Upload Dokumen Surat Kegiatan HIMA (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload Proposal Kegiatan HIMA (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
             else {
