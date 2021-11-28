@@ -576,7 +576,7 @@ session_start();
                 <div class="card-header pb-4 px-4">
                   <div class="row">
                     <div class="col-md-6">
-                      <h6 class="mb-0">Status Surat</h6>
+                      <h6 class="mb-0">Surat Masuk</h6>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end align-items-center">
                       <i class="far fa-calendar-alt me-2"></i>
@@ -588,35 +588,25 @@ session_start();
                   <?php
                   include "./_database/config.php";
                             
-                  $query = mysqli_query($koneksi, 'SELECT * FROM permohonansurat ORDER BY id_no DESC ');
+                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ORDER BY id_no DESC ');
                   $no = 0;
                   $no2 = $no++;
                   while ($data = mysqli_fetch_array($query)){
                     //nama tendik masih belum ada
-                    if ($data['nama_dsn'] == $_SESSION['user']) {
+                    if ($data['nama'] == $_SESSION['user']) {
                       $no++
                     ?>
                       <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
-                      <div class="d-flex flex-column">
-                        <h6 class="mb-1 text-dark text-sm"><?php echo $data['nama_surat'] ?></h6>
-                          <span class="text-xs"><?php echo $data['waktu_surat'] ?></span>
-                      </div>
-                      <!-- status surat dosen-->
-                      <?php if ($data['status_admin'] == 0) {?>
-                          <div class="d-flex align-items-center text-sm font-weight-bold">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
-                          </div>
-                        <?php } 
-                        else if ($data['status_admin'] == 1) {?>
-                          <div class="d-flex align-items-center text-sm font-weight-bold">
-                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_admin'] ?>">Ditolak</span>
-                          </div>
-                        <?php }
-                        else if ($data['status_admin'] == 2) {?>
-                          <div class="d-flex align-items-center text-sm font-weight-bold">
-                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Disetujui</span>
-                          </div>
-                        <?php } }}?>
+                   <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
+                      <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                        <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
+                          <button type="button"  class="btn btn-link px-0" ><em><?php echo $data['file'] ?></em></button>
+                        </span>
+                      </a>
+                   </div>
+                    <span class="text-xs"><?php echo $data['tanggal'] ?></span>
+                        <?php } } ?>
                       </li>
                       <?php if ($no == 1) { ?>
               <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
