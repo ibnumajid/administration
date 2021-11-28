@@ -264,7 +264,7 @@ $(document).ready(function(){
                                     <script>history.pushState({}, "", "")</script><?php
                                 }
                                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)){
-                                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', '$tgl_pel1', '$tgl_pel2', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
+                                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$tgl_pel1', '$tgl_pel2', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                                 if($query)
                                 {
@@ -318,7 +318,7 @@ $(document).ready(function(){
                             </div>
 
                             <!-- keterangan/perihal -->
-                            <div class="keterangan" style="display: none;">
+                            <div class="tugas" style="display: none;">
                               <div class="card-header pb-0 p-3">
                                   <div class="row">
                                       <div class="mb-3">
@@ -326,6 +326,20 @@ $(document).ready(function(){
                                           <input name="keterangan" class="form-control" type="text" aria-label="default input example" >
                                       </div>
                                   </div>
+                              </div>
+                            
+                              <!-- tanggal pelaksanaan -->
+                              <div class="card-header pb-0 p-3">
+                                <div class="row">
+                                  <div class="form-group col-md-6">
+                                    <label for="example-date-input" class="form-control-label">Tanggal Pelaksanaan</label>
+                                    <input name="pel1" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="example-date-input" class="form-control-label">Tanggal Selesai Pelaksanaan</label>
+                                    <input name="pel2" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
+                                  </div>
+                                </div>
                               </div>
                             </div>
 
@@ -358,23 +372,6 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
-                            <!-- tanggal pelaksanaan -->
-                            <div class="tanggaPelaksana" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                  <div class="form-group col-md-6">
-                                    <label for="example-date-input" class="form-control-label">Tanggal Pelaksanaan</label>
-                                    <input name="pel1" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="example-date-input" class="form-control-label">Tanggal Selesai Pelaksanaan</label>
-                                    <input name="pel2" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-
                             <!-- file -->
                             <div class="file" style="display: none;">  
                               <div class="card-header pb-0 p-3">
@@ -390,7 +387,7 @@ $(document).ready(function(){
 
                             <br><br>
                             <div class="modal-footer">
-                                <button type="button" class="btn bg-gradient-secondary" >Batal</button>
+                            <a href="./permohonansurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
                                 <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
                             </div>
                         </form>
@@ -467,23 +464,20 @@ $(document).ready(function(){
     <script>
         $('#jenis_surat').on('change',function () {
             if($('#jenis_surat').val() == 'Surat Tugas') {
+                $('.tugas').show();
                 $('.barang').hide();
-                $('.keterangan').show();
-                $('.tanggaPelaksana').show();
                 $('.file').show();
                 $('#label-file').text("Upload Bukti Kegiatan (contoh: poster ) (Ekstensi File Berupa PDF)");
               }
             else if($('#jenis_surat').val() == 'Surat Perpindahan Barang Lab') {
+                $('.tugas').hide();
                 $('.barang').show();
-                $('.keterangan').hide();
-                $('.tanggaPelaksana').hide();
                 $('.file').show();
                 $('#label-file').text("Upload File (Ekstensi File Berupa PDF)");
               }
             else {
+                $('.tugas').hide();
                 $('.barang').hide();
-                $('.keterangan').hide();
-                $('.tanggaPelaksana').hide();
                 $('.file').hide();
               }
         });
