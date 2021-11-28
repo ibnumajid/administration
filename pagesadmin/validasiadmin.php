@@ -230,7 +230,7 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                  $no = 1;
+                  $no = 0;
                   $no2 = $no++;
                   
                   while ($data = mysqli_fetch_array($query)) {

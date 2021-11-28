@@ -226,6 +226,8 @@
                   <!-- php tabel -->
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $no = 0;
+                  $no2 = $no++;
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                   
@@ -242,7 +244,7 @@
                     <tbody>
                       <tr>
                         
-                     
+                      <td><?php echo $no++ ?></td>
                         <!-- nama -->
                         <?php if ($data['status_admin'] == 0 ) { ?>
                                   <form action="./kirimdosen.php" method="post">
@@ -291,7 +293,7 @@
                         <!-- tabel -->
                         <tbody>
                           <tr>
-                            
+                          <td><?php echo $no++ ?></td>
                             <!-- nama -->
                         <?php if ($data['status_admin'] == 0 ) { ?>
                                   <form action="./kirimdosen.php" method="post">
