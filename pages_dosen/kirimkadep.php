@@ -341,7 +341,7 @@ session_start();
                                   } ?>
                     </tr>
                      <?php 
-                        } } 
+                        } } } 
                         
                         else { ?>
 
@@ -385,9 +385,7 @@ session_start();
                                   } ?>
                           </tr>
 
-                        <?php }
-
-                        }  ?>
+                        <?php } } }  ?>
 
                               </div>
                       
