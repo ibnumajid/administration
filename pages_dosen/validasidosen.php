@@ -281,53 +281,82 @@ include "../_database/config.php";
                   <div class="card-header pb-0 p-3">
                     <div class="row">
                       <div class="mb-3">
-                        <!-- nama Dosen -->
-                        <label for="formFile" class="form-label">Nama Dosen</label>
-                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
-                        <!-- NRP Dosen -->
-                        <label for="formFile" class="form-label">NPP Dosen</label>
-                        <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
-                        <!-- progres -->
-                        <label for="formFile" class="form-label">Perihal</label>
-                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                            <!-- nama Dosen -->
+                            <label for="formFile" class="form-label">Nama Dosen</label>
+                            <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
+                          </div>
+                          <div class="form-group col-md-6">
+                            <!-- NRP Dosen -->
+                            <label for="formFile" class="form-label">NPP Dosen</label>
+                            <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
+                          </div>
+                        </div>
 
                         <!-- Keterangan tiap Perihal -->
                         
                         <?php if ($data['perihal'] == "Surat Perpindahan Barang Lab") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Nama Barang</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nama_barang'] ?></label>
-                           <!-- Keterangan Tambahan -->
-                           <label for="formFile" class="form-label">Jumlah Barang</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['jumlah_barang'] ?></label>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Nama Laboratorium</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nama_lab'] ?></label>
+                          <div class="row">
+                            <div class="form-group col-md-6">
+                              <label for="formFile" class="form-label">Perihal</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <!-- Keterangan Tambahan -->
+                              <label for="formFile" class="form-label">Nama Laboratorium</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nama_lab'] ?></label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-md-6">
+                              <!-- Keterangan Tambahan -->
+                              <label for="formFile" class="form-label">Nama Barang</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['nama_barang'] ?></label>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <!-- Keterangan Tambahan -->
+                              <label for="formFile" class="form-label">Jumlah Barang</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['jumlah_barang'] ?></label>
+                            </div>
+                          </div>
                         <?php }
 
                          else if ($data['perihal'] == "Permohonan Surat Tugas") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Tugas</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                          <!-- Keterangan Tambahan -->
                           <div class="row">
-                                <div class="form-group col-md-2 text-center">
-                                  <label for="formFile" class="form-label">Tanggal Mulai</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pel1'] ?> </label>
-                                </div>
-                                <div class="form-group col-md-2 text-center">
-                                  <label for="formFile" class="form-label">Tanggal Selesai</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pel2'] ?> </label>
-                                </div>
+                            <div class="form-group col-md-6">
+                              <label for="formFile" class="form-label">Perihal</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <!-- Keterangan Tambahan -->
+                              <label for="formFile" class="form-label">Tugas</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                            </div>
                           </div>
-                          <div>
-                        </div>
+                          <div class="row">
+                            <div class="form-group col-md-6">
+                              <label for="formFile" class="form-label">Tanggal Mulai</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pel1'] ?> </label>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="formFile" class="form-label">Tanggal Selesai</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pel2'] ?> </label>
+                            </div>
+                          </div>
                           <?php }  
                           else if ($data['perihal'] == "Pengajuan Barang Habis Pakai") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Keterangan</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                          
+                          <div class="row">
+                            <div class="form-group col-md-6">
+                              <label for="formFile" class="form-label">Perihal</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <!-- Keterangan Tambahan -->
+                              <label for="formFile" class="form-label">Keterangan</label>
+                              <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                            </div>
+                          </div>
                         <?php } ?>
 
                         <!-- file surat -->
@@ -361,7 +390,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               </div>
               <div clss = "mx-4">
-              <a href = "./validasidsn.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button></a>
+              <a href = "./validasidsn.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
               <?php  
               if ($_SESSION['status'] == 5) { ?>
                 <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>

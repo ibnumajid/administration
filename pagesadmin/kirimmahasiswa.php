@@ -212,71 +212,107 @@
                               <div class="card-header pb-0 p-3">
                                 <div class="row">
                                   <div class="mb-3">
-                                    <!-- nama mahasiswa -->
-                                    <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                    <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                    <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['nama_mhsw'] ?>" >
-                                    <!-- NRP mahasiswa -->
-                                    <label for="formFile" class="form-label">NRP Mahasiswa</label>
-                                    <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
-                                    <!-- Perihal -->
-                                    <label for="formFile" class="form-label">Perihal</label>
-                                    <label name="perihal" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
-                                    <input name="perihal" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data['perihal'] ?>" >
-                                   
+                                    <div class="row">
+                                      <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                                          <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">NRP Mahasiswa</label>
+                                          <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                                        </div>
+                                    </div>
+
                                     <!-- Keterangan tiap Perihal -->
-                        
-                        <?php if ($data['perihal'] == "Surat Magang") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Nama Tempat Magang</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                        <?php }
-
-                        else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Industri Tempat Melakukan Proyek Akhir</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Rencana Judul</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['judul_ta'] ?></label>
-
-                        <?php } 
-                        
-                        else if ($data['perihal'] == "Surat PBL (Project Based Learning)") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Nama Tempat PBL</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                        <?php } else if ($data['perihal'] == "Surat Cuti") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Lama Waktu Cuti (*Dalam Semester)</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                        <?php } else if ($data['perihal'] == "Surat Pengajuan Beasiswa") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Nama Beasiswa</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                        <?php } else if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") { ?>
-                          <!-- Keterangan Tambahan -->
-                          <label for="formFile" class="form-label">Nama Kegiatan</label>
-                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
-                          <!-- Keterangan Tambahan -->
-                          <div class="row">
-                                <div class="form-group col-md-2 text-center">
-                                  <label for="formFile" class="form-label">Tanggal Mulai</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_hima1'] ?> </label>
-                                </div>
-                                <div class="form-group col-md-2 text-center">
-                                  <label for="formFile" class="form-label">Tanggal Selesai</label>
-                                  <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_hima2'] ?> </label>
-                                </div>
-                          </div>
-                          <div>
-                          
-                          
-                         
-                         
-                        </div>
-                          <?php } ?>
+                                    <?php if ($data['perihal'] == "Surat Magang") { ?>
+                                      <div class="row">
+                                        <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">Perihal</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Nama Tempat Magang</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        </div>
+                                      </div>
+                                    <?php }
+                                    else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
+                                      <label for="formFile" class="form-label">Perihal</label>
+                                      <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                      <div class="row">
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Industri Tempat Melakukan Proyek Akhir</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Rencana Judul</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['judul_ta'] ?></label>
+                                        </div>
+                                      </div>
+                                    <?php } 
+                                    else if ($data['perihal'] == "Surat PBL (Project Based Learning)") { ?>
+                                      <div class="row">
+                                        <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">Perihal</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Nama Tempat PBL</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        </div>
+                                      </div>
+                                    <?php } else if ($data['perihal'] == "Surat Cuti") { ?>
+                                      <div class="row">
+                                        <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">Perihal</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Lama Waktu Cuti (*Dalam Semester)</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        </div>
+                                      </div>
+                                    <?php } else if ($data['perihal'] == "Surat Pengajuan Beasiswa") { ?>
+                                      <div class="row">
+                                        <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">Perihal</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Nama Beasiswa</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        </div>
+                                      </div>
+                                    <?php } else if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") { ?>
+                                      <div class="row">
+                                        <div class="form-group col-md-6">
+                                          <label for="formFile" class="form-label">Perihal</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <!-- Keterangan Tambahan -->
+                                          <label for="formFile" class="form-label">Nama Kegiatan</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                        </div>
+                                      </div>
+                                      <!-- Keterangan Tambahan -->
+                                      <div class="row">
+                                        <div class="form-group col-md-2 text-center">
+                                          <label for="formFile" class="form-label">Tanggal Mulai</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_hima1'] ?> </label>
+                                        </div>
+                                        <div class="form-group col-md-2 text-center">
+                                          <label for="formFile" class="form-label">Tanggal Selesai</label>
+                                          <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_hima2'] ?> </label>
+                                        </div>
+                                      </div>
+                                      <?php } ?>
 
                                     <!-- file surat -->
                                     <label for="formFile" class="form-label">Lihat File</label>
@@ -308,7 +344,7 @@
                               <!-- button upload close -->
                           </div>
                            <div class = "mx-4">
-                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                           <a href="./validasiadmin.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
                               <button type="submite" class="btn bg-gradient-primary" name="update" >Upload</button>
                               </div>
                            </form>
