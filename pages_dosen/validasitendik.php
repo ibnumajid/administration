@@ -295,11 +295,11 @@
                                     <div class="row">
                                       <div class="form-group col-md-6">
                                         <label for="formFile" class="form-label">Asal Barang</label>
-                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['dari_lab'] ?> </label>
+                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['dari'] ?> </label>
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="formFile" class="form-label">Tujuan Barang</label>
-                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['ke_lab'] ?> </label>
+                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['ke'] ?> </label>
                                       </div>
                                     </div>
                                   <?php }  
