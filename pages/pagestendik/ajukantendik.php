@@ -264,7 +264,7 @@ $(document).ready(function(){
                                     <script>history.pushState({}, "", "")</script><?php
                                 }
                                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)){
-                                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$tgl_pel1', '$tgl_pel2', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
+                                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                                 if($query)
                                 {
