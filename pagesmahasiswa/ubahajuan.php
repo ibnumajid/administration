@@ -344,14 +344,19 @@ include "../_database/config.php";
         <?php
         include "../_database/config.php";
         if (isset($_POST['updatekdp'])) {
-          $nama_file2 = basename($_FILES['ufl']['name']);
+          $nama_file = basename($_FILES['fl']['name']);
           $id = $_POST['id'];
+          $ukuran = $_FILES['fl']['size'];
+          $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
           
-
+          $ket = $_POST['keterangan'];
+          $max = 1024 * 5000;
+          $ekstensi = "pdf";
+          $url = $id.'_'.$nama_file;
           
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$nama_file2' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='0' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep` = '0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan` = '$ket' WHERE id_no = '$id' ");
           if ($query && $query2) {
             ?><script><?php $_SESSION['sukses'] = true;?></script> 
             <script>history.pushState({}, "", "")</script><?php
