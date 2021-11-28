@@ -314,12 +314,14 @@ include "../_database/config.php";
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '0' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
+          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
           }
           else if ($data['status_dosen2'] == '1' && $data['status_dosen1'] == '2'){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='0' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
+          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
           }
           else if ($data['status_dosentkk'] == 1){
           $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
@@ -327,6 +329,7 @@ include "../_database/config.php";
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl1' WHERE id_no = '$id' ");
           $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima2`='$tgl2' WHERE id_no = '$id' ");
+          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
           }
           
           if ($query && $query2) {
