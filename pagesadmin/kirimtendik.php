@@ -324,9 +324,9 @@
                           </div>
                            <div class = "mx-4">
                             <a href="./validasiadmin3.php"></a>  <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                            <?php if ($data['status_kadep'] == 1) { ?>
+                            
                             <button type="submite" class="btn bg-gradient-primary" name="update" >Upload</button>
-                            <?php } ?>
+                           
                            </div>
                            </form>
                           </div>
