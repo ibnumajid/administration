@@ -328,7 +328,6 @@
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
                                   <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
-                                  <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                                   <div class="form-check">
                                   <input type="radio" class="btn-check" name="ss" id="success-outlined" value = "2" autocomplete="off">
                                   <label class="btn btn-outline-success" for="success-outlined">Setuju</label>
