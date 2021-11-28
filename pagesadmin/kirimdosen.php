@@ -349,7 +349,7 @@
                       $url2 = $id.'_'.$nama_file2;
                       
                     if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url2', '$nama_mhs', '$perihal', sysdate()) ");
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
 
                       if($query2 && $query3){
