@@ -587,7 +587,7 @@
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_anggota'] == $_SESSION['user'] && $data['status_kadep'] == 1) {
+                  if ($data['nama_dsn'] == $_SESSION  ['user'] && $data['status_kadep'] == 1) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
