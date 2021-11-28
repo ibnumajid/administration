@@ -240,7 +240,7 @@
                     <!-- tabel -->
                     <tbody>
                       <tr>
-                      <td><?php echo $no++ ?></td>
+                      <td class="mb-0 text-sm text-center"><?php echo $no++ ?></td>
                        <!-- nama -->
                        <?php if ($data['status_admin'] == 0 ) { ?>
                                   <form action="./kirimtendik.php" method="post">
@@ -287,7 +287,7 @@
                           <!-- tabel -->
                           <tbody>
                             <tr>
-                            <td><?php echo $no++ ?></td>
+                            <td class="mb-0 text-sm text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
                        <?php if ($data['status_admin'] == 0 ) { ?>
                                   <form action="./kirimtendik.php" method="post">
