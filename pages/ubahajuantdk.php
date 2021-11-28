@@ -269,13 +269,14 @@ include "../_database/config.php";
                   </div>
                   <!-- button upload close -->
               
-
+                          <div class = "mx-4">
               <a href = "./pagestendik/permohonansurat.php"><button type="button" class="btn bg-gradient-secondary">Close</button></a>
               <?php if ($data['status_kadep'] == 1){ ?>
                 <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button>
                 <?php } 
                 ?>
               </form>
+              </div>
               </div>
             </div>
           </div>
