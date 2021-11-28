@@ -431,9 +431,7 @@ include "../_database/config.php";
           $query7 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel2`='$tgl2' WHERE id_no = '$id' ");
        
           if ($query && $query2) {
-            ?><script>
-            <?php $_SESSION['sukses'] = true; ?> </script>
-        <script>history.pushState({}, "", "") </script><?php
+            echo '<script> alert ("Berhasil memberikan respon")</script></a>';
           } else {
             echo '<script> alert ("gagal memberikan catatan")</script></a>';
           }
@@ -448,6 +446,7 @@ include "../_database/config.php";
 
 
   </main>
+
   <?php if (@$_SESSION['sukses']) : ?>
         <script>
             Swal.fire({
