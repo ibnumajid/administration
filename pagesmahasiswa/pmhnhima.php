@@ -289,7 +289,9 @@ session_start();
                       <tr>
                         <th class="text-center">No</th>
                         <th class="text-left ps-1">Perihal</th>
-                        <th class="text-left ps-1">Nama Perusahaan</th>
+                        <th class="text-left ps-1">Nama Kegiatan</th>
+                        <th class="text-center">Tanggal Acara</th>
+                        <th class="text-center">Tanggal Akhir Acara</th>
                         <th class="text-center">Waktu Upload</th>
                         <th class="text-center">Persetujuan TKK</th>
                         <th class="text-center">Persetujuan Kadep</th>
@@ -310,6 +312,8 @@ session_start();
                       <td class="text-center"><?php echo $no++ ?></td>
                       <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                       <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                      <td class="text-center"><?php echo $data['tgl_hima1'] ?></td>
+                      <td class="text-center"><?php echo $data['tgl_hima2'] ?></td>
                       <td class="text-center"><?php echo $data['tanggal'] ?></td>
                       <!-- status surat dosentkk  -->
                       <?php if ($data['status_dosentkk'] == 0) {?>
