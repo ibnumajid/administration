@@ -375,11 +375,8 @@
                  </form>
 
                  <?php } 
-                    else { ?>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-info" >Sudah Selesai</span>
-                      </td>
-                    <?php }
+                   
+                    
                     ?>
                     
                 <?php if ($data['proses_tugas'] == 3) { ?>     
@@ -389,7 +386,8 @@
                  <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lapor</button></h6>
                  </td>
                  </form>
-                 <?php } ?>
+                 <?php }
+                  ?>
                       </tr>
 
                       <?php } }
@@ -422,7 +420,7 @@
                       </td> <?php } ?> 
                       
                         
-                <?php if ($data['proses_tugas'] == 0 || $data['progres_tugas'] == 1) { ?>
+                <?php if ($data['proses_tugas'] == 0 || $data['progres_tugas'] == 1 || $data['proses_tugas'] == 3) { ?>
                         <form action="./lihatmandat.php" method="post">
                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                  <td class = "text-center" style = "height:20px">
@@ -430,9 +428,7 @@
                  </td>
                  </form>
                  <?php }
-                 else { ?>
-                  <td> <?php echo "Sudah Direspon" ?> </td>
-                <?php }
+               
                 ?> 
 
                 <?php if ($data['proses_tugas'] == 3) { ?>     
