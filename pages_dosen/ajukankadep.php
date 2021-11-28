@@ -550,7 +550,10 @@ $(document).ready(function(){
         $('#jenis_surat').on('change',function () {
             if($('#jenis_surat').val() == 'Rapat') {
                 $('.keterangan').show();
+                $('#label-keterangan').text("Perihal Rapat");
+                $('#label-keterangan2').text("Tempat Rapat");
                 $('.tanggal').show();
+                $('#label-tanggal').text("Tanggal Rapat");
                 $('.file').show();
                 $('#label-file').text("Masukkan File untuk Memberikan Mandat Melakukan Rapat");
               }
