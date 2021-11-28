@@ -217,6 +217,7 @@
                                         <!-- nama Dosen -->
                                         <label for="formFile" class="form-label">Nama Dosen</label>
                                         <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
+                                        <input type="hidden" name = "nm" value = "<?php echo $data['nama_dsn'] ?>">
                                       </div>
                                       <div class="form-group col-md-6">
                                         <!-- NRP Dosen -->
@@ -224,6 +225,9 @@
                                         <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>
                                       </div>
                                     </div>
+                                    
+                                    <!-- Menginput perihal -->
+                                    <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
 
                                     <!-- Keterangan tiap Perihal -->
                                     

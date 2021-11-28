@@ -216,6 +216,7 @@
                                       <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Nama Mahasiswa</label>
                                           <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
+                                          <input type="hidden" name="nm" value = "<?php echo $data['nama_mhsw'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">NRP Mahasiswa</label>
@@ -229,6 +230,7 @@
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Perihal</label>
                                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                          <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <!-- Keterangan Tambahan -->
@@ -240,6 +242,7 @@
                                     else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
                                       <label for="formFile" class="form-label">Perihal</label>
                                       <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                      <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                       <div class="row">
                                         <div class="form-group col-md-6">
                                           <!-- Keterangan Tambahan -->
@@ -258,6 +261,7 @@
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Perihal</label>
                                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                          <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <!-- Keterangan Tambahan -->
@@ -270,6 +274,7 @@
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Perihal</label>
                                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                          <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <!-- Keterangan Tambahan -->
@@ -282,6 +287,7 @@
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Perihal</label>
                                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                          <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <!-- Keterangan Tambahan -->
@@ -294,6 +300,7 @@
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Perihal</label>
                                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                          <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <!-- Keterangan Tambahan -->
@@ -332,7 +339,7 @@
                                   <div class="mb-3">
                                  <label for="formFile" class="form-label">Kirim File Baru</label>
                                   <p>Masukkan file surat yang sudah disetujui</p>
-                               <input type="file" name="ufl" class="form-control" aria-label="file example" required>
+                               <input type="file" name="fl" class="form-control" aria-label="file example" required>
                               <div class="invalid-feedback">Example invalid form file feedback</div>
                              </div>
                            </div>
@@ -359,8 +366,8 @@
                     include "../_database/config.php";
 
                     if(isset($_POST['update'])){
-                      $nama_file2 = basename($_FILES['ufl']['name']); 
-                      $ukuran2 = $_FILES['ufl']['size'];
+                      $nama_file2 = basename($_FILES['fl']['name']); 
+                      $ukuran2 = $_FILES['fl']['size'];
                       $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
                       $id = $_POST['id'];
                       $nama_mhs = $_POST['nm'];
@@ -369,8 +376,8 @@
                       
                       $url2 = $id.'_'.$nama_file2;
                       
-                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
+                    if (move_uploaded_file($_FILES['fl']['tmp_name'], $url2))  {
+                      $query2 = mysqli_query($koneksi, "INSERT into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
 
                       if($query2 && $query3){

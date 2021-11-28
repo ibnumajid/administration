@@ -217,6 +217,7 @@
                                       <!-- nama mahasiswa -->
                                       <label for="formFile" class="form-label">Nama Tendik</label>
                                       <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
+                                      <input type="hidden" name = "nm" value = "<?php echo $data['nama_tdk'] ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                       <!-- NRP mahasiswa -->
@@ -224,6 +225,8 @@
                                       <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nip'] ?></label>
                                     </div>
                                   </div>
+                                  <!-- Menignput perihal -->
+                                  <input type="hidden" name = "perihal" value = "<?php echo $data['perihal'] ?>">
                                  
                                   <?php if ($data['perihal'] == "Surat Tugas") { ?>
                                     <div class="row">
