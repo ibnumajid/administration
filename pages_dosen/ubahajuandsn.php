@@ -383,7 +383,7 @@ include "../_database/config.php";
           $query5 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_lab` = '$nl' WHERE id_no = '$id' ");
           $query6 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel1` = '$tgl1' WHERE id_no = '$id' ");
           $query7 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel2` = '$tgl2' WHERE id_no = '$id' ");
-         
+          $query8 = mysqli_query($koneksi, "UPDATE suratdosen SET `keterangan` = '$ket' WHERE id_no = '$id' ");
           }
           
           
