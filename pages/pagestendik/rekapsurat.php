@@ -185,7 +185,7 @@ session_start();
 
                     $tujuan = $data['nama'];
 
-                      if (strpos($tujuan, $_SESSION['user']) !== false) {
+                      if (strpos($tujuan, $_SESSION['user']) != false) {
                          
                     ?>
                         <tr>
@@ -201,8 +201,7 @@ session_start();
                           </td>
 
                         </tr>
-                        <?php }
-                    }  ?>
+                        <?php } }  ?>
 
                           <?php if ($no == 1) { ?>
 
