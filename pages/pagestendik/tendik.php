@@ -4,6 +4,7 @@ session_start();
  {
       header("location:../../index.php");
   }
+  include '../../_database/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -395,10 +396,8 @@ session_start();
                                  <h6 class = " modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6>
  
                                 
-                               </div>
-                             </div>
-                           </div>
-                       </div>
+                               
+                      
 
 
                        <div class="modal-footer">
@@ -406,9 +405,15 @@ session_start();
 
                          <!-- Saat dosen menolak -->
                            <button type="submite" name="hapus" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
-                        
+                           </div>
+                           </div>
+                           </div>
                        </div>
 
+                          </form>
+                  
+                  </div>
+                            
 
                      </div>
                      </div>
@@ -429,7 +434,6 @@ session_start();
 
                      
                        <div class="modal-body">
-                         
                            <div class="card-header pb-0 p-3">
                              <div class="row">
                                <div class="mb-3">
@@ -461,7 +465,6 @@ session_start();
                          <!-- Saat dosen menolak -->
                          <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "../ubahajuantdk.php" method = "post">
-                         <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-primary">Ubah</button>
                          </form>
