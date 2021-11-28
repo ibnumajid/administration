@@ -265,7 +265,16 @@
                                         <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                       </div>
                                     </div>
-                                   
+                                    <div class="row">
+                                      <div class="form-group col-md-6">
+                                        <label for="formFile" class="form-label">Tanggal Mulai</label>
+                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pel1'] ?> </label>
+                                      </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="formFile" class="form-label">Tanggal Selesai</label>
+                                        <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pel2'] ?> </label>
+                                      </div>
+                                    </div>
                                   <?php }
                                   else if ($data['perihal'] == "Surat Perpindahan Barang Lab") { ?>
                                     <!-- progres -->
