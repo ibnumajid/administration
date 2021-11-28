@@ -326,7 +326,7 @@ session_start();
             <div class="card-body pt-4 p-3">
             <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
-                <?php include '../../../_database/config.php';
+                <?php include '../../_database/config.php';
                 $no = 0;
                 $no2 = $no++;
                 $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
