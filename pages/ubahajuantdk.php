@@ -214,6 +214,7 @@ include "../_database/config.php";
                          <!-- Keterangan tiap Perihal -->
                         
                         <?php if ($data['perihal'] == "Surat Perpindahan Barang Lab") { ?>
+                          <div class="row">
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Barang</label>
                           <input type="text" class = "form-control" name = "nb" value = "<?php echo $data['nama_barang'] ?>">
@@ -221,6 +222,7 @@ include "../_database/config.php";
                            <!-- Keterangan Tambahan -->
                            <label for="formFile" class="form-label">Jumlah Barang</label>
                            <input type="text" class = "form-control" name = "jb" value = "<?php echo $data['jumlah_barang'] ?>">
+                        </div>
 
                            <div class="row">
                                 <div class="form-group col-md-2 text-center">
