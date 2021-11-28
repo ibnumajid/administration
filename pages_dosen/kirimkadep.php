@@ -337,7 +337,7 @@ session_start();
                                   </a></td>
                               <?php } 
                            else if ($data['proses_tugas'] == 1) {
-                                     echo $data['catatan']; 
+                                    ?><td> <?php echo $data['catatan'] ?> </td> 
                                   } ?>
                     </tr>
                      <?php 
@@ -381,7 +381,7 @@ session_start();
                                       </a></td>
                                   <?php }
                                   else if ($data['proses_tugas'] == 1) {
-                                     echo $data['catatan']; 
+                                    ?><td> <?php echo $data['catatan'] ?> </td> 
                                   } ?>
                           </tr>
 
