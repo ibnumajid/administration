@@ -304,7 +304,7 @@ include "../_database/config.php";
         $kl = $_POST['kl'];
         $nb = $_POST['nb'];
         $tgl1 = $_POST['tp1'];
-        $gl2 = $_post['tp2'];
+        $tgl2 = $_post['tp2'];
 
         $max = 1024 * 5000;
         $ekstensi = "pdf";
