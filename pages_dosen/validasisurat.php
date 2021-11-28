@@ -377,9 +377,10 @@
                                 <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } } }
-                          
+
+                         // bisa dilihat dosen  
                         else if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2  && ($tujuan2 == $nama)) ||
-                         ( $tujuan == $nama) || ($_SESSION['status2'] == 1))) {
+                         ( $tujuan == $nama) || ($_SESSION['status2'] == 1 && $data['dosen_tkk'] == $_SESSION['user'] ))) {
                           ?> 
   
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -543,7 +544,7 @@
                                 </tr> <?php } } }
                           
                         else if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) ||
-                         ($tujuan == $nama)  || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) )) {
+                         ($tujuan == $nama)  || ($data['dosen_tkk'] == $_SESSION['user'] && $_SESSION['status2'] == 1) )) {
                           ?> 
                           <tr>
                           <td class="text-center"><?php echo $no++ ?></td>
