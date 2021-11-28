@@ -362,7 +362,7 @@ session_start();
                    include '../../_database/config.php'; //panggil setiap ingin koneksi ke data                  
                    $no = 0;
                    $no2=$no++;
-                   $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no');                  
+                   $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');                  
                    while ($data = mysqli_fetch_array($query)) {
                   if ($data['nama_tdk'] == $_SESSION['user']) {
                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
