@@ -326,7 +326,7 @@ include "../_database/config.php";
           $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk`='0' WHERE id_no = '$id' ");
           $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
           $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl1' WHERE id_no = '$id' ");
-          $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl2' WHERE id_no = '$id' ");
+          $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima2`='$tgl2' WHERE id_no = '$id' ");
           }
           
           if ($query && $query2) {
