@@ -376,8 +376,8 @@
                      $status = $_POST['ss'];
                      
                      
-                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan`='$catatan2' WHERE id_no = '$id' ");
-                     $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep`='$status' WHERE id_no = '$id' ");
+                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan` = '$catatan2' WHERE id_no = '$id' ");
+                     $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep` = '$status' WHERE id_no = '$id' ");
                      if($query && $query2){
                       ?><script><?php $_SESSION['sukses'] = true;?></script> 
                       <script>history.pushState({}, "", "")</script><?php
