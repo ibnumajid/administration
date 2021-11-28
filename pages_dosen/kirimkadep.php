@@ -335,7 +335,10 @@ session_start();
                     <td class="text-center"> <a href="./mandat/<?php echo $data['laporan'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a></td>
-                              <?php } ?>
+                              <?php } 
+                           else if ($data['proses_tugas'] == 1) {
+                                     echo $data['catatan']; 
+                                  } ?>
                     </tr>
                      <?php 
                         } } 
@@ -366,7 +369,7 @@ session_start();
                               <span class="badge badge-sm bg-gradient-info" value="<?php echo $data['proses_tugas'] ?>">Sedang Dikerjakan</span>
                             </td> <?php }  
       
-                            else if ($data['proses_tugas'] == 2) {?>
+                            else if ($data['proses_tugas'] == 2 ) {?>
                                   <td class="align-middle text-center text-sm">
                               <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['proses_tugas'] ?>">Sudah Selesai</span>
                             </td> <?php } ?> 
@@ -376,7 +379,10 @@ session_start();
                         <td class="text-center"> <a href="./mandat/<?php echo $data['laporan'] ?>" target="_blank">
                                       <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                       </a></td>
-                                  <?php } ?>
+                                  <?php }
+                                  else if ($data['proses_tugas'] == 1) {
+                                     echo $data['catatan']; 
+                                  } ?>
                           </tr>
 
                         <?php }

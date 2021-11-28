@@ -266,7 +266,7 @@ $(document).ready(function(){
                         include '../_database/config.php';
                         if(isset($_POST['input']))
                         {
-                        $id = rand(1, 1000000);
+                        $id = rand(1, 999999999);
                         $perihal = $_POST['sr'];
                         $keterangan = $_POST['keterangan'];
                         $keterangan2 = $_POST['keterangan2'];

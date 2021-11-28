@@ -402,7 +402,8 @@
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
                                   <!-- Menginput id surat -->
-                                  <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
+                                  <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >   
+                                  <?php if ($data['proses_tugas'] != 3 || $data['proses_tugas'] != 2){ ?>                             
                                   <!-- persetujuan surat -->
                                   <label for="formFile" class="form-label">Apakah Anda Ingin Menyetujui Mandat Ini ?</label>
                                   <div class="form-check">
@@ -412,6 +413,7 @@
                                   <input type="radio" class="btn-check" name="ss" id="danger-outlined" value = "1" autocomplete="off">
                                   <label class="btn btn-sm btn-outline-danger" for="danger-outlined">Tolak</label>        
                                   </div>
+                                  <?php } ?>
                                         <!-- Menginput catatan -->
                                         <div>
                                         <label for="catatan" class = "form-label"> Catatan </label>
@@ -428,8 +430,10 @@
                             </div>
                             <div class = "mx-4">
                             <a href = "./rekapmndt.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+                            <?php if ($data['proses_tugas'] != 3 || $data['proses_tugas'] != 2){ ?>
                             <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Respon</button>
-                            </div>
+                            <?php } ?>
+                          </div>
                            
                         
                         </form>
