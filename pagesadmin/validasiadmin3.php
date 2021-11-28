@@ -211,6 +211,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th>No</th>
                       <th>Nama Tendik</th>
                       <th class="text-center">NIP Tendik</th>
                       <th>Perihal</th>
@@ -250,7 +251,6 @@
                                     </form>
                             <?php } 
                             else { ?>
-                                
                               <td style = "height:20px">
                                 <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
                               </td>
@@ -298,7 +298,6 @@
                                     </form>
                             <?php } 
                             else { ?>
-                                
                               <td style = "height:20px">
                                 <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
                               </td>
