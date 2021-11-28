@@ -348,7 +348,7 @@
                               $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                               
                               while ($data = mysqli_fetch_array($query)) {
-                              
+                               if ( $data['status_kadep'] == 2) {
                                  ?>
                             
                             <tr>
@@ -386,7 +386,7 @@
                                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                 </a>
                               </td>
-                              <?php  } ?>
+                              <?php  } } ?>
                             </tr>
                             <!-- and tabel mahasiswa -->
                             <!-- tabel suratdosen -->
@@ -397,7 +397,7 @@
                               $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                               
                               while ($data = mysqli_fetch_array($query)) {
-                              
+                                if ( $data['status_kadep'] == 2) {
                                 ?>
                             
                             <tr>
@@ -435,7 +435,7 @@
                                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                 </a>
                               </td>
-                              <?php }  ?>
+                              <?php } } ?>
                             </tr>
                             <!-- and tabel dosen -->
                             <!-- tabel suratdosen -->
@@ -446,7 +446,7 @@
                               $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                               
                               while ($data = mysqli_fetch_array($query)) {
-                              
+                                if ( $data['status_kadep'] == 2) {
                                ?>
                             
                             <tr>
@@ -484,7 +484,7 @@
                                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                 </a>
                               </td>
-                              <?php } ?>
+                              <?php } } ?>
                             </tr>
                             <!-- and tabel dosen -->
                                 <?php 

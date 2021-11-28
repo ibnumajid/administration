@@ -350,7 +350,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                  if ($data['status_admin'] == 0 && $data['status_kadep'] == 2) {?>
                             
                             <tr>
                               <!-- no -->
@@ -399,7 +399,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                  if ($data['status_admin'] == 0 && $data['status_kadep'] == 2) {?>
                             
                             <tr>
                               <!-- no -->
@@ -448,7 +448,7 @@
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
-                                  if ($data['status_admin'] == 0) {?>
+                                  if ($data['status_admin'] == 0 && $data['status_kadep'] == 2) {?>
                             
                             <tr>
                               <!-- no -->
