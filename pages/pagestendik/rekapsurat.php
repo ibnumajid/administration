@@ -177,7 +177,7 @@ session_start();
                     </thead>
 
                     <?php
-                    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                    include '../../_database/config.php'; //panggil setiap ingin koneksi ke data
                     $no = 0;
                     $no2 = $no++;
                     $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ORDER BY id_no DESC' );

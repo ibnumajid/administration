@@ -272,7 +272,7 @@ session_start();
                     </div>
                     <div class="col-6 text-end">
 
-                    <!-- untuk bagian surat masuk bagian tendik masih sama dengan dosen 
+                    <-- untuk bagian surat masuk bagian tendik masih sama dengan dosen 
                       <a href = ./rekapsurat.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
                     </div>
                   </div>
@@ -491,7 +491,7 @@ session_start();
 
                         <!-- php update surat saat dosen menolak -->
                         <?php
-                include "./_database/config.php";
+                include "../../_database/config.php";
                 if (isset($_POST['update'])) {
 
                   $nama_file2 = basename($_FILES['ufl']['name']);
@@ -518,7 +518,7 @@ session_start();
 
                 <!-- php update surat saat kadep menolak -->
                 <?php
-                include "./_database/config.php";
+                include "../../_database/config.php";
                 if (isset($_POST['update2'])) {
 
                   $nama_file3 = basename($_FILES['uflk']['name']);
@@ -545,7 +545,7 @@ session_start();
 
                 <!-- php hapus file -->
                 <?php
-                include "./_database/config.php";
+                include "../../_database/config.php";
                 if (isset($_POST['hapus'])) {
 
                   $nama_file3 = basename($_FILES['flhps']['name']);
@@ -582,7 +582,7 @@ session_start();
                 </div>
                 <ul class="list-group">
                   <?php
-                  include "./_database/config.php";
+                  include "../../_database/config.php";
                             
                   $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ORDER BY id_no DESC ');
                   $no = 0;
