@@ -456,7 +456,7 @@ include "../_database/config.php";
             $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2` = '$status' WHERE id_no = '$id' ");  
             $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_koor`='$catatan' WHERE id_no = '$id' ");
           }
-          if ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) {
+          else if ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) {
             $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk` = '$status' WHERE id_no = '$id' ");  
             $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_tkk`='$catatan' WHERE id_no = '$id' ");
           }
