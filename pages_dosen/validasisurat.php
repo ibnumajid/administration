@@ -476,7 +476,12 @@
                               else if ($data['status_dosentkk'] == 2) {?>
                               <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
-                        </td> <?php } ?>
+                        </td> <?php } 
+                        else { ?>
+                                <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
+                        </td>
+                           <?php } ?>
   
                      </tr>
                      <?php } }  } }
