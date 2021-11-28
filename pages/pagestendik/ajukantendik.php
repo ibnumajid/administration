@@ -251,7 +251,7 @@ $(document).ready(function(){
                             $url = $niptendik.'_'.$nama_file;
 
                             if ($ukuran > $max && $tipe != $ekstensi)
-                            {;
+                            {
                                 echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';}
                             
                                 else if ($ukuran > $max)
@@ -264,7 +264,7 @@ $(document).ready(function(){
                                     <script>history.pushState({}, "", "")</script><?php
                                 }
                                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)){
-                                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
+                                $query = mysqli_query($koneksi,"INSERT into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
 
                                 if($query)
                                 {
@@ -291,7 +291,7 @@ $(document).ready(function(){
                             <div class="card-header pb-0 p-3">    
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="formFile" class="form-label">Nama Dosen</label>
+                                        <label for="formFile" class="form-label">Nama Tendik</label>
                                         <input name="nm" class="form-control" type="hidden"  aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
                                         <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
                                     </div>
