@@ -261,7 +261,7 @@ session_start();
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
-               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Sudah Selesai</button>
             </form>
         </div>     
             <div class="card-header pb-0 p-3">
