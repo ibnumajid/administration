@@ -23,6 +23,7 @@
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -325,7 +326,7 @@
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
-               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
