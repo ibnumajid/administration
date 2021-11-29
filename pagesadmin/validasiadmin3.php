@@ -198,7 +198,7 @@
                </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
@@ -207,7 +207,7 @@
         </div>
             
             <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
+             <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin" style = "height:390px" >
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -242,19 +242,14 @@
                       <tr>
                       <td class="mb-0 text-sm text-center"><?php echo $no++ ?></td>
                        <!-- nama -->
-                       <?php if ($data['status_admin'] == 0 ) { ?>
+                    
                                   <form action="./kirimtendik.php" method="post">
                                       <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                                       <td style = "height:20px">
                                         <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
                                       </td>
                                     </form>
-                            <?php } 
-                            else { ?>
-                              <td style = "height:20px">
-                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
-                              </td>
-                            <?php } ?>
+                          
                         <!-- nrp -->
                         <td>
                           <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
@@ -271,7 +266,7 @@
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Belum Diproses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
@@ -289,19 +284,14 @@
                             <tr>
                             <td class="mb-0 text-sm text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                       <?php if ($data['status_admin'] == 0 ) { ?>
+                      
                                   <form action="./kirimtendik.php" method="post">
                                       <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                                       <td style = "height:20px">
                                         <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
                                       </td>
                                     </form>
-                            <?php } 
-                            else { ?>
-                              <td style = "height:20px">
-                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
-                              </td>
-                            <?php } ?>
+                           
                               <!-- nrp -->
                               <td>
                                 <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>
@@ -328,8 +318,10 @@
                       }
                       } } ?>
                         <?php if ($no == 1) { ?>
-
-<h6 class = "text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIPROSES</h6>
+                          <td></td>
+                          <td></td>
+                      <td></td>
+                      <td><h6 class = "text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIPROSES</h6></td>
 <?php } ?>
 
 

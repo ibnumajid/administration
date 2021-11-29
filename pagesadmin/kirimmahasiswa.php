@@ -204,7 +204,9 @@
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
                   $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
-                  $data = mysqli_fetch_array($query)
+                  $query2 = mysqli_query($koneksi, "SELECT * FROM kirimadmin WHERE id_no = '$id' ");
+                  $data = mysqli_fetch_array($query);
+                  $data2 =  mysqli_fetch_array($query2);
 
                   
    ?> 
@@ -322,21 +324,31 @@
                                       <?php } ?>
 
                                     <!-- file surat -->
-                                    <label for="formFile" class="form-label">Lihat File</label>
+                                    <?php if ($data['status_admin'] == 0) { ?>
+                                    <label for="formFile" class="form-label">Lihat File dari Mahasiswa</label>
                                     <a href="../pagesmahasiswa/<?php echo $data['file'] ?>" target="_blank">
                                     <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                     </a>
-                                  
+                                  <?php }
+                                  else { ?>
+                                    <label for="formFile" class="form-label">Lihat File yang Sudah Dikirim Admin</label>
+                                    <a href="./<?php echo $data2['file'] ?>" target="_blank">
+                                    <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link"><em><?php echo $data2['file'] ?></em></button></p>
+                                    </a>
+                                    <?php } ?>
                                     <!-- Menginput id surat -->
                                     <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >  
 
                                     <!-- Menandai Admin bahwa surat sudah diproses dan dikirimkan -->
                                     <input name = "stadmin" value = 2 type = "hidden">
-                                    
+                                   
+                                   
                                     <!-- upload surat baru -->
+                                    <?php if ($data['status_admin'] = 0) { ?>
                                     <div class="card-header pb-0 p-3">
                                    <div class="row">
                                   <div class="mb-3">
+                                      
                                  <label for="formFile" class="form-label">Kirim File Baru</label>
                                   <p>Masukkan file surat yang sudah disetujui</p>
                                <input type="file" name="fl" class="form-control" aria-label="file example" required>
@@ -344,6 +356,7 @@
                              </div>
                            </div>
                          </div>
+                         <?php } ?>
 
                      </div>
                     </div>
@@ -352,7 +365,9 @@
                           </div>
                            <div class = "mx-4">
                            <a href="./validasiadmin.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                              <button type="submite" class="btn bg-gradient-primary" name="update">Upload</button>
+                              <?php if ($data['status_admin'] = 0) { ?>
+                              <button type="submite" class="btn bg-gradient-info" name="update">Kirim Surat</button>
+                              <?php } ?>
                               </div>
                            </form>
                           </div>
@@ -366,6 +381,7 @@
                     include "../_database/config.php";
 
                     if(isset($_POST['update'])){
+                      $r = rand(0, 999);
                       $nama_file2 = basename($_FILES['fl']['name']); 
                       $ukuran2 = $_FILES['fl']['size'];
                       $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
@@ -374,7 +390,7 @@
                       $statusadmin = $_POST['stadmin'];
                       $perihal = $_POST['perihal'];
                       
-                      $url2 = $id.'_'.$nama_file2;
+                      $url2 = $r.$id.'_'.$nama_file2;
                       
                     if (move_uploaded_file($_FILES['fl']['tmp_name'], $url2))  {
                       $query2 = mysqli_query($koneksi, "INSERT into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");

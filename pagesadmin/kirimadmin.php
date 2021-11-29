@@ -332,7 +332,7 @@ if ($_SESSION['user'] == '') {
                 <div class="mb-3">
                     <div class="d-flex justify-content-center">
 
-                    <button type="submite" name="input" class="btn bg-gradient-secondary" data-toggle="modal" data-target="#exampleModal">Upload</button>
+                    <button type="submite" name="input" class="btn bg-gradient-info" data-toggle="modal" data-target="#exampleModal">Kirim</button>
 
                     </div>
                 </div>

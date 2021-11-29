@@ -300,33 +300,23 @@
     </nav>
       <!-- End Navbar -->
 
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <!---->
-
+      <div class="container-fluid py-4">
             <div class="col-md-12 mb-lg-0 mb-4">
               <div class="card mt-0">
+                <br>
+              <div class="col-6 d-flex align-items-center mx-4">
+                  <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
+              </div>
+
               <div class="form-group d-flex justify-content-around mt-4">
         <a href="./billingadminsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./billingadmin.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
-        </div>
-                <div class="card-header pb-0 p-4">
-                  <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
-                    </div>
-                    
-                  </div>
-                </div>
+        <a href="./billingadmin.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
+        <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-info">Sudah Diproses</button></a>
+        </div> 
                 
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:450px">
-                  <div class="card-body p-3">
-                    <div class="row">
-                      <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
+                  <div class="card-body p-3"  >
+                    <div class="row" >
+                        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin" style = "height:390px" >
                           <table class="table table-striped align-items-center mb-6">
                             <thead>
                               <tr>
@@ -355,7 +345,12 @@
                               <!-- no -->
                               <td class="text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                              <td><h6 style = "height:20px" class="text-sm-left"><?php echo $data['nama_mhsw'] ?></h6></td>
+                              <form action="./kirimmahasiswa.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_mhsw'] ?></button></h6>
+                              </td>
+                            </form>
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
                               <!-- perihal -->
@@ -399,7 +394,12 @@
                               <!-- no -->
                               <td class="text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                              <td><h6 style = "height:20px" class="text-sm-left"><?php echo $data['nama_dsn'] ?></h6></td>
+                              <form action="./kirimdosen.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                              </td>
+                            </form>
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Dosen</h6></td>
                               <!-- perihal -->
@@ -443,7 +443,12 @@
                               <!-- no -->
                               <td class="text-center"><?php echo $no++ ?></td>
                               <!-- nama -->
-                              <td><h6 style = "height:20px" class="text-sm-left"><?php echo $data['nama_tdk'] ?></h6></td>
+                              <form action="./kirimtendik.php" method="post">
+                              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              <td style = "height:20px">
+                                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                              </td>
+                            </form>
                               <!-- status -->
                               <td> <h6 class="text-left ps-1">Tendik</h6></td>
                               <!-- perihal -->

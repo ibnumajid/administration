@@ -300,34 +300,23 @@
     </nav>
       <!-- End Navbar -->
 
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <!---->
-
+      <div class="container-fluid py-4">
             <div class="col-md-12 mb-lg-0 mb-4">
               <div class="card mt-0">
-             
-        <div class="form-group d-flex justify-content-around mt-4">
+                <br>
+              <div class="col-6 d-flex align-items-center mx-4">
+                  <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
+              </div>
+
+              <div class="form-group d-flex justify-content-around mt-4">
         <a href="./billingadminsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./billingadmin.php" id='failedList'><button class = "btn btn-info">Menunggu Persetujuan</button></a>
-        <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
-        </div>
-                <div class="card-header pb-0 p-4">
-                  <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
-                    </div>
-                    
-                  </div>
-                </div>
+        <a href="./billingadmin.php" id='failedList'><button class = "btn btn-info">Belum Diproses</button></a>
+        <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-outline-info">Sudah Diproses</button></a>
+        </div> 
                 
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:450px">
-                  <div class="card-body p-3">
-                    <div class="row">
-                      <div class="card-body px-0 pt-0 pb-2">
-                        <div class="table-responsive p-0">
+                  <div class="card-body p-3"  >
+                    <div class="row" >
+                        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin" style = "height:390px" >
                           <table class="table table-striped align-items-center mb-6">
                             <thead>
                               <tr>
