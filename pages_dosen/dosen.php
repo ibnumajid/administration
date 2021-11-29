@@ -313,17 +313,95 @@
         </nav>
         <!-- End Navbar -->
 
+        <!-- CAROUSEL -->
+              <!-- slide ketiga -->
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <!-- <div class="carousel-item">
+                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1129&q=80');">
+                  <span class="mask bg-gradient-dark"></span>
+                  <div class="container">
+                    <div class="row">
+                    <div class="pb-5 px-7">
+                        <h4 class="text-dark pb-10 px-0">Infirmasi</h4>
+                        <h1 class="text-dark fadeIn2 fadeInBottom">kiww</h1>
+                          <div class="btn bg-gradient-info">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
 
-        <div class="container-fluid py-4">
-        <div class="row">
+              <!-- Slide kedua -->
+              <div class="carousel-item">
+                <div class="page-header min-vh-25 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                  <!-- <span class="mask bg-gradient-dark"></span> -->
+                  <div class="container">
+                    <div class="row">
+                    <div class="pb-3 px-7">
+                      <h4 class="text-dark p-1 px-0">Informasi</h4>
+                      <figure>
+                      <?php 
+                          include "../_database/config.php";
+                          $no = 1;
+                          $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat');
 
-  <div class="row">
-   <div class="col-lg-12">
-   <div class="card mt-0">
-  
-      
-      
-       
+                          while ($data = mysqli_fetch_array($query)) {
+                            $tujuan = $data['tujuan'];
+                            if( strpos($tujuan, "Dosen") !== false )
+                            { $no++ 
+                            ?>
+                        <blockquote class="blockquote ps-0">
+                          <p class="ps-3 text-dark"><?=$data['perihal']?></p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer ps-3 text-dark">
+                          <?=$data['keterangan']?>
+                        </figcaption>
+                        <?php }} ?>
+                      </figure>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SLIDE SATU -->
+              <div class="carousel-item active">
+                <div class="page-header min-vh-25 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                  <!-- <span class="mask bg-gradient-dark"></span> -->
+                  <div class="container">
+                    <div class="row">
+                      <div class="p-3 p-3">
+                        <h4 class="text-dark p-1 px-7"> </h4>
+                        <h1 class="text-dark p-0 px-7">Selamat Datang</h1>
+                        <h4 class="text-dark p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
+                        <a href="./PANDUAN PENGGUNAAN SIM DTEO.pdf" target="_blank" class="pb-5 px-7">
+                        <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BUTTON Next -->
+            <div class="row row-xs">
+              <div class="col-12 col-sm-12 col-lg-12 d-flex justify-content-end">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon position-absolute bottom-25" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon position-absolute bottom-25" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+                        <!-- Carousel selesai -->
           
         <div class="col-6 d-flex align-items-center mx-2">
           <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat yang Belum Divalidasi</h6>
