@@ -250,101 +250,13 @@
                     <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                   </a--> 
                 </li>
-                <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                  <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-bell cursor-pointer"></i>
-                    <?php 
-                    include '../_database/config.php';
-                    $nama = $_SESSION['user'];
-                    $query1 = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE status_kadep = 0 ");
-                    $query2 = mysqli_query($koneksi, "SELECT * FROM suratdosen WHERE status_kadep = 0 ");
-                    $query3 = mysqli_query($koneksi, "SELECT * FROM surattendik WHERE status_kadep = 0 ");
-                    $data1 = mysqli_num_rows($query1);
-                    $data2 = mysqli_num_rows($query2);
-                    $data3 = mysqli_num_rows($query3);
-
-                    $data = ($data1 + $data2 + $data3)
-                    ?>
-                    <span class="primary"><?php echo $data ?></span>
-                  </a>
-                  <ul class="dropdown-menu  dropdown-menu-end  px-0 py-0 me-sm-n3" aria-labelledby="dropdownMenuButton">
-                    <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">
-                      <?php 
-                      include '../_database/config.php';
-                      $nama = $_SESSION['user'];
-                      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                      while ($data = mysqli_fetch_array($query)){
-                      $tujuan = $data['dosen1'];
-                      $tujuan2 = $data['dosen2'];
-                      if ($data['status_kadep'] == 0 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) { ?>
-                      <li class="mb-2">
-                        <a class="dropdown-item border-radius-md" href="./validasisurat.php">
-                          <div class="d-flex py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
-                                <span class="font-weight"><?php echo $data['nama_mhsw']; ?></span>
-                              </h6>
-                              <p class="text-xs text-secondary mb-0">
-                                <?php echo $data['tanggal']; ?>
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <?php } }
-                      $query1 = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
-                      while ($data1 = mysqli_fetch_array($query1)){
-                      if ($data1['status_kadep'] == 0) { ?>
-                      <li class="mb-2">
-                        <a class="dropdown-item border-radius-md" href="./validasidsn.php">
-                          <div class="d-flex py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold"><?php echo $data1['perihal']; ?></span>
-                                <span class="font-weight"><?php echo $data1['nama_dsn']; ?></span>
-                              </h6>
-                              <p class="text-xs text-secondary mb-0">
-                                <?php echo $data1['tanggal']; ?>
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <?php  } } 
-                      $query2 = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
-                      while ($data2 = mysqli_fetch_array($query2)){
-                      if ($data2['status_kadep'] == 0) {?>
-                      <li class="mb-2">
-                        <a class="dropdown-item border-radius-md" href="./validasitndk.php">
-                          <div class="d-flex py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold"><?php echo $data2['perihal']; ?></span>
-                                <span class="font-weight"><?php echo $data2['nama_tdk']; ?></span>
-                              </h6>
-                              <p class="text-xs text-secondary mb-0">
-                                <?php echo $data2['tanggal']; ?>
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </li>
-                      <?php } } ?>
-                    </div>
-                  </ul>
-                </li>
-                <li class="nav-item px-2 d-flex align-items-center">
-                  <!--a href="javascript:;" class="nav-link text-body p-0">
-                    <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                  </a--> 
-                </li>
+                
                 <li class="nav-item d-flex align-items-center">
-                  <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+              <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                     <i class="fas fa-sign-out-alt"></i>
                     <span class="d-sm-inline d-none">Logout </span>
                   </a>
-                </li>
+              </li>
               </ul>
             </div>
           </div>
@@ -355,27 +267,26 @@
 
             
                                          <!-- Bagian Detail Permohonan Surat -->
-      <div class="row">
+                                         <div class="row">
      
+     <div class="col-lg-12">
+  <div class="card mt-0">
 
-     <div class="card-body p-3">
-       <div class="row">
-         <div class="card-body px-3 pt-0 pb-2">
+    <div class="card-body p-3">
+      <div class="row">
+        <div class="card-body px-3 pt-0 pb-2">
          
-         <div class="table-responsive p-0" style = "width:1050px;">      
-     
-                
-            <div class="col-6 d-flex align-items-center">
-         <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
-       </div>
-       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
-       <div class="form-group d-flex justify-content-around mt-4">
-        <a href="./kadepsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-        <a href="./kadep.php" id='failedList'><button class = "btn btn-outline-info">Menunggu Persetujuan</button></a>
-        <a href="./kadep1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-        <a href="./kadep2.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
-        </div>     
-             <table class="table table-striped align-items-center mb-6">
+      <div class="col-6 d-flex align-items-center mx-4 mt-3 mb-0 pb-0 my-0 py-0">
+        <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
+      </div>
+      <div class="form-group d-flex justify-content-around mt-4 mb-0 my-0 py-0">
+       <a href="./kadepsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
+       <a href="./kadep.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
+       <a href="./kadep1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+       <a href="./kadep2.php" id='failedList'><button class = "btn btn-info">Disetujui</button></a>
+       </div>      
+       <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0 mt-0 py-0 my-0" style = "height:375px" >
+            <table class="table table-striped align-items-center mb-6 mt-0 pt-0">
                <thead>
                  <tr>
                    <th class="text-center">No</th>

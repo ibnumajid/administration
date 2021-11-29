@@ -212,15 +212,14 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-        
-          <div class="form-group d-flex justify-content-around mt-4">
-          <form method = "post">
+          <div class="form-group d-flex justify-content-around mt-4 mb-0 pb-0 py-0 my-0">
+            <form method = 'post' >
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
@@ -230,10 +229,10 @@
                 <input type="hidden" name = "filterid" value = "2">
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
             </form>
-        </div>
+          </div>    
             
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
+            <div class="card-body px-0 pt-0 mt-0 py-0 my-0 pb-2">
+            <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:440px" >
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -295,7 +294,7 @@
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Menunggu untuk diproses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
@@ -345,7 +344,7 @@
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Menunggu untuk diproses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">

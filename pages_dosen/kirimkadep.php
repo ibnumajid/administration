@@ -242,14 +242,22 @@ session_start();
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div class="form-group d-flex justify-content-around mt-4">
+          <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Status Surat</h6>
+                </div>
+                
+              </div>
+            </div>
+          <div class="form-group d-flex justify-content-around mt-4 mb-0 pb-0 py-0 myy-0">
           <form method = "post">
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
@@ -264,17 +272,10 @@ session_start();
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Sudah Selesai</button>
             </form>
         </div>     
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Status Surat</h6>
-                </div>
-                
-              </div>
-            </div>
+           
             
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
+            <div class="card-body px-0 pt-0 pb-2 mt-0 pt-0 my-0 py-0">
+            <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:310px" >
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -282,7 +283,6 @@ session_start();
                       <th class="text-left ps-1">Mandat</th>
                       <th class="text-left ps-1">Dosen Koordinator</th>
                       <th class="text-left ps-1">Perihal</th>
-                      <th class="text-left ps-1">Tempat dan Waktu</th>
                       <th class="text-left ps-4"> Proses Tugas</th>
                       <th class="text-center">Lihat Laporan</th>
                     </tr>
@@ -306,7 +306,7 @@ session_start();
                     <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                     <td class="text-left ps-1"><?php echo $data['dosen_koor'] ?></td>
                     <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                    <td class="text-left ps-1"><?php echo $data['keterangan2'] ?></td>
+                   
                     
                     
                     <!-- status proses tugas  -->
@@ -338,7 +338,7 @@ session_start();
                               <?php } 
                            else if ($data['proses_tugas'] == 1) {
                                     ?><td> <?php echo $data['catatan'] ?> </td> 
-                                  } ?>
+                          
                     </tr>
                      <?php 
                         } } } 
@@ -350,7 +350,7 @@ session_start();
                           <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                           <td class="text-left ps-1"><?php echo $data['dosen_koor'] ?></td>
                           <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
-                          <td class="text-left ps-1"><?php echo $data['keterangan2'] ?></td>
+                        
                           
                           
                           <!-- status proses tugas  -->
@@ -382,7 +382,7 @@ session_start();
                                   <?php }
                                   else if ($data['proses_tugas'] == 1) {
                                     ?><td> <?php echo $data['catatan'] ?> </td> 
-                                  } ?>
+                                 
                           </tr>
 
                         <?php } } }  ?>

@@ -23,7 +23,6 @@
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -193,9 +192,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Dosen</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Validasi Surat</h6>
+          <h5 class="font-weight-bolder mb-0">Validasi Surat Dosen</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -315,14 +314,14 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div class="form-group d-flex justify-content-around mt-4">
-            <form method = "post">
+          <div class="form-group d-flex justify-content-around mt-4 mb-0 pb-0 py-0 my-0">
+            <form method = 'post' >
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
@@ -334,15 +333,15 @@
             </form>
           </div>    
             
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
+            <div class="card-body px-0 pt-0 mt-0 py-0 my-0 pb-2">
+            <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:440px" >
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Dosen</th>
+                      <th class = "text-center">Nama Dosen</th>
                       <th class="text-center">NIP Dosen</th>
-                      <th>Perihal</th>
+                      <th class = "text-center">Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Persetujuan Kadep</th>
                     </tr>
@@ -370,18 +369,13 @@
                     <tr>
                     <td class="text-center"><?php echo $no++ ?></td>
                        <!-- nama -->
-                       <?php if ($data['status_kadep'] == 0){ ?>
+                       
                   <form action="./validasidosen.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
                     </td>
-                  </form> <?php } 
-                  else { ?> 
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
-                    </td>
-                <?php } ?>
+                  </form> 
                       <!-- nrp -->
                       <td>
                       <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
@@ -397,7 +391,7 @@
                       <!-- status surat -->
                         <?php if ($data['status_kadep'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
                       </td> <?php } 
                             else if ($data['status_kadep'] == 1) {?>
                         <td class="align-middle text-center text-sm">
@@ -419,18 +413,13 @@
                         <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                           <!-- nama -->
-                          <?php if ($data['status_kadep'] == 0){ ?>
+                         
                   <form action="./validasidosen.php" method="post">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
                     </td>
-                  </form> <?php } 
-                  else { ?> 
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
-                    </td>
-                <?php } ?>
+                  </form> 
                           <!-- nrp -->
                           <td>
                           <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
@@ -446,7 +435,7 @@
                           <!-- status surat -->
                             <?php if ($data['status_kadep'] == 0) {?>
                           <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Di Proses</span>
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
                           </td> <?php } 
                                 else if ($data['status_kadep'] == 1) {?>
                             <td class="align-middle text-center text-sm">

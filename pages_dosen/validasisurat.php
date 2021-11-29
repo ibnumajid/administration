@@ -251,12 +251,11 @@
 
 <!-- Tabel Validasi -->
 <div class="container-fluid py-4">
-<div class="row">
+      <div class="row">
         <div class="col-12">
-        <div class="card mb-4">
-
-        <div class="form-group d-flex justify-content-around mt-4 mb-0 my-0 py-0 pb-0">
-          <form method = "post">
+          <div class="card mb-4">
+          <div class="form-group d-flex justify-content-around mt-4 mb-0 pb-0 py-0 my-0">
+            <form method = 'post' >
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                </form>
@@ -272,25 +271,15 @@
                 <input type="hidden" name = "filterid" value = "2">
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
             </form>
-        </div>
+          </div>    
             
-          <div class="card mb-4">
-            
-            <div class="card-header pb-0 p-3 mt-0 pt-0 my-0 py-0">
-              <div class="row">
-                <!-- <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat Mahasiswa</h6>
-                </div> -->
-              </div>
-            </div>
-            
-            <div class="card-body px-0 mt-0 pt-0 my-0 py-0 pt-0 pb-2">
-            <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:390px" >
+            <div class="card-body px-0 pt-0 mt-0 py-0 my-0 pb-2">
+            <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:440px" >
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Mahasiswa</th>
+                      <th class = "text-center">Nama Mahasiswa</th>
                       <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
                       <?php if ($_SESSION['status'] != 5) { ?>
