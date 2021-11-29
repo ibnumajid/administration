@@ -270,54 +270,53 @@
 
 
         <div class="container-fluid py-4">
-          
-            
-                              <!-- Bagian Validasi Mahasiswa -->
-  
-<div class="card-body p-3">
-  <div class="row">
-    <div class="card-body px-0 pt-0 pb-2">
+        <div class="row">
 
-      <div class="table-responsive p-0">
+  <div class="row">
+   <div class="col-lg-12">
+   <div class="card mt-0">
+  
       
-        
-        <div class="col-6 d-flex align-items-center">
-        
-          <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi</h6>
+      
+       
+          
+        <div class="col-6 d-flex align-items-center mx-2">
+          <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat yang Belum Divalidasi</h6>
         </div>
-        <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style="height:300px">
-          <table class="table table-striped align-items-center mb-6">
-          <div class="form-group d-flex justify-content-around mt-4">
+
+         
+          <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form method = "post">
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
-               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Menolak</button>
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
             </form>
         </div>
-
+        <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:390px" >
+        <table class="table table-striped align-items-center mb-6 mt-0">
             <thead>
               <tr>
                 <th class="text-center">No</th>
-                <th class="text-left ps-2">Nama</th>
-                <th class="text-left ps-2">Status</th>
+                <th class="text-center">Nama</th>
+                <th class="text-center">Status</th>
                 <th class="text-left ps-2">Perihal</th>
-                <th>Proses</th>
+                <th class="text-center">Proses</th>
                 <th class="text-center">Waktu Upload</th>
                 <th class="text-left ps-2"></th>  
               </tr>
             </thead>
-            
+            <tbody>
             <!-- tabel mahasiswa -->
             <?php
             include '../_database/config.php'; //panggil setiap ingin koneksi ke data
@@ -334,7 +333,7 @@
               if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) || ($tujuan == $nama)  || ($data['dosen_tkk'] == $_SESSION['user'] && $_SESSION['status2'] == 1) ) ) {
                 if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter2'])) {
                   $idf = $_POST['filterid'];
-                    if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == $idf && $data['dosen1'] == $_SESSION['user']) || ($data['status_dosen2'] == $idf && $data['dosen2'] == $_SESSION['user']) || $data['status_dosentkk'] == $idf)) { ?>
+                    if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == $idf && $data['dosen1'] == $nama) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == $idf && $data['dosen2'] == $nama) || ($data['status_dosentkk'] == $idf))) { ?>
               
                 <?php $id = $data['id_no'] ?>
                 <tr>
@@ -435,17 +434,23 @@
               <?php } }  } ?>
           <?php if ($no == 1) { ?>  
             <tr>
-            <td> </td>
+            <td></td>
             <td></td>
             <td></td>
             <td><h6 class="text-center"><br><br><br>BELUM ADA SURAT YANG PERLU DIVALIDASI</h6></td>
-            </tr>
+           <td></td>
+           <td></td>
+           <td></td>
+           </tr>
             <?php } ?>
+          </tbody>
           </table>
         </div>
-      </div>
-    </div>
+        
+        </div>
   </div>
+          </div>
+</div>
 </div>
 
 <!--
@@ -664,7 +669,7 @@
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                          <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
                         
                        </div>
 
@@ -722,7 +727,7 @@
                          <form action = "./ubahajuandsn.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                         <button class ="btn btn-primary">Ubah</button>
+                         <button class ="btn btn-info">Ubah</button>
                          </form>
                                          
                         <?php } ?>
@@ -838,35 +843,36 @@
                     </div>
                   </div>
                 </div>
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:500px">
-                  <ul class="list-group">
-                    <?php
-                    include "../_database/config.php";
-                              
-                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ORDER BY id_no DESC ');
-                    $no = 0;
-                    $no2 = $no++;
-                    while ($data = mysqli_fetch_array($query)){
+                <ul class="list-group">
+                  <?php
+                  include "../_database/config.php";
+                            
+                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmindsn ORDER BY id_no DESC ');
+                  $no = 0;
+                  $no2 = $no++;
+                  while ($data = mysqli_fetch_array($query)){
 
                     if ($data['nama'] == $_SESSION['user']) {
-                    $no++?>
+                      $no++
+                    ?>
                       <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
-                        <div class="d-flex flex-column">
-                          <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
-                            <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                              <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
-                                <button type="button"  class="btn btn-link px-0" ><em><?php echo $data['file'] ?></em></button>
-                              </span>
-                            </a>
-                        </div>
-                        <span class="text-xs"><?php echo $data['tanggal'] ?></span>
+                   <div class="d-flex flex-column">
+                    <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
+                      <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                        <span name="fl" id="edit<?php echo $data['id_no'] ?>">
+                          <button type="button"  class="btn btn-link px-0">Klik untuk Mengunduh</button>
+                        </span>
+                      </a>
+                   </div>
+                    <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                         <?php } } ?>
                       </li>
                       <?php if ($no == 1) { ?>
-                      <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
-                      <?php } ?>
+                        
+              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
+
+              <?php } ?>
                   </ul>
-                </div>
               </div>
             </div>
           </div>

@@ -270,8 +270,10 @@ include "../_database/config.php";
                 include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                 $nama = $_SESSION['user'];
                 $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
-                $data = mysqli_fetch_array($query)
-
+                $data = mysqli_fetch_array($query);
+                $tujuan = $data['dosen1'];
+                $tujuan2 = $data['dosen2'];
+                $tujuan3 = $data['dosen_tkk'];
 
                 ?>
 
@@ -388,7 +390,8 @@ include "../_database/config.php";
                         </a>
                         <!-- Menginput id surat -->
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-
+                        
+                        <?php if (($data['status_kadep'] == 0 && $_SESSION['status'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
                         <!-- persetujuan surat -->
                         <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                         <div class="form-check">
@@ -404,7 +407,7 @@ include "../_database/config.php";
                           <br>
                           <div class="form-group"></label><input name="catatan2" class="form-control" type="text"></div>
                         </div>
-
+                          <?php } ?>
 
                       </div>
                     </div>
@@ -413,11 +416,12 @@ include "../_database/config.php";
               </div>
               <div class = "mx-4">
               <a href = "./validasisurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+              <?php if (($data['status_kadep'] == 0 && $_SESSION['status'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
               <?php if ($_SESSION['status'] == 2) { ?>
-                <button type="submite" name="update" class="btn bg-gradient-primary">Validasi</button>
+                <button type="submite" name="update" class="btn bg-gradient-info">OK</button>
               <?php } else if ($_SESSION['status'] == 5) { ?>
-                <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>
-              <?php } ?>
+                <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
+              <?php } } ?>
               </form>
               </div>
             </div>
