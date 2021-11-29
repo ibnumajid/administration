@@ -336,6 +336,7 @@ $(document).ready(function(){
                             <div class="unduhmag" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
                                 <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <button type="button" class="btn btn-info">Info</button>
                               </a>
                             </div>
 
