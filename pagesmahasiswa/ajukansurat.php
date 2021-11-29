@@ -333,12 +333,11 @@ $(document).ready(function(){
                             </div>
 
                             <!-- UNDUH PANDUANN Magang -->
-                            <div class="unduhmag" style="display: none;" class="d-grid gap-2">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                            <div class="unduhmag text-center" style="display: none;" class="d-grid gap-2">
+                            <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
-                              <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                             </div>
 
                             <!-- UNDUH PANDUANN Proyek Akhir -->
