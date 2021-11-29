@@ -350,7 +350,7 @@ $(document).ready(function(){
 
                             <!-- UNDUH PANDUANN PBL -->
                             <div class="unduhpbl text-center" style="display: none;">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                              <a href="./Contoh Proposal PBL(Project Based Learning).pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
                                 <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PBL</button>
                               </a>
@@ -390,7 +390,7 @@ $(document).ready(function(){
 
                             <!-- UNDUH PANDUANN HIMA -->
                             <div class="unduhhima text-center" style="display: none;">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                              <a href="./Contoh Proposal Kegiatan Himpunan.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
                                 <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL KEGIATAN</button>
                               </a>
