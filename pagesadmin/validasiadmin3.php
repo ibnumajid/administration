@@ -190,8 +190,13 @@
    <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
-          <div class="card mb-4">
-          <div class="form-group d-flex justify-content-around mt-4">
+          
+          <div class="card mb-4 ">
+          <div class="col-6 d-flex align-items-center mx-4 mt-4">
+                  <h6 class="mb-0">Validasi Surat Mahasiswa</h6>
+                </div>
+      
+          <div class="form-group d-flex justify-content-around mt-4 mb-0 mx-0 px-0">
           <form method = "post">
                 <input type="hidden" name = "filterid" value = "012">
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
@@ -202,13 +207,20 @@
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
-               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Sudah Diproses</button>
             </form>
         </div>
+            <div class="card-header pb-0 p-3 mt-0 mx-0 pt-0 px-0">
+              <div class="row">
+                <!-- <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Surat Masuk dari Mahasiswa</h6>
+                </div> -->
+              </div>
+            </div>
             
-            <div class="card-body px-0 pt-0 pb-2">
-             <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin" style = "height:390px" >
-                <table class="table align-items-center mb-0">
+            <div class="card-body mx-0 mt-0 px-0 pt-0 pb-2">
+            <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:390px" >
+                <table class="table align-items-center mb-0 mt-0">
                   <thead>
                     <tr>
                       <th>No</th>
