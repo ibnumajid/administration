@@ -402,6 +402,12 @@
             </div>
           </div>
                         <!-- Carousel selesai -->
+                        <div class="container-fluid py-4">
+        <div class="row">
+
+  <div class="row">
+   <div class="col-lg-12">
+   <div class="card mt-0">
           
         <div class="col-6 d-flex align-items-center mx-2">
           <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat yang Belum Divalidasi</h6>
