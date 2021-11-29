@@ -156,7 +156,7 @@ include "../_database/config.php";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat</h6>
+                  <h6 class="mb-0"></h6>
                 </div>
               </div>
             </div>
@@ -253,12 +253,12 @@ include "../_database/config.php";
                   <!-- button upload close -->
               
                 <div class = "mx-4">
-              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary">Close</button></a>
+              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary">Batal</button></a>
               <?php if ($data['status_kadep'] == 1){ ?>
-                <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Ubah</button>
+                <button type="submite" name="updatekdp" class="btn bg-gradient-info">Ubah</button>
                 <?php } 
                 else { ?> 
-               <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button> <?php } ?>
+               <button type="submite" name="update" class="btn bg-gradient-info">Ubah</button> <?php } ?>
               </form>
                 </div>
               </div>

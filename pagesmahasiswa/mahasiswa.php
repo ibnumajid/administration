@@ -369,10 +369,10 @@ session_start();
 
 
                        <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
 
                          <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
                         
                        </div>
 
@@ -434,14 +434,14 @@ session_start();
 
 
                        <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
 
                          <!-- Saat dosen menolak -->
                          <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
                          <form action = "./ubahajuan.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                         <button class ="btn btn-primary">Ubah</button>
+                         <button class ="btn btn-info">Ubah</button>
                          </form>
                                          
                         <?php } ?>
@@ -522,7 +522,7 @@ session_start();
                       <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
                         <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
                           <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
-                            <button type="button"  class="btn btn-link px-0" ><em><?php echo $data['file'] ?></em></button>
+                            <button type="button"  class="btn btn-link px-0" ><em>Klik untuk Mengunduh File</em></button>
                           </span>
                         </a>
                     </div>
