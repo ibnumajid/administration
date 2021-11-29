@@ -423,7 +423,8 @@
             Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Berhasil Merespon',
+            title: 'Anda Berhasil Melakukan Perubahan',
+            text: 'Perubahan Akan Disimpan',
             showConfirmButton: false,
             timer: 2000
           })
