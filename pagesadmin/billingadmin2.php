@@ -272,6 +272,7 @@
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
+              <li></li>
 
                         <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
