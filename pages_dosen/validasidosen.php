@@ -258,7 +258,7 @@ include "../_database/config.php";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat</h6>
+                  <h6 class="mb-0"></h6>
                 </div>
               </div>
             </div>
@@ -367,6 +367,7 @@ include "../_database/config.php";
                         <!-- Menginput id surat -->
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
 
+                      <?php if ($data['status_kadep'] == 0) { ?>
                         <!-- persetujuan surat -->
                         <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                         <div class="form-check">
@@ -382,24 +383,25 @@ include "../_database/config.php";
                           <br>
                           <div class="form-group"></label><input name="catatan2" class="form-control" type="text"></div>
                         </div>
-
-
+                          <?php } ?>
                       </div>
                     </div>
                   </div>
                   <!-- button upload close -->
               </div>
-              <div clss = "mx-4">
+              <div class = "mx-4">
               <a href = "./validasidsn.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
               <?php  
-              if ($_SESSION['status'] == 5) { ?>
-                <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>
+              if ($_SESSION['status'] == 5 && $data['status_kadep'] == 0) { ?>
+                <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
               <?php } ?>
               </div>
               </form>
+              </div>
             </div>
           </div>
         </div>
+              </div>
         <!-- and popup ajuan surat mahasiswa -->
 
 
@@ -474,8 +476,7 @@ include "../_database/config.php";
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Anda Berhasil Melakukan Perubahan',
-                text: 'Perubahan Akan Disimpan',
+                title: 'Berhasil Merespon',
                 showConfirmButton: false,
                 timer: 2000
             })

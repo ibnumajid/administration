@@ -216,7 +216,7 @@
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat</h6>
+                  <h6 class="mb-0"></h6>
                 </div>
               </div>
             </div>
@@ -323,7 +323,8 @@
                                   <a href="../pages/pagestendik/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
-                                  
+
+                                  <?php if ($data['status_kadep'] == 0){ ?> 
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
@@ -342,7 +343,7 @@
         
                                   <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text"></div>
                                     </div>
-                                  
+                                  <?php } ?>
                       
                                 </div>
                               </div>
@@ -350,9 +351,12 @@
                             <!-- button upload close -->
                             </div>
                             <div class = "mx-4">
+                            
                             <a href = "./validasitndk.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                            <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Validasi</button>
-                            </div>
+                            <?php if ($data['status_kadep'] == 0) { ?>
+                            <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
+                          <?php } ?>  
+                          </div>
                         </form>
                           </div>
                         </div>
@@ -423,8 +427,7 @@
             Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Anda Berhasil Melakukan Perubahan',
-            text: 'Perubahan Akan Disimpan',
+            title: 'Berhasil Merespon',
             showConfirmButton: false,
             timer: 2000
           })
