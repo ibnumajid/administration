@@ -368,7 +368,7 @@
                          <form action = "./ubahajuandsn.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                         <button class ="btn btn-primary">Ubah</button>
+                         <button class ="btn btn-info">Ubah</button>
                          </form>
                                          
                         <?php } ?>
