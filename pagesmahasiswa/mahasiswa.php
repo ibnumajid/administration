@@ -224,7 +224,7 @@ session_start();
                       <?php 
                     include "../_database/config.php";
                     $no = 1;
-                    $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC LIMIT 3' );
+                    $query = mysqli_query($koneksi, "SELECT * FROM adminsurat ORDER BY id_no DESC LIMIT 3" );
 
                     while ($data = mysqli_fetch_array($query)) {
                       if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
