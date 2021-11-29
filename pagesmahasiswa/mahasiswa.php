@@ -529,7 +529,7 @@ session_start();
                     <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                     <?php } } ?>
                     <?php if ($no == 1) { ?>
-                    <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
+                    <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG MASUK</h6>
                     <?php } ?>
                   </li>
               </ul>
