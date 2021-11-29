@@ -280,9 +280,9 @@ session_start();
               </div>
             </div>
             
-            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:350px">
+           
               <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
+              <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
                   <table class="table align-items-center mb-0">
                   <thead>
                       <tr>
@@ -348,7 +348,7 @@ session_start();
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -470,7 +470,7 @@ session_start();
 
                 </div>
               </div>
-            </div>
+          
           </div>
         </div>
       </div>
