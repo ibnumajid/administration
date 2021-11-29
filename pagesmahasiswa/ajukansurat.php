@@ -344,7 +344,7 @@ $(document).ready(function(){
                             <div class="unduhpa text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PROYEK AKHIR</button>
                               </a>
                             </div>
 
@@ -352,7 +352,7 @@ $(document).ready(function(){
                             <div class="unduhpbl text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PBL</button>
                               </a>
                             </div>
 
@@ -360,7 +360,7 @@ $(document).ready(function(){
                             <div class="unduhcuti text-center" style="display: none;">
                               <a href="./Form Ijin Cuti Mahasiswa.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                                <button type="button" class="btn btn-info">UNDUH FORM CUTI</button>
                               </a>
                             </div>
 
@@ -368,7 +368,7 @@ $(document).ready(function(){
                             <div class="unduhundur text-center" style="display: none;">
                               <a href="./Form Mengundurkan Diri.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                                <button type="button" class="btn btn-info">UNDUH FORM PENGUNDURAN DIRI</button>
                               </a>
                             </div>
 
@@ -384,7 +384,7 @@ $(document).ready(function(){
                             <div class="unduhukt text-center" style="display: none;">
                               <a href="./Permohonan Keringanan UKT.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                                <button type="button" class="btn btn-info">UNDUH FORM KERINGANAN UKT</button>
                               </a>
                             </div>
 
@@ -392,7 +392,7 @@ $(document).ready(function(){
                             <div class="unduhhima text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
                                 <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL KEGIATAN</button>
                               </a>
                             </div>
 
