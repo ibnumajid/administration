@@ -361,7 +361,7 @@ session_start();
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
                         </td> <?php } 
                         else if ($data['status_admin'] == 2) {?>
                         <td class="align-middle text-center text-sm">
@@ -381,7 +381,7 @@ session_start();
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -400,52 +400,34 @@ session_start();
                                               </p>
                                             </a>
 
-                                          <!-- Keterangan File -->
-                                          <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                        <!-- Keterangan File -->
+                                        <label for="formFile" class="form-label">Keterangan Tambahan</label>
                                           <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                           
-                                          <!-- nama mahasiswa -->
-                                          <label for="formFile" class="form-label">Catatan Pembimbing</label>
+                                          <!-- catatan dosebing -->
+                                          <label for="formFile" class="form-label">Catatan Dosen Pembimbing</label>
                                           <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_pmb'] ?></label>
 
-                                          <!-- nama mahasiswa -->
-                                          <label for="formFile" class="form-label">Catatan Koordinator</label>
+                                          <!-- nama dosen koor -->
+                                          <label for="formFile" class="form-label">Catatan Dosen Koordinator</label>
                                           <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_koor'] ?></label>
 
-                                          <!-- NRP mahasiswa -->
+                                          <!-- kadep -->
                                           <label for="formFile" class="form-label">Catatan Kadep</label>
                                           <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
 
                                           <!-- Input ID untuk memberikan identitas surat -->
                                           <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
-                                          <!-- Ubah File saat ditolak filenya -->
-                                          <?php if ($data['status_dosen1'] == "1") { ?>
-                                            <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
-                                            <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                            <input type="hidden" name="stats" value="0">
-                                          <?php } else if ($data['status_dosen2'] == "1") { ?>
-                                            <label for="formFile" class="form-label">Ubah File Untuk Dosen</label>
-                                            <input type="file" name="ufl" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                            <input type="hidden" name="stats" value="0">
-                                          <?php } else if ($data['status_kadep'] == "1") { ?>
-                                            <label for="formFile" class="form-label">Ubah File Untuk Kadep</label>
-                                            <input type="file" name="uflk" id="edit<?php echo $data['id_no'] ?>" class="form-control" aria-label="file example" required>
-                                            <input type="hidden" name="stats2" value="0">
-                                          <?php } ?>
-
-
                                           <div class="modal-footer">
-                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
-                                            <!-- Saat dosen menolak -->
-                                            <?php if ($data['status_dosen1']  == "1") { ?>
-                                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                            <?php } if ($data['status_dosen2']  == "1") { ?>
-                                              <button type="submite" name="update" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                            <?php } else if ($data['status_kadep']  == "1") { ?>
-                                              <button type="submite" name="update2" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Upload</button>
-                                            <?php } ?>
+                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+                                          <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] == 1 || $data['status_kadep'] == 1 ) { ?>
+                                            <form action = "./ubahajuan.php" method = "post">
+                                              <!-- Input ID untuk memberikan identitas surat -->
+                                              <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                                              <button class ="btn btn-info">Ubah</button>
+                                              </form>
+                                              <?php } ?>
                                           </div>
                                         </div>
                                       </div>

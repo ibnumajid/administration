@@ -361,7 +361,7 @@ session_start();
                         <!-- status aktivitas admin -->
                         <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
                         </td> <?php } 
                         else if ($data['status_admin'] == 2) {?>
                         <td class="align-middle text-center text-sm">
@@ -381,7 +381,7 @@ session_start();
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -400,8 +400,8 @@ session_start();
                                               </p>
                                             </a>
 
-                                          <!-- Keterangan File -->
-                                          <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                         <!-- Keterangan File -->
+                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
                                           <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                           
                                           <!-- catatan dosebing -->
@@ -420,12 +420,12 @@ session_start();
                                           <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
                                           <div class="modal-footer">
-                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
                                           <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] == 1 || $data['status_kadep'] == 1 ) { ?>
                                             <form action = "./ubahajuan.php" method = "post">
                                               <!-- Input ID untuk memberikan identitas surat -->
                                               <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                                              <button class ="btn btn-primary">Ubah</button>
+                                              <button class ="btn btn-info">Ubah</button>
                                               </form>
                                               <?php } ?>
                                           </div>
