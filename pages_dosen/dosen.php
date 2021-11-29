@@ -469,20 +469,15 @@
                   <!-- no -->
                   <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                  <?php   if ($data['status_dosen1'] == '0' || $data['status_dosen2'] == '0' || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)){ ?>
+               
                           <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
                               <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
                             </td>
-                          </form> <?php }
+                          </form>
 
-                          else { ?> 
-                            <td style = "height:20px">
-                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                            </td>
-                          
-                          <?php } ?>
+                       
                   <!-- status -->
                   <td>
                     <h6 class="text-left ps-1">Mahasiswa</h6>
@@ -517,23 +512,13 @@
                    <!-- no -->
                    <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                  <?php   if ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0 || ($data['dosen_tkk'] == $_SESSION['user'] && $_SESSION['status2'] == 1)){ ?>
+                
                           <form action="./validasimhs.php" method="post">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
                               <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
                             </td>
-                          </form> <?php }
-
-                          else { ?> 
-                          
-                          
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                            <td style = "height:20px">
-                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                            </td>
-                         
-                          <?php } ?>
+                          </form>
                   <!-- status -->
                   <td>
                     <h6 class="text-left ps-1">Mahasiswa</h6>
