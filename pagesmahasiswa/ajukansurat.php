@@ -333,9 +333,9 @@ $(document).ready(function(){
                             </div>
 
                             <!-- UNDUH PANDUANN Magang -->
-                            <div class="unduhmag" style="display: none;">
+                            <div class="unduhmag" style="display: none;" class="d-grid gap-2 col-6 mx-auto">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
                                 <button type="button" class="btn btn-info">Info</button>
                               </a>
                             </div>
