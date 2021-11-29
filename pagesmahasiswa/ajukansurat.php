@@ -416,15 +416,17 @@ $(document).ready(function(){
                                   <div  class="koor" style="display: none;" >
                                     <div class="form-group col-md-12">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
-                                          <select id="name_py" name="ds2"  class="form-select" aria-label="Default select example" >
-                                              <option value="Tidak Memerlukan Dosen Koordinator" selected>Pilih Dosen Koordinator</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb");
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option  value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } ?>
-                                          </select>
+                                        <?php
+                                         include '../_database/config.php';
+                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 2");
+                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
+                                          $npp = $data_masuk['user'];
+
+                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
+                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                        <input id="name_py" name="ds2" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
+                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
+                                        <?php } } ?>
                                     </div>
                                   </div>
                                   <div  class="dpbl" style="display: none;" >
