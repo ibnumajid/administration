@@ -346,7 +346,7 @@ include "../_database/config.php";
                         <div class="card-header pb-0 p-3">
                             <div class="row">
                                 <div class="col-6 d-flex align-items-center">
-                                    <h6 class="mb-0">Laporan Mandat</h6>
+                                    <h6 class="mb-0"></h6>
                                 </div>
                             </div>
                         </div>
@@ -389,7 +389,7 @@ include "../_database/config.php";
                                                         <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['tgl_pelaksana'] ?></label>
                                                     </div>
                                                 </div>
-                                                <label for="formFile" class="form-label">Kirim Laporan</label>
+                                                <label for="formFile" class="form-label">Masukkan Laporan</label>
                                                 <input type="file" name = "fl" class="form-control" aria-label="file example">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
                                     
@@ -401,8 +401,8 @@ include "../_database/config.php";
                                         </div>
                                     </div>
                                     <div class = "mx-4">
-                                    <a href = "./rekapmndt.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                                 <button type="submit" name="updatekdp" class="btn bg-gradient-primary">Respon</button>   
+                                    <a href = "./rekapmndt.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button></a>
+                                 <button type="submit" name="updatekdp" class="btn bg-gradient-info">Kirim Laporan</button>   
                                 </form>
                                 <?php } ?>
                         </div>

@@ -347,7 +347,7 @@
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Lihat Mandat</h6>
+                  <h6 class="mb-0"></h6>
                 </div>
               </div>
             </div>
@@ -396,15 +396,17 @@
                                           </div>
                                       </div>
                                   
-                                  
+                            
                                   <label for="formFile" class="form-label">Lihat File</label>
                                   <a href="./mandat/<?php echo $data['file'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a>
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >   
-                                  <?php if ($data['proses_tugas'] != 3 || $data['proses_tugas'] != 2){ ?>                             
-                                  <!-- persetujuan surat -->
+
+                                  <!-- Menginput File -->
+                                  <?php if ($data['proses_tugas'] == '0' || $data['proses_tugas'] == '1'){ ?>                             
+                                  
                                   <label for="formFile" class="form-label">Apakah Anda Ingin Menyetujui Mandat Ini ?</label>
                                   <div class="form-check">
                                   <input type="radio" class="btn-check" name="ss" id="success-outlined" value = "3" autocomplete="off">
@@ -413,7 +415,7 @@
                                   <input type="radio" class="btn-check" name="ss" id="danger-outlined" value = "1" autocomplete="off">
                                   <label class="btn btn-sm btn-outline-danger" for="danger-outlined">Tolak</label>        
                                   </div>
-                                  <?php } ?>
+                                
                                         <!-- Menginput catatan -->
                                         <div>
                                         <label for="catatan" class = "form-label"> Catatan </label>
@@ -421,7 +423,7 @@
         
                                   <div class = "form-group"></label><input name = "catatan2" class = "form-control" type = "text"></div>
                                     </div>
-                                  
+                                    <?php } ?>
                       
                                 </div>
                               </div>
@@ -430,8 +432,8 @@
                             </div>
                             <div class = "mx-4">
                             <a href = "./rekapmndt.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                            <?php if ($data['proses_tugas'] != 3 || $data['proses_tugas'] != 2){ ?>
-                            <button type="submite" name="updatekdp" class="btn bg-gradient-primary">Respon</button>
+                            <?php if ($data['proses_tugas'] == 0 || $data['proses_tugas'] == 1){ ?>
+                            <button type="submite" name="updatekdp" class="btn bg-gradient-info">Respon</button>
                             <?php } ?>
                           </div>
                            
