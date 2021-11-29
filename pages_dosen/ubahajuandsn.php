@@ -230,7 +230,7 @@ include "../_database/config.php";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat</h6>
+                  <h6 class="mb-0"></h6>
                 </div>
               </div>
             </div>
@@ -318,14 +318,15 @@ include "../_database/config.php";
                   </div>
                   <!-- button upload close -->
               
-
+                      <div class = "mx-4">
               <a href = "./permohonandosen.php"><button type="button" class="btn bg-gradient-secondary">Close</button></a>
               <?php if ($data['status_kadep'] == 1){ ?>
-                <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button>
+                <button type="submite" name="update" class="btn bg-gradient-info">Ubah</button>
                 <?php } 
                 ?>
               </form>
-              </div>
+              </div>  
+            </div>
             </div>
           </div>
         </div>
