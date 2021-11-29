@@ -368,7 +368,7 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                          <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
                            </div>
                            </div>
                            </div>
@@ -430,7 +430,7 @@ session_start();
                          <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "../ubahajuantdk.php" method = "post">
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                         <button class ="btn btn-primary">Ubah</button>
+                         <button class ="btn btn-info">Ubah</button>
                          </form>
                                          
                         <?php } ?>
@@ -564,7 +564,7 @@ session_start();
                           <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
                             <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
                               <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
-                                <button type="button"  class="btn btn-link px-0" ><em><?php echo $data['file'] ?></em></button>
+                                <button type="button"  class="btn btn-link px-0" ><em>KLIK UNTUK MENGUNDUH FILE</em></button>
                               </span>
                             </a>
                         </div>
@@ -572,7 +572,7 @@ session_start();
                         <?php } } ?>
                       </li>
                       <?php if ($no == 1) { ?>
-                      <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
+                      <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG MASUK</h6>
                       <?php } ?>
                   </ul>
                 </div>

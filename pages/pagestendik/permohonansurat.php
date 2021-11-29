@@ -303,7 +303,7 @@ session_start();
           </div>
             <div class="modal-footer">
               <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submite" name="input" class="btn bg-gradient-primary" >Upload</button>
+              <button type="submite" name="input" class="btn bg-gradient-info" >Upload</button>
             </div>
            </form>
         </div>
@@ -323,7 +323,7 @@ session_start();
                </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Menunggu untuk Divalidasi</button>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Sedang Diproses</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
@@ -382,7 +382,7 @@ session_start();
                         <!-- Persetujuan kadep -->
                         <?php if ($data['status_kadep'] == 0) { ?>
                           <td class="text-center">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang Diproses</span>
                           </td> <?php } else if ($data['status_kadep'] == 1) { ?>
                           <td class="text-center">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
@@ -395,7 +395,7 @@ session_start();
                           <!-- status aktivitas admin -->
                       <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
                         </td> 
   
                          <?php } else if ($data['status_admin'] == 2) {?>
@@ -452,7 +452,7 @@ session_start();
                          <form action = "../ubahajuantdk.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                         <button class ="btn btn-primary">Ubah</button>
+                         <button class ="btn btn-info">Ubah</button>
                          </form>
                                          
                         <?php } ?>
@@ -487,7 +487,7 @@ session_start();
                                             <!-- status aktivitas admin -->
                                         <?php if ($data['status_admin'] == 0) {?>
                                           <td class="align-middle text-center text-sm">
-                                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Menunggu Untuk Diproses</span>
+                                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
                                           </td> 
                     
                                            <?php } else if ($data['status_admin'] == 2) {?>
@@ -547,7 +547,7 @@ session_start();
                          <form action = "../ubahajuantdk.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
-                         <button class ="btn btn-primary">Ubah</button>
+                         <button class ="btn btn-info">Ubah</button>
                          </form>
                                          
                         <?php } ?>

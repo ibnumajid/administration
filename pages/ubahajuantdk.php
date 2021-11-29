@@ -46,7 +46,7 @@ include "../_database/config.php";
 
 <!-- home  -->
   <li class="nav-item">
-    <a class="nav-link  " href="./tendik.php">
+    <a class="nav-link  " href="./pagestendik/tendik.php">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
               <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
@@ -58,7 +58,7 @@ include "../_database/config.php";
 
   <!--Permohonan Surat-->
   <li class="nav-item">
-    <a class="nav-link  active" href="./permohonansurat.php">
+    <a class="nav-link  active" href="./pagestendik/permohonansurat.php">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
           <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
@@ -70,7 +70,7 @@ include "../_database/config.php";
 
 <!-- REKAP SURAT -->
 <li class="nav-item"> 
-  <a class="nav-link  " href="./rekapsurat.php">
+  <a class="nav-link  " href="./pagestendik/rekapsurat.php">
     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
             <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
@@ -178,7 +178,7 @@ include "../_database/config.php";
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
-                  <h6 class="mb-0">Validasi Surat</h6>
+                  <h6 class="mb-0"></h6>
                 </div>
               </div>
             </div>
@@ -272,9 +272,9 @@ include "../_database/config.php";
                   <!-- button upload close -->
               
                           <div class = "mx-4">
-              <a href = "./pagestendik/permohonansurat.php"><button type="button" class="btn bg-gradient-secondary">Tutup</button></a>
+              <a href = "./pagestendik/permohonansurat.php"><button type="button" class="btn bg-gradient-secondary">Batal</button></a>
               <?php if ($data['status_kadep'] == 1){ ?>
-                <button type="submite" name="update" class="btn bg-gradient-primary">Ubah</button>
+                <button type="submite" name="update" class="btn bg-gradient-info">Ubah</button>
                 <?php } 
                 ?>
               </form>
