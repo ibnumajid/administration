@@ -193,7 +193,7 @@
           
           <div class="card mb-4 ">
           <div class="col-6 d-flex align-items-center mx-4 mt-4">
-                  <h6 class="mb-0">Validasi Surat Mahasiswa</h6>
+                  <h6 class="mb-0">Validasi Surat Tendik</h6>
                 </div>
       
           <div class="form-group d-flex justify-content-around mt-4 mb-0 mx-0 px-0">
