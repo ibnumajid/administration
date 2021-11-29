@@ -570,13 +570,13 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name',false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload proposal Magang (Ekstensi File .PDF)");
+                $('#label-file').text("Upload Proposal Magang (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
                 $('.unduh').show();
                 $('.keterangan').show();
-                $('#label-keterangan').text("Industri Melakukan Tempat Proyek Akhir");
+                $('#label-keterangan').text("Industri Tempat Mengerjakan Proyek Akhir");
                 $('.judulTA').show();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
@@ -589,7 +589,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name',false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload proposal Proyek Akhir (Ekstensi File .PDF)");
+                $('#label-file').text("Upload Proposal Proyek Akhir (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
@@ -608,13 +608,13 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name',false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload proposal PBL (Ekstensi File .PDF)");
+                $('#label-file').text("Upload Proposal PBL (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               } 
             else if($('#jenis_surat').val() == 'Surat Cuti') {
                 $('.unduh').show();
                 $('.keterangan').show();
-                $('#label-keterangan').text("Lama Waktu Cuti (*Satu semester)");
+                $('#label-keterangan').text("Lama Waktu Cuti (*Semester)");
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
@@ -663,7 +663,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name', 'tkk');
                 $('#name_dtkk').prop('name', false);
                 $('.file').show();
-                $('#label-file').text("Upload formulir Pengajuan Beasiswa (Ekstensi File .PDF)");
+                $('#label-file').text("Upload Formulir Pengajuan Beasiswa (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
