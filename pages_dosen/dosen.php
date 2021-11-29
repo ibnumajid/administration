@@ -259,6 +259,7 @@
                   <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell cursor-pointer"></i>
                     <?php 
+                    include '../_database/config.php';
                     $nama = $_SESSION['user'];
                     $query1 = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE 
                     (dosen1 = '$nama' || dosen2 = '$nama') && (status_dosen1 = 0 || status_dosen2 = 0)");
