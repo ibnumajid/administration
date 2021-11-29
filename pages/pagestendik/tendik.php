@@ -583,35 +583,35 @@ session_start();
                     </div>
                   </div>
                 </div>
-                <ul class="list-group">
-                  <?php
-                  include "../../_database/config.php";
-                            
-                  $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ORDER BY id_no DESC ');
-                  $no = 0;
-                  $no2 = $no++;
-                  while ($data = mysqli_fetch_array($query)){
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:500px">
+                  <ul class="list-group">
+                    <?php
+                    include "../../_database/config.php";
+                              
+                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ORDER BY id_no DESC ');
+                    $no = 0;
+                    $no2 = $no++;
+                    while ($data = mysqli_fetch_array($query)){
                     //nama tendik masih belum ada
                     if ($data['nama'] == $_SESSION['user']) {
-                      $no++
-                    ?>
+                    $no++?>
                       <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
-                   <div class="d-flex flex-column">
-                    <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
-                      <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                        <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
-                          <button type="button"  class="btn btn-link px-0" ><em><?php echo $data['file'] ?></em></button>
-                        </span>
-                      </a>
-                   </div>
-                    <span class="text-xs"><?php echo $data['tanggal'] ?></span>
+                        <div class="d-flex flex-column">
+                          <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
+                            <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                              <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
+                                <button type="button"  class="btn btn-link px-0" ><em><?php echo $data['file'] ?></em></button>
+                              </span>
+                            </a>
+                        </div>
+                        <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                         <?php } } ?>
                       </li>
                       <?php if ($no == 1) { ?>
-              <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
-
-              <?php } ?>
+                      <h6 class = "text-center"><br><br><br><br><br><br><br><br><br>BELUM ADA SURAT YANG DIAJUKAN</h6>
+                      <?php } ?>
                   </ul>
+                </div>
               </div>
             </div>
           </div>
