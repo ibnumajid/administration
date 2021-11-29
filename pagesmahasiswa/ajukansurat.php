@@ -342,51 +342,58 @@ $(document).ready(function(){
                             </div>
 
                             <!-- UNDUH PANDUANN Proyek Akhir -->
-                            <div class="unduhpa" style="display: none;">
+                            <div class="unduhpa text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
                             <!-- UNDUH PANDUANN PBL -->
-                            <div class="unduhpbl" style="display: none;">
+                            <div class="unduhpbl text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
                             <!-- UNDUH PANDUANN Cuti -->
-                            <div class="unduhcuti" style="display: none;">
+                            <div class="unduhcuti text-center" style="display: none;">
                               <a href="./Form Ijin Cuti Mahasiswa.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
                             <!-- UNDUH PANDUANN Mengundurkan Diri -->
-                            <div class="unduhundur" style="display: none;">
+                            <div class="unduhundur text-center" style="display: none;">
                               <a href="./Form Mengundurkan Diri.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
                             <!-- UNDUH PANDUANN Pengajuan Besiswa -->
-                            <div class="unduhbea" style="display: none;">
+                            <div class="unduhbea text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
                             <!-- UNDUH PANDUANN Keringanan UKT -->
-                            <div class="unduhukt" style="display: none;">
+                            <div class="unduhukt text-center" style="display: none;">
                               <a href="./Permohonan Keringanan UKT.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
                             <!-- UNDUH PANDUANN HIMA -->
-                            <div class="unduhhima" style="display: none;">
+                            <div class="unduhhima text-center" style="display: none;">
                               <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6>
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
 
