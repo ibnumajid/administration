@@ -272,21 +272,6 @@
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
-            </li>
-            <!--li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li-->
-            <li class="nav-item px-3 d-flex align-items-center">
-              <!--a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a-->
-            </li>
 
                         <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
@@ -308,10 +293,7 @@
                   <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
               </div>
 
-              <div class="card-body p-3 mt-0 pt-0">
-                    <div class="row mt-0 pt-0" >
-                        <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:390px" >
-                          <table class="table table-striped align-items-center mb-6 mt-0 pt-0" >
+              <div class="form-group d-flex justify-content-around mt-4 pb-0 mb-0">
         <a href="./billingadminsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
         <a href="./billingadmin.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
         <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-info">Sudah Diproses</button></a>
@@ -332,7 +314,9 @@
                                 <th class="text-left ps-2"></th>
                               </tr>
                             </thead>
-                            <?php $no = 1; ?>
+                            <?php
+                            $no = 0; 
+                            $no2 = $no++; ?>
                             <!-- tabel mahasiswa -->
                             <?php
                               include '../_database/config.php'; //panggil setiap ingin koneksi ke data
@@ -382,7 +366,6 @@
                               <?php } } ?>
                             </tr>
                             <!-- and tabel mahasiswa -->
-                            <!-- tabel suratdosen -->
                             <?php
                               include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                               $nama = $_SESSION['user'];
@@ -431,7 +414,7 @@
                               <?php } } ?>
                             </tr>
                             <!-- and tabel dosen -->
-                            <!-- tabel suratdosen -->
+
                             <?php
                               include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                               $nama = $_SESSION['user'];
@@ -497,9 +480,9 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+      
+    
+   
   </main>
 
     </div>
