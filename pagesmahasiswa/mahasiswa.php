@@ -214,7 +214,7 @@ session_start();
 
               <!-- Slide kedua -->
               <div class="carousel-item">
-                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                <div class="page-header min-vh-25 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
                   <!-- <span class="mask bg-gradient-dark"></span> -->
                   <div class="container">
                     <div class="row">
@@ -224,7 +224,7 @@ session_start();
                       <?php 
                     include "../_database/config.php";
                     $no = 1;
-                    $query = mysqli_query($koneksi, "SELECT * FROM adminsurat ORDER BY id_no DESC LIMIT 3" );
+                    $query = mysqli_query($koneksi, "SELECT * FROM adminsurat ORDER BY id_no DESC LIMIT 5" );
 
                     while ($data = mysqli_fetch_array($query)) {
                       if( ($data['tujuan'] == "Mahasiswa") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )

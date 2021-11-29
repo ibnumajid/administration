@@ -192,27 +192,37 @@ session_start();
     <!-- End Navbar -->
 
 
-    <!-- <div class="container-fluid py-4">
-          <div class="row">
-            <div class="col-lg-7">
-              <div class="row">
-               
-                
-                 <div class="col-md-12 mb-lg-0 mb-4">
-                  <div class="card mt-0">
-                    <div class="card-header pb-0 p-4">
-                      <div class="row">
-                        <div class="col-6 d-flex align-items-center">
-                          <h6 class="mb-0 pt-1 px-1">Informasi</h6>
-                        </div>
-                        
+        <!-- CAROUSEL -->
+              <!-- slide ketiga -->
+              <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <!-- <div class="carousel-item">
+                <div class="page-header min-vh-50 m-3 border-radius-xl" style="background-image: url('https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1129&q=80');">
+                  <span class="mask bg-gradient-dark"></span>
+                  <div class="container">
+                    <div class="row">
+                    <div class="pb-5 px-7">
+                        <h4 class="text-dark pb-10 px-0">Infirmasi</h4>
+                        <h1 class="text-dark fadeIn2 fadeInBottom">kiww</h1>
+                          <div class="btn bg-gradient-info">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-info"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="8"></line></svg>
+                          </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div> -->
 
-                    <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
-                      <div class="card-body p-3">
-                        <div class="row">
-                          <?php 
+              <!-- Slide kedua -->
+              <div class="carousel-item">
+                <div class="page-header min-vh-25 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                  <!-- <span class="mask bg-gradient-dark"></span> -->
+                  <div class="container">
+                    <div class="row">
+                    <div class="pb-3 px-7">
+                      <h4 class="text-dark p-1 px-0">Informasi</h4>
+                      <figure>
+                        <?php 
                           include "_database/config.php";
                           $no = 1;
                           $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
@@ -220,104 +230,58 @@ session_start();
                           while ($data = mysqli_fetch_array($query)) {
                             if( ($data['tujuan'] == "Tendik") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
                             { $no++
-                            ?>
-                            <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                              <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
-                                <span class="text-xs"><?=$data['keterangan']?></span>
-                              </div>
-                              <div class="d-flex align-items-center text-sm">
-                                <a href="../../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                                  <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                                </a>
-                              </div>
-                            </li>
-                            <?php }?>
-                            <?php if ($data['tujuan'] == "Dosen, Tendik" or $data['tujuan'] == "Tendik, Mahasiswa"){?>
-                              <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                              <div class="d-flex flex-column">
-                                <h6 class="mb-1 text-dark font-weight-bold text-sm"><?=$data['perihal']?></h6>
-                                <span class="text-xs"><?=$data['keterangan']?></span>
-                              </div>
-                              <div class="d-flex align-items-center text-sm">
-                                <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
-                                  <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link text-dark text-sm " class="btn btn-link"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</em></button></p>
-                                </a>
-                              </div>
-                            </li>
-                            <?php }?>
-                          <?php } ?>
-                          <?php if ($no == 1) { ?>
-                          <h6 class = "text-center"><br><br><br>Tidak Ada Informasi Terbaru</h6>
+                        ?>
+                        <blockquote class="blockquote ps-0">
+                          <p class="ps-3 text-dark"><?=$data['perihal']?></p>
+                        </blockquote>
+                        <figcaption class="blockquote-footer ps-3 text-dark">
+                          <?=$data['keterangan']?>
+                        </figcaption>
+                        <?php }} ?>
+                      </figure>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                          <?php } ?>
-                          <div class="col-md-6 mb-md-0 mb-4">
-                          
-                          </div>
-                          <div class="col-md-6">
-
-                          </div>
-                        </div>
+              <!-- SLIDE SATU -->
+              <div class="carousel-item active">
+                <div class="page-header min-vh-25 m-3 border-radius-xl" style="background-image: url('https://media.istockphoto.com/photos/white-paper-texture-background-picture-id1293996796?b=1&k=20&m=1293996796&s=170667a&w=0&h=ot-Q4dcJynVUxQyjU5P7i4qPZxmoWmPC0M09R53D8j8=');">
+                  <!-- <span class="mask bg-gradient-dark"></span> -->
+                  <div class="container">
+                    <div class="row">
+                      <div class="p-3 p-3">
+                        <h4 class="text-dark p-1 px-7"> </h4>
+                        <h1 class="text-dark p-0 px-7">Selamat Datang</h1>
+                        <h4 class="text-dark p-2 px-7"><?php echo $_SESSION['user'] ?></h4>
+                        <a href="./PANDUAN PENGGUNAAN SIM DTEO.pdf" target="_blank" class="pb-5 px-7">
+                        <button type="button" class="btn btn-secondary">Unduh Petunjuk Penggunaan SIM DTEO</button>
+                        </a>
                       </div>
-                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-5">
-              <div class="card h-100">
-                <div class="card-header pb-0 px-4">
-                  <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0">Surat Masuk</h6>
-                    </div>
-                    <div class="col-6 text-end">
 
-                    <-- untuk bagian surat masuk bagian tendik masih sama dengan dosen 
-                      <a href = ./rekapsurat.php> <button class="btn btn-outline-primary btn-sm mb-0">View All</button> </a>
-                    </div>
-                  </div>
-                </div>
-                    <hr>    
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:400px">
-                  <ul class="list-group">
-                        <br>
-                    <?php
-                        include "./_database/config.php";
-                            // belum memasukkan panggilan database untuk surat masuk tendik
-                    $query = mysqli_query($koneksi, 'SELECT * FROM kirimadmintndk ');
-                    $no = 0;
-                    $no2 = $no++;
-                    while ($data = mysqli_fetch_array($query)){
-                      // belum ada data tendik
-                      $tujuan = $data['nama'];
-                      if (strpos($tujuan, $_SESSION['user']) !== false) { $no++ ?>
-                     
-                    <li class="list-group-item border-0 d-flex justify-content-between ps-4 mb-2 border-radius-lg">
-                      <div class="d-flex flex-column">
-                        <h6 class="mb-1 text-dark font-weight-bold text-sm"> <?php echo $data ['file'] ?> </h6>
-                        <span class="text-xs"><?php echo $data['perihal'] ?></span>
-                        <span class="text-xs"><?php echo $data['tanggal'] ?></span>
-                      </div>
-                      <div class="d-flex align-items-center text-sm">
-                  
-                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                      </div>
-                    </li>
-                      <?php }} ?>
-                      <?php if ($no == 1) { ?>
-
-                      <h6 class = "text-center"><br><br><br>BELUM ADA SURAT MASUK</h6>
-                      <?php } ?>
-
-                  </ul>
-                </div>
+            <!-- BUTTON Next -->
+            <div class="row row-xs">
+              <div class="col-12 col-sm-12 col-lg-12 d-flex justify-content-end">
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon position-absolute bottom-25" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon position-absolute bottom-25" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
               </div>
             </div>
-          </div> -->
+          </div>
 
 
-                       <!-- Bagian Detail Permohonan Surat -->
+      <!-- SURAT DITOLAK -->
       <div class="row">
         <div class="col-md-7 mt-4">
           <div class="card">
