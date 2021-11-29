@@ -308,16 +308,16 @@
                   <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
               </div>
 
-              <div class="form-group d-flex justify-content-around mt-4">
+              <div class="form-group d-flex justify-content-around mt-4 pb-0 mb-0">
         <a href="./billingadminsm.php" id='failedList'><button class = "btn btn-info">Lihat Semua</button></a>
         <a href="./billingadmin.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
         <a href="./billingadmin2.php" id='failedList'><button class = "btn btn-outline-info">Sudah Diproses</button></a>
         </div> 
                 
-                  <div class="card-body p-3"  >
-                    <div class="row" >
-                        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin" style = "height:390px" >
-                          <table class="table table-striped align-items-center mb-6">
+        <div class="card-body p-3 mt-0 pt-0">
+                    <div class="row mt-0 pt-0" >
+                        <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:390px" >
+                          <table class="table table-striped align-items-center mb-6 mt-0 pt-0" >
                             <thead>
                               <tr>
                                 <th class="text-center">No</th>
