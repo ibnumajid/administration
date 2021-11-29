@@ -332,12 +332,70 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
-                            <!-- UNDUH PANDUANN -->
-                            <div class="unduh" style="display: none;">
-                              <a class="nav-link" >
-                                <li class="text-sm text-dark text-center active">Unduh Panduan</li>
+                            <!-- UNDUH PANDUANN Magang -->
+                            <div class="unduhmag text-center" style="display: none;" class="d-grid gap-2">
+                            <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
                               </a>
                             </div>
+
+                            <!-- UNDUH PANDUANN Proyek Akhir -->
+                            <div class="unduhpa text-center" style="display: none;">
+                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PROYEK AKHIR</button>
+                              </a>
+                            </div>
+
+                            <!-- UNDUH PANDUANN PBL -->
+                            <div class="unduhpbl text-center" style="display: none;">
+                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PBL</button>
+                              </a>
+                            </div>
+
+                            <!-- UNDUH PANDUANN Cuti -->
+                            <div class="unduhcuti text-center" style="display: none;">
+                              <a href="./Form Ijin Cuti Mahasiswa.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH FORM CUTI</button>
+                              </a>
+                            </div>
+
+                            <!-- UNDUH PANDUANN Mengundurkan Diri -->
+                            <div class="unduhundur text-center" style="display: none;">
+                              <a href="./Form Mengundurkan Diri.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH FORM PENGUNDURAN DIRI</button>
+                              </a>
+                            </div>
+
+                            <!-- UNDUH PANDUANN Pengajuan Besiswa -->
+                            <div class="unduhbea text-center" style="display: none;">
+                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
+                              </a>
+                            </div>
+
+                            <!-- UNDUH PANDUANN Keringanan UKT -->
+                            <div class="unduhukt text-center" style="display: none;">
+                              <a href="./Permohonan Keringanan UKT.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH FORM KERINGANAN UKT</button>
+                              </a>
+                            </div>
+
+                            <!-- UNDUH PANDUANN HIMA -->
+                            <div class="unduhhima text-center" style="display: none;">
+                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
+                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
+                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL KEGIATAN</button>
+                              </a>
+                            </div>
+
 
                             <!-- keterangan -->
                             <div class="keterangan" style="display: none;">
@@ -557,7 +615,14 @@ $(document).ready(function(){
     <script>
         $('#jenis_surat').on('change',function () {
             if($('#jenis_surat').val() == 'Surat Magang') {
-                $('.unduh').show();
+                $('.unduhmag').show();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide()
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat Magang");
                 $('.judulTA').hide();
@@ -576,7 +641,14 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').show();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Industri Tempat Mengerjakan Proyek Akhir");
                 $('.judulTA').show();
@@ -595,7 +667,14 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').show();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat PBL");
                 $('.judulTA').hide();
@@ -614,7 +693,14 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               } 
             else if($('#jenis_surat').val() == 'Surat Cuti') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').show();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Lama Waktu Cuti (*Semester)");
                 $('.judulTA').hide();
@@ -632,7 +718,14 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').show();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
@@ -650,7 +743,14 @@ $(document).ready(function(){
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').show();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Beasiswa");
                 $('.judulTA').hide();
@@ -669,7 +769,14 @@ $(document).ready(function(){
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').show();
+                $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
@@ -687,7 +794,14 @@ $(document).ready(function(){
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
-                $('.unduh').show();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').show();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Kegiatan");
                 $('.judulTA').hide();
@@ -706,7 +820,14 @@ $(document).ready(function(){
                 $('.dosenTKK').show();
               }
             else {
-                $('.unduh').hide();
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
                 $('.tanggalHIMA').hide();
