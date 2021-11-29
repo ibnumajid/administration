@@ -589,7 +589,7 @@ $(document).ready(function(){
                 $('#name_tkk').prop('name',false);
                 $('#name_dtkk').prop('name', 'tkk');
                 $('.file').show();
-                $('#label-file').text("Upload proposal Surat Proyek Akhir (Ekstensi File Berupa PDF)");
+                $('#label-file').text("Upload proposal Proyek Akhir (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
