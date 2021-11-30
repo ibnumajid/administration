@@ -262,12 +262,11 @@
                     include '../_database/config.php';
                     $nama = $_SESSION['user'];
                     $query1 = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE 
-                    (dosen1 = '$nama' || dosen2 = '$nama') && (status_dosen1 = 0 || status_dosen2 = 0)");
-                    $data = mysqli_num_rows($query1);
-                    ?>
+                    (dosen1 = '$nama' || dosen2 = '$nama') && (status_dosen1 = 0 || status_dosen2 = 0) && notif = 0");
+                    $data = mysqli_num_rows($query1); ?>
                     <span class="primary"><?php echo $data ?></span>
                   </a>
-                  <ul class="dropdown-menu  dropdown-menu-end  px-0 py-0 me-sm-n3" aria-labelledby="dropdownMenuButton">
+                  <ul class="dropdown-menu  dropdown-menu-end  px-1 py-1 me-sm-n3" aria-labelledby="dropdownMenuButton">
                     <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">
                       <?php 
                       include '../_database/config.php';
@@ -276,24 +275,45 @@
                       while ($data = mysqli_fetch_array($query)) {
                       $tujuan = $data['dosen1'];
                       $tujuan2 = $data['dosen2'];
-                      if (($tujuan == $nama || $tujuan2 == $nama) & ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0)) { ?>
-                      <li class="mb-2">
-                        <a class="dropdown-item border-radius-md" href="./validasisurat.php">
-                          <div class="d-flex py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
-                                <span class="font-weight"><?php echo $data['nama_mhsw']; ?></span>
-                              </h6>
-                              <p class="text-xs text-secondary mb-0">
-                                <?php echo $data['tanggal']; ?>
-                              </p>
+                      if (($tujuan == $nama || $tujuan2 == $nama) && ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0) && $data['notif'] == 0) { ?>
+                      
+                      <form action="" method = "post">
+                        <li class="mb-2">
+                          <a class="dropdown-item border-radius-md" href="./validasisurat.php">
+                            <div class="d-flex py-1">
+                              <div class="d-flex flex-column justify-content-center">
+                                <button type="submit" name="notif" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                                  <h6 class="text-sm font-weight-normal mb-1">
+                                    <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
+                                    <span class="font-weight"><?php echo $data['nama_mhsw']; ?></span>
+                                  </h6>
+                                </button>
+                                <p class="text-xs text-left ps-0 text-secondary mb-0">
+                                  <?php echo $data['tanggal']; ?>
+                                </p>
+                                <!-- Menginput id surat -->
+                                <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              </div>
                             </div>
-                          </div>
-                        </a>
-                      </li>
+                          </a>
+                        </li>
+                      </form>
                       <?php } } ?>
                     </div>
+                    <?php 
+                    include '../_database/config.php';
+                    if (isset($_POST['notif'])) {
+                    $id = $_POST['id'];
+
+                    $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 1 WHERE id_no = '$id' ");
+                    if ($query) { 
+                      header('location:validasisurat.php'); ?>
+                      <script>history.pushState({}, "", "")</script><?php
+                    } else { 
+                      header('location:./dosen.php'); ?>
+                      <script>history.pushState({}, "", "")</script><?php
+                    }
+                    } ?>
                   </ul>
                 </li>
                 <li class="nav-item px-2 d-flex align-items-center">
