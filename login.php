@@ -5,11 +5,12 @@ include('_database/config.php');
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 $antiinject = stripos($user, "or");
+$antiinject2 = strpos($user, "|");
 $tambah = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user='$user' and pass='$pass'");
 
 $cek = mysqli_num_rows($tambah);
 
-if ($ntiinject != false || $user == NULL || $pass == NULL)
+if ($ntiinject != false || $antiinject2 != false || $user == NULL || $pass == NULL)
 {    $_SESSION['alert'] = true;
     header("location:index.php");  }
 
