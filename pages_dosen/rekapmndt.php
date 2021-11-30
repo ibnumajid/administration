@@ -369,6 +369,7 @@
                           
                 
                           <form action="./lihatmandat.php" method="post">
+                            <input type="hidden" name = "lokasi" value = "mandat">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                   <td class = "text-center" style = "height:20px">
                   <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lihat</button></h6>
@@ -376,10 +377,11 @@
                   </form>
                     
                       
-                      ?>
+                      
                       
                   <?php if ($data['proses_tugas'] == 3) { ?>     
                   <form action="./laporanmandat.php" method="post">
+                  <input type="hidden" name = "lokasi" value = "mandat">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                   <td class = "text-center" style = "height:20px">
                   <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lapor</button></h6>
@@ -420,6 +422,7 @@
                           
                   <?php if ($data['proses_tugas'] == 0 || $data['proses_tugas'] == 1 || $data['proses_tugas'] == 3) { ?>
                           <form action="./lihatmandat.php" method="post">
+                            <input type="hidden" name = "lokasi" value = "mandat">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                   <td class = "text-center" style = "height:20px">
                   <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lihat</button></h6>
@@ -431,6 +434,7 @@
 
                   <?php if ($data['proses_tugas'] == 3) { ?>     
                   <form action="./laporanmandat.php" method="post">
+                  <input type="hidden" name = "lokasi" value = "mandat">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                   <td class = "text-center" style = "height:20px">
                   <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Lapor</button></h6>
@@ -480,6 +484,19 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if (@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Berhasil Upload File',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
   </body>
 
   </html>

@@ -452,6 +452,7 @@ session_start();
                                           <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "../ubahajuantdk.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name = "lokasi" value = "permohonan">
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-info">Ubah</button>
                          </form>
@@ -632,6 +633,19 @@ session_start();
             position: 'center',
             icon: 'success',
             title: 'Berhasil Mengajukan Surat',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Upload',
             showConfirmButton: false,
             timer: 2000
           })

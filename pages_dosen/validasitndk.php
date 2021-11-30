@@ -264,21 +264,14 @@
                     <tr>
                       <!-- nama -->
                       <td class="text-center"><?php echo $no++ ?></td>
-                      <?php if ($data['status_kadep'] == 0){ ?>
                   <!-- nama -->
                   <form action="./validasitendik.php" method="post">
+                    <input type="hidden" name = "lokasi" value = "permohonan">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
                     </td>
-                  </form> <?php } 
-                  else { ?> 
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
-                    </td>
-                  
-                <?php } ?>
+                  </form> 
                       <!-- nrp -->
                       <td>
                       <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nip'] ?></h6>

@@ -312,7 +312,7 @@ $(document).ready(function(){
 
                             if ($query) {
                             ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                                <script>history.pushState({}, "", "")</script><?php
+                                <?php header("location:permohonandosen.php"); ?>
                             } else {
                             ?><script><?php $_SESSION["input"] = true;?></script> 
                                 <script>history.pushState({}, "", "")</script><?php
@@ -458,18 +458,6 @@ $(document).ready(function(){
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Berhasil Upload',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['pdf']==true) : ?>

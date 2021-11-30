@@ -4,7 +4,52 @@ if ($_SESSION['user'] == '') {
   header("location:../index.php");
 }
 ?>
+ <?php
 
+$id = $_POST['id'];
+$lokasi = $_POST['lokasi'];
+include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+$nama = $_SESSION['user'];
+$query = mysqli_query($koneksi, "SELECT * FROM suratdosen WHERE id_no = '$id' ");
+$data = mysqli_fetch_array($query)
+
+
+?>
+ <?php
+        include "../_database/config.php";
+        if (isset($_POST['updatekdp'])) {
+          $catatan2 = $_POST['catatan2'];
+          $id = $_POST['id'];
+          $status = $_POST['ss'];
+          $jml = $data['jumlah_barang'];
+          $namab = $data['nama_barang'];
+          $namal = $data['nama_lab'];
+          $tgl1 = $data['tgl_pel1'];
+          $tgl2 = $data['tgl_pel2'];
+
+
+          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan2' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `jumlah_barang`='$jml' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_barang`='$namab' WHERE id_no = '$id' ");
+          $query5 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_lab`='$namal' WHERE id_no = '$id' ");
+          $query6 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel1`='$tgl1' WHERE id_no = '$id' ");
+          $query7 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel2`='$tgl2' WHERE id_no = '$id' ");
+       
+          if ($query && $query2) {
+            if ($lokasi == "home") {
+            ?><script><?php $_SESSION["sukses"] = true;?></script> 
+            <?php header("location:kadep.php");
+            }
+            else { 
+              ?><script><?php $_SESSION["sukses"] = true;?></script> 
+              <?php header("location:valdasidsn.php");
+            }
+          } else {
+            ?><script><?php $_SESSION["updf"] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        } ?>
 <?php
 include "../_database/config.php";
 ?>
@@ -266,16 +311,7 @@ include "../_database/config.php";
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
 
-                <?php
-
-                $id = $_POST['id'];
-                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                $nama = $_SESSION['user'];
-                $query = mysqli_query($koneksi, "SELECT * FROM suratdosen WHERE id_no = '$id' ");
-                $data = mysqli_fetch_array($query)
-
-
-                ?>
+               
 
                 <form action="" method="post" enctype = "multipart/form-data">
                   <div class="card-header pb-0 p-3">
@@ -366,6 +402,7 @@ include "../_database/config.php";
                         </a>
                         <!-- Menginput id surat -->
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                        <input type="hidden" value = "<?php echo $lokasi ?>">
 
                       <?php if ($data['status_kadep'] == 0) { ?>
                         <!-- persetujuan surat -->
@@ -411,35 +448,7 @@ include "../_database/config.php";
 
         </tr>
         <!-- update catatan kadep -->
-        <?php
-        include "../_database/config.php";
-        if (isset($_POST['updatekdp'])) {
-          $catatan2 = $_POST['catatan2'];
-          $id = $_POST['id'];
-          $status = $_POST['ss'];
-          $jml = $data['jumlah_barang'];
-          $namab = $data['nama_barang'];
-          $namal = $data['nama_lab'];
-          $tgl1 = $data['tgl_pel1'];
-          $tgl2 = $data['tgl_pel2'];
-
-
-          $query = mysqli_query($koneksi, "UPDATE suratdosen SET `catatan`='$catatan2' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$status' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `jumlah_barang`='$jml' WHERE id_no = '$id' ");
-          $query4 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_barang`='$namab' WHERE id_no = '$id' ");
-          $query5 = mysqli_query($koneksi, "UPDATE suratdosen SET `nama_lab`='$namal' WHERE id_no = '$id' ");
-          $query6 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel1`='$tgl1' WHERE id_no = '$id' ");
-          $query7 = mysqli_query($koneksi, "UPDATE suratdosen SET `tgl_pel2`='$tgl2' WHERE id_no = '$id' ");
        
-          if ($query && $query2) {
-            ?><script><?php $_SESSION["sukses"] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          } else {
-            ?><script><?php $_SESSION["updf"] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        } ?>
 
         </tbody>
         </table>
@@ -474,20 +483,7 @@ function goBack() {
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <?php if (@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Berhasil Merespon',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        </script>
-        <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
+  
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if (@$_SESSION['updf']) : ?>
         <script>

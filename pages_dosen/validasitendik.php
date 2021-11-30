@@ -5,7 +5,41 @@
         header("location:../index.php");
     }
   ?>
+   <?php
+                  $lokasi = $_POST['lokasi'];
+                  $id = $_POST['id'];
+                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $nama = $_SESSION['user'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM surattendik WHERE id_no = '$id' ");
+                  $data = mysqli_fetch_array($query)
 
+                  
+   ?> 
+  <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['updatekdp'])){
+                     $catatan2 = $_POST['catatan2'];
+                     $id = $_POST['id'];
+                     $status = $_POST['ss'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan` = '$catatan2' WHERE id_no = '$id' ");
+                     $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep` = '$status' WHERE id_no = '$id' ");
+                     if($query && $query2){
+                       if ($lokasi == "home"){
+                      ?><script><?php $_SESSION['sukses'] = true;?></script> 
+                      <?php header ("location:kadep.php");
+                       }
+                       else { ?> 
+                      <script><?php $_SESSION['sukses'] = true;?></script> 
+                      <?php header ("location:validasitndk.php");
+                      }
+                     }
+                     else {
+                      ?><script><?php $_SESSION["input"] = true;?></script> 
+                      <script>history.pushState({}, "", "")</script><?php
+                     }
+                   }?>  
 <?php
   include "../_database/config.php";
 ?>
@@ -224,16 +258,7 @@
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
              
-             <?php
-                  
-                  $id = $_POST['id'];
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, "SELECT * FROM surattendik WHERE id_no = '$id' ");
-                  $data = mysqli_fetch_array($query)
-
-                  
-   ?> 
+            
                         
                         <form action="" method="post">
                             <div class="card-header pb-0 p-3">
@@ -326,6 +351,7 @@
 
                                   <?php if ($data['status_kadep'] == 0){ ?> 
                                   <!-- Menginput id surat -->
+                                  <input type="hidden" ame = "lokasi" value = "<?php echo $lokasi ?>">
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >                               
                                   <!-- persetujuan surat -->
                                   <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
@@ -372,25 +398,7 @@
                      
 
                     <!-- update catatan kadep -->
-                  <?php 
-                   include "../_database/config.php";
-                   if(isset($_POST['updatekdp'])){
-                     $catatan2 = $_POST['catatan2'];
-                     $id = $_POST['id'];
-                     $status = $_POST['ss'];
-                     
-                     
-                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan` = '$catatan2' WHERE id_no = '$id' ");
-                     $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep` = '$status' WHERE id_no = '$id' ");
-                     if($query && $query2){
-                      ?><script><?php $_SESSION['sukses'] = true;?></script> 
-                      <script>history.pushState({}, "", "")</script><?php
-                     }
-                     else {
-                      ?><script><?php $_SESSION["input"] = true;?></script> 
-                      <script>history.pushState({}, "", "")</script><?php
-                     }
-                   }?>  
+                
                    
                   </tbody>
                 </table>
@@ -426,19 +434,7 @@ function goBack() {
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <?php if(@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Berhasil Merespon',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
+ 
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if (@$_SESSION['input']) : ?>

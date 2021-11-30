@@ -321,18 +321,13 @@
                  <!-- nama -->
                  <?php if ($data['status_surat'] != 2){ ?>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form> <?php } 
-                  else { ?> <form action="" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                    </td>
-                  </form>
+                  <form action="./validasimhs.php" method="post">
+                   <input type="hidden" name = "lokasi" value = "home">
+                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                 <td style = "height:20px">
+                 <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                 </td>
+                 </form>
                 <?php } ?>
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
@@ -373,18 +368,13 @@
                  <!-- nama -->
                  <?php if ($data['status_kadep'] != 2){ ?>
                   <!-- nama -->
-                  <form action="./pages_dosen/validasidosen.php" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
-                    </td>
-                  </form> <?php } 
-                  else { ?> <form action="" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_dsn'] ?></button></h6>
-                    </td>
-                  </form>
+                  <form action="./validasidosen.php" method="post">
+                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                 <input type="hidden" name = "lokasi" value = "home">
+                 <td style = "height:20px">
+                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                 </td>
+               </form>
                 <?php } ?>
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Dosen</h6></td>
@@ -423,21 +413,13 @@
                  <!-- no -->
                  <td class="text-center"><?php echo $no++ ?></td>
                  <!-- nama -->
-                 <?php if ($data['status_kadep'] != 2){ ?>
-                  <!-- nama -->
-                  <form action="./pages_dosen/validasimhs.php" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
-                    </td>
-                  </form> <?php } 
-                  else { ?> <form action="" method="post">
-                    <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_tdk'] ?></button></h6>
-                    </td>
-                  </form>
-                <?php } ?>
+                 <form action="./validasitendik.php" method="post">
+                 <input type="hidden" name = "lokasi" value = "home">
+                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                 <td style = "height:20px">
+                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                 </td>
+               </form>
                  <!-- status -->
                  <td> <h6 class="text-left ps-1">Tendik</h6></td>
                  <!-- perihal -->
@@ -615,6 +597,20 @@
       <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
       <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
       <!-- JS sweetaler notif login berhasil-->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Upload',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+    
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <?php if(@$_SESSION['alert']) : ?>
             <script>

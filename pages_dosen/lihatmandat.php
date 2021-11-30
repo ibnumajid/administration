@@ -5,6 +5,37 @@
         header("location:../index.php");
     }
   ?>
+   <?php
+                  $lokasi = $_POST['lokasi'];
+                  $id = $_POST['id'];
+                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                  $nama = $_SESSION['user'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
+                  $data = mysqli_fetch_array($query)
+
+                  
+   ?> 
+   <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['updatekdp'])){
+                     $catatan2 = $_POST['catatan2'];
+                     $id = $_POST['id'];
+                     $status = $_POST['ss'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `catatan`='$catatan2' WHERE id_no = '$id' ");
+                     $query2 = mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas`='$status' WHERE id_no = '$id' ");
+                     if($query && $query2){
+                       if ($lokasi == "mandat") {
+                      ?><script> <?php $_SESSION['sukses'] = true; ?> </script>
+                      <?php header("location:rekapmndt.php");
+                       }
+                     }
+                     else {
+                      ?><script> <?php $_SESSION['input'] = true; ?> </script>
+                      <script>history.pushState({}, "", "") </script><?php
+                     }
+                   }?>  
 
 <?php
   include "../_database/config.php";
@@ -355,16 +386,7 @@
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
              
-             <?php
-                  
-                  $id = $_POST['id'];
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
-                  $data = mysqli_fetch_array($query)
-
-                  
-   ?> 
+            
                         
                         <form action="" method="post">
                             <div class="card-header pb-0 p-3">
@@ -403,6 +425,7 @@
                                   </a>
                                   <!-- Menginput id surat -->
                                   <input name = "id" value = <?php echo $data['id_no'] ?> type = "hidden" >   
+                                  <input type="hidden" name = "lokasi" value = "<?php echo $lokasi ?>">
 
                                   <!-- Menginput File -->
                                   <?php if ($data['proses_tugas'] == '0' || $data['proses_tugas'] == '1'){ ?>                             
@@ -457,25 +480,7 @@
                     <!-- php update catatan dosen -->
 
                     <!-- update catatan kadep -->
-                  <?php 
-                   include "../_database/config.php";
-                   if(isset($_POST['updatekdp'])){
-                     $catatan2 = $_POST['catatan2'];
-                     $id = $_POST['id'];
-                     $status = $_POST['ss'];
-                     
-                     
-                     $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `catatan`='$catatan2' WHERE id_no = '$id' ");
-                     $query2 = mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas`='$status' WHERE id_no = '$id' ");
-                     if($query && $query2){
-                      ?><script> <?php $_SESSION['sukses'] = true; ?> </script>
-                      <script>history.pushState({}, "", "") </script><?php
-                     }
-                     else {
-                      ?><script> <?php $_SESSION['input'] = true; ?> </script>
-                      <script>history.pushState({}, "", "") </script><?php
-                     }
-                   }?>  
+                 
                    
                   </tbody>
                 </table>
@@ -505,20 +510,7 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Berhasil merespon',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
-
+  
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>

@@ -4,7 +4,85 @@ if ($_SESSION['user'] == '') {
   header("location:../index.php");
 }
 ?>
+<?php
+$lokasi = $_POST['lokasi'];
+$id = $_POST['id'];
+include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+$nama = $_SESSION['user'];
+$query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
+$data = mysqli_fetch_array($query);
+$tujuan = $data['dosen1'];
+$tujuan2 = $data['dosen2'];
+$tujuan3 = $data['dosen_tkk'];
 
+?>
+ <?php
+        include "../_database/config.php";
+        if (isset($_POST['update'])) {
+          $status = $_POST['ss'];
+          $id = $_POST['id'];
+          $catatan = $_POST['catatan2'];
+          
+          if ($data['status_dosen1'] == 0){
+            if ($data['dosen1'] == $data['dosen2']){
+              $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '$status' WHERE id_no = '$id' ");
+              $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_pmb`='$catatan' WHERE id_no = '$id' ");
+              $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2` = '$status' WHERE id_no = '$id' ");
+              $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_koor`='$catatan' WHERE id_no = '$id' ");
+            }
+            else {
+              $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '$status' WHERE id_no = '$id' ");
+              $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_pmb`='$catatan' WHERE id_no = '$id' ");
+            }
+         
+          }
+          else if ($data['status_dosen2'] == 0){
+            $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2` = '$status' WHERE id_no = '$id' ");  
+            $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_koor`='$catatan' WHERE id_no = '$id' ");
+          }
+          else if ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) {
+            $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk` = '$status' WHERE id_no = '$id' ");  
+            $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_tkk`='$catatan' WHERE id_no = '$id' ");
+          }
+          
+          if ($query && $query2) {
+            if ($lokasi == "home"){
+            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <?php header("location:dosen.php");
+            }
+            else {
+             ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <?php header("location:permohonandosen.php");
+             } 
+          } else {
+            ?><script><?php $_SESSION['input'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        } ?>
+        <?php
+        include "../_database/config.php";
+        if (isset($_POST['updatekdp'])) {
+          $catatan2 = $_POST['catatan2'];
+          $id = $_POST['id'];
+          $status = $_POST['ss'];
+          
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_kadep`='$catatan2' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
+
+          if ($query && $query2) {
+            if ($lokasi == "home"){
+              ?><script><?php $_SESSION['sukses'] = true;?></script> 
+              <?php header("location:kadep.php");
+              }
+              else {
+               ?><script><?php $_SESSION['sukses'] = true;?></script> 
+              <?php header("location:validasisurat.php");
+               } 
+          } else {
+            ?><script><?php $_SESSION['input'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        } ?>
 <?php
 include "../_database/config.php";
 ?>
@@ -181,7 +259,7 @@ include "../_database/config.php";
   </li> <?php } ?>
     </li>
 
-<!--profil-->
+profil-->
 <li class="nav-item mt-3">
       <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
     </li>
@@ -264,18 +342,7 @@ include "../_database/config.php";
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
 
-                <?php
-
-                $id = $_POST['id'];
-                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                $nama = $_SESSION['user'];
-                $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
-                $data = mysqli_fetch_array($query);
-                $tujuan = $data['dosen1'];
-                $tujuan2 = $data['dosen2'];
-                $tujuan3 = $data['dosen_tkk'];
-
-                ?>
+                
 
                 <form action="" method="post">
                   <div class="card-header pb-0 p-3">
@@ -390,6 +457,7 @@ include "../_database/config.php";
                         </a>
                         <!-- Menginput id surat -->
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                        <input type="hidden" name = "lokasi" value = "<?php echo $lokasi ?>">
                         
                         <?php if (($data['status_kadep'] == 0 && $_SESSION['status'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
                         <!-- persetujuan surat -->
@@ -436,65 +504,12 @@ include "../_database/config.php";
 
         </tr>
         <!-- php update surat -->
-        <?php
-        include "../_database/config.php";
-        if (isset($_POST['update'])) {
-          $status = $_POST['ss'];
-          $id = $_POST['id'];
-          $catatan = $_POST['catatan2'];
-          
-          if ($data['status_dosen1'] == 0){
-            if ($data['dosen1'] == $data['dosen2']){
-              $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '$status' WHERE id_no = '$id' ");
-              $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_pmb`='$catatan' WHERE id_no = '$id' ");
-              $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2` = '$status' WHERE id_no = '$id' ");
-              $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_koor`='$catatan' WHERE id_no = '$id' ");
-            }
-            else {
-              $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '$status' WHERE id_no = '$id' ");
-              $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_pmb`='$catatan' WHERE id_no = '$id' ");
-            }
-         
-          }
-          else if ($data['status_dosen2'] == 0){
-            $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2` = '$status' WHERE id_no = '$id' ");  
-            $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_koor`='$catatan' WHERE id_no = '$id' ");
-          }
-          else if ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1) {
-            $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk` = '$status' WHERE id_no = '$id' ");  
-            $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_tkk`='$catatan' WHERE id_no = '$id' ");
-          }
-          
-          if ($query && $query2) {
-            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          } else {
-            ?><script><?php $_SESSION['input'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        } ?>
+       
 
         <!-- php update catatan dosen -->
 
         <!-- update catatan kadep -->
-        <?php
-        include "../_database/config.php";
-        if (isset($_POST['updatekdp'])) {
-          $catatan2 = $_POST['catatan2'];
-          $id = $_POST['id'];
-          $status = $_POST['ss'];
-          
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan_kadep`='$catatan2' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
-
-          if ($query && $query2) {
-            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          } else {
-            ?><script><?php $_SESSION['input'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        } ?>
+        
 
         </tbody>
         </table>
@@ -530,20 +545,7 @@ function goBack() {
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Anda Berhasil Melakukan Perubahan',
-            text: 'Perubahan Akan Disimpan',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
+  
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>

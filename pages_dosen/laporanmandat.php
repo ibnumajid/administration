@@ -3,8 +3,45 @@ session_start();
 if ($_SESSION['user'] == '') {
     header("location:../index.php");
 }
-?>
+  $lokasi = $_POST['lokasi'];
+   $id = $_POST['id'];
+    include '../_database/config.php'; //panggil setiap ingin koneksi ke data
 
+    $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
+    $data = mysqli_fetch_array($query);
+
+                include '../_database/config.php';
+                if (isset($_POST['updatekdp'])) {
+                $id = $_POST['id'];
+                $nama_file = basename($_FILES['fl']['name']);
+                $ukuran = $_FILES['fl']['size'];
+                $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+                $ekstensi = "pdf";
+                $url = $id . '_' . $nama_file;
+
+                if ($tipe != $ekstensi)
+                { 
+                ?><script><?php $_SESSION['pdf'] = true ?></script> 
+                <script>history.pushState({}, "", "")</script><?php
+                } 
+                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
+                $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `laporan` = '$url' WHERE id_no = '$id'");
+                $query2 =  mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas` = '2' WHERE id_no = '$id'");
+                if ($query && $query2) {
+                  if ($lokasi == "mandat") {
+                    ?><script> <?php $_SESSION['sukses'] = true; ?> </script>
+                    <?php header("location:rekapmndt.php");
+                     }
+                } 
+                else {
+                ?><script><?php $_SESSION['input'] = true; ?></script>
+                <script>history.pushState({}, "", "") </script><?php
+                }
+                } 
+                else {
+                    echo "Gagal Upload";
+                    }
+                } ?>
 <?php
 include "../_database/config.php";
 ?>
@@ -350,13 +387,8 @@ include "../_database/config.php";
                                 </div>
                             </div>
                         </div>
-                        <?php
-
-                        $id = $_POST['id'];
-                        include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-
-                        $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
-                        $data = mysqli_fetch_array($query); {?>
+  
+                     
 
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -395,6 +427,7 @@ include "../_database/config.php";
                                     
                                                 <!-- Menginput id surat -->
                                                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                                                <input type="hidden" name = "lokasi" value = "<?php echo $lokasi ?>">
 
                                                 </div>
                                             </div>
@@ -404,43 +437,13 @@ include "../_database/config.php";
                                     <a href = "./rekapmndt.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button></a>
                                  <button type="submit" name="updatekdp" class="btn bg-gradient-info">Kirim Laporan</button>   
                                 </form>
-                                <?php } ?>
+                              
                         </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php
-                include '../_database/config.php';
-                if (isset($_POST['updatekdp'])) {
-                $id = $_POST['id'];
-                $nama_file = basename($_FILES['fl']['name']);
-                $ukuran = $_FILES['fl']['size'];
-                $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
-                $ekstensi = "pdf";
-                $url = $id . '_' . $nama_file;
-
-                if ($tipe != $ekstensi)
-                { 
-                ?><script><?php $_SESSION['pdf'] = true ?></script> 
-                <script>history.pushState({}, "", "")</script><?php
-                } 
-                if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
-                $query = mysqli_query($koneksi, "UPDATE ajukankadep SET `laporan` = '$url' WHERE id_no = '$id'");
-                $query2 =  mysqli_query($koneksi, "UPDATE ajukankadep SET `proses_tugas` = '2' WHERE id_no = '$id'");
-                if ($query2) {
-                ?><script><?php $_SESSION['sukses'] = true; ?></script>
-                <script>history.pushState({}, "", "") </script><?php
-                } 
-                else {
-                ?><script><?php $_SESSION['input'] = true; ?></script>
-                <script>history.pushState({}, "", "") </script><?php
-                }
-                } 
-                else {
-                    echo "Gagal Upload";
-                    }
-                } ?>
+                
               
 
 
@@ -473,19 +476,7 @@ include "../_database/config.php";
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if (@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Berhasil Melapor',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        </script>
-        <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
+   
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if (@$_SESSION['pdf']) : ?>

@@ -491,6 +491,7 @@
                   <!-- nama -->
                
                           <form action="./validasimhs.php" method="post">
+                            <input type="hidden" name = "lokasi" value = "home">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
                               <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
@@ -534,6 +535,7 @@
                   <!-- nama -->
                 
                           <form action="./validasimhs.php" method="post">
+                          <input type="hidden" name = "lokasi" value = "home">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
                               <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
@@ -859,7 +861,7 @@
                         <!-- Saat kadep menolak -->
                         <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "./ubahajuandsn.php" method = "post">
-                         <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name = "lokasi" value = "home">
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-info">Ubah</button>
                          </form>
@@ -1034,6 +1036,21 @@
       <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
       <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
       <!-- JS sweetaler notif login berhasil-->
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Anda Berhasil Melakukan Perubahan',
+            text: 'Perubahan Akan Disimpan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <?php if(@$_SESSION['alert']) : ?>
             <script>
