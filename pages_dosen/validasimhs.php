@@ -415,7 +415,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               </div>
               <div class = "mx-4">
-              <a href = "./validasisurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+            <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
               <?php if (($data['status_kadep'] == 0 && $_SESSION['status'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
               <?php if ($_SESSION['status'] == 2) { ?>
                 <button type="submite" name="update" class="btn bg-gradient-info">OK</button>
@@ -505,6 +505,11 @@ include "../_database/config.php";
 
 
   </main>
+  <script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

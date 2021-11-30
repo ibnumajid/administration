@@ -352,7 +352,7 @@
                             </div>
                             <div class = "mx-4">
                             
-                            <a href = "./validasitndk.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+                           <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
                             <?php if ($data['status_kadep'] == 0) { ?>
                             <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
                           <?php } ?>  
@@ -402,6 +402,11 @@
 
   </main>
   
+  <script>
+function goBack() {
+  window.history.back();
+}
+</script>
   
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

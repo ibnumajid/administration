@@ -390,7 +390,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               </div>
               <div class = "mx-4">
-              <a href = "./validasidsn.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal" onclick = "goBack()">Kembali</button>
               <?php  
               if ($_SESSION['status'] == 5 && $data['status_kadep'] == 0) { ?>
                 <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
@@ -451,6 +451,11 @@ include "../_database/config.php";
 
   </main>
   
+  <script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

@@ -338,7 +338,7 @@
                               <!-- button upload close -->
                           </div>
                             <div class = "mx-4">
-                              <a href="./validasiadmin2.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+                         <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
                               <?php if ($data['status_admin'] == 0) { ?>
                               <button type="submite" class="btn bg-gradient-info" name="update" >Kirim Surat</button>
                               <?php } ?>
@@ -390,6 +390,11 @@
     </div>
 
   </main>
+  <script>
+function goBack() {
+  window.history.back();
+}
+</script>
   
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>

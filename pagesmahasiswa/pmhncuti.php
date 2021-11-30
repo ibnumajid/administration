@@ -380,7 +380,7 @@ session_start();
 
                                           <!-- kadep -->
                                           <label for="formFile" class="form-label">Catatan Kadep</label>
-                                          <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kadep'] ?></label>
+                                          <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kdp'] ?></label>
 
                                           <!-- Input ID untuk memberikan identitas surat -->
                                           <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">

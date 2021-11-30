@@ -272,7 +272,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               
                           <div class = "mx-4">
-              <a href = "./pagestendik/permohonansurat.php"><button type="button" class="btn bg-gradient-secondary">Batal</button></a>
+             <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Batal</button>
               <?php if ($data['status_kadep'] == 1){ ?>
                 <button type="submite" name="update" class="btn bg-gradient-info">Ubah</button>
                 <?php } 
@@ -365,7 +365,11 @@ include "../_database/config.php";
 
 
   </main>
-
+  <script>
+function goBack() {
+  window.history.back();
+}
+</script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
