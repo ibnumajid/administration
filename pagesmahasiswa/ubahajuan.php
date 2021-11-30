@@ -4,11 +4,119 @@ if ($_SESSION['user'] == '') {
   header("location:../index.php");
 }
 ?>
+ <?php
+$lokasi = $_POST['lokasi'];
+$id = $_POST['id'];
+include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+$nama = $_SESSION['user'];
+$query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
+$data = mysqli_fetch_array($query)
 
+
+?>
 <?php
 include "../_database/config.php";
 ?>
+ <?php
+        include "../_database/config.php";
+        if (isset($_POST['update'])) {
 
+        $nama_file = basename($_FILES['fl']['name']);
+        $id = $_POST['id'];
+        $lokasi = $_POST['lokasi'];
+        $ukuran = $_FILES['fl']['size'];
+        $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+        
+        $ket = $_POST['keterangan'];
+        $jdlta = $_POST['jdl_ta'];
+        $tgl1 = $_POST['tgl1'];
+        $gl2 = $_post['tgl2'];
+
+        $max = 1024 * 5000;
+        $ekstensi = "pdf";
+        $url = $id.'_'.$nama_file;
+
+        if ($ukuran > $max && $tipe !== $ekstensi)
+        {
+        ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
+        <script>history.pushState({}, "", "")</script><?php 
+        }
+
+        else if ($ukuran > $max)
+        {
+        echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
+        }
+        
+        else if ($tipe != $ekstensi && $tipe != NULL)
+        { 
+        ?><script><?php $_SESSION['pdf'] = true ?></script> 
+        <script>history.pushState({}, "", "")</script><?php
+        }  
+          
+          if ($data['status_dosen1'] == '1'){
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
+          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
+          }
+          else if ($data['status_dosen2'] == '1' && $data['status_dosen1'] == '2'){
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
+          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
+          }
+          else if ($data['status_dosentkk'] == 1){
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk`='0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl1' WHERE id_no = '$id' ");
+          $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima2`='$tgl2' WHERE id_no = '$id' ");
+          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
+          }
+          
+          if ($query && $query2) {
+            if ($lokasi == "home") { 
+            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <?php header("location:mahasiswa.php"); }
+            else {
+              ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <?php header("location:pmhnsurat.php"); 
+            }
+          } else {
+            ?><script><?php $_SESSION['input'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        } ?>
+
+        <!-- php update catatan dosen -->
+
+        <!-- update catatan kadep -->
+        <?php
+        include "../_database/config.php";
+        if (isset($_POST['updatekdp'])) {
+          $nama_file = basename($_FILES['fl']['name']);
+          $id = $_POST['id'];
+          $ukuran = $_FILES['fl']['size'];
+          $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+          
+          $ket = $_POST['keterangan'];
+          $max = 1024 * 5000;
+          $ekstensi = "pdf";
+          $url = $id.'_'.$nama_file;
+          
+          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep` = '0' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan` = '$ket' WHERE id_no = '$id' ");
+          if ($query && $query2) {
+            ?><script><?php $_SESSION['sukses'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
+          } else {
+            ?><script><?php $_SESSION['input'] = true;?></script> 
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        } ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,16 +272,7 @@ include "../_database/config.php";
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
 
-                <?php
-
-                $id = $_POST['id'];
-                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                $nama = $_SESSION['user'];
-                $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id' ");
-                $data = mysqli_fetch_array($query)
-
-
-                ?>
+               
 
                 <form action="" method="post" enctype = "multipart/form-data">
                   <div class="card-header pb-0 p-3">
@@ -274,100 +373,7 @@ include "../_database/config.php";
 
         </tr>
         <!-- php update surat -->
-        <?php
-        include "../_database/config.php";
-        if (isset($_POST['update'])) {
-
-        $nama_file = basename($_FILES['fl']['name']);
-        $id = $_POST['id'];
-        $ukuran = $_FILES['fl']['size'];
-        $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
-        
-        $ket = $_POST['keterangan'];
-        $jdlta = $_POST['jdl_ta'];
-        $tgl1 = $_POST['tgl1'];
-        $gl2 = $_post['tgl2'];
-
-        $max = 1024 * 5000;
-        $ekstensi = "pdf";
-        $url = $id.'_'.$nama_file;
-
-        if ($ukuran > $max && $tipe !== $ekstensi)
-        {
-        ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
-        <script>history.pushState({}, "", "")</script><?php 
-        }
-
-        else if ($ukuran > $max)
-        {
-        echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
-        }
-        
-        else if ($tipe != $ekstensi && $tipe != NULL)
-        { 
-        ?><script><?php $_SESSION['pdf'] = true ?></script> 
-        <script>history.pushState({}, "", "")</script><?php
-        }  
-          
-          if ($data['status_dosen1'] == '1'){
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen1` = '0' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
-          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
-          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
-          }
-          else if ($data['status_dosen2'] == '1' && $data['status_dosen1'] == '2'){
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosen2`='0' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
-          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
-          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
-          }
-          else if ($data['status_dosentkk'] == 1){
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_dosentkk`='0' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan`='$ket' WHERE id_no = '$id' ");
-          $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima1`='$tgl1' WHERE id_no = '$id' ");
-          $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `tgl_hima2`='$tgl2' WHERE id_no = '$id' ");
-          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
-          }
-          
-          if ($query && $query2) {
-            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          } else {
-            ?><script><?php $_SESSION['input'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        } ?>
-
-        <!-- php update catatan dosen -->
-
-        <!-- update catatan kadep -->
-        <?php
-        include "../_database/config.php";
-        if (isset($_POST['updatekdp'])) {
-          $nama_file = basename($_FILES['fl']['name']);
-          $id = $_POST['id'];
-          $ukuran = $_FILES['fl']['size'];
-          $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
-          
-          $ket = $_POST['keterangan'];
-          $max = 1024 * 5000;
-          $ekstensi = "pdf";
-          $url = $id.'_'.$nama_file;
-          
-          $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file` = '$url' WHERE id_no = '$id' ");
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep` = '0' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `keterangan` = '$ket' WHERE id_no = '$id' ");
-          if ($query && $query2) {
-            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          } else {
-            ?><script><?php $_SESSION['input'] = true;?></script> 
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        } ?>
+       
 
         </tbody>
         </table>
@@ -398,19 +404,7 @@ include "../_database/config.php";
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
 
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Berhasil Upload',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
+  
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>

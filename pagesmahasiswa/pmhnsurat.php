@@ -5,6 +5,67 @@ session_start();
   header("location:../index.php");
   }
 ?>
+ <?php
+                      include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                      $no = 0;
+                      $no2 = $no++;
+                      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                      while ($data = mysqli_fetch_array($query)) {
+                        if ($data['nama_mhsw'] == $_SESSION['user']) {
+                          if ($data['perihal'] == "Surat Magang") {
+?>
+  <?php
+                  include "../_database/config.php";
+                  if (isset($_POST['update'])) {
+                    $nama_file2 = basename($_FILES['ufl']['name']);
+                    $id3 = $_POST['id2'];
+                    $nol = $_POST['stats2'];
+
+                    $url2 = $id3.'_'.$nama_file2;
+
+                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
+
+                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+
+                      if ($query2 && $query3) {
+                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                  ?> 
+                  <script> history.pushState({}, "", "")</script> <?php
+                                } else {
+                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                }
+                              }
+                            }
+
+                                  ?>
+
+                  <!-- php update surat saat kadep menolak -->
+                  <?php
+                  include "../_database/config.php";
+                  if (isset($_POST['update2'])) {
+
+                    $nama_file3 = basename($_FILES['uflk']['name']);
+                    $id4 = $_POST['id2'];
+                    $nol = $_POST['stats2'];
+
+                    $url3 = $id4.'_'.$nama_file3;
+
+                    if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
+
+                      $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
+                      $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
+
+                      if ($query4 && $query5) {
+                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                  ?> <script> history.pushState({}, "", "") </script> <?php
+                                } else {
+                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                }
+                              }
+                            }
+
+                                  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -299,14 +360,7 @@ session_start();
                       </tr>
                     </thead>
                     <tbody id="myTable">
-                      <?php
-                      include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                      $no = 1;
-                      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                      while ($data = mysqli_fetch_array($query)) {
-                        if ($data['nama_mhsw'] == $_SESSION['user']) {
-                          if ($data['perihal'] == "Surat Magang") {
-                      ?>
+                     
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
@@ -424,6 +478,7 @@ session_start();
                                           <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] == 1 || $data['status_kadep'] == 1 ) { ?>
                                             <form action = "./ubahajuan.php" method = "post">
                                               <!-- Input ID untuk memberikan identitas surat -->
+                                              <input type="hidden" name = "id" value = "pmhn">
                                               <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                                               <button class ="btn btn-info">Ubah</button>
                                               </form>
@@ -449,58 +504,7 @@ session_start();
                   </table>
 
                   <!-- php update surat -->
-                  <?php
-                  include "../_database/config.php";
-                  if (isset($_POST['update'])) {
-                    $nama_file2 = basename($_FILES['ufl']['name']);
-                    $id3 = $_POST['id2'];
-                    $nol = $_POST['stats2'];
-
-                    $url2 = $id3.'_'.$nama_file2;
-
-                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
-                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
-
-                      if ($query2 && $query3) {
-                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                  ?> 
-                  <script> history.pushState({}, "", "")</script> <?php
-                                } else {
-                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                                }
-                              }
-                            }
-
-                                  ?>
-
-                  <!-- php update surat saat kadep menolak -->
-                  <?php
-                  include "../_database/config.php";
-                  if (isset($_POST['update2'])) {
-
-                    $nama_file3 = basename($_FILES['uflk']['name']);
-                    $id4 = $_POST['id2'];
-                    $nol = $_POST['stats2'];
-
-                    $url3 = $id4.'_'.$nama_file3;
-
-                    if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
-
-                      $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
-                      $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
-
-                      if ($query4 && $query5) {
-                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                  ?> <script> history.pushState({}, "", "") </script> <?php
-                                } else {
-                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                                }
-                              }
-                            }
-
-                                  ?>
+                
 
                 </div>
               </div>
