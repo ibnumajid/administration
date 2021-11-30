@@ -311,7 +311,7 @@ $(document).ready(function(){
                             if($query)
                             {
                             ?><script><?php $_SESSION['sukses'] = true;?></script> 
-                            <script>history.pushState({}, "", "")</script><?php
+                         <?php header("location:kirimkadep.php");
                             }
                             else
                             {
