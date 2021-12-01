@@ -59,8 +59,8 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{
             $_SESSION['user'] =$data2['nama_mhs'];
             $_SESSION['NIP'] =$data2['nrp_mhs'];
-    
             $_SESSION['status'] = $data['status'];
+            $_SESSION['status2'] = $data['status2'];
             $_SESSION['alert'] = true;} 
         header("location:./pagesmahasiswa/mahasiswa.php");
     }

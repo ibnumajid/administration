@@ -326,7 +326,9 @@ $(document).ready(function(){
                                             <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
                                             <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
                                             <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
+                                            <?php if ($_SESSION["status2"] == 3) { ?>
                                             <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -455,7 +457,7 @@ $(document).ready(function(){
                                           </select>
                                     </div>
                                   </div>
-                                  <div  class="dmagang" style="display: none;" >
+                                  <div  class="magang" style="display: none;" >
                                     <div class="form-group col-md-12" style="align-right:right;">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
                                         <?php
