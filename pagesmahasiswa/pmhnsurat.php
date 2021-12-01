@@ -10,9 +10,9 @@ session_start();
                       $no = 0;
                       $no2 = $no++;
                       $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                      while ($data = mysqli_fetch_array($query)) {
-                        if ($data['nama_mhsw'] == $_SESSION['user']) {
-                          if ($data['perihal'] == "Surat Magang") {
+                      $data = $data = mysqli_fetch_array($query)
+                      
+                       
 ?>
   <?php
                   include "../_database/config.php";
@@ -373,7 +373,7 @@ session_start();
               </div>
             </div>
             
-
+        
               <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
                   <table class="table align-items-center mb-0">
@@ -391,7 +391,9 @@ session_start();
                       </tr>
                     </thead>
                     <tbody id="myTable">
-                     
+                    <?php  while ($data = mysqli_fetch_array($query)) { 
+                      if ($data['nama_mhsw'] == $_SESSION['user']) {
+                          if ($data['perihal'] == "Surat Magang") { ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
