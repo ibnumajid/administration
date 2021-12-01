@@ -225,14 +225,16 @@ session_start();
                         <?php 
                           include "_database/config.php";
                           $no = 1;
-                          $query = mysqli_query($koneksi, 'SELECT * FROM adminsurat ORDER BY id_no DESC' );
+                          $query = mysqli_query($koneksi, "SELECT * FROM adminsurat ORDER BY id_no DESC LIMIT 4" );
 
                           while ($data = mysqli_fetch_array($query)) {
                             if( ($data['tujuan'] == "Tendik") or ($data['tujuan'] == "Dosen, Tendik, Mahasiswa") )
                             { $no++
                         ?>
                         <blockquote class="blockquote ps-0">
-                          <p class="ps-3 text-dark"><?=$data['perihal']?></p>
+                         <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                            <p class="ps-3 text-dark" name="fl" id="edit<?php echo $data['id_no'] ?>"><?=$data['perihal']?></p>
+                          </a>                        
                         </blockquote>
                         <figcaption class="blockquote-footer ps-3 text-dark">
                           <?=$data['keterangan']?>
