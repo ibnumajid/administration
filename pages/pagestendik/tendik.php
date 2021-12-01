@@ -232,7 +232,7 @@ session_start();
                             { $no++
                         ?>
                         <blockquote class="blockquote ps-0">
-                         <a href="../pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
+                         <a href="./pagesadmin/<?php echo $data['dokumen'] ?>" target="_blank">
                             <p class="ps-3 text-dark" name="fl" id="edit<?php echo $data['id_no'] ?>"><?=$data['perihal']?></p>
                           </a>                        
                         </blockquote>
