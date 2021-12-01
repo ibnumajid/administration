@@ -473,28 +473,33 @@ session_start();
                 <?php
                 include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
-
-                  $nama_file3 = basename($_FILES['flhps']['name']);
-                  $id6 = $_POST['id3'];
-                  
-
+                  $id6 = $_POST['id'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id6'");
+                  $data = mysqli_fetch_assoc($query);
+                  $nama_file = $data['file']; 
+                  $target_file = "./$nama_file";
                  
-                 $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
 
-                    if ($query6) {
-                      ?><script>
-                      <?php $_SESSION['sukses'] = true; ?> </script>
-                  <script>history.pushState({}, "", "") </script><?php
-                ?> <script> history.pushState({}, "", "") </script> 
-                <?php } 
-                    else {
-                                echo '<script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          
+                  unlink("$target_file");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
+                 
+                  if ($query6) {
+                ?><script>
+                      <?php $_SESSION['sukseshps'] = true; ?>
+                    </script>
+                    <script>
+                      history.pushState({}, "", "")
+                    </script><?php
+                              ?> <script>
+                      history.pushState({}, "", "")
+                    </script>
+                <?php } else {
+                    echo '<script> alert ("gagal di ajukan")</script></a>';
+                  }
+                }
 
-                                ?>
 
+                ?>
         <!-- Bagian Status Surat -->
         <div class="col-md-5 mt-4">
           <div class="card h-100 mb-4">
@@ -565,7 +570,8 @@ session_start();
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   <!-- JS sweetaler notif login berhasil-->
-  <?php if (@$_SESSION['sukses']) : ?>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php if (@$_SESSION['sukseshps']) : ?>
         <script>
             Swal.fire({
                 position: 'center',
@@ -575,7 +581,7 @@ session_start();
                 timer: 2000
             })
         </script>
-        <?php unset($_SESSION['sukses']); ?>
+        <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
