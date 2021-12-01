@@ -399,7 +399,7 @@ $(document).ready(function(){
                             if ($query) {
                             ?><script><?php $_SESSION["sukses"] = true;?></script> 
                                 <?php header("location:permohonandosen.php"); ?>
-                            } else {
+                           <?php } else {
                             ?><script><?php $_SESSION["input"] = true;?></script> 
                                 <script>history.pushState({}, "", "")</script><?php
                             }
