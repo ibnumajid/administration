@@ -337,7 +337,7 @@
                       <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
                             
                             <?php if ($data['status_admin'] == 0) { ?>
-                            <button type="submite" class="btn bg-gradient-primary" name="update" >Kirim Surat</button>
+                            <button type="submite" class="btn bg-gradient-info" name="update" >Kirim Surat</button>
                            <?php } ?>
                            </div>
                            </form>
@@ -387,7 +387,11 @@
     </div>
 
   </main>
-  
+  <script>
+function goBack() {
+  window.history.back();
+}
+</script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>

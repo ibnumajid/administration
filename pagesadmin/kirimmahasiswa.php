@@ -362,13 +362,15 @@
                     </div>
                     </div>
                               <!-- button upload close -->
+                              <div class = "mx-4">
+                      <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
+                            
+                            <?php if ($data['status_admin'] == 0) { ?>
+                            <button type="submite" class="btn bg-gradient-info" name="update" >Kirim Surat</button>
+                           <?php } ?>
+                           </div>
                           </div>
-                           <div class = "mx-4">
-                        <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
-                              <?php if ($data['status_admin'] = 0) { ?>
-                              <button type="submite" class="btn bg-gradient-info" name="update">Kirim Surat</button>
-                              <?php } ?>
-                              </div>
+                         
                            </form>
                           </div>
                         </div>
