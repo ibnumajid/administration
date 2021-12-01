@@ -46,6 +46,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
 
+   
         <li class="nav-item">
           <a class="nav-link  " href="./dosen.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -127,6 +128,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Dosen</h6>
         </li>
         <?php } ?>
+
 
         <!-- Permohonan Surat -->
         <?php if($_SESSION['status'] !== '5'){ ?>
@@ -339,20 +341,9 @@
                       <th class = "text-center">Nama Mahasiswa</th>
                       <th class="text-center">NRP Mahasiswa</th>
                       <th>Perihal</th>
-                      <?php if ($_SESSION['status'] != 5) { ?>
-                      <th>Proses</th>
-                      <?php } ?>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <?php if ($_SESSION['status'] == 2) { ?>
-                        <th class="text-center">Dosen Pembimbing</th>
-                        <th class="text-center">Dosen Koordinator</th>
-                     <?php } ?>
-                     <?php if ($_SESSION['status2'] ==  1) { ?>
-                      <th class="text-center">Dosen TKK</th>
-                      <?php } 
-                      if ($_SESSION['status'] == 5) { ?>
-                        <th class ="text-center">Persetujuan Kadep</th>
-                     <?php } ?>
+                      <th class ="text-center">Persetujuan Kadep</th>
+                     
                     </tr>
                   </thead>
                   <!-- php tabel -->
@@ -368,13 +359,13 @@
                   $tujuan3 = $data['dosen_tkk'];
                   if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
                       $idf = $_POST['filterid'];
-                        if (($_SESSION['status'] == 5 && $data['status_kadep'] == $idf) || ($_SESSION['status'] == 2 && (($data['status_dosen1'] == $idf && $tujuan == $nama && $nama != $tujuan2) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == $idf && $tujuan2 == $nama) || ($data['status_dosentkk'] == $idf)))) {
+                        if (($_SESSION['status2'] == 5 && $data['status_kadep'] == $idf) || ($_SESSION['status'] == 2 && (($data['status_dosen1'] == $idf && $tujuan == $nama && $nama != $tujuan2) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == $idf && $tujuan2 == $nama) || ($data['status_dosentkk'] == $idf)))) {
                  
    ?>
                     <tbody>
                   <?php 
 
-                    if ($_SESSION['status'] == 5 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) { ?>
+                    if ($_SESSION['status2'] == 5 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) { ?>
                         <tr>
                          
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -404,7 +395,7 @@
   
                            <?php  
                           
-                          if ($_SESSION['status'] == 5) {
+                          if ($_SESSION['status2'] == 5) {
                           ?> 
                           <!-- status surat kadep -->
                           <?php if ($data['status_kadep'] == 0) {?>
@@ -422,153 +413,11 @@
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } } }
 
-                         // bisa dilihat dosen  
-                        else if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2  && ($tujuan2 == $nama)) ||
-                         ($tujuan == $nama) || ($_SESSION['status2'] == 1 && $data['dosen_tkk'] == $_SESSION['user'] ))) {
-                          ?> 
-  
-                          <td class="text-center"><?php echo $no++ ?></td>
-                         
-                        
-                          <form action="./validasimhs.php" method="post">
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                            <td style = "height:20px">
-                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                            </td>
-                          </form> 
-                          <!-- nrp -->
-                          <td>
-                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
-                          </td>
-                          <!-- progres -->
-                          <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
-                          </td>
-                          <!-- Proses Sebagai -->
-                          <td>
-                          <?php 
-                           if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && ($tujuan == $tujuan2)) {?>
-                            <?php if ($data['status_dosen1'] == 0) { 
-                              echo "Menunggu Proses Anda Sebagai Dosbing dan Koor";
-                              } 
-                              else if ($data['status_dosen1'] == 1) { 
-                              echo "Anda Menolak Sebagai Dosbing dan Koor"; }
-                              else if ($data['status_dosen1'] == 2) {
-                              echo "Anda Menyetujui Sebagai Dosbing dan Koor";
-                              }
-                            }
-                          else if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && $nama != $tujuan2) {?>
-                            <?php if ($data['status_dosen1'] == 0) { 
-                              echo "Menunggu Proses Anda Sebagai Dosbing";
-                              } 
-                              else if ($data['status_dosen1'] == 1) { 
-                              echo "Anda Menolak Sebagai Dosbing"; }
-                              else if ($data['status_dosen1'] == 2) {
-                              echo "Anda Menyetujui Sebagai Dosbing";
-                              }
-                            }
-                            else if (($data['status_dosen2'] == 0 || $data['status_dosen2'] == 1 || $data['status_dosen2'] == 2)  && $tujuan2 == $nama && $tujuan != $tujuan2) {
-                               if ($data['status_dosen2'] == 0) { 
-                                echo "Menunggu Proses Anda Sebagai Dosen Koor";
-                                } 
-                                else if ($data['status_dosen2'] == 1) { 
-                                echo "Anda Menolak Sebagai Dosen Koor"; }
-                                else if ($data['status_dosen2'] == 2) {
-                                echo "Anda Menyetujui Sebagai Dosen Koor";
-                                }
-                             }
-                             else if (($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) && ($data['status_dosentkk'] == 0 || $data['status_dosentkk'] == 1 || $data['status_dosentkk'] == 2)  && $tujuan3 == $nama && $_SESSION['status2'] == 1) {
-                              if ($data['status_dosentkk'] == 0) { 
-                               echo "Menunggu Proses Anda Sebagai Dosen TKK";
-                               } 
-                               else if ($data['status_dosentkk'] == 1) { 
-                               echo "Anda Menolak Sebagai Dosen TKK"; }
-                               else if ($data['status_dosentkk'] == 2) {
-                               echo "Anda Menyetujui Sebagai Dosen TKK";
-                               }
-                            }
-                              ?>
-                          </td>
-                          <!-- tanggal -->
-                          <td class="align-middle text-center">
-                            <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                          </td>
-  
-                          <!-- status surat dosen1 -->
-                        
-                          <?php 
-                          if ($data['status_dosen1'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_dosen1'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_dosen1'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
-                        </td> <?php } 
-                        
-                              else { ?>
-                                <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
-                        </td>
-                           <?php } ?> 
-                                
-
-                        <!-- status surat dosen2 -->
-                        <?php if ($data['status_dosen2'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_dosen2'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_dosen2'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
-                        </td> <?php } 
-                        else { ?>
-                                <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
-                        </td>
-                           <?php } ?>
-
-                      
-                         <!-- status surat dosen TKK -->
-                         <?php if($_SESSION['status2'] ==  1) { ?>
-                         <?php if ($data['status_dosentkk'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_dosentkk'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_dosentkk'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
-                        </td> <?php } 
-                        else { ?>
-                                <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
-                        </td>
-                           <?php } ?>
-  
-                     </tr>
-                     <?php } }  } }
+                        } }
                      
                     else { 
                     
-                    if ($_SESSION['status'] == 5 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) { ?>
+                    if ($_SESSION['status2'] == 5 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) { ?>
                         <tr>
                           <!-- nama -->
                           <td class="text-center"><?php echo $no++ ?></td>
@@ -596,7 +445,7 @@
   
                            <?php  
                           
-                          if ($_SESSION['status'] == 5) {
+                          if ($_SESSION['status2'] == 5) {
                           ?> 
                           <!-- status surat kadep -->
                           <?php if ($data['status_kadep'] == 0) {?>
@@ -614,146 +463,6 @@
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td>
                                 </tr> <?php } } }
-                          
-                        else if ($_SESSION['status'] == 2 && (($data['status_dosen1'] == 2 && ($tujuan2 == $nama)) ||
-                         ($tujuan == $nama)  || ($data['dosen_tkk'] == $_SESSION['user'] && $_SESSION['status2'] == 1) )) {
-                          ?> 
-                          <tr>
-                          <td class="text-center"><?php echo $no++ ?></td>
-                         
-                        
-                          <form action="./validasimhs.php" method="post">
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                            <td style = "height:20px">
-                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                            </td>
-                          </form>
-                          <!-- nrp -->
-                          <td>
-                          <h6 class="mb-0 text-sm text-center"><?php echo $data['id_nrp'] ?></h6>
-                          </td>
-                          <!-- progres -->
-                          <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
-                          </td>
-                            <!-- Proses Sebagai -->
-                            <td>
-                          <?php 
-                           if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && ($tujuan == $tujuan2)) {?>
-                            <?php if ($data['status_dosen1'] == 0) { 
-                              echo "Menunggu Proses Anda Sebagai Dosbing dan Koor";
-                              } 
-                              else if ($data['status_dosen1'] == 1) { 
-                              echo "Anda Menolak Sebagai Dosbing dan Koor"; }
-                              else if ($data['status_dosen1'] == 2) {
-                              echo "Anda Menyetujui Sebagai Dosbing dan Koor";
-                              }
-                            }
-                          else if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && ($tujuan != $tujuan2)) {?>
-                            <?php if ($data['status_dosen1'] == 0) { 
-                              echo "Menunggu Proses Anda Sebagai Dosbing";
-                              } 
-                              else if ($data['status_dosen1'] == 1) { 
-                              echo "Anda Menolak Sebagai Dosbing"; }
-                              else if ($data['status_dosen1'] == 2) {
-                              echo "Anda Menyetujui Sebagai Dosbing";
-                              }
-                            }
-                            else if (($data['status_dosen2'] == 0 || $data['status_dosen2'] == 1 || $data['status_dosen2'] == 2)  && $tujuan2 == $nama && ($tujuan != $tujuan2)) {
-                               if ($data['status_dosen2'] == 0) { 
-                                echo "Menunggu Proses Anda Sebagai Dosen Koor";
-                                } 
-                                else if ($data['status_dosen2'] == 1) { 
-                                echo "Anda Menolak Sebagai Dosen Koor"; }
-                                else if ($data['status_dosen2'] == 2) {
-                                echo "Anda Menyetujui Sebagai Dosen Koor";
-                                }
-                             }
-                             else if (($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) && ($data['status_dosentkk'] == 0 || $data['status_dosentkk'] == 1 || $data['status_dosentkk'] == 2)  && $tujuan3 == $nama && $_SESSION['status2'] == 1) {
-                              if ($data['status_dosentkk'] == 0) { 
-                               echo "Menunggu Proses Anda Sebagai Dosen TKK";
-                               } 
-                               else if ($data['status_dosentkk'] == 1) { 
-                               echo "Anda Menolak Sebagai Dosen TKK"; }
-                               else if ($data['status_dosentkk'] == 2) {
-                               echo "Anda Menyetujui Sebagai Dosen TKK";
-                               }
-                            }
-                              ?>
-                          </td>
-                          <!-- tanggal -->
-                          <td class="align-middle text-center">
-                            <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                          </td>
-  
-                          <!-- status surat dosen1 -->
-                        
-                          <?php 
-                          if ($data['status_dosen1'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_dosen1'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_dosen1'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Disetujui</span>
-                        </td> <?php } 
-                        
-                              else { ?>
-                                <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
-                        </td>
-                           <?php } ?> 
-                                
-
-                        <!-- status surat dosen2 -->
-                        <?php if ($data['status_dosen2'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen2'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_dosen2'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen2'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_dosen2'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen2'] ?>">Disetujui</span>
-                        </td> <?php } 
-                        else { ?>
-                                <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-info">Tidak Memerlukan</span>
-                        </td>
-                           <?php } ?>
-
-                      
-                         <!-- status surat dosen TKK -->
-                         <?php if($_SESSION['status2'] ==  1) { ?>
-                         <?php if ($data['status_dosentkk'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Belum Diproses</span>
-                        </td> <?php } 
-                              else if ($data['status_dosentkk'] == 1) {?>
-                          <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
-                        </td> 
-                              <?php }
-  
-                              else if ($data['status_dosentkk'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
-                        </td> <?php } ?>
-  
-                     </tr>
-                     <?php } } 
-
-
                   } } 
                      
                      if ($no == 1) { ?>
