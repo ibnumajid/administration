@@ -162,6 +162,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Dosen</h6>
         </li>
         <?php } ?>
+
           
           <!-- Permohonan Surat -->
   <?php if($_SESSION['status'] !== '5'){ ?>
@@ -557,7 +558,7 @@
                 
                 while ($data = mysqli_fetch_array($query)) {
                 
-                    if ($data['status_kadep'] == 0 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) {?>
+                    if ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2) {?>
               
               <tr>
                 <!-- no -->

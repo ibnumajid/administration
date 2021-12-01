@@ -67,7 +67,7 @@ $data = mysqli_fetch_array($query)
           if ($query && $query2) {
             if ($lokasi == "home"){
               ?><script><?php $_SESSION['sukses'] = true;?></script> 
-              <?php header("location:kadep.php");
+              <?php header("location:dosen.php");
               }
               else {
                ?><script><?php $_SESSION['sukses'] = true;?></script> 
@@ -128,6 +128,77 @@ include "../_database/config.php";
       <span class="nav-link-text ms-1">Home</span>
   </a>
 </li>
+
+<?php if ($_SESSION['status2'] == 5) { ?>
+        <!-- membuat satu bar navigasi khusus kadep -->
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Kadep</h6>
+        </li>
+
+         <!-- Pemberian mandat kadep -->
+  <?php if($_SESSION['status2'] == '5'){ ?>
+          <li class="nav-item">
+            <a class="nav-link  " href="./kirimkadep.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                </svg>
+              </div>
+              <span class="nav-link-text ms-1">Pengajuan Mandat </span>
+            </a>
+          </li>
+          <?php } ?>
+
+        
+          
+          <!--Validasi Surat-->
+          <?php if ($_SESSION['status2'] == '5') {?>
+          <li class="nav-item">
+            <a class="nav-link  " href="./validasisurat2.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                </svg>
+              </div>
+              <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
+            </a>
+          </li>
+          <?php } ?>
+
+          <!-- Validasi Surat Dosen -->
+          <?php if ($_SESSION['status2'] == '5') {?>
+          <li class="nav-item">
+            <a class="nav-link  " href="./validasidsn.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                </svg>
+              </div>
+              <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
+            </a>
+          </li>
+          <?php } ?>
+
+                   <!-- Validasi Surat Tendik -->
+                   <?php if ($_SESSION['status2'] == '5') {?>
+          <li class="nav-item">
+            <a class="nav-link  " href="./validasitndk.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                </svg>
+              </div>
+              <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
+            </a>
+          </li>
+
+          <?php } ?>
+
+
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Dosen</h6>
+        </li>
+        <?php } ?>
 
 <!--Permohonan Surat-->
 <li class="nav-item">
@@ -197,7 +268,7 @@ include "../_database/config.php";
 <?php } ?>
 
 <!-- Validasi Surat Dosen -->
-<?php if ($_SESSION['status'] == '5') {?>
+<?php if ($_SESSION['status2'] == '5') {?>
   <li class="nav-item">
     <a class="nav-link  " href="./validasidsn.php">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -211,7 +282,7 @@ include "../_database/config.php";
   <?php } ?>
 
 <!-- Validasi Surat Dosen -->
-<?php if ($_SESSION['status'] == '5') {?>
+<?php if ($_SESSION['status2'] == '5') {?>
   <li class="nav-item">
     <a class="nav-link  " href="./validasitndk.php">
       <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -227,7 +298,7 @@ include "../_database/config.php";
 
 
  <!--SURAT MASUK KADEP -->
-<!--  <?php if($_SESSION['status'] == '5'){ ?>
+<!--  <?php if($_SESSION['status2'] == '5'){ ?>
 </li> 
 <li class="nav-item"> 
 <a class="nav-link  " href="./suratmskkdp.php">
