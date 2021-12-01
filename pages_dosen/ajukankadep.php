@@ -282,6 +282,7 @@ $(document).ready(function(){
                         
 
                         $url = $id.'_'.$nama_file;
+                        $upl = $target . $url;
                         
                         if ($keterangan == NULL || $keterangan2 == NULL || $nama_file == NULL || $tanggal == NULL || $dosen == NULL){ 
                             ?><script><?php $_SESSION["isisemua"] = true;?></script> 
@@ -304,7 +305,7 @@ $(document).ready(function(){
                         ?><script><?php $_SESSION['pdf'] = true ?></script> 
                         <script>history.pushState({}, "", "")</script><?php
                         }  
-                        else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+                        else if (move_uploaded_file($_FILES['fl']['tmp_name'], $upl)) 
                         {
                             $query = mysqli_query($koneksi,"INSERT into ajukankadep values('', '$url', '', '$dosen', '$tanggal', '$perihal','$keterangan','$keterangan2', '0', '', sysdate())");
 

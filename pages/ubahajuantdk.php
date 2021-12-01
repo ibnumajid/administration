@@ -34,6 +34,8 @@ $data = mysqli_fetch_array($query)
         $max = 1024 * 5000;
         $ekstensi = "pdf";
         $url = $id.'_'.$nama_file;
+        $target = "./pagestendik/";
+        $upl = $target . $url;
 
         if ($ukuran > $max && $tipe !== $ekstensi)
         {
@@ -62,7 +64,7 @@ $data = mysqli_fetch_array($query)
           $query6 = mysqli_query($koneksi, "UPDATE surattendik SET `tgl_pel1` = '$tgl1' WHERE id_no = '$id' ");
           $query7 = mysqli_query($koneksi, "UPDATE surattendik SET `tgl_pel2` = '$tgl2' WHERE id_no = '$id' ");
           $query8 = mysqli_query($koneksi, "UPDATE surattendik SET `keterangan` = '$ket' WHERE id_no = '$id' ");
-          move_uploaded_file($_FILES['fl']['tmp_name'], $url);
+          move_uploaded_file($_FILES['fl']['tmp_name'], $upl);
          
           }
           

@@ -510,29 +510,34 @@ session_start();
                           }
 
                                 ?>
-
-                <!-- php hapus file -->
-                <?php
+ <!-- php hapus file -->
+ <?php
                 include "../../_database/config.php";
                 if (isset($_POST['hapus'])) {
-
-                  $nama_file3 = basename($_FILES['flhps']['name']);
-                  $id6 = $_POST['id3'];
-                
-
+                  $id6 = $_POST['id'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM surattendik WHERE id_no = '$id6'");
+                  $data = mysqli_fetch_assoc($query);
+                  $nama_file = $data['file']; 
+                  $target_file = "./$nama_file";
                  
-                 $query6 = mysqli_query($koneksi, "DELETE FROM surattendik  WHERE id_no = '$id6' ");
 
-                    if ($query6) {
-                      echo '<a href="./permohonansurat.php"><script> alert ("Berhasil Menghapus")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<a href="./permohonansurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          
-
-                                ?>
+                  unlink("$target_file");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM suratdosen  WHERE id_no = '$id6' ");
+                 
+                  if ($query6) {
+                ?><script>
+                      <?php $_SESSION['sukseshps'] = true; ?>
+                    </script>
+                    <script>
+                      history.pushState({}, "", "")
+                    </script><?php
+                              ?> <script>
+                      history.pushState({}, "", "")
+                    </script>
+                <?php } else {
+                    echo '<script> alert ("gagal di ajukan")</script></a>';
+                  }
+                } ?>
 <!-- Bagian Status Surat -->
 <div class="col-md-5 mt-4">
               <div class="card h-100 mb-4">
@@ -616,6 +621,20 @@ session_start();
           })
         </script>
     <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php if (@$_SESSION['sukseshps']) : ?>
+        <script>
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Berhasil Menghapus',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        </script>
+        <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
     
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
