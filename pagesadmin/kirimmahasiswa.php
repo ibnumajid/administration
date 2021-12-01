@@ -344,7 +344,7 @@
                                    
                                    
                                     <!-- upload surat baru -->
-                                    <?php if ($data['status_admin'] = 0) { ?>
+                                    <?php if ($data['status_admin'] == 0) { ?>
                                     <div class="card-header pb-0 p-3">
                                    <div class="row">
                                   <div class="mb-3">
