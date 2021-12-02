@@ -613,14 +613,14 @@ session_start();
                 include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
                   $id6 = $_POST['id'];
-                  $query = mysqli_query($koneksi, "SELECT * FROM suratdosen WHERE id_no = '$id6'");
+                  $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id6'");
                   $data = mysqli_fetch_assoc($query);
                   $nama_file = $data['file']; 
                   $target_file = "./mandat/$nama_file";
                  
 
                   unlink("$target_file");
-                  $query6 = mysqli_query($koneksi, "DELETE FROM suratdosen  WHERE id_no = '$id6' ");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM ajukankadep  WHERE id_no = '$id6' ");
                  
                   if ($query6) {
                 ?><script>
