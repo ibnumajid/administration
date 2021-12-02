@@ -508,7 +508,7 @@
         <div class="row">
 
         
-<?php if ($_SESSION['status2'] == 5) { ?>}
+<?php if ($_SESSION['status2'] == 5) { ?>
         <div class="row mb-4">
      
      <div class="col-lg-12">
