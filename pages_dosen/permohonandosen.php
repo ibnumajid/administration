@@ -446,8 +446,8 @@
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
                                         <div class="modal-footer">
-                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
+                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+                                          <button type = "button" class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
                                           <!-- Saat dosen menolak -->
                                           <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "./ubahajuandsn.php" method = "post">
@@ -512,7 +512,7 @@
 
 
                        <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
 
                          <!-- Saat dosen menolak -->
                            <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
@@ -605,12 +605,13 @@
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
                                         <div class="modal-footer">
-                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
                                           <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
                                           <!-- Saat dosen menolak -->
                                           <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "./ubahajuandsn.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
+                         <input type="hidden" name = "nama" value = "permohonan">
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-info">Ubah</button>
                          </form>

@@ -407,7 +407,7 @@ session_start();
 
                                           <div class="modal-footer">
                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id_no'] ?>">Hapus</button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id_no'] ?>">Hapus</button>
                                           <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] == 1 || $data['status_kadep'] == 1 ) { ?>
                                             <form action = "./ubahajuan.php" method = "post">
                                               <!-- Input ID untuk memberikan identitas surat -->

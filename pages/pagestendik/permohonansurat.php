@@ -446,8 +446,8 @@ session_start();
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
                                         <div class="modal-footer">
-                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-
+                                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+                                          <button type = "button" class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
                                           <!-- Saat kadep menolak -->
                                           <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "../ubahajuantdk.php" method = "post">
@@ -679,7 +679,7 @@ session_start();
 
 
                        <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
 
                          <!-- Saat dosen menolak -->
                            <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
