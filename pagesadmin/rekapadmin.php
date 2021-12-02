@@ -1,5 +1,5 @@
 <?php session_start(); 
-if($_SESSION['user']=='' )
+if($_SESSION['user']=='' && $_SESSION['status'] != 1 )
     {
         header("location:../index.php");
   }?>
