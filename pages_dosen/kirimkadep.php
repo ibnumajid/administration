@@ -362,6 +362,7 @@ session_start();
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th>  </th>
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Mandat</th>
                       <th class="text-left ps-1">Dosen Koordinator</th>
@@ -377,6 +378,7 @@ session_start();
                   $no2 = $no++;
                   $query = mysqli_query($koneksi, 'SELECT * FROM ajukankadep ORDER BY id_no DESC');
                   while ($data = mysqli_fetch_array($query)) {
+                    
                          
                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2']) || isset($_POST['filter3'])) {
                       $idf = $_POST['filterid'];
@@ -385,6 +387,7 @@ session_start();
                  
                 
                   <tr>
+                  <td class = "my-1 py-1" ><button type="button" class="btn btn-danger btn-sm mt-1 mb-1" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id_no'] ?>">Hapus</button></td>
                     <td class="text-center"><?php echo $no++ ?></td>
                     <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                     <td class="text-left ps-1"><?php echo $data['dosen_koor'] ?></td>
@@ -429,6 +432,7 @@ session_start();
                         else { ?>
 
                           <tr>
+                          <td class = "my-1 py-1" ><button type="button" class="btn btn-danger btn-sm mt-1 mb-1" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id_no'] ?>">Hapus</button></td>
                           <td class="text-center"><?php echo $no++ ?></td>
                           <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                           <td class="text-left ps-1"><?php echo $data['dosen_koor'] ?></td>
@@ -467,8 +471,131 @@ session_start();
                                     ?><td> <?php echo $data['catatan'] ?> </td> 
                                  
                           </tr>
+                                          <!-- Modal Hapus -->
+                  <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                   <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
 
-                        <?php } } }  ?>
+                       <!-- popup ajuan surat mahasiswa -->
+                       <div class="modal-header">
+                         <h5 class="modal-title" id="hapus<?php echo $data['id_no'] ?>">Hapus File</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+
+                     
+                       <div class="modal-body">
+                         <form action="" method="post" enctype="multipart/form-data">
+                           <div class="card-header pb-0 p-3">
+                             <div class="row">
+                               <div class="mb-3">
+                               
+                                 <!-- Nama File -->
+                                 <label for="formFile" class="form-label">Nama File</label>
+                                 <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
+
+                                 <!-- NRP mahasiswa -->
+                                 <label for="formFile" class="form-label">Perihal</label>
+                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                 
+                                 <!-- Lihat File -->
+                                 <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
+                                 <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
+                                    <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></h6>
+                                    </a>
+                                 
+                                 <!-- Input ID untuk memberikan identitas surat -->
+                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+
+                                 <!-- Memberi peringatan -->
+                                 <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
+                                 <h6 class = " modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6>
+ 
+                                
+                               </div>
+                             </div>
+                           </div>
+                       </div>
+
+
+                       <div class="modal-footer">
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                         <!-- Saat dosen menolak -->
+                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                        
+                       </div>
+
+                       </form>
+
+                     </div>
+                     </div>
+                     </div>
+                        <?php } } ?>                                           <!-- Modal Hapus -->
+                  <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                   <div class="modal-dialog modal-dialog-centered" role="document">
+                     <div class="modal-content">
+
+                       <!-- popup ajuan surat mahasiswa -->
+                       <div class="modal-header">
+                         <h5 class="modal-title" id="hapus<?php echo $data['id_no'] ?>">Hapus File</h5>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                           <span aria-hidden="true">&times;</span>
+                         </button>
+                       </div>
+
+                     
+                       <div class="modal-body">
+                         <form action="" method="post" enctype="multipart/form-data">
+                           <div class="card-header pb-0 p-3">
+                             <div class="row">
+                               <div class="mb-3">
+                               
+                                 <!-- Nama File -->
+                                 <label for="formFile" class="form-label">Nama File</label>
+                                 <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
+
+                                 <!-- NRP mahasiswa -->
+                                 <label for="formFile" class="form-label">Perihal</label>
+                                 <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+                                 
+                                 <!-- Lihat File -->
+                                 <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
+                                 <a href="../pages_dosen/<?php echo $data['file'] ?>" target="_blank">
+                                    <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></h6>
+                                    </a>
+                                 
+                                 <!-- Input ID untuk memberikan identitas surat -->
+                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+
+                                 <!-- Memberi peringatan -->
+                                 <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
+                                 <h6 class = " modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6> 
+                            </div>
+                           </div>
+                          </div>
+                         </div>
+                         <div class="modal-footer">
+                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+
+                         <!-- Saat dosen menolak -->
+                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                        
+                       </div>
+                        </div>
+                       </div>
+                      </div>
+
+
+                      
+
+                       </form>
+
+                     </div>
+                     </div>
+                     </div>
+                     <?php }  ?>
 
                               </div>
                       
@@ -481,7 +608,34 @@ session_start();
                     <td class = "mx-auto"><h6 class = "font-weight-bold">BELUM ADA SURAT</h6></td>
                     <?php } ?>
 
+                <!-- php hapus file -->
+   <?php
+                include "../_database/config.php";
+                if (isset($_POST['hapus'])) {
+                  $id6 = $_POST['id'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM suratdosen WHERE id_no = '$id6'");
+                  $data = mysqli_fetch_assoc($query);
+                  $nama_file = $data['file']; 
+                  $target_file = "./mandat/$nama_file";
+                 
 
+                  unlink("$target_file");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM suratdosen  WHERE id_no = '$id6' ");
+                 
+                  if ($query6) {
+                ?><script>
+                      <?php $_SESSION['sukseshps'] = true; ?>
+                    </script>
+                    <script>
+                      history.pushState({}, "", "")
+                    </script><?php
+                              ?> <script>
+                      history.pushState({}, "", "")
+                    </script>
+                <?php } else {
+                    echo '<script> alert ("gagal di ajukan")</script></a>';
+                  }
+                } ?>
 
                 </table>
               </div>
@@ -523,6 +677,20 @@ session_start();
           })
         </script>
     <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukseshps']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Mengajukan Surat',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
