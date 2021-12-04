@@ -273,7 +273,7 @@ include "../_database/config.php";
                       <div class="mb-3">
                         <!-- nama mahasiswa -->
                         <label for="formFile" class="form-label">Nama Tendik</label>
-                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
+                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
                         <!-- NRP mahasiswa -->
                         <label for="formFile" class="form-label">NRP Mahasiswa</label>
                         <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nip'] ?></label>

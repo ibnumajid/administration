@@ -392,7 +392,7 @@ session_start();
                     </thead>
                     <tbody id="myTable">
                     <?php  while ($data = mysqli_fetch_array($query)) { 
-                      if ($data['nama_mhsw'] == $_SESSION['user']) {
+                      if ($data['nama'] == $_SESSION['user']) {
                           if ($data['perihal'] == "Surat Magang") { ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>

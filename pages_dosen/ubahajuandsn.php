@@ -405,7 +405,7 @@ include "../_database/config.php";
                       <div class="mb-3">
                         <!-- nama mahasiswa -->
                         <label for="formFile" class="form-label">Nama Dosen</label>
-                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
+                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
                         <!-- NRP mahasiswa -->
                         <label for="formFile" class="form-label">NRP Mahasiswa</label>
                         <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_npp'] ?></label>

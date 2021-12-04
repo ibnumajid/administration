@@ -244,7 +244,7 @@
                       $idf = $_POST['filterid'];
 
                         if ($data['status_admin'] == $idf) {
-                        $tujuan = $data['nama_tdk'];
+                        $tujuan = $data['nama'];
                 
                   if ($data['status_kadep'] == "2") {
                         
@@ -258,7 +258,7 @@
                                   <form action="./kirimtendik.php" method="post">
                                       <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                                       <td style = "height:20px">
-                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                                       </td>
                                     </form>
                           
@@ -300,7 +300,7 @@
                                   <form action="./kirimtendik.php" method="post">
                                       <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                                       <td style = "height:20px">
-                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                                        <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" type = "submit" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                                       </td>
                                     </form>
                            

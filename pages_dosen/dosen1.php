@@ -584,7 +584,7 @@
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                 <input type="hidden" name = "lokasi" value = "home">
                 <td style = "height:20px">
-                  <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_dsn'] ?></button></h6>
+                  <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                 </td>
               </form>
                 <!-- status -->
@@ -981,7 +981,7 @@
                 $no = 1;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_dsn'] == $_SESSION  ['user'] && $data['status_kadep'] == 1) {
+                  if ($data['nama'] == $_SESSION  ['user'] && $data['status_kadep'] == 1) {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">

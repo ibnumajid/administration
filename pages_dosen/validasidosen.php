@@ -362,7 +362,7 @@ include "../_database/config.php";
                           <div class="form-group col-md-6">
                             <!-- nama Dosen -->
                             <label for="formFile" class="form-label">Nama Dosen</label>
-                            <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_dsn'] ?></label>
+                            <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
                           </div>
                           <div class="form-group col-md-6">
                             <!-- NRP Dosen -->
