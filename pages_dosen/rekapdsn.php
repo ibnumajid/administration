@@ -149,8 +149,8 @@
           </a>
         </li>
 
-        <!-- Validasi Surat Dosen -->
-        <?php if ($_SESSION['status2'] == '5') {?>
+        <!-- Validasi Surat Dosen <KADEP>-->
+        <!-- <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -161,10 +161,10 @@
               <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
             </a>
           </li>
-          <?php } ?>
+          <?php } ?> -->
 
-              <!-- Validasi Surat Dosen -->
-              <?php if ($_SESSION['status2'] == '5') {?>
+          <!-- Validasi Surat Tendik <KADEP> -->
+          <!-- <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -174,9 +174,9 @@
               </div>
               <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
             </a>
-          </li>
+          </li> -->
 
-           <!-- REKAP SURAT -->
+           <!-- DATA MAGANG -->
            <?php if($_SESSION['status2'] == '2'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./datamagang.php">
@@ -191,8 +191,9 @@
           <?php } ?>
           
           <?php } ?>
-    <!-- REKAP SURAT -->
-    <?php if($_SESSION['status'] !== '5'){ ?>
+
+          <!-- REKAP SURAT -->
+          <!-- <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -203,7 +204,7 @@
               <span class="nav-link-text ms-1">Mandat Kadep</span>
             </a>
           </li>  
-          <?php } ?>
+          <?php } ?> -->
 
 
         <!-- REKAP SURAT -->
@@ -223,7 +224,7 @@
 
         
       <!--SURAT MASUK KADEP -->
-      <?php if($_SESSION['status2'] == '5'){ ?>
+      <!-- <?php if($_SESSION['status2'] == '5'){ ?>
       </li> 
        <li class="nav-item"> 
         <a class="nav-link  " href="./suratmskkdp.php">
@@ -244,10 +245,10 @@
           </div>
           <span class="nav-link-text ms-1">Surat Masuk</span>
         </a>
-      </li> <?php } ?>
+      </li> <?php } ?> -->
 
       <!--profil-->
-<li class="nav-item mt-3">
+      <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -259,7 +260,8 @@
             </div>
             <span class="nav-link-text ms-1">Ganti Password</span>
           </a>
-  </li>
+      </li>
+      
       </ul>
     </div>
   </aside>
