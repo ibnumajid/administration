@@ -27,6 +27,21 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+
+  <!-- CSS form upload file -->
+  <style>
+    .btn-upload {
+        padding: 10px 20px;
+        margin-left: 10px;
+    }
+    .upload-input-group {
+        margin-bottom: 10px;
+    }
+
+    .input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {
+      height: 37px;
+    }
+  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -345,34 +360,20 @@
                                    
                                     <!-- upload surat baru -->
                                     <?php if ($data['status_admin'] == 0) { ?>
-                                    <div class="card-header pb-0 p-3">
-                                      <div class="row">
-                                        <div class="mb-3"> 
-                                          <div class="row">
-                                            <div class="form-group col-md-6">
-                                              <label for="formFile" class="form-label">Kirim File Baru</label> 
-                                              <svg onclick="myFunction()" type="button" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle mx-1" viewBox="0 0 16 16">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                              </svg>
-                                              </button>
-                                              <p>Masukkan file surat yang sudah disetujui</p>
-                                              <input type="file" name="fl" class="form-control" aria-label="file example" required>
-                                              <div class="invalid-feedback">Example invalid form file feedback</div>
+                                    <div class="row">
+                                      <div class="form-group col-md-12">
+                                        <label for="formFile" class="form-label">Kirim File Baru</label> 
+                                        <div class="controls">
+                                            <div class="entry input-group upload-input-group">
+                                                <input class="form-control" name="fL[]" type="file" multiple>
+                                                <button class="btn btn-upload btn-success btn-add" type="button">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                              <div id="file" style="display: none;">
-                                                <label for="formFile" class="form-label">Kirim File Tambahan</label> 
-                                                <p>Masukkan tambahan file surat yang sudah disetujui</p>
-                                                <input type="file" name="fl2" class="form-control" aria-label="file example" required>
-                                                <div class="invalid-feedback">Example invalid form file feedback</div>
-                                              </div>
-                                            </div>
-                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                         <?php } ?>
+                                    <?php } ?>
 
                      </div>
                     </div>
@@ -496,6 +497,30 @@ function goBack() {
             x.style.display = "none";
           }
         }
+    </script>
+    <!-- BOOTSTREP 4 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script> 
+    $(function () {
+                $(document).on('click', '.btn-add', function (e) {
+                    e.preventDefault();
+
+                    var controlForm = $('.controls:first'),
+                        currentEntry = $(this).parents('.entry:first'),
+                        newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                    newEntry.find('input').val('');
+                    controlForm.find('.entry:not(:last) .btn-add')
+                        .removeClass('btn-add').addClass('btn-remove')
+                        .removeClass('btn-success').addClass('btn-danger')
+                        .html('<span class="fa fa-trash"></span>');
+                }).on('click', '.btn-remove', function (e) {
+                    $(this).parents('.entry:first').remove();
+
+                    e.preventDefault();
+                    return false;
+                });
+            });
     </script>
 </body>
 
