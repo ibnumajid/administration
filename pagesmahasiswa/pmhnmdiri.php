@@ -481,7 +481,7 @@ session_start();
                     $no = 1;
                     $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                     while ($data = mysqli_fetch_array($query)) {
-                      if ($data['nama_mhsw'] == $_SESSION['user']) {
+                      if ($data['nama'] == $_SESSION['user']) {
                           if ($data['perihal'] == "Surat Mengundurkan Diri") {
                     ?>
                     <tr>

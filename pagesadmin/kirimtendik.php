@@ -218,8 +218,8 @@
                                     <div class="form-group col-md-6">
                                       <!-- nama mahasiswa -->
                                       <label for="formFile" class="form-label">Nama Tendik</label>
-                                      <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
-                                      <input type="hidden" name = "nm" value = "<?php echo $data['nama_tdk'] ?>">
+                                      <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
+                                      <input type="hidden" name = "nm" value = "<?php echo $data['nama'] ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                       <!-- NRP mahasiswa -->

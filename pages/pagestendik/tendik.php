@@ -299,7 +299,7 @@ session_start();
                 $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
                   // data nama tendik
-                  if ($data['nama_tdk'] == $_SESSION['user'] && $data['status_kadep'] == '1') {
+                  if ($data['nama'] == $_SESSION['user'] && $data['status_kadep'] == '1') {
                     $no++
                 ?>
                     <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">

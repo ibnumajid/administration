@@ -232,8 +232,8 @@
                                     <div class="row">
                                       <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                          <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
-                                          <input type="hidden" name="nm" value = "<?php echo $data['nama_mhsw'] ?>">
+                                          <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
+                                          <input type="hidden" name="nm" value = "<?php echo $data['nama'] ?>">
                                         </div>
                                         <div class="form-group col-md-6">
                                           <label for="formFile" class="form-label">NRP Mahasiswa</label>
