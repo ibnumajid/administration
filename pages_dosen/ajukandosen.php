@@ -1,10 +1,55 @@
 <?php
 session_start();
-  if($_SESSION['user']=='' && $_SESSION['status'] != 2)
+  if($_SESSION['user']=='' && $_SESSION['status'] != 2 )
   {
   header("location:../index.php");
   }
-?>
+
+                        include '../_database/config.php';
+                        if (isset($_POST['input'])) {
+                        $nama_dsn = $_POST['nm'];
+                        $id_npp = $_POST['nip'];
+                        $perihal = $_POST['sr'];
+                        $keterangan = $_POST['keterangan'];
+                        $nama_barang = $_POST['nb'];
+                        $jumlah_barang = $_POST['jb'];
+                        $nama_lab = $_POST['nl'];
+                        $tgl_pel1 = $_POST['pel1'];
+                        $tgl_pel2 = $_POST['pel2'];
+
+
+                        $file = basename($_FILES['fl']['name']);
+                        $ukuran = $_FILES['fl']['size'];
+                        $tipe = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                        $max = 1024 * 5000;
+                        $ekstensi = "pdf";
+                        $keterangan = $_POST['keterangan'];
+
+                        $url = $id_npp.'_'.$file;
+
+                        if ($ukuran > $max && $tipe != $ekstensi) {;
+                            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';
+                        } else if ($ukuran > $max) {
+                            echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
+                        } else if ($tipe != $ekstensi   ) {
+                            ?><script><?php $_SESSION["pdf"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                        } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
+                          $query = mysqli_query($koneksi, "INSERT into suratdosen values('', '', '$nama_dsn','$id_npp','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$nama_lab', '$tgl_pel1', '$tgl_pel2', '', '', '0', '0', '$ukuran', '$tipe', '0', '$url', '', '',  '', '', '', '',   sysdate())");
+
+                            if ($query) {
+                            ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                                <?php header("location:permohonandosen.php"); ?>
+                           <?php } else {
+                            ?><script><?php $_SESSION["input"] = true;?></script> 
+                                <script>history.pushState({}, "", "")</script><?php
+                            }
+                        } else {
+                            echo '<script> alert ("Gagal Upload")</script>';
+                        }
+                        }
+
+                        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -286,7 +331,7 @@ $(document).ready(function(){
       </li> <?php } ?> 
 
     
-<!--profil-->
+<!-profil-->
 <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -363,52 +408,7 @@ $(document).ready(function(){
                 
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <?php
-                        include '../_database/config.php';
-                        if (isset($_POST['input'])) {
-                        $nama_dsn = $_POST['nm'];
-                        $id_npp = $_POST['nip'];
-                        $perihal = $_POST['sr'];
-                        $keterangan = $_POST['keterangan'];
-                        $nama_barang = $_POST['nb'];
-                        $jumlah_barang = $_POST['jb'];
-                        $nama_lab = $_POST['nl'];
-                        $tgl_pel1 = $_POST['pel1'];
-                        $tgl_pel2 = $_POST['pel2'];
-
-
-                        $file = basename($_FILES['fl']['name']);
-                        $ukuran = $_FILES['fl']['size'];
-                        $tipe = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-                        $max = 1024 * 5000;
-                        $ekstensi = "pdf";
-                        $keterangan = $_POST['keterangan'];
-
-                        $url = $id_npp.'_'.$file;
-
-                        if ($ukuran > $max && $tipe != $ekstensi) {;
-                            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';
-                        } else if ($ukuran > $max) {
-                            echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
-                        } else if ($tipe != $ekstensi   ) {
-                            ?><script><?php $_SESSION["pdf"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                        } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
-                            $query = mysqli_query($koneksi, "INSERT into suratdosen values('', '$nama_dsn','$id_npp','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$nama_lab', '$tgl_pel1', '$tgl_pel2', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
-
-                            if ($query) {
-                            ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                                <?php header("location:permohonandosen.php"); ?>
-                           <?php } else {
-                            ?><script><?php $_SESSION["input"] = true;?></script> 
-                                <script>history.pushState({}, "", "")</script><?php
-                            }
-                        } else {
-                            echo '<script> alert ("Gagal Upload")</script>';
-                        }
-                        }
-
-                        ?>
+                        
 
                         <!-- nama & nrp -->
                         <form action="" method="post" enctype="multipart/form-data">

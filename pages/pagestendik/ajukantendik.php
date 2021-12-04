@@ -5,6 +5,65 @@ session_start();
   header("location:../../index.php");
   }
 ?>
+<?php
+                            include '../../_database/config.php';
+                            if(isset($_POST['input']))
+                            {
+                            $namatendik = $_POST['nm'];
+                            $niptendik = $_POST['nip'];
+                            $perihal = $_POST['perihal'];
+                            $keterangan = $_POST['keterangan'];
+                            $tgl_pel1 = $_POST['pel1'];
+                            $tgl_pel2 = $_POST['pel2'];
+                            $nama_barang = $_POST['nb'];
+                            $jumlah_barang = $_POST['jb'];
+                            $dari_lab = $_POST['dl'];
+                            $ke_lab = $_POST['kl'];
+
+                            
+                            $nama_file = basename($_FILES['fl']['name']);
+                            $ukuran = $_FILES['fl']['size'];
+                            $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
+                            $max = 1024 * 5000;
+                            $ekstensi = "pdf";
+
+                            $url = $niptendik.'_'.$nama_file;
+
+                            if ($ukuran > $max && $tipe != $ekstensi)
+                            {
+                                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';}
+                            
+                                else if ($ukuran > $max)
+                                {
+                                echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>' ;}
+                                
+                                else if ($tipe != $ekstensi)
+                                { 
+                                    ?><script><?php $_SESSION["file"] = true;?></script> 
+                                    <script>history.pushState({}, "", "")</script><?php
+                                }
+                                else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)){
+                                $query = mysqli_query($koneksi,"INSERT into surattendik values('', '', '$namatendik','$niptendik','$perihal', '$keterangan', '', '$ukuran', '$tipe', '', '', '', '', '0', '0',  '$nama_barang', '$jumlah_barang', '',  '$url', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '',  '',  sysdate())");
+
+                                if($query)
+                                {
+                                ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                                    <?php header("location:permohonansurat.php");
+                                }
+                                else
+                                {
+                                ?><script><?php $_SESSION["input"] = true;?></script> 
+                                    <script>history.pushState({}, "", "")</script><?php
+                                }
+                                    }
+                            else
+                            {
+                                echo "Gagal Upload";
+                            }
+                            
+                            }
+
+                        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -226,65 +285,7 @@ $(document).ready(function(){
                 
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                            <?php
-                            include '../../_database/config.php';
-                            if(isset($_POST['input']))
-                            {
-                            $namatendik = $_POST['nm'];
-                            $niptendik = $_POST['nip'];
-                            $perihal = $_POST['perihal'];
-                            $keterangan = $_POST['keterangan'];
-                            $tgl_pel1 = $_POST['pel1'];
-                            $tgl_pel2 = $_POST['pel2'];
-                            $nama_barang = $_POST['nb'];
-                            $jumlah_barang = $_POST['jb'];
-                            $dari_lab = $_POST['dl'];
-                            $ke_lab = $_POST['kl'];
-
                             
-                            $nama_file = basename($_FILES['fl']['name']);
-                            $ukuran = $_FILES['fl']['size'];
-                            $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-                            $max = 1024 * 5000;
-                            $ekstensi = "pdf";
-
-                            $url = $niptendik.'_'.$nama_file;
-
-                            if ($ukuran > $max && $tipe != $ekstensi)
-                            {
-                                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';}
-                            
-                                else if ($ukuran > $max)
-                                {
-                                echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>' ;}
-                                
-                                else if ($tipe != $ekstensi)
-                                { 
-                                    ?><script><?php $_SESSION["file"] = true;?></script> 
-                                    <script>history.pushState({}, "", "")</script><?php
-                                }
-                                else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)){
-                                $query = mysqli_query($koneksi,"INSERT into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
-
-                                if($query)
-                                {
-                                ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                                    <?php header("location:permohonansurat.php");
-                                }
-                                else
-                                {
-                                ?><script><?php $_SESSION["input"] = true;?></script> 
-                                    <script>history.pushState({}, "", "")</script><?php
-                                }
-                                    }
-                            else
-                            {
-                                echo "Gagal Upload";
-                            }
-                            
-                            }
-
-                        ?>
 
                         <!-- nama & nip -->
                         <form action="" method="post" enctype="multipart/form-data">

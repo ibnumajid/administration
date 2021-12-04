@@ -365,7 +365,7 @@ session_start();
                    $no2=$no++;
                    $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');                  
                    while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama_tdk'] == $_SESSION['user']) {
+                  if ($data['nama'] == $_SESSION['user']) {
                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
                       $idf = $_POST['filterid'];
                         if ($data['status_kadep'] == $idf) {
@@ -785,7 +785,7 @@ session_start();
     <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
+    <?php if(@$_SESSION['sukseshps']) : ?>
         <script>
             Swal.fire({
             position: 'center',
