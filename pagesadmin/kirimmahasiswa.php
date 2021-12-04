@@ -360,12 +360,12 @@
                                    
                                     <!-- upload surat baru -->
                                     <?php if ($data['status_admin'] == 0) { ?>
-                                    <div class="row">
+                                      <div class="row">
                                       <div class="form-group col-md-12">
                                         <label for="formFile" class="form-label">Kirim File Baru</label> 
                                         <div class="controls">
                                             <div class="entry input-group upload-input-group">
-                                                <input class="form-control" name="fL[]" type="file" multiple>
+                                                <input class="form-control" name="file[]" type="file" >
                                                 <button class="btn btn-upload btn-success btn-add" type="button">
                                                     <i class="fa fa-plus"></i>
                                                 </button>
@@ -401,19 +401,28 @@
 
                     if(isset($_POST['update'])){
                       $r = rand(0, 999);
-                      $nama_file2 = basename($_FILES['fl']['name']); 
-                      $ukuran2 = $_FILES['fl']['size'];
-                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
                       $id = $_POST['id'];
                       $nama_mhs = $_POST['nm'];
-                      $statusadmin = $_POST['stadmin'];
                       $perihal = $_POST['perihal'];
-                      
-                      $url2 = $r.$id.'_'.$nama_file2;
-                      
-                    if (move_uploaded_file($_FILES['fl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "INSERT into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
+
+                      $name = $_FILES['file']['name'];
+                      $size = $_FILES['file']['size'];
+                      $type = $_FILES['file']['type'];
+                      $tmp_name = $_FILES['file']['tmp_name'];
+
+                      $ukuran = 1024 * 5000;
+                      $tipe = array("pdf");
+
+                      if ($size > $ukuran) {
+                        echo "ukuran terlalu besar.";
+                      }
+                      else if ($type != $tipe && $type != NULL) {
+                        echo "file harus pdf.";
+                      }
+
+                      if (move_uploaded_file($tmp_name, $name))  {
+                      $query2 = mysqli_query($koneksi, "INSERT into kirimadmin values ('$id', '$name', '$perihal', '$nama_mhs', sysdate()) ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`= 2 WHERE id_no = '$id'");
 
                       if($query2 && $query3){
                         ?><script><?php $_SESSION["sukses"] = true;?></script> 
