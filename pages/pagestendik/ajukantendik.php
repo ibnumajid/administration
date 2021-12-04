@@ -43,7 +43,7 @@ session_start();
                                     <script>history.pushState({}, "", "")</script><?php
                                 }
                                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)){
-                                $query = mysqli_query($koneksi,"INSERT into surattendik values('', '', '$namatendik','$niptendik','$perihal', '$keterangan', '', '$ukuran', '$tipe', '', '', '', '', '0', '0',  '$nama_barang', '$jumlah_barang', '',  '$url', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '',  '',  sysdate())");
+                                $query = mysqli_query($koneksi,"INSERT into surattendik values('', '4', '$namatendik','$niptendik','$perihal', '$keterangan', '', '$ukuran', '$tipe', '0', '', '', '', '0', '0',  '$nama_barang', '$jumlah_barang', '',  '$url', '$dari_lab', '$ke_lab', ' $tgl_pel1', ' $tgl_pel2', '',  '',  sysdate())");
 
                                 if($query)
                                 {

@@ -35,7 +35,7 @@ session_start();
                             ?><script><?php $_SESSION["pdf"] = true;?></script> 
                         <script>history.pushState({}, "", "")</script><?php
                         } else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
-                          $query = mysqli_query($koneksi, "INSERT into suratdosen values('', '', '$nama_dsn','$id_npp','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$nama_lab', '$tgl_pel1', '$tgl_pel2', '', '', '0', '0', '$ukuran', '$tipe', '0', '$url', '', '',  '', '', '', '',   sysdate())");
+                          $query = mysqli_query($koneksi, "INSERT into suratdosen values('', '2', '$nama_dsn','$id_npp','$perihal', '$keterangan', '$nama_barang', '$jumlah_barang', '$nama_lab', '$tgl_pel1', '$tgl_pel2', '', '', '0', '0', '$ukuran', '$tipe', '0', '$url', '', '',  '', '', '', '',   sysdate())");
 
                             if ($query) {
                             ?><script><?php $_SESSION["sukses"] = true;?></script> 
