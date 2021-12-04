@@ -501,12 +501,20 @@
       <div class="col-6 d-flex align-items-center mx-4 mt-3 mb-0 pb-0 my-0 py-0">
         <h6 class="mb-0 pt-1 px-1">Surat Masuk sebagai Kadep</h6>
       </div>
-      <div class="form-group d-flex justify-content-around mt-4 mb-0 my-0 py-0">
-       <a href="./dosensm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-       <a href="./dosen.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
-       <a href="./dosen1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-       <a href="./dosen2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
-       </div>      
+      <div class="form-group d-flex justify-content-around mt-4 pb-0 mb-0">
+              <form method = "post">
+                <input type="hidden" name = "filteridk" value = "012">
+               <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filteridk" value = "0">
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
+            </form>
+            <form action="" method = "post">
+                <input type="hidden" name = "filteridk" value = "2">
+               <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+            </form>
+            </div>    
        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0 mt-0 py-0 my-0" style = "height:375px" >
             <table class="table table-striped align-items-center mb-6 mt-0 pt-0">
               <thead>
@@ -514,7 +522,7 @@
                   <th class="text-center">No</th>
                   <th class="text-left ps-2">Nama</th>
                   <th class="text-left ps-2">Status</th>
-                  <th class="text-left ps-2">Perihal</th>
+                  <th class="text-center ps-2">Perihal</th>
                   <th>Persetujuan Kadep</th>
                   <th class="text-center">Waktu Upload</th>
                   <th class="text-left ps-2"></th>
@@ -527,140 +535,146 @@
                 $nama = $_SESSION['user'];
                 $no = 0;
                 $no2 = $no++;
-                $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa UNION SELECT * FROM suratdosen UNION SELECT * FROM surattendik   ORDER BY tanggal DESC' );
                 
                 while ($data = mysqli_fetch_array($query)) {
-                
-                    if ($data['status_kadep'] == 0 && ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2)) {?>
-              
-              <tr>
-                <!-- no -->
-                <td class="text-center"><?php echo $no++ ?></td>
-                <!-- nama -->
-                <form action="./validasimhs.php" method="post">
-                  <input type="hidden" name = "lokasi" value = "home">
+                  if ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2 || $data['status'] == 2 || $data['status'] == 4 ) {
+                    if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                   $idf = $_POST['filteridk'];
+                   if ($data['status_kadep'] == $idf) { ?>
+           
+           <tr>
+             <!-- no -->
+             <td class="text-center"><?php echo $no++ ?></td>
+             <!-- nama -->
+             <?php if ($data['status'] == 3) { ?>
+            <form action="kirimmahasiswa.php" method = "post">
+             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+             <td style = "height:20px">
+               <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
+             </td>
+             </form>
+             <?php }
+             else if ($data['status'] == 2) { ?>
+               <form action="kirimdosen.php" method = "post">
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                <td style = "height:20px">
-                <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
-                </td>
-                </form>
-                <!-- status -->
-                <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
-                <!-- perihal -->
-                <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
-                <!-- status surat -->
-                <?php if ($data['status_kadep'] == 0) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
-                </td> <?php } 
-                    else if ($data['status_kadep'] == 1) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                </td> <?php }
-                    else if ($data['status_kadep'] == 2) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Sudah Diproses</span>
-                </td> <?php } ?>
-                <!-- tanggal -->
-                <td class="text-center"><?php echo $data['tanggal'] ?></td>
-              
-                <?php } } ?>
-              </tr>
-              <!-- and tabel mahasiswa -->
-              <!-- tabel suratdosen -->
-              <?php
-                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                $nama = $_SESSION['user'];
-                
-                $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
-                
-                while ($data = mysqli_fetch_array($query)) {
-                
-                    if ($data['status_kadep'] == 0) {?>
-              
-              <tr>
-                <!-- no -->
-                <td class="text-center"><?php echo $no++ ?></td>
-                <!-- nama -->
-                <form action="./validasidosen.php" method="post">
-                <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                <input type="hidden" name = "lokasi" value = "home">
                 <td style = "height:20px">
                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                 </td>
-              </form>
-                <!-- status -->
-                <td> <h6 class="text-left ps-1">Dosen</h6></td>
-                <!-- perihal -->
-                <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
-                <!-- status surat -->
-                <?php if ($data['status_kadep'] == 0) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
-                </td> <?php } 
-                    else if ($data['status_kadep'] == 1) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                </td> <?php }
-                    else if ($data['status_kadep'] == 2) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Sudah Diproses</span>
-                </td> <?php } ?>
-                <!-- tanggal -->
-                <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                
-                <?php } } ?>
-              </tr>
-              <!-- and tabel dosen -->
-              <!-- tabel suratdosen -->
-              <?php
-                include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                $nama = $_SESSION['user'];
-                
-                $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');
-                
-                while ($data = mysqli_fetch_array($query)) {
-                
-                    if ($data['status_kadep'] == 0) {?>
-              
-              <tr>
-                <!-- no -->
-                <td class="text-center"><?php echo $no++ ?></td>
-                <!-- nama -->
-                <form action="./validasitendik.php" method="post">
-                <input type="hidden" name = "lokasi" value = "home">
+                </form> 
+                <?php } 
+             else if ($data['status'] == 4) { ?>
+                <form action="kirimtendik.php" method = "post">
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                 <td style = "height:20px">
-                  <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama_tdk'] ?></button></h6>
+                  <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                 </td>
-              </form>
-                <!-- status -->
+                </form>
+                <?php } ?>
+
+       
+             <!-- status -->
+             <?php if($data['status'] == 3) { ?>
+             <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
+             <?php } 
+             else if ($data['status'] == 2) { ?>
+              <td> <h6 class="text-left ps-1">Dosen</h6></td>
+             <?php } 
+             else if ($data['status'] == 4 ){ ?>
+              <td> <h6 class="text-left ps-1">Tendik</h6></td>
+              <?php } ?> 
+             <!-- perihal -->
+             <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
+             <!-- status surat -->
+             <?php if ($data['status_kadep'] == 0) {?>
+             <td class="align-middle text-center text-sm">
+               <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
+             </td> <?php } 
+                 else if ($data['status_kadep'] == 1) {?>
+             <td class="align-middle text-center text-sm">
+               <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+             </td> <?php }
+                 else if ($data['status_kadep'] == 2) {?>
+             <td class="align-middle text-center text-sm">
+               <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Sudah Diproses</span>
+             </td> <?php } ?>
+             <!-- tanggal -->
+             <td class="text-center"><?php echo $data['tanggal'] ?></td>
+             <!-- button -->
+             <td class="align-middle">
+               <a  href="validasiadmin.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                 <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+               </a>
+             </td>
+             </tr>
+             <?php } } 
+             else { ?>
+               <tr>
+               <!-- no -->
+               <td class="text-center"><?php echo $no++ ?></td>
+               <!-- nama -->
+               <?php if ($data['status'] == 3) { ?>
+              <form action="kirimmahasiswa.php" method = "post">
+               <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+               <td style = "height:20px">
+                 <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
+               </td>
+               </form>
+               <?php }
+               else if ($data['status'] == 2) { ?>
+                 <form action="kirimdosen.php" method = "post">
+                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                  <td style = "height:20px">
+                    <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
+                  </td>
+                  </form> 
+                  <?php } 
+               else if ($data['status'] == 4) { ?>
+                  <form action="kirimtendik.php" method = "post">
+                  <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                  <td style = "height:20px">
+                    <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
+                  </td>
+                  </form>
+                  <?php } ?>
+
+         
+               <!-- status -->
+               <?php if($data['status'] == 3) { ?>
+               <td> <h6 class="text-left ps-1">Mahasiswa</h6></td>
+               <?php } 
+               else if ($data['status'] == 2) { ?>
+                <td> <h6 class="text-left ps-1">Dosen</h6></td>
+               <?php } 
+               else if ($data['status'] == 4 ){ ?>
                 <td> <h6 class="text-left ps-1">Tendik</h6></td>
-                <!-- perihal -->
-                <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
-                <!-- status surat -->
-                <?php if ($data['status_kadep'] == 0) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
-                </td> <?php } 
-                    else if ($data['status_kadep'] == 1) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                </td> <?php }
-                    else if ($data['status_kadep'] == 2) {?>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Sudah Diproses</span>
-                </td> <?php } ?>
-                <!-- tanggal -->
-                <td class="text-center"><?php echo $data['tanggal'] ?></td>
-                <!-- button -->
-                <td class="align-middle">
-                  <a  href="validaistndkq.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                    <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
-                  </a>
-                </td>
-                <?php } } ?>
-              </tr>
+                <?php } ?> 
+               <!-- perihal -->
+               <td> <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6></td>
+               <!-- status surat -->
+               <?php if ($data['status_kadep'] == 0) {?>
+               <td class="align-middle text-center text-sm">
+                 <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
+               </td> <?php } 
+                   else if ($data['status_kadep'] == 1) {?>
+               <td class="align-middle text-center text-sm">
+                 <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+               </td> <?php }
+                   else if ($data['status_kadep'] == 2) {?>
+               <td class="align-middle text-center text-sm">
+                 <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Sudah Diproses</span>
+               </td> <?php } ?>
+               <!-- tanggal -->
+               <td class="text-center"><?php echo $data['tanggal'] ?></td>
+               <!-- button -->
+               <td class="align-middle">
+                 <a  href="validasiadmin.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                 </a>
+               </td>
+               </tr>
+
+             <?php } } } ?>
               <!-- and tabel dosen -->
                   <?php 
                   if ($no == 1) { ?>
@@ -669,6 +683,9 @@
                     <td></td>
                     <td></td>
                 <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <?php } ?>
             </table>
           </div>
@@ -715,7 +732,7 @@
                 <th class="text-center">No</th>
                 <th class="text-center">Nama</th>
                 <th class="text-center">Status</th>
-                <th class="text-left ps-2">Perihal</th>
+                <th class="text-center ps-2">Perihal</th>
                 <th class="text-center">Proses</th>
                 <th class="text-center">Waktu Upload</th>
                 <th class="text-left ps-2"></th>  
