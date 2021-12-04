@@ -4,6 +4,96 @@ session_start();
   {
   header("location:../index.php");
   }
+?> <?php
+include '../_database/config.php';
+if(isset($_POST['input']))
+{
+$nama_mhsw = $_POST['nm'];
+$id_nrp = $_POST['nrp'];
+$perihal = $_POST['sr'];
+$keterangan = $_POST['keterangan'];
+$judul_ta = $_POST['ta'];
+$dosen1 = $_POST['ds1'];
+$dosen2 = $_POST['ds2'];
+$dosen_tkk = $_POST['tkk'];
+$tgl_h1 = $_POST['hima1'];
+$tgl_h2 = $_POST['hima2'];
+$nama_file = basename($_FILES['fl']['name']);
+$ukuran = $_FILES['fl']['size'];
+$tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+
+$max = 1024 * 5000;
+$ekstensi = "pdf";
+
+
+$url = $id_nrp.'_'.$nama_file;
+
+
+if ($ukuran > $max && $tipe !== $ekstensi)
+{
+?><script><?php $_SESSION["pdfuk"] = true;?></script> 
+<script>history.pushState({}, "", "")</script><?php 
+}
+
+else if ($ukuran > $max)
+{
+echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
+}
+
+else if ($tipe != $ekstensi && $tipe != NULL)
+{ 
+?><script><?php $_SESSION['pdf'] = true ?></script> 
+<script>history.pushState({}, "", "")</script><?php
+}  
+else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
+{
+  if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
+    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    if($query)
+    {
+    ?><script><?php $_SESSION['sukses'] = true;?></script> 
+    <script>history.pushState({}, "", "")</script><?php
+    }
+    else
+    {
+    ?><script><?php $_SESSION['input'] = true;?></script> 
+    <script>history.pushState({}, "", "")</script><?php
+    }
+  }
+  else if ($perihal == "Surat Cuti" || $perihal == "Surat Mengundurkan Diri") {
+    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '2', '$dosen2', '2', '$dosen_tkk', '2', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    if($query)
+    {
+    ?><script><?php $_SESSION['sukses'] = true;?></script> 
+    <?php header("location:pmhnsurat.php");
+    }
+    else
+    {
+    ?><script><?php $_SESSION['input'] = true;?></script> 
+    <script>history.pushState({}, "", "")</script><?php
+    }
+  }
+  else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
+    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '9', '$dosen2', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    if($query) 
+    {
+    ?><script><?php $_SESSION['sukses'] = true;?></script> 
+    <script>history.pushState({}, "", "")</script><?php
+    }
+    else
+    {
+    ?><script><?php $_SESSION['input'] = true;?></script> 
+    <script>history.pushState({}, "", "")</script><?php
+    }
+}
+else
+{
+    
+    echo "Gagal Upload";
+}
+
+} }
+
 ?>
 
 <!DOCTYPE html>
@@ -203,97 +293,7 @@ $(document).ready(function(){
                 
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <?php
-                        include '../_database/config.php';
-                        if(isset($_POST['input']))
-                        {
-                        $nama_mhsw = $_POST['nm'];
-                        $id_nrp = $_POST['nrp'];
-                        $perihal = $_POST['sr'];
-                        $keterangan = $_POST['keterangan'];
-                        $judul_ta = $_POST['ta'];
-                        $dosen1 = $_POST['ds1'];
-                        $dosen2 = $_POST['ds2'];
-                        $dosen_tkk = $_POST['tkk'];
-                        $tgl_h1 = $_POST['hima1'];
-                        $tgl_h2 = $_POST['hima2'];
-                        $nama_file = basename($_FILES['fl']['name']);
-                        $ukuran = $_FILES['fl']['size'];
-                        $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
-                        
-                        $max = 1024 * 5000;
-                        $ekstensi = "pdf";
-                        
-
-                        $url = $id_nrp.'_'.$nama_file;
-                        
-
-                        if ($ukuran > $max && $tipe !== $ekstensi)
-                        {
-                        ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php 
-                        }
-
-                        else if ($ukuran > $max)
-                        {
-                        echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
-                        }
-                        
-                        else if ($tipe != $ekstensi && $tipe != NULL)
-                        { 
-                        ?><script><?php $_SESSION['pdf'] = true ?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                        }  
-                        else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
-                        {
-                          if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
-                            $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
-                            if($query)
-                            {
-                            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-                            <script>history.pushState({}, "", "")</script><?php
-                            }
-                            else
-                            {
-                            ?><script><?php $_SESSION['input'] = true;?></script> 
-                            <script>history.pushState({}, "", "")</script><?php
-                            }
-                          }
-                          else if ($perihal == "Surat Cuti" || $perihal == "Surat Mengundurkan Diri") {
-                            $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '2', '$dosen2', '2', '$dosen_tkk', '2', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
-                            if($query)
-                            {
-                            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-                            <?php header("location:pmhnsurat.php");
-                            }
-                            else
-                            {
-                            ?><script><?php $_SESSION['input'] = true;?></script> 
-                            <script>history.pushState({}, "", "")</script><?php
-                            }
-                          }
-                          else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
-                            $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '9', '$dosen2', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
-                            if($query) 
-                            {
-                            ?><script><?php $_SESSION['sukses'] = true;?></script> 
-                            <script>history.pushState({}, "", "")</script><?php
-                            }
-                            else
-                            {
-                            ?><script><?php $_SESSION['input'] = true;?></script> 
-                            <script>history.pushState({}, "", "")</script><?php
-                            }
-                        }
-                        else
-                        {
-                            
-                            echo "Gagal Upload";
-                        }
-                        
-                        } }
-
-                        ?>
+                       
 
                         <!-- nama & nrp -->
                         <form action="" method="post" enctype="multipart/form-data">
