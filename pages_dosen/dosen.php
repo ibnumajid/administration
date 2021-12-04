@@ -489,7 +489,7 @@
      <div class="col-lg-12">
   <div class="card mt-0">
 
-    <div class="card-body p-3">
+    <div class="card-body p-3 shadow-lg p-3 mb-5 bg-body rounded">
       <div class="row">
         <div class="card-body px-3 pt-0 pb-2">
         
@@ -684,7 +684,7 @@
    <div class="col-lg-12">
    <div class="card mt-0">
           
-        <div class="col-6 d-flex align-items-center mx-2">
+        <div class="col-6 d-flex align-items-center mx-2 shadow-lg p-3 mb-5 bg-body rounded">
           <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat yang Belum Divalidasi</h6>
         </div>
 
@@ -971,7 +971,7 @@
 
                        <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
-        <div class="col-md-7 mt-4">
+        <div class="col-md-7 mt-4 shadow-lg p-3 mb-5 bg-body rounded">
           <div class="card">
             <div class="card-header pb-0 px-3">
               <h6 class="mb-0">Surat yang Ditolak</h6>
@@ -1229,7 +1229,7 @@
 
 <!-- Bagian Status Surat -->
 <div class="col-md-5 mt-4">
-              <div class="card h-100 mb-4">
+              <div class="card h-100 mb-4 shadow-lg p-3 mb-5 bg-body rounded">
               
                 <div class="card-header pb-4 px-4">
                   <div class="row">
