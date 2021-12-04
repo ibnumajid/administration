@@ -52,7 +52,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     if($query)
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
-    <script>history.pushState({}, "", "")</script><?php
+    <?php header("location:pmhnsurat.php"); 
     }
     else
     {
@@ -65,7 +65,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     if($query)
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
-    <?php header("location:pmhnsurat.php");
+    <?php header("location:pmhnsurat.php"); 
     }
     else
     {
@@ -78,7 +78,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     if($query) 
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
-    <script>history.pushState({}, "", "")</script><?php
+   <?php header("location:pmhnsurat.php"); 
     }
     else
     {
@@ -572,33 +572,7 @@ $(document).ready(function(){
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Berhasil Upload',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['pdf']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Gagal mengajukan permohonan surat ! Ekstensi file haru pdf',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['pdf']); ?>
-    <?php endif; ?>
+ 
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
