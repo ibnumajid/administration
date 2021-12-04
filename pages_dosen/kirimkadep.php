@@ -685,7 +685,7 @@ session_start();
             Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Berhasil Mengajukan Surat',
+            title: 'Berhasil Menghapus Data',
             showConfirmButton: false,
             timer: 2000
           })
