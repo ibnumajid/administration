@@ -204,7 +204,7 @@
           <?php } ?>
 
                      <!-- REKAP SURAT -->
-                     <?php if($_SESSION['status'] !== '5'){ ?>
+                     <?php if($_SESSION['status2'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -499,13 +499,13 @@
     
          
       <div class="col-6 d-flex align-items-center mx-4 mt-3 mb-0 pb-0 my-0 py-0">
-        <h6 class="mb-0 pt-1 px-1">Surat yang Belum Divalidasi sebagai Kadep</h6>
+        <h6 class="mb-0 pt-1 px-1">Surat Masuk sebagai Kadep</h6>
       </div>
       <div class="form-group d-flex justify-content-around mt-4 mb-0 my-0 py-0">
-       <a href="./kadepsm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
-       <a href="./kadep.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
-       <a href="./kadep1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
-       <a href="./kadep2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
+       <a href="./dosensm.php" id='failedList'><button class = "btn btn-outline-info">Lihat Semua</button></a>
+       <a href="./dosen.php" id='failedList'><button class = "btn btn-outline-info">Belum Diproses</button></a>
+       <a href="./dosen1.php" id='failedList'><button class = "btn btn-outline-info">Ditolak</button></a>
+       <a href="./dosen2.php" id='failedList'><button class = "btn btn-outline-info">Disetujui</button></a>
        </div>      
        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0 mt-0 py-0 my-0" style = "height:375px" >
             <table class="table table-striped align-items-center mb-6 mt-0 pt-0">
@@ -683,9 +683,10 @@
   <div class="row">
    <div class="col-lg-12">
    <div class="card mt-0">
-          
+ 
         <div class="col-6 d-flex align-items-center mx-2 shadow-lg p-3 mb-5 bg-body rounded">
-          <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat yang Belum Divalidasi</h6>
+          <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat Masuk Sebagai Dosen</h6>
+
         </div>
 
          
