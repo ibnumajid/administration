@@ -827,7 +827,7 @@ session_start();
             timer: 2000
           })
         </script>
-    <?php unset($_SESSION['sukseshps']); ?>
+    <?php unset($_SESSION['sukses']); ?>
     <?php endif; ?>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukseshps']) : ?>
