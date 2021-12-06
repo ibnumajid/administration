@@ -61,7 +61,7 @@
         </li>
 
          <!-- Pemberian mandat kadep -->
-  <?php if($_SESSION['status2'] == '5'){ ?>
+  <!-- <?php if($_SESSION['status2'] == '5'){ ?>
           <li class="nav-item">
             <a class="nav-link  " href="./kirimkadep.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -72,7 +72,7 @@
               <span class="nav-link-text ms-1">Pengajuan Mandat </span>
             </a>
           </li>
-          <?php } ?>
+          <?php } ?> -->
 
         
           
@@ -175,6 +175,7 @@
               <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
             </a>
           </li> -->
+          <?php } ?>
 
            <!-- DATA MAGANG -->
            <?php if($_SESSION['status2'] == '2'){ ?>
@@ -189,11 +190,9 @@
             </a>
           </li>  
           <?php } ?>
-          
-          <?php } ?>
 
           <!-- REKAP SURAT -->
-          <!-- <?php if($_SESSION['status'] !== '5'){ ?>
+          <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -204,7 +203,7 @@
               <span class="nav-link-text ms-1">Mandat Kadep</span>
             </a>
           </li>  
-          <?php } ?> -->
+          <?php } ?>
 
 
         <!-- REKAP SURAT -->
