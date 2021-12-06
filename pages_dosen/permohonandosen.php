@@ -165,7 +165,7 @@
           <?php } ?>
 
             <!-- REKAP SURAT -->
-            <?php if($_SESSION['status'] !== '5'){ ?>
+            <!-- <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -176,7 +176,7 @@
               <span class="nav-link-text ms-1">Mandat Kadep</span>
             </a>
           </li>  
-          <?php } ?>
+          <?php } ?> -->
 
         <!-- REKAP SURAT -->
         <?php if($_SESSION['status'] !== '5'){ ?>
