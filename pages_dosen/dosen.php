@@ -480,18 +480,18 @@
           </div>
                         <!-- Carousel selesai -->
                         <div class="container-fluid py-4">
-        <div class="row">
+        <div class="row" style = "width:1085px"> 
 
         
 <?php if ($_SESSION['status2'] == 5) { ?>
         <div class="row mb-4">
      
      <div class="col-lg-12">
-  <div class="card mt-0">
+  
 
     <div class="card-body p-3 shadow-lg p-3 mb-5 bg-body rounded">
-      <div class="row">
-        <div class="card-body px-3 pt-0 pb-2">
+    
+        
         
       
           
@@ -689,12 +689,12 @@
                 <?php } ?>
             </table>
           </div>
-        </div>
+        </div>    
       </div>
     </div>
-  </div>
-  </div>
-  </div>
+  
+  
+  
   <?php } ?>
 
   <div class="row">
