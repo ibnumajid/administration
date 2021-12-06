@@ -71,7 +71,7 @@ if($cek > 0){
         $data2 = mysqli_fetch_assoc($tambah2);{ 
             $_SESSION['user'] =$data2['nama_tdk'];
             $_SESSION['NIP'] =$data2['nip_tdk'];
-          
+          $_SESSION['status2'] = $data['status2'];
             $_SESSION['status'] = $data['status'];
             $_SESSION['alert'] = true;
         }
