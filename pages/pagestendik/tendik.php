@@ -359,7 +359,7 @@ session_start();
               <h6 class="mb-0">SURAT DITOLAK</h6>
             </div>
             <div class="card-body pt-4 p-3">
-            <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+            <div style = "height:500px" class="scrollbar-deep-purple bordered-deep-purple thin">
               <ul class="list-group">
                 <?php include '../../_database/config.php';
                 $no = 0;
