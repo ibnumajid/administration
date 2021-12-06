@@ -548,7 +548,7 @@
              <td class="text-center"><?php echo $no++ ?></td>
              <!-- nama -->
              <?php if ($data['status'] == 3) { ?>
-            <form action="kirimmahasiswa.php" method = "post">
+            <form action="validasimhs.php" method = "post">
              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
              <td style = "height:20px">
                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
@@ -556,7 +556,7 @@
              </form>
              <?php }
              else if ($data['status'] == 2) { ?>
-               <form action="kirimdosen.php" method = "post">
+               <form action="validasidosen.php" method = "post">
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                 <td style = "height:20px">
                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
@@ -564,7 +564,7 @@
                 </form> 
                 <?php } 
              else if ($data['status'] == 4) { ?>
-                <form action="kirimtendik.php" method = "post">
+                <form action="validasitendik.php" method = "post">
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                 <td style = "height:20px">
                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
@@ -614,7 +614,7 @@
                <td class="text-center"><?php echo $no++ ?></td>
                <!-- nama -->
                <?php if ($data['status'] == 3) { ?>
-              <form action="kirimmahasiswa.php" method = "post">
+              <form action="validasimhs.php" method = "post">
                <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                <td style = "height:20px">
                  <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
@@ -622,7 +622,7 @@
                </form>
                <?php }
                else if ($data['status'] == 2) { ?>
-                 <form action="kirimdosen.php" method = "post">
+                 <form action="validasidosen.php" method = "post">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                   <td style = "height:20px">
                     <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
@@ -630,7 +630,7 @@
                   </form> 
                   <?php } 
                else if ($data['status'] == 4) { ?>
-                  <form action="kirimtendik.php" method = "post">
+                  <form action="validasitendik.php" method = "post">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                   <td style = "height:20px">
                     <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
