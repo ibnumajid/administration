@@ -190,7 +190,7 @@ session_start();
           </li>
 
           <!-- Validasi Surat Dosen -->
-          <?php if ($_SESSION['status2'] == '5') {?>
+          <!-- <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -201,10 +201,10 @@ session_start();
               <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
             </a>
           </li>
-          <?php } ?>
+          <?php } ?> -->
 
-                   <!-- Validasi Surat Tendik -->
-                   <?php if ($_SESSION['status2'] == '5') {?>
+          <!-- Validasi Surat Tendik -->
+          <!-- <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -214,9 +214,9 @@ session_start();
               </div>
               <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
             </a>
-          </li>
-
+          </li> -->
           <?php } ?>
+
           <!-- REKAP SURAT -->
           <?php if($_SESSION['status2'] == '2'){ ?>
           <li class="nav-item"> 
@@ -231,8 +231,8 @@ session_start();
           </li>  
           <?php } ?>
 
-                     <!-- REKAP SURAT -->
-                     <?php if($_SESSION['status'] !== '5'){ ?>
+          <!-- MANDAT KADEP -->
+          <!-- <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -243,7 +243,7 @@ session_start();
               <span class="nav-link-text ms-1">Mandat Kadep</span>
             </a>
           </li>  
-          <?php } ?>
+          <?php } ?> -->
 
           <!-- REKAP SURAT -->
           <?php if($_SESSION['status'] !== '5'){ ?>

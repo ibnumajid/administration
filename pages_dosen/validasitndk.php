@@ -128,18 +128,18 @@
         </li>
         <?php } ?>
 
-                        <!-- Permohonan Surat -->
-  <?php if($_SESSION['status2'] == '5'){ ?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./kirimkadep.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
-                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Pengajuan Mandat</span>
-            </a>
-          </li>
+          <!-- Permohonan Surat -->
+          <?php if($_SESSION['status2'] == '5'){ ?>
+            <li class="nav-item">
+              <a class="nav-link  " href="./kirimkadep.php">
+                <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                  </svg>
+                </div>
+                <span class="nav-link-text ms-1">Pengajuan Mandat</span>
+              </a>
+            </li>
           <?php } ?>
 
         <!--Validasi Surat Mahasiswa-->
@@ -154,8 +154,8 @@
           </a>
         </li>
          
-        <!--Validasi Surat-->
-        <li class="nav-item">
+        <!--Validasi Surat DOSEN-->
+        <!-- <li class="nav-item">
           <a class="nav-link  " href="../pages_dosen/validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
@@ -164,10 +164,10 @@
               </div>
             <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
           </a>
-        </li>
+        </li> -->
 
         <!--Validasi Surat-->
-        <?php if ($_SESSION['status2'] == '5') {?>
+        <!-- <?php if ($_SESSION['status2'] == '5') {?>
         <li class="nav-item">
           <a class="nav-link  active" href="../pages_dosen/validasitndk.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -178,22 +178,22 @@
             <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
           </a>
         </li>
-        <?php } ?>
+        <?php } ?> -->
 
        
           
 
         <!-- REKAP SURAT -->
-<?php if($_SESSION['status'] !== '5'){ ?>
-                 <li class="nav-item"> 
-        <a class="nav-link  " href="./rekapdsn.php">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
-                </svg>
-            </div>
-          <span class="nav-link-text ms-1">Rekap Surat</span>
-        </a>
+        <?php if($_SESSION['status'] !== '5'){ ?>
+        <li class="nav-item"> 
+          <a class="nav-link  " href="./rekapdsn.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
+                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
+                  </svg>
+              </div>
+            <span class="nav-link-text ms-1">Rekap Surat</span>
+          </a>
         <?php } ?>
 
       <!--SURAT MASUK KADEP -->
@@ -211,7 +211,7 @@
       </li> <?php } ?>
         </li>
 
-       <!--profil-->
+       <-- profil-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
