@@ -701,10 +701,10 @@
    <div class="col-lg-12">
    <div class="card mt-0">
  
-        <div class="col-6 d-flex align-items-center mx-2 shadow-lg p-3 mb-5 bg-body rounded">
+       
           <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat Masuk Sebagai Dosen</h6>
 
-        </div>
+       
 
          
           <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
@@ -859,8 +859,8 @@
         </div>
   </div>
           </div>
-</div>
-</div>
+
+
 
 <!--
 <div class="row">  
@@ -989,13 +989,14 @@
 
                        <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
-        <div class="col-md-7 mt-4 shadow-lg p-3 mb-5 bg-body rounded">
-          <div class="card">
-            <div class="card-header pb-0 px-3">
+        <div class="col-md-7 shadow-lg mt-4 p-3 mb-5 bg-body rounded">
+        <div class="card-header pb-4 px-4">
+        <div class="col-md-6">
               <h6 class="mb-0">Surat yang Ditolak</h6>
-            </div>
-            <div class="card-body pt-4 p-3">
-            <div style = "height:500px" class="card example-1 scrollbar-deep-purple bordered-deep-purple thin">
+                      </div>
+                      </div>
+            <div style = "height:500px" class="scrollbar-deep-purple bordered-deep-purple thin">
+            
               <ul class="list-group">
                 <?php include '../_database/config.php';
                 $no = 1;
@@ -1159,8 +1160,7 @@
               </ul>
              </div>
             </div>
-          </div>
-        </div>
+          
 
                         <!-- php update surat saat dosen menolak -->
                         <?php
@@ -1247,7 +1247,7 @@
 
 <!-- Bagian Status Surat -->
 <div class="col-md-5 mt-4">
-              <div class="card h-100 mb-4 shadow-lg p-3 mb-5 bg-body rounded">
+              <div class="card mb-4 shadow-lg p-3 mb-5 bg-body rounded" style="height:600px">
               
                 <div class="card-header pb-4 px-4">
                   <div class="row">
@@ -1295,9 +1295,10 @@
           </div>
           
         </div>
+        </div>
       </main>
       
-      </div>
+    
       <!--   Core JS Files   -->
       <script src="../assets/js/core/popper.min.js"></script>
       <script src="../assets/js/core/bootstrap.min.js"></script>
