@@ -177,6 +177,7 @@ session_start();
       </a>
     </div>
     
+    
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -185,13 +186,13 @@ session_start();
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
-                  <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4">
+                  <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4 ">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                      <button type="button" class="btn btn-outline-dark btn-sm px-6 text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Surat Cuti
+                      <button type="button" class="btn btn-outline-dark btn-sm text-dark dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Surat Permohonan Lomba
                       </button>
                     </a>
-                    <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-2  px-0 py-3 me-sm-n1 " aria-labelledby="dropdownMenuButton">
+                    <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-0  px-0 py-0 me-sm-n0" aria-labelledby="dropdownMenuButton">
                       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">  
                         <li>
                           <a class="dropdown-item border-radius-md" href="pmhnsurat.php">
@@ -264,6 +265,7 @@ session_start();
                           </a>
                         </li>
                         <li>
+                        <li>
                           <a class="dropdown-item border-radius-md" href="pmhnlomba.php">
                             <div class="d-flex py-1">
                               <div class="my-auto">
@@ -273,7 +275,6 @@ session_start();
                             </div>
                           </a>
                         </li>
-                        <li>
                           <a class="dropdown-item border-radius-md" href="pmhnhima.php">
                             <div class="d-flex py-1">
                               <div class="my-auto">
@@ -285,7 +286,7 @@ session_start();
                         </li>
                       </div>
                     </ul>
-                  </li>  
+                  </li>
                 </div>
               </div>
             </div>
@@ -294,12 +295,15 @@ session_start();
               <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
                   <table class="table align-items-center mb-0">
-                  <thead>
+                    <thead>
                       <tr>
                         <th class="text-center">No</th>
                         <th class="text-left ps-1">Perihal</th>
-                        <th class="text-left ps-1">Lama Waktu Cuti (*smt)</th>
+                        <th class="text-left ps-1">Nama Perlombaan</th>
+                        <th class="text-center">Tanggal Mulai Lomba</th>
+                        <th class="text-center">Tanggal Selesai Lomba</th>
                         <th class="text-center">Waktu Upload</th>
+                        <th class="text-center">Persetujuan TKK</th>
                         <th class="text-center">Persetujuan Kadep</th>
                         <th class="text-center">Proses Admin</th>
                         <th class="text-center">Catatan</th>
@@ -312,35 +316,54 @@ session_start();
                     $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                     while ($data = mysqli_fetch_array($query)) {
                       if ($data['nama'] == $_SESSION['user']) {
-                          if ($data['perihal'] == "Surat Cuti") {
+                        if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") {
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++ ?></td>
                       <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
                       <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td>
+                      <td class="text-center"><?php echo $data['tgl_hima1'] ?></td>
+                      <td class="text-center"><?php echo $data['tgl_hima2'] ?></td>
                       <td class="text-center"><?php echo $data['tanggal'] ?></td>
+                      <!-- status surat dosentkk  -->
+                      <?php if ($data['status_dosentkk'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosentkk'] ?>">Sedang Diproses</span>
+                            </td> <?php } 
+                                  else if ($data['status_dosentkk'] == 1) {?>
+                              <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosentkk'] ?>">Ditolak</span>
+                            </td> 
+                            <?php }
+
+                              else if ($data['status_dosentkk'] == 2) {?>
+                              <td class="align-middle text-center text-sm">
+                              <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosentkk'] ?>">Disetujui</span>
+                            </td>
+                      <?php } ?>
+                      
                       <!-- status surat kadep -->
-                      <?php if ($data['status_kadep'] == 0) { ?>
+                      <?php if ($data['status_kadep'] == 0) {?>
                         <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Sedang DiProses</span>
                         </td> <?php } 
-                              else if ($data['status_kadep'] == 1) { ?>
+                              else if ($data['status_kadep'] == 1) {?>
                           <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                         </td> 
                               <?php }
 
-                              else if ($data['status_kadep'] == 2) { ?>
+                              else if ($data['status_kadep'] == 2) {?>
                               <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                         </td> <?php } ?> 
                       
                         <!-- status aktivitas admin -->
-                        <?php if ($data['status_admin'] == 0) { ?>
+                        <?php if ($data['status_admin'] == 0) {?>
                         <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
                         </td> <?php } 
-                        else if ($data['status_admin'] == 2) { ?>
+                        else if ($data['status_admin'] == 2) {?>
                         <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Selesai Diproses</span>
                         </td> <?php } ?> 
@@ -358,7 +381,7 @@ session_start();
                             <div class="modal-content">
                               <!-- popup ajuan surat mahasiswa -->
                               <div class="modal-header">
-                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan</h5>
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
@@ -376,8 +399,9 @@ session_start();
                                                 <button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button>
                                               </p>
                                             </a>
- <!-- Keterangan File -->
- <label for="formFile" class="form-label">Keterangan Tambahan</label>
+
+                                         <!-- Keterangan File -->
+                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
                                           <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                           
                                           <!-- catatan dosebing -->
@@ -415,8 +439,8 @@ session_start();
                           </div>
                         </div>
 
-                                                                                                    <!-- Modal Hapus -->
-                                                                                                    <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                              <!-- Modal Hapus -->
+                              <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
 
@@ -476,7 +500,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                        <?php  } } } ?>
+                        <?php } } }  ?>
                       </tr>
                     </tbody> 
                     <?php if ($no == 1) { ?>
@@ -540,7 +564,7 @@ session_start();
                             }
 
                                   ?>
-                                     <?php
+                                   <?php
                 include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
                   $id6 = $_POST['id'];
@@ -573,7 +597,7 @@ session_start();
 
                 </div>
               </div>
-          
+           
           </div>
         </div>
       </div>
@@ -613,6 +637,7 @@ session_start();
     <?php unset($_SESSION['sukses']); ?>
     <?php endif; ?>
 
+    
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukseshps']) : ?>
         <script>
@@ -626,6 +651,7 @@ session_start();
         </script>
     <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
+
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['pdf']) : ?>

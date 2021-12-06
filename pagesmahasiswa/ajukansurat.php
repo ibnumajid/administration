@@ -73,7 +73,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     <script>history.pushState({}, "", "")</script><?php
     }
   }
-  else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
+  else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Permohonan Lomba" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
     $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '9', '$dosen2', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
     if($query) 
     {
@@ -326,6 +326,7 @@ $(document).ready(function(){
                                             <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
                                             <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
                                             <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
+                                            <option value="Surat Permohonan Lomba">Surat Permohonan Lomba</option>
                                             <?php if ($_SESSION["status2"] == 3) { ?>
                                             <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
                                             <?php } ?>
@@ -416,7 +417,7 @@ $(document).ready(function(){
                               <div class="card-header pb-0 p-3">
                                   <div class="row">
                                       <div class="mb-3">
-                                          <label  id="label-keterangan"for="formFile" class="form-label">Rencana Judul</label>
+                                          <label  id="label-judulta"for="formFile" class="form-label">Rencana Judul</label>
                                           <input name="ta" class="form-control" type="text" aria-label="default input example" >
                                       </div>
                                   </div>
@@ -428,11 +429,11 @@ $(document).ready(function(){
                               <div class="card-header pb-0 p-3">
                                 <div class="row">
                                   <div class="form-group col-md-6">
-                                    <label for="example-date-input" class="form-control-label">Tanggal Mulai Acara</label>
+                                    <label id="label-tgl1" for="example-date-input" class="form-control-label">Tanggal Mulai Acara</label>
                                     <input name="hima1" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
                                   </div>
                                   <div class="form-group col-md-6">
-                                    <label for="example-date-input" class="form-control-label">Tanggal Selesai Acara</label>
+                                    <label id="label-tgl2" for="example-date-input" class="form-control-label">Tanggal Selesai Acara</label>
                                     <input name="hima2" class="form-control" type="date" value="Masukkan Tanggal" id="example-date-input">
                                   </div>
                                 </div>
@@ -468,7 +469,7 @@ $(document).ready(function(){
 
                                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
                                          while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                        <input id="name_magang" name="ds2" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
+                                        <input id="name_magang" name="ds2" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
                                         <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
                                         <?php } } ?>
                                     </div>
@@ -517,9 +518,18 @@ $(document).ready(function(){
                                 <div class="row">
                                   <div class="mb-3">
                                     <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <input id="name_tkk" name="tkk" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Ciptian Weried Priananda, S.ST., MT">
-                                    <input id="name_dtkk" name="tkk" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "Tidak Memerlukan Dosen TKK">
-                                    <label class="form-control" aria-label="default input example">Ciptian Weried Priananda, S.ST., MT</label>
+                                    <?php
+                                         include '../_database/config.php';
+                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 1");
+                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
+                                          $npp = $data_masuk['user'];
+
+                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
+                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                        <input id="name_tkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
+                                        <input id="name_dtkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "Tidak Memerlukan Dosen TKK">
+                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
+                                        <?php } } ?>
                                   </div>
                                 </div>
                               </div>
@@ -767,6 +777,35 @@ $(document).ready(function(){
                 $('#name_dtkk').prop('name', false);
                 $('.file').show();
                 $('#label-file').text("Upload Formulir Keringanan UKT (Ekstensi File .PDF)");
+                $('.dosenTKK').show();
+              }
+              else if($('#jenis_surat').val() == 'Surat Permohonan Lomba') {
+                $('.unduhmag').hide();
+                $('.unduhpa').hide();
+                $('.unduhpbl').hide();
+                $('.unduhcuti').hide();
+                $('.unduhundur').hide();
+                $('.unduhbea').hide();
+                $('.unduhukt').hide();
+                $('.unduhhima').hide();
+                $('.keterangan').show();
+                $('#label-keterangan').text("Nama Perlombaan");
+                $('.judulTA').show();
+                $('#label-judulta').text("Nama Tempat");
+                $('.tanggalHIMA').show();
+                $('#label-tgl1').text("Tanggal Mulai Lomba");
+                $('#label-tgl2').text("Tanggal Selesai Lomba");
+                $('.dosen').hide();
+                $('.dmagang').hide();
+                $('.koor').hide();
+                $('.dpbl').hide();
+                $('#name_magang').prop('name', false);
+                $('#name_py').prop('name', 'ds2');
+                $('#name_pbl').prop('name', false);
+                $('#name_tkk').prop('name', 'tkk');
+                $('#name_dtkk').prop('name', false);
+                $('.file').show();
+                $('#label-file').text("Upload Poster Pengumuman Lomba (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
             else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
