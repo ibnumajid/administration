@@ -350,7 +350,7 @@ session_start();
             </div>
           </div>
 
-          <?php if ($data['status2'] == 1) { ?>
+          <?php if ($_SESSION['status2'] == 1) { ?>
        <div class = "row">
        <div class="card mt-0">
                 <br>

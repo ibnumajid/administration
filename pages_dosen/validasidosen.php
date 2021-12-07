@@ -470,7 +470,7 @@ include "../_database/config.php";
               <div class = "mx-4">
            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal" onclick = "goBack()">Kembali</button>
               <?php  
-              if ($_SESSION['status'] == 5 && $data['status_kadep'] == 0) { ?>
+              if ($_SESSION['status2'] == 5 && $data['status_kadep'] == 0) { ?>
                 <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
               <?php } ?>
               </div>
