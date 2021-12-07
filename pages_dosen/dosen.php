@@ -340,7 +340,7 @@
                                 <button type="submit" name="notif" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                                   <h6 class="text-sm font-weight-normal mb-1">
                                     <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
-                                    <span class="font-weight"><?php echo $data['nama_mhsw']; ?></span>
+                                    <span class="font-weight"><?php echo $data['nama']; ?></span>
                                   </h6>
                                 </button>
                                 <p class="text-xs text-left ps-0 text-secondary mb-0">
@@ -767,7 +767,7 @@
                             <input type="hidden" name = "lokasi" value = "home">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
-                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama'] ?></button></h6>
                             </td>
                           </form>
 
@@ -811,7 +811,7 @@
                           <input type="hidden" name = "lokasi" value = "home">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                             <td style = "height:20px">
-                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama_mhsw'] ?></button></h6>
+                              <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama'] ?></button></h6>
                             </td>
                           </form>
                   <!-- status -->
