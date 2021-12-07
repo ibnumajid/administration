@@ -394,7 +394,11 @@
  
                                         <!-- Input ID untuk memberikan identitas surat -->
                                         <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
-
+                         </div>
+                         </div>
+                         </div>
+                         </div>
+                        
                                         <div class="modal-footer">
                                           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
                                           <button type = "button" class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
@@ -407,11 +411,10 @@
                          <button class ="btn btn-info">Ubah</button>
                          </form>
                          <?php } ?>
-                         <div>
-                         <div>
-                         <div>
-                         <div>
-                         <div>
+                         </div>
+                         </div>
+                         </div>
+                         </div>
 
                                                                                      <!-- Modal Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
