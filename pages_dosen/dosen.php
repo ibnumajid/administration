@@ -512,7 +512,7 @@
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filteridk" value = "1">
-               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Disetujui</button>
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
             </form>
             <form action="" method = "post">
                 <input type="hidden" name = "filteridk" value = "2">
