@@ -190,50 +190,6 @@
           </li>
         <?php } ?>
 
-        <!-- Validasi Surat Dosen -->
-        <!-- <?php //if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasidsn.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
-            </a>
-          </li>
-        <?php// } ?> -->
-
-        <!-- Validasi Surat Tendik -->
-        <!-- <?php// if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasitndk.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
-            </a>
-          </li>
-        <?php// } ?> -->
-
-
-        <!--SURAT MASUK KADEP -->
-        <!-- <?php if($_SESSION['status2'] == '5'){ ?>
-        </li> 
-        <li class="nav-item"> 
-          <a class="nav-link  " href="./suratmskkdp.php">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                  </svg>
-                </div>
-            <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
-          </a>
-        </li> <?php } ?> -->
-
     
         <!--profil-->
         <li class="nav-item mt-3">
@@ -594,8 +550,7 @@
 
                                         <div class="modal-footer">
                                           <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
-                                          <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
-                                          <!-- Saat dosen menolak -->
+                                          <button type = "button" class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
                                           <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "./ubahajuandsn.php" method = "post">
                          <!-- Input ID untuk memberikan identitas surat -->
