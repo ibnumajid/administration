@@ -324,7 +324,7 @@
                                     <div class="form-group col-md-6">
                                       <!-- nama mahasiswa -->
                                       <label for="formFile" class="form-label">Nama Tendik</label>
-                                      <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_tdk'] ?></label>
+                                      <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
                                     </div>
                                     <div class="form-group col-md-6">
                                       <!-- NRP mahasiswa -->
