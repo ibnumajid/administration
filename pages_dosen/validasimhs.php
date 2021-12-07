@@ -528,10 +528,10 @@ include "../_database/config.php";
               </div>
               <div class = "mx-4">
             <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
-              <?php if (($data['status_kadep'] == 0 && $_SESSION['status'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
+              <?php if (($data['status_kadep'] == 0 && $_SESSION['status2'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
               <?php if ($_SESSION['status'] == 2) { ?>
                 <button type="submite" name="update" class="btn bg-gradient-info">OK</button>
-              <?php } else if ($_SESSION['status'] == 5) { ?>
+              <?php } else if ($_SESSION['status2'] == 5) { ?>
                 <button type="submite" name="updatekdp" class="btn bg-gradient-info">OK</button>
               <?php } } ?>
               </form>
