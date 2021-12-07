@@ -232,62 +232,6 @@ session_start();
           </div>
             <div class="modal-body">
 
-          <?php
-    
-            include '../../_database/config.php';
-            if(isset($_POST['input']))
-            {
-              $namatendik = $_POST['nm'];
-              $niptendik = $_POST['nip'];
-              $perihal = $_POST['perihal'];
-
-              
-              $nama_file = basename($_FILES['fl']['name']);
-              $ukuran = $_FILES['fl']['size'];
-              $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-              $max = 1024 * 5000;
-              $ekstensi = "pdf";
-              $keterangan = $_POST['keterangan'];
-
-              $url = $niptendik.'_'.$nama_file;
-
-              if ($ukuran > $max && $tipe != $ekstensi)
-              {;
-                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';}
-            
-                else if ($ukuran > $max)
-                {
-                  echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>' ;}
-                   
-                else if ($tipe != $ekstensi && $tipe != $ekstensi2)
-                { 
-                  ?><script><?php $_SESSION["file"] = true;?></script> 
-                    <script>history.pushState({}, "", "")</script><?php
-                }
-
-              if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
-              {
-                $query = mysqli_query($koneksi,"insert into surattendik values('','$namatendik','$niptendik','$perihal', '$keterangan', '$url', '0', '0', '', '$ukuran', '$tipe', sysdate())");
-
-                if($query)
-                {
-                  ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                    <script>history.pushState({}, "", "")</script><?php
-                }
-                else
-                {
-                  ?><script><?php $_SESSION["input"] = true;?></script> 
-                    <script>history.pushState({}, "", "")</script><?php
-                }
-              }
-              else
-              {
-                echo "Gagal Upload";
-              }
-              
-            }
-
-          ?>
 
             <form action="" method="post" enctype="multipart/form-data">
               <div class="card-header pb-0 p-3">
@@ -660,7 +604,7 @@ session_start();
                   
                                                           <div class="modal-footer">
                                                             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                  
+                                                            <button type = "button" class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
                                                             <!-- Saat dosen menolak -->
                                                             <?php if ($data['status_kadep'] == 1) { ?>
                          <form action = "../ubahajuantdk.php" method = "post">
@@ -668,14 +612,14 @@ session_start();
                          <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                          <button class ="btn btn-info">Ubah</button>
                          </form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
 
                   <!-- Modal Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
@@ -762,6 +706,33 @@ session_start();
 
                 </table>
                  <!-- php update surat saat kadep menolak -->
+                 <?php
+                include "../_database/config.php";
+                if (isset($_POST['hapus'])) {
+                  $id6 = $_POST['id'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM suratdosen WHERE id_no = '$id6'");
+                  $data = mysqli_fetch_assoc($query);
+                  $nama_file = $data['file']; 
+                  $target_file = "./$nama_file";
+                 
+
+                  unlink("$target_file");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM suratdosen  WHERE id_no = '$id6' ");
+                 
+                  if ($query6) {
+                ?><script>
+                      <?php $_SESSION['sukseshps'] = true; ?>
+                    </script>
+                    <script>
+                      history.pushState({}, "", "")
+                    </script><?php
+                              ?> <script>
+                      history.pushState({}, "", "")
+                    </script>
+                <?php } else {
+                    echo '<script> alert ("gagal di ajukan")</script></a>';
+                  }
+                } ?>
                  <?php
                 include "../../_database/config.php";
                 if (isset($_POST['update2'])) {
