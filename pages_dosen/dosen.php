@@ -511,6 +511,10 @@
                <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
             </form>
             <form action="" method = "post">
+                <input type="hidden" name = "filteridk" value = "1">
+               <button type = "submit" name = "filter1" class = "btn btn-outline-info">Disetujui</button>
+            </form>
+            <form action="" method = "post">
                 <input type="hidden" name = "filteridk" value = "2">
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
             </form>
