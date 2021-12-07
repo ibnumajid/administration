@@ -327,7 +327,7 @@ $(document).ready(function(){
                                             <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
                                             <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
                                             <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
-                                            <option value="Surat Permohonan Lomba">Surat Permohonan Lomba</option>
+                                            <option value="Surat Permohonan Mengikuti Lomba">Surat Permohonan Mengikuti Lomba</option>
                                             <?php if ($_SESSION["status2"] == 3) { ?>
                                             <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
                                             <?php } ?>
@@ -803,7 +803,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Formulir Keringanan UKT (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
-              else if($('#jenis_surat').val() == 'Surat Permohonan Lomba') {
+              else if($('#jenis_surat').val() == 'Surat Permohonan Mengikuti Lomba') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
                 $('.unduhpbl').hide();
