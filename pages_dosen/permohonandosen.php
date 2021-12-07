@@ -60,8 +60,8 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Kadep</h6>
         </li>
 
-         <!-- Pemberian mandat kadep -->
-  <!-- <?php if($_SESSION['status2'] == '5'){ ?>
+        <!-- Pemberian mandat kadep -->
+        <?php if($_SESSION['status2'] == '5'){ ?>
           <li class="nav-item">
             <a class="nav-link  " href="./kirimkadep.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -72,53 +72,51 @@
               <span class="nav-link-text ms-1">Pengajuan Mandat </span>
             </a>
           </li>
-          <?php } ?> -->
+        <?php } ?>
 
         
           
-          <!--Validasi Surat-->
-          <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasisurat2.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
-            </a>
-          </li>
-          <?php } ?>
+        <!--Validasi Surat-->
+        <?php if ($_SESSION['status2'] == '5') {?>
+        <li class="nav-item">
+          <a class="nav-link  " href="./validasisurat2.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
+          </a>
+        </li>
+        <?php } ?>
 
-          <!-- Validasi Surat Dosen -->
-          <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasidsn.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
-            </a>
-          </li>
-          <?php } ?>
+        <!-- Validasi Surat Dosen -->
+        <?php if ($_SESSION['status2'] == '5') {?>
+        <li class="nav-item">
+          <a class="nav-link  " href="./validasidsn.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
+          </a>
+        </li>
+        <?php } ?>
 
-                   <!-- Validasi Surat Tendik -->
-                   <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasitndk.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
-            </a>
-          </li>
-
-          <?php } ?>
-
+        <!-- Validasi Surat Tendik -->
+        <?php if ($_SESSION['status2'] == '5') {?>
+        <li class="nav-item">
+          <a class="nav-link  " href="./validasitndk.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
+          </a>
+        </li>
+        <?php } ?>
 
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Dosen</h6>
@@ -150,8 +148,8 @@
           </a>
         </li>
 
-         <!-- REKAP SURAT -->
-         <?php if($_SESSION['status2'] == '2'){ ?>
+        <!-- REKAP SURAT -->
+        <?php if($_SESSION['status2'] == '2'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./datamagang.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -162,10 +160,10 @@
               <span class="nav-link-text ms-1">Data Magang</span>
             </a>
           </li>  
-          <?php } ?>
+        <?php } ?>
 
-            <!-- REKAP SURAT -->
-            <?php if($_SESSION['status'] !== '5'){ ?>
+        <!-- REKAP SURAT -->
+        <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -176,7 +174,7 @@
               <span class="nav-link-text ms-1">Mandat Kadep</span>
             </a>
           </li>  
-          <?php } ?>
+        <?php } ?>
 
         <!-- REKAP SURAT -->
         <?php if($_SESSION['status'] !== '5'){ ?>
@@ -204,7 +202,7 @@
               <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
             </a>
           </li>
-          <?php// } ?> -->
+        <?php// } ?> -->
 
         <!-- Validasi Surat Tendik -->
         <!-- <?php// if ($_SESSION['status2'] == '5') {?>
@@ -218,27 +216,27 @@
               <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
             </a>
           </li>
-          <?php// } ?> -->
+        <?php// } ?> -->
 
 
-         <!--SURAT MASUK KADEP -->
-  <!--  <?php if($_SESSION['status2'] == '5'){ ?>
-      </li> 
-       <li class="nav-item"> 
-        <a class="nav-link  " href="./suratmskkdp.php">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
-                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
-                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
-                </svg>
-              </div>
-          <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
-        </a>
-      </li> <?php } ?> -->
+        <!--SURAT MASUK KADEP -->
+        <!-- <?php if($_SESSION['status2'] == '5'){ ?>
+        </li> 
+        <li class="nav-item"> 
+          <a class="nav-link  " href="./suratmskkdp.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                  </svg>
+                </div>
+            <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
+          </a>
+        </li> <?php } ?> -->
 
     
-<!--profil-->
-<li class="nav-item mt-3">
+        <!--profil-->
+        <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -250,12 +248,11 @@
             </div>
             <span class="nav-link-text ms-1">Ganti Password</span>
           </a>
-  </li>
-        
+        </li>
       </ul>
     </div>
-
   </aside>
+
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -314,14 +311,14 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-          <div class="card-header pb-0 p-3">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Status Surat</h6>
+                </div>
+              </div>
+            </div>
 
-<div class="row">
-  <div class="col-6 d-flex align-items-center">
-    <h6 class="mb-0">Status Surat</h6>
-  </div>
-</div>
-</div>
           <div class="form-group d-flex justify-content-around mt-4 mb-0">
             <form method = "post">
                 <input type="hidden" name = "filterid" value = "012">
@@ -339,12 +336,10 @@
                 <input type="hidden" name = "filterid" value = "2">
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
             </form>
-
-              
           </div>    
             
 
-            <div class="card-body px-0 pt-0 pb-2 mt-0">
+          <div class="card-body px-0 pt-0 pb-2 mt-0">
             <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:320px" >
                 <table class="table align-items-center mb-0 mt-0">
                   <thead>
@@ -465,7 +460,7 @@
                                                                                      <!-- Modal Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
-                     <div class="modal-content">
+                      <div class="modal-content">
 
                        <!-- popup ajuan surat mahasiswa -->
                        <div class="modal-header">
@@ -477,10 +472,10 @@
 
                      
                        <div class="modal-body">
-                         <form action="" method="post" enctype="multipart/form-data">
+                          <form action="" method="post" enctype="multipart/form-data">
                            <div class="card-header pb-0 p-3">
                              <div class="row">
-                               <div class="mb-3">
+                                <div class="mb-3">
                                
                                  <!-- Nama File -->
                                  <label for="formFile" class="form-label">Nama File</label>
@@ -502,34 +497,26 @@
                                  <!-- Memberi peringatan -->
                                  <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
                                  <h6 class = " modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6>
- 
-                                
-                               </div>
-                             </div>
-                           </div>
-                       </div>
+                                </div>
+                              </div>
+                            </div>
+                            </div>
 
 
-                       <div class="modal-footer">
-                         <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
-
-                         <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
-                        
-                       </div>
-
-                       </form>
-
-                     </div>
-                     </div>
-                     </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
+                              <!-- Saat dosen menolak -->
+                                <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                            </div>
+                          </form>
+                      </div>
+                    </div>
+                  </div>
                                          
-                        
-                                        
-                                        <?php }
-                                        }
-                                        else { ?>
-                                          <tr>
+                      <?php }
+                      }
+                      else { ?>
+                        <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td>
                           <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
@@ -551,16 +538,17 @@
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } ?>
                           
-                          <!-- status aktivitas admin -->
-                      <?php if ($data['status_admin'] == 0) {?>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
-                        </td> 
+                        <!-- status aktivitas admin -->
+                        <?php if ($data['status_admin'] == 0) {?>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_admin'] ?>">Sedang Diproses</span>
+                          </td> 
   
-                         <?php } else if ($data['status_admin'] == 2) {?>
-                              <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
-                        </td> <?php } ?> 
+                        <?php } else if ($data['status_admin'] == 2) {?>
+                          <td class="align-middle text-center text-sm">
+                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_admin'] ?>">Sudah Diproses</span>
+                          </td> 
+                        <?php } ?> 
 
                         <!-- button edit -->
                         <td class="align-middle">
@@ -568,6 +556,7 @@
                             <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                           </a>
                         </td>
+
                         <!-- Modal -->
                         <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -623,7 +612,7 @@
                                           </div>
                                           </div>
 
-                                                            <!-- Modal Hapus -->
+                  <!-- Modal Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                      <div class="modal-content">
