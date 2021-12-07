@@ -233,34 +233,9 @@ include "../_database/config.php";
             </a>
           </li>
 
-          <!-- Validasi Surat Dosen -->
-          <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasidsn.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
-            </a>
-          </li>
-          <?php } ?>
+          
 
-                   <!-- Validasi Surat Tendik -->
-                   <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasitndk.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
-            </a>
-          </li>
-
-          <?php } ?>
+        
           <!-- REKAP SURAT -->
           <?php if($_SESSION['status2'] == '2'){ ?>
           <li class="nav-item"> 
@@ -503,7 +478,7 @@ include "../_database/config.php";
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                         <input type="hidden" name = "lokasi" value = "<?php echo $lokasi ?>">
                         
-                        <?php if (($data['status_kadep'] == 0 && $_SESSION['status'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
+                        <?php if (($data['status_kadep'] == 0 && $_SESSION['status2'] == 5) ||($_SESSION['status'] == 2 && ($data['status_dosen1'] == 0 && $nama == $tujuan ) || ($data['status_dosen2'] == 0 && $data['status_dosen1'] == 2 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1 && ($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) ) )) { ?>
                         <!-- persetujuan surat -->
                         <label for="formFile" class="form-label">Apakah Anda Menyetujui Surat Tersebut ?</label>
                         <div class="form-check">
