@@ -13,6 +13,7 @@ $id_nrp = $_POST['nrp'];
 $perihal = $_POST['sr'];
 $keterangan = $_POST['keterangan'];
 $judul_ta = $_POST['ta'];
+$tingkat = $_POST['ting'];
 $dosen1 = $_POST['ds1'];
 $dosen2 = $_POST['ds2'];
 $dosen_tkk = $_POST['tkk'];
@@ -48,7 +49,7 @@ else if ($tipe != $ekstensi && $tipe != NULL)
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
   if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
-    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$tingkat', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
     if($query)
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
@@ -61,7 +62,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     }
   }
   else if ($perihal == "Surat Cuti" || $perihal == "Surat Mengundurkan Diri") {
-    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '2', '$dosen2', '2', '$dosen_tkk', '2', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$tingkat', '$dosen1', '2', '$dosen2', '2', '$dosen_tkk', '2', '0', '0', '$tgl_h1', '$tgl_h2', '2', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
     if($query)
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
@@ -74,7 +75,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     }
   }
   else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Permohonan Lomba" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
-    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '9', '$dosen2', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$tingkat', '$dosen1', '9', '$dosen2', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '1', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
     if($query) 
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
@@ -326,7 +327,7 @@ $(document).ready(function(){
                                             <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
                                             <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
                                             <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
-                                            <option value="Surat Permohonan Lomba">Surat Permohonan Lomba</option>
+                                            <option value="Surat Permohonan Mengikuti Lomba">Surat Permohonan Mengikuti Lomba</option>
                                             <?php if ($_SESSION["status2"] == 3) { ?>
                                             <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
                                             <?php } ?>
@@ -419,6 +420,22 @@ $(document).ready(function(){
                                       <div class="mb-3">
                                           <label  id="label-judulta"for="formFile" class="form-label">Rencana Judul</label>
                                           <input name="ta" class="form-control" type="text" aria-label="default input example" >
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+
+                            <!-- tingkat -->
+                            <div class="tingkat" style="display: none;">
+                              <div class="card-header pb-0 p-3">
+                                  <div class="row">
+                                      <div class="mb-3">
+                                        <label for="formFile" class="form-label">Tingkat</label>
+                                        <select id="jenis_surat" name="ting"  class="form-select" aria-label="Default select example" required>
+                                            <option selected>Pilih Tingkat</option>
+                                            <option value="Nasional">Nasional</option>
+                                            <option value="Internasional">Internasional</option>
+                                        </select>
                                       </div>
                                   </div>
                               </div>
@@ -612,6 +629,7 @@ $(document).ready(function(){
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat Magang");
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.dmagang').show();
@@ -638,6 +656,7 @@ $(document).ready(function(){
                 $('.keterangan').show();
                 $('#label-keterangan').text("Industri Tempat Mengerjakan Proyek Akhir");
                 $('.judulTA').show();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.dmagang').hide();
@@ -664,6 +683,7 @@ $(document).ready(function(){
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat PBL");
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').show();
                 $('.dmagang').hide();
@@ -690,6 +710,7 @@ $(document).ready(function(){
                 $('.keterangan').show();
                 $('#label-keterangan').text("Lama Waktu Cuti (*Semester)");
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.dmagang').hide();
@@ -714,6 +735,7 @@ $(document).ready(function(){
                 $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.dmagang').hide();
@@ -740,6 +762,7 @@ $(document).ready(function(){
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Beasiswa");
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.dmagang').hide();
@@ -765,6 +788,7 @@ $(document).ready(function(){
                 $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.dmagang').hide();
@@ -779,7 +803,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Formulir Keringanan UKT (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
-              else if($('#jenis_surat').val() == 'Surat Permohonan Lomba') {
+              else if($('#jenis_surat').val() == 'Surat Permohonan Mengikuti Lomba') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
                 $('.unduhpbl').hide();
@@ -795,6 +819,7 @@ $(document).ready(function(){
                 $('.tanggalHIMA').show();
                 $('#label-tgl1').text("Tanggal Mulai Lomba");
                 $('#label-tgl2').text("Tanggal Selesai Lomba");
+                $('.tingkat').show();
                 $('.dosen').hide();
                 $('.dmagang').hide();
                 $('.koor').hide();
@@ -820,6 +845,7 @@ $(document).ready(function(){
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Kegiatan");
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').show();
                 $('.dosen').hide();
                 $('.dmagang').hide();
@@ -845,6 +871,7 @@ $(document).ready(function(){
                 $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
+                $('.tingkat').hide();
                 $('.tanggalHIMA').hide();
                 $('.dosen').hide();
                 $('.dmagang').hide();

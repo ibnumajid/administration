@@ -189,7 +189,7 @@ session_start();
                   <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4 ">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       <button type="button" class="btn btn-outline-dark btn-sm text-dark dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Surat Permohonan Lomba
+                      Surat Permohonan Mengikuti Lomba
                       </button>
                     </a>
                     <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-0  px-0 py-0 me-sm-n0" aria-labelledby="dropdownMenuButton">
@@ -270,7 +270,7 @@ session_start();
                             <div class="d-flex py-1">
                               <div class="my-auto">
                                 <h6 class="text-sm font-weight-normal mb-1">
-                                  <span class="font-weight-bold">Surat Permohonan Lomba</span>
+                                  <span class="font-weight-bold">Surat Permohonan Mengikuti Lomba</span>
                                 </h6>
                             </div>
                           </a>
