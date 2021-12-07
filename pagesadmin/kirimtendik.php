@@ -378,7 +378,7 @@
                       <button type="button" class="btn bg-gradient-secondary" onclick = "goBack()">Kembali</button>
                             
                             <?php if ($data['status_admin'] == 0) { ?>
-                            <button type="submite" class="btn bg-gradient-info" name="update" >Upload Informasi</button>
+                            <button type="submite" class="btn bg-gradient-info" name="update" >Kirim Surat</button>
                            <?php } ?>
                            </div>
                            </form>
