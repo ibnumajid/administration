@@ -501,24 +501,44 @@
       <div class="col-6 d-flex align-items-center mx-4 mt-3 mb-0 pb-0 my-0 py-0">
         <h6 class="mb-0 pt-1 px-1">Surat Masuk sebagai Kadep</h6>
       </div>
-      <div class="form-group d-flex justify-content-around mt-4 pb-0 mb-0">
-              <form method = "post">
-                <input type="hidden" name = "filteridk" value = "012">
+      <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
+          <form action = "" method = "post">
+                <input type="hidden" name = "filteridk" value = "12">
+                <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               <?php } 
+               else { ?>
+               <button type = "submit" name = "filterall" class = "btn btn-info">Lihat Semua</button>
+             <?php } ?>
                </form>
-            <form action="" method = "post">
+            <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "0">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
+               <?php } 
+               else { ?>
+             <button type = "submit" name = "filter0" class = "btn btn-info">Belum Diproses</button>
+             <?php } ?>
             </form>
-            <form action="" method = "post">
+            <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "1">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
+               <?php } 
+               else { ?>
+              <button type = "submit" name = "filter1" class = "btn btn-info">Ditolak</button>
+             <?php } ?>
             </form>
-            <form action="" method = "post">
+            <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "2">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 1 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+               <?php } 
+               else { ?>
+              <button type = "submit" name = "filter2" class = "btn btn-info">Disetujui</button>
+             <?php } ?>
             </form>
-            </div>    
+        </div>
        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0 mt-0 py-0 my-0" style = "height:375px" >
             <table class="table table-striped align-items-center mb-6 mt-0 pt-0">
               <thead>
@@ -712,21 +732,41 @@
 
          
           <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
-          <form method = "post">
-                <input type="hidden" name = "filterid" value = "012">
+          <form action = "" method = "post">
+                <input type="hidden" name = "filterid" value = "12">
+                <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               <?php } 
+               else { ?>
+               <button type = "submit" name = "filterall" class = "btn btn-info">Lihat Semua</button>
+             <?php } ?>
                </form>
-            <form action="" method = "post">
+            <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
+               <?php } 
+               else { ?>
+             <button type = "submit" name = "filter0" class = "btn btn-info">Belum Diproses</button>
+             <?php } ?>
             </form>
-            <form action="" method = "post">
+            <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "1">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
+               <?php } 
+               else { ?>
+              <button type = "submit" name = "filter1" class = "btn btn-info">Ditolak</button>
+             <?php } ?>
             </form>
-            <form action="" method = "post">
+            <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 1 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+               <?php } 
+               else { ?>
+              <button type = "submit" name = "filter2" class = "btn btn-info">Disetujui</button>
+             <?php } ?>
             </form>
         </div>
         <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:390px" >

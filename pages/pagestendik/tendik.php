@@ -358,20 +358,35 @@ session_start();
                   <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
               </div>
 
-              <div class="form-group d-flex justify-content-around mt-4 pb-0 mb-0">
-              <form method = "post">
-                <input type="hidden" name = "filterid" value = "012">
+              <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
+          <form action = "" method = "post">
+                <input type="hidden" name = "filteridk" value = "12">
+                <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2  ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
+               <?php } 
+               else { ?>
+               <button type = "submit" name = "filterall" class = "btn btn-info">Lihat Semua</button>
+             <?php } ?>
                </form>
-            <form action="" method = "post">
-                <input type="hidden" name = "filterid" value = "0">
-               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Sedang Diproses</button>
+            <form action = "" method = "post">
+                <input type="hidden" name = "filteridk" value = "0">
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2  || $_POST['filterid'] == NULL  ) { ?>
+               <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
+               <?php } 
+               else { ?>
+             <button type = "submit" name = "filter0" class = "btn btn-info">Belum Diproses</button>
+             <?php } ?>
             </form>
-            <form action="" method = "post">
-                <input type="hidden" name = "filterid" value = "2">
+            <form action = "" method = "post">
+                <input type="hidden" name = "filteridk" value = "2">
+                <?php if ($_POST['filterid'] == 12  || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
+               <?php } 
+               else { ?>
+              <button type = "submit" name = "filter2" class = "btn btn-info">Disetujui</button>
+             <?php } ?>
             </form>
-            </div> 
+        </div>
                 
         <div class="card-body p-3 mt-0 pt-0">
                     <div class="row mt-0 pt-0" >
