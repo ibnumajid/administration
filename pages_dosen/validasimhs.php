@@ -370,7 +370,7 @@ include "../_database/config.php";
                         <div class="row">
                             <div class="form-group col-md-6">
                               <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                              <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama_mhsw'] ?></label>
+                              <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
                             </div>
                             <div class="form-group col-md-6">
                               <label for="formFile" class="form-label">NRP Mahasiswa</label>
