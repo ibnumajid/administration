@@ -219,13 +219,12 @@ $(document).ready(function(){
 
         <!--Permohonan Surat-->
         <li class="nav-item">
-          <a class="nav-link  active" href="./permohonandosen.php">
-          <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
-                <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
-                <path d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-              </svg>
-            </div>
+          <a class="nav-link" href="./permohonandosen.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+                </svg>
+              </div>
             <span class="nav-link-text ms-1">Permohonan Surat </span>
           </a>
         </li>
@@ -258,7 +257,7 @@ $(document).ready(function(){
           <?php } ?>
 
             <!-- REKAP SURAT -->
-            <?php if($_SESSION['status'] !== '5'){ ?>
+            <?php if($_SESSION['status2'] !== '5'){ ?>
           <li class="nav-item"> 
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -286,7 +285,7 @@ $(document).ready(function(){
         <?php } ?>
 
         <!-- Validasi Surat Dosen -->
-        <?php if ($_SESSION['status2'] == '5') {?>
+        <!-- <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -297,10 +296,10 @@ $(document).ready(function(){
               <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
             </a>
           </li>
-          <?php } ?>
+          <?php } ?> -->
 
-        <!-- Validasi Surat Dosen -->
-        <?php if ($_SESSION['status2'] == '5') {?>
+        <!-- Validasi Surat Tendik -->
+        <!-- <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -311,8 +310,7 @@ $(document).ready(function(){
               <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
             </a>
           </li>
-
-          <?php } ?>
+          <?php } ?> -->
 
 
          <!--SURAT MASUK KADEP -->
@@ -356,7 +354,7 @@ $(document).ready(function(){
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Mahasiswa</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Permohonan Surat</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Ajukan Surat</li>
           </ol>
