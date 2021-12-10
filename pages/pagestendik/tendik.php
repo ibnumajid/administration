@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../../_database/config.php';
-// aski submit tendik admin
+
 if (isset($_POST['mhsw'])) {
   $id = $_POST['id3'];
 if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
@@ -42,7 +42,7 @@ if (isset($_POST['dsn'])) {
     } }
   // akhir aksi submit tendik admin
 
- if($_SESSION['user']=='')
+ if($_SESSION['user']=='' && $_SESSION['status'] != 4)
  {
       header("location:../../index.php");
   }
@@ -475,17 +475,11 @@ if (isset($_POST['dsn'])) {
           </div>
 
           <?php if ($_SESSION['status2'] == 1) { ?>
-       <div class = "row">
-       <div class="card mt-0">
-                <br>
-              <div class="col-6 d-flex align-items-center mx-4">
-                  <h6 class="mb-0 pt-1 px-1">Surat Masuk</h6>
-              </div>
-
-              <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
+       <div class = "row mb-4">
+       <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "12">
-                <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 ) { ?>
+                <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                <?php } 
                else { ?>
@@ -494,7 +488,7 @@ if (isset($_POST['dsn'])) {
                </form>
             <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "0">
-                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2  || $_POST['filterid'] == NULL  ) { ?>
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
                <?php } 
                else { ?>
@@ -503,7 +497,7 @@ if (isset($_POST['dsn'])) {
             </form>
             <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "2">
-                <?php if ($_POST['filterid'] == 12  || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
+                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 1 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
                <?php } 
                else { ?>
@@ -515,8 +509,8 @@ if (isset($_POST['dsn'])) {
         <div class="card-body p-3 mt-0 pt-0">
                     <div class="row mt-0 pt-0" >
                         <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:410px" >
-                          <table class="table table-striped align-items-center mb-6 mt-0 pt-0" >
-                            <thead>
+                         <table class="table table-striped align-items-center mb-6 mt-0 pt-0" > 
+                          <thead>
                               <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-left ps-2">Nama</th>
@@ -527,19 +521,18 @@ if (isset($_POST['dsn'])) {
                                 <th class="text-left ps-2"></th>
                               </tr>
                             </thead>
-                            <?php $no = 0; 
-                            $no2 = $no++;?>
                             <!-- tabel mahasiswa -->
                             <?php
                               include '../../_database/config.php'; //panggil setiap ingin koneksi ke data
                               $nama = $_SESSION['user'];
-                              
-                              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa UNION SELECT * FROM suratdosen UNION SELECT * FROM surattendik   ORDER BY tanggal DESC' );
+                              $no = 0; 
+                              $no2 = $no++;
+                              $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa UNION SELECT * FROM suratdosen UNION SELECT * FROM surattendik ORDER BY tanggal DESC' );
                               
                               while ($data = mysqli_fetch_array($query)) {
                               
                                   if ($data['status_kadep'] == 2) {
-                                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                                     if (isset($_POST['filter0']) || isset( $_POST['filter2'])) {
                                     $idf = $_POST['filterid'];
                                     if ($data['status_admin'] == $idf) { ?>
                             <tbody>
@@ -613,7 +606,7 @@ if (isset($_POST['dsn'])) {
                                   <a  href="../../pagesadmin/validasiadmin2.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                   </a>
-                                </td>2
+                                </td>
                                 <?php } 
                                 else if ($data['status'] == 4 ){ ?>
                                 <td class="align-middle">
@@ -695,7 +688,7 @@ if (isset($_POST['dsn'])) {
                                   <a  href="../../pagesadmin/validasiadmin2.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                     <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                                   </a>
-                                </td>2
+                                </td>
                                 <?php } 
                                 else if ($data['status'] == 4 ){ ?>
                                 <td class="align-middle">
