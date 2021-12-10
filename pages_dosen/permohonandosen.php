@@ -277,7 +277,7 @@
 
             <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form action = "" method = "post">
-                <input type="hidden" name = "filteridk" value = "12">
+                <input type="hidden" name = "filterid" value = "12">
                 <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                <?php } 
@@ -286,7 +286,7 @@
              <?php } ?>
                </form>
             <form action = "" method = "post">
-                <input type="hidden" name = "filteridk" value = "0">
+                <input type="hidden" name = "filterid" value = "0">
                 <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
                <?php } 
@@ -295,7 +295,7 @@
              <?php } ?>
             </form>
             <form action = "" method = "post">
-                <input type="hidden" name = "filteridk" value = "1">
+                <input type="hidden" name = "filterid" value = "1">
                 <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
                <?php } 
@@ -304,7 +304,7 @@
              <?php } ?>
             </form>
             <form action = "" method = "post">
-                <input type="hidden" name = "filteridk" value = "2">
+                <input type="hidden" name = "filterid" value = "2">
                 <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 1 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
                <?php } 
