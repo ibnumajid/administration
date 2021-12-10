@@ -247,7 +247,7 @@ if ($_SESSION['user'] == '' && ($_SESSION['status'] != 1 || ($_SESSION['status']
                 { echo "Ukuran file tidak boleh melebihi 5 mb";}
 
                 else if ($tipe != $ekstensi && $tipe != $ekstensi2)
-                { ?><script><?php $_SESSION["pdf"] = true;?></script> 
+                { ?><script><?php $_SESSION['file'] = true;?></script> 
                   <script>history.pushState({}, "", "")</script><?php }
 
                 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
@@ -256,13 +256,13 @@ if ($_SESSION['user'] == '' && ($_SESSION['status'] != 1 || ($_SESSION['status']
 
                   if($query)
                   {
-                    ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                    ?><script><?php $_SESSION['sukses'] = true;?></script> 
                     <script>history.pushState({}, "", "")</script><?php
 
                   }
                   else
                   {
-                    ?><script><?php $_SESSION["input"] = true;?></script> 
+                    ?><script><?php $_SESSION['input'] = true;?></script> 
                     <script>history.pushState({}, "", "")</script><?php
                   }
                 }
@@ -426,7 +426,7 @@ if ($_SESSION['user'] == '' && ($_SESSION['status'] != 1 || ($_SESSION['status']
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['pdf']) : ?>
+    <?php if(@$_SESSION['file']) : ?>
         <script>
             Swal.fire({
             position: 'center',
@@ -436,7 +436,7 @@ if ($_SESSION['user'] == '' && ($_SESSION['status'] != 1 || ($_SESSION['status']
             timer: 2000
           })
         </script>
-    <?php unset($_SESSION['pdf']); ?>
+    <?php unset($_SESSION['file']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
