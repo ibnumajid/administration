@@ -782,7 +782,7 @@
                </form>
             <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "0">
-                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 || $_POST['filterid'] == NULL  ) { ?>
+                <?php if ($_POST['filteridk'] == 12 || $_POST['filteridk'] == 2 || $_POST['filteridk'] == 1 || $_POST['filteridk'] == NULL  ) { ?>
                <button type = "submit" name = "filter0" class = "btn btn-outline-info">Belum Diproses</button>
                <?php } 
                else { ?>
@@ -791,7 +791,7 @@
             </form>
             <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "1">
-                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 2 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
+                <?php if ($_POST['filteridk'] == 12 || $_POST['filteridk'] == 2 || $_POST['filteridk'] == 0 || $_POST['filteridk'] == NULL  ) { ?>
                <button type = "submit" name = "filter1" class = "btn btn-outline-info">Ditolak</button>
                <?php } 
                else { ?>
@@ -800,7 +800,7 @@
             </form>
             <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "2">
-                <?php if ($_POST['filterid'] == 12 || $_POST['filterid'] == 1 || $_POST['filterid'] == 0 || $_POST['filterid'] == NULL  ) { ?>
+                <?php if ($_POST['filteridk'] == 12 || $_POST['filteridk'] == 1 || $_POST['filteridk'] == 0 || $_POST['filteridk'] == NULL  ) { ?>
                <button type = "submit" name = "filter2" class = "btn btn-outline-info">Disetujui</button>
                <?php } 
                else { ?>
