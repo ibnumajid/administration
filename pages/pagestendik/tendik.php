@@ -488,7 +488,7 @@ if (isset($_POST['dsn'])) {
                 <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                <?php } 
-               else if ($_POST['filterid'] == NULL){ ?>
+               else { ?>
                <button type = "submit" name = "filterall" class = "btn btn-info">Lihat Semua</button>
              <?php } ?>
                </form>
