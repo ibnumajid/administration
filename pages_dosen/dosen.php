@@ -833,8 +833,8 @@
                 while ($data = mysqli_fetch_array($query)) {
                   if ($data['status_dosen2'] == 2 || $data['status_dosentkk'] == 2 || $data['status'] == 2 || $data['status'] == 4 ) {
                     if (isset($_POST['filter0'])  || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
-                   $idf = $_POST['filteridk'];
-                   if ($data['status_kadep'] == $idf) { ?>
+                   $idfk = $_POST['filteridk'];
+                   if ($data['status_kadep'] == $idfk) { ?>
            
            <tr>
              <!-- no -->
