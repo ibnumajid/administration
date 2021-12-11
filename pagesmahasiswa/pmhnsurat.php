@@ -401,7 +401,9 @@ session_start();
                       </tr>
                     </thead>
                     <tbody id="myTable">
-                    <?php  while ($data = mysqli_fetch_array($query)) { 
+                      
+                    <?php  
+                    $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa  ORDER BY tanggal DESC");  while ($data = mysqli_fetch_array($query)) { 
                       if ($data['nama'] == $_SESSION['user']) {
                           if ($data['perihal'] == "Surat Magang") { ?>
                       <tr>
