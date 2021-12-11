@@ -376,18 +376,10 @@ session_start();
                                                 <button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button>
                                               </p>
                                             </a>
- <!-- Keterangan File -->
- <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                          <!-- Keterangan File -->
+                                          <label for="formFile" class="form-label">Lama Waktu Cuti</label>
                                           <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                           
-                                          <!-- catatan dosebing -->
-                                          <label for="formFile" class="form-label">Catatan Dosen Pembimbing</label>
-                                          <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_pmb'] ?></label>
-
-                                          <!-- nama dosen koor -->
-                                          <label for="formFile" class="form-label">Catatan Dosen Koordinator</label>
-                                          <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_koor'] ?></label>
-
                                           <!-- kadep -->
                                           <label for="formFile" class="form-label">Catatan Kadep</label>
                                           <label name="catatan2  " class="form-control" aria-label="default input example"><?php echo $data['catatan_kdp'] ?></label>

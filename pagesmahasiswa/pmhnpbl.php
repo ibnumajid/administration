@@ -410,7 +410,7 @@ session_start();
                                             </a>
 
                                          <!-- Keterangan File -->
-                                         <label for="formFile" class="form-label">Keterangan Tambahan</label>
+                                         <label for="formFile" class="form-label">Nama Tempat PBL</label>
                                           <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                           
                                           <!-- catatan dosebing -->
