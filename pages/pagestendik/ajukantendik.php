@@ -6,19 +6,20 @@ session_start();
   }
 ?>
 <?php
-                            include '../../_database/config.php';
-                            if(isset($_POST['input']))
+//backend pengiriman surat ke surattendik
+                            include '../../_database/config.php';//menggabungkan variable global
+                            if(isset($_POST['input'])) //kondisi saat button kirim ditekan
                             {
-                            $namatendik = $_POST['nm'];
-                            $niptendik = $_POST['nip'];
-                            $perihal = $_POST['perihal'];
-                            $keterangan = $_POST['keterangan'];
-                            $tgl_pel1 = $_POST['pel1'];
-                            $tgl_pel2 = $_POST['pel2'];
-                            $nama_barang = $_POST['nb'];
-                            $jumlah_barang = $_POST['jb'];
-                            $dari_lab = $_POST['dl'];
-                            $ke_lab = $_POST['kl'];
+                            $namatendik = $_POST['nm']; //memberikan deklarasi namatendik
+                            $niptendik = $_POST['nip']; //memberikan deklarasi niptendik
+                            $perihal = $_POST['perihal']; //memberikan deklarasi perihal surat
+                            $keterangan = $_POST['keterangan']; //memberikan deklarasi keterangan
+                            $tgl_pel1 = $_POST['pel1']; //memberikan deklarasi tanggal mulai pelatihan
+                            $tgl_pel2 = $_POST['pel2']; //memberikan deklarasi tanggal pelatihan selesai
+                            $nama_barang = $_POST['nb']; //memberikan deklarasi nama barang
+                            $jumlah_barang = $_POST['jb']; //memberikan deklarasi jumlah barang 
+                            $dari_lab = $_POST['dl']; //memberikan deklarasi asal lab
+                            $ke_lab = $_POST['kl']; //memberikan deklarasi tujuan barang dikirimkan
 
                             
                             $nama_file = basename($_FILES['fl']['name']);

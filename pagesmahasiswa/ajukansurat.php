@@ -48,7 +48,7 @@ else if ($tipe != $ekstensi && $tipe != NULL)
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
   if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
-    $query1 = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
+    $query1 = mysqli_query($koneksi,"INSERT into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '$dosen_tkk', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate())");
     if($query1)
     {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
