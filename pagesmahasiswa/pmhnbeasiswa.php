@@ -199,16 +199,6 @@ session_start();
                             <div class="d-flex py-1">
                               <div class="my-auto">
                                 <h6 class="text-sm font-weight-normal mb-1">
-                                  <span class="font-weight-bold">Semua Surat</span>
-                                </h6>
-                            </div>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item border-radius-md" href="pmhnmagang.php">
-                            <div class="d-flex py-1">
-                              <div class="my-auto">
-                                <h6 class="text-sm font-weight-normal mb-1">
                                   <span class="font-weight-bold">Surat Magang</span>
                                 </h6>
                             </div>
