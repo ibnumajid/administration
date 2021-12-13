@@ -7,58 +7,67 @@
     include '../_database/config.php';
     // aksi submit pada dosen
     if (isset($_POST['notif'])) {
-    $id = $_POST['id'];
-    $nama = $_SESSION['user'];
-
-    // update notif dosen pemb 
-    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-    while ($data = mysqli_fetch_array($query)) {
-    if ($data['dosen1'] == $nama) {
-    $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 1 WHERE id_no = '$id' ");
-    if ($query) { 
-      header('location:validasisurat.php'); ?>
-      <script>history.pushState({}, "", "")</script><?php
-    } else { 
-      header('location:./dosen.php'); ?>
-      <script>history.pushState({}, "", "")</script><?php
-    } } }
-
-    // update notif dosen koor
-    if ($_SESSION['status2'] == 2 && $_SESSION['status'] == 2) {
-      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
-      if ($query2) { 
+      $id = $_POST['id'];
+      $nama = $_SESSION['user'];
+  
+      // update notif dosen pemb 
+      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+      while ($data = mysqli_fetch_array($query)) {
+      if ($data['dosen1'] == $nama) {
+      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 1 WHERE id_no = '$id' ");
+      if ($query) { 
         header('location:validasisurat.php'); ?>
         <script>history.pushState({}, "", "")</script><?php
       } else { 
         header('location:./dosen.php'); ?>
         <script>history.pushState({}, "", "")</script><?php
+      } } } }
+  
+      // update notif dosen koor1
+      if (isset($_POST['koor1'])) {
+        $id = $_POST['id'];
+        if ($_SESSION['status2'] == 2 && $_SESSION['status'] == 2) {
+          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
+          if ($query2) { 
+            header('location:validasisurat.php'); ?>
+            <script>history.pushState({}, "", "")</script><?php
+          } else { 
+            header('location:./dosen.php'); ?>
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        }
       }
-    }
-
-    // update notif dosen koor 2
-    if ($_SESSION['status3'] == 2 && $_SESSION['status'] == 2) {
-      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
-      if ($query3) { 
-        header('location:validasisurat.php'); ?>
-        <script>history.pushState({}, "", "")</script><?php
-      } else { 
-        header('location:./dosen.php'); ?>
-        <script>history.pushState({}, "", "")</script><?php
+  
+      // update notif dosen koor 2
+      if (isset($_POST['koor2'])) {
+        $id = $_POST['id'];
+        if ($_SESSION['status3'] == 2 && $_SESSION['status'] == 2) {
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
+          if ($query3) { 
+            header('location:validasisurat.php'); ?>
+            <script>history.pushState({}, "", "")</script><?php
+          } else { 
+            header('location:./dosen.php'); ?>
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        }
       }
-    } 
-
-  // update notif dosen tkk
-    if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2) {
-      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
-      if ($query3) { 
-        header('location:validasisurat.php'); ?>
-        <script>history.pushState({}, "", "")</script><?php
-      } else { 
-        header('location:./dosen.php'); ?>
-        <script>history.pushState({}, "", "")</script><?php
+  
+      // update notif dosen tkk
+      if (isset($_POST['tkk'])) {
+        $id = $_POST['id'];
+        if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2) {
+          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
+          if ($query3) { 
+            header('location:validasisurat.php'); ?>
+            <script>history.pushState({}, "", "")</script><?php
+          } else { 
+            header('location:./dosen.php'); ?>
+            <script>history.pushState({}, "", "")</script><?php
+          }
+        }
       }
-    }}
-    // akhir aksi submit dosen
+      // akhir aksi submit dosen
     
     // aski submit kadep
     if (isset($_POST['mhsw'])) {
@@ -557,7 +566,7 @@
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
                             <div class="d-flex py-1">
                               <div class="d-flex flex-column justify-content-center">
-                                <button type="submit" name="notif" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                                <button type="submit" name="koor1" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                                   <h6 class="text-sm font-weight-normal mb-1">
                                     <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
                                     <span class="font-weight"><?php echo $data['nama']; ?></span>
@@ -578,7 +587,7 @@
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
                             <div class="d-flex py-1">
                               <div class="d-flex flex-column justify-content-center">
-                                <button type="submit" name="notif" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                                <button type="submit" name="koor2" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                                   <h6 class="text-sm font-weight-normal mb-1">
                                     <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
                                     <span class="font-weight"><?php echo $data['nama']; ?></span>
@@ -620,7 +629,7 @@
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
                             <div class="d-flex py-1">
                               <div class="d-flex flex-column justify-content-center">
-                                <button type="submit" name="notif" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                                <button type="submit" name="tkk" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                                   <h6 class="text-sm font-weight-normal mb-1">
                                     <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
                                     <span class="font-weight"><?php echo $data['nama']; ?></span>
