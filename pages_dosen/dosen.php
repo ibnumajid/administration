@@ -1088,7 +1088,48 @@
                        
                   <!-- status -->
                   <td>
-                    <h6 class="text-left ps-1">Mahasiswa</h6>
+                  <?php 
+                           if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && ($tujuan == $tujuan2)) {?>
+                            <?php if ($data['status_dosen1'] == 0) { 
+                              echo "Menunggu Proses Anda Sebagai Dosbing dan Koor";
+                              } 
+                              else if ($data['status_dosen1'] == 1) { 
+                              echo "Anda Menolak Sebagai Dosbing dan Koor"; }
+                              else if ($data['status_dosen1'] == 2) {
+                              echo "Anda Menyetujui Sebagai Dosbing dan Koor";
+                              }
+                            }
+                          else if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && $nama != $tujuan2) {?>
+                            <?php if ($data['status_dosen1'] == 0) { 
+                              echo "Menunggu Proses Anda Sebagai Dosbing";
+                              } 
+                              else if ($data['status_dosen1'] == 1) { 
+                              echo "Anda Menolak Sebagai Dosbing"; }
+                              else if ($data['status_dosen1'] == 2) {
+                              echo "Anda Menyetujui Sebagai Dosbing";
+                              }
+                            }
+                            else if (($data['status_dosen2'] == 0 || $data['status_dosen2'] == 1 || $data['status_dosen2'] == 2)  && $tujuan2 == $nama && $tujuan != $tujuan2) {
+                               if ($data['status_dosen2'] == 0) { 
+                                echo "Menunggu Proses Anda Sebagai Dosen Koor";
+                                } 
+                                else if ($data['status_dosen2'] == 1) { 
+                                echo "Anda Menolak Sebagai Dosen Koor"; }
+                                else if ($data['status_dosen2'] == 2) {
+                                echo "Anda Menyetujui Sebagai Dosen Koor";
+                                }
+                             }
+                             else if (($data['status_dosen1'] == 9 || $data['status_dosen2'] == 9) && ($data['status_dosentkk'] == 0 || $data['status_dosentkk'] == 1 || $data['status_dosentkk'] == 2)  && $tujuan3 == $nama && $_SESSION['status2'] == 1) {
+                              if ($data['status_dosentkk'] == 0) { 
+                               echo "Menunggu Proses Anda Sebagai Dosen TKK";
+                               } 
+                               else if ($data['status_dosentkk'] == 1) { 
+                               echo "Anda Menolak Sebagai Dosen TKK"; }
+                               else if ($data['status_dosentkk'] == 2) {
+                               echo "Anda Menyetujui Sebagai Dosen TKK";
+                               }
+                            }
+                              ?>
                   </td>
                   <!-- perihal -->
                   <td>
