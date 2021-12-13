@@ -248,115 +248,7 @@ session_start();
     
             
 
-           <form action="" method="post" enctype="multipart/form-data">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
-                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
-              </div>
-              </div>
-            </div>
-
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">NRP</label>
-                <input name="nrp" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
-                <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
-              </div>
-              </div>
-            </div>
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Jenis Surat</label>
-                    <select name="sr"  class="form-select" aria-label="Default select example" required>
-                        <option selected>Pilih Jenis Surat</option>
-                        <option value="Surat Magang">Surat Magang</option>
-                        <option value="Surat Proyek Akhir">Surat Proyek Akhir</option>
-                        <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
-                        <option value="Surat Cuti">Surat Cuti</option>
-                        <option value="Surat Mengundurkan Diri">Surat Mengundurkan Diri</option>
-                        <option value="Surat Pengajuan Beasiswa">Surat Pengajuan Beasiswa</option>
-                        <option value="Surat Keringanan UKT">Surat Keringanan UKT</option>
-                        <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
-                    </select>
-                </div>
-              </div>
-            </div>
-            
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Keterangan</label>
-                <p>Berikan keterangan tentang surat yang akan diajukan <br> Contoh : Surat Magang, Keterangan : PT. Pertamina</p>
-                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
-              </div>
-              </div>
-            </div>
-
-            
-            <div class="card-header pb-0 p-3">
-                <div class="row">
-                <label for="formFile" class="form-label">Pilih Dosen yang Dituju</label>
-                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style ="height:150px" >
-                <div class="mb-3">
-
-                  
-                        <?php
-                        include '../_database/config.php';
-                        $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                        while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-
-
-
-                          <div class="form-check">
-                            <div class="card-header pb-0 p-2">
-                              <div class="row">
-                                <div class="mb-3">
-
-                                  <a href="#<?php echo $data_dosen['nama_anggota'] ?>">
-                                    <input class="form-check-input" Name="ds[ ]" type="checkbox" value="<?php echo $data_dosen['nama_anggota'] ?>" id="defaultCheck1" >
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      <?php echo $data_dosen['nama_anggota'] ?>
-                                    </label>
-                                  </a>
-
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-
-                        <?php } ?>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="mb-3">
-                <label for="formFile" class="form-label">Masukkan File Pendukung (Ekstensi File .PDF)</label>
-                <p>File pendukung berupa surat atau proposal (disesuaikan dengan panduan) </p>
-                  <input type="file" name="fl" class="form-control" aria-label="file example" required>
-                 <div class="invalid-feedback">Example invalid form file feedback</div>
-                </div>
-              </div>
-            </div>
            
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
-            <button type="submite" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
-          </div>
-          </form>
-        </div>
-      </div>  
-    </div>
     
     <div class="container-fluid py-4">
       <div class="row">
@@ -376,6 +268,16 @@ session_start();
                       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">  
                         <li>
                           <a class="dropdown-item border-radius-md" href="pmhnsurat.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Semua Surat</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnmagang.php">
                             <div class="d-flex py-1">
                               <div class="my-auto">
                                 <h6 class="text-sm font-weight-normal mb-1">

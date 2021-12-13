@@ -5,6 +5,98 @@ session_start();
   header("location:../index.php");
   }
 ?>
+ <?php
+                      include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                      $no = 0;
+                      $no2 = $no++;
+                      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                      $data = $data = mysqli_fetch_array($query)
+                      
+                       
+?>
+  <?php
+                  include "../_database/config.php";
+                  if (isset($_POST['update'])) {
+                    $nama_file2 = basename($_FILES['ufl']['name']);
+                    $id3 = $_POST['id2'];
+                    $nol = $_POST['stats2'];
+
+                    $url2 = $id3.'_'.$nama_file2;
+
+                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
+
+                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
+
+                      if ($query2 && $query3) {
+                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                  ?> 
+                  <script> history.pushState({}, "", "")</script> <?php
+                                } else {
+                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                }
+                              }
+                            }
+
+                                  ?>
+
+                  <!-- php update surat saat kadep menolak -->
+                  <?php
+                  include "../_database/config.php";
+                  if (isset($_POST['update2'])) {
+
+                    $nama_file3 = basename($_FILES['uflk']['name']);
+                    $id4 = $_POST['id2'];
+                    $nol = $_POST['stats2'];
+
+                    $url3 = $id4.'_'.$nama_file3;
+
+                    if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
+
+                      $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
+                      $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
+
+                      if ($query4 && $query5) {
+                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
+                  ?> <script> history.pushState({}, "", "") </script> <?php
+                                } else {
+                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
+                                }
+                              }
+                            }
+
+                                  ?>
+                                  <?php
+                include "../_database/config.php";
+                if (isset($_POST['hapus'])) {
+                  $id6 = $_POST['id'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id6'");
+                  $data = mysqli_fetch_assoc($query);
+                  $nama_file = $data['file']; 
+                  $target_file = "./$nama_file";
+                 
+
+                  unlink("$target_file");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
+                 
+                  if ($query6) {
+                ?><script>
+                      <?php $_SESSION['sukseshps'] = true; ?>
+                    </script>
+                    <script>
+                      history.pushState({}, "", "")
+                    </script><?php
+                              ?> <script>
+                      history.pushState({}, "", "")
+                    </script>
+                <?php } else {
+                    echo '<script> alert ("gagal di ajukan")</script></a>';
+                  }
+                }
+
+
+                ?>
+                          
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +163,7 @@ session_start();
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
         
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Mahasiswa</span>
+        <span class="ms-0 font-weight-bold">Sistem Administrasi Mahasiswa</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -142,7 +234,7 @@ session_start();
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Mahasiswa</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Permohonan Surat</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Permohonan Surat</h6>
+          <h5 class="font-weight-bolder mb-0">Permohonan Surat</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -186,13 +278,13 @@ session_start();
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
                   <h6 class="mb-0">Status Surat</h6>
-                  <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4 ">
+                  <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                      <button type="button" class="btn btn-outline-dark btn-sm text-dark dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Surat PBL (Project Based Learning)
+                      <button type="button" class="btn btn-outline-dark btn-sm px-6 text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Surat Magang
                       </button>
                     </a>
-                    <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-0  px-0 py-0 me-sm-n0" aria-labelledby="dropdownMenuButton">
+                    <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-2  px-0 py-3 me-sm-n0" aria-labelledby="dropdownMenuButton">
                       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">  
                         <li>
                           <a class="dropdown-item border-radius-md" href="pmhnsurat.php">
@@ -300,7 +392,8 @@ session_start();
                 </div>
               </div>
             </div>
-    
+            
+        
               <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
                   <table class="table align-items-center mb-0">
@@ -308,7 +401,7 @@ session_start();
                       <tr>
                         <th class="text-center">No</th>
                         <th class="text-left ps-1">Perihal</th>
-                        <th class="text-left ps-1">Nama Tempat PBL</th>
+                        <th class="text-left ps-1">Nama Perusahaan</th>
                         <th class="text-center">Waktu Upload</th>
                         <th class="text-center">Persetujuan Pembimbing</th>
                         <th class="text-center">Persetujuan Koordinator</th>
@@ -318,14 +411,12 @@ session_start();
                       </tr>
                     </thead>
                     <tbody id="myTable">
-                      <?php
-                      include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                      $no = 1;
-                      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                      while ($data = mysqli_fetch_array($query)) {
-                        if ($data['nama'] == $_SESSION['user']) {
-                          if ($data['perihal'] == "Surat PBL (Project Based Learning)") {
-                      ?>
+                      
+                    <?php  
+                    $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa  ORDER BY tanggal DESC");  
+                    while ($data = mysqli_fetch_array($query)) { 
+                      if ($data['nama'] == $_SESSION['user']) {
+                          if ($data['perihal'] == "Surat Magang") { ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
@@ -394,7 +485,7 @@ session_start();
                           </a>
                         </td>
                     
-                        <!-- Modal -->
+                                            <!-- Modal -->
                         <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -407,7 +498,7 @@ session_start();
                               </div>  
                               
                               <div class="modal-body">
-                                <form action="" method="post" enctype="multipart/form-data">
+                            
                                     <div class="card-header pb-0 p-3">
                                       <div class="row">
                                         <div class="mb-3">
@@ -420,7 +511,7 @@ session_start();
                                             </a>
 
                                          <!-- Keterangan File -->
-                                         <label for="formFile" class="form-label">Nama Tempat PBL</label>
+                                         <label for="formFile" class="form-label">Nama Tempat Magang</label>
                                           <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                                           
                                           <!-- catatan dosebing -->
@@ -444,6 +535,7 @@ session_start();
                                           <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] == 1 || $data['status_kadep'] == 1 ) { ?>
                                             <form action = "./ubahajuan.php" method = "post">
                                               <!-- Input ID untuk memberikan identitas surat -->
+                                              <input type="hidden" name = "id" value = "pmhn">
                                               <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
                                               <button class ="btn btn-info">Ubah</button>
                                               </form>
@@ -452,15 +544,14 @@ session_start();
                                         </div>
                                       </div>
                                     </div>
-                                </form>
+                                          </div>
                               </div>
-
+                            
                           </div>
                         </div>
-                                          </div>
 
-                                           <!-- Modal Hapus -->
-                                           <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                                    <!-- Modal Hapus -->
+                                                    <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
 
@@ -532,59 +623,15 @@ session_start();
                   </table>
 
                   <!-- php update surat -->
-                  <?php
-                  include "../_database/config.php";
-                  if (isset($_POST['update'])) {
-                    $nama_file2 = basename($_FILES['ufl']['name']);
-                    $id3 = $_POST['id2'];
-                    $nol = $_POST['stats2'];
+                
 
-                    $url2 = $id3.'_'.$nama_file2;
-
-                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
-                      $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
-
-                      if ($query2 && $query3) {
-                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                  ?> 
-                  <script> history.pushState({}, "", "")</script> <?php
-                                } else {
-                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                                }
-                              }
-                            }
-
-                                  ?>
-
-                  <!-- php update surat saat kadep menolak -->
-                  <?php
-                  include "../_database/config.php";
-                  if (isset($_POST['update2'])) {
-
-                    $nama_file3 = basename($_FILES['uflk']['name']);
-                    $id4 = $_POST['id2'];
-                    $nol = $_POST['stats2'];
-
-                    $url3 = $id4.'_'.$nama_file3;
-
-                    if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
-
-                      $query4 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url3' WHERE id_no = '$id4' ");
-                      $query5 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
-
-                      if ($query4 && $query5) {
-                        echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                  ?> <script> history.pushState({}, "", "") </script> <?php
-                                } else {
-                                  echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                                }
-                              }
-                            }
-
-                                  ?>
-                                    <?php
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
                 include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
                   $id6 = $_POST['id'];
@@ -614,13 +661,6 @@ session_start();
 
 
                 ?>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       
   </main>
   
@@ -676,8 +716,8 @@ session_start();
         <script>
             Swal.fire({
             position: 'center',
-            icon: 'warning',
-            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf',
+            icon: 'success',
+            title: 'Berhasil Menghapus',
             showConfirmButton: false,
             timer: 2000
           })

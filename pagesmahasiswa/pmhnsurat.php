@@ -281,13 +281,23 @@ session_start();
                   <li class="nav-item dropdown pe-3 pt-3 d-flex text-right ps-4">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       <button type="button" class="btn btn-outline-dark btn-sm px-6 text-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Surat Magang
+                     Semua Surat
                       </button>
                     </a>
                     <ul style = "height:200px" class="dropdown-menu dropdown-menu-end pt-2  px-0 py-3 me-sm-n0" aria-labelledby="dropdownMenuButton">
                       <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">  
                         <li>
                           <a class="dropdown-item border-radius-md" href="pmhnsurat.php">
+                            <div class="d-flex py-1">
+                              <div class="my-auto">
+                                <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Semua Surat</span>
+                                </h6>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a class="dropdown-item border-radius-md" href="pmhnmagang.php">
                             <div class="d-flex py-1">
                               <div class="my-auto">
                                 <h6 class="text-sm font-weight-normal mb-1">
@@ -406,7 +416,7 @@ session_start();
                     $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa  ORDER BY tanggal DESC");  
                     while ($data = mysqli_fetch_array($query)) { 
                       if ($data['nama'] == $_SESSION['user']) {
-                          if ($data['perihal'] == "Surat Magang") { ?>
+                         ?>
                       <tr>
                         <td class="text-center"><?php echo $no++ ?></td>
                         <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
@@ -601,7 +611,7 @@ session_start();
                                 </div>
                               </div>
                             </div>
-                        <?php } } }  ?>
+                        <?php } }  ?>
                       </tr>
                     </tbody> 
                     <?php if ($no == 1) { ?>
