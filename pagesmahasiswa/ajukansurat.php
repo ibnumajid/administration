@@ -84,8 +84,8 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     }
     else
     {
-      ?><script><?php $_SESSION['sukses'] = true;?></script> 
-      <?php header("location:pmhnsurat.php");
+      ?><script><?php $_SESSION['input'] = true;?></script> 
+      <script>history.pushState({}, "", "")</script><?php
     }
 }
 else
