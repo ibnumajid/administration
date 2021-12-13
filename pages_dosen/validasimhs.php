@@ -52,7 +52,7 @@ $tujuan3 = $data['dosen_tkk'];
             }
             else {
              ?><script><?php $_SESSION['sukses'] = true;?></script> 
-            <?php header("location:permohonandosen.php");
+            <?php header("location:validasisurat.php");
              } 
           } else {
             ?><script><?php $_SESSION['input'] = true;?></script> 
@@ -76,7 +76,7 @@ $tujuan3 = $data['dosen_tkk'];
               }
               else {
                ?><script><?php $_SESSION['sukses'] = true;?></script> 
-              <?php header("location:validasisurat.php");
+              <?php header("location:validasisurat2.php");
                } 
           } else {
             ?><script><?php $_SESSION['input'] = true;?></script> 
