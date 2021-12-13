@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if($_SESSION['user']==''  || $_SESSION['status'] != 2)
+    {
+          header("location:../index.php");
+      }
     include '../_database/config.php';
     // aksi submit pada dosen
     if (isset($_POST['notif'])) {
@@ -97,10 +101,7 @@
         } }
       // akhir aksi submit kadep
 
-    if($_SESSION['user']=='' && $_SESSION['status'] != 2)
-    {
-          header("location:../index.php");
-      }
+   
     ?>
   
     <!DOCTYPE html>

@@ -42,7 +42,7 @@ if (isset($_POST['dsn'])) {
     } }
   // akhir aksi submit tendik admin
 
- if($_SESSION['user']=='' && $_SESSION['status'] != 4)
+ if($_SESSION['user']=='' || $_SESSION['status'] != 4)
  {
       header("location:../../index.php");
   }
