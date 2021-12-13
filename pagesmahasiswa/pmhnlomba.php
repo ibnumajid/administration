@@ -275,6 +275,8 @@ session_start();
                             </div>
                           </a>
                         </li>
+                        <?php if ($_SESSION['status2'] == 3) { ?>
+                        <li>
                           <a class="dropdown-item border-radius-md" href="pmhnhima.php">
                             <div class="d-flex py-1">
                               <div class="my-auto">
@@ -284,6 +286,7 @@ session_start();
                             </div>
                           </a>
                         </li>
+                        <?php } ?>
                       </div>
                     </ul>
                   </li>
