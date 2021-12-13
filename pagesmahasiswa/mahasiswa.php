@@ -374,7 +374,7 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
 
                          <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                           <button type="submit" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
                         
                        </div>
 
@@ -474,6 +474,7 @@ session_start();
                 include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
                   $id6 = $_POST['id'];
+                  
                   $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id6'");
                   $data = mysqli_fetch_assoc($query);
                   $nama_file = $data['file']; 
@@ -490,10 +491,8 @@ session_start();
                     <script>
                       history.pushState({}, "", "")
                     </script><?php
-                              ?> <script>
-                      history.pushState({}, "", "")
-                    </script>
-                <?php } else {
+
+                } else {
                     echo '<script> alert ("gagal di ajukan")</script></a>';
                   }
                 }

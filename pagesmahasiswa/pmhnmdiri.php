@@ -546,7 +546,7 @@ session_start();
                               </div>  
                               
                               <div class="modal-body">
-                                <form action="" method="post" enctype="multipart/form-data">
+                               
                                     <div class="card-header pb-0 p-3">
                                       <div class="row">
                                         <div class="mb-3">
@@ -578,7 +578,7 @@ session_start();
                                         </div>
                                       </div>
                                     </div>
-                                </form>
+                                
                               </div>
                             </div>
                           
