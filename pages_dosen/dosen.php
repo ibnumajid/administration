@@ -537,6 +537,7 @@
                                 </button>
                                 <!-- Menginput id surat -->
                                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                                <input type="hidden" name = "lokasi" value = "home">
                                 <p class="text-xs text-left ps-0 text-secondary mb-0">
                                   <?php echo $data['tanggal']; ?>
                                 </p>
@@ -853,6 +854,7 @@
              <?php if ($data['status'] == 3) { ?>
             <form action="validasimhs.php" method = "post">
              <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+             <input type="hidden" name = "lokasi" value = "home">
              <td style = "height:20px">
                <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
              </td>
@@ -861,6 +863,7 @@
              else if ($data['status'] == 2) { ?>
                <form action="validasidosen.php" method = "post">
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                <input type="hidden" name = "lokasi" value = "home">
                 <td style = "height:20px">
                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                 </td>
@@ -868,6 +871,7 @@
                 <?php } 
              else if ($data['status'] == 4) { ?>
                 <form action="validasitendik.php" method = "post">
+                <input type="hidden" name = "lokasi" value = "home">
                 <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                 <td style = "height:20px">
                   <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
@@ -919,6 +923,7 @@
                <?php if ($data['status'] == 3) { ?>
               <form action="validasimhs.php" method = "post">
                <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+               <input type="hidden" name = "lokasi" value = "home">
                <td style = "height:20px">
                  <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                </td>
@@ -927,6 +932,7 @@
                else if ($data['status'] == 2) { ?>
                  <form action="validasidosen.php" method = "post">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                  <input type="hidden" name = "lokasi" value = "home">
                   <td style = "height:20px">
                     <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                   </td>
@@ -935,6 +941,7 @@
                else if ($data['status'] == 4) { ?>
                   <form action="validasitendik.php" method = "post">
                   <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                  <input type="hidden" name = "lokasi" value = "home">
                   <td style = "height:20px">
                     <h6 style = "height:20px" class="text-sm-left"><button style ="width:250px" class="btn btn-light btn-sm"><?php echo $data['nama'] ?></button></h6>
                   </td>
@@ -1089,6 +1096,7 @@
                           <form action="./validasimhs.php" method="post">
                             <input type="hidden" name = "lokasi" value = "home">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <input type="hidden" name = "lokasi" value = "home">
                             <td style = "height:20px">
                               <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama'] ?></button></h6>
                             </td>
