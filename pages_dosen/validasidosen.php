@@ -43,7 +43,7 @@ $data = mysqli_fetch_array($query)
             }
             else { 
               ?><script><?php $_SESSION["sukses"] = true;?></script> 
-              <?php header("location:valdasidsn.php");
+              <?php header("location:validasidsn.php");
             }
           } else {
             ?><script><?php $_SESSION["updf"] = true;?></script> 
