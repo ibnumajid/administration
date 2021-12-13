@@ -439,7 +439,7 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
 
                          <!-- Saat dosen menolak -->
-                         <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
+                         <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] == 1 || $data['status_kadep'] == 1) { ?>
                          <form action = "./ubahajuan.php" method = "post">
                          <!-- Input ID dan lokasi untuk memberikan identitas surat -->
                          <input type="hidden" name = "lokasi" value = "home">
