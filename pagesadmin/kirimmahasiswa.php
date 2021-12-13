@@ -5,6 +5,52 @@
         header("location:../index.php");
   }
 ?>
+<?php 
+                    include "../_database/config.php";
+
+                    if(isset($_POST['update'])){
+                      $lokasi = $_POST['lokasi'];
+                      $id = $_POST['id'];
+                      $nama_mhs = $_POST['nm'];
+                      $statusadmin = $_POST['stadmin'];
+                      $r = rand(0, 999);
+                      $perihal = $_POST['perihal'];
+                      //Surat pertama
+                      $nama_file2 = basename($_FILES['fl']['name']); 
+                      $ukuran2 = $_FILES['fl']['size'];
+                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
+                      $url2 = $r.'_'.$id.'_'.$nama_file2;
+                      //Surat kedua
+                      $nama_file3 = basename($_FILES['fl2']['name']); 
+                      $ukuran3 = $_FILES['fl2']['size'];
+                      $tipe3 = strtolower(pathinfo($nama_file3, PATHINFO_EXTENSION));
+                      $url3 = $r.'_'.$id.'_'.$nama_file3;
+                      
+                      
+                    if ((move_uploaded_file($_FILES['fl']['tmp_name'], $url2)))  {
+                      move_uploaded_file($_FILES['fl2']['tmp_name'], $url3);
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
+                      $query4 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url3', '$perihal', '$nama_mhs', sysdate()) ");
+
+                      }
+
+                      if($query2 && $query3){
+                        if ($lokasi == "home") {
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <?php header("location:../pages/pagestendik/tendik.php");
+                        }
+                        else
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <?php header("location:validasiadmin.php");
+                      }
+                      else {
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                      }
+                    }
+
+                  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -384,20 +430,34 @@
                                    
                                     <!-- upload surat baru -->
                                     <?php if ($data['status_admin'] == 0) { ?>
+                                    <div class="card-header pb-0 p-3">
                                       <div class="row">
-                                      <div class="form-group col-md-12">
-                                        <label for="formFile" class="form-label">Kirim File Baru</label> 
-                                        <div class="controls">
-                                            <div class="entry input-group upload-input-group">
-                                                <input class="form-control" name="file[]" type="file" >
-                                                <button class="btn btn-upload btn-success btn-add" type="button">
-                                                    <i class="fa fa-plus"></i>
-                                                </button>
+                                        <div class="mb-3">
+                                        <div class="row">
+                                          <div class="form-group col-md-6">
+                                              <label for="formFile" class="form-label">Kirim File Baru</label> 
+                                              <svg onclick="myFunction()" type="button" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle mx-1" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                              </svg>
+                                              </button>
+                                              <p>Masukkan file surat yang sudah disetujui</p>
+                                              <input type="file" name="fl" class="form-control" aria-label="file example" required>
+                                              <div class="invalid-feedback">Example invalid form file feedback</div>
                                             </div>
+                                            <div class="form-group col-md-6">
+                                              <div id="file" style="display: none;">
+                                                <label for="formFile" class="form-label">Kirim File Tambahan</label> 
+                                                <p>Masukkan tambahan file surat yang sudah disetujui</p>
+                                                <input type="file" name="fl2" class="form-control" aria-label="file example">
+                                                <div class="invalid-feedback">Example invalid form file feedback</div>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                    <?php } ?>
+                                  <?php } ?>
 
                      </div>
                     </div>
@@ -420,45 +480,7 @@
                      
 
 
-                        <?php 
-                    include "../_database/config.php";
-
-                    if(isset($_POST['update'])){
-                      $r = rand(0, 999);
-                      $id = $_POST['id'];
-                      $nama_mhs = $_POST['nm'];
-                      $perihal = $_POST['perihal'];
-
-                      $name = $_FILES['file']['name'];
-                      $size = $_FILES['file']['size'];
-                      $type = $_FILES['file']['type'];
-                      $tmp_name = $_FILES['file']['tmp_name'];
-
-                      $ukuran = 1024 * 5000;
-                      $tipe = array("pdf");
-
-                      if ($size > $ukuran) {
-                        echo "ukuran terlalu besar.";
-                      }
-                      else if ($type != $tipe && $type != NULL) {
-                        echo "file harus pdf.";
-                      }
-
-                      if (move_uploaded_file($tmp_name, $name))  {
-                      $query2 = mysqli_query($koneksi, "INSERT into kirimadmin values ('$id', '$name', '$perihal', '$nama_mhs', sysdate()) ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`= 2 WHERE id_no = '$id'");
-
-                      if($query2 && $query3){
-                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                      else {
-                        ?><script><?php $_SESSION["input"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                  }}
-
-                  ?>
+                      
               </div>
             </div>
           </div>

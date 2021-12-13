@@ -5,6 +5,52 @@
         header("location:../index.php");
   }
 ?>
+<?php 
+                    include "../_database/config.php";
+
+                    if(isset($_POST['update'])){
+                      $lokasi = $_POST['lokasi'];
+                      $id = $_POST['id'];
+                      $nama_mhs = $_POST['nm'];
+                      $statusadmin = $_POST['stadmin'];
+                      $r = rand(0, 999);
+                      $perihal = $_POST['perihal'];
+                      //Surat pertama
+                      $nama_file2 = basename($_FILES['fl']['name']); 
+                      $ukuran2 = $_FILES['fl']['size'];
+                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
+                      $url2 = $r.'_'.$id.'_'.$nama_file2;
+                      //Surat kedua
+                      $nama_file3 = basename($_FILES['fl2']['name']); 
+                      $ukuran3 = $_FILES['fl2']['size'];
+                      $tipe3 = strtolower(pathinfo($nama_file3, PATHINFO_EXTENSION));
+                      $url3 = $r.'_'.$id.'_'.$nama_file3;
+                      
+                      
+                    if ((move_uploaded_file($_FILES['fl']['tmp_name'], $url2)))  {
+                      move_uploaded_file($_FILES['fl2']['tmp_name'], $url3);
+                      $query2 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
+                      $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
+                      $query4 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url3', '$perihal', '$nama_mhs', sysdate()) ");
+
+                      }
+
+                      if($query2 && $query3){
+                        if ($lokasi == "home") {
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <?php header("location:../pages/pagestendik/tendik.php");
+                        }
+                        else
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <?php header("location:validasiadmin2.php");
+                      }
+                      else {
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                      }
+                    }
+
+                  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -361,7 +407,7 @@
                                               <div id="file" style="display: none;">
                                                 <label for="formFile" class="form-label">Kirim File Tambahan</label> 
                                                 <p>Masukkan tambahan file surat yang sudah disetujui</p>
-                                                <input type="file" name="fl2" class="form-control" aria-label="file example" required>
+                                                <input type="file" name="fl2" class="form-control" aria-label="file example">
                                                 <div class="invalid-feedback">Example invalid form file feedback</div>
                                               </div>
                                             </div>
@@ -392,36 +438,6 @@
                      
 
 
-                        <?php 
-                    include "../_database/config.php";
-
-                    if(isset($_POST['update'])){
-                      $r = rand(0, 999);
-                      $nama_file2 = basename($_FILES['ufl']['name']); 
-                      $ukuran2 = $_FILES['ufl']['size'];
-                      $tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
-                      $id = $_POST['id'];
-                      $nama_mhs = $_POST['nm'];
-                      $statusadmin = $_POST['stadmin'];
-                      $perihal = $_POST['perihal'];
-                      
-                      $url2 = $r.$id.'_'.$nama_file2;
-                      
-                    if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2))  {
-                      $query2 = mysqli_query($koneksi, "insert into kirimadmindsn values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
-                      $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
-
-                      if($query2 && $query3){
-                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                      else {
-                        ?><script><?php $_SESSION["input"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                  }}
-
-                  ?>
               </div>
             </div>
           </div>
