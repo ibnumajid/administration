@@ -22,6 +22,7 @@ $tujuan3 = $data['dosen_tkk'];
           $status = $_POST['ss'];
           $id = $_POST['id'];
           $catatan = $_POST['catatan2'];
+          $lokasi = $_POST['lokasi'];
           
           if ($data['status_dosen1'] == 0){
             if ($data['dosen1'] == $data['dosen2']){
