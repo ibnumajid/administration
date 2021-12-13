@@ -374,7 +374,7 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
 
                          <!-- Saat dosen menolak -->
-                           <button type="submit" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                           <button type="submit" name="hapus" class="btn bg-gradient-info">Hapus</button>
                         
                        </div>
 

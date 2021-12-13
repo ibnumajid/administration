@@ -606,7 +606,7 @@ session_start();
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
 
                          <!-- Saat dosen menolak -->
-                           <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+                           <button type="submite" name="hapus" class="btn bg-gradient-info">Hapus</button>
                         
                        </div>
                         </div>
@@ -643,8 +643,6 @@ session_start();
                   $data = mysqli_fetch_assoc($query);
                   $nama_file = $data['file']; 
                   $target_file = "./mandat/$nama_file";
-                 
-
                   unlink("$target_file");
                   $query6 = mysqli_query($koneksi, "DELETE FROM ajukankadep  WHERE id_no = '$id6' ");
                  

@@ -344,6 +344,7 @@ include "../_database/config.php";
                         <div class="invalid-feedback">Example invalid form file feedback</div>
                         <!-- Menginput id surat -->
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                        <input type="hidden" naem = "lokasi" value = <?php echo $lokasi ?>>
 
 
                       </div>
