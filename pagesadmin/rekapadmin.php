@@ -2,7 +2,49 @@
 if($_SESSION['user']=='' ||  ($_SESSION['status'] != 4 && $_Session['status2'] != 1))
     {
         header("location:../index.php");
-  }?>
+  }
+  
+  // submit notif tata usaha
+if (isset($_POST['mhsw'])) {
+  $id = $_POST['id3'];
+if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+  $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 9 WHERE id_no = '$id' ");
+  if ($query2) { 
+    header('location:../pagesadmin/validasiadmin.php'); ?>
+    <script>history.pushState({}, "", "")</script><?php
+  } else { 
+    header('location:./tendik.php'); ?>
+    <script>history.pushState({}, "", "")</script><?php
+  }
+} }
+
+if (isset($_POST['dsn'])) {
+  $id = $_POST['id2'];
+  if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+    $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `notif`= 9 WHERE id_no = '$id' ");
+    if ($query2) { 
+      header('location:../pagesadmin/validasiadmin2.php'); ?>
+      <script>history.pushState({}, "", "")</script><?php
+    } else { 
+      header('location:./tendik.php'); ?>
+      <script>history.pushState({}, "", "")</script><?php
+    }
+  } }
+
+  if (isset($_POST['tndk'])) {
+    $id = $_POST['id4'];
+    if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+      $query2 = mysqli_query($koneksi, "UPDATE surattendik SET `notif`= 9 WHERE id_no = '$id' ");
+      if ($query2) { 
+        header('location:../pagesadmin/validasiadmin3.php'); ?>
+        <script>history.pushState({}, "", "")</script><?php
+      } else { 
+        header('location:./tendik.php'); ?>
+        <script>history.pushState({}, "", "")</script><?php
+      }
+    } }
+  // akhir aksi submit tata usaha
+  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -203,7 +245,89 @@ if($_SESSION['user']=='' ||  ($_SESSION['status'] != 4 && $_Session['status2'] !
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a-->
             </li>
+            <!-- notif -->
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa fa-bell cursor-pointer"></i>
+                <!-- php surat masuk kadep -->
+                <?php 
+                include '../_database/config.php';
+                if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+                  $query_kadep = mysqli_query($koneksi, 
+                  'SELECT * FROM suratmahasiswa WHERE status_kadep = 2 && notif = 3 
+                  UNION SELECT * FROM suratdosen WHERE status_kadep = 2 && notif = 1
+                  UNION SELECT * FROM surattendik  WHERE status_kadep = 2 && notif = 1 ORDER BY id_no DESC' );
+                  $data = mysqli_num_rows($query_kadep); ?>
 
+                  <span class="primary"><?php echo $data ?></span>
+                <?php } ?>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-0 py-0 me-sm-n3" aria-labelledby="dropdownMenuButton">
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">
+                  <!-- surat masuk kadep dari mahasiswa, dosen, tendik -->
+                  <?php 
+                  include '../_database/config.php';
+                  if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+                    $query = mysqli_query($koneksi, 
+                    'SELECT * FROM suratmahasiswa WHERE status_kadep = 2 && notif = 3 
+                    UNION SELECT * FROM suratdosen WHERE status_kadep = 2 && notif = 1
+                    UNION SELECT * FROM surattendik  WHERE status_kadep = 2 && notif = 1 ORDER BY tanggal DESC' );
+                    while ($data = mysqli_fetch_array($query)) { ?>
+                  <form action="" method = "post">
+                    <li class="mb-2">
+                      <a class="dropdown-item border-radius-md" href="">
+                        <div class="d-flex py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <?php if ($data['status'] == 3) { ?>
+                            <button type="submit" name="mhsw" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
+                                <span class="font-weight"><?php echo $data['nama']; ?></span>
+                              </h6>
+                            </button>
+                            <!-- Menginput id surat -->
+                            <input name="id3" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <p class="text-xs text-left ps-0 text-secondary mb-0">
+                              <?php echo $data['tanggal']; ?>
+                            </p>
+                            <?php } else if ($data['status'] == 2) { ?>
+                            <button type="submit" name="dsn" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
+                                <span class="font-weight"><?php echo $data['nama']; ?></span>
+                              </h6>
+                            </button>
+                            <!-- Menginput id surat -->
+                            <input name="id2" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <p class="text-xs text-left ps-0 text-secondary mb-0">
+                              <?php echo $data['tanggal']; ?>
+                            </p>
+                            <?php } else if ($data['status'] == 4 ) { ?>
+                            <button type="submit" name="tndk" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
+                                <span class="font-weight"><?php echo $data['nama']; ?></span>
+                              </h6>
+                            </button>
+                            <!-- Menginput id surat -->
+                            <input name="id4" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <p class="text-xs text-left ps-0 text-secondary mb-0">
+                              <?php echo $data['tanggal']; ?>
+                            </p>
+                            <?php } } } ?>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </form>
+                </div>
+              </ul>
+            </li>
+            <li class="nav-item px-2 d-flex align-items-center">
+              <!-- <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a> -->
+            </li>
             <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
