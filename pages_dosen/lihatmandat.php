@@ -16,6 +16,7 @@
                   
    ?> 
    <?php 
+  //  Backend melaporkan mandat diterima atau tidak
                    include "../_database/config.php";
                    if(isset($_POST['updatekdp'])){
                      $catatan2 = $_POST['catatan2'];

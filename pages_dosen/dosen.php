@@ -762,7 +762,7 @@
                         <div class="container-fluid py-4">
         <div class="row" style = "width:1085px"> 
 
-        
+        <!-- Tabel yang hanya bisa dilihat oleh kadep  -->
 <?php if ($_SESSION['status2'] == 5) { ?>
         <div class="row mb-4">
      
@@ -770,17 +770,10 @@
   
 
     <div class="card-body p-3 shadow-lg p-3 mb-5 bg-body rounded">
-    
-        
-        
-      
-          
-         
-    
-         
       <div class="col-6 d-flex align-items-center mx-4 mt-3 mb-0 pb-0 my-0 py-0">
         <h6 class="mb-0 pt-1 px-1">Surat Masuk sebagai Kadep</h6>
       </div>
+      <!-- filter surat -->
       <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form action = "" method = "post">
                 <input type="hidden" name = "filteridk" value = "12">
@@ -819,6 +812,7 @@
              <?php } ?>
             </form>
         </div>
+        <!-- Tabel penampil surat -->
        <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0 mt-0 py-0 my-0" style = "height:375px" >
             <table class="table table-striped align-items-center mb-6 mt-0 pt-0">
               <thead>
@@ -985,7 +979,6 @@
                </tr>
 
              <?php } } } ?>
-              <!-- and tabel dosen -->
                   <?php 
                   if ($no == 1) { ?>
 
@@ -1007,16 +1000,14 @@
   
   <?php } ?>
 
+<!-- Tabel untuk merespon sebagai dosen -->
   <div class="row">
    <div class="col-lg-12">
    <div class="card mt-0">
  
        
           <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat Masuk Sebagai Dosen</h6>
-
-       
-
-         
+          <!-- Filter surat masuk -->
           <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "12">
@@ -1055,6 +1046,7 @@
              <?php } ?>
             </form>
         </div>
+        <!-- Tabel dimulai -->
         <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:390px" >
         <table class="table table-striped align-items-center mb-6 mt-0">
             <thead>
@@ -1103,7 +1095,7 @@
                           </form>
 
                        
-                  <!-- status -->
+                  <!-- status respon -->
                   <td>
                   <?php 
                            if (($data['status_dosen1'] == 0 || $data['status_dosen1'] == 1 || $data['status_dosen1'] == 2)  && $tujuan == $nama && ($tujuan == $tujuan2)) {?>
@@ -1152,10 +1144,6 @@
                   <td>
                     <h6 class="text-left ps-1"><?php echo $data['perihal'] ?></h6>
                   </td>
-                  <!-- Menginput id surat -->
-
-
-
                   <!-- status surat -->
             
                   <?php if (($data['status_dosen1'] == 0 && $tujuan == $nama) || ($data['status_dosen1'] == 2 && $data['status_dosen2'] == 0 && $tujuan2 == $nama) || ($data['status_dosentkk'] == 0 && $_SESSION['status2'] == 1)) { ?>
@@ -1178,7 +1166,6 @@
                    <!-- no -->
                    <td class="text-center"><?php echo $no++ ?></td>
                   <!-- nama -->
-                
                           <form action="./validasimhs.php" method="post">
                           <input type="hidden" name = "lokasi" value = "home">
                             <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
@@ -1359,7 +1346,7 @@
 
 
 
-                       <!-- Bagian Detail Permohonan Surat -->
+                       <!-- Bagian Surat Yang Ditolak -->
       <div class="row">
         <div class="col-md-7 shadow-lg mt-4 p-3 mb-5 bg-body rounded">
         <div class="card-header pb-4 px-4">
@@ -1399,7 +1386,7 @@
 
                 <?php } ?>
 
-                  <!-- Modal Hapus -->
+                  <!-- Modal Pop Up Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                      <div class="modal-content">
@@ -1434,7 +1421,7 @@
                                     </a>
                                  
                                  <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+                                 <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Memberi peringatan -->
                                  <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
@@ -1487,7 +1474,7 @@
 
                                
                                  <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
+                                 <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Ubah File saat ditolak filenya -->
                                 <?php if ($data['status_kadep'] == "1") { ?>
@@ -1534,59 +1521,6 @@
             </div>
           
 
-                        <!-- php update surat saat dosen menolak -->
-                        <?php
-                include "../_database/config.php";
-                if (isset($_POST['update'])) {
-
-                  $nama_file2 = basename($_FILES['ufl']['name']);
-                  $id3 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url2 = $id3.'_'.$nama_file2;
-
-                  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
-                    $query2 = mysqli_query($koneksi, "UPDATE suratdosen SET `file`='$url2' WHERE id_no = '$id3' ");
-                    $query3 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_surat`='$nol' WHERE id_no = '$id3' ");
-
-                    if ($query2 && $query3) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                      ?>  <script> history.pushState({}, "", "")</script> <?php
-                              } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
-
-                <!-- php update surat saat kadep menolak -->
-                <?php
-                include "../_database/config.php";
-                if (isset($_POST['update2'])) {
-
-                  $nama_file3 = basename($_FILES['uflk']['name']);
-                  $id4 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url3 = $id4.'_'.$nama_file3;
-
-                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
-
-                    $query4 = mysqli_query($koneksi, "UPDATE suratdosen SET `file`='$url3' WHERE id_no = '$id4' ");
-                    $query5 = mysqli_query($koneksi, "UPDATE suratdosen SET `status_kadep`='$nol' WHERE id_no = '$id4' ");
-
-                    if ($query4 && $query5) {
-                      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
 
                <!-- php hapus file -->
                <?php

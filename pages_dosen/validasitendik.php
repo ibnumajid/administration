@@ -5,6 +5,7 @@
         header("location:../index.php");
     }
   ?>
+
    <?php
                   $lokasi = $_POST['lokasi'];
                   $id = $_POST['id'];
@@ -15,6 +16,7 @@
 
                   
    ?> 
+   <!-- Backend validasi surat tendik dari kadep -->
   <?php 
                    include "../_database/config.php";
                    if(isset($_POST['updatekdp'])){

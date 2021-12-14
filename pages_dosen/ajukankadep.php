@@ -319,7 +319,7 @@ $(document).ready(function(){
                   </div>
                 </div-->
                 
-                
+                <!-- Backend pengajuan mandat kadep -->
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
                         <?php

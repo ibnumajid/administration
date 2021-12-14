@@ -16,6 +16,7 @@ $tujuan2 = $data['dosen2'];
 $tujuan3 = $data['dosen_tkk'];
 
 ?>
+<!-- Backend validasi mahasiswa untuk dosen -->
  <?php
         include "../_database/config.php";
         if (isset($_POST['update'])) {
@@ -60,6 +61,8 @@ $tujuan3 = $data['dosen_tkk'];
             <script>history.pushState({}, "", "")</script><?php
           }
         } ?>
+
+    <!-- Backend validasi mahasiswa untuk kadep -->
         <?php
         include "../_database/config.php";
         if (isset($_POST['updatekdp'])) {

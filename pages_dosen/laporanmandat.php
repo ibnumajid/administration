@@ -9,7 +9,7 @@ if ($_SESSION['user'] == '' || $_SESSION['status'] != 2) {
 
     $query = mysqli_query($koneksi, "SELECT * FROM ajukankadep WHERE id_no = '$id' ");
     $data = mysqli_fetch_array($query);
-
+// Backend pengiriman mandat
                 include '../_database/config.php';
                 if (isset($_POST['updatekdp'])) {
                 $id = $_POST['id'];

@@ -15,6 +15,7 @@ $data = mysqli_fetch_array($query)
 
 
 ?>
+<!-- Backend kadep melakukan validasi dosen -->
  <?php
         include "../_database/config.php";
         if (isset($_POST['updatekdp'])) {

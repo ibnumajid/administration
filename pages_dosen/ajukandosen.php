@@ -4,7 +4,7 @@ session_start();
   {
   header("location:../index.php");
   }
-
+// Backend untuk memasukkan surat ke dalam databse
                         include '../_database/config.php';
                         if (isset($_POST['input'])) {
                         $nama_dsn = $_POST['nm'];
@@ -25,12 +25,14 @@ session_start();
                         $ekstensi = "pdf";
                         $keterangan = $_POST['keterangan'];
 
-                        $url = $id_npp.'_'.$file;
+                        $url = $id_npp.'_'.$file; 
 
                         if ($ukuran > $max && $tipe != $ekstensi) {;
-                            echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';
+                          ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
+                          <script>history.pushState({}, "", "")</script><?php
                         } else if ($ukuran > $max) {
-                            echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>';
+                          ?><script><?php $_SESSION["uk"] = true;?></script> 
+                          <script>history.pushState({}, "", "")</script><?php
                         } else if ($tipe != $ekstensi   ) {
                             ?><script><?php $_SESSION["pdf"] = true;?></script> 
                         <script>history.pushState({}, "", "")</script><?php
@@ -555,6 +557,34 @@ $(document).ready(function(){
           })
         </script>
     <?php unset($_SESSION['pdf']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['uk']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal mengajukan permohonan surat ! ukuran file harus di bawah 5 mb',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['uk']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['pdfuk']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran di bawah 5 mb',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['pdfuk']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
