@@ -32,11 +32,13 @@ session_start();
 
                             if ($ukuran > $max && $tipe != $ekstensi)
                             {
-                                echo '<script> alert("Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran file tidak boleh melebihi 5 mb")</script>';}
+                              ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
+                              <script>history.pushState({}, "", "")</script><?php }
                             
                                 else if ($ukuran > $max)
                                 {
-                                echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 5 mb")</script>' ;}
+                                  ?><script><?php $_SESSION["uk"] = true;?></script> 
+                                  <script>history.pushState({}, "", "")</script><?php }
                                 
                                 else if ($tipe != $ekstensi)
                                 { 
@@ -87,7 +89,7 @@ session_start();
   <link href="../../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-
+  <!--Styling untuk scrollbar-->
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -123,6 +125,7 @@ session_start();
             height: 200px; }
   </style>
 
+<!-- Javascript untuk memunculkan dan menghilangkan file -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -204,7 +207,7 @@ $(document).ready(function(){
             </a>
           </li>
 
-          <!-- VALIDASI SURAT  -->
+          <!-- VALIDASI SURAT MAHASISWA -->
           <li class="nav-item">
             <a class="nav-link  " href="../../pagesadmin/validasiadmin.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -216,7 +219,7 @@ $(document).ready(function(){
             </a>
           </li>
 
-          <!-- VALIDASI SURAT  -->
+          <!-- VALIDASI SURAT DOSEN  -->
           <li class="nav-item">
             <a class="nav-link  " href="../../pagesadmin/validasiadmin2.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -228,7 +231,7 @@ $(document).ready(function(){
             </a>
           </li>
 
-           <!-- VALIDASI SURAT  -->
+           <!-- VALIDASI SURAT TENDIK -->
            <li class="nav-item">
             <a class="nav-link  " href="../../pagesadmin/validasiadmin3.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -466,19 +469,47 @@ $(document).ready(function(){
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   
-
+<!-- POP UP NOITIFIKASI YANG DIPANGGIL SESSION -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['file']==true) : ?>
+    <?php if(@$_SESSION['file']) : ?>
         <script>
             Swal.fire({
             position: 'center',
             icon: 'warning',
-            title: 'Gagal mengajukan permohonan surat ! Ekstensi file haru pdf',
+            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf',
             showConfirmButton: false,
             timer: 2000
           })
         </script>
     <?php unset($_SESSION['file']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['uk']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal mengajukan permohonan surat ! ukuran file harus di bawah 5 mb',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['uk']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['pdfuk']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal mengajukan permohonan surat ! Ekstensi file harus pdf dan ukuran di bawah 5 mb',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['pdfuk']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

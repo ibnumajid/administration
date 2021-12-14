@@ -2,6 +2,7 @@
 session_start();
 include '../../_database/config.php';
 
+// notifikasi untuk tendik
 if (isset($_POST['mhsw'])) {
   $id = $_POST['id3'];
 if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
@@ -473,7 +474,7 @@ if (isset($_POST['dsn'])) {
               </div>
             </div>
           </div>
-
+<!-- Tampilan tabel untuk melakukan validasi sebagai admin tata usaha -->
           <?php if ($_SESSION['status2'] == 1) { ?>
        <div class = "row mb-4">
        <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">

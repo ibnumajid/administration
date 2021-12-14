@@ -313,6 +313,8 @@ session_start();
                 </div>
               </div>
             </div>
+
+            <!-- Filter surat -->
             <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form action = "" method = "post">
                 <input type="hidden" name = "filterid" value = "12">
@@ -352,7 +354,7 @@ session_start();
             </form>
         </div>
             
-            
+            <!-- tabel -->
             <div class="card-body px-0 pt-0 pb-2 mt-0 my-0 py-0">
             <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:300px" >
                 <table class="table align-items-center mb-0 mt-0">
@@ -373,6 +375,7 @@ session_start();
                    $no2=$no++;
                    $query = mysqli_query($koneksi, 'SELECT * FROM surattendik ORDER BY id_no DESC');                  
                    while ($data = mysqli_fetch_array($query)) {
+                    //  filter surat yang ditampilkan
                   if ($data['nama'] == $_SESSION['user']) {
                     if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
                       $idf = $_POST['filterid'];
@@ -724,7 +727,8 @@ session_start();
                     <?php } ?>
 
                 </table>
-                 <!-- php update surat saat kadep menolak -->
+
+                 <!-- php hapus surat saat kadep menolak -->
                  <?php
                 include "../_database/config.php";
                 if (isset($_POST['hapus'])) {
@@ -752,32 +756,7 @@ session_start();
                     echo '<script> alert ("gagal di ajukan")</script></a>';
                   }
                 } ?>
-                 <?php
-                include "../../_database/config.php";
-                if (isset($_POST['update2'])) {
-
-                  $nama_file3 = basename($_FILES['uflk']['name']);
-                  $id4 = $_POST['id2'];
-                  $nol = $_POST['stats2'];
-
-                  $url3 = $id4.'_'.$nama_file3;
-
-                  if (move_uploaded_file($_FILES['uflk']['tmp_name'], $url3)) {
-
-                    $query4 = mysqli_query($koneksi, "UPDATE surattendik SET `file` = '$url3' WHERE id_no = '$id4' ");
-
-                    $query5 = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep` = '$nol' WHERE id_no = '$id4' ");
-
-                    if ($query4 && $query5) {
-                      echo '<a href="./permohonandosen.php"><script> alert ("Berhasil di ajukan")</script></a>';
-                ?> <script> history.pushState({}, "", "") </script> <?php
-                              } else {
-                                echo '<a href="./permohonandosen.php"><script> alert ("gagal di ajukan")</script></a>';
-                              }
-                            }
-                          }
-
-                                ?>
+                 
               </div>
             </div>
           </div>

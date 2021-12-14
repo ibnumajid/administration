@@ -14,6 +14,7 @@ $data = mysqli_fetch_array($query)
 
 
 ?>
+<!-- Backen untuk merubah surat yang ditolak -->
  <?php
         include "../_database/config.php";
         if (isset($_POST['update'])) {
@@ -377,7 +378,7 @@ include "../_database/config.php";
                         <input type="file" name="fl" class="form-control" aria-label="file example" >
                         <div class="invalid-feedback">Example invalid form file feedback</div>
 
-                        <!-- Menginput id surat -->
+                        <!-- Menginput id dan lokasi dari mana nama diklik surat -->
                         <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                         <input type="hidden" name = "lokasi" value = "<?php echo $lokasi ?>">
 
