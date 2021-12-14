@@ -2,7 +2,7 @@
 session_start();
 include '../../_database/config.php';
 
-// notifikasi untuk tendik
+// submit notif tata usaha
 if (isset($_POST['mhsw'])) {
   $id = $_POST['id3'];
 if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
@@ -41,7 +41,7 @@ if (isset($_POST['dsn'])) {
         <script>history.pushState({}, "", "")</script><?php
       }
     } }
-  // akhir aksi submit tendik admin
+  // akhir aksi submit tata usaha
 
  if($_SESSION['user']=='' || $_SESSION['status'] != 4)
  {
