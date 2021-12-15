@@ -526,7 +526,7 @@ session_start();
                       <th class="text-left ps-1">Dosen Koordinator</th>
                       <th class="text-left ps-1">Perihal</th>
                       <th class="text-left ps-4"> Proses Tugas</th>
-                      <th class="text-center">Lihat Laporan</th>
+                      <th class="text-left">Lihat Laporan</th>
                     </tr>
                   </thead>
 
@@ -582,10 +582,19 @@ session_start();
                               <?php } 
                            else if ($data['proses_tugas'] == 1) {
                                     ?><td> <?php echo $data['catatan'] ?> </td> 
+                                     <?php }
+                                  else if ($data['proses_tugas'] == 1) {
+                                    ?><td> <?php echo $data['catatan'] ?> </td> }
+                                  else if ($data['proses_tugas'] == 3){ ?>
+                                      <td>Tugas Belum Selesai</td>
+                                 <?php }
+                                 else if ($data['proses_tugas'] == 0) { ?> 
+                                      <td>Tugas Belum Direspon</td>
+                                <?php } ?> </td> 
                           
                     </tr>
                      <?php 
-                        } } } 
+                        } } 
                         
                         else { ?>
 
@@ -759,7 +768,7 @@ session_start();
                      </div>
                      </div>
                      </div>
-                     <?php }  ?>
+                     <?php }   ?>
 
                               </div>
                       
