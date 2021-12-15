@@ -635,8 +635,8 @@ session_start();
                                       </a></td>
                                   <?php }
                                   else if ($data['proses_tugas'] == 1) {
-                                    ?><td> <?php echo $data['catatan'] ?> </td> }
-                                  else if ($data['proses_tugas'] == 3){ ?>
+                                    ?><td> <?php echo $data['catatan'] ?> </td> <?php }
+                                  else if ($data['proses_tugas'] == 3)  { ?>
                                       <td>Tugas Belum Selesai</td>
                                  <?php }
                                  else if ($data['proses_tugas'] == 0) { ?> 
