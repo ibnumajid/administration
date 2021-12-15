@@ -564,10 +564,10 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>Nama Mahasiswa</th>
+                      <th class="text-center">No</th>
+                      <th class="text-center">Nama Mahasiswa</th>
                       <th class="text-center">NRP Mahasiswa</th>
-                      <th>Tempat Magang</th>
+                      <th class="text-center">Tempat Magang</th>
                       <th class="text-center">Dosen Pembimbing</th>
                       <th class="text-center">Proposal Magang</th>
                      
@@ -595,8 +595,8 @@
                       <td class="text-center"><?php echo $no++ ?></td>
                       
                   <!-- nama -->
-                    <td style = "height:20px">
-                      <h6 style = "height:35px" class="text-sm-left ps-1 "><?php echo $data2['nama_mhs'] ?></h6>
+                    <td>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data2['nama_mhs'] ?></h6>
                     </td>
                       <!-- nrp -->
                       <td>
