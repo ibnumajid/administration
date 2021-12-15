@@ -640,7 +640,7 @@ session_start();
                                       <td>Tugas Belum Selesai</td>
                                  <?php }
                                  else if ($data['proses_tugas'] == 0) { ?> 
-                                      <td>Tugas Belum Direspon</td>
+                                      <td>Tugas Belum Direspon</td> 
                                 <?php } ?> </td> 
                                  
                           </tr>
