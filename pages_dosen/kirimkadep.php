@@ -418,7 +418,7 @@ session_start();
                                 <p class="text-xs text-left ps-0 text-secondary mb-0">
                                   <?php echo $data['tanggal']; ?>
                                 </p>
-                                <?php } ?>
+                                <?php } } } ?>
                               </div>
                             </div>
                           </a>
