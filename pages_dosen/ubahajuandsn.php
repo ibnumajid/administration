@@ -73,7 +73,7 @@ $data = mysqli_fetch_array($query)
               }
               else {
                ?><script><?php $_SESSION['sukses'] = true;?></script> 
-              <?php header("location:validasisurat.php");
+              <?php header("location:permohonandosen.php");
                } 
           } else {
             ?><script><?php $_SESSION['input'] = true;?></script> 
