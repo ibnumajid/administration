@@ -361,11 +361,11 @@ include "../_database/config.php";
                           <div class="row">
                                 <div class="form-group col-md-2 text-center">
                                   <label for="formFile" class="form-label">Tanggal Pelaksanaan</label>
-                                  <input type="text" class = "form-control" name = "tp1" value = "<?php echo $data['tgl_pel1'] ?>">
+                                  <input type="date" class = "form-control" name = "tp1" value = "<?php echo $data['tgl_pel1'] ?>">
                                 </div>
                                 <div class="form-group col-md-2 text-center">
                                   <label for="formFile" class="form-label">Tanggal Selesai</label>
-                                  <input type="text" class = "form-control" name = "tp2" value = "<?php echo $data['tgl_pel2'] ?>">
+                                  <input type="date" class = "form-control" name = "tp2" value = "<?php echo $data['tgl_pel2'] ?>">
                                 </div>
                           </div>
                           <div>
