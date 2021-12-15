@@ -901,12 +901,29 @@
              </td> <?php } ?>
              <!-- tanggal -->
              <td class="text-center"><?php echo $data['tanggal'] ?></td>
-             <!-- button -->
-             <td class="align-middle">
-               <a  href="validasiadmin.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+             <!-- button untuk melihat halaman validasi-->
+              <?php if($data['status'] == 3) { ?>
+                <td class="align-middle">
+               <a  href="validasisurat2.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                  <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
                </a>
              </td>
+             <?php } 
+             else if ($data['status'] == 2) { ?>
+                <td class="align-middle">
+               <a  href="validasidsn.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                 <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+               </a>
+             </td>
+             <?php } 
+             else if ($data['status'] == 4 ){ ?>
+                <td class="align-middle">
+               <a  href="validasitndk.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                 <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+               </a>
+             </td>
+              <?php } ?>
+            
              </tr>
              <?php } } 
              else { ?>
@@ -970,13 +987,28 @@
                </td> <?php } ?>
                <!-- tanggal -->
                <td class="text-center"><?php echo $data['tanggal'] ?></td>
-               <!-- button -->
-               <td class="align-middle">
-                 <a  href="validasiadmin.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                   <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
-                 </a>
-               </td>
-               </tr>
+              <!-- button untuk melihat halaman validasi-->
+              <?php if($data['status'] == 3) { ?>
+                <td class="align-middle">
+               <a  href="validasisurat2.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                 <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+               </a>
+             </td>
+             <?php } 
+             else if ($data['status'] == 2) { ?>
+                <td class="align-middle">
+               <a  href="validasidsn.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                 <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+               </a>
+             </td>
+             <?php } 
+             else if ($data['status'] == 4 ){ ?>
+                <td class="align-middle">
+               <a  href="validasitndk.php" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                 <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+               </a>
+             </td>
+              <?php } ?>
 
              <?php } } } ?>
                   <?php 
