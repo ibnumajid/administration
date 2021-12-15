@@ -664,7 +664,7 @@ session_start();
                                     </a>
                                  
                                  <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+                                 <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Memberi peringatan -->
                                  <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
@@ -725,7 +725,7 @@ session_start();
                                     </a>
                                  
                                  <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+                                 <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Memberi peringatan -->
                                  <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
