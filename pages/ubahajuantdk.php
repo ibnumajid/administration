@@ -333,11 +333,11 @@ include "../_database/config.php";
                           <div class="row">
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Barang</label>
-                          <input type="text" class = "form-control" name = "nb" value = "<?php echo $data['nama_barang'] ?>">
+                          <input type="text" class = "form-control"  aria-label="default input example" name = "nb" value = "<?php echo $data['nama_barang'] ?>">
                          
                            <!-- Keterangan Tambahan -->
                            <label for="formFile" class="form-label">Jumlah Barang</label>
-                           <input type="text" class = "form-control" name = "jb" value = "<?php echo $data['jumlah_barang'] ?>">
+                           <input type="text" class = "form-control"  aria-label="default input example" name = "jb" value = "<?php echo $data['jumlah_barang'] ?>">
                         </div>
 
                            <div class="row">
