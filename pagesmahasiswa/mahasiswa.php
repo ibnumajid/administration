@@ -357,7 +357,7 @@ session_start();
                                     </a>
                                  
                                  <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id3" value="<?php echo $data['id_no'] ?>">
+                                 <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Memberi peringatan -->
                                  <h5 class = "text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
@@ -421,7 +421,7 @@ session_start();
                                  <label name="catatan2" class="form-control" aria-label="default input example"><?php echo $data['catatan_kdp'] ?></label>
 
                                  <!-- Input ID untuk memberikan identitas surat -->
-                                 <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
+                                 <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
 
                                  <!-- Ubah File saat ditolak filenya -->
                                  <?php if ($data['status_dosen1'] == 1 || $data['status_dosen2'] == 1 || $data['status_dosentkk'] || $data['status_kadep'] == 1) { ?>
