@@ -584,7 +584,7 @@ session_start();
                                     ?><td> <?php echo $data['catatan'] ?> </td> 
                                      <?php }
                                   else if ($data['proses_tugas'] == 1) {
-                                    ?><td> <?php echo $data['catatan'] ?> </td> }
+                                    ?><td> <?php echo $data['catatan'] ?> </td> <?php }
                                   else if ($data['proses_tugas'] == 3){ ?>
                                       <td>Tugas Belum Selesai</td>
                                  <?php }
