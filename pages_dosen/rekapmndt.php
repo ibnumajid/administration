@@ -834,7 +834,7 @@
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: 'Berhasil Upload File',
+                title: 'Berhasil Memberikan Respon',
                 showConfirmButton: false,
                 timer: 2000
             })
