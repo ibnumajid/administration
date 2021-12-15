@@ -626,7 +626,13 @@ session_start();
                                       </a></td>
                                   <?php }
                                   else if ($data['proses_tugas'] == 1) {
-                                    ?><td> <?php echo $data['catatan'] ?> </td> 
+                                    ?><td> <?php echo $data['catatan'] ?> </td> }
+                                  else if ($data['proses_tugas'] == 3){ ?>
+                                      <td>Tugas Belum Selesai</td>
+                                 <?php }
+                                 else if ($data['proses_tugas'] == 0) { ?> 
+                                      <td>Tugas Belum Direspon</td>
+                                <?php } ?> </td> 
                                  
                           </tr>
                                           <!-- Modal Hapus -->
@@ -690,7 +696,7 @@ session_start();
                      </div>
                      </div>
                      </div>
-                        <?php } } ?>                                           <!-- Modal Hapus -->
+                        <?php }  ?>                                           <!-- Modal Hapus -->
                   <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                    <div class="modal-dialog modal-dialog-centered" role="document">
                      <div class="modal-content">
