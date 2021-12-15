@@ -4,7 +4,7 @@ session_start();
   {
   header("location:../index.php");
   }
-// Backend untuk memasukkan surat ke dalam databse
+// Backend untuk memasukkan surat ke dalam databse 1
                         include '../_database/config.php';
                         if (isset($_POST['input'])) {
                         $nama_dsn = $_POST['nm'];
@@ -16,7 +16,6 @@ session_start();
                         $nama_lab = $_POST['nl'];
                         $tgl_pel1 = $_POST['pel1'];
                         $tgl_pel2 = $_POST['pel2'];
-
 
                         $file = basename($_FILES['fl']['name']);
                         $ukuran = $_FILES['fl']['size'];
