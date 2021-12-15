@@ -122,7 +122,7 @@
         
           
           <!--Validasi Surat-->
-          <?php if ($_SESSION['status2'] == '5') {?>
+          <?php if ($_SESSION['status2'] == '5') { ?>
           <li class="nav-item">
             <a class="nav-link active" href="./validasisurat2.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -136,7 +136,7 @@
           <?php } ?>
 
           <!-- Validasi Surat Dosen -->
-          <?php if ($_SESSION['status2'] == '5') {?>
+          <?php if ($_SESSION['status2'] == '5') { ?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -150,7 +150,7 @@
           <?php } ?>
 
           <!-- Validasi Surat Tendik -->
-          <?php if ($_SESSION['status2'] == '5') {?>
+          <?php if ($_SESSION['status2'] == '5') { ?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -198,7 +198,7 @@
           </li>
 
           <!-- Validasi Surat Dosen -->
-          <!-- <?php if ($_SESSION['status2'] == '5') {?>
+          <!-- <?php if ($_SESSION['status2'] == '5') { ?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -212,7 +212,7 @@
           <?php } ?> -->
 
           <!-- Validasi Surat Tendik -->
-          <!-- <?php if ($_SESSION['status2'] == '5') {?>
+          <!-- <?php if ($_SESSION['status2'] == '5') { ?>
           <li class="nav-item">
             <a class="nav-link  " href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -394,7 +394,7 @@
                                 <p class="text-xs text-left ps-0 text-secondary mb-0">
                                   <?php echo $data['tanggal']; ?>
                                 </p>
-                                <?php } ?>
+                                <?php } } } ?>
                               </div>
                             </div>
                           </a>
@@ -532,17 +532,17 @@
                           if ($_SESSION['status2'] == 5) {
                           ?> 
                           <!-- status surat kadep -->
-                          <?php if ($data['status_kadep'] == 0) {?>
+                          <?php if ($data['status_kadep'] == 0) { ?>
                           <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
                           </td> <?php } 
-                                else if ($data['status_kadep'] == 1) {?>
+                                else if ($data['status_kadep'] == 1) { ?>
                             <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td> 
                                 <?php }
     
-                                else if ($data['status_kadep'] == 2) {?>
+                                else if ($data['status_kadep'] == 2) { ?>
                                 <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td> <?php } } }
@@ -582,17 +582,17 @@
                           if ($_SESSION['status2'] == 5) {
                           ?> 
                           <!-- status surat kadep -->
-                          <?php if ($data['status_kadep'] == 0) {?>
+                          <?php if ($data['status_kadep'] == 0) { ?>
                           <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
                           </td> <?php } 
-                                else if ($data['status_kadep'] == 1) {?>
+                                else if ($data['status_kadep'] == 1) { ?>
                             <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
                           </td> 
                                 <?php }
     
-                                else if ($data['status_kadep'] == 2) {?>
+                                else if ($data['status_kadep'] == 2) { ?>
                                 <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Disetujui</span>
                           </td>

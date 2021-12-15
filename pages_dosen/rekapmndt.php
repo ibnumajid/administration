@@ -478,7 +478,6 @@
               <ul class="dropdown-menu  dropdown-menu-end  px-1 py-1 me-sm-n3" aria-labelledby="dropdownMenuButton">
                 <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">
                   <!-- dropdown surat masuk dosen dari mahasiswa -->
-                  <?php } } ?>
                   <form action="" method = "post">
                     <?php 
                     include '../_database/config.php';
