@@ -1,80 +1,40 @@
 <?php
-  session_start();
-  if($_SESSION['user']==''  || $_SESSION['status'] != 2)
-  {
-        header("location:../index.php");
-    }
+session_start();
 
-    include '../_database/config.php';
-    // aksi submit pada dosen
-    if (isset($_POST['notif'])) {
-      $id = $_POST['id'];
-      $nama = $_SESSION['user'];
-  
-      // update notif dosen pemb 
-      $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-      while ($data = mysqli_fetch_array($query)) {
-      if ($data['dosen1'] == $nama) {
-      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 1 WHERE id_no = '$id' ");
-      if ($query) { 
-        header('location:validasisurat.php'); ?>
-        <script>history.pushState({}, "", "")</script><?php
-      } else { 
-        header('location:./dosen.php'); ?>
-        <script>history.pushState({}, "", "")</script><?php
-      } } } }
-  
-      // update notif dosen koor1
-      if (isset($_POST['koor1'])) {
-        $id = $_POST['id'];
-        if ($_SESSION['status2'] == 2 && $_SESSION['status'] == 2) {
-          $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
-          if ($query2) { 
-            header('location:validasisurat.php'); ?>
-            <script>history.pushState({}, "", "")</script><?php
-          } else { 
-            header('location:./dosen.php'); ?>
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        }
-      }
-  
-      // update notif dosen koor 2
-      if (isset($_POST['koor2'])) {
-        $id = $_POST['id'];
-        if ($_SESSION['status3'] == 2 && $_SESSION['status'] == 2) {
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
-          if ($query3) { 
-            header('location:validasisurat.php'); ?>
-            <script>history.pushState({}, "", "")</script><?php
-          } else { 
-            header('location:./dosen.php'); ?>
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        }
-      }
-  
-      // update notif dosen tkk
-      if (isset($_POST['tkk'])) {
-        $id = $_POST['id'];
-        if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2) {
-          $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `notif`= 2 WHERE id_no = '$id' ");
-          if ($query3) { 
-            header('location:validasisurat.php'); ?>
-            <script>history.pushState({}, "", "")</script><?php
-          } else { 
-            header('location:./dosen.php'); ?>
-            <script>history.pushState({}, "", "")</script><?php
-          }
-        }
-      }
-      // akhir aksi submit dosen
-  ?>
+if ($_SESSION['user'] == '' || ($_SESSION['status'] == 4 && $_Session['status2'] == 1)) {
+  header("location:../index.php");
+}
+// Form pengiriman informasi magang
+include '../_database/config.php';
+$sesnam = $_SESSION['user'];
+$id = $_POST['id'];
+$tabel = mysqli_query($koneksi, "SELECT * FROM permohonanpmb WHERE id_no = '$id' ");
+$data = mysqli_fetch_array($tabel);
 
-<?php
-  include "../_database/config.php";
-?>
 
+// Backend saat melakukan pembaharuan
+if(isset($_POST['input'])) {
+
+    $dosbing = $_POST['ds1'];
+    $id = $_POST['id'];
+  $query2 = mysqli_query($koneksi, "UPDATE permohonanpmb SET dosen1 = '$dosbing' where id_no = $id");
+   $query3 =  mysqli_query($koneksi, "UPDATE permohonanpmb SET status_dosen1 = '2' where id_no = '$id' ");
+
+if($query2 && $query3)
+{
+  ?><script><?php $_SESSION['sukses2'] = true;?></script> 
+  <script>history.pushState({}, "", "")</script><?php
+  header("location:datamagang.php");
+
+}
+else
+{
+  ?><script><?php $_SESSION['input'] = true;?></script> 
+  <script>history.pushState({}, "", "")</script><?php
+} } ?>
+
+
+<!-- KIRIM SURAT -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -104,9 +64,11 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
+        
+        <span class="ms-1 font-weight-bold">Sistem Administrasi Mahasiswa</span>
       </a>
     </div>
+
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
     <ul class="navbar-nav">
@@ -343,19 +305,20 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Data Magang</li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Mahasiswa</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Permohonan Pembimbing</li>
           </ol>
-          <h5 class="font-weight-bolder mb-0">Data Mahasiswa yang Sudah Magang</h5>
+          <h5 class="font-weight-bolder mb-0">Permohonan Pembimbing</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
-              <a href="../profile.php" href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
+                <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
             </li>
             <!--li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -372,178 +335,89 @@
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a-->
             </li>
-            <!-- Notif -->
+            <!-- notif -->
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <!-- icon lonceng/bel -->
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-bell cursor-pointer"></i>
                 <!-- php surat masuk kadep -->
                 <?php 
-                include '../_database/config.php'; 
-                $nama = $_SESSION['user'];
-                $query_mhs = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa ORDER BY id_no DESC");
-                $data_mhs = mysqli_fetch_array($query_mhs); {
-                  $tujuan = $data_mhs['dosen1'];
-                  $tujuan2 = $data_mhs['dosen2'];
-                  $tujuan3 = $data_mhs['dosen_tkk'];
+                include '../_database/config.php';
+                if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+                  $query_kadep = mysqli_query($koneksi, 
+                  'SELECT * FROM suratmahasiswa WHERE status_kadep = 2 && notif = 3 
+                  UNION SELECT * FROM suratdosen WHERE status_kadep = 2 && notif = 1
+                  UNION SELECT * FROM surattendik  WHERE status_kadep = 2 && notif = 1 ORDER BY id_no DESC' );
+                  $data = mysqli_num_rows($query_kadep); ?>
 
-                //  php pesan masuk dosen tkk
-                if (($_SESSION['status'] == 2 && $tujuan == $nama ) ||
-                ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $tujuan3 == $nama) || 
-                ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
-                  $query_tkk = mysqli_query($koneksi, 
-                  "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
-                  (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) || 
-                  (dosen_tkk = '$nama' && notif = 1)ORDER BY id_no DESC" );
-                  $data_tkk = mysqli_num_rows($query_tkk); ?>
-
-                  <span class="primary"><?php echo $data_tkk ?></span>
-
-                <?php }
-              //  php pesan masuk dosen koor1
-                else if (($_SESSION['status'] == 2 && $tujuan == $nama) || 
-                ($_SESSION['status'] == 2 && $_SESSION['status2'] == 2 && $tujuan2 == $nama) ||
-                ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
-                $query_koor = mysqli_query($koneksi, 
-                  "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
-                  (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) ORDER BY id_no DESC" );
-                  $data_koor = mysqli_num_rows($query_koor); ?>
-
-                  <span class="primary"><?php echo $data_koor ?></span>
-                <?php }
-                //  php pesan masuk dosen koor2
-                else if (($_SESSION['status'] == 2 && $tujuan == $nama) || 
-                ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
-                $query_koor = mysqli_query($koneksi, 
-                  "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
-                  (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) ORDER BY id_no DESC" );
-                  $data_koor = mysqli_num_rows($query_koor); ?>
-
-                  <span class="primary"><?php echo $data_koor ?></span>
-                <?php }
-                //  php pesan masuk dosen pemb
-                else if (($_SESSION['status'] == 2 && $tujuan == $nama)) {
-                $query_pemb = mysqli_query($koneksi, 
-                  "SELECT * FROM suratmahasiswa WHERE dosen1 = '$nama' && notif = 0 ORDER BY id_no DESC" );
-                  $data_pemb = mysqli_num_rows($query_pemb); ?>
-
-                  <span class="primary"><?php echo $data_pemb ?></span>
-                <?php }
-                } ?>
+                  <span class="primary"><?php echo $data ?></span>
+                <?php } ?>
               </a>
-
-              <!-- dropdown surat masuk -->
-              <ul class="dropdown-menu  dropdown-menu-end  px-1 py-1 me-sm-n3" aria-labelledby="dropdownMenuButton">
+              <ul class="dropdown-menu  dropdown-menu-end  px-0 py-0 me-sm-n3" aria-labelledby="dropdownMenuButton">
                 <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">
-                  <!-- dropdown surat masuk dosen dari mahasiswa -->
-                  <form action="" method = "post"> 
-                    <?php 
-                    include '../_database/config.php';
-                    $nama = $_SESSION['user'];
-                    $tkk = "Tidak Memerlukan Dosen TKK";
-                    $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
-                    while ($data = mysqli_fetch_array($query)) {
-                    $tujuan = $data['dosen1'];
-                    $tujuan2 = $data['dosen2'];
-                    $tujuan3 = $data['dosen_tkk'];
-                      // if (($tujuan == $nama || $tujuan2 == $nama) && ($data['status_dosen1'] == 0 || $data['status_dosen2'] == 0) && $data['notif'] == 0) { ?>
-                    <!-- dosen koor magang & proyek akhir -->
-                    <?php if ($_SESSION['status2'] == 2 && $data['status_dosen1'] == 2 && $data['notif'] == 1 && $tujuan2 == $nama) { ?>
+                  <!-- surat masuk kadep dari mahasiswa, dosen, tendik -->
+                  <?php 
+                  include '../_database/config.php';
+                  if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
+                    $query = mysqli_query($koneksi, 
+                    'SELECT * FROM suratmahasiswa WHERE status_kadep = 2 && notif = 3 
+                    UNION SELECT * FROM suratdosen WHERE status_kadep = 2 && notif = 1
+                    UNION SELECT * FROM surattendik  WHERE status_kadep = 2 && notif = 1 ORDER BY tanggal DESC' );
+                    while ($data = mysqli_fetch_array($query)) { ?>
+                  <form action="" method = "post">
                     <li class="mb-2">
-                      <a class="dropdown-item border-radius-md" href="./validasisurat.php">
+                      <a class="dropdown-item border-radius-md" href="">
                         <div class="d-flex py-1">
                           <div class="d-flex flex-column justify-content-center">
-                            <button type="submit" name="koor1" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                            <?php if ($data['status'] == 3) { ?>
+                            <button type="submit" name="mhsw" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                               <h6 class="text-sm font-weight-normal mb-1">
                                 <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
                                 <span class="font-weight"><?php echo $data['nama']; ?></span>
                               </h6>
                             </button>
+                            <!-- Menginput id surat -->
+                            <input name="id3" value=<?php echo $data['id_no'] ?> type="hidden">
                             <p class="text-xs text-left ps-0 text-secondary mb-0">
                               <?php echo $data['tanggal']; ?>
                             </p>
-                            <!-- Menginput id surat -->
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <!-- dosen koor PBL -->
-                    <?php } else if ($_SESSION['status3'] == 2 && $data['status_dosen1'] == 2 && $data['notif'] == 1 && $tujuan2 == $nama) { ?>
-                    <li class="mb-2">
-                      <a class="dropdown-item border-radius-md" href="./validasisurat.php">
-                        <div class="d-flex py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <button type="submit" name="koor2" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                            <?php } else if ($data['status'] == 2) { ?>
+                            <button type="submit" name="dsn" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                               <h6 class="text-sm font-weight-normal mb-1">
                                 <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
                                 <span class="font-weight"><?php echo $data['nama']; ?></span>
                               </h6>
                             </button>
+                            <!-- Menginput id surat -->
+                            <input name="id2" value=<?php echo $data['id_no'] ?> type="hidden">
                             <p class="text-xs text-left ps-0 text-secondary mb-0">
                               <?php echo $data['tanggal']; ?>
                             </p>
-                            <!-- Menginput id surat -->
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <!-- dosen pembimbing -->
-                    <?php } else if ($tujuan == $nama && $data['notif'] == 0) { ?>
-                    <li class="mb-2">
-                      <a class="dropdown-item border-radius-md" href="./validasisurat.php">
-                        <div class="d-flex py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <button type="submit" name="notif" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                            <?php } else if ($data['status'] == 4 ) { ?>
+                            <button type="submit" name="tndk" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                               <h6 class="text-sm font-weight-normal mb-1">
                                 <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
                                 <span class="font-weight"><?php echo $data['nama']; ?></span>
                               </h6>
                             </button>
+                            <!-- Menginput id surat -->
+                            <input name="id4" value=<?php echo $data['id_no'] ?> type="hidden">
                             <p class="text-xs text-left ps-0 text-secondary mb-0">
                               <?php echo $data['tanggal']; ?>
                             </p>
-                            <!-- Menginput id surat -->
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                            <?php } } } ?>
                           </div>
                         </div>
                       </a>
                     </li>
-                    <!-- dosen TKK -->
-                    <?php } else if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $data['notif'] == 1 && $tujuan3 == $nama) { ?>
-                    <li class="mb-2">
-                      <a class="dropdown-item border-radius-md" href="./validasisurat.php">
-                        <div class="d-flex py-1">
-                          <div class="d-flex flex-column justify-content-center">
-                            <button type="submit" name="tkk" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
-                              <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
-                                <span class="font-weight"><?php echo $data['nama']; ?></span>
-                              </h6>
-                            </button>
-                            <p class="text-xs text-left ps-0 text-secondary mb-0">
-                              <?php echo $data['tanggal']; ?>
-                            </p>
-                            <!-- Menginput id surat -->
-                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <?php } } ?>
-                    </form>
+                  </form>
                 </div>
-              
               </ul>
-              <!-- akhir dropdown -->
             </li>
-            <!-- and notif -->
-                <li class="nav-item px-2 d-flex align-items-center">
-                  <!-- <a href="javascript:;" class="nav-link text-body p-0">
-                    <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                  </a> -->
-                </li>
+            <li class="nav-item px-2 d-flex align-items-center">
+              <!-- <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a> -->
+            </li>
             <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
@@ -556,160 +430,150 @@
     </nav>
     <!-- End Navbar -->
 
-<!-- Tabel Validasi -->
-<div class="container-fluid py-4">
+
+
+    <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-12">
-          <div class="card mb-4">               
-            <div class="card-body px-0 pt-0 mt-0 py-0 my-0 pb-2">
-            <div class="table-responsive scrollbar-deep-purple bordered-deep-purple thin mt-0 pt-0" style = "height:530px" >
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-center">No</th>
-                      <th class="text-center">Nama Mahasiswa</th>
-                      <th class="text-center">Angkatan</th>
-                      <th class="text-center">Tempat Magang</th>
-                      <th class="text-center">Dosen Pembimbing</th>
-                      <th class="text-center">Proposal Magang</th>
-                     
-                     
-                    </tr>
-                  </thead>
-                  <!-- php tabel -->
-                  <?php
-                  include '../_database/config.php'; //panggil setiap ingin koneksi ke data
-                  $nama = $_SESSION['user'];
-                  $query = mysqli_query($koneksi, "SELECT * FROM permohonanpmb ");
-                  $no = 0;
-                  $no2 = $no++;
-                  while ($data = mysqli_fetch_array($query)) { 
-                    $nrp = $data['id_nrp'];
-                    $query_mhs = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa where id_nrp = '$nrp' and perihal = 'Surat Magang' ");
-                    $data2 = mysqli_fetch_array($query_mhs); ?>
-                  <!-- tabel -->
-                  <tbody>
-                    <tr>
-                    
-                      <td class="text-center"><?php echo $no++ ?></td>
-                      
-                  <!-- nama -->
-                    <td>
-                      <h6 class="mb-0 text-sm text-center"><?php echo $data['nama'] ?></h6>
-                    </td>
-                      <!-- nrp -->
-                      <td>
-                      <h6 class="mb-0 text-sm text-center"><?php echo $data['angkatan'] ?></h6>
-                      </td>
-                      <!-- progres -->
-                      <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama_perusahaan'] ?></h6>
-                      </td>
-
-                      
-                        <?php if ($data['status_dosen1'] == 0) {
-                         ?>
-                          <form action="./pilihdosbing.php" method="post">
-                          <input type="hidden" name = "lokasi" value = "magang">
-                          <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
-                          <td class = "text-center" style = "height:20px">
-                          <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light">Plot</button></h6>
-                          </td>
-                          </form>
-                      <?php   } 
-                        else { ?> 
-                        <td>
-                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['dosen1'] ?></h6>
-                        </td>
-                        <?php }
-                     
-                    
-                             if ($data['status_dosen1'] == 2  && $data2['status_kadep'] == 2 ) {?> 
-                      <td> 
-                          <div class="text-center"> 
-                          
-                            <a href="../pagesmahasiswa/<?php echo $data2['file'] ?>" target="_blank">
-                            <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
-                          </div>
-                      </td>
-
-                     
-                      
-                      <?php  }
-                        else if ($data['status_dosen1'] == 0) { ?>
-                           <td> <?php echo "Menunggu Anda Memilihkan Dosen Pembimbing"; ?></td>
-                       <?php }
-                       else { ?>
-                         <td><?php echo "Menunggu Surat Magang Disetujui Kepala Departemen" ?></td>
-                         <?php   }  } 
- 
-                      if ($no == 1) { ?>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
-
-
-
-                      <?php }  ?>
-                    
-
-              
-                     
-                   
-                    </tr>
-                     <!-- update catatan kadep -->
-                  <?php 
-                   include "../_database/config.php";
-                   if(isset($_POST['update'])){
-                     $catatan = $_POST['catatan'];
-                     $id = $_POST['id'];
-                     
-                     
-                     $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `catatan`='$catatan' WHERE id_no = '$id' ");
-                     if($query){
-                       echo '<a href="../pages_dosen/validasidsn.php"></a>';
-                     }
-                     else {
-                      ?><script><?php $_SESSION["catatan"] = true;?></script> 
-                      <script>history.pushState({}, "", "")</script><?php
-                     }
-                   }?>  
-                   
-                   <!-- php update surat --> <?php
-                      
-                    include "../_database/config.php";
-                    if(isset($_POST['update'])){
-                      $status = $_POST['sk'];
-                      $id = $_POST['id'];
-                      
-                      
-                      $query = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_kadep`='$status' WHERE id_no = '$id' ");
-                      if($query){
-                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                      else {
-                        ?><script><?php $_SESSION["input"] = true;?></script> 
-                        <script>history.pushState({}, "", "")</script><?php
-                      }
-                    }
-
-                    ?>
-                  </tbody>
-                </table>
+      <div class="col">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Form Informasi Tempat Magang</h6>
+                </div>
+                
+                 
               </div>
             </div>
+
+           
+
+            <form action="" method="post">
+                <div>
+            <div class="form-group d-flex my-0">
+                <!-- Nama Mahasiswa -->
+            <div class="card-header pb-0 p-3" style = "width:400px">
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                <label name="nm" class="form-control" aria-label="default input example"><?php echo $data['nama'] ?></label>
+                </div>
+              </div>
+            </div>
+            <!-- NRP Mahasiswa -->
+            <div class="card-header pb-0 p-3" style = "width:400px">
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label" >NRP Mahasiswa</label>
+                <label name="nrp" class="form-control" aria-label="default input example"><?php echo $data['id_nrp'] ?></label>
+                </div>
+              </div>
+            </div>
+            <!-- Angkatan Mahasiswa -->
+            <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label">Angkatan</label>
+                <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data['angkatan'] ?></label>
+                </div>
+              </div>
+            </div>
+                   </div>
+            <!-- Asal Lab Mahasiswa -->
+            <div class="card-header pb-0 pt-0 p-3 my-0">
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label">Asal Lab</label>
+                <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['nama_lab'] ?></label>
+                    </div>
+              </div>
+            </div>
+            <!-- Nama Tempat Magang -->
+            <div class="form-group d-flex my-0">
+            <div class="card-header pb-0 p-3" style = "width:550px" >
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label">Nama Tempat Magang</label>
+                <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['nama_perusahaan'] ?></label>
+                    </div>
+                    </div>
+              </div>
+            
+            <!-- Alamat Perusahaan -->
+            <div class="card-header pb-0 p-3" style = "width:550px">
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label">Alamat Perusahaan</label>
+                <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['alamat_perusahaan'] ?></label>
+                    </div>
+                </div>
+              </div>
+              </div>
+            
+              <!-- Pilih Dosen Pembimbing -->
+              <div class="card-header pb-0 p-3 my-0" style = "width:550px">
+              <div class="row">
+                <div class="mb-0">
+                <label for="formFile" class="form-label">Dosen Pembimbing</label>
+                <select name="ds1"  class="form-select" aria-label="Default select example" >
+                <option value="Tidak Memerlukan Dosen Pembimbing" selected>Pilih Dosen Pembimbing</option>
+                <?php
+                include '../_database/config.php';
+                $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
+                while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
+                <?php } ?>
+                </select>
+                    </div>
+                </div>
+              </div>
+              
+
+
+            
+
+
+                  <div class="d-flex justify-content-center mt-3">
+                    <input type="hidden" name = "id" value = "<?php echo $id ?>" >
+                        <button type="submite" name="input" class="btn bg-gradient-info">Kirim</button>
+                        
+                        </div>
+                        </div>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+            
           </div>
         </div>
       </div>
-      
-
     </div>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   </main>
-  
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
@@ -728,36 +592,25 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses']) : ?>
+  
+
+  
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukses3']) : ?>
         <script>
             Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Berhasil Melakukan Perubahan',
-            text: 'Perubahan Akan Disimpan',
+            title: 'Berhasil Membatalkan Pengiriman',
             showConfirmButton: false,
             timer: 2000
           })
         </script>
-    <?php unset($_SESSION['sukses']); ?>
+    <?php unset($_SESSION['sukses3']); ?>
     <?php endif; ?>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['sukses2']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Berhasil Melakukan Ploting Dosbing',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['sukses2']); ?>
-    <?php endif; ?>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>
             Swal.fire({
@@ -770,20 +623,5 @@
         </script>
     <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['catatan']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Gagal memberikan catatan',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['catatan']); ?>
-    <?php endif; ?>
-</body>
 
 </html>
