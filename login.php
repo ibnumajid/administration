@@ -61,6 +61,7 @@ if($cek > 0){
             $_SESSION['NIP'] =$data2['nrp_mhs'];
             $_SESSION['status'] = $data['status'];
             $_SESSION['status2'] = $data['status2'];
+            $_SESSION['angkatan'] = $data2['angkatan'];
             $_SESSION['alert'] = true;} 
         header("location:./pagesmahasiswa/mahasiswa.php");
     }

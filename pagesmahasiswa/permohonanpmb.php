@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if ($_SESSION['user'] == '' || ($_SESSION['status'] == 4 && $_Session['status2'] == 1)) {
   header("location:../index.php");
 }
@@ -20,7 +21,7 @@ if(isset($_POST['input']))
   $perusahaan = $_POST['tm'];
   $alamat = $_POST['am'];
  
-  $query = mysqli_query($koneksi,"INSERT into permohonanpmb values('','$nama','$nrp','$angkatan','$nama_lab', '$perusahaan', '$alamat', '', '0',  sysdate(), '2')");
+  $query = mysqli_query($koneksi, "INSERT into permohonanpmb values('','$nama','$nrp','$angkatan','$nama_lab', '$perusahaan', '$alamat', '', '0',  sysdate(), '2')");
 
     if($query)
     {
@@ -403,7 +404,7 @@ if(isset($_POST['batal'])) {
                 <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
                     <?php } 
                     else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['nama_perusahaan'] ?></label>       
+                        <label name="tm" class="form-control" aria-label="default input example"><?php echo $data['nama_perusahaan'] ?></label>       
                    <?php }
                     else { ?>
                 <input name="tm" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Tempat Magang" >
@@ -425,7 +426,7 @@ if(isset($_POST['batal'])) {
                 <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
                     <?php } 
                      else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['alamat_perusahaan'] ?></label>       
+                        <label name="am" class="form-control" aria-label="default input example"><?php echo $data['alamat_perusahaan'] ?></label>       
                    <?php }
                     else { ?>
                 <input name="am" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Alamat Magang" >
@@ -445,9 +446,9 @@ if(isset($_POST['batal'])) {
                 </div>
               </div>
             </div>
-              </div>
+              
                 <?php } ?>
-
+                </div>
 
            
                     <div class="d-flex justify-content-center ">
@@ -476,11 +477,12 @@ if(isset($_POST['batal'])) {
                         <button type="submite" name="input" class="btn bg-gradient-info">Kirim</button>
                         
                        <?php } ?>
-
+                      <input type="hidden" name = "id" value = "<?php echo $data['id_no'] ?>">
                     </div>
+                    </form>
                 </div>
             </div>
-            </form>
+           
           </div>
         </div>
       </div>
@@ -540,6 +542,20 @@ if(isset($_POST['batal'])) {
           })
         </script>
     <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Diajukan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
