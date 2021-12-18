@@ -2,11 +2,11 @@
 session_start();
 include('_database/config.php');
  
-$user = $_POST['user'];
-$pass = $_POST['pass'];
-$antiinject = stripos($user, "or");
-$antiinject2 = strpos($user, "|");
-$tambah = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user='$user' and pass='$pass'");
+$user = $_POST['user']; //Username masuk
+$pass = $_POST['pass']; //Password masuk
+$antiinject = stripos($user, "or"); //Menghilangkan kemampuan operator or untuk berada dalam form
+$antiinject2 = strpos($user, "|");  //Menghilangkan kemampuan operator or untuk berada dalam form
+$tambah = mysqli_query($koneksi, "SELECT * FROM masuk WHERE user='$user' and pass='$pass'"); //Menyeleksi query dari tabel masuk
 
 $cek = mysqli_num_rows($tambah);
 
@@ -39,44 +39,44 @@ if($cek > 0){
         $_SESSION['alert'] = true;
         header("location:pagesadmin/adminsuper.php");
     }
-    elseif ($data['status'] == '2')
+    elseif ($data['status'] == '2') //ketika login maka user akan membawa status
     {
         session_start();
-        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp ='$user' ");
+        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp ='$user' "); //mencari tau apakah username yang masuk ada di dalam database
         $data2 = mysqli_fetch_assoc($tambah2);{
-            $_SESSION['user'] =$data2['nama_anggota'];
-            $_SESSION['NIP'] = $data2['id_npp'];
-            $_SESSION['status'] = $data['status'];
-            $_SESSION['status2'] = $data['status2'];
-            $_SESSION['status3'] = $data['status3'];
-            $_SESSION['alert'] = true;}    
-        header("location:./pages_dosen/dosen.php");
+            $_SESSION['user'] =$data2['nama_anggota']; //Membuat data nama menjadi session
+            $_SESSION['NIP'] = $data2['id_npp']; //Membuat data nomor civitas its menjadi session
+            $_SESSION['status'] = $data['status']; //Membuat data status menjadi session
+            $_SESSION['status2'] = $data['status2']; //Membuat data status tambahan menjadi session
+            $_SESSION['status3'] = $data['status3']; //Membuat data status tambahan menjadi session
+            $_SESSION['alert'] = true;}  //memberikan notifikasi berhasil masuk
+        header("location:./pages_dosen/dosen.php"); //jika user adalah dosen maka akan masuk dashboard dosen
     }
-    elseif ($data['status'] == '3')
+    elseif ($data['status'] == '3') //ketika login maka user akan membawa status
     {
         session_start();
-        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_mhs WHERE nrp_mhs='$user' ");
+        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_mhs WHERE nrp_mhs='$user' "); //mencari tau apakah username yang masuk ada di dalam database
         $data2 = mysqli_fetch_assoc($tambah2);{
-            $_SESSION['user'] =$data2['nama_mhs'];
-            $_SESSION['NIP'] =$data2['nrp_mhs'];
-            $_SESSION['status'] = $data['status'];
-            $_SESSION['status2'] = $data['status2'];
-            $_SESSION['angkatan'] = $data2['angkatan'];
-            $_SESSION['alert'] = true;} 
-        header("location:./pagesmahasiswa/mahasiswa.php");
+            $_SESSION['user'] =$data2['nama_mhs']; //Membuat data nama menjadi session
+            $_SESSION['NIP'] =$data2['nrp_mhs']; //Membuat data nomor civitas its menjadi session
+            $_SESSION['status'] = $data['status']; //Membuat data status menjadi session
+            $_SESSION['status2'] = $data['status2']; //Membuat data status tambahan menjadi session
+            $_SESSION['angkatan'] = $data2['angkatan']; //Membuat data angkatan menjadi session
+            $_SESSION['alert'] = true;}  //memberikan notifikasi berhasil masuk
+        header("location:./pagesmahasiswa/mahasiswa.php"); //jika user adalah mahasiswa maka akan masuk dashboard mahasiswa
     }
-    elseif ($data['status'] == '4')
+    elseif ($data['status'] == '4') //ketika login maka user akan membawa status
     {
         session_start();
-        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_tendik WHERE nip_tdk = '$user' ");
+        $tambah2 = mysqli_query($koneksi, "SELECT * FROM data_tendik WHERE nip_tdk = '$user' "); //mencari tau apakah username yang masuk ada di dalam database
         $data2 = mysqli_fetch_assoc($tambah2);{ 
-            $_SESSION['user'] =$data2['nama_tdk'];
-            $_SESSION['NIP'] =$data2['nip_tdk'];
-          $_SESSION['status2'] = $data['status2'];
-            $_SESSION['status'] = $data['status'];
-            $_SESSION['alert'] = true;
+            $_SESSION['user'] =$data2['nama_tdk']; //Membuat data nama menjadi session
+            $_SESSION['NIP'] =$data2['nip_tdk']; //Membuat data nomor civitas its menjadi session
+          $_SESSION['status2'] = $data['status2']; //Membuat data status tambahan menjadi session
+            $_SESSION['status'] = $data['status']; //Membuat data status menjadi session
+            $_SESSION['alert'] = true; //memberikan notifikasi berhasil masuk
         }
-        header("location:./pages/pagestendik/tendik.php");
+        header("location:./pages/pagestendik/tendik.php"); //jika user adalah tendik maka akan masuk dashboard tendik
     }
     elseif ($data['status'] == '5')
     {
