@@ -1,7 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
-ini_set('display_errors', 0);
+
 
 
 if ($_SESSION['user'] == '' || ($_SESSION['status'] == 4 && $_Session['status2'] == 1)) {
