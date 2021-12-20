@@ -1,5 +1,7 @@
 <?php
 session_start();
+error_reporting(0);
+ini_set('display_errors', 0);
 
 
 if ($_SESSION['user'] == '' || ($_SESSION['status'] == 4 && $_Session['status2'] == 1)) {
@@ -376,16 +378,34 @@ if(isset($_POST['batal'])) {
                 <div class="mb-0">
                 <label for="formFile" class="form-label">Nama Lab</label>
                 <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2 ) { ?>
-                <input name="nl" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_lab'] ?>" >
+                  <select id="jenis_surat" name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
+                            <option selected><?php echo $data['nama_lab'] ?></option>
+                            <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
+                            <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
+                            <option value="Mikroelektronika dan Sistem Embedded">Mikroelektronika dan Sistem Embedded</option>
+                            <option value="Motor Penggerak dan Sistem Elektronika Daya">Motor Penggerak dan Sistem Elektronika Daya</option>
+                        </select>
                 
                 <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !=2) { ?>
-                <input name="nl" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_lab'] ?>" >
+                  <select id="jenis_surat" name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
+                            <option selected><?php echo $data['nama_lab'] ?></option>
+                            <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
+                            <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
+                            <option value="Mikroelektronika dan Sistem Embedded">Mikroelektronika dan Sistem Embedded</option>
+                            <option value="Motor Penggerak dan Sistem Elektronika Daya">Motor Penggerak dan Sistem Elektronika Daya</option>
+                        </select>
                     <?php } 
                      else if ($data['status_dosen1'] == 2) { ?>
                         <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['nama_lab'] ?></label>       
                    <?php }
                     else { ?>
-                <input name="nl" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Lab" >
+                        <select name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
+                            <option selected>Pilih Lab</option>
+                            <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
+                            <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
+                            <option value="Mikroelektronika dan Sistem Embedded">Mikroelektronika dan Sistem Embedded</option>
+                            <option value="Motor Penggerak dan Sistem Elektronika Daya">Motor Penggerak dan Sistem Elektronika Daya</option>
+                        </select>
                    <?php }
                     ?>
                     </div>
@@ -460,7 +480,7 @@ if(isset($_POST['batal'])) {
                   <h6 class="mb-0 text-danger">Anda Membatalkan Permohonan Pencarian Dosen Pembimbing <br></h6>
                   <?php } 
                    else if ($data['status_ajuan'] == 2) { ?> 
-                  <h6 class="mb-0 text-info">Form Telah Dikirim dan Sedang Diproses Dosen Koordinator <br></h6>
+                  <h6 class="mb-0 text-info text-center">Form Telah Dikirim dan Sedang Diproses Dosen Koordinator <br> Anda Bisa Melakukan Perubahan atau Membatalkan Permohonan</h6>
                   <?php } ?>
                   </div>
                   <div class="d-flex justify-content-center mt-3">
