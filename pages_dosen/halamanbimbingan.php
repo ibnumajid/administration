@@ -494,7 +494,7 @@ include "../_database/config.php";
                         <input name="id" value = "<?php echo $id ?>" type="hidden">
                         <input type="hidden" name="lokasi" value="<?php echo $lokasi ?>">
 
-                          <?php if ($data['status_dosen1'] == 0) { ?>
+                          <?php if ($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) { ?>
                             <!-- persetujuan surat -->
                         <label for="formFile" class="form-label">Apakah Anda Menyetujui Proposal Ini ?</label>
                         <div class="form-check">
@@ -518,7 +518,7 @@ include "../_database/config.php";
 
                   <div class="mx-4">
                     <button type="button" class="btn bg-gradient-secondary" onclick="goBack()">Kembali</button>
-                    <?php if ($data['status_dosen1'] == 0) { ?>
+                    <?php if ($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) { ?>
                     <button type="submite" name="update" class="btn bg-gradient-info">OK</button>
                     <?php } ?>
                 </form>
