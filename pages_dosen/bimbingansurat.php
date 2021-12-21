@@ -77,20 +77,17 @@
 
 <body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
-        <div class="sidenav-header">
-          <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-          <a class="navbar-brand m-0" href="">
-            
-            <span class="ms-1 font-weight-bold">Sistem Administrasi Kadep</span>
-          </a>
-        </div>
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href="">
+        <span class="ms-1 font-weight-bold">Sistem Administrasi Kadep</span>
+      </a>
+    </div>
+    <hr class="horizontal dark mt-0">
+    <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
 
-        <!--Nefbar-->
-        <hr class="horizontal dark mt-0">
-        <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-          <ul class="navbar-nav">
-            
-          <!-- home  -->
+      <!-- home  -->
         <li class="nav-item">
           <a class="nav-link  " href="./dosen.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -141,10 +138,10 @@
           <!-- Validasi Surat Dosen -->
           <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
-            <a class="nav-link active" href="./validasidsn.php">
+            <a class="nav-link  " href="./validasidsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
               </div>
               <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
@@ -152,19 +149,18 @@
           </li>
           <?php } ?>
 
-                   <!-- Validasi Surat Tendik -->
-                   <?php if ($_SESSION['status2'] == '5') {?>
+          <!-- Validasi Surat Tendik -->
+          <?php if ($_SESSION['status2'] == '5') {?>
           <li class="nav-item">
-            <a class="nav-link  " href="./validasitndk.php">
+            <a class="nav-link active" href="./validasitndk.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z"/>
                 </svg>
               </div>
               <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
             </a>
           </li>
-
           <?php } ?>
 
 
@@ -172,7 +168,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Navigasi Dosen</h6>
         </li>
         <?php } ?>
-          
+
           <!-- Permohonan Surat -->
           <?php if($_SESSION['status'] !== '5'){ ?>
           <li class="nav-item">
@@ -186,102 +182,75 @@
             </a>
           </li>
           <?php } ?>
-
-           <!--Validasi Surat-->
+        
+       
+        <!--Validasi Surat-->
         <li class="nav-item">
-          <a class="nav-link  " href="./bimbingansurat.php">
+          <a class="nav-link active" href="./bimbingansurat.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-open" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.47 1.318a1 1 0 0 0-.94 0l-6 3.2A1 1 0 0 0 1 5.4v.817l5.75 3.45L8 8.917l1.25.75L15 6.217V5.4a1 1 0 0 0-.53-.882l-6-3.2ZM15 7.383l-4.778 2.867L15 13.117V7.383Zm-.035 6.88L8 10.082l-6.965 4.18A1 1 0 0 0 2 15h12a1 1 0 0 0 .965-.738ZM1 13.116l4.778-2.867L1 7.383v5.734ZM7.059.435a2 2 0 0 1 1.882 0l6 3.2A2 2 0 0 1 16 5.4V14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5.4a2 2 0 0 1 1.059-1.765l6-3.2Z" />
               </svg>
             </div>
             <span class="nav-link-text ms-1">Bimbingan Proposal</span>
           </a>
         </li>
-          
-          <!--Validasi Surat MAHASISWA-->
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasisurat.php">
+
+        <!--Validasi Surat Mahasiswa-->
+        <li class="nav-item">
+          <a class="nav-link  " href="../pages_dosen/validasisurat.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
                   <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
-            </a>
-          </li>
+            <span class="nav-link-text ms-1">Validasi Surat Mahasiswa</span>
+          </a>
+        </li>  
 
-          <!-- Validasi Surat Dosen -->
-          <!-- <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasidsn.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Dosen</span>
-            </a>
-          </li>
-          <?php } ?> -->
 
-          <!-- Validasi Surat Tendik -->
-          <!-- <?php if ($_SESSION['status2'] == '5') {?>
-          <li class="nav-item">
-            <a class="nav-link  " href="./validasitndk.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Validasi Surat Tendik</span>
-            </a>
-          </li>
-          <?php } ?> -->
-
-          <!-- DATA MAGANG -->
-          <?php if($_SESSION['status2'] == '2'){ ?>
-          <li class="nav-item"> 
-            <a class="nav-link  " href="./datamagang.php">
-              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
-                </svg>
-              </div>
-              <span class="nav-link-text ms-1">Data Magang</span>
-            </a>
-          </li>  
-          <?php } ?>
-
-          <!-- MANDAT KADEP -->
-          <!-- <?php if($_SESSION['status'] !== '5'){ ?>
-          <li class="nav-item"> 
+        <!-- Mandat Kadep -->
+        <li class="nav-item">
             <a class="nav-link  " href="./rekapmndt.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
+                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z" />
                 </svg>
               </div>
               <span class="nav-link-text ms-1">Mandat Kadep</span>
             </a>
-          </li>  
-          <?php } ?> -->
+          </li>
+        
 
-          <!-- REKAP SURAT -->
-          <?php if($_SESSION['status'] !== '5'){ ?>
-          <li class="nav-item"> 
-            <a class="nav-link  " href="./rekapdsn.php">
+        <!-- REKAP SURAT -->
+        <?php if($_SESSION['status'] !== '5'){ ?>
+        <li class="nav-item"> 
+          <a class="nav-link  " href="./rekapdsn.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
-                  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-text-fill" viewBox="0 0 16 16">
+                    <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
+                  </svg>
+              </div>
+            <span class="nav-link-text ms-1">Rekap Surat</span>
+          </a>
+        <?php } ?>
+
+      <!--SURAT MASUK KADEP -->
+ <!-- <?php if($_SESSION['status2'] == '5'){ ?>
+      </li> 
+       <li class="nav-item"> 
+        <a class="nav-link  " href="./suratmskkdp.php">
+              <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                 </svg>
               </div>
-              <span class="nav-link-text ms-1">Rekap Surat</span>
-            </a>
-          </li>  
-          <?php } ?>
-        
-        <!--profil-->
+          <span class="nav-link-text ms-1">Surat Masuk dari Mahasiswa</span>
+        </a>
+      </li> <?php } ?>
+        </li>
+
+       <-- profil-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -294,12 +263,11 @@
             </div>
             <span class="nav-link-text ms-1">Ganti Password</span>
           </a>
-        </li>
+  </li>
       </ul>
     </div>
-        <!--barusan dicopy nefbar-->
 
-      </aside>
+  </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -307,16 +275,12 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Kadep</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Dosen</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Tendik</li>
           </ol>
-          <h5 class="font-weight-bolder mb-0">Validasi Surat Dosen</h5>
+          <h5 class="font-weight-bolder mb-0">Validasi Surat Tendik</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <!-- <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            </div> -->
           </div>
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
@@ -325,7 +289,7 @@
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
-            <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+            <!--li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">
                   <i class="sidenav-toggler-line"></i>
@@ -333,11 +297,11 @@
                   <i class="sidenav-toggler-line"></i>
                 </div>
               </a>
-            </li> -->
+            </li-->
             <li class="nav-item px-3 d-flex align-items-center">
-              <!-- <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i> -->
-              </a>
+              <!--a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a-->
             </li>
             <!-- Notif -->
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
@@ -440,14 +404,14 @@
     </nav>
     <!-- End Navbar -->
 
-    <!-- Tabel Validasi -->
-    <div class="container-fluid py-4">
+<!-- Tabel Validasi -->
+<div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
           <div class="form-group d-flex justify-content-around mt-4 my-0 md-0">
           <form action = "" method = "post">
-                <input type="hidden" name = "filteridk" value = "12">
+                <input type="hidden" name = "filterid" value = "12">
                 <?php if ($_POST['filterid'] == 0 || $_POST['filterid'] == 2 || $_POST['filterid'] == 1 ) { ?>
                <button type = "submit" name = "filterall" class = "btn btn-outline-info">Lihat Semua</button>
                <?php } 
@@ -490,38 +454,36 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th class = "text-center">Nama Dosen</th>
-                      <th class="text-center">NIP Dosen</th>
-                      <th class = "text-center">Perihal</th>
+                      <th>Nama Mahasiswa</th>
+                      <th class="text-center">Angkatan</th>
+                      <th class="text-center">Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
-                      <th class="text-center">Persetujuan Kadep</th>
+                      <th class="text-center">Status Bimbingan</th>
+                     <th></th>
+                     
                     </tr>
                   </thead>
                   <!-- php tabel -->
                   <?php
                   include '../_database/config.php'; //panggil setiap ingin koneksi ke data
                   $nama = $_SESSION['user'];
+                  $query = mysqli_query($koneksi, 'SELECT * FROM bimbingan ORDER BY id_no DESC');
                   $no = 0;
                   $no2 = $no++;
-                  $query = mysqli_query($koneksi, 'SELECT * FROM suratdosen ORDER BY id_no DESC');
-                  
                   while ($data = mysqli_fetch_array($query)) {
-                   
-                  if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
-                    $idf = $_POST['filterid'];
-                      if ($data['status_kadep'] == $idf) {
-                 
+                if (($data['dosen1'] == $_SESSION['user']) || ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA" && $data['dosen_tkk'] == $_SESSION['user'])) {
+                    if (isset($_POST['filter0']) || isset($_POST['filter1']) || isset( $_POST['filter1']) || isset( $_POST['filter2'])) {
+                      $idf = $_POST['filterid'];
+                        if ($data['status_dosen1'] == $idf || $data['status_dosentkk'] == $idf) {
 
-
-                    
-                  ?> 
+   ?>   <!-- Persetujuan yang hanya dilihat oleh kadep saja -->
                   <!-- tabel -->
                   <tbody>
                     <tr>
-                    <td class="text-center"><?php echo $no++ ?></td>
-                       <!-- nama -->
-                       
-                  <form action="./validasidosen.php" method="post">
+                      <!-- nama -->
+                      <td class="text-center"><?php echo $no++ ?></td>
+                  <!-- nama -->
+                  <form action="./halamanbimbingan.php" method="post">
                     <input type="hidden" name = "lokasi" value = "permohonan">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
@@ -530,91 +492,132 @@
                   </form> 
                       <!-- nrp -->
                       <td>
-                      <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['angkatan'] ?></h6>
                       </td>
                       <!-- progres -->
                       <td>
-                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
                       </td>
                       <!-- tanggal -->
                       <td class="align-middle text-center">
                         <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                       </td>
                       <!-- status surat -->
-                        <?php if ($data['status_kadep'] == 0) {?>
+                        <?php if ($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) {?>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
+                        <span class="badge badge-sm bg-gradient-secondary" >Belum Diproses</span>
                       </td> <?php } 
-                            else if ($data['status_kadep'] == 1) {?>
+                            else if ($data['status_dosen1'] == 1 || $data['status_dosentkk'] == 1) {?>
                         <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
+                        <span class="badge badge-sm bg-gradient-danger">Ditolak</span>
                       </td> 
                             <?php }
 
-                            else if ($data['status_kadep'] == 2) {?>
+                            else if ($data['status_dosen1'] == 2 || $data['status_dosentkk'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
+                        <span class="badge badge-sm bg-gradient-success" >Disetujui</span>
                       </td> <?php } ?> 
+                      
+                      <?php  } }
 
-                     <?php } }
-                     
-                    else { ?>
-
-                      <!-- tabel -->
-                      <tbody>
-                        <tr>
-                        <td class="text-center"><?php echo $no++ ?></td>
-                          <!-- nama -->
-                         
-                  <form action="./validasidosen.php" method="post">
+                      else { ?>
+                        <tbody>
+                    <tr>
+                      <!-- nama -->
+                      <td class="text-center"><?php echo $no++ ?></td>
+                  <!-- nama -->
+                  <form action="./halamanbimbingan.php" method="post">
+                    <input type="hidden" name = "lokasi" value = "permohonan">
                     <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
                     <td style = "height:20px">
                       <h6 style = "height:35px" class="text-sm-left ps-1 "><button class="btn btn-light"><?php echo $data['nama'] ?></button></h6>
                     </td>
                   </form> 
-                          <!-- nrp -->
-                          <td>
-                          <h6 class="mb-0 text-sm"><?php echo $data['id_npp'] ?></h6>
-                          </td>
-                          <!-- progres -->
-                          <td>
-                          <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
-                          </td>
-                          <!-- tanggal -->
-                          <td class="align-middle text-center">
-                            <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
-                          </td>
-                          <!-- status surat -->
-                            <?php if ($data['status_kadep'] == 0) {?>
-                          <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_kadep'] ?>">Belum Diproses</span>
-                          </td> <?php } 
-                                else if ($data['status_kadep'] == 1) {?>
+                      <!-- nrp -->
+                      <td>
+                      <h6 class="mb-0 text-sm text-center"><?php echo $data['angkatan'] ?></h6>
+                      </td>
+                      <!-- progres -->
+                      <td>
+                        <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
+                      </td>
+                      <!-- tanggal -->
+                      <td class="align-middle text-center">
+                        <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
+                      </td>
+                      <!-- status surat -->
+                        <?php if ($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) {?>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-secondary">Belum Diproses</span>
+                      </td> <?php } 
+                            else if ($data['status_dosen1'] == 1 || $data['status_dosentkk'] == 1) {?>
+                        <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-danger" >Ditolak</span>
+                      </td> 
+                            <?php }
+
+                            else if ($data['status_dosen1'] == 2 || $data['status_dosentkk'] == 2) {?>
                             <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_kadep'] ?>">Ditolak</span>
-                          </td> 
-                                <?php }
-    
-                                else if ($data['status_kadep'] == 2) {?>
-                                <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_kadep'] ?>">Diterima</span>
-                          </td> <?php } 
-                      
-                     }  }
+                        <span class="badge badge-sm bg-gradient-success" >Disetujui</span>
+                      </td> <?php } ?> 
+
+                   <?php    } } }
+ 
+                      if ($no == 1) { ?>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+
+
+
+                      <?php }  ?>
                     
-                    ?>
+
                       <!-- and php tabel -->
                     <!-- and modal-->
                      
                    
                     </tr>
-                     <!-- php update surat dan catatan -->
-                  
+                     <!-- update catatan kadep -->
+                  <?php 
+                   include "../_database/config.php";
+                   if(isset($_POST['update'])){
+                     $catatan = $_POST['catatan'];
+                     $id = $_POST['id'];
+                     
+                     
+                     $query = mysqli_query($koneksi, "UPDATE surattendik SET `catatan`='$catatan' WHERE id_no = '$id' ");
+                     if($query){
+                       echo '<a href="../pages_dosen/validasidsn.php"></a>';
+                     }
+                     else {
+                      ?><script><?php $_SESSION["catatan"] = true;?></script> 
+                      <script>history.pushState({}, "", "")</script><?php
+                     }
+                   }?>  
+                   
+                   <!-- php update surat --> <?php
+                      
+                    include "../_database/config.php";
+                    if(isset($_POST['update'])){
+                      $status = $_POST['sk'];
+                      $id = $_POST['id'];
+                      
+                      
+                      $query = mysqli_query($koneksi, "UPDATE surattendik SET `status_kadep`='$status' WHERE id_no = '$id' ");
+                      if($query){
+                        ?><script><?php $_SESSION["sukses"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                      }
+                      else {
+                        ?><script><?php $_SESSION["input"] = true;?></script> 
+                        <script>history.pushState({}, "", "")</script><?php
+                      }
+                    }
 
-
-                  
-
-                  
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -647,17 +650,46 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <?php if (@$_SESSION['sukses']) : ?>
+    <?php if(@$_SESSION['sukses']) : ?>
         <script>
             Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Berhasil Merespon',
-                showConfirmButton: false,
-                timer: 2000
-            })
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Melakukan Perubahan',
+            text: 'Perubahan Akan Disimpan',
+            showConfirmButton: false,
+            timer: 2000
+          })
         </script>
-        <?php unset($_SESSION['sukses']); ?>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['input']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Gagal Diajukan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['input']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['catatan']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'warning',
+            title: 'Gagal memberikan catatan',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['catatan']); ?>
     <?php endif; ?>
 </body>
 
