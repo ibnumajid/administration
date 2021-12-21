@@ -5,64 +5,6 @@ session_start();
   header("location:../index.php");
   }
 ?>
-<?php
-include '../_database/config.php';
-if(isset($_POST['input']))
-{
-$nama_mhsw = $_POST['nm'];
-$id_nrp = $_POST['nrp'];
-$perihal = $_POST['sr'];
-$angkatan = $_POST['angkatan'];
-$lab = $_POST['lab'];
-$keterangan = $_POST['keterangan'];
-$judul_ta = $_POST['ta'];
-$dosen1 = $_POST['ds1'];
-$dosen_tkk = $_POST['tkk'];
-$nama_file = basename($_FILES['fl']['name']);
-$ukuran = $_FILES['fl']['size'];
-$tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
-
-$max = 1024 * 5000;
-$ekstensi = "pdf";
-
-
-$url = $id_nrp.'_'.$nama_file;
-
-
-if ($ukuran > $max && $tipe !== $ekstensi)
-{
-?><script><?php $_SESSION["pdfuk"] = true;?></script> 
-<script>history.pushState({}, "", "")</script><?php 
-}
-
-else if ($ukuran > $max)
-{
-echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
-}
-
-else if ($tipe != $ekstensi && $tipe != NULL)
-{ 
-?><script><?php $_SESSION['pdf'] = true ?></script> 
-<script>history.pushState({}, "", "")</script><?php
-}  
-else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
-  $query = mysqli_query($koneksi, "INSERT into bimbingan values('', '$nama_mhsw', '$id_nrp', '$perihal', '$angkatan', '$lab', '$keterangan', '$judul_ta', '$dosen1', '$dosen_tkk', '0', '$url', '$ukuran', '$tipe', sysdate()) ");
-
-    if ($query) {
-    ?><script><?php $_SESSION["sukses"] = true;?></script> 
-        <?php header("location:bimbingan.php"); ?>
-   <?php } else {
-    ?><script><?php $_SESSION["input"] = true;?></script> 
-        <script>history.pushState({}, "", "")</script><?php
-    }
-} else {
-    echo '<script> alert ("Gagal Upload")</script>';
-}
-
-} 
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,18 +62,6 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) {
             height: 200px; }
   </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#hide").click(function(){
-    $("p").hide();
-  });
-  $("#show").click(function(){
-    $("p").show();
-  });
-});
-</script>
-
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -140,12 +70,12 @@ $(document).ready(function(){
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
         
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Mahasiswa</span>
+        <span class="ms-0 font-weight-bold">Sistem Administrasi Mahasiswa</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
-      <ul class="navbar-nav">
+    <ul class="navbar-nav">
         <!--Home-->
         <li class="nav-item">
           <a class="nav-link  " href="./mahasiswa.php">
@@ -180,6 +110,18 @@ $(document).ready(function(){
               </svg>
             </div>
             <span class="nav-link-text ms-1">Bimbingan Proposal</span>
+          </a>
+        </li>
+
+        <!--persetujuan surat-->
+        <li class="nav-item">
+          <a class="nav-link  " href="./permohonanpmb.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+                <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Permohonan Pembimbing</span>
           </a>
         </li>
         
@@ -252,237 +194,244 @@ $(document).ready(function(){
     </nav>
     
     <!-- End Navbar -->
+    <div class="text-center">
+      <a class="nav-link  " href="./ajukanbimbingan.php"> 
+        <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" >Ajukan Bimbingan Proposal</button>
+      </a>
+    </div>
+    
+    
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-lg-11">
-          <div class="row">
-            <!---->
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-6 d-flex align-items-center">
+                  <h6 class="mb-0">Status Surat</h6>
+                </div>
+              </div>
+            </div>
+            
+        
+              <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-left ps-1">Nama</th>
+                        <th class="text-center">NRP</th>
+                        <th class="text-left ps-1">Perihal</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Tanggal</th>
+                        <th class="text-center">Catatan</th>
+                      </tr>
+                    </thead>
+                    <tbody id="myTable">
+                      
+                    <?php  
+                    $query = mysqli_query($koneksi, "SELECT * FROM bimbingan  ORDER BY tanggal DESC");  
+                    while ($data = mysqli_fetch_array($query)) { ?>
+                      <tr>
+                        <td class="text-center"><?php echo $no++ ?></td>
+                        <td class="text-left ps-1"><?php echo $data['nama'] ?></td>
+                        <td class="text-center"><?php echo $data['nrp'] ?></td>
+                        <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                      <!-- status surat dosen1  -->
+                      <?php if ($data['status_dosen'] == 0) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen'] ?>">Sedang Diproses</span>
+                        </td> <?php } 
+                        else if ($data['status_dosen'] == 1) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-info" value="<?php echo $data['status_dosen'] ?>">Refisi</span>
+                        </td> 
+                        <?php }
+                        else if ($data['status_dosen'] == 2) {?>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen'] ?>">Selesai</span>
+                        </td>
+                        <?php } ?>
+                          
+                        <td class="text-center"><?php echo $data['tanggal'] ?></td>
 
-            <div class="col-md-12 mb-lg-0 mb-4">
-              <div class="card mt-0">
-                <!--div class="card-header pb-0 p-4">
-                  <div class="row">
-                    <div class="col-6 d-flex align-items-center">
-                      <h6 class="mb-0 pt-1 px-1">Permohonan Surat</h6>
-                    </div>
-                  </div>
-                </div-->
-                
-                
-                <div class="card-body px-0 pt-0 pb-1">
-                    <div class="table-responsive p-0">
-                       
-
-                        <!-- nama & nrp -->
-                        <form action="" method="post" enctype="multipart/form-data">
-                            <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                        <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
-                                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="formFile" class="form-label">NRP</label>
-                                        <input name="nrp" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
-                                        <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- button edit -->
+                        <td class="align-middle">
+                          <a  href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            <button type="button" class="btn btn-default btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Lihat</button>
+                          </a>
+                        </td>
+                    
+                                            <!-- Modal -->
+                        <div class="modal fade" id="edit<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                              <!-- popup ajuan surat mahasiswa -->
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="edit<?php echo $data['id_no'] ?>">Catatan/Edit</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>  
+                              
+                              <div class="modal-body">
                             
-                            <!-- jenis surat -->
-                            <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="formFile" class="form-label">Jenis Surat</label>
-                                        <select id="jenis_surat" name="sr"  class="form-select" aria-label="Default select example" required>
-                                            <option selected>Pilih Jenis Surat</option>
-                                            <option value="Surat Magang">Surat Magang</option>
-                                            <option value="Surat Proyek Akhir">Surat Proyek Akhir</option>
-                                            <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
-                                            <?php if ($_SESSION["status2"] == 3) { ?>
-                                            <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="formFile" class="form-label">Angkatan</label>
-                                        <input name="angkatan" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['angkatan'] ?>">
-                                        <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label  id="label-judulta"for="formFile" class="form-label">Lab</label>
-                                          <input name="lab" class="form-control" type="text" placeholder="Masukan Lab" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
+                                    <div class="card-header pb-0 p-3">
+                                      <div class="row">
+                                        <div class="mb-3">
+                                          <!-- Cek File -->
+                                          <label for="formFile" class="form-label">File Anda (Klik Untuk Melihat)</label>
+                                            <a href="./<?php echo $data['file'] ?>" target="_blank">
+                                              <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>">
+                                                <button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button>
+                                              </p>
+                                            </a>
 
-                            <!-- UNDUH PANDUANN Magang -->
-                            <div class="unduhmag text-center" style="display: none;" class="d-grid gap-2">
-                            <a href="./Contoh Proposal Magang.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL MAGANG</button>
-                              </a>
-                            </div>
+                                         <!-- Keterangan File -->
+                                         <label for="formFile" class="form-label">Keterangan</label>
+                                          <label name="keterangan" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
+                                          
+                                          <!-- catatan dosebing -->
+                                          <label for="formFile" class="form-label">Catatan Dosen</label>
+                                          <label name="catatan" class="form-control" aria-label="default input example"><?php echo $data['catatan_dosen'] ?></label>
 
-                            <!-- UNDUH PANDUANN Proyek Akhir -->
-                            <div class="unduhpa text-center" style="display: none;">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PROYEK AKHIR</button>
-                              </a>
-                            </div>
+                                          <!-- Input ID untuk memberikan identitas surat -->
+                                          <input type="hidden" name="id2" value="<?php echo $data['id_no'] ?>">
 
-                            <!-- UNDUH PANDUANN PBL -->
-                            <div class="unduhpbl text-center" style="display: none;">
-                              <a href="./Contoh Proposal PBL (Project Based Learning).pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PBL</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Cuti -->
-                            <div class="unduhcuti text-center" style="display: none;">
-                              <a href="./Form Ijin Cuti Mahasiswa.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM CUTI</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Mengundurkan Diri -->
-                            <div class="unduhundur text-center" style="display: none;">
-                              <a href="./Form Mengundurkan Diri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM PENGUNDURAN DIRI</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Pengajuan Besiswa -->
-                            <div class="unduhbea text-center" style="display: none;">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Keringanan UKT -->
-                            <div class="unduhukt text-center" style="display: none;">
-                              <a href="./Permohonan Keringanan UKT.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM KERINGANAN UKT</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN HIMA -->
-                            <div class="unduhhima text-center" style="display: none;">
-                              <a href="./Contoh Proposal Kegiatan Himpunan.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL KEGIATAN</button>
-                              </a>
-                            </div>
-
-
-                            <!-- keterangan -->
-                            <div class="keterangan" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label  id="label-keterangan"for="formFile" class="form-label">Nama Perusahaan</label>
-                                          <input name="keterangan" class="form-control" type="text" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-                            <!-- judul TA -->
-                            <div class="judulTA" style="display: none;">
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label  id="label-judulta"for="formFile" class="form-label">Rencana Judul</label>
-                                          <input name="ta" class="form-control" type="text" aria-label="default input example" >
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>
-
-                            <!-- dosen -->
-                            <!--div class="dosen" style="display: none;"-->
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                  <div  class="dosen" style="display: none;" >
-                                    <div class="form-group col-md-12">
-                                      <label for="formFile" class="form-label">Dosen Pembimbing</label>
-                                          <select name="ds1"  class="form-select" aria-label="Default select example" >
-                                              <option value="Tidak Memerlukan Dosen Pembimbing" selected>Pilih Dosen Pembimbing</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb") or die(mysqli_error($koneksi));
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus<?php echo $data['id_no'] ?>">Hapus</button>
+                                          <?php if ($data['status_dosen'] == 1 ) { ?>
+                                            <form action = "" method = "post">
+                                              <!-- Input ID untuk memberikan identitas surat -->
+                                              <input type="hidden" name = "id" value = "pmhn">
+                                              <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+                                              <button class ="btn btn-info">Ubah</button>
+                                              </form>
                                               <?php } ?>
-                                          </select>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                  </div>
-                                </div>
+                                          </div>
                               </div>
-                            <!--/div-->
+                            
+                          </div>
+                        </div>
 
-                            <!-- dosen tkk -->
-                            <div class="dosenTKK" style="display: none;">
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                  <div class="mb-3">
-                                    <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <?php
-                                         include '../_database/config.php';
-                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 1");
-                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
-                                          $npp = $data_masuk['user'];
+                                                    <!-- Modal Hapus -->
+                                                    <div class="modal fade" id="hapus<?php echo $data['id_no'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                              <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
 
-                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
-                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                        <input id="name_tkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
-                                        <input id="name_dtkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "Tidak Memerlukan Dosen TKK">
-                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
-                                        <?php } } ?>
+                                  <!-- popup ajuan surat mahasiswa -->
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="hapus<?php echo $data['id_no'] ?>">Hapus File</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
                                   </div>
-                                </div>
-                              </div>
-                            </div>
 
-                            <!-- file -->
-                            <div class="file" style="display: none;">  
-                              <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label id="label-file" for="formFile" class="form-label">Masukkan File (Ekstensi File Berupa PDF)</label>
-                                          <input type="file" id="file" name="fl" class="form-control" aria-label="file example" >
-                                          <div class="invalid-feedback">Example invalid form file feedback</div>
+
+                                  <div class="modal-body">
+                                    <form action="" method="post" enctype="multipart/form-data">
+                                      <div class="card-header pb-0 p-3">
+                                        <div class="row">
+                                          <div class="mb-3">
+
+                                            <!-- Nama File -->
+                                            <label for="formFile" class="form-label">Nama File</label>
+                                            <label name="flhps" class="form-control" aria-label="default input example"><?php echo $data['file'] ?></label>
+
+                                            <!-- NRP mahasiswa -->
+                                            <label for="formFile" class="form-label">Perihal</label>
+                                            <label name="prhlhps" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
+
+                                            <!-- Lihat File -->
+                                            <label for="formFile" class="form-label">File Yang Akan Dihapus</label>
+                                            <a href="./<?php echo $data['file'] ?>" target="_blank">
+                                              <h6 class="modal-title" name="fl" id="hapus<?php echo $data['id_no'] ?>"><button type="button" class="btn btn-link"><em><?php echo $data['file'] ?></em></button></h6>
+                                            </a>
+
+                                            <!-- Input ID untuk memberikan identitas surat -->
+                                            <input type="hidden" name="id" value="<?php echo $data['id_no'] ?>">
+
+                                            <!-- Memberi peringatan -->
+                                            <h5 class="text-danger modal-title text-center">APAKAH ANDA YAKIN ?</h5>
+                                            <h6 class=" modal-title text-center">MENGHAPUS FILE BERARTI MENGHILANGKAN SELURUH DATA PERSETUJUAN</h6>
+
+
+                                          </div>
+                                        </div>
                                       </div>
                                   </div>
+
+
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
+
+                                    <!-- Saat dosen menolak -->
+                                    <button type="submite" name="hapus" class="btn bg-gradient-info" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Hapus</button>
+
+                                  </div>
+
+                                  </form>
+
+                                </div>
                               </div>
                             </div>
+                        <?php } } }  ?>
+                      </tr>
+                    </tbody> 
+                    <?php if ($no == 1) { ?>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                    <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+                    <?php } ?>
+                  </table>
 
-                            <br><br>
-                            <div class="modal-footer">
-                            <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                                <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>  
+                  <!-- php update surat -->
                 
+
+                </div>
               </div>
             </div>
           </div>
         </div>
-     </div>
-    </div>
+      </div>
+      <?php
+                include "../_database/config.php";
+                if (isset($_POST['hapus'])) {
+                  $id6 = $_POST['id'];
+                  $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id6'");
+                  $data = mysqli_fetch_assoc($query);
+                  $nama_file = $data['file']; 
+                  $target_file = "./$nama_file";
+                 
+
+                  unlink("$target_file");
+                  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
+                 
+                  if ($query6) {
+                ?><script>
+                      <?php $_SESSION['sukseshps'] = true; ?>
+                    </script>
+                    <script>
+                      history.pushState({}, "", "")
+                    </script><?php
+                              ?> <script>
+                      history.pushState({}, "", "")
+                    </script>
+                <?php } else {
+                    echo '<script> alert ("gagal di ajukan")</script></a>';
+                  }
+                }
+
+
+                ?>
+      
   </main>
   
   <!--   Core JS Files   -->
@@ -509,13 +458,41 @@ $(document).ready(function(){
         <script>
             Swal.fire({
             position: 'center',
-            icon: 'error',
+            icon: 'success',
             title: 'Berhasil Mengajukan Surat',
             showConfirmButton: false,
             timer: 2000
           })
         </script>
     <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['sukseshps']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Menghapus Surat',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['sukseshps']); ?>
+    <?php endif; ?>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['pdf']) : ?>
+        <script>
+            Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Berhasil Menghapus',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        </script>
+    <?php unset($_SESSION['pdf']); ?>
     <?php endif; ?>
 
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -531,158 +508,18 @@ $(document).ready(function(){
         </script>
     <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
-    
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['pdf']==true) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'warning',
-            title: 'Gagal mengajukan permohonan surat ! Ekstensi file haru pdf',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['pdf']); ?>
-    <?php endif; ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $('#jenis_surat').on('change',function () {
-            if($('#jenis_surat').val() == 'Surat Magang') {
-                $('.unduhmag').show();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide()
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Tempat Magang");
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').show();
-                $('.dmagang').show();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', 'ds2');
-                $('#name_py').prop('name',false);
-                $('#name_pbl').prop('name',false);
-                $('#name_tkk').prop('name',false);
-                $('#name_dtkk').prop('name', 'tkk');
-                $('.file').show();
-                $('#label-file').text("Upload Proposal Magang (Ekstensi File .PDF)");
-                $('.dosenTKK').hide();
-              }
-            else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
-                $('.unduhmag').hide();
-                $('.unduhpa').show();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Industri Tempat Mengerjakan Proyek Akhir");
-                $('.judulTA').show();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').show();
-                $('.dmagang').hide();
-                $('.koor').show();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name',false);
-                $('#name_dtkk').prop('name', 'tkk');
-                $('.file').show();
-                $('#label-file').text("Upload Proposal Proyek Akhir (Ekstensi File .PDF)");
-                $('.dosenTKK').hide();
-              }
-            else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').show();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Tempat PBL");
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').show();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').show();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', false);
-                $('#name_pbl').prop('name', 'ds2');
-                $('#name_tkk').prop('name',false);
-                $('#name_dtkk').prop('name', 'tkk');
-                $('.file').show();
-                $('#label-file').text("Upload Proposal PBL (Ekstensi File .PDF)");
-                $('.dosenTKK').hide();
-              } 
-            else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').show();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Kegiatan");
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').show();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name', 'tkk');
-                $('#name_dtkk').prop('name', false);
-                $('.file').show();
-                $('#label-file').text("Upload Proposal Kegiatan HIMA (Ekstensi File .PDF)");
-                $('.dosenTKK').show();
-              }
-            else {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').hide();
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', false);
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name', false);
-                $('#name_dtkk').prop('name', false);
-                $('.file').hide();
-                $('.dosenTKK').hide();
-              }
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
+      });
+    });
     </script>
-</body>
 </body>
 
 </html>   
