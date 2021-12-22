@@ -651,6 +651,7 @@
                       <th class="text-center">Perihal</th>
                       <th class="text-center">Tanggal Pengajuan</th>
                       <th class="text-center">Status Bimbingan</th>
+                      <th class = "text-center">Rekap Bimbingan</th>
                      <th></th>
                      
                     </tr>
@@ -709,6 +710,9 @@
                             <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-success" >Disetujui</span>
                       </td> <?php } ?> 
+                      <td class="align-middle text-center">
+                            <button id="button" name="id" value="<?php echo $data['id_no'] ?>" type="submit" class="btn btn-default btn-sm" onclick="openWindowWithPost(<?php echo $data['id_no'] ?>)">Lihat</button>
+                          </td>
                       
                       <?php  } }
 
@@ -752,6 +756,9 @@
                             <td class="align-middle text-center text-sm">
                         <span class="badge badge-sm bg-gradient-success" >Disetujui</span>
                       </td> <?php } ?> 
+                      <td class="align-middle text-center">
+                            <button id="button" name="id" value="<?php echo $data['id_no'] ?>" type="submit" class="btn btn-default btn-sm" onclick="openWindowWithPost(<?php echo $data['id_no'] ?>)">Lihat</button>
+                          </td>
 
                    <?php    } } }
  
@@ -760,7 +767,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT MASUK</h6></td>
+                      <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA BIMBINGAN YANG DIAJUKAN</h6></td>
 
 
 
@@ -828,6 +835,16 @@
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  
+   <!-- Backend penampil Catatan -->
+  <script type="text/javascript">
+    function openWindowWithPost(id) {
+      var f = document.getElementById('button');
+      f.id.value = id;
+      window.open('http://localhost/administration/pagesmahasiswa/tabelrekap.php?id=' + id, 'MsgWindows', 'width=800, height=500');
+      f.submit();
+    }
+</script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

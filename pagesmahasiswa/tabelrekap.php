@@ -100,6 +100,10 @@ $(document).ready(function(){
       <td><?php echo $catatan ?></td>
 
     </tr>
+    <?php }  
+    if ($no == 1) { ?>
+      <td></td>
+      <td class = "text-center">Belum ada Interaksi Bimbingan</td>
     <?php } ?>
   </tbody>
 </table>
