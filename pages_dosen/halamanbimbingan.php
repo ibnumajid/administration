@@ -506,7 +506,7 @@ include "../_database/config.php";
                         </div>
                         <!-- Menginput catatan -->
                         <div>
-                          <label for="catatan" class="form-label"> Catatan </label>
+                          <label for="catatan" class="form-label"> Catatan/Revisi </label>
                           <br>
                           <textarea class="form-control" name="catatan" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
