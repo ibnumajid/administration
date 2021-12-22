@@ -568,7 +568,7 @@ if (isset($_POST['hapus'])) {
     function openWindowWithPost(id) {
       var f = document.getElementById('button');
       f.id.value = id;
-      window.open('administration.cypiral.org/pagesmahasiswa/tabelrekap.php?id=' + id, 'MsgWindows', 'width=800, height=500');
+      window.open('https://administration.cypiral.org/pagesmahasiswa/tabelrekap.php?id=' + id, 'MsgWindows', 'width=800, height=500');
       f.submit();
     }
   </script>
