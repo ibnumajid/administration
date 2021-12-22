@@ -50,7 +50,7 @@ else if ($tipe != $ekstensi && $tipe != NULL)
 }  
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
-  if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
+  if ($perihal == "Bimbingan Proposal Magang" || $perihal == "Bimbingan Proposal Proyek Akhir" || $perihal == "Bimbingan Proposal PBL") { 
     $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$angkatan', '$perihal','$keterangan','$judul_ta', '$dosen1', '0', '', '9', '', '', '0', '$url', '',  '$tipe', '$ukuran', sysdate(), '$tingkat')");
     if($query)
     {
@@ -63,7 +63,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     <script>history.pushState({}, "", "")</script><?php
     }
   }
-  else if ($perihal == "Surat Pengajuan Kegiatan HIMA" ) {
+  else if ($perihal == "Bimbingan Proposal Kegiatan HIMA" ) {
     $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$angkatan', '$perihal','$keterangan','$judul_ta', '', '9', '$dosen_tkk', '0', '$tgl_h1', '$tgl_h2', '1', '$url', '','$tipe', '$ukuran', sysdate(), '$tingkat')");
     if($query) 
     {
@@ -324,14 +324,14 @@ $(document).ready(function(){
                             <div class="card-header pb-0 p-3">
                                 <div class="row">
                                     <div class="mb-3">
-                                        <label for="formFile" class="form-label">Jenis Surat</label>
+                                        <label for="formFile" class="form-label">Perihal</label>
                                         <select id="jenis_surat" name="sr"  class="form-select" aria-label="Default select example" required>
-                                            <option selected>Pilih Jenis Surat</option>
-                                            <option value="Surat Magang">Surat Magang</option>
-                                            <option value="Surat Proyek Akhir">Surat Proyek Akhir</option>
-                                            <option value="Surat PBL (Project Based Learning)">Surat PBL (Project Based Learning)</option>
+                                            <option selected>Pilih Perihal Bimbingan</option>
+                                            <option value="Bimbingan Proposal Magang">Bimbingan Proposal Magang</option>
+                                            <option value="Bimbingan Proposal Proyek Akhir">Bimbingan Proposal Proyek Akhir</option>
+                                            <option value="Bimbingan Proposal PBL">Bimbingan Proposal PBL</option>
                                             <?php if ($_SESSION["status2"] == 3) { ?>
-                                            <option value="Surat Pengajuan Kegiatan HIMA">Surat Pengajuan Kegiatan HIMA</option>
+                                            <option value="Bimbingan Proposal Kegiatan HIMA">Bimbingan Proposal Kegiatan HIMA</option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -660,7 +660,7 @@ $(document).ready(function(){
     <?php endif; ?>
     <script>
         $('#jenis_surat').on('change',function () {
-            if($('#jenis_surat').val() == 'Surat Magang') {
+            if($('#jenis_surat').val() == 'Bimbingan Proposal Magang') {
                 $('.unduhmag').show();
                 $('.unduhpa').hide();
                 $('.unduhpbl').hide();
@@ -687,7 +687,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Magang (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
-            else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
+            else if($('#jenis_surat').val() == 'Bimbingan Proposal Proyek Akhir') {
                 $('.unduhmag').hide();
                 $('.unduhpa').show();
                 $('.unduhpbl').hide();
@@ -714,7 +714,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Proyek Akhir (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
-            else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
+            else if($('#jenis_surat').val() == 'Bimbingan Proposal PBL') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
                 $('.unduhpbl').show();
@@ -741,142 +741,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal PBL (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               } 
-            else if($('#jenis_surat').val() == 'Surat Cuti') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').show();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Lama Waktu Cuti (*Semester)");
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_dtkk').prop('name', 'tkk');
-                $('.file').show();
-                $('#label-file').text("Upload Formulir Pengajuan Cuti (Ekstensi File .PDF)");
-                $('.dosenTKK').hide();
-              }
-            else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').show();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').hide();
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name',false);
-                $('#name_dtkk').prop('name', 'tkk');
-                $('.file').show();
-                $('#label-file').text("Upload Formulir Pengunduran Diri (Ekstensi File .PDF)");
-                $('.dosenTKK').hide();
-              }
-            else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').show();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Beasiswa");
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name', 'tkk');
-                $('#name_dtkk').prop('name', false);
-                $('.file').show();
-                $('#label-file').text("Upload Formulir Pengajuan Beasiswa (Ekstensi File .PDF)");
-                $('.dosenTKK').show();
-              }
-            else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').show();
-                $('.unduhhima').hide();
-                $('.keterangan').hide();
-                $('.judulTA').hide();
-                $('.tingkat').hide();
-                $('.tanggalHIMA').hide();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name', 'tkk');
-                $('#name_dtkk').prop('name', false);
-                $('.file').show();
-                $('#label-file').text("Upload Formulir Keringanan UKT (Ekstensi File .PDF)");
-                $('.dosenTKK').show();
-              }
-              else if($('#jenis_surat').val() == 'Surat Permohonan Mengikuti Lomba') {
-                $('.unduhmag').hide();
-                $('.unduhpa').hide();
-                $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
-                $('.unduhhima').hide();
-                $('.keterangan').show();
-                $('#label-keterangan').text("Nama Perlombaan");
-                $('.judulTA').show();
-                $('#label-judulta').text("Nama Tempat");
-                $('.tanggalHIMA').show();
-                $('#label-tgl1').text("Tanggal Mulai Lomba");
-                $('#label-tgl2').text("Tanggal Selesai Lomba");
-                $('.tingkat').show();
-                $('.dosen').hide();
-                $('.dmagang').hide();
-                $('.koor').hide();
-                $('.dpbl').hide();
-                $('#name_magang').prop('name', false);
-                $('#name_py').prop('name', 'ds2');
-                $('#name_pbl').prop('name', false);
-                $('#name_tkk').prop('name', 'tkk');
-                $('#name_dtkk').prop('name', false);
-                $('.file').show();
-                $('#label-file').text("Upload Poster Pengumuman Lomba (Ekstensi File .PDF)");
-                $('.dosenTKK').show();
-              }
-            else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
+            else if($('#jenis_surat').val() == 'Bimbingan Proposal Kegiatan HIMA') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
                 $('.unduhpbl').hide();
