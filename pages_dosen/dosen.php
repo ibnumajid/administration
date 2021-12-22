@@ -22,6 +22,25 @@
         header('location:./dosen.php'); ?>
         <script>history.pushState({}, "", "")</script><?php
       } } } }
+
+      // update notif bimbingan proposal
+      if (isset($_POST['bp'])) {
+        $id = $_POST['id'];
+        $nama = $_SESSION['user'];
+        $query = mysqli_query($koneksi, 'SELECT * FROM bimbingan ORDER BY id_no DESC');
+        while ($data = mysqli_fetch_array($query)) {
+        if ($data['dosen1'] == $nama) {
+        $query = mysqli_query($koneksi, "UPDATE bimbingan SET `notif`= 1 WHERE id_no = '$id' ");
+        if ($query) { 
+          header('location:bimbingansurat.php'); ?>
+          <script>history.pushState({}, "", "")</script><?php
+        } else { 
+          header('location:./dosen.php'); ?>
+          <script>history.pushState({}, "", "")</script><?php
+        } 
+          } 
+        }
+      }
   
       // update notif dosen koor1
       if (isset($_POST['koor1'])) {
@@ -443,13 +462,14 @@
                       $query_kadep = mysqli_query($koneksi, 
                       'SELECT * FROM suratmahasiswa WHERE (status_dosen2 = 2 || status_dosentkk = 2) && notif = 2 
                       UNION SELECT * FROM suratdosen WHERE notif = 0
+                      UNION SELECT * FROM bimbingan WHERE notif = 0
                       UNION SELECT * FROM surattendik  WHERE notif = 0 ORDER BY id_no DESC' );
                       $data = mysqli_num_rows($query_kadep); ?>
 
                       <span class="primary"><?php echo $data ?></span>
                    <?php } 
                    $nama = $_SESSION['user'];
-                   $query_mhs = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa ORDER BY id_no DESC");
+                   $query_mhs = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa UNION SELECT * FROM bimbingan ORDER BY id_no DESC");
                    $data_mhs = mysqli_fetch_array($query_mhs); {
                      $tujuan = $data_mhs['dosen1'];
                      $tujuan2 = $data_mhs['dosen2'];
@@ -462,7 +482,8 @@
                       $query_tkk = mysqli_query($koneksi, 
                       "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
                       (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) || 
-                      (dosen_tkk = '$nama' && notif = 1)ORDER BY id_no DESC" );
+                      (dosen_tkk = '$nama' && notif = 1)
+                      UNION SELECT * FROM bimbingan WHERE notif = 0 ORDER BY id_no DESC" );
                       $data_tkk = mysqli_num_rows($query_tkk); ?>
 
                       <span class="primary"><?php echo $data_tkk ?></span>
@@ -489,10 +510,11 @@
 
                       <span class="primary"><?php echo $data_koor ?></span>
                    <?php }
-                   //  php pesan masuk dosen pemb
+                   //  php pesan masuk dosen pemb dan bimbingan proposal
                    else if (($_SESSION['status'] == 2 && $tujuan == $nama)) {
                     $query_pemb = mysqli_query($koneksi, 
-                      "SELECT * FROM suratmahasiswa WHERE dosen1 = '$nama' && notif = 0 ORDER BY id_no DESC" );
+                      "SELECT * FROM suratmahasiswa WHERE dosen1 = '$nama' && notif = 0 
+                      UNION SELECT * FROM bimbingan WHERE  notif = 0 && dosen1 = '$nama' ORDER BY id_no DESC" );
                       $data_pemb = mysqli_num_rows($query_pemb); ?>
 
                       <span class="primary"><?php echo $data_pemb ?></span>
@@ -568,7 +590,7 @@
                         include '../_database/config.php';
                         $nama = $_SESSION['user'];
                         $tkk = "Tidak Memerlukan Dosen TKK";
-                        $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
+                        $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa UNION SELECT * FROM bimbingan ORDER BY id_no DESC');
                         while ($data = mysqli_fetch_array($query)) {
                         $tujuan = $data['dosen1'];
                         $tujuan2 = $data['dosen2'];
@@ -616,9 +638,30 @@
                             </div>
                           </a>
                         </li>
-                        <!-- dosen pembimbing -->
-                        <?php } else if ($tujuan == $nama && $data['notif'] == 0) { ?>
+                        <!-- dosen pembimbing dan bimbingan proposal -->
+                        <?php } else if ($tujuan == $nama && $data['notif'] == 0) { 
+                          if ($data['perihal'] == "Bimbingan Proposal Magang" || $data['perihal'] == "Bimbingan Proposal Proyek Akhir" || $data['perihal'] == "Bimbingan Proposal PBL") { ?>
                         <li class="mb-2">
+                          <a class="dropdown-item border-radius-md" href="./validasisurat.php">
+                            <div class="d-flex py-1">
+                              <div class="d-flex flex-column justify-content-center">
+                                <button type="submit" name="bp" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                                  <h6 class="text-sm font-weight-normal mb-1">
+                                    <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
+                                    <span class="font-weight"><?php echo $data['nama']; ?></span>
+                                  </h6>
+                                </button>
+                                <p class="text-xs text-left ps-0 text-secondary mb-0">
+                                  <?php echo $data['tanggal']; ?>
+                                </p>
+                                <!-- Menginput id surat -->
+                                <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                        <?php } else { ?>
+                          <li class="mb-2">
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
                             <div class="d-flex py-1">
                               <div class="d-flex flex-column justify-content-center">
@@ -638,7 +681,7 @@
                           </a>
                         </li>
                         <!-- dosen TKK -->
-                        <?php } else if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $data['notif'] == 1 && $tujuan3 == $nama) { ?>
+                        <?php } } else if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $data['notif'] == 1 && $tujuan3 == $nama) { ?>
                         <li class="mb-2">
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
                             <div class="d-flex py-1">
@@ -662,6 +705,8 @@
                     </div>
                   </ul>
                   <!-- akhir dropdown -->
+                </li>
+                <!-- and notif -->
                 </li>
                 <!-- and notif -->
                 <li class="nav-item px-2 d-flex align-items-center">
