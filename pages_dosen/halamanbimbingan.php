@@ -27,14 +27,21 @@ include "../_database/config.php";
   $catatan = $_POST['catatan'];
   $lokasi = $_POST['lokasi'];
 
-  if (($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) && $data['dosen1'] == $_SESSION['user']) {
+  if (($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) && $status == 1 && $data['dosen1'] == $_SESSION['user']) {
     $queryup = mysqli_query($koneksi, "UPDATE bimbingan SET status_dosen1 = '$status' WHERE id_no = '$id2' ");
     $queryup2 = mysqli_query($koneksi, "UPDATE bimbingan SET `catatan_pmb` = '$catatan' WHERE id_no = '$id2' ");
-    $queryup3 = mysqli_query($koneksi, "INSERT INTO rekap_catatan values ('', '$id2', '$nama', '$nrp', '$catatan', '', '', '', sysdate())");
+    $queryup3 = mysqli_query($koneksi, "UPDATE bimbingan SET `notif` = '1' WHERE id_no = '$id2' ");
+    $queryup4 = mysqli_query($koneksi, "INSERT INTO rekap_catatan values ('', '$id2', '$nama', '$nrp', '$catatan', '', '', '', sysdate())");
+  }
+  else if (($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) && $status == 2 && $data['dosen1'] == $_SESSION['user']) {
+    $queryup = mysqli_query($koneksi, "UPDATE bimbingan SET status_dosen1 = '$status' WHERE id_no = '$id2' ");
+    $queryup2 = mysqli_query($koneksi, "UPDATE bimbingan SET `catatan_pmb` = '$catatan' WHERE id_no = '$id2' ");
+    $queryup3 = mysqli_query($koneksi, "UPDATE bimbingan SET `notif` = '2' WHERE id_no = '$id2' ");
+    $queryup4 = mysqli_query($koneksi, "INSERT INTO rekap_catatan values ('', '$id2', '$nama', '$nrp', '$catatan', '', '', '', sysdate())");
   }
   if ($queryup && $queryup2 && $queryup3) {
     if ($lokasi == "home") {
-?><script>
+  ?><script>
         <?php $_SESSION['sukses'] = true; ?>
       </script>
     <?php header("location:dosen.php");
