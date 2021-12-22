@@ -460,7 +460,7 @@ $(document).ready(function(){
                             </div>
 
                             <!-- dosen -->
-                            <!--div class="dosen" style="display: none;"-->
+                            <div class="dosen" style="display: none;">
                               <div class="card-header pb-0 p-3">    
                                 <div class="row">
                                   <div  class="dosen" style="display: none;" >
@@ -474,56 +474,6 @@ $(document).ready(function(){
                                               while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
                                               <option value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
                                               <?php } ?>
-                                          </select>
-                                    </div>
-                                  </div>
-                                  <div  class="magang" style="display: none;" >
-                                    <div class="form-group col-md-12" style="align-right:right;">
-                                      <label for="formFile" class="form-label">Dosen Koordinator</label>
-                                        <?php
-                                         include '../_database/config.php';
-                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 2");
-                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
-                                          $npp = $data_masuk['user'];
-
-                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
-                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                        <input id="name_magang" name="ds2" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
-                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
-                                        <?php } } ?>
-                                    </div>
-                                  </div>
-                                  <div  class="koor" style="display: none;" >
-                                    <div class="form-group col-md-12">
-                                      <label for="formFile" class="form-label">Dosen Koordinator</label>
-                                        <?php
-                                         include '../_database/config.php';
-                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 2");
-                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
-                                          $npp = $data_masuk['user'];
-
-                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
-                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                        <input id="name_py" name="ds2" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
-                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
-                                        <?php } } ?>
-                                    </div>
-                                  </div>
-                                  <div  class="dpbl" style="display: none;" >
-                                    <div class="form-group col-md-12">
-                                      <label for="formFile" class="form-label">Dosen Koordinator</label>
-                                          <select id="name_pbl" name="ds2"  class="form-select" aria-label="Default select example" >
-                                              <option value="Tidak Memerlukan Dosen Koordinator" selected>Pilih Dosen Koordinator</option>
-                                              <?php
-                                              include '../_database/config.php';
-                                              $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status3 = 2");
-                                              while ($data_masuk = mysqli_fetch_array($query_masuk)) {
-                                               $npp = $data_masuk['user'];
-
-                                              $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
-                                              while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                              <option  value="<?php echo $data_dosen['nama_anggota'] ?>"><?php echo $data_dosen['nama_anggota'] ?></option>
-                                              <?php } } ?>
                                           </select>
                                     </div>
                                   </div>
