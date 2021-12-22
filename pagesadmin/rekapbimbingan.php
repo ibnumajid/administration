@@ -376,6 +376,7 @@ if (isset($_POST['dsn'])) {
                       <th class = "text-center">Perihal</th>
                       <th class = "text-center">Dokumen</th>
                       <th class = "text-center">Tanggal</th>
+                      <th class = "text-center">Histori Bimbingan</th>
                     </tr>
                   </thead>
                  
@@ -407,6 +408,11 @@ if (isset($_POST['dsn'])) {
                     <td class="align-middle text-center">
                           <h6 class="mb-0 text-sm"><?php echo $data['tanggal'] ?></h6>
                         </td>
+                  
+                    <td class="align-middle text-center">
+                            <button id="button" name="id" value="<?php echo $data['id_no'] ?>" type="submit" class="btn btn-default btn-sm" onclick="openWindowWithPost(<?php echo $data['id_no'] ?>)">Lihat</button>
+                          </td>
+                   
                   </tr>
                 
                   <?php }  ?>
@@ -441,6 +447,14 @@ if (isset($_POST['dsn'])) {
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script type="text/javascript">
+    function openWindowWithPost(id) {
+      var f = document.getElementById('button');
+      f.id.value = id;
+      window.open('https://administration.cypiral.org/pagesmahasiswa/tabelrekap.php?id=' + id, 'MsgWindows', 'width=800, height=500');
+      f.submit();
+    }
+  </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
