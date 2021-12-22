@@ -508,7 +508,7 @@ include "../_database/config.php";
                         <div>
                           <label for="catatan" class="form-label"> Catatan </label>
                           <br>
-                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                          <textarea class="form-control" name="catatan" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <?php } ?>
                       </div>
