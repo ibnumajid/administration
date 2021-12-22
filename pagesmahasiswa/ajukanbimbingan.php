@@ -51,7 +51,7 @@ else if ($tipe != $ekstensi && $tipe != NULL)
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
   if ($perihal == "Bimbingan Proposal Magang" || $perihal == "Bimbingan Proposal Proyek Akhir" || $perihal == "Bimbingan Proposal PBL") { 
-    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$angkatan', '$perihal','$keterangan','$judul_ta', '$dosen1', '0', '', '9', '', '', '0', '$url', '',  '$tipe', '$ukuran', sysdate(), '$tingkat')");
+    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '$dosen1', '0', '0', '0', '', '9', '', '', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '', '',  '$tipe', '$ukuran', sysdate(), '$angkatan')");
     if($query)
     {
       ?><script><?php $_SESSION['sukses'] = true;?></script> 
@@ -64,8 +64,8 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     }
   }
   else if ($perihal == "Bimbingan Proposal Kegiatan HIMA" ) {
-    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$angkatan', '$perihal','$keterangan','$judul_ta', '', '9', '$dosen_tkk', '0', '$tgl_h1', '$tgl_h2', '1', '$url', '','$tipe', '$ukuran', sysdate(), '$tingkat')");
-    if($query) 
+    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '', '9', '0', '0', '$dosen_tkk', '0', '', '', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '', '',  '$tipe', '$ukuran', sysdate(), '$angkatan')");
+    if($query)
     {
       ?><script><?php $_SESSION['sukses'] = true;?></script> 
     <?php header("location:bimbingan.php"); 
