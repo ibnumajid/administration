@@ -4,6 +4,42 @@ session_start();
   {
   header("location:../index.php");
   }
+
+include "../_database/config.php";
+// update notif bimbingan proposal1
+if (isset($_POST['revisi'])) {
+  $id = $_POST['id'];
+  $query_revisi = mysqli_query($koneksi, "SELECT * FROM bimbingan ORDER BY id_no DESC");
+  while ($data_revisi = mysqli_fetch_array($query_revisi)) {
+  if ($data_revisi['status_dosen1'] == 1) {
+    $query2 = mysqli_query($koneksi, "UPDATE bimbingan SET `notif`= 0 WHERE id_no = '$id' ");
+    if ($query2) { 
+      header('location:bimbingan.php'); ?>
+      <script>history.pushState({}, "", "")</script><?php
+    } else { 
+      header('location:./mahasiswa.php'); ?>
+      <script>history.pushState({}, "", "")</script><?php
+    }
+  } } }
+
+  // update notif bimbingan proposal2
+if (isset($_POST['selesai'])) {
+  $id = $_POST['id'];
+  $nama = $_SESSION['user'];
+  $query_selesai = mysqli_query($koneksi, "SELECT * FROM bimbingan ORDER BY id_no DESC");
+  while ($data_selesai = mysqli_fetch_array($query_selesai)) {
+  if ($data_selesai['status_dosen1'] == 2) {
+  $query = mysqli_query($koneksi, "UPDATE bimbingan SET `notif`= 3 WHERE id_no = '$id' ");
+  if ($query) { 
+    header('location:bimbingan.php'); ?>
+    <script>history.pushState({}, "", "")</script><?php
+  } else { 
+    header('location:./mahasiswa.php'); ?>
+    <script>history.pushState({}, "", "")</script><?php
+  } 
+    } 
+  }
+}
 ?>
 
 
@@ -202,8 +238,101 @@ session_start();
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a> -->
             </li>
-            
-                        <li class="nav-item d-flex align-items-center">
+            <!-- notif -->
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- <i class="fa fa-bell cursor-pointer"></i> -->
+                <!-- angka pesan masuk -->
+                <?php 
+                include "../_database/config.php";
+                $nama = $_SESSION['user'];
+                $query_mhsw = mysqli_query($koneksi, "SELECT * FROM bimbingan ORDER BY id_no DESC");
+                $data_mhsw = mysqli_fetch_array($query_mhsw); {
+                $status1 = $data_mhsw['status_dosen1'];
+                $status2 = $data_mhsw['status_dosentkk'];
+                $notif = $data_mhsw['notif'];
+                $mhsw = $data_mhsw['nama'];
+
+                if ($mhsw == $nama) {
+                  $query1 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE (status_dosen1 = 1 || status_dosen1 = 2) & (notif = 1 || notif = 2) ORDER BY id_no DESC");
+                  $data1 = mysqli_num_rows($query1);
+                  $query2 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE (status_dosentkk = 1 || status_dosentkk = 2) & (notif = 1 || notif = 2) ORDER BY id_no DESC");
+                  $data2 = mysqli_num_rows($query2);
+
+                  $hima = $data1 + $data2
+                ?>
+                <i class="fa fa-bell cursor-pointer" <?php if($data1 > 0){echo 'style="color:#63B3ED"';} ?>></i>
+                <span class="primary"><?php echo $data1 ?></span>
+
+                <?php if ($_SESSION["status2"] == 3) { ?>
+                <i class="fa fa-bell cursor-pointer" <?php if($hima > 0){echo 'style="color:#63B3ED"';} ?></i>
+                <span class="primary"><?php echo $hima ?></span>
+
+                <?php } } } ?>
+              </a>
+              <!-- dropdown surat masuk -->
+              <ul class="dropdown-menu  dropdown-menu-end  px-1 py-1 me-sm-n3" aria-labelledby="dropdownMenuButton">
+                <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:200px">
+                  <form action="" method = "post">
+                    <?php 
+                    include '../_database/config.php';
+                    $nama = $_SESSION['user'];
+                    $query = mysqli_query($koneksi, 'SELECT * FROM bimbingan ORDER BY id_no DESC');
+                    while ($data = mysqli_fetch_array($query)) { 
+                    
+                    if ($data['status_dosen1'] == 1 && $data['notif'] == 1) { ?>
+                    <li class="mb-2">
+                      <a class="dropdown-item border-radius-md" href="javascript:;">
+                        <div class="d-flex py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <button type="submit" name="revisi" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Revisi</span>
+                                <span class="font-weight"><?php echo $data['perihal']; ?></span>
+                              </h6>
+                            </button>
+                            <p class="text-xs text-secondary mb-0">
+                              <?php echo $data['tanggal'] ?>
+                            </p>
+                            <!-- Menginput id surat -->
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <?php } 
+                    else if ($data['status_dosen1'] == 2 && $data['notif'] == 2) { ?>
+                    <li class="mb-2">
+                      <a class="dropdown-item border-radius-md" href="javascript:;">
+                        <div class="d-flex py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <button type="submit" name="selesai" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                              <h6 class="text-sm font-weight-normal mb-1">
+                                <span class="font-weight-bold">Selesai</span>
+                                <span class="font-weight"><?php echo $data['perihal']; ?></span>
+                              </h6>
+                            </button>
+                            <p class="text-xs text-secondary mb-0">
+                              <?php echo $data['tanggal'] ?>
+                            </p>
+                            <!-- Menginput id surat -->
+                            <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <?php } } ?>
+                  </form>
+                </div>
+              </ul>
+            </li>
+            <!-- and notif -->
+            <li class="nav-item px-3 d-flex align-items-center">
+              <!-- <a href="javascript:;" class="nav-link text-body p-0">
+                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+              </a> -->
+            </li>
+            <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
