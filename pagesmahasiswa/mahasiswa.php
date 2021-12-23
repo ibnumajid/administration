@@ -278,28 +278,23 @@ if (isset($_POST['hima2'])) {
                 <?php 
                 include "../_database/config.php";
                 $nama = $_SESSION['user'];
-                $query_mhsw = mysqli_query($koneksi, "SELECT * FROM bimbingan ORDER BY id_no DESC");
-                $data_mhsw = mysqli_fetch_array($query_mhsw); {
-                $status1 = $data_mhsw['status_dosen1'];
-                $status2 = $data_mhsw['status_dosentkk'];
-                $notif = $data_mhsw['notif'];
-                $mhsw = $data_mhsw['nama'];
+                $query_mhsw = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE nama = '$nama'");
+                $data_mhsw = mysqli_fetch_assoc($query_mhsw);
 
-                if ($mhsw == $nama) {
+                if ($nama) {
                   $query1 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE (status_dosen1 = 1 || status_dosen1 = 2) & (notif = 1 || notif = 2) ORDER BY id_no DESC");
-                  $data1 = mysqli_num_rows($query1);
-                  $query2 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE (status_dosentkk = 1 || status_dosentkk = 2) & (notif = 1 || notif = 2) ORDER BY id_no DESC");
-                  $data2 = mysqli_num_rows($query2);
+                  $data1 = mysqli_num_rows($query1); ?>
 
-                  $hima = $data1 + $data2
-                ?>
-                <?php if ($_SESSION["status2"] == 3) { ?>
-                <i class="fa fa-bell cursor-pointer" <?php if($hima > 0){echo 'style="color:#63B3ED"';} ?>></i>
-                <span class="primary"><?php echo $hima ?></span>
-                <?php } else { ?>
                 <i class="fa fa-bell cursor-pointer" <?php if($data1 > 0){echo 'style="color:#63B3ED"';} ?>></i>
                 <span class="primary"><?php echo $data1 ?></span>
-                <?php } } } ?>
+                <?php } else if ($_SESSION["status2"] == 3) {
+                  $query2 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE ((status_dosen1 = 1 || status_dosen1 = 2) & (notif = 1 || notif = 2)) || ((status_dosentkk = 1 || status_dosentkk = 2) & (notif = 1 || notif = 2)) ORDER BY id_no DESC");
+                  $data2 = mysqli_num_rows($query2); ?>
+
+                <i class="fa fa-bell cursor-pointer" <?php if($data2 > 0){echo 'style="color:#63B3ED"';} ?>></i>
+                <span class="primary"><?php echo $data2 ?></span>
+                
+                <?php } ?>
               </a>
               <!-- dropdown surat masuk -->
               <ul class="dropdown-menu  dropdown-menu-end  px-1 py-1 me-sm-n3" aria-labelledby="dropdownMenuButton">
@@ -311,7 +306,7 @@ if (isset($_POST['hima2'])) {
                     $query = mysqli_query($koneksi, 'SELECT * FROM bimbingan ORDER BY id_no DESC');
                     while ($data = mysqli_fetch_array($query)) { 
                     
-                    if ($data['status_dosen1'] == 1 && $data['notif'] == 1) { ?>
+                    if ($data['status_dosen1'] == 1 && $data['notif'] == 1 && $data['nama'] == $nama) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
                         <div class="d-flex py-1">
@@ -332,7 +327,7 @@ if (isset($_POST['hima2'])) {
                       </a>
                     </li>
                     <?php } 
-                    else if ($data['status_dosen1'] == 2 && $data['notif'] == 2) { ?>
+                    else if ($data['status_dosen1'] == 2 && $data['notif'] == 2 && $data['nama'] == $nama) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
                         <div class="d-flex py-1">
@@ -353,7 +348,7 @@ if (isset($_POST['hima2'])) {
                       </a>
                     </li>
                     <?php } 
-                    else if ($data['status_dosentkk'] == 1 && $data['notif'] == 1) { ?>
+                    else if ($data['status_dosentkk'] == 1 && $data['notif'] == 1 && $_SESSION["status2"] == 3) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
                         <div class="d-flex py-1">
@@ -374,14 +369,14 @@ if (isset($_POST['hima2'])) {
                       </a>
                     </li>
                     <?php } 
-                    else if ($data['status_dosentkk'] == 2 && $data['notif'] == 2) { ?>
+                    else if ($data['status_dosentkk'] == 2 && $data['notif'] == 2 && $_SESSION["status2"] == 3) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
                         <div class="d-flex py-1">
                           <div class="d-flex flex-column justify-content-center">
                             <button type="submit" name="hima2" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
                               <h6 class="text-sm font-weight-normal mb-1">
-                                <span class="font-weight-bold">Selesai</span>
+                                <span class="font-weight-bold">selesai</span>
                                 <span class="font-weight"><?php echo $data['perihal']; ?></span>
                               </h6>
                             </button>
