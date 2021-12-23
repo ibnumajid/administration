@@ -306,6 +306,7 @@ if (isset($_POST['hima2'])) {
                     $query = mysqli_query($koneksi, 'SELECT * FROM bimbingan ORDER BY id_no DESC');
                     while ($data = mysqli_fetch_array($query)) { 
                     
+                    // surat bimbingan yang revisi
                     if ($data['status_dosen1'] == 1 && $data['notif'] == 1 && $data['nama'] == $nama) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
@@ -327,6 +328,7 @@ if (isset($_POST['hima2'])) {
                       </a>
                     </li>
                     <?php } 
+                    // surat bimbingan yang selesai
                     else if ($data['status_dosen1'] == 2 && $data['notif'] == 2 && $data['nama'] == $nama) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
@@ -348,6 +350,7 @@ if (isset($_POST['hima2'])) {
                       </a>
                     </li>
                     <?php } 
+                    // surat hima yang direvisi
                     else if ($data['status_dosentkk'] == 1 && $data['notif'] == 1 && $_SESSION["status2"] == 3) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
@@ -369,6 +372,7 @@ if (isset($_POST['hima2'])) {
                       </a>
                     </li>
                     <?php } 
+                    // surat hima yang telahh selesai
                     else if ($data['status_dosentkk'] == 2 && $data['notif'] == 2 && $_SESSION["status2"] == 3) { ?>
                     <li class="mb-2">
                       <a class="dropdown-item border-radius-md" href="javascript:;">
