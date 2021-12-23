@@ -17,22 +17,31 @@ $keterangan = $_POST['keterangan'];
 $judul_ta = $_POST['ta'];
 $tingkat = $_POST['ting'];
 $dosen1 = $_POST['ds1'];
-$dosen2 = $_POST['ds2'];
 $dosen_tkk = $_POST['tkk'];
 $tgl_h1 = $_POST['hima1'];
 $tgl_h2 = $_POST['hima2'];
 $nama_file = basename($_FILES['fl']['name']);
+$nama_file2 = basename($_FILES['fl2']['name']);
 $ukuran = $_FILES['fl']['size'];
+$ukuran2 = $_FILES['fl2']['size'];
 $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
+$tipe2 = strtolower(pathinfo($nama_file2, PATHINFO_EXTENSION));
 
 $max = 1024 * 5000;
 $ekstensi = "pdf";
 
 
 $url = $id_nrp.'_'.$nama_file;
+$url2 = $id_nrp.'_'.$nama_file2;
 
 
 if ($ukuran > $max && $tipe !== $ekstensi)
+{
+?><script><?php $_SESSION["pdfuk"] = true;?></script> 
+<script>history.pushState({}, "", "")</script><?php 
+}
+
+else if ($ukuran2 > $max && $tipe2 !== $ekstensi)
 {
 ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
 <script>history.pushState({}, "", "")</script><?php 
@@ -43,11 +52,23 @@ else if ($ukuran > $max)
 echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
 }
 
+else if ($ukuran2 > $max)
+{
+echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
+}
+
 else if ($tipe != $ekstensi && $tipe != NULL)
 { 
 ?><script><?php $_SESSION['pdf'] = true ?></script> 
 <script>history.pushState({}, "", "")</script><?php
 }  
+
+else if ($tipe2 != $ekstensi && $tipe2 != NULL)
+{ 
+?><script><?php $_SESSION['pdf'] = true ?></script> 
+<script>history.pushState({}, "", "")</script><?php
+} 
+
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
   if ($perihal == "Bimbingan Proposal Magang" || $perihal == "Bimbingan Proposal Proyek Akhir" || $perihal == "Bimbingan Proposal PBL") { 
@@ -63,26 +84,29 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
     <script>history.pushState({}, "", "")</script><?php
     }
   }
-  else if ($perihal == "Bimbingan Proposal Kegiatan HIMA" ) {
-    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '', '9', '0', '0', '$dosen_tkk', '0', '', '', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '', '',  '$tipe', '$ukuran', sysdate(), '$angkatan')");
+  }
+else if (move_uploaded_file($_FILES['fl2']['tmp_name'], $url2)) 
+{
+  if ($perihal == "Bimbingan Proposal Kegiatan HIMA" ) {
+    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '', '9', '0', '0', '$dosen_tkk', '0', '', '', '$tgl_h1', '$tgl_h2', '0', '$url2', '', '', '', '',  '$tipe2', '$ukuran2', sysdate(), '$angkatan')");
     if($query)
-    {
-      ?><script><?php $_SESSION['sukses'] = true;?></script> 
-    <?php header("location:bimbingan.php"); 
-    }
-    else
-    {
-      ?><script><?php $_SESSION['input'] = true;?></script> 
-      <script>history.pushState({}, "", "")</script><?php
-    }
-}
+  {
+    ?><script><?php $_SESSION['sukses'] = true;?></script> 
+  <?php header("location:bimbingan.php"); 
+  }
+  else
+  {
+    ?><script><?php $_SESSION['input'] = true;?></script> 
+    <script>history.pushState({}, "", "")</script><?php
+  }
+} } 
 else
 {
     
     echo "Gagal Upload";
 }
 
-} }
+ }
 
 ?>
 
@@ -376,38 +400,6 @@ $(document).ready(function(){
                               </a>
                             </div>
 
-                            <!-- UNDUH PANDUANN Cuti -->
-                            <div class="unduhcuti text-center" style="display: none;">
-                              <a href="./Form Ijin Cuti Mahasiswa.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM CUTI</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Mengundurkan Diri -->
-                            <div class="unduhundur text-center" style="display: none;">
-                              <a href="./Form Mengundurkan Diri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM PENGUNDURAN DIRI</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Pengajuan Besiswa -->
-                            <div class="unduhbea text-center" style="display: none;">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH PANDUAN</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Keringanan UKT -->
-                            <div class="unduhukt text-center" style="display: none;">
-                              <a href="./Permohonan Keringanan UKT.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM KERINGANAN UKT</button>
-                              </a>
-                            </div>
-
                             <!-- UNDUH PANDUANN HIMA -->
                             <div class="unduhhima text-center" style="display: none;">
                               <a href="./Contoh Proposal Kegiatan Himpunan.pdf" target="_blank" class="pb-5 px-7" >
@@ -473,6 +465,48 @@ $(document).ready(function(){
                               </div>
                             </div>
 
+                            <!-- dosen tkk -->
+                            <div class="hima" style="display: none;">
+                              <?php if ($_SESSION["status2"] == 3) { ?>
+                                <div class="card-header pb-0 p-3">    
+                                  <div class="row">
+                                    <div class="mb-3">
+                                      <label for="formFile" class="form-label">Dosen TKK</label>
+                                      <?php
+                                          include '../_database/config.php';
+                                          $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 1");
+                                          while ($data_masuk = mysqli_fetch_array($query_masuk)) {
+                                            $npp = $data_masuk['user'];
+
+                                          $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
+                                          while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
+                                          <input id="name_tkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
+                                          <input id="name_dtkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "Tidak Memerlukan Dosen TKK">
+                                          <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
+                                          <?php } } ?>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- file -->  
+                                <div class="card-header pb-0 p-3">
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <label id="label-file" for="formFile" class="form-label">Upload Proposal Kegiatan HIMA (Ekstensi File .PDF)</label>
+                                            <input type="file" id="file" name="fl2" class="form-control" aria-label="file example" >
+                                            <div class="invalid-feedback">Example invalid form file feedback</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              <br><br>
+                              <div class="modal-footer">
+                              <a href = "./bimbingan.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+                                  <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
+                              </div>
+                            </div>
+                            <?php } ?>
+
                             <!-- dosen -->
                             <div class="dosen" style="display: none;">
                               <div class="card-header pb-0 p-3">    
@@ -494,29 +528,6 @@ $(document).ready(function(){
                                 </div>
                               </div>
                             <!--/div-->
-
-                            <!-- dosen tkk -->
-                            <div class="dosenTKK" style="display: none;">
-                              <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                  <div class="mb-3">
-                                    <label for="formFile" class="form-label">Dosen TKK</label>
-                                    <?php
-                                         include '../_database/config.php';
-                                         $query_masuk = mysqli_query($koneksi, "SELECT * FROM masuk WHERE status2 = 1");
-                                         while ($data_masuk = mysqli_fetch_array($query_masuk)) {
-                                          $npp = $data_masuk['user'];
-
-                                         $query_dosen = mysqli_query($koneksi, "SELECT * FROM data_dosenb WHERE id_npp = '$npp' ");
-                                         while ($data_dosen = mysqli_fetch_array($query_dosen)) { ?>
-                                        <input id="name_tkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $data_dosen['nama_anggota'] ?>" >
-                                        <input id="name_dtkk" name="tkk" class="form-control" type="hidden" aria-label="default input example"  value = "Tidak Memerlukan Dosen TKK">
-                                        <label class="form-control" aria-label="default input example"><?php echo $data_dosen['nama_anggota'] ?></label>
-                                        <?php } } ?>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
 
                             <!-- file -->
                             <div class="file" style="display: none;">  
@@ -628,10 +639,6 @@ $(document).ready(function(){
                 $('.unduhmag').show();
                 $('.unduhpa').hide();
                 $('.unduhpbl').hide();
-                $('.unduhcuti').hide()
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
                 $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat Magang");
@@ -655,10 +662,6 @@ $(document).ready(function(){
                 $('.unduhmag').hide();
                 $('.unduhpa').show();
                 $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
                 $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Industri Tempat Mengerjakan Proyek Akhir");
@@ -682,10 +685,6 @@ $(document).ready(function(){
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
                 $('.unduhpbl').show();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
                 $('.unduhhima').hide();
                 $('.keterangan').show();
                 $('#label-keterangan').text("Nama Tempat PBL");
@@ -719,6 +718,7 @@ $(document).ready(function(){
                 $('.judulTA').hide();
                 $('.tingkat').hide();
                 $('.tanggalHIMA').show();
+                $('.hima').show();
                 $('.dosen').hide();
                 $('.dmagang').hide();
                 $('.koor').hide();
@@ -728,18 +728,13 @@ $(document).ready(function(){
                 $('#name_pbl').prop('name', false);
                 $('#name_tkk').prop('name', 'tkk');
                 $('#name_dtkk').prop('name', false);
-                $('.file').show();
-                $('#label-file').text("Upload Proposal Kegiatan HIMA (Ekstensi File .PDF)");
-                $('.dosenTKK').show();
+                
+                
               }
             else {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
                 $('.unduhpbl').hide();
-                $('.unduhcuti').hide();
-                $('.unduhundur').hide();
-                $('.unduhbea').hide();
-                $('.unduhukt').hide();
                 $('.unduhhima').hide();
                 $('.keterangan').hide();
                 $('.judulTA').hide();
