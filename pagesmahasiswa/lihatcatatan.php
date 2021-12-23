@@ -56,12 +56,13 @@ include "../_database/config.php";
           if ($data['status_dosen1'] == '1' || $data['status_dosentkk'] == '1'){
           $query = mysqli_query($koneksi, "UPDATE bimbingan SET `file` = '$url' WHERE id_no = '$id' ");
           $query2 = mysqli_query($koneksi, "UPDATE bimbingan SET `status_dosen1` = '0' WHERE id_no = '$id' ");
-          $query3 = mysqli_query($koneksi, "UPDATE bimbingan SET `keterangan`='$ket' WHERE id_no = '$id' ");
-          $query4 = mysqli_query($koneksi, "UPDATE bimbingan SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
+          $query3 = mysqli_query($koneksi, "UPDATE bimbingan SET `notif` = '0' WHERE id_no = '$id' ");
+          $query4 = mysqli_query($koneksi, "UPDATE bimbingan SET `keterangan`='$ket' WHERE id_no = '$id' ");
+          $query5 = mysqli_query($koneksi, "UPDATE bimbingan SET `judul_ta`='$jdlta' WHERE id_no = '$id' ");
           move_uploaded_file($_FILES['fl']['tmp_name'], $url);
           }
           
-          if ($query && $query2) {
+          if ($query && $query2 && $query3) {
             if ($lokasi == "home") { 
             ?><script><?php $_SESSION['sukses'] = true;?></script> 
             <?php header("location:mahasiswa.php"); }
