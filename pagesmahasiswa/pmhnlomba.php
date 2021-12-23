@@ -343,7 +343,7 @@ session_start();
                     $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                     while ($data = mysqli_fetch_array($query)) {
                       if ($data['nama'] == $_SESSION['user']) {
-                        if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") {
+                        if ($data['perihal'] == "SSurat Permohonan Mengikuti Lomba") {
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $no++ ?></td>
