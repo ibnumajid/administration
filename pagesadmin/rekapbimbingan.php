@@ -373,9 +373,11 @@ if (isset($_POST['dsn'])) {
                     <tr>
                       <th class = "text-center">No</th>
                       <th class = "text-center">Nama Pengirim</th>
+                      <th class = "text-center">Angkatan</th>
+                      <th class = "text-center">Dosen Pembimbing</th>
                       <th class = "text-center">Perihal</th>
                       <th class = "text-center">Dokumen</th>
-                      <th class = "text-center">Tanggal</th>
+                      <th class = "text-center">Tanggal Pengajuan</th>
                       <th class = "text-center">Histori Bimbingan</th>
                     </tr>
                   </thead>
@@ -396,6 +398,12 @@ if (isset($_POST['dsn'])) {
                     <td class="text-center"><?php echo $no++ ?></td>
                     <td>
                       <h6 class="mb-0 text-sm ps-3"><?php echo $data['nama'] ?></h6>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['angkatan'] ?></h6>
+                    </td>
+                    <td>
+                      <h6 class="mb-0 text-sm ps-3"><?php echo $data['dosen1'] ?></h6>
                     </td>
                     <td>
                       <h6 class="mb-0 text-sm ps-3"><?php echo $data['perihal'] ?></h6>
