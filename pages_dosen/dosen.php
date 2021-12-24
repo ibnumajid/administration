@@ -506,7 +506,7 @@
                     "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && status_dosen1 = 0 && notif = 0) || 
                     (dosen2 = '$nama' && status_dosen2 = 9 && status_dosen2 = 0 && notif = 1) || 
                     (dosen_tkk = '$nama' && notif = 1)
-                    UNION SELECT * FROM bimbingan WHERE status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
+                    UNION SELECT * FROM bimbingan WHERE dosen_tkk = '$nama' && status_dosentkk = 0 && notif = 1 ORDER BY tanggal DESC");
                     $data_tkk = mysqli_num_rows($query_tkk); ?>
                     <i class="fa fa-bell cursor-pointer" <?php if($data_tkk > 0){echo 'style="color:#63B3ED"';} ?>></i>
                     <span class="primary"><?php echo $data_tkk ?></span>
