@@ -22,7 +22,7 @@ session_start();
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-
+  <!-- CSS scroll -->
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -71,10 +71,11 @@ $(document).ready(function(){
 </script>
 
 </head>
-
+<!-- tabel -->
 <body class="g-sidenav-show  bg-gray-100">
 <table class="table table-hover">
   <thead>
+    <!-- judul kolom -->
     <tr>
       <th class = "text-center">Bimbingan</th>
       <th class = "text-center">Tanggal</th>
@@ -95,8 +96,11 @@ $(document).ready(function(){
     $catatan = $data['catatan_pmb'];
     ?>
     <tr>
+      <!-- no -->
       <td class = "text-center"><?php echo $no++ ?></td>
+      <!-- tanggal -->
       <td><?php echo $tanggal ?></td>
+      <!-- catatan -->
       <td><?php echo $catatan ?></td>
 
     </tr>
@@ -125,9 +129,7 @@ $(document).ready(function(){
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-
-  
-
+    <!-- notif gagal mengajukan -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>

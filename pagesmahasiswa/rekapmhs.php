@@ -102,6 +102,7 @@ if (isset($_POST['hima2'])) {
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+  <!-- sidebar -->
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -174,7 +175,7 @@ if (isset($_POST['hima2'])) {
           </a>
         </li>
 
-        <!--profil-->
+        <!--ganti password-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -191,7 +192,8 @@ if (isset($_POST['hima2'])) {
       </ul>
     </div>
   </aside>
-  
+  <!-- and sidebar -->
+
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -211,13 +213,14 @@ if (isset($_POST['hima2'])) {
             </div-->
           </div>
           <ul class="navbar-nav justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
             <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"> <?php echo $_SESSION['user'] ?> </span>
               </a>
             </li>
-          
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center"></li>
             <!-- notif -->
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
@@ -344,11 +347,13 @@ if (isset($_POST['hima2'])) {
               </ul>
             </li>
             <!-- and notif -->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a> -->
             </li>
+            <!-- logout -->
             <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
@@ -374,11 +379,12 @@ if (isset($_POST['hima2'])) {
 
               </div>
             </div>
-
+            <!-- tabel rekap -->
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">  
                   <table class="table align-items-center mb-0">
                     <thead>
+                      <!-- judul kolom -->
                       <tr>
                         <th class="text-center">No</th>
                         <th class="text-left ps-1">Perihal</th>
@@ -401,11 +407,16 @@ if (isset($_POST['hima2'])) {
                         
                     ?>
                         <tr>
+                          <!-- no -->
                           <td class="text-center"><?php echo $no++ ?></td>
+                          <!-- perihal -->
                           <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                          <!-- id surat -->
                           <td class="text-center"><?php echo $data['id_no'] ?></td>
+                          <!-- tanggal -->
                           <td class="text-center"><?php echo $data['tanggal'] ?></td>
                           <td> 
+                            <!-- file -->
                             <div class="text-center">
                               <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
                               <p class="modal-title" class="text-center ps-1" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>

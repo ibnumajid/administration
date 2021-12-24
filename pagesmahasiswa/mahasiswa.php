@@ -215,7 +215,7 @@ if (isset($_POST['hima2'])) {
               </a>
             </li>   
       
-            <!--profil-->
+            <!--ganti password-->
             <li class="nav-item mt-3">
                       <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
@@ -267,6 +267,7 @@ if (isset($_POST['hima2'])) {
                 </div>
               </a>
             </li> -->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -283,14 +284,16 @@ if (isset($_POST['hima2'])) {
                 $query_mhsw = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE nama = '$nama'");
                 $data_mhsw = mysqli_fetch_assoc($query_mhsw);
 
+                // untuk mahasiswa 
                 if ($nama) {
                   $query1 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE (status_dosen1 = 1 || status_dosen1 = 2) & (notif = 1 || notif = 2) ORDER BY id_no DESC");
                   $data1 = mysqli_num_rows($query1); ?>
 
                 <i class="fa fa-bell cursor-pointer" <?php if($data1 > 0){echo 'style="color:#63B3ED"';} ?>></i>
                 <span class="primary"><?php echo $data1 ?></span>
+                <!-- untuk mahasiswa HIMA -->
                 <?php } else if ($_SESSION["status2"] == 3) {
-                  $query2 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE ((status_dosen1 = 1 || status_dosen1 = 2) & (notif = 1 || notif = 2)) || ((status_dosentkk = 1 || status_dosentkk = 2) & (notif = 1 || notif = 2)) ORDER BY id_no DESC");
+                  $query2 = mysqli_query($koneksi, "SELECT * FROM bimbingan WHERE ((status_dosen1 = 1 || status_dosen1 = 2) & (notif = 1 || notif = 2)) || ((status_dosentkk = 1 || status_dosentkk = 2) & (notif = 2 || notif = 3)) ORDER BY id_no DESC");
                   $data2 = mysqli_num_rows($query2); ?>
 
                 <i class="fa fa-bell cursor-pointer" <?php if($data2 > 0){echo 'style="color:#63B3ED"';} ?>></i>
@@ -401,6 +404,7 @@ if (isset($_POST['hima2'])) {
               </ul>
             </li>
             <!-- and notif -->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -508,8 +512,9 @@ if (isset($_POST['hima2'])) {
               </div>
             </div>
           </div>
+      <!-- AND CAROUSEL -->
 
-        <!-- Bagian Detail Permohonan Surat -->
+      <!-- Bagian Detail Permohonan Surat -->
       <div class="row">
         <div class="col-md-7 mt-4">
           <div class="card">
@@ -524,30 +529,31 @@ if (isset($_POST['hima2'])) {
                 $no2 = $no++;
                 $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa ORDER BY id_no DESC');
                 while ($data = mysqli_fetch_array($query)) {
-                  if ($data['nama'] == $_SESSION['user'] && ($data['status_dosen1'] == '1' || $data['status_dosen2'] == '1' || 
-                  $data['status_dosentkk'] == '1' || $data['status_kadep'] == '1')) {
-                      $no++
-                ?>
-                    <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
-                      <div class="d-flex flex-column">
-                        <h6 class="mb-3 text-sm"> <?php echo $data['file'] ?> </h6>
-                        <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['perihal'] ?></span></span>
-                        <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
-                      </div>
-                      <div class="ms-auto text-end">
-                       <div>
+                if ($data['nama'] == $_SESSION['user'] && ($data['status_dosen1'] == '1' || $data['status_dosen2'] == '1' || 
+                $data['status_dosentkk'] == '1' || $data['status_kadep'] == '1')) {
+                $no++ ?>
+                <li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+                  <!-- data -->
+                  <div class="d-flex flex-column">
+                    <!-- file -->
+                    <h6 class="mb-3 text-sm"> <?php echo $data['file'] ?> </h6>
+                    <!-- perihal -->
+                    <span class="mb-2 text-xs">Perihal : <span class="text-dark font-weight-bold ms-sm-2"><?php echo $data['perihal'] ?></span></span>
+                    <!-- tanggal -->
+                    <span class="text-xs">Tanggal Diajukan : <span class="text-dark ms-sm-2 font-weight-bold"><?php echo $data['tanggal'] ?></span></span>
+                  </div>
+                  <!-- button -->
+                  <div class="ms-auto text-end">
+                    <div>
+                      <!-- buuton hapus -->
                       <button type = "button" class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#hapus<?php echo$data['id_no']?>">Hapus</a>
-                      </div>
-                      <div>   
-                        <button type = "button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Respon</button>
-                      </div>
-                      </div>
-                      
-                    </li>
-
-                   
-
-
+                    </div>
+                    <div>  
+                       <!--button respon  -->
+                      <button type = "button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?php echo $data['id_no'] ?>">Respon</button>
+                    </div>
+                  </div>
+                </li>
                 <?php } ?>
 
                   <!-- Modal Hapus -->
@@ -599,6 +605,7 @@ if (isset($_POST['hima2'])) {
 
 
                        <div class="modal-footer">
+
                          <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Tutup</button>
 
                          <!-- Saat dosen menolak -->
@@ -754,13 +761,16 @@ if (isset($_POST['hima2'])) {
                 $no ++?>
                   <li class="list-group-item border-0 d-flex justify-content-between px-4 mb-3 ">
                     <div class="d-flex flex-column">
+                      <!-- perihal -->
                       <h6 class="mb-1 text-dark text-sm"><?php echo $data['perihal'] ?></h6>
-                        <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
-                          <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
-                            <button type="button"  class="btn btn-link px-0" ><em>Klik untuk Mengunduh File</em></button>
-                          </span>
-                        </a>
+                      <!-- link file -->
+                      <a href="../pagesadmin/<?php echo $data['file'] ?>" target="_blank">
+                        <span class="text-xs" name="fl" id="edit<?php echo $data['id_no'] ?>">
+                          <button type="button"  class="btn btn-link px-0" ><em>Klik untuk Mengunduh File</em></button>
+                        </span>
+                      </a>
                     </div>
+                    <!-- tanggal -->
                     <span class="text-xs"><?php echo $data['tanggal'] ?></span>
                     <?php } } ?>
                     <?php if ($no == 1) { ?>
@@ -798,6 +808,21 @@ if (isset($_POST['hima2'])) {
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   <!-- JS sweetaler notif login berhasil-->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php if(@$_SESSION['alert']) : ?>
+        <script>
+            Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: 'Berhasil Login',
+            showConfirmButton: false,
+            timer: 2000
+            })
+        </script>
+    <?php unset($_SESSION['alert']); ?>
+    <?php endif; ?>
+
+    <!-- notif berhasil menghapus -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php if (@$_SESSION['sukseshps']) : ?>
         <script>
             Swal.fire({
@@ -811,19 +836,6 @@ if (isset($_POST['hima2'])) {
         <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
 
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['alert']) : ?>
-        <script>
-            Swal.fire({
-            icon: 'success',
-            title: 'Berhasil',
-            text: 'Berhasil Login',
-            showConfirmButton: false,
-            timer: 2000
-            })
-        </script>
-    <?php unset($_SESSION['alert']); ?>
-    <?php endif; ?>
 </body>
 
 </html>

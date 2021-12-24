@@ -5,6 +5,7 @@ session_start();
   header("location:../index.php");
   }
 ?>
+<!-- php upload file -->
 <?php
 include '../_database/config.php';
 if(isset($_POST['input']))
@@ -27,67 +28,78 @@ $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
 $max = 1024 * 5000;
 $ekstensi = "pdf";
 
-
+// file
 $url = $id_nrp.'_'.$nama_file;
 
-
+// ukuran dan tipe tidak sesuai
 if ($ukuran > $max && $tipe !== $ekstensi)
 {
 ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
 <script>history.pushState({}, "", "")</script><?php 
 }
-
+// ukuran tidak sesuai
 else if ($ukuran > $max)
 {
 echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
 }
-
+// tipe tidak sesuai pdf
 else if ($tipe != $ekstensi && $tipe != NULL)
 { 
 ?><script><?php $_SESSION['pdf'] = true ?></script> 
 <script>history.pushState({}, "", "")</script><?php
 }  
+// upload file
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
+  // upload file dosen pemb dan koor
   if ($perihal == "Surat Magang" || $perihal == "Surat Proyek Akhir" || $perihal == "Surat PBL (Project Based Learning)") { 
     $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '$dosen1', '0', '$dosen2', '0', '', '9', '0', '0', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate(), '$tingkat')");
     if($query)
+    // notif dan header sukses upload file
     {
       ?><script><?php $_SESSION['sukses'] = true;?></script> 
       <?php header("location:pmhnsurat.php"); 
     }
+    // notif gagal input
     else
     {
     ?><script><?php $_SESSION['input'] = true;?></script> 
     <script>history.pushState({}, "", "")</script><?php
     }
   }
+  // upload file langsung ke kadep
   else if ($perihal == "Surat Cuti" || $perihal == "Surat Mengundurkan Diri") {
     $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '', '2', '', '2', '', '2', '0', '0', '$tgl_h1', '$tgl_h2', '2', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate(), '$tingkat')");
     if($query)
+    // notif dan header sukses upload file
     {
       ?><script><?php $_SESSION['sukses'] = true;?></script> 
       <?php header("location:pmhnsurat.php");
     }
+    // notif gagal input
     else
     {
     ?><script><?php $_SESSION['input'] = true;?></script> 
     <script>history.pushState({}, "", "")</script><?php
     }
   }
+  // upload file untuk dosen tkk
   else if ($perihal == "Surat Pengajuan Beasiswa" || $perihal == "Surat Keringanan UKT" || $perihal == "Surat Permohonan Lomba" || $perihal == "Surat Pengajuan Kegiatan HIMA" ) {
     $query = mysqli_query($koneksi,"insert into suratmahasiswa values('', '3', '$nama_mhsw','$id_nrp','$perihal','$keterangan','$judul_ta', '', '9', '', '9', '$dosen_tkk', '0', '0', '0', '$tgl_h1', '$tgl_h2', '1', '$url', '', '', '',  '', '$tipe', '$ukuran', sysdate(), '$tingkat')");
     if($query) 
+    // notif dan header sukses upload file
     {
       ?><script><?php $_SESSION['sukses'] = true;?></script> 
     <?php header("location:pmhnsurat.php"); 
     }
+    // notif gagal input
     else
     {
       ?><script><?php $_SESSION['input'] = true;?></script> 
       <script>history.pushState({}, "", "")</script><?php
     }
 }
+// gagal upload
 else
 {
     
@@ -119,7 +131,7 @@ else
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-
+  <!-- CSS scroll -->
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -242,7 +254,7 @@ $(document).ready(function(){
           </a>
         </li>
         
-        <!--profil-->
+        <!--ganti password-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -277,21 +289,23 @@ $(document).ready(function(){
             
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
               <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
-            
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
             
             </li>
-                        <li class="nav-item d-flex align-items-center">
-                <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span class="d-sm-inline d-none">Logout </span>
-                </a>
+            <!-- logout -->
+            <li class="nav-item d-flex align-items-center">
+              <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="d-sm-inline d-none">Logout </span>
+              </a>
             </li>
           </ul>
         </div>
@@ -499,6 +513,7 @@ $(document).ready(function(){
                                           </select>
                                     </div>
                                   </div>
+                                  <!-- dosen koor magang -->
                                   <div  class="magang" style="display: none;" >
                                     <div class="form-group col-md-12" style="align-right:right;">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
@@ -515,6 +530,7 @@ $(document).ready(function(){
                                         <?php } } ?>
                                     </div>
                                   </div>
+                                  <!-- dosen koor proyek akhir -->
                                   <div  class="koor" style="display: none;" >
                                     <div class="form-group col-md-12">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
@@ -531,6 +547,7 @@ $(document).ready(function(){
                                         <?php } } ?>
                                     </div>
                                   </div>
+                                  <!-- dosen koor pbl -->
                                   <div  class="dpbl" style="display: none;" >
                                     <div class="form-group col-md-12">
                                       <label for="formFile" class="form-label">Dosen Koordinator</label>
@@ -590,9 +607,10 @@ $(document).ready(function(){
                             </div>
 
                             <br><br>
+                            <!-- button -->
                             <div class="modal-footer">
-                            <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                                <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
+                              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+                              <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
                             </div>
                         </form>
                     </div>
@@ -625,7 +643,7 @@ $(document).ready(function(){
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
  
-
+    <!-- notif gagal input -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>
@@ -639,9 +657,10 @@ $(document).ready(function(){
         </script>
     <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
-    
+    <!-- hiden show jenis surat -->
     <script>
         $('#jenis_surat').on('change',function () {
+          // surat magang
             if($('#jenis_surat').val() == 'Surat Magang') {
                 $('.unduhmag').show();
                 $('.unduhpa').hide();
@@ -669,6 +688,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Magang (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
+              // surat proyek akhir
             else if($('#jenis_surat').val() == 'Surat Proyek Akhir') {
                 $('.unduhmag').hide();
                 $('.unduhpa').show();
@@ -696,6 +716,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Proyek Akhir (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
+              // surat pbl
             else if($('#jenis_surat').val() == 'Surat PBL (Project Based Learning)') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -723,6 +744,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal PBL (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               } 
+              // surat cuti
             else if($('#jenis_surat').val() == 'Surat Cuti') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -749,6 +771,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Formulir Pengajuan Cuti (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
+              // surat mengundurkan diri
             else if($('#jenis_surat').val() == 'Surat Mengundurkan Diri') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -775,6 +798,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Formulir Pengunduran Diri (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
+              // surat pengajuan beasiswa
             else if($('#jenis_surat').val() == 'Surat Pengajuan Beasiswa') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -802,6 +826,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Formulir Pengajuan Beasiswa (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
+              // surat keringanan ukt
             else if($('#jenis_surat').val() == 'Surat Keringanan UKT') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -828,6 +853,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Formulir Keringanan UKT (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
+              // surat mengikuti lomba
               else if($('#jenis_surat').val() == 'Surat Permohonan Mengikuti Lomba') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -858,6 +884,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Poster Pengumuman Lomba (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
+              // surat kegiatan hima
             else if($('#jenis_surat').val() == 'Surat Pengajuan Kegiatan HIMA') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -885,6 +912,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Kegiatan HIMA (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
+              // hide surat
             else {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();

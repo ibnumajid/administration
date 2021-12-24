@@ -5,6 +5,7 @@ session_start();
   header("location:../index.php");
   } 
 ?>
+<!-- php upload file -->
 <?php
 include '../_database/config.php';
 if(isset($_POST['input']))
@@ -27,49 +28,57 @@ $tipe = strtolower(pathinfo($nama_file, PATHINFO_EXTENSION));
 $max = 1024 * 5000;
 $ekstensi = "pdf";
 
-
+// file
 $url = $id_nrp.'_'.$nama_file;
 
-
+// ukuran dan tipe tidak sesuai
 if ($ukuran > $max && $tipe !== $ekstensi)
 {
 ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
 <script>history.pushState({}, "", "")</script><?php 
 }
-
+// ukuran trlalu besar
 else if ($ukuran > $max)
 {
 echo '<script> alert("Gagal mengajukan permohonan surat ! Ukuran file tidak boleh melebihi 20 mb")</script>' ;
 }
-
+// tipe bukan pdf
 else if ($tipe != $ekstensi && $tipe != NULL)
 { 
 ?><script><?php $_SESSION['pdf'] = true ?></script> 
 <script>history.pushState({}, "", "")</script><?php
 }  
-
+// upload file
 else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url)) 
 {
+  // upload file untuk mahasiswa
   if ($perihal == "Bimbingan Proposal Magang" || $perihal == "Bimbingan Proposal Proyek Akhir" || $perihal == "Bimbingan Proposal PBL") { 
     $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '$dosen1', '0', '0', '0', '', '9', '', '', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '', '',  '$tipe', '$ukuran', sysdate(), '$angkatan')");
     if($query)
+    // notif dan header berhasil update
     {
       ?><script><?php $_SESSION['sukses'] = true;?></script> 
       <?php header("location:bimbingan.php"); 
     }
+    
+      // notif gagal update
     else
     {
     ?><script><?php $_SESSION['input'] = true;?></script> 
     <script>history.pushState({}, "", "")</script><?php
     }
   }
+  // upload file untuk mahasiswa HIMA
   else if ($perihal == "Bimbingan Proposal Kegiatan HIMA" ) {
-    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '', '9', '0', '0', '$dosen_tkk', '0', '', '', '$tgl_h1', '$tgl_h2', '0', '$url', '', '', '', '',  '$tipe', '$ukuran', sysdate(), '$angkatan')");
+    $query = mysqli_query($koneksi,"insert into bimbingan values('', '3', '$nama_mhsw','$id_nrp', '$perihal','$keterangan','$judul_ta', '', '9', '0', '0', '$dosen_tkk', '0', '', '', '$tgl_h1', '$tgl_h2', '1', '$url', '', '', '', '',  '$tipe', '$ukuran', sysdate(), '$angkatan')");
     if($query)
+    // notif dan header sukses upload
   {
     ?><script><?php $_SESSION['sukses'] = true;?></script> 
   <?php header("location:bimbingan.php"); 
   }
+  
+    // notif gagal upload
   else
   {
     ?><script><?php $_SESSION['input'] = true;?></script> 
@@ -77,6 +86,7 @@ else if (move_uploaded_file($_FILES['fl']['tmp_name'], $url))
   }
 }
   } 
+  // gagal upload
 else
 {
     
@@ -108,7 +118,7 @@ else
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-
+  <!-- CSS scroll -->
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -144,17 +154,6 @@ else
             height: 200px; }
   </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#hide").click(function(){
-    $("p").hide();
-  });
-  $("#show").click(function(){
-    $("p").show();
-  });
-});
-</script>
 
 </head>
 
@@ -231,7 +230,7 @@ $(document).ready(function(){
           </a>
         </li>
 
-        <!--profil-->
+        <!--ganti password-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -266,17 +265,19 @@ $(document).ready(function(){
             
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
               <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
-            
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
             
             </li>
-                        <li class="nav-item d-flex align-items-center">
+            <!-- logout -->
+            <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
@@ -309,7 +310,7 @@ $(document).ready(function(){
                     <div class="table-responsive p-0">
                        
 
-                        <!-- nama & nrp -->
+                        <!-- nama,nrp dan angkatan -->
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="card-header pb-0 p-3">    
                                 <div class="row">
@@ -331,26 +332,23 @@ $(document).ready(function(){
                                 </div>
                             </div>
 
-                            
                             <!-- jenis surat -->
-                            
-                          <!-- jenis surat -->
-                          <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                    <div class="mb-3">
-                                        <label for="formFile" class="form-label">Perihal</label>
-                                        <select id="jenis_surat" name="sr"  class="form-select" aria-label="Default select example" required>
-                                            <option selected>Pilih Perihal Bimbingan</option>
-                                            <option value="Bimbingan Proposal Magang">Bimbingan Proposal Magang</option>
-                                            <option value="Bimbingan Proposal Proyek Akhir">Bimbingan Proposal Proyek Akhir</option>
-                                            <option value="Bimbingan Proposal PBL">Bimbingan Proposal PBL</option>
-                                            <?php if ($_SESSION["status2"] == 3) { ?>
-                                            <option value="Bimbingan Proposal Kegiatan HIMA">Bimbingan Proposal Kegiatan HIMA</option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="card-header pb-0 p-3">
+                                  <div class="row">
+                                      <div class="mb-3">
+                                          <label for="formFile" class="form-label">Perihal</label>
+                                          <select id="jenis_surat" name="sr"  class="form-select" aria-label="Default select example" required>
+                                              <option selected>Pilih Perihal Bimbingan</option>
+                                              <option value="Bimbingan Proposal Magang">Bimbingan Proposal Magang</option>
+                                              <option value="Bimbingan Proposal Proyek Akhir">Bimbingan Proposal Proyek Akhir</option>
+                                              <option value="Bimbingan Proposal PBL">Bimbingan Proposal PBL</option>
+                                              <?php if ($_SESSION["status2"] == 3) { ?>
+                                              <option value="Bimbingan Proposal Kegiatan HIMA">Bimbingan Proposal Kegiatan HIMA</option>
+                                              <?php } ?>
+                                          </select>
+                                      </div>
+                                  </div>
+                              </div>
 
                             <!-- UNDUH PANDUANN Magang -->
                             <div class="unduhmag text-center" style="display: none;" class="d-grid gap-2">
@@ -532,9 +530,10 @@ $(document).ready(function(){
                             </div>
 
                             <br><br>
+                            <!-- button -->
                             <div class="modal-footer">
-                            <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                                <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
+                              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
+                              <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
                             </div>
                         </form>
                     </div>
@@ -567,7 +566,7 @@ $(document).ready(function(){
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
  
-
+    <!-- notif gagal input -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>
@@ -582,8 +581,10 @@ $(document).ready(function(){
     <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
     
+    <!-- dropdown form jenis bimbingan proposal -->
     <script>
         $('#jenis_surat').on('change',function () {
+          // bimbingan proposal magang
             if($('#jenis_surat').val() == 'Bimbingan Proposal Magang') {
                 $('.unduhmag').show();
                 $('.unduhpa').hide();
@@ -611,6 +612,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Magang (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
+            // bimbingan proposal proyek akhir
             else if($('#jenis_surat').val() == 'Bimbingan Proposal Proyek Akhir') {
                 $('.unduhmag').hide();
                 $('.unduhpa').show();
@@ -638,6 +640,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Proyek Akhir (Ekstensi File .PDF)");
                 $('.dosenTKK').hide();
               }
+            // bimbingan proposal pbl
             else if($('#jenis_surat').val() == 'Bimbingan Proposal PBL') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -800,6 +803,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Poster Pengumuman Lomba (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
+            // bimbingan proposal hima
             else if($('#jenis_surat').val() == 'Bimbingan Proposal Kegiatan HIMA') {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();
@@ -827,6 +831,7 @@ $(document).ready(function(){
                 $('#label-file').text("Upload Proposal Kegiatan HIMA (Ekstensi File .PDF)");
                 $('.dosenTKK').show();
               }
+            // hide bimbingan proposal
             else {
                 $('.unduhmag').hide();
                 $('.unduhpa').hide();

@@ -185,6 +185,7 @@ if(isset($_POST['batal'])) {
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+  <!-- sidebar -->
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -275,6 +276,7 @@ if(isset($_POST['batal'])) {
         </ul>
     </div>
   </aside>
+  <!-- and sidebar -->
   
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
@@ -292,6 +294,7 @@ if(isset($_POST['batal'])) {
             
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
               <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
@@ -307,6 +310,7 @@ if(isset($_POST['batal'])) {
                 </div>
               </a>
             </li-->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!--a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -437,6 +441,7 @@ if(isset($_POST['batal'])) {
               </ul>
             </li>
             <!-- and notif -->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -474,37 +479,41 @@ if(isset($_POST['batal'])) {
 
             <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group d-flex my-0">
-            <div class="card-header pb-0 p-3" style = "width:400px">
-              <div class="row">
-                <div class="mb-0">
-                <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
-                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
+              <!-- nama -->
+              <div class="card-header pb-0 p-3" style = "width:400px">
+                <div class="row">
+                  <div class="mb-0">
+                  <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                  <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
+                  <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div class="card-header pb-0 p-3" style = "width:400px">
-              <div class="row">
-                <div class="mb-0">
-                <label for="formFile" class="form-label" >NRP Mahasiswa</label>
-                <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" >
-                <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
+              
+              <!-- nrp -->
+              <div class="card-header pb-0 p-3" style = "width:400px">
+                <div class="row">
+                  <div class="mb-0">
+                  <label for="formFile" class="form-label" >NRP Mahasiswa</label>
+                  <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" >
+                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- angkatan -->
+              <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
+                <div class="row">
+                  <div class="mb-0">
+                  <label for="formFile" class="form-label">Angkatan</label>
+                  <input name="angkatan" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['angkatan'] ?>" >
+                  <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
-              <div class="row">
-                <div class="mb-0">
-                <label for="formFile" class="form-label">Angkatan</label>
-                <input name="angkatan" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['angkatan'] ?>" >
-                <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
-                </div>
-              </div>
-            </div>
-                   </div>
-
+            <!-- nama lab -->
             <div class="card-header pb-0 pt-0 p-3 my-0">
               <div class="row">
                 <div class="mb-0">
@@ -545,62 +554,62 @@ if(isset($_POST['batal'])) {
             </div>
 
             <div class="form-group d-flex">
-            <div class="card-header pb-0 p-3" style = "width:550px" >
-              <div class="row">
-                <div class="mb-0">
-                <label for="formFile" class="form-label">Nama Tempat Magang</label>
-                <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2) { ?>
-                <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
-                
-                <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !=2) { ?>
-                <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
-                    <?php } 
-                    else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="tm" class="form-control" aria-label="default input example"><?php echo $data['nama_perusahaan'] ?></label>       
-                   <?php }
-                    else { ?>
-                <input name="tm" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Tempat Magang" >
-                   <?php }
-                    ?>
-                    </div>
-                    </div>
+              <!-- nama tempat magang -->
+              <div class="card-header pb-0 p-3" style = "width:550px" >
+                <div class="row">
+                  <div class="mb-0">
+                    <label for="formFile" class="form-label">Nama Tempat Magang</label>
+                    <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2) { ?>
+                    <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
+                    
+                    <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !=2) { ?>
+                    <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
+                        <?php } 
+                        else if ($data['status_dosen1'] == 2) { ?>
+                            <label name="tm" class="form-control" aria-label="default input example"><?php echo $data['nama_perusahaan'] ?></label>       
+                      <?php }
+                        else { ?>
+                    <input name="tm" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Tempat Magang" >
+                    <?php }
+                      ?>
+                  </div>
+                </div>
               </div>
             
-
-            <div class="card-header pb-0 p-3" style = "width:550px">
-              <div class="row">
-                <div class="mb-0">
-                <label for="formFile" class="form-label">Alamat Magang</label>
-                 <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2) { ?>
-                <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
-                
-                <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !=2) { ?>
-                <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
-                    <?php } 
-                     else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="am" class="form-control" aria-label="default input example"><?php echo $data['alamat_perusahaan'] ?></label>       
-                   <?php }
-                    else { ?>
-                <input name="am" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Alamat Magang" >
-                   <?php }
-                    ?>
-                    </div>
+              <!-- alamat magang -->
+              <div class="card-header pb-0 p-3" style = "width:550px">
+                <div class="row">
+                  <div class="mb-0">
+                    <label for="formFile" class="form-label">Alamat Magang</label>
+                    <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2) { ?>
+                    <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
+                    
+                    <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !=2) { ?>
+                    <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
+                        <?php } 
+                        else if ($data['status_dosen1'] == 2) { ?>
+                            <label name="am" class="form-control" aria-label="default input example"><?php echo $data['alamat_perusahaan'] ?></label>       
+                      <?php }
+                        else { ?>
+                    <input name="am" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Alamat Magang" >
+                      <?php }
+                        ?>
+                  </div>
                 </div>
               </div>
 
+              <!-- dosen pemb -->
               <?php if ($data['status_dosen1'] == 2) { ?>
-    
               <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
-              <div class="row">
-                <div class="mb-0">
-                <label for="formFile" class="form-label">Dosen Pembimbing</label>
-                <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data['dosen1'] ?></label>
+                <div class="row">
+                  <div class="mb-0">
+                    <label for="formFile" class="form-label">Dosen Pembimbing</label>
+                    <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data['dosen1'] ?></label>
+                  </div>
                 </div>
               </div>
+              <?php } ?>
             </div>
-              
-                <?php } ?>
-                </div>
 
            
                     <div class="d-flex justify-content-center ">
@@ -682,6 +691,7 @@ if(isset($_POST['batal'])) {
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
+  <!-- notif sukses memohon pencarian dosbing -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukses']) : ?>
         <script>
@@ -695,7 +705,7 @@ if(isset($_POST['batal'])) {
         </script>
     <?php unset($_SESSION['sukses']); ?>
     <?php endif; ?>
-
+    <!-- notif gagal diajukan -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>
@@ -709,7 +719,7 @@ if(isset($_POST['batal'])) {
         </script>
     <?php unset($_SESSION['input']); ?>
     <?php endif; ?>
-
+    <!-- notif sukses melakukan perubahan -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukses2']) : ?>
         <script>
@@ -723,7 +733,7 @@ if(isset($_POST['batal'])) {
         </script>
     <?php unset($_SESSION['sukses2']); ?>
     <?php endif; ?>
-
+    <!-- notif sukses membatalkan pengiriman -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukses3']) : ?>
         <script>

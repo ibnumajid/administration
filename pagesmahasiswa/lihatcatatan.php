@@ -17,6 +17,7 @@ $data = mysqli_fetch_array($query)
 <?php
 include "../_database/config.php";
 ?>
+<!-- php update file bimbingan -->
  <?php
         include "../_database/config.php";
         if (isset($_POST['update'])) {
@@ -127,6 +128,7 @@ include "../_database/config.php";
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+  <!-- sidebar -->
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -200,7 +202,7 @@ include "../_database/config.php";
           </a>
         </li>
         
-        <!--profil-->
+        <!--ganti password-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -219,6 +221,7 @@ include "../_database/config.php";
     </div>
 
   </aside>
+  <!-- and sidebar -->
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -235,6 +238,7 @@ include "../_database/config.php";
             
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
               <a href="../profile.php" href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
@@ -250,12 +254,13 @@ include "../_database/config.php";
                 </div>
               </a>
             </li-->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!--a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a-->
             </li>
-            
+            <!-- logout -->
             <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
@@ -412,22 +417,20 @@ include "../_database/config.php";
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-
-  
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <?php if(@$_SESSION['input']) : ?>
-        <script>
-            Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Gagal Di Ajukan',
-            showConfirmButton: false,
-            timer: 2000
-          })
-        </script>
-    <?php unset($_SESSION['input']); ?>
-    <?php endif; ?>
+  <!-- notif gagal diajukan -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <?php if(@$_SESSION['input']) : ?>
+      <script>
+          Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Gagal Di Ajukan',
+          showConfirmButton: false,
+          timer: 2000
+        })
+      </script>
+  <?php unset($_SESSION['input']); ?>
+  <?php endif; ?>
 </body>
 
 </html>

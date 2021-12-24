@@ -87,33 +87,6 @@ $data = $data = mysqli_fetch_array($query)
 
 
 ?>
-<?php
-include "../_database/config.php";
-if (isset($_POST['update'])) {
-  $nama_file2 = basename($_FILES['ufl']['name']);
-  $id3 = $_POST['id2'];
-  $nol = $_POST['stats2'];
-
-  $url2 = $id3 . '_' . $nama_file2;
-
-  if (move_uploaded_file($_FILES['ufl']['tmp_name'], $url2)) {
-
-    $query2 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `file`='$url2' WHERE id_no = '$id3' ");
-    $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_surat`='$nol' WHERE id_no = '$id3' ");
-
-    if ($query2 && $query3) {
-      echo '<a href="./pmhnsurat.php"><script> alert ("Berhasil di ajukan")</script></a>';
-?>
-      <script>
-        history.pushState({}, "", "")
-      </script> <?php
-              } else {
-                echo '<a href="./pmhnsurat.php"><script> alert ("gagal di ajukan")</script></a>';
-              }
-            }
-          }
-
-                ?>
 
 <!-- php update surat saat kadep menolak -->
 <?php
@@ -240,7 +213,7 @@ if (isset($_POST['hapus'])) {
   </style>
 
 </head>
-
+<!-- sidebar -->
 <body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
@@ -313,7 +286,7 @@ if (isset($_POST['hapus'])) {
           </a>
         </li>
 
-        <!--profil-->
+        <!--ganti password-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -347,13 +320,14 @@ if (isset($_POST['hapus'])) {
 
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
               <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user'] ?></span>
               </a>
             </li>
-
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
 
             </li>
@@ -482,6 +456,7 @@ if (isset($_POST['hapus'])) {
               </ul>
             </li>
             <!-- and notif -->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
@@ -518,11 +493,12 @@ if (isset($_POST['hapus'])) {
               </div>
             </div>
 
-
+            <!-- tabel bimbingan -->
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style="height:375px">
                 <table class="table align-items-center mb-0">
                   <thead>
+                    <!-- judul kolom -->
                     <tr>
                       <th class="text-center">No</th>
                       <th class="text-left ps-1">Perihal</th>
@@ -541,23 +517,31 @@ if (isset($_POST['hapus'])) {
                       if ($data['nama'] == $_SESSION['user']) {
                     ?>
                         <tr>
+                          <!-- no -->
                           <td class="text-center"><?php echo $no++ ?></td>
+                          <!-- perihal -->
                           <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                          <!-- keterangan -->
                           <td class="text-left ps-1"><?php echo $data['keterangan'] ?></td> <!-- nanti dibuat modal pop up aja buat keterangannya -->
+                          <!-- waktu upload -->
                           <td class="text-left ps-1"><?php echo $data['tanggal'] ?></td>
-                          <!-- status surat dosen1  -->
+                          <!-- status surat dosen1 (persetujuan)  -->
                           <?php if ($data['status_dosen1'] == 0 || $data['status_dosentkk'] == 0) { ?>
+                            <!-- status menunggu revisi -->
                             <td class="align-middle text-center text-sm">
                               <span class="badge badge-sm bg-gradient-secondary" value="<?php echo $data['status_dosen1'] ?>">Menunggu Revisi</span>
                             </td> <?php } else if ($data['status_dosen1'] == 1 || $data['status_dosentkk'] == 1) { ?>
+                              <!-- status perlu revisi -->
                             <td class="align-middle text-center text-sm">
                               <span class="badge badge-sm bg-gradient-danger" value="<?php echo $data['status_dosen1'] ?>">Perlu Revisi</span>
                             </td>
                           <?php } else if ($data['status_dosen1'] == 2 || $data['status_dosentkk'] == 2) { ?>
+                            <!-- status bimbingan selesai -->
                             <td class="align-middle text-center text-sm">
                               <span class="badge badge-sm bg-gradient-success" value="<?php echo $data['status_dosen1'] ?>">Bimbingan Selesai</span>
                             </td>
                           <?php } ?>
+                          <!-- catatan -->
                           <td class="align-middle text-center">
                             <button id="button" name="id" value="<?php echo $data['id_no'] ?>" type="submit" class="btn btn-default btn-sm" onclick="openWindowWithPost(<?php echo $data['id_no'] ?>)">Lihat</button>
                           </td>
@@ -712,6 +696,7 @@ if (isset($_POST['hapus'])) {
         </div>
       </div>
     </div>
+    <!-- php hapus bimbingan proposal -->
     <?php
     include "../_database/config.php";
     if (isset($_POST['hapus'])) {
@@ -772,7 +757,7 @@ if (isset($_POST['hapus'])) {
       f.submit();
     }
   </script>
-  
+  <!-- notif berhasil mengirim -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php if (@$_SESSION['sukses']) : ?>
     <script>
@@ -786,7 +771,7 @@ if (isset($_POST['hapus'])) {
     </script>
     <?php unset($_SESSION['sukses']); ?>
   <?php endif; ?>
-
+  <!-- notif sukses menghapus -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php if (@$_SESSION['sukseshps']) : ?>
     <script>
@@ -800,7 +785,7 @@ if (isset($_POST['hapus'])) {
     </script>
     <?php unset($_SESSION['sukseshps']); ?>
   <?php endif; ?>
-
+  <!-- notif sukses menghapus -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php if (@$_SESSION['pdf']) : ?>
     <script>
@@ -814,7 +799,7 @@ if (isset($_POST['hapus'])) {
     </script>
     <?php unset($_SESSION['pdf']); ?>
   <?php endif; ?>
-
+<!-- notif gagal input -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php if (@$_SESSION['input']) : ?>
     <script>
@@ -829,17 +814,6 @@ if (isset($_POST['hapus'])) {
     <?php unset($_SESSION['input']); ?>
   <?php endif; ?>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-  </script>
 </body>
 
 </html>

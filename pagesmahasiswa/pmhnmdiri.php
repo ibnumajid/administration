@@ -101,7 +101,7 @@ if (isset($_POST['hima2'])) {
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-
+  <!-- CSS scroll -->
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -140,6 +140,7 @@ if (isset($_POST['hima2'])) {
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+  <!-- sidebar -->
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -211,7 +212,7 @@ if (isset($_POST['hima2'])) {
           </a>
         </li>
         
-        <!--profil-->
+        <!--ganti password-->
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
@@ -228,6 +229,8 @@ if (isset($_POST['hima2'])) {
       </ul>
     </div>
   </aside>
+  <!-- and sidebar -->
+
   <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
@@ -244,13 +247,14 @@ if (isset($_POST['hima2'])) {
             
           </div>
           <ul class="navbar-nav  justify-content-end">
+            <!-- nama user -->
             <li class="nav-item d-flex align-items-center">
               <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none"><?php echo $_SESSION['user']?></span>
               </a>
             </li>
-            
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
             
             </li>
@@ -383,12 +387,14 @@ if (isset($_POST['hima2'])) {
               </ul>
             </li>
             <!-- and notif -->
+            <!-- jarak -->
             <li class="nav-item px-3 d-flex align-items-center">
               <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a> -->
             </li>
-                        <li class="nav-item d-flex align-items-center">
+            <!-- logout -->
+            <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="d-sm-inline d-none">Logout </span>
@@ -400,6 +406,7 @@ if (isset($_POST['hima2'])) {
     </nav>
     
     <!-- End Navbar -->
+    <!-- button ajukan permohonan -->
     <div class="text-center">
       <a class="nav-link  " href="./ajukansurat.php"> 
         <button type="button" class="btn btn-secondary btn-lg w-95 btn bg-gradient-info" >Ajukan Permohonan Surat</button>
@@ -478,25 +485,27 @@ if (isset($_POST['hima2'])) {
             
 
            <form action="" method="post" enctype="multipart/form-data">
+             <!-- nama -->
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
-                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
-              </div>
+                  <label for="formFile" class="form-label">Nama Mahasiswa</label>
+                  <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
+                  <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
+                </div>
               </div>
             </div>
-
+            <!-- nrp -->
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">NRP</label>
-                <input name="nrp" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
-                <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
-              </div>
+                  <label for="formFile" class="form-label">NRP</label>
+                  <input name="nrp" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
+                  <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
+                </div>
               </div>
             </div>
+            <!-- jenis surat -->
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
@@ -515,18 +524,18 @@ if (isset($_POST['hima2'])) {
                 </div>
               </div>
             </div>
-            
+            <!-- keterangan -->
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Keterangan</label>
-                <p>Berikan keterangan tentang surat yang akan diajukan <br> Contoh : Surat Magang, Keterangan : PT. Pertamina</p>
-                <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
-              </div>
+                  <label for="formFile" class="form-label">Keterangan</label>
+                  <p>Berikan keterangan tentang surat yang akan diajukan <br> Contoh : Surat Magang, Keterangan : PT. Pertamina</p>
+                  <input name="keterangan" class="form-control" type="text" placeholder="Masukan Keterangan" aria-label="default input example" required>
+                </div>
               </div>
             </div>
 
-            
+            <!-- pemilihan dosen yang akan dituju -->
             <div class="card-header pb-0 p-3">
                 <div class="row">
                 <label for="formFile" class="form-label">Pilih Dosen yang Dituju</label>
@@ -564,12 +573,12 @@ if (isset($_POST['hima2'])) {
                     </div>
                     </div>
                     </div>
-
+            <!-- file -->
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="mb-3">
-                <label for="formFile" class="form-label">Masukkan File Pendukung (Ekstensi File .PDF)</label>
-                <p>File pendukung berupa surat atau proposal (disesuaikan dengan panduan) </p>
+                  <label for="formFile" class="form-label">Masukkan File Pendukung (Ekstensi File .PDF)</label>
+                  <p>File pendukung berupa surat atau proposal (disesuaikan dengan panduan) </p>
                   <input type="file" name="fl" class="form-control" aria-label="file example" required>
                  <div class="invalid-feedback">Example invalid form file feedback</div>
                 </div>
@@ -578,6 +587,7 @@ if (isset($_POST['hima2'])) {
            
 
           </div>
+          <!-- button -->
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Batal</button>
             <button type="submite" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
@@ -591,6 +601,7 @@ if (isset($_POST['hima2'])) {
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
+            <!-- dropdown jenis surat -->
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-6 d-flex align-items-center">
@@ -701,12 +712,14 @@ if (isset($_POST['hima2'])) {
                 </div>
               </div>
             </div>
+            <!-- and dropdown jenis surat -->
             
          
               <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
                   <table class="table align-items-center mb-0">
                   <thead>
+                    <!-- judul kolom -->
                       <tr>
                         <th class="text-center">No</th>
                         <th class="text-left ps-1">Perihal</th>
@@ -726,8 +739,11 @@ if (isset($_POST['hima2'])) {
                           if ($data['perihal'] == "Surat Mengundurkan Diri") {
                     ?>
                     <tr>
+                      <!-- no -->
                       <td class="text-center"><?php echo $no++ ?></td>
+                      <!-- perihal -->
                       <td class="text-left ps-1"><?php echo $data['perihal'] ?></td>
+                      <!-- waktu upload -->
                       <td class="text-center"><?php echo $data['tanggal'] ?></td>
                       <!-- status surat kadep -->
                       <?php if ($data['status_kadep'] == 0) {?>
@@ -998,7 +1014,7 @@ if (isset($_POST['hima2'])) {
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
-
+  <!-- notif sukses mengajukan surat -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukses']) : ?>
         <script>
@@ -1010,8 +1026,10 @@ if (isset($_POST['hima2'])) {
             timer: 2000
           })
         </script>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php unset($_SESSION['sukses']); ?>
+    <?php endif; ?>
+  <!-- notif sukses menghapus -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['sukseshps']) : ?>
         <script>
             Swal.fire({
@@ -1025,10 +1043,7 @@ if (isset($_POST['hima2'])) {
     <?php unset($_SESSION['sukseshps']); ?>
     <?php endif; ?>
 
-    
-    <?php unset($_SESSION['sukses']); ?>
-    <?php endif; ?>
-
+    <!-- notif tipe tidak sesuai dengan pdf -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['pdf']) : ?>
         <script>
@@ -1042,7 +1057,7 @@ if (isset($_POST['hima2'])) {
         </script>
     <?php unset($_SESSION['pdf']); ?>
     <?php endif; ?>
-
+    <!-- notif gagal input -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <?php if(@$_SESSION['input']) : ?>
         <script>
