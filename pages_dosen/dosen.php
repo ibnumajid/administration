@@ -475,7 +475,7 @@
                      (dosen2 = '$nama' && status_dosen1 = 2 && status_dosen2 = 0 && notif = 1)
                      UNION SELECT * FROM bimbingan WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
                      $data_pemb = mysqli_num_rows($query_pemb); ?>
-                     <i class="fa fa-bell cursor-pointer" <?php if($data_pemb > 0){echo 'style="color:#63B3ED"';} ?>></i>
+                     <i class="fa fa-bell cursor-pointer" <?php if($data_pemb > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
                      <span class="primary"><?php echo $data_pemb ?></span>
                    <?php }  
                    // notif dosen pemb dan bimbingan proposal
@@ -484,7 +484,7 @@
                     "SELECT * FROM suratmahasiswa WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0
                     UNION SELECT * FROM bimbingan WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
                     $data_pemb2 = mysqli_num_rows($query_pemb2); ?>
-                    <i class="fa fa-bell cursor-pointer" <?php if($data_pemb2 > 0){echo 'style="color:#63B3ED"';} ?>></i>
+                    <i class="fa fa-bell cursor-pointer" <?php if($data_pemb2 > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
                     <span class="primary"><?php echo $data_pemb2 ?></span>
                     <?php } 
                     // notif dosen pemb, koor pbl dan bimbingan proposal
@@ -495,7 +495,7 @@
                     (dosen2 = '$nama' && status_dosen1 = 2 && status_dosen2 = 0 && notif = 1) 
                     UNION SELECT * FROM bimbingan WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
                     $data_koor = mysqli_num_rows($query_koor); ?>
-                    <i class="fa fa-bell cursor-pointer" <?php if($data_koor > 0){echo 'style="color:#63B3ED"';} ?>></i>
+                    <i class="fa fa-bell cursor-pointer" <?php if($data_koor > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
                     <span class="primary"><?php echo $data_koor ?></span>
                     <?php } 
                     // notif dosen tkk 
@@ -508,7 +508,7 @@
                     (dosen_tkk = '$nama' && notif = 1)
                     UNION SELECT * FROM bimbingan WHERE dosen_tkk = '$nama' && status_dosentkk = 0 && notif = 1 ORDER BY tanggal DESC");
                     $data_tkk = mysqli_num_rows($query_tkk); ?>
-                    <i class="fa fa-bell cursor-pointer" <?php if($data_tkk > 0){echo 'style="color:#63B3ED"';} ?>></i>
+                    <i class="fa fa-bell cursor-pointer" <?php if($data_tkk > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
                     <span class="primary"><?php echo $data_tkk ?></span>
                     <?php } } ?>
                   </a>
