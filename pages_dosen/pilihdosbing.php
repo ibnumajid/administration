@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['user'] == '' || ($_SESSION['status'] == 4 && $_Session['status2'] == 1)) {
+if ($_SESSION['user'] == '' || $_SESSION['status'] == 2) {
   header("location:../index.php");
 }
 // Form pengiriman informasi magang
