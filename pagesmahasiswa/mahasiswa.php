@@ -104,6 +104,7 @@ if (isset($_POST['hima2'])) {
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css" rel="stylesheet" />
 
+  <!-- css scroll -->
   <style>
             .scrollbar-deep-purple::-webkit-scrollbar-track {
             -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
@@ -249,6 +250,7 @@ if (isset($_POST['hima2'])) {
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             
           </div>
+          <!-- nama user -->
           <ul class="navbar-nav  justify-content-end">
             <li class="nav-item d-flex align-items-center">
             <a href="../profile.php" class="nav-link text-body font-weight-bold px-0">
@@ -404,6 +406,7 @@ if (isset($_POST['hima2'])) {
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a> -->
             </li>
+            <!-- logout -->
             <li class="nav-item d-flex align-items-center">
                 <a href="../logout.php" href="javascript:;" class="nav-link text-body p-0" >
                   <i class="fas fa-sign-out-alt"></i>
