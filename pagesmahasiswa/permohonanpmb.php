@@ -498,35 +498,9 @@ if(isset($_POST['batal'])) {
                   <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" >
                   <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
                   </div>
-            <div class="card-header pb-0 p-3" style = "width:400px">
-              <div class="row">
-                <div class="mb-0">
-                  <!-- Nama Mahasiswa -->
-                <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
-                <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="card-header pb-0 p-3" style = "width:400px">
-              <div class="row">
-                <div class="mb-0">
-                  <!-- NRP mahasiswa -->
-                <label for="formFile" class="form-label" >NRP Mahasiswa</label>
-                <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" >
-                <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
-                </div>
-              </div>
-
-              <!-- angkatan -->
-              <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
-                <div class="row">
-                  <div class="mb-0">
-                  <label for="formFile" class="form-label">Angkatan</label>
-                  <input name="angkatan" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['angkatan'] ?>" >
-                  <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
                   </div>
+                  </div>
+           
             <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
               <div class="row">
                 <div class="mb-0">
@@ -537,7 +511,7 @@ if(isset($_POST['batal'])) {
                 </div>
               </div>
             </div>
-
+            </div>
             <!-- nama lab -->
             <div class="card-header pb-0 pt-0 p-3 my-0">
               <div class="row">
