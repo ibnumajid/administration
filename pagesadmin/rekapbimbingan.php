@@ -18,6 +18,7 @@ if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {
   }
 } }
 
+
 if (isset($_POST['dsn'])) {
   $id = $_POST['id2'];
   if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 4) {

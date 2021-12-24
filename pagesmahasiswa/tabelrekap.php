@@ -71,7 +71,7 @@ $(document).ready(function(){
 </script>
 
 </head>
-
+<!-- kepala tabel -->
 <body class="g-sidenav-show  bg-gray-100">
 <table class="table table-hover">
   <thead>
@@ -89,7 +89,7 @@ $(document).ready(function(){
     $no = 0;
     $no2 = $no++;
     $query = mysqli_query($koneksi, "SELECT * FROM rekap_catatan WHERE id_no = '$id' ORDER BY tanggal");
-    
+    // badan tabel
     while ($data = mysqli_fetch_array($query)) {
     $tanggal = $data['tanggal'];
     $catatan = $data['catatan_pmb'];

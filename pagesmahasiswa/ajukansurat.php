@@ -5,6 +5,7 @@ session_start();
   header("location:../index.php");
   }
 ?>
+<!-- backend pengajuan surat mahasiswa -->
 <?php
 include '../_database/config.php';
 if(isset($_POST['input']))

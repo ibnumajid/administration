@@ -4,6 +4,7 @@ if ($_SESSION['user'] == '') {
   header("location:../index.php");
 }
 ?>
+<!-- pemanggilan database -->
  <?php
 $lokasi = $_POST['lokasi'];
 $id = $_POST['id'];
@@ -14,6 +15,7 @@ $data = mysqli_fetch_array($query)
 
 
 ?>
+<!-- backend saat ingin melakukan update proposal bimbingan -->
 <?php
 include "../_database/config.php";
 ?>
