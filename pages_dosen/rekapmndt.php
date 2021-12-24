@@ -57,6 +57,25 @@
           } 
         }
       }
+
+      // update notif bimbingan proposal tkk
+      if (isset($_POST['bptkk'])) {
+        $id = $_POST['id'];
+        $nama = $_SESSION['user'];
+        $query = mysqli_query($koneksi, 'SELECT * FROM bimbingan ORDER BY id_no DESC');
+        while ($data = mysqli_fetch_array($query)) {
+        if ($data['dosen1'] == $nama) {
+        $query = mysqli_query($koneksi, "UPDATE bimbingan SET `notif`= 2 WHERE id_no = '$id' ");
+        if ($query) { 
+          header('location:bimbingansurat.php'); ?>
+          <script>history.pushState({}, "", "")</script><?php
+        } else { 
+          header('location:./dosen.php'); ?>
+          <script>history.pushState({}, "", "")</script><?php
+        } 
+          } 
+        }
+      }
   
       // update notif dosen koor1
       if (isset($_POST['koor1'])) {
@@ -449,7 +468,7 @@
               <li class="nav-item dropdown pe-2 d-flex align-items-center">
                   <!-- icon lonceng/bel -->
                   <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-bell cursor-pointer"></i>
+                    <!-- <i class="fa fa-bell cursor-pointer"></i> -->
                     <!-- php surat masuk kadep -->
                     <?php 
                     include '../_database/config.php';
@@ -463,58 +482,58 @@
 
                       <span class="primary"><?php echo $data ?></span>
                    <?php } 
-                   $nama = $_SESSION['user'];
-                   $query_mhs = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa UNION SELECT * FROM bimbingan ORDER BY id_no DESC");
-                   $data_mhs = mysqli_fetch_array($query_mhs); {
-                     $tujuan = $data_mhs['dosen1'];
-                     $tujuan2 = $data_mhs['dosen2'];
-                     $tujuan3 = $data_mhs['dosen_tkk'];
-
-                    //  php pesan masuk dosen tkk
-                    if (($_SESSION['status'] == 2 && $tujuan == $nama ) ||
-                    ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $tujuan3 == $nama) || 
-                    ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
-                      $query_tkk = mysqli_query($koneksi, 
-                      "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
-                      (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) || 
-                      (dosen_tkk = '$nama' && notif = 1)
-                      UNION SELECT * FROM bimbingan WHERE notif = 0 ORDER BY id_no DESC" );
-                      $data_tkk = mysqli_num_rows($query_tkk); ?>
-
-                      <span class="primary"><?php echo $data_tkk ?></span>
-
-                   <?php }
-                  //  php pesan masuk dosen koor1
-                   else if (($_SESSION['status'] == 2 && $tujuan == $nama) || 
+                   $nama = $_SESSION['user']; 
+                   $query_mhsw = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa UNION SELECT * FROM bimbingan ORDER BY tanggal DESC");
+                   $data_mhsw = mysqli_fetch_array($query_mhsw); {
+                   $tujuan = $data_mhsw['dosen1'];
+                   $tujuan2 = $data_mhsw['dosen2'];
+                   $tujuan3 = $data_mhsw['dosen_tkk'];
+                   
+                  // notif dosen pemb, koor, dan bimbingan untuk pak joko 
+                   if (($_SESSION['status'] == 2 && $tujuan == $nama) || 
                    ($_SESSION['status'] == 2 && $_SESSION['status2'] == 2 && $tujuan2 == $nama) ||
                    ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
+                     $query_pemb = mysqli_query($koneksi, 
+                     "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && status_dosen1 = 0 && notif = 0) || 
+                     (dosen2 = '$nama' && status_dosen1 = 2 && status_dosen2 = 0 && notif = 1)
+                     UNION SELECT * FROM bimbingan WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
+                     $data_pemb = mysqli_num_rows($query_pemb); ?>
+                     <i class="fa fa-bell cursor-pointer" <?php if($data_pemb > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
+                     <span class="primary"><?php echo $data_pemb ?></span>
+                   <?php }  
+                   // notif dosen pemb dan bimbingan proposal
+                   else if ($_SESSION['status'] == 2 && $tujuan == $nama) {
+                    $query_pemb2 = mysqli_query($koneksi, 
+                    "SELECT * FROM suratmahasiswa WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0
+                    UNION SELECT * FROM bimbingan WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
+                    $data_pemb2 = mysqli_num_rows($query_pemb2); ?>
+                    <i class="fa fa-bell cursor-pointer" <?php if($data_pemb2 > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
+                    <span class="primary"><?php echo $data_pemb2 ?></span>
+                    <?php } 
+                    // notif dosen pemb, koor pbl dan bimbingan proposal
+                    else if (($_SESSION['status'] == 2 && $tujuan == $nama) || 
+                    ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
                     $query_koor = mysqli_query($koneksi, 
-                      "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
-                      (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) ORDER BY id_no DESC" );
-                      $data_koor = mysqli_num_rows($query_koor); ?>
-
-                      <span class="primary"><?php echo $data_koor ?></span>
-                   <?php }
-                   //  php pesan masuk dosen koor2
-                   else if (($_SESSION['status'] == 2 && $tujuan == $nama) || 
-                   ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
-                    $query_koor = mysqli_query($koneksi, 
-                      "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && notif = 0) || 
-                      (dosen2 = '$nama' && status_dosen1 = 2 && notif = 1) ORDER BY id_no DESC" );
-                      $data_koor = mysqli_num_rows($query_koor); ?>
-
-                      <span class="primary"><?php echo $data_koor ?></span>
-                   <?php }
-                   //  php pesan masuk dosen pemb dan bimbingan proposal
-                   else if (($_SESSION['status'] == 2 && $tujuan == $nama)) {
-                    $query_pemb = mysqli_query($koneksi, 
-                      "SELECT * FROM suratmahasiswa WHERE dosen1 = '$nama' && notif = 0 
-                      UNION SELECT * FROM bimbingan WHERE  notif = 0 && dosen1 = '$nama' ORDER BY id_no DESC" );
-                      $data_pemb = mysqli_num_rows($query_pemb); ?>
-
-                      <span class="primary"><?php echo $data_pemb ?></span>
-                   <?php }
-                   } ?>
+                    "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && status_dosen1 = 0 && notif = 0) || 
+                    (dosen2 = '$nama' && status_dosen1 = 2 && status_dosen2 = 0 && notif = 1) 
+                    UNION SELECT * FROM bimbingan WHERE dosen1 = '$nama' && status_dosen1 = 0 && notif = 0 ORDER BY tanggal DESC");
+                    $data_koor = mysqli_num_rows($query_koor); ?>
+                    <i class="fa fa-bell cursor-pointer" <?php if($data_koor > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
+                    <span class="primary"><?php echo $data_koor ?></span>
+                    <?php } 
+                    // notif dosen tkk 
+                    else if (($_SESSION['status'] == 2 && $tujuan == $nama ) ||
+                    ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $tujuan3 == $nama) || 
+                    ($_SESSION['status'] == 2 && $_SESSION['status3'] == 2 && $tujuan2 == $nama)) {
+                    $query_tkk = mysqli_query($koneksi, 
+                    "SELECT * FROM suratmahasiswa WHERE (dosen1 = '$nama' && status_dosen1 = 0 && notif = 0) || 
+                    (dosen2 = '$nama' && status_dosen2 = 9 && status_dosen2 = 0 && notif = 1) || 
+                    (dosen_tkk = '$nama' && notif = 1)
+                    UNION SELECT * FROM bimbingan WHERE dosen_tkk = '$nama' && status_dosentkk = 0 && notif = 1 ORDER BY tanggal DESC");
+                    $data_tkk = mysqli_num_rows($query_tkk); ?>
+                    <i class="fa fa-bell cursor-pointer" <?php if($data_tkk > 0) { echo 'style="color:#63B3ED"'; } ?>></i>
+                    <span class="primary"><?php echo $data_tkk ?></span>
+                    <?php } } ?>
                   </a>
 
                   <!-- dropdown surat masuk -->
@@ -585,7 +604,7 @@
                         include '../_database/config.php';
                         $nama = $_SESSION['user'];
                         $tkk = "Tidak Memerlukan Dosen TKK";
-                        $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa UNION SELECT * FROM bimbingan ORDER BY id_no DESC');
+                        $query = mysqli_query($koneksi, 'SELECT * FROM suratmahasiswa UNION SELECT * FROM bimbingan ORDER BY tanggal DESC');
                         while ($data = mysqli_fetch_array($query)) {
                         $tujuan = $data['dosen1'];
                         $tujuan2 = $data['dosen2'];
@@ -634,7 +653,7 @@
                           </a>
                         </li>
                         <!-- dosen pembimbing dan bimbingan proposal -->
-                        <?php } else if ($tujuan == $nama && $data['notif'] == 0) { 
+                        <?php } else if ($tujuan == $nama && $data['notif'] == 0 && $data['status_dosen1'] == 0) { 
                           if ($data['perihal'] == "Bimbingan Proposal Magang" || $data['perihal'] == "Bimbingan Proposal Proyek Akhir" || $data['perihal'] == "Bimbingan Proposal PBL") { ?>
                         <li class="mb-2">
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
@@ -675,8 +694,29 @@
                             </div>
                           </a>
                         </li>
-                        <!-- dosen TKK -->
-                        <?php } } else if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $data['notif'] == 1 && $tujuan3 == $nama) { ?>
+                        <!-- dosen TKK dan bimbingan hima -->
+                        <?php } } else if ($_SESSION['status2'] == 1 && $_SESSION['status'] == 2 && $data['notif'] == 1 && $tujuan3 == $nama) {
+                          if ($data['perihal'] == "Bimbingan Proposal Kegiatan HIMA") { ?>
+                        <li class="mb-2">
+                          <a class="dropdown-item border-radius-md" href="./validasisurat.php">
+                            <div class="d-flex py-1">
+                              <div class="d-flex flex-column justify-content-center">
+                                <button type="submit" name="bptkk" class="border-0 btn btn-outline-dark btn-sm px-0 mb-0 mt-1">
+                                  <h6 class="text-sm font-weight-normal mb-1">
+                                    <span class="font-weight-bold"><?php echo $data['perihal']; ?></span>
+                                    <span class="font-weight"><?php echo $data['nama']; ?></span>
+                                  </h6>
+                                </button>
+                                <p class="text-xs text-left ps-0 text-secondary mb-0">
+                                  <?php echo $data['tanggal']; ?>
+                                </p>
+                                <!-- Menginput id surat -->
+                                <input name="id" value=<?php echo $data['id_no'] ?> type="hidden">
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                        <?php } else { ?>
                         <li class="mb-2">
                           <a class="dropdown-item border-radius-md" href="./validasisurat.php">
                             <div class="d-flex py-1">
@@ -696,7 +736,7 @@
                             </div>
                           </a>
                         </li>
-                        <?php } } ?>
+                        <?php } } } ?>
                     </div>
                   </ul>
                   <!-- akhir dropdown -->
