@@ -307,27 +307,29 @@ if($_SESSION['user']=='' || ($_SESSION['status'] != 6 || ($_SESSION['status'] ==
                   </tr>
                 <?php
                 include '../_database/config.php'; //panggil setiap ingin koneksi ke data
+                // Tanmpilan data berapa civitas yang masuk ke dalam database
                 $no = 0;
                 $no2 = 0;
                 $no3 = 0;
                 $no4 = 0;
-                $query = mysqli_query($koneksi, "SELECT * FROM data_mhs ");
-                $query2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb");
-                $query3 = mysqli_query($koneksi, "SELECT * FROM data_tendik");
-                $query4 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE `status` = 1 ");
+                $query = mysqli_query($koneksi, "SELECT * FROM data_mhs "); //Mengambil data dari tabel mahasiswa
+                $query2 = mysqli_query($koneksi, "SELECT * FROM data_dosenb"); //mengambil data dari tabel dosen
+                $query3 = mysqli_query($koneksi, "SELECT * FROM data_tendik"); //mengambil data dari tabel tendik
+                $query4 = mysqli_query($koneksi, "SELECT * FROM masuk WHERE `status` = 1 "); // mengamnbil data masuk untuk menyeleksi admin
                     
                 while ($data = mysqli_fetch_array($query)) { 
-                  $no++;
+                  $no++; //menghitung jumlah mahasiswa
                   }
                 while ($data2 = mysqli_fetch_array($query2)) { 
-                  $no2++; 
+                  $no2++; //menghitung jumlah dosen
                   }
                 while ($data3 = mysqli_fetch_array($query3)) { 
-                  $no3++;  
+                  $no3++;  //menghitung jumlah tendik
                   }
                 while ($data4 = mysqli_fetch_array($query4)) { 
-                  $no4++;  
+                  $no4++; //menghitung jumlah admin  
                   }?>
+                  <!-- Jumlah Mahasiswa -->
                 <tr>
                   <td>
                 <div class="card-body p-3" >
@@ -345,6 +347,7 @@ if($_SESSION['user']=='' || ($_SESSION['status'] != 6 || ($_SESSION['status'] ==
                   </div>
                   </td>
                   <td>
+                    <!-- Jumlah Dosen -->
                 <div class="card-body p-3" >
                   <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="bg-info card-header text-dark h5">DOSEN</div>
@@ -360,6 +363,7 @@ if($_SESSION['user']=='' || ($_SESSION['status'] != 6 || ($_SESSION['status'] ==
                   </div>
                   </td>
                   <td>
+                    <!-- Jumlah tendik -->
                 <div class="card-body p-3" >
                   <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="bg-info card-header text-dark h5">TENDIK</div>
@@ -375,6 +379,7 @@ if($_SESSION['user']=='' || ($_SESSION['status'] != 6 || ($_SESSION['status'] ==
                   </div>
                   </td>
                   <td>
+                    <!-- Jumlah admin -->
                 <div class="card-body p-3" >
                   <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="bg-info card-header text-dark h5">ADMIN</div>

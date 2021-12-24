@@ -14,6 +14,7 @@ $data = mysqli_fetch_array($query)
 
 
 ?>
+<!-- backend untuk mengubah ajuan yang ditolak -->
 <?php
 include "../_database/config.php";
 ?>
@@ -90,8 +91,6 @@ include "../_database/config.php";
             <script>history.pushState({}, "", "")</script><?php
           }
         } ?>
-
-        <!-- php update catatan dosen -->
 
         <!-- update catatan kadep -->
         <?php

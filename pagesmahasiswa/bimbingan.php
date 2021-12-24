@@ -115,37 +115,6 @@ if (isset($_POST['update2'])) {
             }
           }
 
-                ?>
-<?php
-include "../_database/config.php";
-if (isset($_POST['hapus'])) {
-  $id6 = $_POST['id'];
-  $query = mysqli_query($koneksi, "SELECT * FROM suratmahasiswa WHERE id_no = '$id6'");
-  $data = mysqli_fetch_assoc($query);
-  $nama_file = $data['file'];
-  $target_file = "./$nama_file";
-
-
-  unlink("$target_file");
-  $query6 = mysqli_query($koneksi, "DELETE FROM suratmahasiswa  WHERE id_no = '$id6' ");
-
-  if ($query6) {
-?><script>
-      <?php $_SESSION['sukseshps'] = true; ?>
-    </script>
-    <script>
-      history.pushState({}, "", "")
-    </script><?php
-              ?> <script>
-      history.pushState({}, "", "")
-    </script>
-<?php } else {
-    echo '<script> alert ("gagal di ajukan")</script></a>';
-  }
-}
-
-
-?>
 
 
 <!DOCTYPE html>

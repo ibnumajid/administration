@@ -22,25 +22,25 @@ session_start();
                             $ke_lab = $_POST['kl']; //memberikan deklarasi tujuan barang dikirimkan
 
                             
-                            $nama_file = basename($_FILES['fl']['name']);
-                            $ukuran = $_FILES['fl']['size'];
-                            $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION));
-                            $max = 1024 * 5000;
-                            $ekstensi = "pdf";
+                            $nama_file = basename($_FILES['fl']['name']); //Memberikan deklarasi nama file
+                            $ukuran = $_FILES['fl']['size']; //Memberikan deklarasi Ukuran file
+                            $tipe = strtolower(pathinfo($nama_file,PATHINFO_EXTENSION)); //Memberikan deklarasi tipe file
+                            $max = 1024 * 5000; //Memberikan deklarasi maksimal file yang bisa diupload
+                            $ekstensi = "pdf"; //Memberikan deklarasi ekstensi file
 
-                            $url = $niptendik.'_'.$nama_file;
+                            $url = $niptendik.'_'.$nama_file; //Memberikan deklarasi nama file saat masuk ke dalam database
 
-                            if ($ukuran > $max && $tipe != $ekstensi)
+                            if ($ukuran > $max && $tipe != $ekstensi) // Jika ukuran melebihi maksimal dan tipe tidak sesuai maka akan ditolak
                             {
                               ?><script><?php $_SESSION["pdfuk"] = true;?></script> 
                               <script>history.pushState({}, "", "")</script><?php }
                             
-                                else if ($ukuran > $max)
+                                else if ($ukuran > $max) //Jika ukuran melebihi maksimal maka akan ditolak
                                 {
                                   ?><script><?php $_SESSION["uk"] = true;?></script> 
                                   <script>history.pushState({}, "", "")</script><?php }
                                 
-                                else if ($tipe != $ekstensi)
+                                else if ($tipe != $ekstensi) 
                                 { 
                                     ?><script><?php $_SESSION["file"] = true;?></script> 
                                     <script>history.pushState({}, "", "")</script><?php
