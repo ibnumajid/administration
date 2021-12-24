@@ -114,7 +114,7 @@ if (isset($_POST['update2'])) {
               }
             }
           }
-
+?>
 
 
 <!DOCTYPE html>
