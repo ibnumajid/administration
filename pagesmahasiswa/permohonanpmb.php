@@ -471,12 +471,13 @@ if(isset($_POST['batal'])) {
             </div>
 
            
-
+            <!-- Form untuk melakukan permohonan pembimbing -->
             <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group d-flex my-0">
             <div class="card-header pb-0 p-3" style = "width:400px">
               <div class="row">
                 <div class="mb-0">
+                  <!-- Nama Mahasiswa -->
                 <label for="formFile" class="form-label">Nama Mahasiswa</label>
                 <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
                 <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
@@ -487,6 +488,7 @@ if(isset($_POST['batal'])) {
             <div class="card-header pb-0 p-3" style = "width:400px">
               <div class="row">
                 <div class="mb-0">
+                  <!-- NRP mahasiswa -->
                 <label for="formFile" class="form-label" >NRP Mahasiswa</label>
                 <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" >
                 <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
@@ -497,6 +499,7 @@ if(isset($_POST['batal'])) {
             <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
               <div class="row">
                 <div class="mb-0">
+                  <!-- Angkatan Mahasiswa -->
                 <label for="formFile" class="form-label">Angkatan</label>
                 <input name="angkatan" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['angkatan'] ?>" >
                 <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
@@ -508,6 +511,7 @@ if(isset($_POST['batal'])) {
             <div class="card-header pb-0 pt-0 p-3 my-0">
               <div class="row">
                 <div class="mb-0">
+                  <!-- Memilih Lab -->
                 <label for="formFile" class="form-label">Nama Lab</label>
                 <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2 ) { ?>
                   <select id="jenis_surat" name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
@@ -548,6 +552,7 @@ if(isset($_POST['batal'])) {
             <div class="card-header pb-0 p-3" style = "width:550px" >
               <div class="row">
                 <div class="mb-0">
+                  <!-- Memilih tempat magang -->
                 <label for="formFile" class="form-label">Nama Tempat Magang</label>
                 <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2) { ?>
                 <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
@@ -570,6 +575,7 @@ if(isset($_POST['batal'])) {
             <div class="card-header pb-0 p-3" style = "width:550px">
               <div class="row">
                 <div class="mb-0">
+                  <!-- Memilih alamat magang -->
                 <label for="formFile" class="form-label">Alamat Magang</label>
                  <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !=2) { ?>
                 <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
@@ -593,6 +599,7 @@ if(isset($_POST['batal'])) {
               <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
               <div class="row">
                 <div class="mb-0">
+                  <!-- memilih dosen pembimbing -->
                 <label for="formFile" class="form-label">Dosen Pembimbing</label>
                 <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data['dosen1'] ?></label>
                 </div>
