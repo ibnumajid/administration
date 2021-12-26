@@ -118,7 +118,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="">
-        <span class="ms-1 font-weight-bold">Sistem Administrasi Kadep</span>
+        <span class="ms-1 font-weight-bold">Sistem Administrasi Dosen</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -313,10 +313,10 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Kadep</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Validasi Surat Tendik</li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Sistem Administrasi Dosen</a></li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Bimbingan Proposal</li>
           </ol>
-          <h5 class="font-weight-bolder mb-0">Validasi Surat Tendik</h5>
+          <h5 class="font-weight-bolder mb-0">Bimbingan Proposal</h5>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
