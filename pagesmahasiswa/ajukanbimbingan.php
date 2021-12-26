@@ -90,9 +90,9 @@ else
 {
     
     echo "Gagal Upload";
-}
-<!-- Backend pengajuan bimbingan -->
-<?php
+} }
+//Backend pengajuan bimbingan
+
 include '../_database/config.php';
 if (isset($_POST['input'])) {
   $nama_mhsw = $_POST['nm'];
@@ -1060,7 +1060,7 @@ if (isset($_POST['input'])) {
                 $('.dosenTKK').hide();
               }
         });
-
+        </script>
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php if (@$_SESSION['input']) : ?>
