@@ -584,7 +584,7 @@ session_start();
 
                     <?php if ($data['proses_tugas'] == 2) {?>
                         
-                    <td class="text-center"> <a href="./mandat/<?php echo $data['laporan'] ?>" target="_blank">
+                    <td class="text-left"> <a href="./mandat/<?php echo $data['laporan'] ?>" target="_blank">
                                   <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                   </a></td>
                               <?php } 
@@ -638,7 +638,7 @@ session_start();
                               
                             <?php if ($data['proses_tugas'] == 2) {?>
                         
-                        <td class="text-center"> <a href="./mandat/<?php echo $data['laporan'] ?>" target="_blank">
+                        <td class="text-left"> <a href="./mandat/<?php echo $data['laporan'] ?>" target="_blank">
                                       <p class="modal-title" name="fl" id="edit<?php echo $data['id_no'] ?>"><button type="button"  class="btn btn-link"><em><?php echo $data['file'] ?></em></button></p>
                                       </a></td>
                                   <?php }
