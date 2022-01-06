@@ -30,7 +30,7 @@
                      if($query && $query2){
                        if ($lokasi == "home"){
                       ?><script><?php $_SESSION['sukses'] = true;?></script> 
-                      <?php header ("location:dosen.php");
+                      <?php header ("location:tabel/suratmasukkadep.php");
                        }
                        else { ?> 
                       <script><?php $_SESSION['sukses'] = true;?></script> 
