@@ -518,7 +518,7 @@ if(isset($_POST['batal'])) {
                 <div class="mb-0">
                   <!-- Memilih Lab -->
                 <label for="formFile" class="form-label">Nama Lab</label>
-                <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] == 0 ) { ?>
+                <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] == "0" ) { ?>
                   <select id="jenis_surat" name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
                             <option selected><?php echo $data['nama_lab'] ?></option>
                             <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
