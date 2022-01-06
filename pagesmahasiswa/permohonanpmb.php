@@ -519,7 +519,7 @@ if(isset($_POST['batal'])) {
                   <!-- Memilih Lab -->
                 <label for="formFile" class="form-label">Nama Lab</label>
                 <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] == "0" ) { ?>
-                  <select id="jenis_surat" name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
+                  <select id="jenis_surat" name="nl" aria-placeholder="<?php echo $data['nama_lab'] ?>"  class="form-select" aria-label="Default select example" required>
                             <option selected><?php echo $data['nama_lab'] ?></option>
                             <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
                             <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
@@ -528,7 +528,7 @@ if(isset($_POST['batal'])) {
                         </select>
                 
                 <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !== 2) { ?>
-                  <select id="jenis_surat" name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
+                  <select id="jenis_surat" name="nl" aria-placeholder="<?php echo $data['nama_lab'] ?>"  class="form-select" aria-label="Default select example" required>
                             <option selected><?php echo $data['nama_lab'] ?></option>
                             <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
                             <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
