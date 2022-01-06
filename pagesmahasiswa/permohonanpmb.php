@@ -459,7 +459,12 @@ if(isset($_POST['batal'])) {
     </nav>
     <!-- End Navbar -->
 
-
+    <?php  include "../_database/config.php"; 
+          $nama = $_SESSION['user'];
+          $query = mysqli_query($koneksi, "SELECT * FROM permohonanpmb WHERE nama = '$nama' ");
+          $data2 = mysqli_fetch_array($query)
+          ?>
+          
     <div class="container-fluid py-4">
       <div class="row">
       <div class="col">
@@ -483,7 +488,7 @@ if(isset($_POST['batal'])) {
                 <div class="row">
                   <div class="mb-0">
                   <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                  <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
+                  <input name="nm" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" required>
                   <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
                   </div>
                 </div>
@@ -494,7 +499,7 @@ if(isset($_POST['batal'])) {
                 <div class="row">
                   <div class="mb-0">
                   <label for="formFile" class="form-label" >NRP Mahasiswa</label>
-                  <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" >
+                  <input name="nrp" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['NIP'] ?>" required>
                   <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
                   </div>
                   </div>
@@ -505,7 +510,7 @@ if(isset($_POST['batal'])) {
                 <div class="mb-0">
                   <!-- Angkatan Mahasiswa -->
                 <label for="formFile" class="form-label">Angkatan</label>
-                <input name="angkatan" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['angkatan'] ?>" >
+                <input name="angkatan" class="form-control" type="hidden" aria-label="default input example"  value = "<?php echo $_SESSION['angkatan'] ?>" required>
                 <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
                 </div>
               </div>
@@ -518,26 +523,26 @@ if(isset($_POST['batal'])) {
                 <div class="mb-0">
                   <!-- Memilih Lab -->
                 <label for="formFile" class="form-label">Nama Lab</label>
-                <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] == "0" ) { ?>
-                  <select id="jenis_surat" name="nl" aria-placeholder="<?php echo $data['nama_lab'] ?>"  class="form-select" aria-label="Default select example" required>
-                            <option selected><?php echo $data['nama_lab'] ?></option>
+                <?php if ($data2['status_ajuan'] == 2 && $data2['status_dosen1'] !== 2 ) { ?>
+                  <select id="jenis_surat" name="nl" aria-placeholder="<?php echo $data2['nama_lab'] ?>"  class="form-select" aria-label="Default select example" required>
+                            <option selected><?php echo $data2['nama_lab']; ?></option>
                             <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
                             <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
                             <option value="Mikroelektronika dan Sistem Embedded">Mikroelektronika dan Sistem Embedded</option>
                             <option value="Motor Penggerak dan Sistem Elektronika Daya">Motor Penggerak dan Sistem Elektronika Daya</option>
                         </select>
                 
-                <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !== 2) { ?>
-                  <select id="jenis_surat" name="nl" aria-placeholder="<?php echo $data['nama_lab'] ?>"  class="form-select" aria-label="Default select example" required>
-                            <option selected><?php echo $data['nama_lab'] ?></option>
+                <?php } else if ($data2 ['status_ajuan'] == 1 && $data2['status_dosen1'] !== 2) { ?>
+                  <select id="jenis_surat" name="nl" aria-placeholder="<?php echo $data2['nama_lab']; ?>"  class="form-select" aria-label="Default select example" required>
+                            <option selected><?php echo $data2['nama_lab'] ?></option>
                             <option value="Cyber Physical Otomasi dan Robot Industri">Cyber Physical Otomasi dan Robot Industri</option>
                             <option value="Programmable Logic Controller dan Sistem Kontrol Supervisori">Programmable Logic Controller dan Sistem Kontrol Supervisori</option>
                             <option value="Mikroelektronika dan Sistem Embedded">Mikroelektronika dan Sistem Embedded</option>
                             <option value="Motor Penggerak dan Sistem Elektronika Daya">Motor Penggerak dan Sistem Elektronika Daya</option>
                         </select>
                     <?php } 
-                     else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="nl" class="form-control" aria-label="default input example"><?php echo $data['nama_lab'] ?></label>       
+                     else if ($data2['status_dosen1'] == 2) { ?>
+                        <label name="nl" class="form-control" aria-label="default input example"><?php echo $data2['nama_lab'] ?></label>       
                    <?php }
                     else { ?>
                         <select name="nl" aria-placeholder="Pilih Lab"  class="form-select" aria-label="Default select example" required>
@@ -555,25 +560,21 @@ if(isset($_POST['batal'])) {
 
             <div class="form-group d-flex">
 
-            <?php  include "../_database/config.php"; 
-          $nama = $_SESSION['user'];
-          $query = mysqli_query($koneksi, "SELECT * FROM permohonanpmb WHERE nama = '$nama' ");
-          $data = mysqli_fetch_array($query)
-          ?>
+         
       
             <div class="card-header pb-0 p-3" style = "width:550px" >
               <div class="row">
                 <div class="mb-0">
                   <!-- Memilih tempat magang -->
                 <label for="formFile" class="form-label">Nama Tempat Magang</label>
-                <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !== 2) { ?>
-                <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
+                <?php if ($data2['status_ajuan'] == 2 && $data2['status_dosen1'] !== 2) { ?>
+                <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data2['nama_perusahaan'] ?>" >
                 
-                <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !== 2) { ?>
-                <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['nama_perusahaan'] ?>" >
+                <?php } else if ($data2 ['status_ajuan'] == 1 && $data2['status_dosen1'] !== 2) { ?>
+                <input name="tm" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data2['nama_perusahaan'] ?>" >
                     <?php } 
-                    else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="tm" class="form-control" aria-label="default input example"><?php echo $data['nama_perusahaan'] ?></label>       
+                    else if ($data2['status_dosen1'] == 2) { ?>
+                        <label name="tm" class="form-control" aria-label="default input example"><?php echo $data2['nama_perusahaan'] ?></label>       
                    <?php }
                     else { ?>
                 <input name="tm" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Tempat Magang" >
@@ -589,14 +590,14 @@ if(isset($_POST['batal'])) {
                 <div class="mb-0">
                   <!-- Memilih alamat magang -->
                 <label for="formFile" class="form-label">Alamat Magang</label>
-                 <?php if ($data['status_ajuan'] == 2 && $data['status_dosen1'] !== 2) { ?>
-                <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
+                 <?php if ($data2['status_ajuan'] == 2 && $data2['status_dosen1'] !== 2) { ?>
+                <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data2['alamat_perusahaan'] ?>" >
                 
-                <?php } else if ($data ['status_ajuan'] == 1 && $data['status_dosen1'] !== 2) { ?>
-                <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data['alamat_perusahaan'] ?>" >
+                <?php } else if ($data2 ['status_ajuan'] == 1 && $data2['status_dosen1'] !== 2) { ?>
+                <input name="am" class="form-control" type="text" aria-label="default input example"  value = "<?php echo $data2['alamat_perusahaan'] ?>" >
                     <?php } 
-                     else if ($data['status_dosen1'] == 2) { ?>
-                        <label name="am" class="form-control" aria-label="default input example"><?php echo $data['alamat_perusahaan'] ?></label>       
+                     else if ($data2['status_dosen1'] == 2) { ?>
+                        <label name="am" class="form-control" aria-label="default input example"><?php echo $data2['alamat_perusahaan'] ?></label>       
                    <?php }
                     else { ?>
                 <input name="am" class="form-control" type="text" aria-label="default input example" placeholder="Masukkan Nama Alamat Magang" >
@@ -607,18 +608,18 @@ if(isset($_POST['batal'])) {
               </div>
 
               <!-- dosen pemb -->
-              <?php if ($data['status_dosen1'] == 2) { ?>
+              <?php if ($data2['status_dosen1'] == 2) { ?>
               <div class="card-header pb-0 p-3 mt-0" style = "width:400px">
                 <div class="row">
                   <div class="mb-0">
                     <label for="formFile" class="form-label">Dosen Pembimbing</label>
-                    <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data['dosen1'] ?></label>
+                    <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data2['dosen1'] ?></label>
                   </div>
               <div class="row">
                 <div class="mb-0">
                   <!-- memilih dosen pembimbing -->
                 <label for="formFile" class="form-label">Dosen Pembimbing</label>
-                <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data['dosen1'] ?></label>
+                <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $data2['dosen1'] ?></label>
                 </div>
               </div>
               <?php } ?>
@@ -627,31 +628,31 @@ if(isset($_POST['batal'])) {
            
                     <div class="d-flex justify-content-center ">
 
-                    <?php if ($data['status_dosen1'] == 2) { ?>
+                    <?php if ($data2['status_dosen1'] == 2) { ?>
                     
                     <?php }
-                    else if ($data['status_ajuan'] == 1) {?> 
+                    else if ($data2['status_ajuan'] == 1) {?> 
                   <h6 class="mb-0 text-danger">Anda Membatalkan Permohonan Pencarian Dosen Pembimbing <br></h6>
                   <?php } 
-                   else if ($data['status_ajuan'] == 2) { ?> 
+                   else if ($data2['status_ajuan'] == 2) { ?> 
                   <h6 class="mb-0 text-info text-center">Form Telah Dikirim dan Sedang Diproses Dosen Koordinator <br> Anda Bisa Melakukan Perubahan atau Membatalkan Permohonan</h6>
                   <?php } ?>
                   </div>
                   <div class="d-flex justify-content-center mt-3">
                     
-                    <?php if ((($data['status_ajuan'] == 2 || $data['status_ajuan'] == 1) && $data['status_dosen1'] !=2)) { ?>
+                    <?php if ((($data2['status_ajuan'] == 2 || $data2['status_ajuan'] == 1) && $data2['status_dosen1'] != 2)) { ?>
                     <button type="submite" name="update" class="btn bg-gradient-info mx-3">Perbarui</button>
                    
                     <button type = "submite" name ="batal" class = "btn bg-gradient-danger">Batalkan</button>
                     <?php }   
-                        else if ($data['status_dosen1'] == 2) {
+                        else if ($data2['status_dosen1'] == 2) {
                             echo "Anda Sudah Mendapatkan Dosen Pembimbing";
                         }
                     else { ?>
                         <button type="submite" name="input" class="btn bg-gradient-info">Kirim</button>
                         
                        <?php } ?>
-                      <input type="hidden" name = "id" value = "<?php echo $data['id_no'] ?>">
+                      <input type="hidden" name = "id" value = "<?php echo $data2['id_no'] ?>">
                     </div>
                     </form>
                 </div>
