@@ -531,9 +531,8 @@ if (isset($_POST['hima2'])) {
             </div>
             <!-- and dropdown jenis surat -->
 
-            <div class="card example-1 scrollbar-deep-purple bordered-deep-purple thin" style = "height:350px">
-              <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0 scrollbar-deep-purple bordered-deep-purple thin mt-0 mb-0 pt-0" style = "height:375px" >
                   <table class="table align-items-center mb-0">
                     <thead>
                       <!-- judul kolom -->
