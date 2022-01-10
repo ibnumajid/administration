@@ -28,7 +28,9 @@
                       
                       
                     if ((move_uploaded_file($_FILES['fl']['tmp_name'], $url2)))  {
+                      if ($_POST['fl2'] != NULL) { 
                       move_uploaded_file($_FILES['fl2']['tmp_name'], $url3);
+                      }
                       $query2 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url2', '$perihal', '$nama_mhs', sysdate()) ");
                       $query3 = mysqli_query($koneksi, "UPDATE suratmahasiswa SET `status_admin`='$statusadmin' WHERE id_no = '$id'");
                       $query4 = mysqli_query($koneksi, "insert into kirimadmin values ('$id', '$url3', '$perihal', '$nama_mhs', sysdate()) ");
