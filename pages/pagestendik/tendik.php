@@ -121,7 +121,7 @@ if (isset($_POST['dsn'])) {
 
     <!--Nefbar-->
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
+   
       <ul class="navbar-nav">
         
       <!--home-->
@@ -256,7 +256,7 @@ if (isset($_POST['dsn'])) {
         
  
       </ul>
-    </div>
+   
     <!--barusan dicopy nefbar-->
 
   </aside>
