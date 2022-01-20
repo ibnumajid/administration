@@ -318,18 +318,22 @@ $(document).ready(function(){
              </td>
               <?php } ?>
 
-             <?php } } } ?>
-                  <?php 
-                  if ($no == 1) { ?>
+             <?php } }
+            
+             
+            if ($no == 1) { ?>
 
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <?php } ?>
+              <td></td>
+              <td></td>
+              <td></td>
+          <td class = "text-center"><h6 class = "font-weight-bold">BELUM ADA SURAT YANG DIAJUKAN</h6></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <?php }
+        
+        } ?>
+              
             </table>
           </div>
         
