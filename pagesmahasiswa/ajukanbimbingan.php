@@ -411,90 +411,6 @@ if (isset($_POST['input'])) {
                   </div>
                 </div-->
                 
-                
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                       
-
-                        <!-- nama,nrp dan angkatan -->
-                        <form action="" method="post" enctype="multipart/form-data">
-                            <div class="card-header pb-0 p-3">    
-                                <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <label for="formFile" class="form-label">Nama Mahasiswa</label>
-                                        <input name="nm" class="form-control" type="hidden" placeholder="Masukan Nama Mahasiwa" aria-label="default input example"  value = "<?php echo $_SESSION['user'] ?>" >
-                                        <label name="nm" class="form-control" aria-label="default input example"><?php echo $_SESSION['user'] ?></label>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="formFile" class="form-label">NRP</label>
-                                        <input name="nrp" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['NIP'] ?>">
-                                        <label name="nrp" class="form-control" aria-label="default input example"><?php echo $_SESSION['NIP'] ?></label>
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="formFile" class="form-label">Angkatan</label>
-                                        <input name="angkatan" class="form-control" type="hidden" placeholder="Masukan NRP" aria-label="default input example" value = "<?php echo $_SESSION['angkatan'] ?>">
-                                        <label name="angkatan" class="form-control" aria-label="default input example"><?php echo $_SESSION['angkatan'] ?></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- jenis surat -->
-                            <div class="card-header pb-0 p-3">
-                                  <div class="row">
-                                      <div class="mb-3">
-                                          <label for="formFile" class="form-label">Perihal</label>
-                                          <select id="jenis_surat" name="sr"  class="form-select" aria-label="Default select example" required>
-                                              <option selected>Pilih Perihal Bimbingan</option>
-                                              <option value="Bimbingan Proposal Magang">Bimbingan Proposal Magang</option>
-                                              <option value="Bimbingan Proposal Proyek Akhir">Bimbingan Proposal Proyek Akhir</option>
-                                              <option value="Bimbingan Proposal PBL">Bimbingan Proposal PBL</option>
-                                              <?php if ($_SESSION["status2"] == 3) { ?>
-                                              <option value="Bimbingan Proposal Kegiatan HIMA">Bimbingan Proposal Kegiatan HIMA</option>
-                                              <?php } ?>
-                                          </select>
-                                      </div>
-                                  </div>
-                              </div>
-
-                            <!-- UNDUH PANDUANN Magang -->
-                            <div class="unduhmag text-center" style="display: none;" class="d-grid gap-2">
-                            <a href="./Contoh Proposal Magang.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL MAGANG</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Proyek Akhir -->
-                            <div class="unduhpa text-center" style="display: none;">
-                              <a href="./Pedoman Magang di Industri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PROYEK AKHIR</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN PBL -->
-                            <div class="unduhpbl text-center" style="display: none;">
-                              <a href="./Contoh Proposal PBL (Project Based Learning).pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH CONTOH PROPOSAL PBL</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Cuti -->
-                            <div class="unduhcuti text-center" style="display: none;">
-                              <a href="./Form Ijin Cuti Mahasiswa.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM CUTI</button>
-                              </a>
-                            </div>
-
-                            <!-- UNDUH PANDUANN Mengundurkan Diri -->
-                            <div class="unduhundur text-center" style="display: none;">
-                              <a href="./Form Mengundurkan Diri.pdf" target="_blank" class="pb-5 px-7" >
-                                <!-- <h6 class= "text-sm text-dark text-center">UNDUH PANDUAN</h6> -->
-                                <button type="button" class="btn btn-info">UNDUH FORM PENGUNDURAN DIRI</button>
-                              </a>
-                            </div>
 
 
                 <div class="card-body px-0 pt-0 pb-2">
@@ -731,16 +647,6 @@ if (isset($_POST['input'])) {
                   </div>
                 </div>
 
-                            <br><br>
-                            <!-- button -->
-                            <div class="modal-footer">
-                              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Kembali</button></a>
-                              <button type="submit" name="input" class="btn bg-gradient-info" >Kirim Permohonan</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>  
-                
               </div>
             </div>
           </div>
