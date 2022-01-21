@@ -404,7 +404,7 @@ include "../_database/config.php";
                         </div>
 
                         <!-- Keterangan tiap Perihal -->
-                        <?php if ($data['perihal'] == "Surat Magang") { ?>
+                        <?php if ($data['perihal'] == "Bimbingan Magang") { ?>
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label for="formFile" class="form-label">Perihal</label>
@@ -416,7 +416,7 @@ include "../_database/config.php";
                               <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                             </div>
                           </div>
-                        <?php } else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Proyek Akhir") { ?>
                           <label for="formFile" class="form-label">Perihal</label>
                           <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['perihal'] ?></label>
                           <div class="row">
@@ -431,7 +431,7 @@ include "../_database/config.php";
                               <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['judul_ta'] ?></label>
                             </div>
                           </div>
-                        <?php } else if ($data['perihal'] == "Surat PBL (Project Based Learning)") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal PBL") { ?>
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label for="formFile" class="form-label">Perihal</label>
@@ -467,7 +467,7 @@ include "../_database/config.php";
                               <label name="sr" class="form-control" aria-label="default input example"><?php echo $data['keterangan'] ?></label>
                             </div>
                           </div>
-                        <?php } else if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Kegiatan HIMA") { ?>
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label for="formFile" class="form-label">Perihal</label>

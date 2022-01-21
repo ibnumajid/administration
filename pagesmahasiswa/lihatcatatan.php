@@ -338,7 +338,7 @@ include "../_database/config.php";
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Beasiswa</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
-                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Pengajuan Kegiatan HIMA") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Kegiatan HIMA") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Kegiatan</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
