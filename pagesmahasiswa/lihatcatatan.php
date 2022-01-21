@@ -326,7 +326,7 @@ include "../_database/config.php";
 
                         <?php } 
                         
-                        else if ($data['perihal'] == "Bimbingan Proposal PBL (Project Based Learning)") { ?>
+                        else if ($data['perihal'] == "Bimbingan Proposal PBL") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Tempat PBL</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
