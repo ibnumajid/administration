@@ -841,7 +841,7 @@
      
         <h6 class="mb-0 pt-1 px-1">Surat Masuk sebagai Kadep</h6>
       
-      <iframe src="http://administration.org/pages_dosen/tabel/suratmasukkadep.php" frameborder="0" style = "height:500px"></iframe>
+      <iframe src="http://administration.cypiral.org/pages_dosen/tabel/suratmasukkadep.php" frameborder="0" style = "height:500px"></iframe>
    
         </div>    
       </div>
@@ -857,7 +857,7 @@
    <div  class="col-lg-12 mr-0 pr-0 mb-5 ">
    <div class="card">
    <h6 class="mb-0 mx-2 mt-2 pt-1 px-1">Surat Masuk Sebagai Dosen</h6>
-     <iframe src="http://administration.org/pages_dosen/tabel/suratmasukdosen.php" frameborder="0" style = "height:500px"></iframe>
+     <iframe src="http://administration.cypiral.org/pages_dosen/tabel/suratmasukdosen.php" frameborder="0" style = "height:500px"></iframe>
 
   </div>
           </div>
