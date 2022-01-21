@@ -167,7 +167,7 @@ include "../_database/config.php";
 
           <!--Permohonan Surat-->
           <li class="nav-item">
-            <a class="nav-link  active" href="../pagesmahasiswa/pmhnsurat.php">
+            <a class="nav-link  active" href="../pagesmahasiswa/bimbingan.php">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text" viewBox="0 0 16 16">
                   <path d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
@@ -309,13 +309,13 @@ include "../_database/config.php";
 
                         <!-- Keterangan tiap Perihal -->
                         
-                        <?php if ($data['perihal'] == "Surat Magang") { ?>
+                        <?php if ($data['perihal'] == "Bimbingan Proposal Magang") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Tempat Magang</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
                         <?php }
 
-                        else if ($data['perihal'] == "Surat Proyek Akhir") { ?>
+                        else if ($data['perihal'] == "Bimbingan Proposal Proyek Akhir") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Industri Tempat Melakukan Proyek Akhir</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
@@ -326,19 +326,19 @@ include "../_database/config.php";
 
                         <?php } 
                         
-                        else if ($data['perihal'] == "Surat PBL (Project Based Learning)") { ?>
+                        else if ($data['perihal'] == "Bimbingan Proposal PBL (Project Based Learning)") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Tempat PBL</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
-                        <?php } else if ($data['perihal'] == "Surat Cuti") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Cuti") { ?>
                           <!-- Keterangan Tambahan --> 
                           <label for="formFile" class="form-label">Lama Waktu Cuti (*Dalam Semester)</label>
                           <input type="text" class = "form-control" name = "keterangan">
-                        <?php } else if ($data['perihal'] == "Surat Pengajuan Beasiswa") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Pengajuan Beasiswa") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Beasiswa</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
-                        <?php } else if ($data['perihal'] == "Surat Pengajuan Kegiatan HIMA") { ?>
+                        <?php } else if ($data['perihal'] == "Bimbingan Proposal Pengajuan Kegiatan HIMA") { ?>
                           <!-- Keterangan Tambahan -->
                           <label for="formFile" class="form-label">Nama Kegiatan</label>
                           <input type="text" class = "form-control" name = "keterangan" value = "<?php echo $data['keterangan'] ?>">
@@ -372,7 +372,7 @@ include "../_database/config.php";
                   <!-- button upload close -->
               
                 <div class = "mx-4">
-              <a href = "./pmhnsurat.php"><button type="button" class="btn bg-gradient-secondary">Batal</button></a>
+              <a href = "./bimbingan.php"><button type="button" class="btn bg-gradient-secondary">Batal</button></a>
                <button type="submite" name="update" class="btn bg-gradient-info">Ubah</button>
               </form>
                 </div>
