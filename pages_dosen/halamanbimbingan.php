@@ -404,7 +404,7 @@ include "../_database/config.php";
                         </div>
 
                         <!-- Keterangan tiap Perihal -->
-                        <?php if ($data['perihal'] == "Bimbingan Magang") { ?>
+                        <?php if ($data['perihal'] == "Bimbingan Proposal Magang") { ?>
                           <div class="row">
                             <div class="form-group col-md-6">
                               <label for="formFile" class="form-label">Perihal</label>
